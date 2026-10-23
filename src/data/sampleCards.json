@@ -1,0 +1,772 @@
+[
+  {
+    "id": "18092f68-b96e-4084-9eba-b240d2195d81",
+    "scryfallId": "18092f68-b96e-4084-9eba-b240d2195d81",
+    "name": "Adeline, Resplendent Cathar",
+    "setCode": "mid",
+    "setName": "Innistrad: Midnight Hunt",
+    "collectorNumber": "1",
+    "manaCost": "{1}{W}{W}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "W"
+    ],
+    "typeLine": "Legendary Creature — Human Knight",
+    "rarity": "rare",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Vigilance\nAdeline's power is equal to the number of creatures you control.\nWhenever you attack, for each opponent, create a 1/1 white Human creature token that's tapped and attacking that player or a planeswalker they control.",
+    "tags": [
+      "Tokens"
+    ],
+    "artist": "Bryan Sola",
+    "thumbnailUrl": "/cards/18092f68-b96e-4084-9eba-b240d2195d81-normal.jpg",
+    "imageUrl": "/cards/18092f68-b96e-4084-9eba-b240d2195d81-large.jpg"
+  },
+  {
+    "id": "42ecba4b-9624-428f-a8af-dd88139ab13c",
+    "scryfallId": "42ecba4b-9624-428f-a8af-dd88139ab13c",
+    "name": "Swords to Plowshares",
+    "setCode": "cmm",
+    "setName": "Commander Masters",
+    "collectorNumber": "841",
+    "manaCost": "{W}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "W"
+    ],
+    "typeLine": "Instant",
+    "rarity": "uncommon",
+    "quantity": 3,
+    "foil": false,
+    "oracleText": "Exile target creature. Its controller gains life equal to its power.",
+    "tags": [
+      "Removal"
+    ],
+    "artist": "Sam Wolfe Connelly",
+    "thumbnailUrl": "/cards/42ecba4b-9624-428f-a8af-dd88139ab13c-normal.jpg",
+    "imageUrl": "/cards/42ecba4b-9624-428f-a8af-dd88139ab13c-large.jpg"
+  },
+  {
+    "id": "d8db2b8e-dce9-49b7-833f-381ee55288cb",
+    "scryfallId": "d8db2b8e-dce9-49b7-833f-381ee55288cb",
+    "name": "Sun Titan",
+    "setCode": "m11",
+    "setName": "Magic 2011",
+    "collectorNumber": "35",
+    "manaCost": "{4}{W}{W}",
+    "manaValue": 6.0,
+    "colorIdentity": [
+      "W"
+    ],
+    "typeLine": "Creature — Giant",
+    "rarity": "mythic",
+    "quantity": 1,
+    "foil": true,
+    "oracleText": "Vigilance\nWhenever this creature enters or attacks, you may return target permanent card with mana value 3 or less from your graveyard to the battlefield.",
+    "tags": [
+      "Graveyard"
+    ],
+    "artist": "Todd Lockwood",
+    "thumbnailUrl": "/cards/d8db2b8e-dce9-49b7-833f-381ee55288cb-normal.jpg",
+    "imageUrl": "/cards/d8db2b8e-dce9-49b7-833f-381ee55288cb-large.jpg"
+  },
+  {
+    "id": "7af082fa-86a3-4f7b-966d-2be1f1d0c0bc",
+    "scryfallId": "7af082fa-86a3-4f7b-966d-2be1f1d0c0bc",
+    "name": "Smothering Tithe",
+    "setCode": "rna",
+    "setName": "Ravnica Allegiance",
+    "collectorNumber": "22",
+    "manaCost": "{3}{W}",
+    "manaValue": 4.0,
+    "colorIdentity": [
+      "W"
+    ],
+    "typeLine": "Enchantment",
+    "rarity": "rare",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+    "tags": [
+      "Ramp",
+      "Tokens"
+    ],
+    "artist": "Mark Behm",
+    "thumbnailUrl": "/cards/7af082fa-86a3-4f7b-966d-2be1f1d0c0bc-normal.jpg",
+    "imageUrl": "/cards/7af082fa-86a3-4f7b-966d-2be1f1d0c0bc-large.jpg"
+  },
+  {
+    "id": "ce30f926-bc06-46ee-9f35-0cdf09a67043",
+    "scryfallId": "ce30f926-bc06-46ee-9f35-0cdf09a67043",
+    "name": "Counterspell",
+    "setCode": "cmr",
+    "setName": "Commander Legends",
+    "collectorNumber": "395",
+    "manaCost": "{U}{U}",
+    "manaValue": 2.0,
+    "colorIdentity": [
+      "U"
+    ],
+    "typeLine": "Instant",
+    "rarity": "common",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "Counter target spell.",
+    "tags": [
+      "Removal"
+    ],
+    "artist": "Zack Stella",
+    "thumbnailUrl": "/cards/ce30f926-bc06-46ee-9f35-0cdf09a67043-normal.jpg",
+    "imageUrl": "/cards/ce30f926-bc06-46ee-9f35-0cdf09a67043-large.jpg"
+  },
+  {
+    "id": "81c908ee-e70a-4406-a32d-ab5ab17e67b1",
+    "scryfallId": "81c908ee-e70a-4406-a32d-ab5ab17e67b1",
+    "name": "Ponder",
+    "setCode": "m12",
+    "setName": "Magic 2012",
+    "collectorNumber": "73",
+    "manaCost": "{U}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "U"
+    ],
+    "typeLine": "Sorcery",
+    "rarity": "common",
+    "quantity": 3,
+    "foil": false,
+    "oracleText": "Look at the top three cards of your library, then put them back in any order. You may shuffle.\nDraw a card.",
+    "tags": [
+      "Card Draw"
+    ],
+    "artist": "Dan Murayama Scott",
+    "thumbnailUrl": "/cards/81c908ee-e70a-4406-a32d-ab5ab17e67b1-normal.jpg",
+    "imageUrl": "/cards/81c908ee-e70a-4406-a32d-ab5ab17e67b1-large.jpg"
+  },
+  {
+    "id": "d6914dba-0d27-4055-ac34-b3ebf5802221",
+    "scryfallId": "d6914dba-0d27-4055-ac34-b3ebf5802221",
+    "name": "Rhystic Study",
+    "setCode": "jmp",
+    "setName": "Jumpstart",
+    "collectorNumber": "169",
+    "manaCost": "{2}{U}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "U"
+    ],
+    "typeLine": "Enchantment",
+    "rarity": "rare",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",
+    "tags": [
+      "Card Draw"
+    ],
+    "artist": "Terese Nielsen",
+    "thumbnailUrl": "/cards/d6914dba-0d27-4055-ac34-b3ebf5802221-normal.jpg",
+    "imageUrl": "/cards/d6914dba-0d27-4055-ac34-b3ebf5802221-large.jpg"
+  },
+  {
+    "id": "8e06fc13-6a58-40f8-a3e6-5558a7a0d18f",
+    "scryfallId": "8e06fc13-6a58-40f8-a3e6-5558a7a0d18f",
+    "name": "Mulldrifter",
+    "setCode": "cmr",
+    "setName": "Commander Legends",
+    "collectorNumber": "400",
+    "manaCost": "{4}{U}",
+    "manaValue": 5.0,
+    "colorIdentity": [
+      "U"
+    ],
+    "typeLine": "Creature — Elemental",
+    "rarity": "uncommon",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "Flying\nWhen this creature enters, draw two cards.\nEvoke {2}{U} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)",
+    "tags": [
+      "Card Draw"
+    ],
+    "artist": "Eric Fortune",
+    "thumbnailUrl": "/cards/8e06fc13-6a58-40f8-a3e6-5558a7a0d18f-normal.jpg",
+    "imageUrl": "/cards/8e06fc13-6a58-40f8-a3e6-5558a7a0d18f-large.jpg"
+  },
+  {
+    "id": "693dd112-d04a-4404-8fce-74f7e5497312",
+    "scryfallId": "693dd112-d04a-4404-8fce-74f7e5497312",
+    "name": "Blood Artist",
+    "setCode": "2x2",
+    "setName": "Double Masters 2022",
+    "collectorNumber": "70",
+    "manaCost": "{1}{B}",
+    "manaValue": 2.0,
+    "colorIdentity": [
+      "B"
+    ],
+    "typeLine": "Creature — Vampire",
+    "rarity": "uncommon",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "Whenever this creature or another creature dies, target player loses 1 life and you gain 1 life.",
+    "tags": [
+      "Graveyard",
+      "Tokens"
+    ],
+    "artist": "L.A. Draws",
+    "thumbnailUrl": "/cards/693dd112-d04a-4404-8fce-74f7e5497312-normal.jpg",
+    "imageUrl": "/cards/693dd112-d04a-4404-8fce-74f7e5497312-large.jpg"
+  },
+  {
+    "id": "ae1ef31c-8ca5-444c-8f39-e1d1827318f5",
+    "scryfallId": "ae1ef31c-8ca5-444c-8f39-e1d1827318f5",
+    "name": "Reanimate",
+    "setCode": "tmp",
+    "setName": "Tempest",
+    "collectorNumber": "151",
+    "manaCost": "{B}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "B"
+    ],
+    "typeLine": "Sorcery",
+    "rarity": "uncommon",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to that card's mana value.",
+    "tags": [
+      "Graveyard"
+    ],
+    "artist": "Robert Bliss",
+    "thumbnailUrl": "/cards/ae1ef31c-8ca5-444c-8f39-e1d1827318f5-normal.jpg",
+    "imageUrl": "/cards/ae1ef31c-8ca5-444c-8f39-e1d1827318f5-large.jpg"
+  },
+  {
+    "id": "5c963d97-c948-45d9-84cc-58e246d35970",
+    "scryfallId": "5c963d97-c948-45d9-84cc-58e246d35970",
+    "name": "Zulaport Cutthroat",
+    "setCode": "bfz",
+    "setName": "Battle for Zendikar",
+    "collectorNumber": "126",
+    "manaCost": "{1}{B}",
+    "manaValue": 2.0,
+    "colorIdentity": [
+      "B"
+    ],
+    "typeLine": "Creature — Human Rogue Ally",
+    "rarity": "uncommon",
+    "quantity": 3,
+    "foil": false,
+    "oracleText": "Whenever this creature or another creature you control dies, each opponent loses 1 life and you gain 1 life.",
+    "tags": [
+      "Tokens",
+      "Graveyard"
+    ],
+    "artist": "Jason Rainville",
+    "thumbnailUrl": "/cards/5c963d97-c948-45d9-84cc-58e246d35970-normal.jpg",
+    "imageUrl": "/cards/5c963d97-c948-45d9-84cc-58e246d35970-large.jpg"
+  },
+  {
+    "id": "855e9253-2219-4c43-8131-47633c564ee2",
+    "scryfallId": "855e9253-2219-4c43-8131-47633c564ee2",
+    "name": "Victimize",
+    "setCode": "cmr",
+    "setName": "Commander Legends",
+    "collectorNumber": "157",
+    "manaCost": "{2}{B}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "B"
+    ],
+    "typeLine": "Sorcery",
+    "rarity": "uncommon",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "Choose two target creature cards in your graveyard. Sacrifice a creature. If you do, return the chosen cards to the battlefield tapped.",
+    "tags": [
+      "Graveyard"
+    ],
+    "artist": "Craig J Spearing",
+    "thumbnailUrl": "/cards/855e9253-2219-4c43-8131-47633c564ee2-normal.jpg",
+    "imageUrl": "/cards/855e9253-2219-4c43-8131-47633c564ee2-large.jpg"
+  },
+  {
+    "id": "e768c957-3a1f-42f5-853a-96942f645df5",
+    "scryfallId": "e768c957-3a1f-42f5-853a-96942f645df5",
+    "name": "Lightning Bolt",
+    "setCode": "m11",
+    "setName": "Magic 2011",
+    "collectorNumber": "149",
+    "manaCost": "{R}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "R"
+    ],
+    "typeLine": "Instant",
+    "rarity": "common",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "Lightning Bolt deals 3 damage to any target.",
+    "tags": [
+      "Removal"
+    ],
+    "artist": "Christopher Moeller",
+    "thumbnailUrl": "/cards/e768c957-3a1f-42f5-853a-96942f645df5-normal.jpg",
+    "imageUrl": "/cards/e768c957-3a1f-42f5-853a-96942f645df5-large.jpg"
+  },
+  {
+    "id": "c144b325-53a3-4590-beb1-2a39cbced47e",
+    "scryfallId": "c144b325-53a3-4590-beb1-2a39cbced47e",
+    "name": "Chaos Warp",
+    "setCode": "c20",
+    "setName": "Commander 2020",
+    "collectorNumber": "146",
+    "manaCost": "{2}{R}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "R"
+    ],
+    "typeLine": "Instant",
+    "rarity": "rare",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "The owner of target permanent shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.",
+    "tags": [
+      "Removal"
+    ],
+    "artist": "Trevor Claxton",
+    "thumbnailUrl": "/cards/c144b325-53a3-4590-beb1-2a39cbced47e-normal.jpg",
+    "imageUrl": "/cards/c144b325-53a3-4590-beb1-2a39cbced47e-large.jpg"
+  },
+  {
+    "id": "e349c204-3a93-4bf7-b79a-5f5f261ea2d3",
+    "scryfallId": "e349c204-3a93-4bf7-b79a-5f5f261ea2d3",
+    "name": "Young Pyromancer",
+    "setCode": "m14",
+    "setName": "Magic 2014",
+    "collectorNumber": "163",
+    "manaCost": "{1}{R}",
+    "manaValue": 2.0,
+    "colorIdentity": [
+      "R"
+    ],
+    "typeLine": "Creature — Human Shaman",
+    "rarity": "uncommon",
+    "quantity": 2,
+    "foil": true,
+    "oracleText": "Whenever you cast an instant or sorcery spell, create a 1/1 red Elemental creature token.",
+    "tags": [
+      "Tokens"
+    ],
+    "artist": "Cynthia Sheppard",
+    "thumbnailUrl": "/cards/e349c204-3a93-4bf7-b79a-5f5f261ea2d3-normal.jpg",
+    "imageUrl": "/cards/e349c204-3a93-4bf7-b79a-5f5f261ea2d3-large.jpg"
+  },
+  {
+    "id": "90cef94d-d941-4e08-afec-a116626b74fb",
+    "scryfallId": "90cef94d-d941-4e08-afec-a116626b74fb",
+    "name": "Goblin Instigator",
+    "setCode": "m19",
+    "setName": "Core Set 2019",
+    "collectorNumber": "142",
+    "manaCost": "{1}{R}",
+    "manaValue": 2.0,
+    "colorIdentity": [
+      "R"
+    ],
+    "typeLine": "Creature — Goblin Rogue",
+    "rarity": "common",
+    "quantity": 3,
+    "foil": false,
+    "oracleText": "When this creature enters, create a 1/1 red Goblin creature token.",
+    "tags": [
+      "Tokens"
+    ],
+    "artist": "Filip Burburan",
+    "thumbnailUrl": "/cards/90cef94d-d941-4e08-afec-a116626b74fb-normal.jpg",
+    "imageUrl": "/cards/90cef94d-d941-4e08-afec-a116626b74fb-large.jpg"
+  },
+  {
+    "id": "307d4236-1e54-43e3-83f1-063d49d16dda",
+    "scryfallId": "307d4236-1e54-43e3-83f1-063d49d16dda",
+    "name": "Birds of Paradise",
+    "setCode": "m12",
+    "setName": "Magic 2012",
+    "collectorNumber": "165",
+    "manaCost": "{G}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Creature — Bird",
+    "rarity": "rare",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "Flying\n{T}: Add one mana of any color.",
+    "tags": [
+      "Ramp"
+    ],
+    "artist": "Marcelo Vignali",
+    "thumbnailUrl": "/cards/307d4236-1e54-43e3-83f1-063d49d16dda-normal.jpg",
+    "imageUrl": "/cards/307d4236-1e54-43e3-83f1-063d49d16dda-large.jpg"
+  },
+  {
+    "id": "4a433310-3fe2-4156-864d-7a6b2638340b",
+    "scryfallId": "4a433310-3fe2-4156-864d-7a6b2638340b",
+    "name": "Cultivate",
+    "setCode": "m21",
+    "setName": "Core Set 2021",
+    "collectorNumber": "177",
+    "manaCost": "{2}{G}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Sorcery",
+    "rarity": "uncommon",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.",
+    "tags": [
+      "Ramp"
+    ],
+    "artist": "Anthony Palumbo",
+    "thumbnailUrl": "/cards/4a433310-3fe2-4156-864d-7a6b2638340b-normal.jpg",
+    "imageUrl": "/cards/4a433310-3fe2-4156-864d-7a6b2638340b-large.jpg"
+  },
+  {
+    "id": "7dcdf1db-bfaf-4160-8003-1fa2e56b00dc",
+    "scryfallId": "7dcdf1db-bfaf-4160-8003-1fa2e56b00dc",
+    "name": "Hardened Scales",
+    "setCode": "ktk",
+    "setName": "Khans of Tarkir",
+    "collectorNumber": "133",
+    "manaCost": "{G}",
+    "manaValue": 1.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Enchantment",
+    "rarity": "rare",
+    "quantity": 1,
+    "foil": true,
+    "oracleText": "If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",
+    "tags": [
+      "+1/+1 Counters"
+    ],
+    "artist": "Mark Winters",
+    "thumbnailUrl": "/cards/7dcdf1db-bfaf-4160-8003-1fa2e56b00dc-normal.jpg",
+    "imageUrl": "/cards/7dcdf1db-bfaf-4160-8003-1fa2e56b00dc-large.jpg"
+  },
+  {
+    "id": "61f42823-8a48-4b81-a037-664ba1c69f29",
+    "scryfallId": "61f42823-8a48-4b81-a037-664ba1c69f29",
+    "name": "Scute Swarm",
+    "setCode": "znr",
+    "setName": "Zendikar Rising",
+    "collectorNumber": "203",
+    "manaCost": "{2}{G}",
+    "manaValue": 3.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Creature — Insect",
+    "rarity": "rare",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "Landfall — Whenever a land you control enters, create a 1/1 green Insect creature token. If you control six or more lands, create a token that's a copy of this creature instead.",
+    "tags": [
+      "Landfall",
+      "Tokens"
+    ],
+    "artist": "Alex Konstad",
+    "thumbnailUrl": "/cards/61f42823-8a48-4b81-a037-664ba1c69f29-normal.jpg",
+    "imageUrl": "/cards/61f42823-8a48-4b81-a037-664ba1c69f29-large.jpg"
+  },
+  {
+    "id": "03dea775-bbb3-4e9c-8514-0605b5ad2e8b",
+    "scryfallId": "03dea775-bbb3-4e9c-8514-0605b5ad2e8b",
+    "name": "Avenger of Zendikar",
+    "setCode": "cmr",
+    "setName": "Commander Legends",
+    "collectorNumber": "422",
+    "manaCost": "{5}{G}{G}",
+    "manaValue": 7.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Creature — Elemental",
+    "rarity": "mythic",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "When this creature enters, create a 0/1 green Plant creature token for each land you control.\nLandfall — Whenever a land you control enters, you may put a +1/+1 counter on each Plant creature you control.",
+    "tags": [
+      "Landfall",
+      "Tokens",
+      "+1/+1 Counters"
+    ],
+    "artist": "Zoltan Boros & Gabor Szikszai",
+    "thumbnailUrl": "/cards/03dea775-bbb3-4e9c-8514-0605b5ad2e8b-normal.jpg",
+    "imageUrl": "/cards/03dea775-bbb3-4e9c-8514-0605b5ad2e8b-large.jpg"
+  },
+  {
+    "id": "93657aaa-7a0f-49ad-b026-6f79b3bd6768",
+    "scryfallId": "93657aaa-7a0f-49ad-b026-6f79b3bd6768",
+    "name": "Tatyova, Benthic Druid",
+    "setCode": "dom",
+    "setName": "Dominaria",
+    "collectorNumber": "206",
+    "manaCost": "{3}{G}{U}",
+    "manaValue": 5.0,
+    "colorIdentity": [
+      "G",
+      "U"
+    ],
+    "typeLine": "Legendary Creature — Merfolk Druid",
+    "rarity": "uncommon",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Landfall — Whenever a land you control enters, you gain 1 life and draw a card.",
+    "tags": [
+      "Landfall",
+      "Card Draw"
+    ],
+    "artist": "Mathias Kollros",
+    "thumbnailUrl": "/cards/93657aaa-7a0f-49ad-b026-6f79b3bd6768-normal.jpg",
+    "imageUrl": "/cards/93657aaa-7a0f-49ad-b026-6f79b3bd6768-large.jpg"
+  },
+  {
+    "id": "d0d33d52-3d28-4635-b985-51e126289259",
+    "scryfallId": "d0d33d52-3d28-4635-b985-51e126289259",
+    "name": "Atraxa, Praetors' Voice",
+    "setCode": "2xm",
+    "setName": "Double Masters",
+    "collectorNumber": "190",
+    "manaCost": "{G}{W}{U}{B}",
+    "manaValue": 4.0,
+    "colorIdentity": [
+      "B",
+      "G",
+      "U",
+      "W"
+    ],
+    "typeLine": "Legendary Creature — Phyrexian Angel Horror",
+    "rarity": "mythic",
+    "quantity": 1,
+    "foil": true,
+    "oracleText": "Flying, vigilance, deathtouch, lifelink\nAt the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
+    "tags": [
+      "+1/+1 Counters"
+    ],
+    "artist": "Victor Adame Minguez",
+    "thumbnailUrl": "/cards/d0d33d52-3d28-4635-b985-51e126289259-normal.jpg",
+    "imageUrl": "/cards/d0d33d52-3d28-4635-b985-51e126289259-large.jpg"
+  },
+  {
+    "id": "34d627b3-a6d0-4f5f-b7c2-351a07318966",
+    "scryfallId": "34d627b3-a6d0-4f5f-b7c2-351a07318966",
+    "name": "Meren of Clan Nel Toth",
+    "setCode": "cmm",
+    "setName": "Commander Masters",
+    "collectorNumber": "346",
+    "manaCost": "{2}{B}{G}",
+    "manaValue": 4.0,
+    "colorIdentity": [
+      "B",
+      "G"
+    ],
+    "typeLine": "Legendary Creature — Human Shaman",
+    "rarity": "rare",
+    "quantity": 1,
+    "foil": false,
+    "oracleText": "Whenever another creature you control dies, you get an experience counter.\nAt the beginning of your end step, choose target creature card in your graveyard. If that card's mana value is less than or equal to the number of experience counters you have, return it to the battlefield. Otherwise, put it into your hand.",
+    "tags": [
+      "Graveyard"
+    ],
+    "artist": "Mark Winters",
+    "thumbnailUrl": "/cards/34d627b3-a6d0-4f5f-b7c2-351a07318966-normal.jpg",
+    "imageUrl": "/cards/34d627b3-a6d0-4f5f-b7c2-351a07318966-large.jpg"
+  },
+  {
+    "id": "7bbd2cab-538e-4932-a828-150e3e9d52ad",
+    "scryfallId": "7bbd2cab-538e-4932-a828-150e3e9d52ad",
+    "name": "Solemn Simulacrum",
+    "setCode": "m21",
+    "setName": "Core Set 2021",
+    "collectorNumber": "239",
+    "manaCost": "{4}",
+    "manaValue": 4.0,
+    "colorIdentity": [],
+    "typeLine": "Artifact Creature — Golem",
+    "rarity": "rare",
+    "quantity": 2,
+    "foil": false,
+    "oracleText": "When this creature enters, you may search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.\nWhen this creature dies, you may draw a card.",
+    "tags": [
+      "Artifacts",
+      "Ramp",
+      "Card Draw"
+    ],
+    "artist": "Donato Giancola",
+    "thumbnailUrl": "/cards/7bbd2cab-538e-4932-a828-150e3e9d52ad-normal.jpg",
+    "imageUrl": "/cards/7bbd2cab-538e-4932-a828-150e3e9d52ad-large.jpg"
+  },
+  {
+    "id": "46ca0b66-a000-4483-b916-f5b89e710244",
+    "scryfallId": "46ca0b66-a000-4483-b916-f5b89e710244",
+    "name": "Sol Ring",
+    "setCode": "cmm",
+    "setName": "Commander Masters",
+    "collectorNumber": "410",
+    "manaCost": "{1}",
+    "manaValue": 1.0,
+    "colorIdentity": [],
+    "typeLine": "Artifact",
+    "rarity": "uncommon",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "{T}: Add {C}{C}.",
+    "tags": [
+      "Artifacts",
+      "Ramp"
+    ],
+    "artist": "Mike Bierek",
+    "thumbnailUrl": "/cards/46ca0b66-a000-4483-b916-f5b89e710244-normal.jpg",
+    "imageUrl": "/cards/46ca0b66-a000-4483-b916-f5b89e710244-large.jpg"
+  },
+  {
+    "id": "84128e98-87d6-4c2f-909b-9435a7833e63",
+    "scryfallId": "84128e98-87d6-4c2f-909b-9435a7833e63",
+    "name": "Arcane Signet",
+    "setCode": "eld",
+    "setName": "Throne of Eldraine",
+    "collectorNumber": "331",
+    "manaCost": "{2}",
+    "manaValue": 2.0,
+    "colorIdentity": [],
+    "typeLine": "Artifact",
+    "rarity": "common",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "{T}: Add one mana of any color in your commander's color identity.",
+    "tags": [
+      "Artifacts",
+      "Ramp"
+    ],
+    "artist": "Dan Murayama Scott",
+    "thumbnailUrl": "/cards/84128e98-87d6-4c2f-909b-9435a7833e63-normal.jpg",
+    "imageUrl": "/cards/84128e98-87d6-4c2f-909b-9435a7833e63-large.jpg"
+  },
+  {
+    "id": "005dae9a-dddc-4a11-95bb-cce319edcce4",
+    "scryfallId": "005dae9a-dddc-4a11-95bb-cce319edcce4",
+    "name": "Skullclamp",
+    "setCode": "c14",
+    "setName": "Commander 2014",
+    "collectorNumber": "268",
+    "manaCost": "{1}",
+    "manaValue": 1.0,
+    "colorIdentity": [],
+    "typeLine": "Artifact — Equipment",
+    "rarity": "uncommon",
+    "quantity": 2,
+    "foil": true,
+    "oracleText": "Equipped creature gets +1/-1.\nWhenever equipped creature dies, draw two cards.\nEquip {1}",
+    "tags": [
+      "Artifacts",
+      "Card Draw",
+      "Tokens"
+    ],
+    "artist": "Daniel Ljunggren",
+    "thumbnailUrl": "/cards/005dae9a-dddc-4a11-95bb-cce319edcce4-normal.jpg",
+    "imageUrl": "/cards/005dae9a-dddc-4a11-95bb-cce319edcce4-large.jpg"
+  },
+  {
+    "id": "14019383-0327-404b-ab4d-c65c3fa8c50d",
+    "scryfallId": "14019383-0327-404b-ab4d-c65c3fa8c50d",
+    "name": "Command Tower",
+    "setCode": "cmm",
+    "setName": "Commander Masters",
+    "collectorNumber": "420",
+    "manaCost": "",
+    "manaValue": 0.0,
+    "colorIdentity": [],
+    "typeLine": "Land",
+    "rarity": "common",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "{T}: Add one mana of any color in your commander's color identity.",
+    "tags": [
+      "Ramp"
+    ],
+    "artist": "Ryan Yee",
+    "thumbnailUrl": "/cards/14019383-0327-404b-ab4d-c65c3fa8c50d-normal.jpg",
+    "imageUrl": "/cards/14019383-0327-404b-ab4d-c65c3fa8c50d-large.jpg"
+  },
+  {
+    "id": "ad0fa2fb-6770-4a81-b830-4acfa957655a",
+    "scryfallId": "ad0fa2fb-6770-4a81-b830-4acfa957655a",
+    "name": "Evolving Wilds",
+    "setCode": "m20",
+    "setName": "Core Set 2020",
+    "collectorNumber": "246",
+    "manaCost": "",
+    "manaValue": 0.0,
+    "colorIdentity": [],
+    "typeLine": "Land",
+    "rarity": "common",
+    "quantity": 4,
+    "foil": false,
+    "oracleText": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+    "tags": [
+      "Landfall"
+    ],
+    "artist": "Steven Belledin",
+    "thumbnailUrl": "/cards/ad0fa2fb-6770-4a81-b830-4acfa957655a-normal.jpg",
+    "imageUrl": "/cards/ad0fa2fb-6770-4a81-b830-4acfa957655a-large.jpg"
+  },
+  {
+    "id": "3279314f-d639-4489-b2ab-3621bb3ca64b",
+    "scryfallId": "3279314f-d639-4489-b2ab-3621bb3ca64b",
+    "name": "Forest",
+    "setCode": "m21",
+    "setName": "Core Set 2021",
+    "collectorNumber": "272",
+    "manaCost": "",
+    "manaValue": 0.0,
+    "colorIdentity": [
+      "G"
+    ],
+    "typeLine": "Basic Land — Forest",
+    "rarity": "common",
+    "quantity": 8,
+    "foil": false,
+    "oracleText": "({T}: Add {G}.)",
+    "tags": [],
+    "artist": "Volkan Baǵa",
+    "thumbnailUrl": "/cards/3279314f-d639-4489-b2ab-3621bb3ca64b-normal.jpg",
+    "imageUrl": "/cards/3279314f-d639-4489-b2ab-3621bb3ca64b-large.jpg"
+  },
+  {
+    "id": "fc9a66a1-367c-4035-a22e-00fab55be5a0",
+    "scryfallId": "fc9a66a1-367c-4035-a22e-00fab55be5a0",
+    "name": "Island",
+    "setCode": "m21",
+    "setName": "Core Set 2021",
+    "collectorNumber": "263",
+    "manaCost": "",
+    "manaValue": 0.0,
+    "colorIdentity": [
+      "U"
+    ],
+    "typeLine": "Basic Land — Island",
+    "rarity": "common",
+    "quantity": 6,
+    "foil": false,
+    "oracleText": "({T}: Add {U}.)",
+    "tags": [],
+    "artist": "Cliff Childs",
+    "thumbnailUrl": "/cards/fc9a66a1-367c-4035-a22e-00fab55be5a0-normal.jpg",
+    "imageUrl": "/cards/fc9a66a1-367c-4035-a22e-00fab55be5a0-large.jpg"
+  }
+]

@@ -1,0 +1,81 @@
+import { Layers, SearchX, Sparkles } from "lucide-react";
+import type { SampleCollectionCard } from "../models/card";
+import { CardImage } from "./CardImage";
+export function SkeletonCard() {
+  return (
+    <div className="skeleton-card" aria-hidden="true">
+      <div />
+      <span />
+      <span />
+    </div>
+  );
+}
+export function CardGrid({
+  cards,
+  loading,
+  onOpen,
+  onReset,
+}: {
+  cards: SampleCollectionCard[];
+  loading: boolean;
+  onOpen: (c: SampleCollectionCard) => void;
+  onReset: () => void;
+}) {
+  if (loading)
+    return (
+      <div role="status" aria-label="Loading collection">
+        <span className="sr-only">Loading collection…</span>
+        <div className="card-grid">
+          {Array.from({ length: 12 }, (_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      </div>
+    );
+  if (!cards.length)
+    return (
+      <section className="empty-state">
+        <span className="empty-icon">
+          <SearchX size={30} />
+        </span>
+        <p className="eyebrow">A LITTLE TOO WELL HIDDEN</p>
+        <h2>No cards found</h2>
+        <p>Try another name or give your filters a little more room.</p>
+        <button className="primary-button" onClick={onReset}>
+          Reset search & filters
+        </button>
+      </section>
+    );
+  return (
+    <div className="card-grid">
+      {cards.map((card, i) => (
+        <button
+          className="card-tile"
+          key={card.id}
+          onClick={() => onOpen(card)}
+          aria-label={`View ${card.name}`}
+        >
+          <div className="tile-art">
+            <CardImage card={card} eager={i < 6} />
+            {card.quantity > 1 && (
+              <span className="quantity" aria-label={`${card.quantity} copies`}>
+                <Layers size={12} />
+                {card.quantity}
+              </span>
+            )}
+            {card.foil && (
+              <span className="foil-badge" aria-label="Foil">
+                <Sparkles size={13} />
+              </span>
+            )}
+          </div>
+          <span className="tile-title">{card.name}</span>
+          <span className="tile-subtitle">
+            {card.setCode.toUpperCase()} <span>·</span>{" "}
+            <span className={`rarity ${card.rarity}`}>{card.rarity}</span>
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
