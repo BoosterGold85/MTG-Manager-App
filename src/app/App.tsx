@@ -180,7 +180,7 @@ export default function App() {
                     <span className="count-divider">/</span>{" "}
                     {loading
                       ? "Sample collection"
-                      : `${cards.length} ${savedCollection ? "records" : "unique"}`}
+                      : `${cards.length} ${savedCollection ? (cards.length === 1 ? "record" : "records") : "unique"}`}
                   </span>
                   <span className="sample-label">
                     {savedCollection ? "YOUR COLLECTION" : "SAMPLE COLLECTION"}
@@ -390,7 +390,8 @@ export default function App() {
                 <span>✧</span>
                 <p>A collection worth getting lost in.</p>
                 <span>
-                  {results.length} collection records ·{" "}
+                  {results.length} collection{" "}
+                  {results.length === 1 ? "record" : "records"} ·{" "}
                   {savedCollection ? "Your binder" : "Sample binder"}
                 </span>
               </footer>
