@@ -1715,3 +1715,470 @@ html:has(dialog[open]) {
   line-height: 1.6;
   margin: 9px 0 0;
 }
+
+/* v0.2 adds collection tools within the frozen binder shell. */
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.import-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 14px;
+  background: #d4c3980b;
+  border: 1px solid #d4c39840;
+  border-radius: 7px;
+  color: var(--accent);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.import-button:hover {
+  background: #d4c39816;
+  border-color: #d4c39880;
+}
+.import-action-short {
+  display: none;
+}
+.import-dialog {
+  width: 720px;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  display: none;
+}
+.import-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+.import-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 12px 45px 0 0;
+}
+.import-content {
+  padding: 25px 28px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+  max-height: calc(100dvh - 280px);
+}
+.import-content h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.import-content p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #b1bda3;
+}
+.import-footer {
+  padding: 17px 26px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  background: #20261c;
+  flex-shrink: 0;
+}
+.import-upload,
+.import-success,
+.import-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 10px 26px;
+}
+.import-emblem {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #d4c39809;
+  border: 1px solid #d4c39830;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+.import-upload h3,
+.import-success h3,
+.import-progress h3 {
+  font-size: 25px;
+  letter-spacing: -0.7px;
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+.import-upload p,
+.import-success p {
+  max-width: 440px;
+  margin: 12px 0 23px;
+}
+.import-success p:last-child {
+  margin: 0 0 10px;
+}
+.import-local {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #a1af92;
+  margin: 18px 0 0;
+  line-height: 1.5;
+}
+.import-local svg {
+  flex-shrink: 0;
+}
+.sync-note {
+  background: #d4c39805;
+  border: 1px solid #d4c39820;
+  border-radius: 7px;
+  padding: 16px 18px;
+  margin: 0 0 22px;
+  font-size: 12px;
+  line-height: 1.85;
+  color: #b1bda3;
+}
+.sync-note h3 {
+  color: #d7dfca;
+}
+.sync-note p {
+  margin: 8px 0 0;
+}
+.sync-note strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+.import-progress {
+  min-height: 290px;
+  justify-content: center;
+}
+.import-progress svg {
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+.import-progress p {
+  margin: 14px 0;
+}
+.import-progress > span {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #a4b295;
+}
+.import-spinner {
+  animation: spin 1.4s linear infinite;
+}
+.import-error,
+.import-warning {
+  border: 1px solid #cfad7650;
+  background: #cfad7609;
+  color: #dfc799;
+  padding: 12px 14px;
+  border-radius: 6px;
+  display: flex;
+  gap: 9px;
+  align-items: start;
+  margin: 0 0 20px;
+}
+.import-error svg,
+.import-warning svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.import-error p {
+  margin: 0;
+  color: #dfc799;
+}
+.import-content .import-warning {
+  color: #dfc799;
+}
+.import-filename {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.import-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  margin: 17px 0 18px;
+  overflow: hidden;
+}
+.import-stats > div {
+  padding: 14px 15px;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+.import-stats > div:nth-child(-n + 3) {
+  background: #d4c39804;
+}
+.import-stats dt {
+  font-size: 10px;
+  color: #a8b797;
+  line-height: 1.6;
+}
+.import-stats dd {
+  font-size: 24px;
+  color: var(--accent);
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+}
+.import-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.import-section-title h3 {
+  margin: 0;
+}
+.import-section-title .text-button {
+  font-size: 10px;
+  padding: 0;
+  min-width: 90px;
+}
+.import-records ol,
+.import-problems ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.import-records li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 13px 0;
+  font-size: 12px;
+}
+.import-records li > div {
+  min-width: 0;
+  flex: 1;
+}
+.import-records strong {
+  font-weight: 500;
+  color: #d4dfc6;
+  overflow-wrap: anywhere;
+}
+.import-records small {
+  display: block;
+  color: #a1b08f;
+  font-size: 10px;
+  margin-top: 7px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.import-record-status {
+  font-size: 9px;
+  color: #b8c4a7;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+.import-record-status.new {
+  color: var(--accent);
+}
+.import-record-status.updated {
+  color: #b9d1b2;
+}
+.import-quantity {
+  color: #e0e6d6;
+  font-size: 12px;
+  white-space: nowrap;
+  min-width: 35px;
+  text-align: right;
+}
+.import-problems {
+  border-top: 1px solid #d4c39825;
+  padding-top: 20px;
+  margin-top: 24px;
+}
+.import-problems li {
+  border: 1px solid #d4c39820;
+  border-radius: 5px;
+  padding: 14px;
+  margin: 12px 0;
+}
+.import-problems strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: #dec99f;
+  overflow-wrap: anywhere;
+}
+.import-problems p {
+  margin: 6px 0 10px;
+}
+.import-problems summary,
+.source-fields summary {
+  font-size: 11px;
+  line-height: 2;
+  color: #c5cbb7;
+  cursor: pointer;
+  min-height: 32px;
+}
+.import-problems pre,
+.source-fields pre {
+  font-size: 11px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #13190f;
+  padding: 12px;
+  line-height: 1.8;
+  color: #b9c7a9;
+  border-radius: 5px;
+}
+.source-fields {
+  padding: 0 0 17px;
+}
+.source-fields p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.last-import {
+  border-top: 1px solid var(--border);
+  padding-top: 19px;
+}
+.last-import p {
+  overflow-wrap: anywhere;
+}
+.import-success .eyebrow {
+  font-size: 9px;
+  margin-bottom: 13px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 899px) {
+  .import-action-full {
+    display: none;
+  }
+  .import-action-short {
+    display: inline;
+  }
+  .import-button {
+    padding: 0 12px;
+  }
+}
+@media (max-width: 699px) {
+  .toolbar-actions {
+    gap: 6px;
+  }
+  .toolbar-actions .filter-button {
+    padding: 0 10px;
+  }
+  .import-button {
+    min-height: 44px;
+    padding: 0 9px;
+    font-size: 11px;
+    gap: 6px;
+  }
+  .import-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 94dvh;
+  }
+  .import-content {
+    padding: 23px 21px;
+    max-height: calc(94dvh - 225px - env(safe-area-inset-bottom));
+  }
+  .import-footer {
+    padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+  .import-footer > .primary-button {
+    flex: 1;
+  }
+  .import-content h3 {
+    font-size: 15px;
+  }
+  .import-upload h3,
+  .import-success h3,
+  .import-progress h3 {
+    font-size: 25px;
+  }
+  .import-upload {
+    padding-top: 13px;
+  }
+  .import-upload p {
+    font-size: 13px;
+  }
+  .import-subtitle {
+    font-size: 11px;
+  }
+  .import-content .eyebrow {
+    font-size: 8px;
+  }
+  .import-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .import-stats > div {
+    padding: 13px;
+  }
+  .import-stats dt {
+    font-size: 10px;
+  }
+  .import-stats dd {
+    font-size: 24px;
+  }
+  .sync-note {
+    padding: 15px;
+  }
+  .import-records li {
+    gap: 8px;
+  }
+  .import-record-status {
+    font-size: 8px;
+  }
+  .import-records small {
+    font-size: 9px;
+  }
+  .import-section-title {
+    align-items: start;
+  }
+  .import-problems pre {
+    font-size: 10px;
+  }
+}
+@media (max-width: 374px) {
+  .import-action-short {
+    display: none;
+  }
+  .import-button {
+    width: 44px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .import-spinner {
+    animation: none;
+  }
+}
+
+@media (max-width: 699px) {
+  .sort-control select {
+    width: 104px;
+  }
+}
+
+.load-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 15px;
+}
+.load-more p {
+  font-size: 12px;
+  color: var(--muted);
+}

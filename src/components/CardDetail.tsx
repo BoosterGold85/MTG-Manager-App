@@ -77,19 +77,64 @@ export function CardDetail({
                 </span>
               </dd>
             </div>
+            {card.ownership && (
+              <>
+                <div>
+                  <dt>Available</dt>
+                  <dd>
+                    {card.ownership.quantityUnassigned} unassigned ·{" "}
+                    {card.ownership.quantityAssigned} assigned
+                  </dd>
+                </div>
+                <div>
+                  <dt>Printing copy</dt>
+                  <dd>
+                    {card.ownership.language} · {card.ownership.condition} ·{" "}
+                    {card.ownership.finish}
+                  </dd>
+                </div>
+                {card.ownership.binderName && (
+                  <div>
+                    <dt>Binder / list</dt>
+                    <dd>
+                      {card.ownership.binderName}
+                      {card.ownership.binderType
+                        ? ` · ${card.ownership.binderType}`
+                        : ""}
+                    </dd>
+                  </div>
+                )}
+              </>
+            )}
           </dl>
+          {card.ownership && (
+            <details className="source-fields">
+              <summary>Original import fields</summary>
+              <p>
+                Includes any condition, binder, and purchase information from
+                your export.
+              </p>
+              <pre>{JSON.stringify(card.ownership.sourceRows, null, 2)}</pre>
+            </details>
+          )}
           <section className="intelligence">
             <div className="section-label">
               <Sparkles size={16} />
               <h3>Card Intelligence</h3>
               <span className="preview-badge">Preview</span>
             </div>
-            <p>Manually curated sample tags</p>
+            <p>
+              {card.ownership
+                ? "No automated analysis in this release"
+                : "Manually curated sample tags"}
+            </p>
             <div className="tags">
               {card.tags?.length ? (
                 card.tags.map((tag) => <span key={tag}>{tag}</span>)
               ) : (
-                <span>No sample tags</span>
+                <span>
+                  {card.ownership ? "No curated tags" : "No sample tags"}
+                </span>
               )}
             </div>
           </section>

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0 — Real Collection Foundation
+
+- Added a premium ManaBox CSV upload → parse → preview → confirm → binder flow with success, partial-success and error states.
+- Added deterministic ID / printing / exact-name matching, explicit ambiguity handling and retained original problem rows.
+- Added non-destructive absolute-quantity re-imports, duplicate-row aggregation and distinct printing/finish/language/condition/binder records. Groups with problematic duplicate rows retain their old totals until corrected.
+- Added atomic IndexedDB persistence behind a repository interface, revision conflict protection and saved canonical metadata.
+- Added quantityOwned / quantityAssigned / quantityUnassigned, original source and purchase-field preservation, and compact ownership details.
+- Added worker-based CSV parsing, deduplicated Scryfall batches and persisted unique-name resolutions; no API calls while browsing.
+- Preserved the approved v0.1.1 binder, Commander Colors and original tests. Added import, sync, persistence, large-collection and accessibility tests.
+- No accounts, automated tagging, AI, Commander management, recommendations or v0.3.0 work.
+
 ## 0.1.1 — Binder Polish
 
 - Added a separate Commander Colors collection filter covering all 32 color identities, including colorless. Cards match only when their Scryfall color identity is a subset of the selected identity; colorless cards always qualify.

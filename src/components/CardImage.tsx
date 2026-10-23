@@ -10,7 +10,7 @@ export function CardImage({
   detail?: boolean;
   eager?: boolean;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState(!card.imageUrl);
   const [loaded, setLoaded] = useState(false);
   return (
     <div

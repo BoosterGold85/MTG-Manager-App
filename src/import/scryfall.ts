@@ -1,0 +1,380 @@
+import type { Color, Rarity } from "../models/card";
+import type { CardMetadata, ImportRow } from "../models/collection";
+import { identifierKey, normalizedName } from "./csv";
+interface ScryfallCard {
+  object: "card";
+  lang?: string;
+  id: string;
+  name: string;
+  set: string;
+  set_name: string;
+  collector_number: string;
+  cmc: number;
+  color_identity: Color[];
+  type_line: string;
+  rarity: Rarity;
+  mana_cost?: string;
+  oracle_text?: string;
+  artist?: string;
+  printed_name?: string;
+  image_uris?: { normal?: string; large?: string };
+  card_faces?: {
+    name?: string;
+    oracle_text?: string;
+    mana_cost?: string;
+    image_uris?: { normal?: string; large?: string };
+  }[];
+}
+interface ListResponse {
+  data: ScryfallCard[];
+  has_more?: boolean;
+}
+export interface Resolution {
+  card?: CardMetadata;
+  error?: string;
+}
+export interface ResolvedImport {
+  results: Map<string, Resolution>;
+  nameMatches: Record<string, string>;
+}
+export interface MetadataResolver {
+  resolve(
+    rows: ImportRow[],
+    metadata: Record<string, CardMetadata>,
+    nameMatches: Record<string, string>,
+    signal: AbortSignal,
+    progress: (message: string) => void,
+  ): Promise<ResolvedImport>;
+}
+export function normalizeCard(c: ScryfallCard): CardMetadata {
+  if (
+    !c.id ||
+    !c.name ||
+    !Array.isArray(c.color_identity) ||
+    c.color_identity.some((v) => !["W", "U", "B", "R", "G"].includes(v)) ||
+    !Number.isFinite(c.cmc) ||
+    !c.set ||
+    !c.collector_number ||
+    !c.type_line
+  )
+    throw new Error(
+      "Scryfall returned incomplete metadata. Try again before importing.",
+    );
+  const image = c.image_uris || c.card_faces?.[0]?.image_uris;
+  return {
+    scryfallId: c.id,
+    printedLanguage: c.lang || "en",
+    name: c.name,
+    setCode: c.set,
+    setName: c.set_name,
+    collectorNumber: c.collector_number,
+    manaValue: c.cmc,
+    colorIdentity: c.color_identity,
+    typeLine: c.type_line,
+    rarity: c.rarity,
+    manaCost:
+      c.mana_cost ||
+      c.card_faces
+        ?.map((f) => f.mana_cost)
+        .filter(Boolean)
+        .join(" // "),
+    oracleText:
+      c.oracle_text ||
+      c.card_faces
+        ?.map((f) => `${f.name}\n${f.oracle_text || ""}`)
+        .join("\n\n"),
+    imageUrl: image?.large || image?.normal || "",
+    thumbnailUrl: image?.normal || "",
+    artist: c.artist,
+    aliases: [
+      c.printed_name,
+      ...(c.card_faces?.map((f) => f.name) || []),
+    ].filter((n): n is string => Boolean(n)),
+  };
+}
+const delay = (ms: number, signal: AbortSignal) =>
+  new Promise<void>((resolve, reject) => {
+    signal.throwIfAborted();
+    const abort = () => {
+      clearTimeout(timer);
+      reject(new DOMException("Import canceled", "AbortError"));
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", abort);
+      resolve();
+    }, ms);
+    signal.addEventListener("abort", abort, { once: true });
+  });
+const message = (error: unknown) =>
+  error instanceof Error
+    ? error.message
+    : "Scryfall is unavailable. Try preparing this preview again.";
+export class ScryfallClient implements MetadataResolver {
+  private lastRequest = 0;
+  private sets: { code: string; name: string }[] | null = null;
+  private sessionMetadata: Record<string, CardMetadata> = {};
+  private sessionNames: Record<string, string> = {};
+  constructor(
+    private fetcher: typeof fetch = (input, init) => fetch(input, init),
+    private interval = 120,
+  ) {}
+  private async request(
+    path: string,
+    signal: AbortSignal,
+    body?: unknown,
+  ): Promise<unknown> {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      await delay(
+        Math.max(0, this.interval - (Date.now() - this.lastRequest)),
+        signal,
+      );
+      this.lastRequest = Date.now();
+      const controller = new AbortController();
+      const abort = () => controller.abort();
+      signal.addEventListener("abort", abort, { once: true });
+      const timeout = setTimeout(abort, 20_000);
+      try {
+        const response = await this.fetcher(`https://api.scryfall.com${path}`, {
+          method: body ? "POST" : "GET",
+          signal: controller.signal,
+          headers: {
+            Accept: "application/json",
+            ...(body ? { "Content-Type": "application/json" } : {}),
+          },
+          ...(body ? { body: JSON.stringify(body) } : {}),
+        });
+        if (response.status === 429 && attempt < 2) {
+          const seconds = Number(response.headers.get("Retry-After"));
+          await delay(
+            Number.isFinite(seconds) && seconds > 0
+              ? Math.min(seconds * 1000, 5000)
+              : 1000,
+            signal,
+          );
+          continue;
+        }
+        if (response.status === 404) return { data: [] };
+        if (!response.ok)
+          throw new Error(
+            `Scryfall could not complete matching (HTTP ${response.status}). Retry the preview; these rows have not been discarded.`,
+          );
+        return await response.json();
+      } catch (error) {
+        signal.throwIfAborted();
+        if (controller.signal.aborted)
+          throw new Error(
+            "Scryfall took too long to respond. Retry the preview.",
+          );
+        if (error instanceof TypeError)
+          throw new Error(
+            "Could not reach Scryfall. Check your connection and retry the preview.",
+          );
+        throw error;
+      } finally {
+        clearTimeout(timeout);
+        signal.removeEventListener("abort", abort);
+      }
+    }
+    throw new Error(
+      "Scryfall rate limit reached. Try the preview again shortly.",
+    );
+  }
+  async resolve(
+    rows: ImportRow[],
+    metadata: Record<string, CardMetadata>,
+    nameMatches: Record<string, string>,
+    signal: AbortSignal,
+    progress: (message: string) => void,
+  ): Promise<ResolvedImport> {
+    const known = { ...this.sessionMetadata, ...metadata };
+    const names = { ...this.sessionNames, ...nameMatches };
+    const results = new Map<string, Resolution>();
+    const unique = [
+      ...new Map(rows.map((row) => [identifierKey(row), row])).values(),
+    ];
+    const prints = new Map(
+      Object.values(known)
+        .filter(
+          (c) =>
+            c.collectorNumber &&
+            (!c.printedLanguage || c.printedLanguage === "en"),
+        )
+        .map((c) => [
+          `${c.setCode.toLowerCase()}:${c.collectorNumber!.toLowerCase()}`,
+          c,
+        ]),
+    );
+    const pending: ImportRow[] = [],
+      fallback: ImportRow[] = [];
+    for (const row of unique) {
+      const key = identifierKey(row);
+      if (row.scryfallId) {
+        if (
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(
+            row.scryfallId,
+          )
+        ) {
+          results.set(key, {
+            error:
+              "Invalid Scryfall ID. Correct the identifier; no name-based guess was made.",
+          });
+          continue;
+        }
+        if (known[row.scryfallId])
+          results.set(key, { card: known[row.scryfallId] });
+        else pending.push(row);
+      } else if (row.setCode && row.collectorNumber) {
+        const card = prints.get(
+          `${row.setCode}:${row.collectorNumber.toLowerCase()}`,
+        );
+        if (card) results.set(key, { card });
+        else pending.push(row);
+      } else fallback.push(row);
+    }
+    for (let offset = 0; offset < pending.length; offset += 75) {
+      signal.throwIfAborted();
+      const batch = pending.slice(offset, offset + 75);
+      progress(
+        `Matching printings ${offset + 1}–${Math.min(offset + 75, pending.length)} of ${pending.length}…`,
+      );
+      try {
+        const response = (await this.request("/cards/collection", signal, {
+          identifiers: batch.map((row) =>
+            row.scryfallId
+              ? { id: row.scryfallId }
+              : { set: row.setCode, collector_number: row.collectorNumber },
+          ),
+        })) as ListResponse;
+        if (!Array.isArray(response.data))
+          throw new Error(
+            "Scryfall returned an unexpected response. Retry the preview.",
+          );
+        const normalized = response.data.map(normalizeCard);
+        for (const row of batch) {
+          const candidates = normalized.filter((c) =>
+            row.scryfallId
+              ? c.scryfallId === row.scryfallId
+              : c.setCode.toLowerCase() === row.setCode &&
+                c.collectorNumber?.toLowerCase() ===
+                  row.collectorNumber.toLowerCase(),
+          );
+          results.set(
+            identifierKey(row),
+            candidates.length === 1
+              ? { card: candidates[0] }
+              : {
+                  error:
+                    candidates.length > 1
+                      ? "Ambiguous printing. Supply a Scryfall ID."
+                      : "No Scryfall printing found for this identifier. Correct the ID or printing information.",
+                },
+          );
+        }
+        for (const card of normalized) known[card.scryfallId] = card;
+      } catch (error) {
+        signal.throwIfAborted();
+        for (const row of batch)
+          results.set(identifierKey(row), { error: message(error) });
+      }
+    }
+    for (const [index, row] of fallback.entries()) {
+      signal.throwIfAborted();
+      progress(`Checking exact names ${index + 1} of ${fallback.length}…`);
+      const key = identifierKey(row);
+      try {
+        let code = row.setCode;
+        if (!code) {
+          if (!this.sets) {
+            const response = (await this.request("/sets", signal)) as {
+              data: { code: string; name: string }[];
+            };
+            if (!Array.isArray(response.data))
+              throw new Error(
+                "Could not load Scryfall set names. Retry the preview.",
+              );
+            this.sets = response.data;
+          }
+          const matches = this.sets.filter(
+            (set) => normalizedName(set.name) === normalizedName(row.setName),
+          );
+          if (matches.length !== 1)
+            throw new Error(
+              "Set name is unknown or ambiguous. Supply a set code or Scryfall ID.",
+            );
+          code = matches[0].code;
+        }
+        if (!/^[a-z0-9_]+$/.test(code))
+          throw new Error("Invalid set code. Use the ManaBox Set code column.");
+        const nameKey = JSON.stringify([
+          normalizedName(row.name),
+          code,
+          row.collectorNumber.toLowerCase(),
+        ]);
+        const cached = known[names[nameKey]];
+        if (cached) {
+          results.set(key, { card: cached });
+          continue;
+        }
+        const escaped = normalizedName(row.name)
+          .replace(/\\/g, "\\\\")
+          .replace(/"/g, '\\"');
+        const response = (await this.request(
+          `/cards/search?unique=prints&q=${encodeURIComponent(`!"${escaped}" set:${code}`)}`,
+          signal,
+        )) as ListResponse;
+        if (!Array.isArray(response.data))
+          throw new Error(
+            "Scryfall returned an unexpected search response. Retry the preview.",
+          );
+        const exact = response.data
+          .map(normalizeCard)
+          .filter(
+            (c) =>
+              normalizedName(c.name) === normalizedName(row.name) &&
+              c.setCode.toLowerCase() === code &&
+              (!row.collectorNumber ||
+                c.collectorNumber?.toLowerCase() ===
+                  row.collectorNumber.toLowerCase()),
+          );
+        if (!exact.length)
+          throw new Error(
+            "No exact name and printing match found. Supply a Scryfall ID or set + collector number.",
+          );
+        if (response.has_more || exact.length !== 1)
+          throw new Error(
+            "Multiple printings match this name and set. Supply a collector number or Scryfall ID; nothing was guessed.",
+          );
+        results.set(key, { card: exact[0] });
+        known[exact[0].scryfallId] = exact[0];
+        names[nameKey] = exact[0].scryfallId;
+      } catch (error) {
+        signal.throwIfAborted();
+        results.set(key, { error: message(error) });
+      }
+    }
+    this.sessionMetadata = known;
+    this.sessionNames = names;
+    return { results, nameMatches: names };
+  }
+}
+export function printingConflict(
+  row: ImportRow,
+  card: CardMetadata,
+): string | null {
+  if (row.setCode && row.setCode !== card.setCode.toLowerCase())
+    return "Identifier conflicts with the supplied set code. Correct this row before importing.";
+  if (
+    row.collectorNumber &&
+    row.collectorNumber.toLowerCase() !== card.collectorNumber?.toLowerCase()
+  )
+    return "Identifier conflicts with the collector number. Correct this row before importing.";
+  if (
+    row.name &&
+    ![card.name, ...(card.aliases || [])].some(
+      (n) => normalizedName(n) === normalizedName(row.name),
+    )
+  )
+    return "Identifier conflicts with the supplied card name. Correct this row before importing.";
+  return null;
+}
+export const scryfallClient = new ScryfallClient();

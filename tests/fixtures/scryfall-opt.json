@@ -1,0 +1,35 @@
+{
+  "object": "card",
+  "id": "25f2e4d0-effd-4e83-b7aa-1a0d8f120951",
+  "name": "Opt",
+  "lang": "en",
+  "set": "dom",
+  "set_name": "Dominaria",
+  "collector_number": "60",
+  "cmc": 1.0,
+  "color_identity": [
+    "U"
+  ],
+  "colors": [
+    "U"
+  ],
+  "type_line": "Instant",
+  "rarity": "common",
+  "mana_cost": "{U}",
+  "oracle_text": "Scry 1. (Look at the top card of your library. You may put that card on the bottom.)\nDraw a card.",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024",
+    "normal": "https://cards.scryfall.io/normal/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024",
+    "large": "https://cards.scryfall.io/large/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024",
+    "png": "https://cards.scryfall.io/png/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.png?1783935024",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024",
+    "thumb": "https://cards.scryfall.io/thumb/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.webp?1783935024",
+    "grid": "https://cards.scryfall.io/grid/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.webp?1783935024",
+    "display": "https://cards.scryfall.io/display/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.webp?1783935024",
+    "art": "https://cards.scryfall.io/art/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.webp?1783935024",
+    "crop": "https://cards.scryfall.io/crop/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.webp?1783935024",
+    "jpeg": "https://cards.scryfall.io/normal/front/2/5/25f2e4d0-effd-4e83-b7aa-1a0d8f120951.jpg?1783935024"
+  },
+  "artist": "Tyler Jacobson"
+}

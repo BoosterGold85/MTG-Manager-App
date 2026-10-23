@@ -6,11 +6,13 @@ export function Dialog({
   onClose,
   children,
   className = "",
+  closeDisabled = false,
 }: {
   titleId: string;
   onClose: () => void;
   children: ReactNode;
   className?: string;
+  closeDisabled?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -32,8 +34,10 @@ export function Dialog({
         if (e.key !== "Tab") return;
         const focusable = Array.from(
           e.currentTarget.querySelectorAll<HTMLElement>(
-            'button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], [tabindex="0"]',
+            'button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], summary, [tabindex="0"]',
           ),
+        ).filter(
+          (element) => !element.hidden && element.getClientRects().length > 0,
         );
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -47,7 +51,7 @@ export function Dialog({
       }}
       onCancel={(e) => {
         e.preventDefault();
-        onClose();
+        if (!closeDisabled) onClose();
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
@@ -58,7 +62,7 @@ export function Dialog({
             e.clientY < rect.top ||
             e.clientY > rect.bottom
           )
-            onClose();
+            if (!closeDisabled) onClose();
         }
       }}
     >
@@ -66,6 +70,7 @@ export function Dialog({
         className="icon-button dialog-close"
         aria-label="Close dialog"
         onClick={onClose}
+        disabled={closeDisabled}
         autoFocus
       >
         <X size={21} />

@@ -8,6 +8,7 @@ import {
   Diamond,
   Search,
   SlidersHorizontal,
+  Upload,
   X,
 } from "lucide-react";
 import type { SampleCollectionCard } from "../models/card";
@@ -24,16 +25,23 @@ import type { Sort } from "../utils/sorting";
 import { CardGrid } from "../components/CardGrid";
 import { CardDetail } from "../components/CardDetail";
 import { FilterDrawer } from "../components/FilterDrawer";
+import { ImportCollection } from "../components/ImportCollection";
+import { collectionRepository } from "../storage/collectionRepository";
+import { collectionCards } from "../models/collection";
+import type { CollectionState } from "../models/collection";
 import { sampleCollectionSource } from "../data/sampleCollection";
 
 type Overlay =
   | { type: "card"; card: SampleCollectionCard }
   | { type: "filters" }
+  | { type: "import" }
   | null;
 export default function App() {
   const [cards, setCards] = useState<SampleCollectionCard[]>([]);
   const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(false);
+  const [loadError, setLoadError] = useState("");
+  const [savedCollection, setSavedCollection] =
+    useState<CollectionState | null>(null);
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
   const [sort, setSort] = useState<Sort>("name");
@@ -41,17 +49,29 @@ export default function App() {
   const [overlay, setOverlay] = useState<Overlay>(null);
   useEffect(() => {
     let cancelled = false;
-    sampleCollectionSource
+    collectionRepository
       .load()
+      .then(async (state) => {
+        if (state) {
+          const imported = collectionCards(state);
+          if (!cancelled) setSavedCollection(state);
+          return imported;
+        }
+        return sampleCollectionSource.load();
+      })
       .then((data) => {
         if (!cancelled) {
           setCards(data);
           setLoading(false);
         }
       })
-      .catch(() => {
+      .catch((error) => {
         if (!cancelled) {
-          setLoadError(true);
+          setLoadError(
+            error instanceof Error
+              ? error.message
+              : "Could not read the saved collection.",
+          );
           setLoading(false);
         }
       });
@@ -133,7 +153,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.1.1</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.2.0</span>
           </span>
         </div>
       </header>
@@ -158,9 +178,13 @@ export default function App() {
                       ? "Opening your binder…"
                       : `${cards.reduce((n, c) => n + c.quantity, 0)} cards`}{" "}
                     <span className="count-divider">/</span>{" "}
-                    {loading ? "Sample collection" : `${cards.length} unique`}
+                    {loading
+                      ? "Sample collection"
+                      : `${cards.length} ${savedCollection ? "records" : "unique"}`}
                   </span>
-                  <span className="sample-label">SAMPLE COLLECTION</span>
+                  <span className="sample-label">
+                    {savedCollection ? "YOUR COLLECTION" : "SAMPLE COLLECTION"}
+                  </span>
                 </div>
               </div>
               <div className="binder-note" aria-hidden="true">
@@ -200,16 +224,31 @@ export default function App() {
                     BY NAME
                   </span>
                 </div>
-                <button
-                  className={`filter-button ${filterCount ? "is-active" : ""}`}
-                  onClick={() => openOverlay({ type: "filters" })}
-                >
-                  <SlidersHorizontal size={18} />
-                  <span>Filters</span>
-                  {filterCount > 0 && (
-                    <span className="filter-count">{filterCount}</span>
-                  )}
-                </button>
+                <div className="toolbar-actions">
+                  <button
+                    className="import-button"
+                    aria-label="Import Collection"
+                    onClick={() => openOverlay({ type: "import" })}
+                  >
+                    <Upload size={17} />
+                    <span className="import-action-full">
+                      Import Collection
+                    </span>
+                    <span className="import-action-short" aria-hidden="true">
+                      Import
+                    </span>
+                  </button>
+                  <button
+                    className={`filter-button ${filterCount ? "is-active" : ""}`}
+                    onClick={() => openOverlay({ type: "filters" })}
+                  >
+                    <SlidersHorizontal size={18} />
+                    <span>Filters</span>
+                    {filterCount > 0 && (
+                      <span className="filter-count">{filterCount}</span>
+                    )}
+                  </button>
+                </div>
                 <div className="sort-control">
                   <ArrowDownUp size={16} />
                   <label className="sr-only" htmlFor="sort">
@@ -309,7 +348,7 @@ export default function App() {
             {loadError ? (
               <section className="empty-state">
                 <h2>The binder couldn’t open</h2>
-                <p>Reload to try loading the local sample collection again.</p>
+                <p>{loadError}</p>
                 <button
                   className="primary-button"
                   onClick={() => location.reload()}
@@ -317,8 +356,29 @@ export default function App() {
                   Try again
                 </button>
               </section>
+            ) : savedCollection && cards.length === 0 ? (
+              <section className="empty-state">
+                <BookOpen size={30} />
+                <h2>Your binder is waiting</h2>
+                <p>
+                  No owned cards are ready to display yet. Import another
+                  export, or review any saved problem rows.
+                </p>
+                <button
+                  className="primary-button"
+                  onClick={() => openOverlay({ type: "import" })}
+                >
+                  Import Collection
+                </button>
+              </section>
             ) : (
               <CardGrid
+                key={JSON.stringify([
+                  query,
+                  filters,
+                  sort,
+                  savedCollection?.revision,
+                ])}
                 cards={results}
                 loading={loading}
                 onOpen={(card) => openOverlay({ type: "card", card })}
@@ -329,7 +389,10 @@ export default function App() {
               <footer className="collection-footer">
                 <span>✧</span>
                 <p>A collection worth getting lost in.</p>
-                <span>{results.length} unique cards · Sample binder</span>
+                <span>
+                  {results.length} collection records ·{" "}
+                  {savedCollection ? "Your binder" : "Sample binder"}
+                </span>
               </footer>
             )}
           </>
@@ -354,7 +417,7 @@ export default function App() {
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.1.1</span>
+            MTG Manager <span className="muted">· v0.2.0</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>
@@ -362,6 +425,17 @@ export default function App() {
       {nav(true)}
       {overlay?.type === "card" && (
         <CardDetail card={overlay.card} onClose={closeOverlay} />
+      )}
+      {overlay?.type === "import" && (
+        <ImportCollection
+          onClose={closeOverlay}
+          onImported={(state) => {
+            setSavedCollection(state);
+            setCards(collectionCards(state));
+            setLoadError("");
+            reset();
+          }}
+        />
       )}
       {overlay?.type === "filters" && (
         <FilterDrawer
