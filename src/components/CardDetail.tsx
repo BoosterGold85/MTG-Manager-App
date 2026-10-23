@@ -6,9 +6,11 @@ import { CardImage } from "./CardImage";
 export function CardDetail({
   card,
   onClose,
+  onRemove,
 }: {
   card: SampleCollectionCard;
   onClose: () => void;
+  onRemove?: () => void;
 }) {
   return (
     <Dialog titleId="detail-title" onClose={onClose} className="detail-dialog">
@@ -117,6 +119,7 @@ export function CardDetail({
               <pre>{JSON.stringify(card.ownership.sourceRows, null, 2)}</pre>
             </details>
           )}
+          {onRemove && <div className="danger-zone"><button className="danger-button" onClick={onRemove}>Remove from Collection</button></div>}
           <section className="intelligence">
             <div className="section-label">
               <Sparkles size={16} />

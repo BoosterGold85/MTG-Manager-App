@@ -109,7 +109,7 @@ export class IndexedDbCollectionRepository implements CollectionRepository {
   async save(next: CollectionState, expectedRevision: number): Promise<void> {
     validateState(next);
     if (next.revision !== expectedRevision + 1)
-      throw new Error("Invalid import revision. Prepare a fresh preview.");
+      throw new Error("Invalid collection revision. Reload the collection and try again.");
     const db = await this.open();
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("state", "readwrite");
@@ -122,7 +122,7 @@ export class IndexedDbCollectionRepository implements CollectionRepository {
             request.result === undefined ? null : validateState(request.result);
           if ((current?.revision || 0) !== expectedRevision)
             throw new Error(
-              "The collection changed in another tab. Go back and prepare a fresh preview before importing.",
+              "The collection changed in another tab. Reload the collection and try again. For an import, prepare a fresh preview.",
             );
           store.put(next, "collection");
         } catch (error) {

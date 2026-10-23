@@ -7,6 +7,8 @@ import {
   Crown,
   Diamond,
   Search,
+  Settings2,
+  CheckSquare,
   SlidersHorizontal,
   Upload,
   X,
@@ -31,10 +33,16 @@ import { collectionCards } from "../models/collection";
 import type { CollectionState } from "../models/collection";
 import { sampleCollectionSource } from "../data/sampleCollection";
 
+import { ManageCollection } from "../components/ManageCollection";
+import { ConfirmCollectionChange } from "../components/ConfirmCollectionChange";
+
 type Overlay =
   | { type: "card"; card: SampleCollectionCard }
   | { type: "filters" }
   | { type: "import" }
+  | { type: "manage" }
+  | { type: "remove"; ids: string[] }
+  | { type: "clear" }
   | null;
 export default function App() {
   const [cards, setCards] = useState<SampleCollectionCard[]>([]);
@@ -42,6 +50,14 @@ export default function App() {
   const [loadError, setLoadError] = useState("");
   const [savedCollection, setSavedCollection] =
     useState<CollectionState | null>(null);
+  const [selecting, setSelecting] = useState(false);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  function cancelSelection() { setSelecting(false); setSelected(new Set()); }
+  function acceptState(state: CollectionState) {
+    setSavedCollection(state); setCards(collectionCards(state));
+    const remainingIds = new Set(state.items.map(item => item.id));
+    setSelected(current => new Set([...current].filter(id => remainingIds.has(id))));
+  }
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
   const [sort, setSort] = useState<Sort>("name");
@@ -153,7 +169,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.2.0</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.2.1</span>
           </span>
         </div>
       </header>
@@ -197,6 +213,10 @@ export default function App() {
                 <span>KEEP YOURS CLOSE.</span>
               </div>
             </section>
+            <div className="collection-management-actions">
+              <button className="management-button" onClick={() => openOverlay({ type: "manage" })} disabled={loading || !!loadError}><Settings2 size={16} />Manage Collection</button>
+              <button className="management-button" aria-pressed={selecting} disabled={!savedCollection || !cards.length} onClick={() => selecting ? cancelSelection() : setSelecting(true)}><CheckSquare size={16} />{selecting ? 'Cancel selection' : 'Select'}</button>
+            </div>
             <section
               className="collection-controls"
               aria-label="Collection controls"
@@ -381,6 +401,11 @@ export default function App() {
                 ])}
                 cards={results}
                 loading={loading}
+                selecting={selecting}
+                selected={selected}
+                onToggle={(id) => setSelected(current => {
+                  const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next;
+                })}
                 onOpen={(card) => openOverlay({ type: "card", card })}
                 onReset={reset}
               />
@@ -418,21 +443,30 @@ export default function App() {
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.2.0</span>
+            MTG Manager <span className="muted">· v0.2.1</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>
       </main>
+      {selecting && area === "collection" && <div className="selection-bar" role="region" aria-label="Selection actions">
+        <strong role="status">{selected.size.toLocaleString()} selected</strong>
+        <button onClick={cancelSelection}>Cancel</button>
+        <button onClick={() => setSelected(new Set())} disabled={!selected.size}>Clear selection</button>
+        <button onClick={() => setSelected(current => new Set([...current, ...results.map(card => card.id)]))}>Select all</button>
+        <button className="danger-button" disabled={!selected.size} onClick={() => openOverlay({ type: "remove", ids: [...selected] })}>Remove</button>
+      </div>}
       {nav(true)}
       {overlay?.type === "card" && (
-        <CardDetail card={overlay.card} onClose={closeOverlay} />
+        <CardDetail card={overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
       )}
+      {overlay?.type === "manage" && <ManageCollection state={savedCollection} onClose={closeOverlay} onClear={() => setOverlay({ type: "clear" })} />}
+      {(overlay?.type === "clear" || overlay?.type === "remove") && savedCollection && <ConfirmCollectionChange key={overlay.type} state={savedCollection} clear={overlay.type === "clear"} ids={overlay.type === "remove" ? overlay.ids : []} onClose={closeOverlay} onSaved={state => { acceptState(state); if (overlay.type === "clear") { cancelSelection(); reset(); } closeOverlay(); }} />}
       {overlay?.type === "import" && (
         <ImportCollection
           onClose={closeOverlay}
           onImported={(state) => {
-            setSavedCollection(state);
-            setCards(collectionCards(state));
+            acceptState(state);
+            cancelSelection();
             setLoadError("");
             reset();
           }}

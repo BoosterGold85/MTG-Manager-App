@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 — Collection Management & Multi-Select
+
+- Added stable-ID multi-select, selected indicators, hidden-selection retention and a safe-area-aware sticky action bar. Select all includes every filtered/searched result, beyond rendered tiles.
+- Added confirmed bulk and Card Detail removal through the existing atomic, revision-checked repository. Local removals can return on later ManaBox import.
+- Added Manage Collection with stored-record and physical-copy statistics, last successful import, persistence guidance and JSON backup export.
+- Added deliberate full clear requiring typed confirmation, persistent empty state, and reset of import/problem/selection/filter state. Failed writes retain the existing UI and support retry.
+- Added management persistence, browser, accessibility, backup and re-import regression tests across all five approved viewports. Preserved v0.2.0 tests and import architecture.
+- No backup restore, accounts, cloud sync or v0.3.0 functionality.
+
 ## 0.2.0 — Real Collection Foundation
 
 - Added a premium ManaBox CSV upload → parse → preview → confirm → binder flow with success, partial-success and error states.

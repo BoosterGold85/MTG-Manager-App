@@ -1,6 +1,18 @@
-# MTG Manager · v0.2.0
+# MTG Manager · v0.2.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Manage your local collection
+
+Use **Select** to toggle records with a tap or keyboard. Selections use stable inventory IDs and survive search, filtering, sorting and loading more cards. **Select all** adds every current search/filter result, including unrendered records; changing results never silently changes your selection. Hidden selections count too. Clear selection or Cancel to reset them.
+
+**Remove** requires confirmation and removes entire selected inventory records, including all their physical copies. Card Detail also offers **Remove from Collection**. Your ManaBox collection and original CSV files are unaffected. A later confirmed ManaBox export containing a locally removed record may recreate it; there are no tombstones or suppression rules. Untouched records retain the existing absolute-quantity synchronization behavior.
+
+**Manage Collection** shows stored unique records (including zero-quantity records), owned/assigned/unassigned copies, the most recent successful import and local storage status. **Export Backup** downloads `mtg-manager-backup-YYYY-MM-DD.json` with version, timestamp, inventory, canonical metadata and provenance. The backup reflects persisted data, not sample cards. It can contain original purchase/binder information: keep it private. Backup restore is not implemented in this release.
+
+**Clear Collection** displays the full stored scope and requires typing `CLEAR` before confirmation. It atomically empties records, canonical caches, import history and unresolved rows, resets selection/search/filters and saves an empty binder across reload. It does not return to sample data. Removal and clear use the existing revision-checked repository; failed writes leave cards and selection intact and offer retry. If another tab changed the collection, reload before retrying.
+
+Data is stored only in this browser on this device, with no server backup, accounts or cloud sync. Keep your original ManaBox exports and download local backups. Browser data clearing or switching origins/devices does not preserve local storage.
 
 ## Develop
 
@@ -79,6 +91,7 @@ npm run test:unit
 npm run build
 TEST_PRODUCTION=1 npm test
 npm audit
+git diff --check
 ```
 
 `npm test` runs the same browser suite against a Vite development server. `TEST_PRODUCTION=1` requires an existing production build and uses preview instead. Playwright manages port 4173; set `CI=1` to require a fresh server. Browser tests use `/usr/bin/chromium` in this cloud environment; elsewhere set `CHROMIUM_PATH` to a compatible Chromium executable.
@@ -86,6 +99,8 @@ npm audit
 The complete frozen v0.1.1 suite is retained unchanged. Added coverage includes valid/malformed/minimal ManaBox CSV, duplicates, repeated imports, changed totals, foil/nonfoil, different printings, missing IDs, ambiguous/unknown/conflicting metadata, purchase fields, storage/revision failures, ownership invariants, 10,000 parsed rows, 1,000 distinct batched printings, 5,000-row browser imports, imported filters and Commander Colors. Browser tests run at 360×800, 390×844, 430×932, 768×1024 and 1440×1000, with axe checks on the binder and import states.
 
 Deterministic browser tests intercept remote metadata for the external-enrichment case; known printings use the bundled canonical cache. They do not depend on Scryfall availability. See [v0.2.0 validation](docs/VALIDATION-v0.2.0.md) for the separate live-API check and its cloud-browser transport limitation. Reports and screenshots are generated under ignored `playwright-report/` and `test-results/`.
+
+Management adds stable-ID selection, filtered select all beyond rendered tiles, confirmed atomic deletion/clear, JSON backups, re-import and write-failure regression coverage. See [v0.2.1 validation](docs/VALIDATION-v0.2.1.md) for all 72 unit and 140 browser results, responsive review and release limitations.
 
 ## Deploy to Cloudflare Pages
 

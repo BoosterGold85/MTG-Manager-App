@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layers, SearchX, Sparkles } from "lucide-react";
+import { Check, Layers, SearchX, Sparkles } from "lucide-react";
 import type { SampleCollectionCard } from "../models/card";
 import { CardImage } from "./CardImage";
 export function SkeletonCard() {
@@ -16,9 +16,15 @@ export function CardGrid({
   loading,
   onOpen,
   onReset,
+  selecting = false,
+  selected = new Set<string>(),
+  onToggle,
 }: {
   cards: SampleCollectionCard[];
   loading: boolean;
+  selecting?: boolean;
+  selected?: Set<string>;
+  onToggle?: (id: string) => void;
   onOpen: (c: SampleCollectionCard) => void;
   onReset: () => void;
 }) {
@@ -53,13 +59,16 @@ export function CardGrid({
       <div className="card-grid">
         {cards.slice(0, visibleCount).map((card, i) => (
           <button
-            className="card-tile"
+            className={`card-tile ${selecting && selected.has(card.id) ? "tile-selected" : ""}`}
             key={card.id}
-            onClick={() => onOpen(card)}
-            aria-label={`View ${card.name}`}
+            onClick={() => selecting ? onToggle?.(card.id) : onOpen(card)}
+            aria-pressed={selecting ? selected.has(card.id) : undefined}
+            aria-label={selecting ? undefined : `View ${card.name}`}
           >
+            {selecting && <span className="sr-only">Select </span>}
             <div className="tile-art">
               <CardImage card={card} eager={i < 6} />
+              {selecting && <span className="selection-indicator" aria-hidden="true">{selected.has(card.id) && <Check size={17} />}</span>}
               {card.quantity > 1 && (
                 <span
                   className="quantity"
