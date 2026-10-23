@@ -134,3 +134,113 @@ describe("sorting and missing optional metadata", () => {
     expect(html).not.toContain("undefined");
   });
 });
+
+describe("Commander Colors subset filtering", () => {
+  const identities = {
+    colorless: [],
+    white: ["W"],
+    blue: ["U"],
+    black: ["B"],
+    red: ["R"],
+    green: ["G"],
+    blackGreen: ["B", "G"],
+    blackGreenBlue: ["B", "G", "U"],
+    whiteBlackGreen: ["W", "B", "G"],
+    blueBlackRed: ["U", "B", "R"],
+    fiveColor: ["W", "U", "B", "R", "G"],
+  } as const;
+  const fixture = Object.entries(identities).map(
+    ([name, identity]) =>
+      ({
+        ...cards[0],
+        id: name,
+        name,
+        colorIdentity: [...identity],
+        // Deliberately different from identity, like a visually colorless/devoid card.
+        colors: [],
+      }) as SampleCollectionCard & { colors: string[] },
+  );
+  const names = (identity: SampleCollectionCard["colorIdentity"] | null) =>
+    filterCards(fixture, "", {
+      ...emptyFilters,
+      commanderColors: identity,
+    }).map((c) => c.name);
+
+  it("supports a mono-color Commander, using identity rather than visual colors", () => {
+    expect(names(["B"])).toEqual(["colorless", "black"]);
+  });
+  it("supports a two-color Commander and all of its subsets", () => {
+    expect(names(["B", "G"])).toEqual([
+      "colorless",
+      "black",
+      "green",
+      "blackGreen",
+    ]);
+  });
+  it("supports a three-color Commander and all of its subsets", () => {
+    expect(names(["W", "B", "G"])).toEqual([
+      "colorless",
+      "white",
+      "black",
+      "green",
+      "blackGreen",
+      "whiteBlackGreen",
+    ]);
+  });
+  it("supports a five-color Commander", () => {
+    expect(names(["W", "U", "B", "R", "G"])).toEqual(
+      fixture.map((c) => c.name),
+    );
+  });
+  it("distinguishes a colorless Commander from a disabled filter", () => {
+    expect(names([])).toEqual(["colorless"]);
+    expect(names(null)).toEqual(fixture.map((c) => c.name));
+    expect(activeFilterCount({ ...emptyFilters, commanderColors: [] })).toBe(1);
+    expect(activeFilterCount(emptyFilters)).toBe(0);
+  });
+  it.each([
+    ["W"],
+    ["U"],
+    ["B"],
+    ["R"],
+    ["G"],
+    ["B", "G"],
+    ["W", "B", "G"],
+    [],
+  ] as SampleCollectionCard["colorIdentity"][])(
+    "includes colorless cards with Commander identity %j",
+    (...identity) => {
+      expect(names(identity)).toContain("colorless");
+    },
+  );
+  it("excludes a card with even one disallowed color, regardless of order", () => {
+    expect(names(["G", "B"])).not.toContain("blackGreenBlue");
+    expect(names(["B", "G"])).not.toContain("whiteBlackGreen");
+  });
+  it("combines independently with normal Color and search", () => {
+    expect(
+      filterCards(fixture, "", {
+        ...emptyFilters,
+        commanderColors: ["B", "G"],
+        colors: ["G"],
+      }).map((c) => c.name),
+    ).toEqual(["green", "blackGreen"]);
+    expect(
+      filterCards(fixture, "black", {
+        ...emptyFilters,
+        commanderColors: ["B", "G"],
+      }).map((c) => c.name),
+    ).toEqual(["black", "blackGreen"]);
+    expect(
+      filterCards(fixture, "", { ...emptyFilters, colors: ["G"] }).map(
+        (c) => c.name,
+      ),
+    ).toEqual([
+      "green",
+      "blackGreen",
+      "blackGreenBlue",
+      "whiteBlackGreen",
+      "fiveColor",
+    ]);
+  });
+});

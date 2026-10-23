@@ -1708,3 +1708,10 @@ html:has(dialog[open]) {
     max-height: 94dvh;
   }
 }
+
+.filter-help {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 9px 0 0;
+}

@@ -1,4 +1,4 @@
-# MTG Manager · v0.1.0
+# MTG Manager · v0.1.1
 
 A mobile-first, artwork-forward digital Magic binder. Built with React, TypeScript, Vite, modern CSS and Lucide. This release is a front-end prototype with **32 sample printings / 82 owned copies**, not a connected personal inventory.
 
@@ -25,7 +25,7 @@ npm run preview
 
 Browser tests use `/usr/bin/chromium` in the cloud environment. Elsewhere install a compatible Chromium and set `CHROMIUM_PATH` to its executable, for example `CHROMIUM_PATH=/path/to/chromium npm test`. Playwright starts and stops its own Vite server on port 4173. Avoid running another service there during CI. Run with `CI=1` to require a fresh test server.
 
-Tests cover search, filters, sorting, reset, modal focus/closing, browser back, image failures and navigation at 360×800, 390×844, 430×932, 768×1024 and 1440×1000. Unit tests cover combined filter semantics, data invariants, all sort modes, and absent optional detail metadata. Screenshots and failure traces are written to ignored `test-results/`; an HTML report is in `playwright-report/`.
+Tests cover search, filters, sorting, reset, modal focus/closing, browser back, image failures and navigation at 360×800, 390×844, 430×932, 768×1024 and 1440×1000. Unit tests cover combined filter semantics, Commander color-identity subsets (including colorless and disallowed colors), data invariants, all sort modes, and absent optional detail metadata. Screenshots and failure traces are written to ignored `test-results/`; an HTML report is in `playwright-report/`.
 
 ```sh
 TEST_PRODUCTION=1 npm test
@@ -50,6 +50,7 @@ Connect this repository and your chosen production branch in the existing Cloudf
 
 - Search matches names immediately, ignoring case and outer whitespace.
 - Quick chips toggle filters. Selected colors match **any** selected identity (including multicolor cards containing that color); types match **any** selected type. Different categories combine with **AND**.
+- **Commander Colors** is separate from normal Color: it includes cards whose Scryfall `color_identity` (normalized as `colorIdentity`) is a subset of the selected identity. All 32 identities are available, including Colorless. Colorless cards qualify for every identity. “Any Commander colors” disables this filter; selecting Colorless shows only colorless identities. This tests color identity only, not every Commander format legality rule.
 - Drawer edits are drafts until Apply. Cancel discards them. Clear all clears the drawer draft; Reset all above the grid resets applied search and filters in one action.
 - Mana limits are inclusive. An inverted range naturally returns no cards.
 - Sorting supports name, mana value, W/U/B/R/G → multicolor → colorless, and set code, with alphabetical ties.
@@ -72,4 +73,4 @@ This requires `api.scryfall.com` and `cards.scryfall.io` access. It makes one me
 
 Magic: The Gathering card images and text are © Wizards of the Coast. Data and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards of the Coast or Scryfall. Bundled fonts are distributed by Fontsource under their included open font licenses; icons are from Lucide (ISC).
 
-See [the implementation brief](docs/v0.1.0-executable.md), [ROADMAP.md](ROADMAP.md), [CHANGELOG.md](CHANGELOG.md), and [validation results](docs/VALIDATION.md).
+See [the implementation brief](docs/v0.1.0-executable.md), [ROADMAP.md](ROADMAP.md), [CHANGELOG.md](CHANGELOG.md), and [v0.1.0 validation results](docs/VALIDATION.md).

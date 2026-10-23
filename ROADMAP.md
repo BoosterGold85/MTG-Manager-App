@@ -4,8 +4,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 
 | Release             | Focus                                                                                                                                                                         |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **0.1.0 — Current** | Digital Binder Foundation: sample collection, premium mobile UI, artwork, search, filters, sorting and card details.                                                          |
-| 0.1.1               | Binder polish: ergonomics, density, accessibility, performance and visual review.                                                                                             |
+| 0.1.0               | Digital Binder Foundation: sample collection, premium mobile UI, artwork, search, filters, sorting and card details.                                                          |
+| **0.1.1 — Current** | Binder polish: Commander Colors subset filtering; continued ergonomics, accessibility and visual review.                                                                      |
 | 0.2.0               | Real Collection Foundation: ManaBox CSV import, preview, deterministic matching, duplicate safety, persistence and physical ownership.                                        |
 | 0.3.0               | Card Intelligence & Taxonomy: inspectable semantic tags, evidence, confidence and correction.                                                                                 |
 | 0.4.0               | Commander Library: managed decklists, card assignment, copy tracking and history.                                                                                             |

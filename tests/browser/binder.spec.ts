@@ -284,3 +284,65 @@ test("collection, filter drawer and card details meet automated accessibility ba
     ).toEqual([]);
   }
 });
+
+test("Commander Colors applies subsets independently, including colorless, cancel and reset", async ({
+  page,
+}) => {
+  await ready(page);
+  await openFilters(page);
+  let dialog = page.getByRole("dialog");
+  const commander = () =>
+    dialog.getByLabel("Commander Colors", { exact: true });
+  await expect(commander().locator("option")).toHaveCount(33);
+  await expect(
+    dialog.getByText(
+      "Cards legal within this color identity. Includes colorless cards.",
+    ),
+  ).toBeVisible();
+  await commander().selectOption("BG");
+  await dialog.getByRole("button", { name: "Apply · Show 17 cards" }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(17);
+  await expect(
+    page.getByRole("button", { name: "View Sol Ring", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", {
+      name: "View Meren of Clan Nel Toth",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", {
+      name: "View Tatyova, Benthic Druid",
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  await expect(page.locator(".active-filter-label")).toHaveText(
+    "1 active filter",
+  );
+  await page.getByRole("button", { name: "Green", exact: true }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(7);
+  await expect(
+    page.getByRole("button", { name: "View Sol Ring", exact: true }),
+  ).toHaveCount(0);
+  await page.getByRole("button", { name: "Reset all", exact: true }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(32);
+  await openFilters(page);
+  dialog = page.getByRole("dialog");
+  await expect(commander()).toHaveValue("");
+  await commander().selectOption("C");
+  await dialog.getByRole("button", { name: "Apply · Show 6 cards" }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(6);
+  await openFilters(page);
+  dialog = page.getByRole("dialog");
+  await commander().selectOption("W");
+  await dialog.getByRole("button", { name: "Close dialog" }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(6);
+  await openFilters(page);
+  dialog = page.getByRole("dialog");
+  await expect(commander()).toHaveValue("C");
+  await dialog.getByRole("button", { name: "Clear all" }).click();
+  await expect(commander()).toHaveValue("");
+  await dialog.getByRole("button", { name: "Apply · Show 32 cards" }).click();
+  await expect(page.locator(".card-tile")).toHaveCount(32);
+});

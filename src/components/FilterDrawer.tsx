@@ -5,6 +5,7 @@ import {
   activeFilterCount,
   cardTypes,
   colorOptions,
+  commanderIdentityOptions,
   emptyFilters,
   filterCards,
 } from "../utils/filters";
@@ -48,6 +49,36 @@ export function FilterDrawer({
         </h2>
       </header>
       <div className="filter-content">
+        <div>
+          <label htmlFor="commander-colors">Commander Colors</label>
+          <select
+            id="commander-colors"
+            aria-describedby="commander-colors-help"
+            value={
+              draft.commanderColors === null
+                ? ""
+                : draft.commanderColors.join("") || "C"
+            }
+            onChange={(e) =>
+              update(
+                "commanderColors",
+                commanderIdentityOptions.find(
+                  (option) => option.value === e.target.value,
+                )?.identity ?? null,
+              )
+            }
+          >
+            <option value="">Any Commander colors</option>
+            {commanderIdentityOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <p id="commander-colors-help" className="filter-help">
+            Cards legal within this color identity. Includes colorless cards.
+          </p>
+        </div>
         <fieldset>
           <legend>
             Color identity <span>Match any selected</span>
