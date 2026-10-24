@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.2 — Deck Browsing & Card Navigation
+
+- Deck cards open the shared Card Detail (the same component as Collection) with Oracle text, Keywords, Card Intelligence, manual tag overrides, evidence and Deck Usage. Collection detail is unchanged when no deck context is supplied.
+- Added an in-place Previous/Next bar with a position indicator (e.g. `3 of 9`), disabled boundaries, no wraparound, keyboard arrows (ignored while typing) and scroll-to-top per card. Mobile uses large thumb targets.
+- Added deck sorting (Card Type → Mana Value → Name default, Name, Mana Value, Color, Set & Collector Number) with deterministic Name and printing tie-breaks, plus deck search, card-type and owned/missing filters. Navigation follows the exact visible filtered and sorted sequence.
+- Unified deck grid: one tile per assigned printing group plus one per entry's unassigned remainder. A Deck entry section distinguishes the assigned printing, "Physical assignment: None", owned elsewhere, and not currently owned. No printing is substituted or fabricated.
+- Card Intelligence for unowned decklist cards is computed locally once per canonical card and ruleset and reused; browsing causes no recalculation or network requests. Detail artwork resets per card.
+- Added a direct Delete this deck action on the deck screen (same confirmation and safety).
+- Added 8 unit tests and 3 browser workflows (15 cases across five sizes). All prior suites remain green. No Deck DNA or v0.5.0 work.
+
 ## 0.4.1 — ManaBox Deck Import
 
 - Added Decks → Import Deck with ManaBox deck file upload or pasted text, preview-first; nothing is saved before explicit confirmation. No account connection, scraping or Cloud Sync.

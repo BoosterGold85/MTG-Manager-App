@@ -2349,3 +2349,21 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .deck-library .import-problems strong { color:var(--text-primary); font-weight:500; }
 .deck-library .deck-import-candidate { display:flex; gap:var(--space-10); }
 .import-problems ul { list-style:none; padding:0; }
+
+/* v0.4.2 deck browsing & card navigation */
+.deck-browse-controls { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:var(--space-12); margin:var(--space-16) 0 var(--space-8); }
+.deck-browse-controls label { min-width:0; }
+.deck-sort-metric { margin:var(--space-8) 0 0; font-size:.68rem; letter-spacing:1.4px; color:var(--accent); text-transform:uppercase; }
+.deck-card-missing .deck-art-button { opacity:.62; filter:grayscale(.35); }
+.deck-card-missing h3 { color:var(--text-secondary); }
+.commander-art.deck-art-button { width:115px; }
+.detail-navigable .detail-layout { max-height:calc(100dvh - 140px); }
+.detail-navigation { position:sticky; bottom:0; display:flex; align-items:center; justify-content:space-between; gap:var(--space-12); padding:var(--space-10) var(--space-16); border-top:1px solid var(--border-soft); background:var(--surface-elevated); }
+.detail-navigation .icon-button { width:auto; min-width:44px; min-height:44px; padding:0 var(--space-14); display:inline-flex; align-items:center; gap:var(--space-6); border-radius:var(--radius-control); font:inherit; font-size:.85rem; }
+.detail-navigation .icon-button:disabled { opacity:var(--disabled-opacity); cursor:default; }
+.detail-position { font-size:.8rem; color:var(--text-secondary); font-variant-numeric:tabular-nums; }
+.deck-entry-detail { border-top:1px solid var(--border-soft); margin-top:var(--space-20); padding-top:var(--space-16); color:var(--text-secondary); font-size:.85rem; line-height:1.7; }
+.deck-entry-detail h3 { color:var(--text-primary); font-size:.95rem; font-weight:500; margin:0 0 var(--space-6); }
+.deck-entry-detail p { margin:var(--space-4) 0; }
+@media(max-width:699px) { .detail-navigable .detail-layout { max-height:calc(94dvh - 70px); } .detail-navigation .icon-button { min-width:64px; justify-content:center; } .detail-nav-label { display:none; } }
+@media(max-width:600px) { .commander-art.deck-art-button { width:85px; } }

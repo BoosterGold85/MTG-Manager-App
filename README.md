@@ -1,6 +1,16 @@
-# MTG Manager · v0.4.1
+# MTG Manager · v0.4.2
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Deck Browsing & Card Navigation (v0.4.2)
+
+Tap any card in a deck to open the same Card Detail used in Collection: artwork, mana cost and value, type line, Oracle text, color identity, set, collector number, rarity, finish, Keywords, Card Intelligence with auto tags, manual overrides and “Why this tag?” evidence, and Deck Usage. A **Deck entry** section keeps the decklist and the physical copy separate. It shows the exact assigned printing, or "Physical assignment: None", plus whether copies are owned elsewhere or the card is not currently owned.
+
+- **Previous / Next** stay inside the open detail (`← 3 of 9 →`). The card content swaps in place and starts at the top. Previous is disabled on the first card and Next on the last; there is no wraparound. Left/Right arrow keys work while the detail is focused, but not while typing. Escape closes.
+- **Sort deck:** Card Type → Mana Value → Name (default), Name A–Z / Z–A, Mana Value Low → High / High → Low, Color (mono WUBRG, multicolor, colorless), or Set & Collector Number. Ties always fall back to Name A–Z, then printing. Tiles show only the metric for the active sort.
+- **Filter:** search this deck, card type, and (for imported decks) owned/assigned vs. missing/unassigned.
+- Previous/Next follow exactly the filtered and sorted cards shown, and the position counts only visible cards. Commanders open without deck navigation.
+- Missing cards open with canonical card data. Their Card Intelligence is computed locally once per card and cached; browsing never reanalyzes cards or calls the network.
 
 ## ManaBox Deck Import (v0.4.1)
 
@@ -193,7 +203,7 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
-See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for current release results and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for current release results, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
 
 ## Deploy to Cloudflare Pages
 
@@ -225,4 +235,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.0 is approved; v0.4.1 ManaBox Deck Import is current. Work stops before v0.5.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.1 is approved; v0.4.2 Deck Browsing & Card Navigation is current. Work stops before v0.5.0.

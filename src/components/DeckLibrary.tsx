@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Crown, Plus, ArrowLeft, Settings2, FileUp, Trash2 } from "lucide-react";
 import type { CollectionState } from "../models/collection";
 import { collectionCards, emptyCollection } from "../models/collection";
 import type { Deck, DeckCommander } from "../models/deck";
 import { DeckImport, DeckIssues } from "./DeckImport";
+import { CardDetail } from "./CardDetail";
+import type { Override } from "../intelligence/types";
+import {
+  deckCardAnalysis,
+  deckRows,
+  deckSortLabels,
+  deckTypes,
+  emptyDeckFilters,
+  typeGroup,
+  visibleDeckRows,
+} from "../decks/deckBrowse";
+import type { DeckFilters, DeckRow, DeckSort } from "../decks/deckBrowse";
+import { effectiveAssignments } from "../intelligence/tagger";
 import type { SampleCollectionCard } from "../models/card";
 import {
   allocationConflicts,
@@ -33,6 +46,7 @@ export function DeckLibrary({
   activeId,
   onOpen,
   onCollection,
+  onSaveTags,
 }: {
   state: CollectionState | null;
   repository: DeckRepository;
@@ -40,6 +54,7 @@ export function DeckLibrary({
   activeId: string | null;
   onOpen: (id: string | null) => void;
   onCollection: () => void;
+  onSaveTags?: (card: SampleCollectionCard, override: Override) => Promise<void>;
 }) {
   const [modal, setModal] = useState<"create" | "rename" | "delete" | null>(
     null,
@@ -55,6 +70,10 @@ export function DeckLibrary({
   const [busy, setBusy] = useState(false);
   const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
   const [importing, setImporting] = useState(false);
+  const [sort, setSort] = useState<DeckSort>("type");
+  const [deckFilters, setDeckFilters] = useState<DeckFilters>(emptyDeckFilters);
+  // Card Detail opened from the deck: a browsable row, or a commander (outside the 99).
+  const [detail, setDetail] = useState<{ row: string } | { commander: number } | null>(null);
   const decks = state?.decks || [];
   const deck = decks.find((d) => d.id === activeId);
   const cards = state ? collectionCards(state) : [];
@@ -84,6 +103,27 @@ export function DeckLibrary({
       : `${o.total} cards`;
   };
   const conflicts = state ? allocationConflicts(state) : [];
+  const rows = useMemo(() => (state && deck ? deckRows(state, deck) : []), [state, deck]);
+  // The exact sequence shown in the grid is the Previous/Next sequence.
+  const visible = useMemo(() => visibleDeckRows(rows, sort, deckFilters), [rows, sort, deckFilters]);
+  const filtering = !!(deckFilters.query || deckFilters.type || deckFilters.ownership);
+  const caption = (row: DeckRow) =>
+    sort === "mv-asc" || sort === "mv-desc"
+      ? `MV ${row.card.manaValue}`
+      : sort === "type"
+        ? typeGroup(row.card).toUpperCase()
+        : sort === "color"
+          ? row.card.colorIdentity.join("") || "COLORLESS"
+          : sort === "set"
+            ? `${row.card.setCode.toUpperCase()} #${row.card.collectorNumber || ""}`
+            : null;
+  const commanderDetailCard = (c: DeckCommander): SampleCollectionCard => {
+    if (c.itemId) return cardFor(c.itemId);
+    const card = state!.metadata[c.scryfallId];
+    const analysis = deckCardAnalysis(state!, card);
+    const tagOverrides = state!.intelligence?.overrides[analysis.cardIdentity];
+    return { ...card, id: `commander:${c.scryfallId}`, quantity: 0, analysis, tagOverrides, intelligentTags: effectiveAssignments(analysis, tagOverrides).map((a) => a.tagId) };
+  };
   async function change(action: DeckChange) {
     if (!state || busy) return;
     setBusy(true);
@@ -264,6 +304,8 @@ export function DeckLibrary({
               onOpen(null);
               reset();
               setChosen(null);
+              setDetail(null);
+              setDeckFilters(emptyDeckFilters());
             }}
           >
             <ArrowLeft size={16} />
@@ -308,9 +350,9 @@ export function DeckLibrary({
           <section aria-label="Commander" className="deck-commander">
             {deck.commanders.map((c, i) => (
               <div key={`${c.itemId || c.scryfallId}-${i}`}>
-                <div className="commander-art">
+                <button className="commander-art deck-art-button" aria-label={`Open ${c.name} details`} onClick={() => setDetail({ commander: i })}>
                   <CardImage card={commanderCard(c)} />
-                </div>
+                </button>
                 <div>
                   <p className="eyebrow">COMMANDER</p>
                   <h2>{c.name}</h2>
@@ -367,44 +409,103 @@ export function DeckLibrary({
                   Your commander is ready. Add cards from your collection.
                 </p>
               )}
+              <div className="deck-browse-controls" role="group" aria-label="Sort and filter deck">
+                <label>
+                  Sort deck
+                  <select value={sort} onChange={(e) => setSort(e.target.value as DeckSort)}>
+                    {(Object.keys(deckSortLabels) as DeckSort[]).map((key) => (
+                      <option key={key} value={key}>
+                        {deckSortLabels[key]}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  Search this deck
+                  <input type="search" value={deckFilters.query} onChange={(e) => setDeckFilters((f) => ({ ...f, query: e.target.value }))} />
+                </label>
+                <label>
+                  Card type
+                  <select value={deckFilters.type} onChange={(e) => setDeckFilters((f) => ({ ...f, type: e.target.value as DeckFilters["type"] }))}>
+                    <option value="">All types</option>
+                    {[...deckTypes, "Other" as const].map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                {deck.entries && (
+                  <label>
+                    Ownership
+                    <select value={deckFilters.ownership} onChange={(e) => setDeckFilters((f) => ({ ...f, ownership: e.target.value as DeckFilters["ownership"] }))}>
+                      <option value="">Owned and missing</option>
+                      <option value="assigned">Owned / assigned</option>
+                      <option value="missing">Missing / unassigned</option>
+                    </select>
+                  </label>
+                )}
+              </div>
+              <p className="allocation-copy" role="status">
+                {filtering ? `${visible.length} of ${rows.length} deck cards shown` : `${rows.length} deck cards`}
+                {filtering && (
+                  <>
+                    {" · "}
+                    <button className="text-button" onClick={() => setDeckFilters(emptyDeckFilters())}>
+                      Clear deck filters
+                    </button>
+                  </>
+                )}
+              </p>
               <div className="deck-owned-grid">
-                {deck.assignments.map((a) => {
-                  const card = cardFor(a.itemId);
+                {visible.map((row) => {
+                  const card = row.card;
+                  const label = caption(row);
                   return (
-                    <article key={`${a.itemId}-${a.entryId || ""}`} className="deck-owned-card">
-                      <button
-                        className="deck-art-button"
-                        onClick={() => setChosen(card)}
-                      >
-                        <span className="sr-only">Manage {card.name}</span>
+                    <article key={row.key} className={`deck-owned-card${row.assigned ? "" : " deck-card-missing"}`}>
+                      <button className="deck-art-button" aria-label={`Open ${card.name} details`} onClick={() => setDetail({ row: row.key })}>
                         <CardImage card={card} />
                       </button>
+                      {label && <p className="deck-sort-metric">{label}</p>}
                       <h3>
-                        {card.name} ×{a.quantity}
+                        {card.name} ×{row.quantity}
                       </h3>
-                      <p>
-                        {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
-                        {card.ownership!.finish} · {card.ownership!.language} ·{" "}
-                        {card.ownership!.condition}
-                      </p>
-                      {allocation(card)}
-                      <button
-                        className="management-button"
-                        disabled={busy}
-                        onClick={() =>
-                          void change({
-                            type: "remove",
-                            deckId: deck.id,
-                            itemId: card.id,
-                          })
-                        }
-                      >
-                        Remove one {card.name}
-                      </button>
+                      {row.assigned ? (
+                        <>
+                          <p>
+                            {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
+                            {card.ownership!.finish} · {card.ownership!.language} ·{" "}
+                            {card.ownership!.condition}
+                          </p>
+                          {allocation(card)}
+                          <button
+                            className="management-button"
+                            disabled={busy}
+                            onClick={() =>
+                              void change({
+                                type: "remove",
+                                deckId: deck.id,
+                                itemId: row.itemId!,
+                              })
+                            }
+                          >
+                            Remove one {card.name}
+                          </button>
+                        </>
+                      ) : (
+                        <p className="allocation-copy">
+                          {row.ownedElsewhere
+                            ? `Unassigned · owned elsewhere ${row.ownedElsewhere} (${row.availableElsewhere} available)`
+                            : "Missing · not currently owned"}
+                        </p>
+                      )}
                     </article>
                   );
                 })}
               </div>
+              {filtering && !visible.length && (
+                <p className="collection-subtitle">No deck cards match these filters.</p>
+              )}
               <p className="allocation-copy">
                 Removing a deck card returns its copy to Available. It does not
                 remove it from Collection or change ManaBox.
@@ -671,6 +772,42 @@ export function DeckLibrary({
           }}
         />
       )}
+      {detail && deck && state && (() => {
+        if ("commander" in detail) {
+          const c = deck.commanders[detail.commander];
+          if (!c) return null;
+          const card = commanderDetailCard(c);
+          return (
+            <CardDetail
+              card={card}
+              collection={state}
+              onOpenDeck={(id) => { setDetail(null); onOpen(id); }}
+              onClose={() => setDetail(null)}
+              onSaveTags={card.ownership && onSaveTags ? (o) => onSaveTags(card, o) : undefined}
+              deck={{ deckName: deck.name, quantity: 1, assigned: !!c.itemId, ownedElsewhere: 0, availableElsewhere: 0, commander: true }}
+            />
+          );
+        }
+        const index = visible.findIndex((r) => r.key === detail.row);
+        if (index < 0) return null;
+        const row = visible[index];
+        return (
+          <CardDetail
+            card={row.card}
+            collection={state}
+            onOpenDeck={(id) => { setDetail(null); onOpen(id); }}
+            onClose={() => setDetail(null)}
+            onSaveTags={row.card.ownership && onSaveTags ? (o) => onSaveTags(row.card, o) : undefined}
+            deck={{ deckName: deck.name, quantity: row.quantity, assigned: row.assigned, ownedElsewhere: row.ownedElsewhere, availableElsewhere: row.availableElsewhere }}
+            navigation={{
+              position: index + 1,
+              total: visible.length,
+              onPrevious: index > 0 ? () => setDetail({ row: visible[index - 1].key }) : undefined,
+              onNext: index < visible.length - 1 ? () => setDetail({ row: visible[index + 1].key }) : undefined,
+            }}
+          />
+        );
+      })()}
       {filterOpen && deck && (
         <FilterDrawer
           cards={cards.filter((c) => legalInDeck(c, deck))}
