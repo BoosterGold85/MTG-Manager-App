@@ -1,8 +1,9 @@
 import type { SampleCollectionCard, Color } from "../models/card";
-import type { CollectionState } from "../models/collection";
-import type { Deck } from "../models/deck";
+import type { CardMetadata, CollectionState } from "../models/collection";
+import type { Deck, DecklistEntry } from "../models/deck";
 import { cardIdentity } from "../intelligence/tagger";
 import { oracleText } from "../utils/cardKeywords";
+import { normalizedName } from "../import/csv";
 export function commanderEligible(card: SampleCollectionCard) {
   const front = card.cardFaces?.[0]?.typeLine || card.typeLine;
   return (
@@ -10,6 +11,14 @@ export function commanderEligible(card: SampleCollectionCard) {
     /can be your commander\b/i.test(oracleText(card))
   );
 }
+// Same canonical card: oracle identity when both printings carry it, otherwise exact name.
+export const sameCard = (
+  a: Pick<CardMetadata, "oracleId" | "name">,
+  b: Pick<CardMetadata, "oracleId" | "name">,
+) =>
+  a.oracleId && b.oracleId
+    ? a.oracleId === b.oracleId
+    : normalizedName(a.name) === normalizedName(b.name);
 export const deckIdentity = (deck: Deck): Color[] => [
   ...new Set(deck.commanders.flatMap((c) => c.colorIdentity)),
 ];
@@ -25,19 +34,69 @@ export function deckUsage(state: CollectionState, itemId: string) {
         deck.assignments
           .filter((a) => a.itemId === itemId)
           .reduce((n, a) => n + a.quantity, 0) +
-        deck.commanders.filter((c) => c.itemId === itemId).length,
+        deck.commanders.filter((c) => c.itemId && c.itemId === itemId).length,
     }))
     .filter((u) => u.quantity > 0);
 }
+// Decklist size. Entry decks count the conceptual list, including missing cards.
 export const deckCount = (deck: Deck) =>
-  deck.commanders.length + deck.assignments.reduce((n, a) => n + a.quantity, 0);
+  deck.entries
+    ? deck.entries.reduce((n, e) => n + e.quantity, 0)
+    : deck.commanders.length + deck.assignments.reduce((n, a) => n + a.quantity, 0);
+export const assignedCount = (deck: Deck) =>
+  deck.commanders.filter((c) => c.itemId).length +
+  deck.assignments.reduce((n, a) => n + a.quantity, 0);
+export function entryAssigned(deck: Deck, entry: DecklistEntry) {
+  return (
+    deck.assignments
+      .filter((a) => a.entryId === entry.id)
+      .reduce((n, a) => n + a.quantity, 0) +
+    deck.commanders.filter((c) => c.entryId === entry.id && c.itemId).length
+  );
+}
+export function deckOwnership(deck: Deck) {
+  const total = deckCount(deck);
+  const assigned = assignedCount(deck);
+  return { total, assigned, missing: Math.max(0, total - assigned) };
+}
+export interface MissingEntry {
+  entry: DecklistEntry;
+  missing: number;
+  owned: number;
+  available: number;
+  reason: string;
+  outsideIdentity: boolean;
+}
+// Decklist entries without an assigned physical copy, with an explanation. Never fabricated ownership.
+export function missingEntries(state: CollectionState, deck: Deck): MissingEntry[] {
+  return (deck.entries || [])
+    .map((entry) => {
+      const missing = entry.quantity - entryAssigned(deck, entry);
+      const card = state.metadata[entry.scryfallId];
+      const items = state.items.filter(
+        (i) => i.quantityOwned > 0 && state.metadata[i.scryfallId] && card && sameCard(state.metadata[i.scryfallId], card),
+      );
+      const owned = items.reduce((n, i) => n + i.quantityOwned, 0);
+      const available = items.reduce((n, i) => n + i.quantityUnassigned, 0);
+      const outsideIdentity = entry.board === "main" && !!card && !legalInDeck(card, deck);
+      const reason = outsideIdentity
+        ? "Outside commander color identity — no copy assigned"
+        : !owned
+          ? "Missing — not owned"
+          : !available
+            ? "Unassigned — all owned copies are assigned to decks"
+            : "Unassigned — an owned copy is available to add";
+      return { entry, missing, owned, available, reason, outsideIdentity };
+    })
+    .filter((m) => m.missing > 0);
+}
 export const allocationConflicts = (state: CollectionState) =>
   state.items.filter((i) => i.quantityAssigned > i.quantityOwned);
 export function reconcileAllocations(state: CollectionState): CollectionState {
   const counts = new Map<string, number>();
   for (const deck of state.decks || []) {
     for (const c of deck.commanders)
-      counts.set(c.itemId, (counts.get(c.itemId) || 0) + 1);
+      if (c.itemId) counts.set(c.itemId, (counts.get(c.itemId) || 0) + 1);
     for (const a of deck.assignments)
       counts.set(a.itemId, (counts.get(a.itemId) || 0) + a.quantity);
   }
@@ -91,10 +150,15 @@ export function newDeck(
   };
 }
 export function deckStats(state: CollectionState, deck: Deck) {
-  const rows = [
-    ...deck.commanders.map((c) => ({ itemId: c.itemId, quantity: 1 })),
-    ...deck.assignments,
-  ];
+  const scryfall = (itemId: string) =>
+    state.items.find((i) => i.id === itemId)!.scryfallId;
+  // Entry decks describe the whole decklist, owned or missing.
+  const rows = deck.entries
+    ? deck.entries.map((e) => ({ scryfallId: e.scryfallId, quantity: e.quantity }))
+    : [
+        ...deck.commanders.map((c) => ({ scryfallId: c.itemId ? scryfall(c.itemId) : c.scryfallId, quantity: 1 })),
+        ...deck.assignments.map((a) => ({ scryfallId: scryfall(a.itemId), quantity: a.quantity })),
+      ];
   const types = [
     "Land",
     "Creature",
@@ -105,41 +169,17 @@ export function deckStats(state: CollectionState, deck: Deck) {
     "Planeswalker",
     "Battle",
   ];
+  const typeOf = (id: string) => state.metadata[id].typeLine.split("—")[0];
   const counts = Object.fromEntries(
     types.map((t) => [
       t,
-      rows.reduce(
-        (n, a) =>
-          n +
-          (state.metadata[
-            state.items.find((i) => i.id === a.itemId)!.scryfallId
-          ].typeLine
-            .split("—")[0]
-            .includes(t)
-            ? a.quantity
-            : 0),
-        0,
-      ),
+      rows.reduce((n, a) => n + (typeOf(a.scryfallId).includes(t) ? a.quantity : 0), 0),
     ]),
   );
-  const spells = rows.filter(
-    (a) =>
-      !state.metadata[
-        state.items.find((i) => i.id === a.itemId)!.scryfallId
-      ].typeLine
-        .split("—")[0]
-        .includes("Land"),
-  );
+  const spells = rows.filter((a) => !typeOf(a.scryfallId).includes("Land"));
   const denominator = spells.reduce((n, a) => n + a.quantity, 0);
   const average = denominator
-    ? spells.reduce(
-        (n, a) =>
-          n +
-          state.metadata[state.items.find((i) => i.id === a.itemId)!.scryfallId]
-            .manaValue *
-            a.quantity,
-        0,
-      ) / denominator
+    ? spells.reduce((n, a) => n + state.metadata[a.scryfallId].manaValue * a.quantity, 0) / denominator
     : 0;
   return { counts, average };
 }

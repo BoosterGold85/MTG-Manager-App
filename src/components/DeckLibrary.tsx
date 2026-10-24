@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { Crown, Plus, ArrowLeft, Settings2 } from "lucide-react";
+import { Crown, Plus, ArrowLeft, Settings2, FileUp } from "lucide-react";
 import type { CollectionState } from "../models/collection";
-import { collectionCards } from "../models/collection";
-import type { Deck } from "../models/deck";
+import { collectionCards, emptyCollection } from "../models/collection";
+import type { Deck, DeckCommander } from "../models/deck";
+import { DeckImport, DeckIssues } from "./DeckImport";
 import type { SampleCollectionCard } from "../models/card";
 import {
   allocationConflicts,
   commanderEligible,
   deckCount,
   deckIdentity,
+  assignedCount,
+  deckOwnership,
   deckStats,
+  missingEntries,
   deckUsage,
   legalInDeck,
 } from "../decks/decks";
@@ -50,6 +54,7 @@ export function DeckLibrary({
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
   const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
+  const [importing, setImporting] = useState(false);
   const decks = state?.decks || [];
   const deck = decks.find((d) => d.id === activeId);
   const cards = state ? collectionCards(state) : [];
@@ -66,6 +71,17 @@ export function DeckLibrary({
         foil: item.finish !== "nonfoil",
       }
     );
+  };
+  // A decklist commander without an assigned copy still shows canonical art and identity.
+  const commanderCard = (c: DeckCommander): SampleCollectionCard =>
+    c.itemId
+      ? cardFor(c.itemId)
+      : { ...state!.metadata[c.scryfallId], id: `commander:${c.scryfallId}`, quantity: 0 };
+  const ownershipLine = (d: Deck) => {
+    const o = deckOwnership(d);
+    return d.entries
+      ? `${o.total} cards · ${o.assigned} owned / assigned · ${o.missing} missing`
+      : `${o.total} cards`;
   };
   const conflicts = state ? allocationConflicts(state) : [];
   async function change(action: DeckChange) {
@@ -133,12 +149,14 @@ export function DeckLibrary({
       </label>
     </div>
   );
-  const allocation = (card: SampleCollectionCard) => (
+  const allocation = (card: SampleCollectionCard) => card.ownership ? (
     <span className="allocation-copy">
       Owned {card.ownership!.quantityOwned} · Assigned{" "}
       {card.ownership!.quantityAssigned} · Available{" "}
       {card.ownership!.quantityUnassigned}
     </span>
+  ) : (
+    <span className="allocation-copy">Missing — no owned copy assigned</span>
   );
   const usage = (card: SampleCollectionCard) =>
     state && (
@@ -169,10 +187,16 @@ export function DeckLibrary({
                 A home for the decks you keep close.
               </p>
             </div>
-            <button className="primary-button" onClick={start}>
-              <Plus size={17} />
-              New Deck
-            </button>
+            <span className="deck-heading-actions">
+              <button className="management-button" onClick={() => { setError(""); setImporting(true); }}>
+                <FileUp size={16} />
+                Import Deck
+              </button>
+              <button className="primary-button" onClick={start}>
+                <Plus size={17} />
+                New Deck
+              </button>
+            </span>
           </div>
           {!decks.length ? (
             <section className="empty-state">
@@ -206,20 +230,22 @@ export function DeckLibrary({
                   }}
                 >
                   <div className="deck-cover">
-                    <CardImage card={cardFor(d.commanders[0].itemId)} />
+                    <CardImage card={commanderCard(d.commanders[0])} />
                   </div>
                   <div className="deck-card-copy">
                     <h2>{d.name}</h2>
                     <p>{d.commanders.map((c) => c.name).join(" + ")}</p>
                     <p>
-                      {identityLabel(d)} · {deckCount(d)} cards
+                      {identityLabel(d)} · {ownershipLine(d)}
                     </p>
                     <p>
                       {[...d.commanders, ...d.assignments].some((a) =>
                         conflicts.some((i) => i.id === a.itemId),
                       )
                         ? "Allocation needs reconciliation"
-                        : "Owned copies assigned"}
+                        : deckOwnership(d).missing
+                          ? "Some decklist cards have no assigned copy"
+                          : "Owned copies assigned"}
                     </p>
                     <p>
                       Modified {new Date(d.modifiedAt).toLocaleDateString()}
@@ -248,7 +274,7 @@ export function DeckLibrary({
               <p className="eyebrow">COMMANDER LIBRARY</p>
               <h1>{deck.name}</h1>
               <p className="collection-subtitle">
-                {identityLabel(deck)} · {deckCount(deck)} cards
+                {identityLabel(deck)} · {ownershipLine(deck)}
               </p>
             </div>
             <button
@@ -269,22 +295,25 @@ export function DeckLibrary({
           </p>
           <section aria-label="Commander" className="deck-commander">
             {deck.commanders.map((c, i) => (
-              <div key={`${c.itemId}-${i}`}>
+              <div key={`${c.itemId || c.scryfallId}-${i}`}>
                 <div className="commander-art">
-                  <CardImage card={cardFor(c.itemId)} />
+                  <CardImage card={commanderCard(c)} />
                 </div>
                 <div>
                   <p className="eyebrow">COMMANDER</p>
                   <h2>{c.name}</h2>
                   <p>
-                    {cardFor(c.itemId).setCode.toUpperCase()} #
-                    {cardFor(c.itemId).collectorNumber} ·{" "}
-                    {cardFor(c.itemId).ownership!.finish}
+                    {commanderCard(c).setCode.toUpperCase()} #
+                    {commanderCard(c).collectorNumber}
+                    {c.itemId ? ` · ${commanderCard(c).ownership!.finish}` : ""}
                   </p>
-                  {allocation(cardFor(c.itemId))}
+                  {allocation(commanderCard(c))}
                 </div>
               </div>
             ))}
+            {deck.commanders.length > 1 && (
+              <p className="deck-warning">Partner/Background pairing rules are not validated.</p>
+            )}
           </section>
           {(() => {
             const stats = deckStats(state!, deck);
@@ -321,7 +350,7 @@ export function DeckLibrary({
           </div>
           {tab === "deck" ? (
             <section aria-label="Deck cards">
-              {!deck.assignments.length && (
+              {!deck.assignments.length && !deck.entries && (
                 <p className="collection-subtitle">
                   Your commander is ready. Add cards from your collection.
                 </p>
@@ -330,7 +359,7 @@ export function DeckLibrary({
                 {deck.assignments.map((a) => {
                   const card = cardFor(a.itemId);
                   return (
-                    <article key={a.itemId} className="deck-owned-card">
+                    <article key={`${a.itemId}-${a.entryId || ""}`} className="deck-owned-card">
                       <button
                         className="deck-art-button"
                         onClick={() => setChosen(card)}
@@ -368,6 +397,49 @@ export function DeckLibrary({
                 Removing a deck card returns its copy to Available. It does not
                 remove it from Collection or change ManaBox.
               </p>
+              {(() => {
+                const missing = missingEntries(state!, deck);
+                if (!missing.length) return null;
+                return (
+                  <section aria-label="Missing and unassigned cards" className="deck-missing">
+                    <h2>Missing / Unassigned · {missing.reduce((n, m) => n + m.missing, 0)}</h2>
+                    <p className="allocation-copy">
+                      These decklist cards have no physical copy assigned. Ownership is never fabricated; add an
+                      available copy from Add Cards to fill one.
+                    </p>
+                    <ul>
+                      {missing.map((m) => (
+                        <li key={m.entry.id}>
+                          <strong>
+                            {m.entry.name} ×{m.missing}
+                          </strong>
+                          {m.entry.board === "commander" && " · Commander"}
+                          {m.entry.requestedPrinting && (
+                            <span>
+                              {" "}
+                              · Requested {m.entry.requestedPrinting.setCode.toUpperCase()}
+                              {m.entry.requestedPrinting.collectorNumber ? ` #${m.entry.requestedPrinting.collectorNumber}` : ""}
+                            </span>
+                          )}
+                          <p className={m.outsideIdentity ? "deck-error" : "allocation-copy"}>
+                            {m.reason} · Owned {m.owned} · Available {m.available}
+                          </p>
+                          {m.entry.board === "main" && (
+                            <button
+                              className="text-button"
+                              disabled={busy}
+                              onClick={() => void change({ type: "remove-missing", deckId: deck.id, entryId: m.entry.id })}
+                            >
+                              Remove one missing {m.entry.name} from decklist
+                            </button>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                );
+              })()}
+              {deck.importIssues && <DeckIssues issues={deck.importIssues} title="Rows not imported" />}
             </section>
           ) : (
             <section aria-label="Add cards from collection">
@@ -547,7 +619,7 @@ export function DeckLibrary({
             {modal === "delete" && deck && (
               <>
                 <p>
-                  Delete {deck.name}? All {deckCount(deck)} assignments will
+                  Delete {deck.name}? All {assignedCount(deck)} assigned copies will
                   return to Available. Collection cards and ManaBox are
                   unchanged.
                 </p>
@@ -570,6 +642,21 @@ export function DeckLibrary({
             {busy && <p role="status">Saving deck…</p>}
           </div>
         </Dialog>
+      )}
+      {importing && (
+        <DeckImport
+          state={state || emptyCollection()}
+          repository={repository}
+          onClose={() => setImporting(false)}
+          onImported={(next, id) => {
+            onSaved(next);
+            setImporting(false);
+            onOpen(id);
+            setTab("deck");
+            reset();
+            setStatus("Deck imported. Collection quantities are unchanged.");
+          }}
+        />
       )}
       {filterOpen && deck && (
         <FilterDrawer
@@ -601,9 +688,9 @@ export function DeckLibrary({
           <div className="deck-dialog-content">
             {(() => {
               const current = cardFor(chosen.id);
-              const assigned =
-                deck.assignments.find((a) => a.itemId === current.id)
-                  ?.quantity || 0;
+              const assigned = deck.assignments
+                .filter((a) => a.itemId === current.id)
+                .reduce((n, a) => n + a.quantity, 0);
               return (
                 <>
                   <p>

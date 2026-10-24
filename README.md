@@ -1,6 +1,21 @@
-# MTG Manager · v0.4.0
+# MTG Manager · v0.4.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## ManaBox Deck Import (v0.4.1)
+
+**Decks → Import Deck** brings an existing Commander deck in from ManaBox without rebuilding it. Upload the text file ManaBox's deck **Export** produces, or paste decklist text. No ManaBox account connection, scraping or Cloud Sync is involved.
+
+- **Formats:** `1 Sol Ring`, `1x Sol Ring`, `1 Arcane Signet (CMM) 380`. Blank lines are ignored. Section headings such as `Commander`, `Deck`/`Mainboard`, `Sideboard`, `Maybeboard`, `Companion` (with optional `//`, `#`, `==` or `:` decoration and `(n)` counts), MTGA `About`/`Name …`, `SB:` prefixes, category headings (`Creatures (30)`), and the `*CMDR*`, `[Commander]`, `*F*` markers are understood. `Fire / Ice` and `Delver of Secrets /// Insectile Aberration` become `A // B`.
+- **Preview first:** nothing is saved until **Confirm import**. Lookups use saved/bundled canonical metadata first, then Scryfall printings, then exact names, with the same pacing, retries and cache as collection import. A lookup outage offers **Retry lookup**; no rows are marked bad.
+- **Printings:** set + collector number matches the exact printing. If it is not found, or belongs to a different card, the row falls back to the card name with a visible note.
+- **Commander:** an explicit Commander section or marker is used when canonical metadata allows it. Otherwise eligible cards are listed and you must choose (one, or two for Partner/Background; pairing rules are not validated). Three or more commanders are refused, not truncated.
+- **Ownership:** each card is shown as exact owned copy, different printing available, owned but fully assigned (with the decks using it), missing, or needing a printing choice. Exact available copies are assigned automatically. A single available alternative is suggested visibly. Multiple possible printing groups need your choice (or **Leave unassigned**). Copies are never taken from another deck.
+- **Missing cards are imported** as decklist entries with no physical copy assigned. Collection quantities, source rows and existing metadata are never changed. Canonical metadata for unowned cards is added only where it is absent. Cards outside the commander's color identity stay in the decklist, flagged, with no copy assigned.
+- **Problem rows** (unrecognized card, malformed quantity, ambiguous name, sideboard/maybeboard rows) are kept with their reasons on the saved deck and can be copied or downloaded.
+- **Same name:** an existing deck is never overwritten. Choose **Import as new deck**, rename, or **Cancel**.
+
+The deck model separates `DecklistEntry` (what the deck contains) from `DeckCardAssignment` (which owned printing group supplies a copy, linked by `entryId`). The deck editor shows `100 cards · 94 owned / assigned · 6 missing` and a **Missing / Unassigned** section. Adding an available copy from **Add Cards** fills a matching missing entry first. See [v0.4.1 validation](docs/VALIDATION-v0.4.1.md).
 
 ## Commander Library (v0.4.0)
 
@@ -178,7 +193,7 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
-See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for current release results.
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for current release results and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
 
 ## Deploy to Cloudflare Pages
 
@@ -210,4 +225,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.2 is approved; v0.4.0 Commander Library is current. Work stops before v0.5.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.0 is approved; v0.4.1 ManaBox Deck Import is current. Work stops before v0.5.0.

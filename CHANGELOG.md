@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.1 — ManaBox Deck Import
+
+- Added Decks → Import Deck with ManaBox deck file upload or pasted text, preview-first; nothing is saved before explicit confirmation. No account connection, scraping or Cloud Sync.
+- Added a tolerant ManaBox/MTGA text parser: quantity, name, optional set code and collector number, blank lines, Commander/Deck/Sideboard/Maybeboard/Companion/About headings, category headings, `SB:` and commander markers, split/double-faced name normalization. Malformed and non-imported rows are retained with reasons.
+- Added offline-first resolution (saved/bundled metadata → Scryfall printings → exact names) on the existing paced/retrying/cached client. Exact printings are preferred; a missing or conflicting printing falls back to the name with a visible note. Lookup outages offer Retry rather than producing problem rows.
+- Commander detection uses an explicit section/marker when canonically eligible; otherwise the user must select among canonical candidates. Up to two commanders (Partner/Background, not validated); more are refused.
+- Ownership reconciliation classifies exact, alternate printing, owned-but-allocated, missing and ambiguous cards. It auto-assigns exact available copies, visibly suggests a single available alternative, requires choices for multiple printing groups, and never takes copies from other decks. Summary shows cards, exact, alternate, owned-unassigned, missing and needs-review counts.
+- Introduced `DecklistEntry` separate from `DeckCardAssignment` (linked by `entryId`), optional commander copy references, retained `importIssues` and import source. Missing cards are imported without fake ownership or Collection changes. Color identity conflicts are surfaced and receive no copy. Duplicate deck names are never overwritten (Import as new deck / Cancel).
+- Deck editor shows owned/assigned/missing counts, a Missing / Unassigned section with reasons, and retained import problem rows (copy/download). Add Cards fills matching missing entries. Validation, backup and collection clear handle entry decks. Legacy v0.4.0 decks are unchanged.
+- Added 18 unit tests and 2 browser workflows across all five sizes. All v0.4.0, v0.3.2 and v0.3.1 suites remain green. No v0.5.0 features.
+
 ## 0.4.0 — Commander Library
 
 - Added artwork-first Decks navigation/library, name → owned commander creation, saved editor, basic composition, rename and confirmed deletion.

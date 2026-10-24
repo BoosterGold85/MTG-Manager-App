@@ -42,7 +42,7 @@ interface ScryfallCard {
 interface ListResponse {
   data: ScryfallCard[];
   has_more?: boolean;
-  not_found?: {id?: string;set?: string;collector_number?: string}[];
+  not_found?: {id?: string;name?: string;set?: string;collector_number?: string}[];
 }
 export interface Resolution {
   card?: CardMetadata;
@@ -149,7 +149,7 @@ export function retryAfterMilliseconds(value:string|null,now=Date.now()) {
   const seconds=Number(value);
   return Number.isFinite(seconds) ? Math.max(0,seconds*1000) : Math.max(0,Date.parse(value)-now)||0;
 }
-export class ScryfallClient implements MetadataResolver {
+export class ScryfallClient implements MetadataResolver, DeckCardLookup {
   private lastRequest = 0;
   private cooldownUntil = 0;
   private pace:number;
@@ -402,6 +402,79 @@ export class ScryfallClient implements MetadataResolver {
     this.sessionNames = names;
     return { results, nameMatches: names };
   }
+  private deckResults: DeckLookupResult = new Map();
+  // Deck lookups reuse the same pacing, retries and canonical cache; successes survive a retry.
+  async lookupDeckCards(
+    identifiers: DeckIdentifier[],
+    signal: AbortSignal,
+    progress: (message: string) => void,
+  ): Promise<DeckLookupResult> {
+    const results: DeckLookupResult = new Map();
+    const pending: DeckIdentifier[] = [];
+    for (const id of new Map(identifiers.map((i) => [i.key, i])).values()) {
+      if (this.deckResults.has(id.key)) results.set(id.key, this.deckResults.get(id.key)!);
+      else pending.push(id);
+    }
+    const total = identifiers.length;
+    for (let offset = 0; offset < pending.length; offset += 75) {
+      signal.throwIfAborted();
+      const batch = pending.slice(offset, offset + 75);
+      progress(`Looking up deck cards ${offset + 1}–${Math.min(offset + 75, pending.length)} of ${pending.length}…`);
+      try {
+        const response = (await this.request("/cards/collection", signal, {
+          identifiers: batch.map((id) =>
+            id.set && id.collector_number
+              ? { set: id.set, collector_number: id.collector_number }
+              : { name: id.name },
+          ),
+        })) as ListResponse;
+        if (!Array.isArray(response.data))
+          throw new ServiceFailure("Scryfall returned an unexpected response. Retry the preview.");
+        const normalized = response.data.map(normalizeCard);
+        await this.checkpoint(normalized, {});
+        const batchResults: DeckLookupResult = new Map();
+        for (const id of batch) {
+          const card = normalized.find((c) =>
+            id.set && id.collector_number
+              ? c.setCode.toLowerCase() === id.set && c.collectorNumber?.toLowerCase() === id.collector_number
+              : [c.name, ...(c.aliases || [])].some((n) => normalizedName(n) === normalizedName(id.name || "")) ||
+                normalizedName(c.name.split(" // ")[0]) === normalizedName(id.name || ""),
+          );
+          const missing = response.not_found?.some((nf) =>
+            id.set && id.collector_number
+              ? nf.set?.toLowerCase() === id.set && nf.collector_number?.toLowerCase() === id.collector_number
+              : normalizedName(nf.name || "") === normalizedName(id.name || ""),
+          );
+          if (!card && !missing)
+            throw new ServiceFailure("Scryfall returned an incomplete collection batch.");
+          batchResults.set(id.key, card || null);
+        }
+        for (const [key, value] of batchResults) {
+          results.set(key, value);
+          this.deckResults.set(key, value);
+        }
+      } catch (error) {
+        signal.throwIfAborted();
+        throw new LookupInterrupted(results.size, total, error);
+      }
+    }
+    return results;
+  }
+}
+export interface DeckIdentifier {
+  key: string;
+  name?: string;
+  set?: string;
+  collector_number?: string;
+}
+// null = Scryfall explicitly reported not_found for this identifier.
+export type DeckLookupResult = Map<string, CardMetadata | null>;
+export interface DeckCardLookup {
+  lookupDeckCards(
+    identifiers: DeckIdentifier[],
+    signal: AbortSignal,
+    progress: (message: string) => void,
+  ): Promise<DeckLookupResult>;
 }
 export function printingConflict(
   row: ImportRow,

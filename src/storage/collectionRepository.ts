@@ -69,15 +69,31 @@ export function validateState(value: unknown): CollectionState {
       if (!deck.id || deckIds.has(deck.id) || !deck.name?.trim() || !Array.isArray(deck.commanders) || !deck.commanders.length || !Array.isArray(deck.assignments) || !Number.isFinite(Date.parse(deck.createdAt)) || !Number.isFinite(Date.parse(deck.modifiedAt))) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
       deckIds.add(deck.id);
       const assignmentIds = new Set<string>();
+      const entries = deck.entries;
+      const entryIds = new Set<string>();
+      if (entries !== undefined) {
+        if (!Array.isArray(entries)) throw new Error('Saved decklist is inconsistent.');
+        for (const e of entries) {
+          if (!e?.id || entryIds.has(e.id) || !['commander','main'].includes(e.board) || !Number.isSafeInteger(e.quantity) || e.quantity<1 || !e.name || !e.cardIdentity || !state.metadata[e.scryfallId]) throw new Error('Saved decklist entry is inconsistent.');
+          entryIds.add(e.id);
+        }
+      }
+      if (deck.importIssues !== undefined && (!Array.isArray(deck.importIssues) || deck.importIssues.some(i=>!Number.isSafeInteger(i?.line) || typeof i.text!=='string' || typeof i.reason!=='string'))) throw new Error('Saved deck import problems are inconsistent.');
+      const linked = new Map<string,number>();
       for (const c of deck.commanders) {
-        const item = state.items.find(i=>i.id===c.itemId);
-        if (!item || c.scryfallId!==item.scryfallId || !c.cardIdentity || !c.name || !Array.isArray(c.colorIdentity) || c.colorIdentity.some(color=>!['W','U','B','R','G'].includes(color))) throw new Error('Saved commander reference is inconsistent.');
-        assigned.set(c.itemId,(assigned.get(c.itemId)||0)+1);
+        const item = c.itemId===undefined ? undefined : state.items.find(i=>i.id===c.itemId);
+        if ((c.itemId!==undefined && (!item || c.scryfallId!==item.scryfallId)) || (c.itemId===undefined && !state.metadata[c.scryfallId]) || (c.entryId!==undefined && !entryIds.has(c.entryId)) || !c.cardIdentity || !c.name || !Array.isArray(c.colorIdentity) || c.colorIdentity.some(color=>!['W','U','B','R','G'].includes(color))) throw new Error('Saved commander reference is inconsistent.');
+        if (c.itemId) assigned.set(c.itemId,(assigned.get(c.itemId)||0)+1);
+        if (c.itemId && c.entryId) linked.set(c.entryId,(linked.get(c.entryId)||0)+1);
       }
       for (const a of deck.assignments) {
-        if (!ids.has(a.itemId) || assignmentIds.has(a.itemId) || !Number.isSafeInteger(a.quantity) || a.quantity<1) throw new Error('Saved deck assignment is inconsistent.');
-        assignmentIds.add(a.itemId);assigned.set(a.itemId,(assigned.get(a.itemId)||0)+a.quantity);
+        const key = JSON.stringify([a.itemId,a.entryId||'']);
+        if (!ids.has(a.itemId) || assignmentIds.has(key) || !Number.isSafeInteger(a.quantity) || a.quantity<1 || (a.entryId!==undefined && !entryIds.has(a.entryId))) throw new Error('Saved deck assignment is inconsistent.');
+        assignmentIds.add(key);assigned.set(a.itemId,(assigned.get(a.itemId)||0)+a.quantity);
+        if (a.entryId) linked.set(a.entryId,(linked.get(a.entryId)||0)+a.quantity);
       }
+      // A decklist entry can lack copies, but never have more copies assigned than it lists.
+      for (const e of entries || []) if ((linked.get(e.id)||0)>e.quantity) throw new Error('Saved decklist assignments exceed their entries.');
     }
     if (state.items.some(i=>i.quantityAssigned!==(assigned.get(i.id)||0))) throw new Error('Saved deck allocation totals are inconsistent.');
   }

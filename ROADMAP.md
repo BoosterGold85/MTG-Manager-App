@@ -11,7 +11,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.3.0 — Approved | Card Intelligence & Taxonomy: inspectable semantic tags, evidence, confidence and correction.                                                                                 |
 | 0.3.1 — Approved | Importer reliability: recoverable lookup interruptions, retries, safe pacing and durable metadata checkpoints; no new intelligence scope. |
 | 0.3.2 — Approved | Intelligence Polish & Tagging Accuracy: semantic corrections, validated typal signals, canonical Keywords and optional Oracle text search. |
-| **0.4.0 — Current**        | Commander Library: local decklists, owned-printing assignments, copy availability, re-import conflicts and backup. History remains future scope.                                                                                             |
+| 0.4.0 — Approved | Commander Library: local decklists, owned-printing assignments, copy availability, re-import conflicts and backup. History remains future scope. |
+| **0.4.1 — Current** | ManaBox Deck Import: preview-first text/paste import, explicit commander confirmation, ownership reconciliation, missing-card decklist entries separate from physical-copy assignments. No sync engine. |
 | 0.5.0               | Deck DNA: explain a deck's identity, archetypes, interactions and strategy.                                                                                                   |
 | 0.6.0               | Synergy Explorer: explainable candidates from owned, preferably unassigned copies; no automatic changes.                                                                      |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
