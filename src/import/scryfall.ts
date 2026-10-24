@@ -1,3 +1,5 @@
+import { IndexedDbScryfallCache } from "../storage/scryfallCache";
+import type { MetadataCache } from "../storage/scryfallCache";
 import type { Color, Rarity } from "../models/card";
 import type { CardMetadata, ImportRow } from "../models/collection";
 import { identifierKey, normalizedName } from "./csv";
@@ -40,6 +42,7 @@ interface ScryfallCard {
 interface ListResponse {
   data: ScryfallCard[];
   has_more?: boolean;
+  not_found?: {id?: string;set?: string;collector_number?: string}[];
 }
 export interface Resolution {
   card?: CardMetadata;
@@ -126,75 +129,83 @@ const message = (error: unknown) =>
   error instanceof Error
     ? error.message
     : "Scryfall is unavailable. Try preparing this preview again.";
+export class LookupInterrupted extends Error {
+  constructor(public resolvedRows:number,public totalRows:number,public cause:unknown) {
+    super(`Card lookup was interrupted after ${resolvedRows.toLocaleString()} of ${totalRows.toLocaleString()} rows. Your file is intact. Retry remaining cards.`);
+    this.name='LookupInterrupted';
+  }
+}
+class ServiceFailure extends Error {
+  constructor(message:string,public retryAfter=0,public retryable=true) {super(message);}
+}
+class CardResolutionError extends Error {}
+export interface ScryfallOptions {
+  attempts?:number;backoffMs?:number;timeoutMs?:number;
+  sleep?:(ms:number,signal:AbortSignal)=>Promise<void>;
+  cache?:MetadataCache;
+}
+export function retryAfterMilliseconds(value:string|null,now=Date.now()) {
+  if(!value) return 0;
+  const seconds=Number(value);
+  return Number.isFinite(seconds) ? Math.max(0,seconds*1000) : Math.max(0,Date.parse(value)-now)||0;
+}
 export class ScryfallClient implements MetadataResolver {
   private lastRequest = 0;
+  private cooldownUntil = 0;
+  private pace:number;
   private sets: { code: string; name: string }[] | null = null;
   private sessionMetadata: Record<string, CardMetadata> = {};
   private sessionNames: Record<string, string> = {};
+  private sessionErrors = new Map<string,string>();
   constructor(
     private fetcher: typeof fetch = (input, init) => fetch(input, init),
-    private interval = 120,
-  ) {}
-  private async request(
-    path: string,
-    signal: AbortSignal,
-    body?: unknown,
-  ): Promise<unknown> {
-    for (let attempt = 0; attempt < 3; attempt++) {
-      await delay(
-        Math.max(0, this.interval - (Date.now() - this.lastRequest)),
-        signal,
-      );
-      this.lastRequest = Date.now();
-      const controller = new AbortController();
-      const abort = () => controller.abort();
-      signal.addEventListener("abort", abort, { once: true });
-      const timeout = setTimeout(abort, 20_000);
+    interval = 250,
+    private options:ScryfallOptions = {},
+  ) {this.pace=interval;}
+  private wait(ms:number,signal:AbortSignal) {return (this.options.sleep || delay)(ms,signal);}
+  private async request(path:string,signal:AbortSignal,body?:unknown):Promise<unknown> {
+    const attempts=this.options.attempts ?? 4;
+    for(let attempt=0;attempt<attempts;attempt++) {
+      signal.throwIfAborted();
+      await this.wait(Math.max(0,this.pace-(Date.now()-this.lastRequest),this.cooldownUntil-Date.now()),signal);
+      signal.throwIfAborted();
+      this.lastRequest=Date.now();
+      const controller=new AbortController();
+      const abort=()=>controller.abort();signal.addEventListener('abort',abort,{once:true});
+      const timeout=setTimeout(abort,this.options.timeoutMs ?? 20_000);
+      let failure:ServiceFailure;
       try {
-        const response = await this.fetcher(`https://api.scryfall.com${path}`, {
-          method: body ? "POST" : "GET",
-          signal: controller.signal,
-          headers: {
-            Accept: "application/json",
-            ...(body ? { "Content-Type": "application/json" } : {}),
-          },
-          ...(body ? { body: JSON.stringify(body) } : {}),
+        const response=await this.fetcher(`https://api.scryfall.com${path}`,{
+          method:body?'POST':'GET',signal:controller.signal,
+          headers:{Accept:'application/json',...(body?{'Content-Type':'application/json'}:{})},
+          ...(body?{body:JSON.stringify(body)}:{}),
         });
-        if (response.status === 429 && attempt < 2) {
-          const seconds = Number(response.headers.get("Retry-After"));
-          await delay(
-            Number.isFinite(seconds) && seconds > 0
-              ? Math.min(seconds * 1000, 5000)
-              : 1000,
-            signal,
-          );
-          continue;
+        if(response.status===404 && path.startsWith('/cards/search?')) {
+          const missing=await response.json();
+          if(missing?.object==='error' && missing?.code==='not_found') return {data:[]};
+          throw new ServiceFailure('Search failed without a confirmed Scryfall not_found response.',0,false);
         }
-        if (response.status === 404) return { data: [] };
-        if (!response.ok)
-          throw new Error(
-            `Scryfall could not complete matching (HTTP ${response.status}). Retry the preview; these rows have not been discarded.`,
-          );
+        if(!response.ok) {
+          const retryAfter=retryAfterMilliseconds(response.headers.get('Retry-After'));
+          if(response.status===429) this.pace=Math.min(2000,Math.max(500,this.pace*2));
+          throw new ServiceFailure(`Scryfall lookup failed (HTTP ${response.status}).`,retryAfter,response.status===429 || response.status>=500 || response.status===408);
+        }
         return await response.json();
-      } catch (error) {
+      } catch(error) {
         signal.throwIfAborted();
-        if (controller.signal.aborted)
-          throw new Error(
-            "Scryfall took too long to respond. Retry the preview.",
-          );
-        if (error instanceof TypeError)
-          throw new Error(
-            "Could not reach Scryfall. Check your connection and retry the preview.",
-          );
-        throw error;
-      } finally {
-        clearTimeout(timeout);
-        signal.removeEventListener("abort", abort);
-      }
+        failure=error instanceof ServiceFailure ? error : new ServiceFailure(controller.signal.aborted?'Scryfall lookup timed out.':`Could not reach Scryfall or read its response. ${message(error)}`);
+      } finally {clearTimeout(timeout);signal.removeEventListener('abort',abort);}
+      const backoff=(this.options.backoffMs ?? 1000)*2**attempt;
+      this.cooldownUntil=Math.max(this.cooldownUntil,Date.now()+Math.max(failure.retryAfter,backoff));
+      if(!failure.retryable || attempt===attempts-1) throw failure;
     }
-    throw new Error(
-      "Scryfall rate limit reached. Try the preview again shortly.",
-    );
+    throw new ServiceFailure('Scryfall lookup could not finish.');
+  }
+  private async checkpoint(cards:CardMetadata[],names:Record<string,string>) {
+    for(const card of cards) this.sessionMetadata[card.scryfallId]=card;
+    Object.assign(this.sessionNames,names);
+    // A cache write is never an inventory write; quota failure still retains session successes.
+    try {await this.options.cache?.save(cards,names);} catch { /* Session cache remains usable. */ }
   }
   async resolve(
     rows: ImportRow[],
@@ -203,8 +214,11 @@ export class ScryfallClient implements MetadataResolver {
     signal: AbortSignal,
     progress: (message: string) => void,
   ): Promise<ResolvedImport> {
-    const known = { ...this.sessionMetadata, ...metadata };
-    const names = { ...this.sessionNames, ...nameMatches };
+    let cached:{metadata:Record<string,CardMetadata>;nameMatches:Record<string,string>}={metadata:{},nameMatches:{}};
+    try {cached=await this.options.cache?.load() || cached;} catch { /* Cache is optional; ownership storage is untouched. */ }
+    signal.throwIfAborted();
+    const known = { ...cached.metadata, ...this.sessionMetadata, ...metadata };
+    const names = { ...cached.nameMatches, ...this.sessionNames, ...nameMatches };
     const results = new Map<string, Resolution>();
     const unique = [
       ...new Map(rows.map((row) => [identifierKey(row), row])).values(),
@@ -221,10 +235,19 @@ export class ScryfallClient implements MetadataResolver {
           c,
         ]),
     );
+    const interrupt=(error:unknown):never=>{
+      signal.throwIfAborted();
+      const available={...known,...this.sessionMetadata};
+      const availablePrints=new Set(Object.values(available).filter(c=>!c.printedLanguage || c.printedLanguage==='en').map(c=>`${c.setCode}:${c.collectorNumber?.toLowerCase()}`));
+      const resolved=rows.filter(row=>results.get(identifierKey(row))?.card || (row.scryfallId ? available[row.scryfallId] : availablePrints.has(`${row.setCode}:${row.collectorNumber.toLowerCase()}`))).length;
+      throw new LookupInterrupted(resolved,rows.length,error);
+    };
     const pending: ImportRow[] = [],
       fallback: ImportRow[] = [];
     for (const row of unique) {
       const key = identifierKey(row);
+      const previousError=this.sessionErrors.get(key);
+      if(previousError) {results.set(key,{error:previousError});continue;}
       if (row.scryfallId) {
         if (
           !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(
@@ -267,6 +290,8 @@ export class ScryfallClient implements MetadataResolver {
             "Scryfall returned an unexpected response. Retry the preview.",
           );
         const normalized = response.data.map(normalizeCard);
+        await this.checkpoint(normalized,{});
+        const batchResults = new Map<string,Resolution>();
         for (const row of batch) {
           const candidates = normalized.filter((c) =>
             row.scryfallId
@@ -275,7 +300,9 @@ export class ScryfallClient implements MetadataResolver {
                 c.collectorNumber?.toLowerCase() ===
                   row.collectorNumber.toLowerCase(),
           );
-          results.set(
+          if(!candidates.length && !response.not_found?.some(identifier=>row.scryfallId ? identifier.id===row.scryfallId : identifier.set===row.setCode && identifier.collector_number===row.collectorNumber))
+            throw new ServiceFailure('Scryfall returned an incomplete collection batch.');
+          batchResults.set(
             identifierKey(row),
             candidates.length === 1
               ? { card: candidates[0] }
@@ -287,13 +314,13 @@ export class ScryfallClient implements MetadataResolver {
                 },
           );
         }
+        for (const [key,value] of batchResults) {results.set(key,value);if(value.error)this.sessionErrors.set(key,value.error);}
         for (const card of normalized) known[card.scryfallId] = card;
       } catch (error) {
-        signal.throwIfAborted();
-        for (const row of batch)
-          results.set(identifierKey(row), { error: message(error) });
+        interrupt(error);
       }
     }
+
     for (const [index, row] of fallback.entries()) {
       signal.throwIfAborted();
       progress(`Checking exact names ${index + 1} of ${fallback.length}…`);
@@ -315,13 +342,13 @@ export class ScryfallClient implements MetadataResolver {
             (set) => normalizedName(set.name) === normalizedName(row.setName),
           );
           if (matches.length !== 1)
-            throw new Error(
+            throw new CardResolutionError(
               "Set name is unknown or ambiguous. Supply a set code or Scryfall ID.",
             );
           code = matches[0].code;
         }
         if (!/^[a-z0-9_]+$/.test(code))
-          throw new Error("Invalid set code. Use the ManaBox Set code column.");
+          throw new CardResolutionError("Invalid set code. Use the ManaBox Set code column.");
         const nameKey = JSON.stringify([
           normalizedName(row.name),
           code,
@@ -354,19 +381,21 @@ export class ScryfallClient implements MetadataResolver {
                   row.collectorNumber.toLowerCase()),
           );
         if (!exact.length)
-          throw new Error(
+          throw new CardResolutionError(
             "No exact name and printing match found. Supply a Scryfall ID or set + collector number.",
           );
         if (response.has_more || exact.length !== 1)
-          throw new Error(
+          throw new CardResolutionError(
             "Multiple printings match this name and set. Supply a collector number or Scryfall ID; nothing was guessed.",
           );
         results.set(key, { card: exact[0] });
         known[exact[0].scryfallId] = exact[0];
         names[nameKey] = exact[0].scryfallId;
+        await this.checkpoint([exact[0]],{[nameKey]:exact[0].scryfallId});
       } catch (error) {
         signal.throwIfAborted();
-        results.set(key, { error: message(error) });
+        if(error instanceof CardResolutionError) {results.set(key, { error: message(error) });this.sessionErrors.set(key,message(error));}
+        else interrupt(error);
       }
     }
     this.sessionMetadata = known;
@@ -394,4 +423,4 @@ export function printingConflict(
     return "Identifier conflicts with the supplied card name. Correct this row before importing.";
   return null;
 }
-export const scryfallClient = new ScryfallClient();
+export const scryfallClient = new ScryfallClient(undefined,250,{cache:new IndexedDbScryfallCache()});

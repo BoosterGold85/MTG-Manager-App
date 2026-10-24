@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.1 — Importer Reliability
+
+- Fixed service/batch failures being converted into one false Problem Row per card. Interrupted lookups now block preview and offer Retry unresolved with retained parsed input and successful lookups.
+- Added conservative exponential retries for timeouts, 429, 5xx and network/CORS failures; honored full numeric/date Retry-After and slowed request pacing to at most four starts/second, further reduced after 429.
+- Added per-batch persistent canonical metadata checkpoints outside ownership storage, with session fallback if cache persistence fails. Reopening/re-importing reuses successful metadata without restarting lookups from zero.
+- Require explicit identifier-level not_found for missing collection results; incomplete/failed batch responses remain service interruptions. Printing IDs stay authoritative.
+- Added a 4,421-row deterministic regression interrupted after 1,839 successes, full recovery across resolver recreation, stale-problem cleanup, cache reuse and unchanged re-import assertions. Added transport/backoff/cancellation tests and browser interruption/retry coverage.
+- Preserved collection quantities, confirmed-import atomicity, management and existing Card Intelligence. No further intelligence features or v0.4 work.
+
 ## 0.3.0 — Card Intelligence & Auto-Tags
 
 - Added a centralized 78-tag taxonomy and dynamic creature-type synergy signals, with 13 explainable rule modules and canonical-identity deduplication.

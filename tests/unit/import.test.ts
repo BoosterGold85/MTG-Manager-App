@@ -416,7 +416,7 @@ describe("Scryfall matching precedence, ambiguity and cache", () => {
     expect(result.next.items).toHaveLength(1000);
     expect(result.summary.problematic).toBe(0);
   });
-  it("surfaces unknown cards and network failures as retained problems", async () => {
+  it("retains confirmed unknown cards but interrupts network failures without card errors", async () => {
     const csv = exportCsv([
       solRow(1, { "Scryfall ID": "00000000-0000-4000-8000-000000000099" }),
     ]);
@@ -424,25 +424,14 @@ describe("Scryfall matching precedence, ambiguity and cache", () => {
       csv,
       null,
       new ScryfallClient(
-        vi.fn(async () => response({ data: [] })),
+        vi.fn(async () => response({ data: [], not_found: [{id:"00000000-0000-4000-8000-000000000099"}] })),
         0,
       ),
     );
     expect(unknown.problems[0].message).toContain("No Scryfall printing");
-    const offline = await plan(
-      csv,
-      null,
-      new ScryfallClient(
-        vi.fn(async () => {
-          throw new TypeError("offline");
-        }),
-        0,
-      ),
-    );
-    expect(offline.problems[0].message).toContain("Could not reach");
-    expect(offline.next.unresolved[0].raw).toEqual(
-      parseManaBox(csv).rows[0].raw,
-    );
+    await expect(plan(
+      csv,null,new ScryfallClient(vi.fn(async()=>{throw new TypeError('offline');}),0,{backoffMs:0}),
+    )).rejects.toMatchObject({name:'LookupInterrupted',resolvedRows:0,totalRows:1});
   });
   it("normalizes actual color_identity rather than visual colors and supports double-faced artwork", () => {
     const card = {

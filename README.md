@@ -1,6 +1,16 @@
-# MTG Manager · v0.3.0
+# MTG Manager · v0.3.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Import reliability patch (v0.3.1)
+
+A service outage is not a bad ManaBox row. Timeouts, rate limits, server errors, network/CORS failures and incomplete collection batches stop preview with an interruption count and **Retry unresolved**. Confirm import is unavailable until lookup completes. The parsed file stays in memory while the dialog is open; retry keeps successful matches and queries only remaining identities. After closing/reloading, choose the CSV again; successfully fetched canonical metadata is still cached on this device.
+
+Requests are sequential, at least 250 ms apart (at most four starts/second per client before response latency). Transient requests get four attempts with exponential backoff. Numeric and HTTP-date `Retry-After` are respected without a five-second cap, including cooldown before a manual retry. A 429 slows subsequent pacing further. Cancellation aborts fetches and waiting.
+
+A separate IndexedDB metadata cache checkpoints each successful batch/search before inventory confirmation. It stores canonical public card metadata and successful exact-name proofs, never CSV rows, purchases, quantities or ownership. Cache storage failure falls back to the in-memory session cache; it never writes or clears the collection. Clearing the collection can retain this public lookup cache; clearing browser site data removes it. Existing confirmed collection metadata also avoids redundant lookups. Current print metadata can remain cached until site data is cleared.
+
+Scryfall IDs remain the primary authoritative printing identifiers. Only confirmed identifier-level `not_found`, invalid IDs, ambiguous matches or genuine identifier conflicts become Problem Rows; a missing identifier in an incomplete batch is not proof of a missing card. If an earlier version saved transient failures as problem rows, re-import the original export with this patch, complete lookup, review the preview and confirm. Successfully resolved rows replace those old problems using the existing safe absolute-quantity synchronization. No automatic deletion or quantity repair is applied without confirmation.
 
 ## Manage your local collection
 
@@ -156,4 +166,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). Stop at v0.3.0; Commander Library remains the next capability layer.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.1 is an importer reliability patch on the v0.3.0 baseline; Commander Library remains unimplemented.

@@ -155,7 +155,7 @@ test("partial success keeps unknown rows and their original fields available aft
   page,
 }) => {
   await page.route("https://api.scryfall.com/**", (route) =>
-    route.fulfill({ json: { data: [], not_found: [] } }),
+    route.fulfill({ json: { data: [], not_found: [{id:"00000000-0000-4000-8000-000000000099"}] } }),
   );
   await start(page);
   let dialog = await open(page);

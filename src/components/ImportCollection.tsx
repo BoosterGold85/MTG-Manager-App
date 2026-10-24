@@ -1,3 +1,4 @@
+import { LookupInterrupted } from "../import/scryfall";
 import { useEffect, useRef, useState } from "react";
 import {
   CheckCircle2,
@@ -11,6 +12,7 @@ import type {
   CollectionState,
   ImportPlan,
   ImportProblem,
+  ParsedImport,
 } from "../models/collection";
 import { collectionRepository } from "../storage/collectionRepository";
 import { parseFile } from "../import/parseFile";
@@ -84,12 +86,13 @@ export function ImportCollection({
   repository?: CollectionRepository;
 }) {
   const [phase, setPhase] = useState<
-    "upload" | "parsing" | "preview" | "importing" | "success" | "error"
+    "upload" | "parsing" | "preview" | "importing" | "success" | "error" | "interrupted"
   >("upload");
   const [progress, setProgress] = useState("Reading your export…");
   const [plan, setPlan] = useState<ImportPlan | null>(null);
   const [saved, setSaved] = useState<CollectionState | null>(null);
   const [error, setError] = useState("");
+  const resumeInput=useRef<{parsed:ParsedImport;filename:string}|null>(null);
   const input = useRef<HTMLInputElement>(null),
     controller = useRef<AbortController | null>(null),
     mounted = useRef(true),
@@ -114,39 +117,33 @@ export function ImportCollection({
       controller.current?.abort();
     };
   }, [repository]);
-  async function choose(file: File) {
-    controller.current?.abort();
-    const next = new AbortController();
-    controller.current = next;
-    setError("");
-    setPlan(null);
-    setPhase("parsing");
-    setProgress("Reading your export…");
+  async function lookup(parsed:ParsedImport,filename:string,next:AbortController) {
+    resumeInput.current={parsed,filename};
     try {
-      const parsed = await parseFile(file, next.signal);
-      setProgress(
-        `Parsed ${parsed.totalRows.toLocaleString()} rows. Checking card identities…`,
-      );
-      const preview = await prepareImport(
-        parsed,
-        file.name,
-        repository,
-        next.signal,
-        (message) => {
-          if (mounted.current) setProgress(message);
-        },
-      );
-      if (mounted.current && !next.signal.aborted) {
-        setPlan(preview);
-        setPhase("preview");
+      const preview=await prepareImport(parsed,filename,repository,next.signal,message=>{if(mounted.current)setProgress(message);});
+      if(mounted.current && !next.signal.aborted) {setPlan(preview);setPhase('preview');}
+    } catch(reason) {
+      if(mounted.current && !next.signal.aborted) {
+        setPlan(null);
+        setError(reason instanceof Error?reason.message:'Could not complete card lookup.');
+        setPhase(reason instanceof LookupInterrupted?'interrupted':'error');
       }
-    } catch (reason) {
-      if (mounted.current && !next.signal.aborted) {
-        setError(
-          reason instanceof Error ? reason.message : "Could not read this CSV.",
-        );
-        setPhase("error");
-      }
+    }
+  }
+  async function retryUnresolved() {
+    const input=resumeInput.current;if(!input) return;
+    controller.current?.abort();const next=new AbortController();controller.current=next;
+    setError('');setPlan(null);setPhase('parsing');setProgress('Retrying remaining card lookups. Successful matches are cached…');
+    await lookup(input.parsed,input.filename,next);
+  }
+  async function choose(file:File) {
+    controller.current?.abort();const next=new AbortController();controller.current=next;
+    resumeInput.current=null;setError('');setPlan(null);setPhase('parsing');setProgress('Reading your export…');
+    try {
+      const parsed=await parseFile(file,next.signal);
+      if(!next.signal.aborted) await lookup(parsed,file.name,next);
+    } catch(reason) {
+      if(mounted.current && !next.signal.aborted) {setError(reason instanceof Error?reason.message:'Could not read this CSV.');setPhase('error');}
     }
   }
   async function commit() {
@@ -205,6 +202,7 @@ export function ImportCollection({
             <p>{error}</p>
           </div>
         )}
+        {phase === 'interrupted' && <section className="sync-note"><h3>Your file is safe</h3><p>Card lookup could not finish. Successful matches have been cached. No collection changes were saved and the remaining cards have not been marked as bad CSV rows.</p><p>Check your connection, then retry unresolved lookups. You can also choose a different file.</p><button className="text-button" onClick={()=>input.current?.click()}>Choose another CSV</button></section>}
         <input
           ref={input}
           type="file"
@@ -418,7 +416,7 @@ export function ImportCollection({
                 : "Save problem rows"}
             </button>
           </>
-        ) : phase === "success" ? (
+        ) : phase === 'interrupted' ? <><button className="text-button" onClick={onClose}>Cancel</button><button className="primary-button" onClick={()=>void retryUnresolved()}>Retry unresolved</button></> : phase === "success" ? (
           <button className="primary-button" onClick={onClose}>
             Return to binder
           </button>
