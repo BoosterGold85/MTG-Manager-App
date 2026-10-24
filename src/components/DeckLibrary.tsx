@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Crown, Plus, ArrowLeft, Settings2, FileUp } from "lucide-react";
+import { Crown, Plus, ArrowLeft, Settings2, FileUp, Trash2 } from "lucide-react";
 import type { CollectionState } from "../models/collection";
 import { collectionCards, emptyCollection } from "../models/collection";
 import type { Deck, DeckCommander } from "../models/deck";
@@ -277,17 +277,29 @@ export function DeckLibrary({
                 {identityLabel(deck)} · {ownershipLine(deck)}
               </p>
             </div>
-            <button
-              className="management-button"
-              onClick={() => {
-                setName(deck.name);
-                setModal("rename");
-                setError("");
-              }}
-            >
-              <Settings2 size={16} />
-              Edit Deck
-            </button>
+            <span className="deck-heading-actions">
+              <button
+                className="management-button"
+                onClick={() => {
+                  setName(deck.name);
+                  setModal("rename");
+                  setError("");
+                }}
+              >
+                <Settings2 size={16} />
+                Edit Deck
+              </button>
+              <button
+                className="danger-button"
+                onClick={() => {
+                  setModal("delete");
+                  setError("");
+                }}
+              >
+                <Trash2 size={16} />
+                Delete this deck
+              </button>
+            </span>
           </div>
           <p className="deck-warning">
             Color identity is enforced. Other Commander rules, singleton limits,
@@ -620,8 +632,9 @@ export function DeckLibrary({
               <>
                 <p>
                   Delete {deck.name}? All {assignedCount(deck)} assigned copies will
-                  return to Available. Collection cards and ManaBox are
-                  unchanged.
+                  return to Available
+                  {deck.entries ? ` and its ${deckOwnership(deck).missing} missing decklist cards are discarded` : ""}.
+                  Collection cards and ManaBox are unchanged.
                 </p>
                 <button
                   className="danger-button"
