@@ -19,7 +19,7 @@ Baseline: `9dfb0a7` (v0.4.1 ManaBox Deck Import plus the importer reliability fi
 
 ## Validation results
 
-**Passed:** lint; **236 unit tests** (228 + 8); production build; `TEST_PRODUCTION=1 npm test`: **255 browser tests** across 360×800, 390×844, 430×932, 768×1024 and 1440×1000 (240 + 15, 7.9 min); `npm audit`: **0 vulnerabilities**; `git diff --check`. Existing suites ran unchanged except the backup version string (`0.4.2`).
+**Passed:** lint; **236 unit tests** (228 + 8); production build; `TEST_PRODUCTION=1 npm test`: **260 browser tests** across 360×800, 390×844, 430×932, 768×1024 and 1440×1000 (255 existing + 5 large-import cases, 10.0 min); `npm audit`: **0 vulnerabilities**; `git diff --check`. Existing suites ran unchanged except the backup version string (`0.4.2`).
 
 ## Known limitations
 
@@ -28,3 +28,15 @@ Baseline: `9dfb0a7` (v0.4.1 ManaBox Deck Import plus the importer reliability fi
 - Swipe navigation is not implemented; explicit arrows and keys are.
 - Manual tag edits from deck detail are available for owned cards only (same rule as Collection).
 - Cloudflare deployment is not verifiable from this environment.
+
+## Release integration and large-import recheck
+
+The release branch `claude/adoring-rubin-mcl0j1` at `da1eb9a` was reviewed and integrated as a fast-forward from `main` at `9dfb0a7`. This retains the v0.4.1 deck-import implementation, the unexpected-card importer fix and all v0.4.2 browsing/deletion commits.
+
+`tests/browser/importReliability.spec.ts` adds one workflow at all five viewports: upload a generated 4,421-row CSV through the real file input, simulate a 503 after 1,800 successful lookups, and return malformed canonical metadata for one printing later in the file. Preview must finish with **4,420 recognized / 1 problem**, not thousands of false problem rows. Confirm, reload, correct the simulated card response and re-import: only that one ID is requested; all **4,421** rows are recognized, **4,420 unchanged / 1 new**, with no remaining problem rows. A third identical import makes **zero requests** and reports **4,421 unchanged**. Successful IDs are asserted not to be requested again. The existing unit regression still verifies interruption at **1,839 / 4,421**, durable-cache resume, full recovery and cleanup of old false problems.
+
+These are deterministic tests with generated CSV data and intercepted Scryfall responses. The original private ManaBox CSV was not supplied, so this is not a claim of testing that exact file or the live service.
+
+Integration validation: **260 production browser tests passed** across all five approved sizes in **10.0 minutes**, with no skips. The targeted mobile importer run also passed both tests. Lint, **236 unit tests**, production build, dependency audit (**0 vulnerabilities**) and `git diff --check` pass on the integrated code.
+
+Cloudflare deployment remains **unverified**. No Cloudflare deployment connector/CLI is configured, and the GitHub commit-status API returns `Forbidden`; a Git-triggered Cloudflare deployment cannot be confirmed from this environment. No v0.5.0 code was added.

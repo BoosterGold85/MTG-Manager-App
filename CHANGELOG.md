@@ -8,7 +8,8 @@
 - Unified deck grid: one tile per assigned printing group plus one per entry's unassigned remainder. A Deck entry section distinguishes the assigned printing, "Physical assignment: None", owned elsewhere, and not currently owned. No printing is substituted or fabricated.
 - Card Intelligence for unowned decklist cards is computed locally once per canonical card and ruleset and reused; browsing causes no recalculation or network requests. Detail artwork resets per card.
 - Added a direct Delete this deck action on the deck screen (same confirmation and safety).
-- Added 8 unit tests and 3 browser workflows (15 cases across five sizes). All prior suites remain green. No Deck DNA or v0.5.0 work.
+- Added a release regression uploading 4,421 CSV rows with a transient batch failure and one malformed printing, repairing only that row on re-import and verifying cache reuse across all five sizes.
+- Added 8 unit tests and 3 browsing workflows (15 cases across five sizes). All prior suites remain green. No Deck DNA or v0.5.0 work.
 
 ## 0.4.1 — ManaBox Deck Import
 
