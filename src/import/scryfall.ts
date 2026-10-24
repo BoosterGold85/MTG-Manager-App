@@ -29,6 +29,8 @@ interface ScryfallCard {
   image_uris?: { normal?: string; large?: string };
   card_faces?: {
     name?: string;
+    oracle_id?: string;
+    cmc?: number;
     type_line?: string;
     keywords?: string[];
     power?: string;
@@ -61,7 +63,17 @@ export interface MetadataResolver {
     progress: (message: string) => void,
   ): Promise<ResolvedImport>;
 }
-export function normalizeCard(c: ScryfallCard): CardMetadata {
+export function normalizeCard(raw: ScryfallCard): CardMetadata {
+  // Reversible cards (e.g. Secret Lair) carry type line, mana value and oracle ID only on their faces.
+  const faces = raw.card_faces || [];
+  const c: ScryfallCard = {
+    ...raw,
+    oracle_id: raw.oracle_id ?? faces[0]?.oracle_id,
+    cmc: raw.cmc ?? faces[0]?.cmc ?? (faces.length ? 0 : raw.cmc),
+    type_line:
+      raw.type_line ||
+      [...new Set(faces.map((f) => f.type_line).filter(Boolean))].join(" // "),
+  };
   if (
     !c.id ||
     !c.name ||
@@ -112,6 +124,26 @@ export function normalizeCard(c: ScryfallCard): CardMetadata {
     ].filter((n): n is string => Boolean(n)),
   };
 }
+// One malformed printing must never stall a whole batch: it becomes a problem for its own row only.
+function normalizeAll(data: ScryfallCard[]) {
+  const cards: CardMetadata[] = [];
+  const malformed: ScryfallCard[] = [];
+  for (const card of data) {
+    try {
+      cards.push(normalizeCard(card));
+    } catch {
+      malformed.push(card);
+    }
+  }
+  return { cards, malformed };
+}
+const samePrint = (
+  card: { set?: string; collector_number?: string; setCode?: string; collectorNumber?: string },
+  set: string,
+  number: string,
+) =>
+  (card.set ?? card.setCode ?? "").toLowerCase() === set.toLowerCase() &&
+  (card.collector_number ?? card.collectorNumber ?? "").toLowerCase() === number.toLowerCase();
 const delay = (ms: number, signal: AbortSignal) =>
   new Promise<void>((resolve, reject) => {
     signal.throwIfAborted();
@@ -131,7 +163,7 @@ const message = (error: unknown) =>
     : "Scryfall is unavailable. Try preparing this preview again.";
 export class LookupInterrupted extends Error {
   constructor(public resolvedRows:number,public totalRows:number,public cause:unknown) {
-    super(`Card lookup was interrupted after ${resolvedRows.toLocaleString()} of ${totalRows.toLocaleString()} rows. Your file is intact. Retry remaining cards.`);
+    super(`Card lookup was interrupted after ${resolvedRows.toLocaleString()} of ${totalRows.toLocaleString()} rows. Your file is intact. Retry remaining cards.${cause instanceof Error && cause.message ? ` (${cause.message})` : ""}`);
     this.name='LookupInterrupted';
   }
 }
@@ -289,28 +321,40 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
           throw new Error(
             "Scryfall returned an unexpected response. Retry the preview.",
           );
-        const normalized = response.data.map(normalizeCard);
+        const { cards: normalized, malformed } = normalizeAll(response.data);
         await this.checkpoint(normalized,{});
         const batchResults = new Map<string,Resolution>();
-        for (const row of batch) {
-          const candidates = normalized.filter((c) =>
+        const notFound = (row: ImportRow) => response.not_found?.some(identifier=>row.scryfallId ? identifier.id?.toLowerCase()===row.scryfallId : samePrint(identifier,row.setCode,row.collectorNumber));
+        const direct = (row: ImportRow) => normalized.filter((c) =>
             row.scryfallId
               ? c.scryfallId === row.scryfallId
-              : c.setCode.toLowerCase() === row.setCode &&
-                c.collectorNumber?.toLowerCase() ===
-                  row.collectorNumber.toLowerCase(),
+              : samePrint(c,row.setCode,row.collectorNumber),
           );
-          if(!candidates.length && !response.not_found?.some(identifier=>row.scryfallId ? identifier.id===row.scryfallId : identifier.set===row.setCode && identifier.collector_number===row.collectorNumber))
-            throw new ServiceFailure('Scryfall returned an incomplete collection batch.');
+        const claimed = new Set(batch.flatMap(row=>direct(row).map(c=>c.scryfallId)));
+        // Scryfall answered every identifier (found + not_found); leftovers are per-row answers, not an outage.
+        const answered = response.data.length + (response.not_found?.length || 0) >= batch.length;
+        for (const row of batch) {
+          let candidates = direct(row);
+          // A migrated Scryfall ID returns the same printing under a new ID: accept only an exact set/number/name match.
+          if (!candidates.length && row.scryfallId && row.setCode && row.collectorNumber)
+            candidates = normalized.filter(c=>!claimed.has(c.scryfallId) && samePrint(c,row.setCode,row.collectorNumber) && (!row.name || [c.name,...(c.aliases||[])].some(n=>normalizedName(n)===normalizedName(row.name))));
+          let error: string | undefined;
+          if (!candidates.length && !notFound(row)) {
+            const broken = malformed.some(c=>row.scryfallId ? c.id===row.scryfallId : samePrint(c,row.setCode,row.collectorNumber));
+            if (broken) error = "Scryfall returned incomplete metadata for this printing. It was not imported; retry later or report the card.";
+            else if (answered) error = "Scryfall returned a different card for this identifier. Correct the Scryfall ID or set and collector number.";
+            else throw new ServiceFailure('Scryfall returned an incomplete collection batch.');
+          }
           batchResults.set(
             identifierKey(row),
             candidates.length === 1
               ? { card: candidates[0] }
               : {
                   error:
-                    candidates.length > 1
+                    error ||
+                    (candidates.length > 1
                       ? "Ambiguous printing. Supply a Scryfall ID."
-                      : "No Scryfall printing found for this identifier. Correct the ID or printing information.",
+                      : "No Scryfall printing found for this identifier. Correct the ID or printing information."),
                 },
           );
         }
@@ -370,8 +414,7 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
           throw new Error(
             "Scryfall returned an unexpected search response. Retry the preview.",
           );
-        const exact = response.data
-          .map(normalizeCard)
+        const exact = normalizeAll(response.data).cards
           .filter(
             (c) =>
               normalizedName(c.name) === normalizedName(row.name) &&
@@ -430,8 +473,9 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
         })) as ListResponse;
         if (!Array.isArray(response.data))
           throw new ServiceFailure("Scryfall returned an unexpected response. Retry the preview.");
-        const normalized = response.data.map(normalizeCard);
+        const { cards: normalized } = normalizeAll(response.data);
         await this.checkpoint(normalized, {});
+        const answered = response.data.length + (response.not_found?.length || 0) >= batch.length;
         const batchResults: DeckLookupResult = new Map();
         for (const id of batch) {
           const card = normalized.find((c) =>
@@ -445,7 +489,7 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
               ? nf.set?.toLowerCase() === id.set && nf.collector_number?.toLowerCase() === id.collector_number
               : normalizedName(nf.name || "") === normalizedName(id.name || ""),
           );
-          if (!card && !missing)
+          if (!card && !missing && !answered)
             throw new ServiceFailure("Scryfall returned an incomplete collection batch.");
           batchResults.set(id.key, card || null);
         }

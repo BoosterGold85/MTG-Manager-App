@@ -90,3 +90,28 @@ it('cancels backoff promptly and retains session successes if durable cache fail
  // Same client keeps 75 successful identities although its persistent cache was unavailable.
  const before=calls;const result=await client.resolve(rows,{}, {},signal(),()=>{});expect(result.results.size).toBe(76);expect(fetcher).toHaveBeenCalledTimes(before+1);
 });
+it('one unexpected card never stalls a whole batch: reversible faces, malformed metadata, migrated IDs and mismatches are per-row outcomes',async()=>{
+ const cards=records(6);
+ const parsed=parseManaBox(exportCsv(cards.map(c=>fixtureRow(c))));
+ const reversible={...apiCard(cards[1]),layout:'reversible_card',type_line:undefined,cmc:undefined,oracle_id:undefined,card_faces:[{name:'Card 1',oracle_id:'face-oracle',cmc:2,type_line:'Legendary Creature — Elf',image_uris:{normal:'n.jpg'}},{name:'Card 1',cmc:2,type_line:'Legendary Creature — Elf'}]};
+ const malformed={...apiCard(cards[2]),color_identity:undefined};
+ const migrated={...apiCard(cards[3]),id:'99999999-0000-4000-8000-000000000003'};
+ const different={...apiCard(cards[0]),id:'99999999-0000-4000-8000-000000000004',name:'Unrelated',set:'zzz',collector_number:'1'};
+ const fetcher=vi.fn(async()=>response({data:[apiCard(cards[0]),reversible,malformed,migrated,different,apiCard(cards[5])],not_found:[]}));
+ const result=await new ScryfallClient(fetcher,0,options).resolve(parsed.rows,{},{},signal(),()=>{});
+ const at=(i:number)=>result.results.get(`id:${cards[i].scryfallId}`)!;
+ expect(at(0).card!.name).toBe('Card 0');
+ expect(at(1).card).toMatchObject({typeLine:'Legendary Creature — Elf',manaValue:2,oracleId:'face-oracle'});
+ expect(at(2).error).toMatch(/incomplete metadata for this printing/);
+ expect(at(3).card!.scryfallId).toBe('99999999-0000-4000-8000-000000000003');
+ expect(at(4).error).toMatch(/different card/);
+ expect(at(5).card!.name).toBe('Card 5');
+ const plan=buildImportPlan(parsed,result,null,'ManaBox.csv');
+ expect(plan.summary.recognized).toBe(4);expect(plan.problems.map(p=>p.name)).toEqual(['Card 2','Card 4']);
+});
+it('a short response is still an interruption, and the message names the underlying cause',async()=>{
+ const cards=records(3);
+ const parsed=parseManaBox(exportCsv(cards.map(c=>fixtureRow(c))));
+ await expect(new ScryfallClient(vi.fn(async()=>response({data:[apiCard(cards[0])],not_found:[]})),0,options).resolve(parsed.rows,{},{},signal(),()=>{})).rejects.toThrow(/interrupted after 1 of 3 rows.*\(Scryfall returned an incomplete collection batch\.\)/);
+ await expect(new ScryfallClient(vi.fn(async()=>response({},503)),0,options).resolve(parsed.rows,{},{},signal(),()=>{})).rejects.toThrow(/\(Scryfall lookup failed \(HTTP 503\)\.\)/);
+});
