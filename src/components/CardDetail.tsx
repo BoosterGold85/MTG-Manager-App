@@ -1,3 +1,5 @@
+import { InThisDeck } from './InThisDeck';
+import type { CardSynergy } from '../dna/engine';
 import { useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { deckUsage } from '../decks/decks';
@@ -35,6 +37,7 @@ export function CardDetail({
   onSaveTags,
   deck,
   navigation,
+  synergy,
 }: {
   card: SampleCollectionCard;
   collection?: CollectionState|null;
@@ -44,6 +47,7 @@ export function CardDetail({
   onSaveTags?: (override:Override) => Promise<void>;
   deck?: DeckDetailContext;
   navigation?: DetailNavigation;
+  synergy?: CardSynergy;
 }) {
   const layout = useRef<HTMLDivElement>(null);
   // Card content is swapped in place; start each card at its logical top.
@@ -198,6 +202,7 @@ export function CardDetail({
           )}
           {onRemove && <div className="danger-zone"><button className="danger-button" onClick={onRemove}>Remove from Collection</button></div>}
           <CardIntelligence key={card.id} card={card} onSave={onSaveTags} />
+          {deck && synergy && <InThisDeck synergy={synergy}/>}
           {collection && card.ownership && <section className="deck-usage" aria-label="Deck Usage"><h3>Deck Usage</h3><p>Owned: {card.ownership.quantityOwned} · Available: {card.ownership.quantityUnassigned} · Assigned: {card.ownership.quantityAssigned}</p>{card.ownership.quantityAssigned>card.ownership.quantityOwned&&<p className="deck-error">Allocation conflict: inventory needs reconciliation.</p>}{deckUsage(collection,card.id).map(u=><p key={u.deck.id}><button className="text-button" onClick={()=>onOpenDeck?.(u.deck.id)}>{u.deck.name} ×{u.quantity}</button></p>)}{!card.ownership.quantityAssigned&&<p>No deck assignments.</p>}</section>}
         </div>
       </div>

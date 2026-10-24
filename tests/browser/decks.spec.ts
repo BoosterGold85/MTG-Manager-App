@@ -279,7 +279,7 @@ test("actual ManaBox re-import preserves assignments, exposes shortages and expo
   const chunks: Buffer[] = [];
   for await (const chunk of stream!) chunks.push(chunk);
   const backup = JSON.parse(Buffer.concat(chunks).toString());
-  expect(backup.applicationVersion).toBe("0.4.2");
+  expect(backup.applicationVersion).toBe("0.5.0");
   expect(backup.collection.decks[0].name).toBe("Persistent Deck");
   expect(backup.collection.decks[0].assignments[0].quantity).toBe(1);
   expect(backup.collection.decks[0].commanders[0].itemId).toBeTruthy();

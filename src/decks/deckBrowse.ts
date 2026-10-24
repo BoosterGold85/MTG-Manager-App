@@ -1,9 +1,11 @@
+import { cardSynergy } from "../dna/engine";
+import type { DeckDna } from "../dna/engine";
 import type { SampleCollectionCard, Color } from "../models/card";
 import type { CardMetadata, CollectionItem, CollectionState } from "../models/collection";
 import type { Deck, DecklistEntry } from "../models/deck";
 import { collectionCards } from "../models/collection";
-import { analyze, cardIdentity, effectiveAssignments, needsAnalysis } from "../intelligence/tagger";
-import type { AutoAnalysis } from "../intelligence/types";
+import { effectiveAssignments } from "../intelligence/tagger";
+import { deckCardAnalysis } from "../intelligence/canonicalAnalysis";
 import { entryAssigned, sameCard } from "./decks";
 
 // One browsable deck card: either copies assigned from one printing group, or a decklist
@@ -19,8 +21,10 @@ export interface DeckRow {
   ownedElsewhere: number;
   availableElsewhere: number;
 }
-export type DeckSort = "type" | "name-asc" | "name-desc" | "mv-asc" | "mv-desc" | "color" | "set";
+export type DeckSort = "type" | "name-asc" | "name-desc" | "mv-asc" | "mv-desc" | "color" | "set" | "synergy-desc" | "synergy-asc";
 export const deckSortLabels: Record<DeckSort, string> = {
+  "synergy-desc": "Synergy High → Low",
+  "synergy-asc": "Synergy Low → High",
   type: "Card Type",
   "name-asc": "Name A–Z",
   "name-desc": "Name Z–A",
@@ -31,25 +35,14 @@ export const deckSortLabels: Record<DeckSort, string> = {
 };
 export const deckTypes = ["Creature", "Instant", "Sorcery", "Artifact", "Enchantment", "Planeswalker", "Battle", "Land"] as const;
 export interface DeckFilters {
+  theme?: string;
   query: string;
   type: "" | (typeof deckTypes)[number] | "Other";
   ownership: "" | "assigned" | "missing";
 }
 export const emptyDeckFilters = (): DeckFilters => ({ query: "", type: "", ownership: "" });
 
-// Canonical analysis for decklist cards that are not in the collection. Computed once per
-// canonical identity and ruleset; browsing reuses the cached result.
-const unownedAnalysis = new Map<string, AutoAnalysis>();
-export function deckCardAnalysis(state: CollectionState, card: CardMetadata): AutoAnalysis {
-  const identity = cardIdentity(card);
-  const saved = state.intelligence?.auto[identity];
-  if (saved && !needsAnalysis(card, saved)) return saved;
-  const cached = unownedAnalysis.get(identity);
-  if (cached && !needsAnalysis(card, cached)) return cached;
-  const result = analyze(card);
-  unownedAnalysis.set(identity, result);
-  return result;
-}
+export { deckCardAnalysis } from "../intelligence/canonicalAnalysis";
 function canonicalCard(state: CollectionState, scryfallId: string, id: string): SampleCollectionCard {
   const card = state.metadata[scryfallId];
   const analysis = deckCardAnalysis(state, card);
@@ -134,9 +127,14 @@ const tieBreak = (a: DeckRow, b: DeckRow) =>
   printing(a)[0].localeCompare(printing(b)[0]) ||
   printing(a)[1].localeCompare(printing(b)[1], "en", { numeric: true }) ||
   a.key.localeCompare(b.key);
-export function sortDeckRows(rows: DeckRow[], sort: DeckSort): DeckRow[] {
+export function sortDeckRows(rows: DeckRow[], sort: DeckSort, dna?:DeckDna): DeckRow[] {
   const compare = (a: DeckRow, b: DeckRow): number => {
     switch (sort) {
+      case "synergy-desc":
+      case "synergy-asc": {
+        const difference=(dna?cardSynergy(dna,a.card)?.score||0:0)-(dna?cardSynergy(dna,b.card)?.score||0:0);
+        return (sort==='synergy-desc'?-difference:difference)||tieBreak(a,b);
+      }
       case "name-asc":
         return tieBreak(a, b);
       case "name-desc":
@@ -161,15 +159,16 @@ export function sortDeckRows(rows: DeckRow[], sort: DeckSort): DeckRow[] {
   };
   return [...rows].sort(compare);
 }
-export function filterDeckRows(rows: DeckRow[], filters: DeckFilters): DeckRow[] {
+export function filterDeckRows(rows: DeckRow[], filters: DeckFilters, dna?:DeckDna): DeckRow[] {
   const query = filters.query.trim().toLowerCase();
   return rows.filter(
     (row) =>
+      (!filters.theme || !!(dna&&cardSynergy(dna,row.card)?.connections.some(c=>c.themeId===filters.theme))) &&
       (!query || row.name.toLowerCase().includes(query)) &&
       (!filters.type || typeGroup(row.card) === filters.type) &&
       (!filters.ownership || (filters.ownership === "assigned") === row.assigned),
   );
 }
 // The browsable sequence used by both the grid and Card Detail Previous/Next.
-export const visibleDeckRows = (rows: DeckRow[], sort: DeckSort, filters: DeckFilters) =>
-  sortDeckRows(filterDeckRows(rows, filters), sort);
+export const visibleDeckRows = (rows: DeckRow[], sort: DeckSort, filters: DeckFilters, dna?:DeckDna) =>
+  sortDeckRows(filterDeckRows(rows, filters,dna), sort,dna);

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 — Deck DNA Core
+
+- Added a local deterministic derived Deck DNA engine over canonical Card Intelligence: bounded theme families, repeated-strategy weighting, capped Commander reinforcement and normalized explanatory weights. Missing/unassigned cards count equally; no taxonomy, ownership or persistence schema changes.
+- Added evidence-led What This Deck Does, Core Plan and strategy anchors, with explicit weak-evidence fallbacks and inspectable contributing subthemes/cards. No generated win claims or LLM services.
+- Added coarse per-card Synergy with theme overlap, Commander connections, payoff/enabler roles, actual evidence and score components; excluded price, popularity and generic power.
+- Added In This Deck to shared deck Card Detail, Synergy sorts and lightweight DNA theme filtering. Previous/Next uses the same filtered/sorted sequence; ordinary Collection detail is unchanged.
+- Added canonical-content/ruleset caching, ownership-neutral reuse and semantic-change invalidation. Shared the existing canonical analysis cache through a small extraction to avoid duplicate per-printing analysis and a module dependency cycle. Backups retain all original fields with the new app version.
+- Added four strategy regression decks, analytical/caching/performance tests and responsive browser workflows. Preserved all approved importer/collection/allocation/navigation/intelligence/PWA regressions. No v0.6.0 features.
+
 ## 0.4.2 — Deck Browsing & Card Navigation
 
 - Deck cards open the shared Card Detail (the same component as Collection) with Oracle text, Keywords, Card Intelligence, manual tag overrides, evidence and Deck Usage. Collection detail is unchanged when no deck context is supplied.

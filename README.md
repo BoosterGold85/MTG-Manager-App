@@ -1,6 +1,20 @@
-# MTG Manager · v0.4.2
+# MTG Manager · v0.5.0
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Deck DNA Core (v0.5.0)
+
+Each saved deck now explains its **Deck DNA**, **What This Deck Does** and **Core Plan** above the existing Basic Composition and card browser. Primary themes are normalized descriptive weights, not probabilities, power levels, card quality or raw tag-count percentages. Usually four to seven themes are shown; sparse evidence produces fewer themes instead of invented filler. Open **How these themes are weighted** for contributing subthemes, cards, Commander reinforcement and original Card Intelligence evidence.
+
+Analysis includes the entire conceptual decklist, including missing cards and unassigned commanders. Related tags are grouped into presentation families (Graveyard, Counters, Tokens, Sacrifice/Death Payoffs and others); the universal taxonomy is unchanged. Repeated strategies and explicit payoffs carry more weight than characteristics. Commander reinforcement is amplified but capped; unsupported Commander themes cannot replace the actual decklist's strategy. Summaries use deterministic evidence-led templates and do not invent win conditions or turn sequences.
+
+**Synergy High → Low / Low → High** sorts each non-Commander card by its fit within this deck. Only these sort modes emphasize a Synergy metric on tiles. Open a card's **In This Deck** section for theme connections, Commander links, roles, source evidence and a coarse score breakdown. Card Intelligence continues to describe the card generally; deck-relative reasoning stays separate. Scores use five-point steps: nearby values mean similar fit, and a low theme score does not mean a utility card is bad. No price, popularity, external rankings or LLM/API analysis is used.
+
+Select a displayed DNA theme or use **Deck DNA theme** in the existing controls to browse its contributors. Search, type and ownership filters still combine with sorting, and Previous/Next follows the exact visible sequence and position. Missing cards remain fully browsable.
+
+Derived DNA uses a bounded in-memory cache keyed by deck ID, stable conceptual-content revision, DNA version and Card Intelligence ruleset. Add/remove/Commander/metadata/manual-tag changes invalidate it; browsing and ownership-only changes reuse it. An unchanged deck reopens from cache; reload safely rebuilds it locally. No database migration or persisted derived data is needed, and backups retain their existing collection/deck/source/correction fields with release version 0.5.0.
+
+See [v0.5.0 validation and methodology](docs/VALIDATION-v0.5.0.md) for weights, regression decks, limitations and commands. v0.4.2 is approved. No v0.6.0 recommendations, cuts, optimization or new-set work is implemented.
 
 ## Deck Browsing & Card Navigation (v0.4.2)
 
@@ -45,7 +59,7 @@ For every record, assigned count is the sum of commander reservations and deck-c
 
 Removing or clearing allocated collection records is blocked with an explanation: release their deck assignments first. This prevents dangling deck references. Once assignments are released, the existing removal/typed-clear flow works normally. Deleting decks never deletes collection cards.
 
-**Export Backup** retains all prior collection/metadata/import/intelligence/source fields and now includes decks, commander selections, assignments and printing references under `collection.decks`. Backup restore, server persistence, accounts, cloud sync, deck history, full rules validation and all v0.5.0 Deck DNA features remain unimplemented. Data survives browser restarts on this origin/device; clearing site storage removes it. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md).
+**Export Backup** retains all prior collection/metadata/import/intelligence/source fields and now includes decks, commander selections, assignments and printing references under `collection.decks`. Backup restore, server persistence, accounts, cloud sync, deck history, full rules validation and all v0.6.0 recommendation features remain unimplemented. Data survives browser restarts on this origin/device; clearing site storage removes it. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md).
 
 ## Visual identity
 
@@ -203,7 +217,7 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
-See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for current release results, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.5.0 validation](docs/VALIDATION-v0.5.0.md) for current results, [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for browsing, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
 
 ## Deploy to Cloudflare Pages
 
@@ -235,4 +249,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.1 is approved; v0.4.2 Deck Browsing & Card Navigation is current. Work stops before v0.5.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is current. Work stops before v0.6.0.

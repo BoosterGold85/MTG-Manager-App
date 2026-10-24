@@ -1,3 +1,5 @@
+import { DeckDnaPanel } from './DeckDnaPanel';
+import { deckDnaCache, cardSynergy } from '../dna/engine';
 import { useMemo, useState } from "react";
 import { Crown, Plus, ArrowLeft, Settings2, FileUp, Trash2 } from "lucide-react";
 import type { CollectionState } from "../models/collection";
@@ -104,11 +106,14 @@ export function DeckLibrary({
   };
   const conflicts = state ? allocationConflicts(state) : [];
   const rows = useMemo(() => (state && deck ? deckRows(state, deck) : []), [state, deck]);
+  const dna=useMemo(()=>state&&deck?deckDnaCache.get(state,deck):null,[state,deck]);
   // The exact sequence shown in the grid is the Previous/Next sequence.
-  const visible = useMemo(() => visibleDeckRows(rows, sort, deckFilters), [rows, sort, deckFilters]);
-  const filtering = !!(deckFilters.query || deckFilters.type || deckFilters.ownership);
+  const visible = useMemo(() => visibleDeckRows(rows, sort, deckFilters,dna||undefined), [rows, sort, deckFilters,dna]);
+  const filtering = !!(deckFilters.query || deckFilters.type || deckFilters.ownership || deckFilters.theme);
   const caption = (row: DeckRow) =>
-    sort === "mv-asc" || sort === "mv-desc"
+    sort === "synergy-desc" || sort === "synergy-asc"
+      ? `SYNERGY ${dna ? cardSynergy(dna,row.card)?.score||0 : 0}`
+      : sort === "mv-asc" || sort === "mv-desc"
       ? `MV ${row.card.manaValue}`
       : sort === "type"
         ? typeGroup(row.card).toUpperCase()
@@ -369,6 +374,7 @@ export function DeckLibrary({
               <p className="deck-warning">Partner/Background pairing rules are not validated.</p>
             )}
           </section>
+          {dna&&<DeckDnaPanel dna={dna} selected={deckFilters.theme||''} onSelect={theme=>{setDeckFilters(f=>({...f,theme}));setTab('deck');setDetail(null);}}/>}
           {(() => {
             const stats = deckStats(state!, deck);
             return (
@@ -424,6 +430,7 @@ export function DeckLibrary({
                   Search this deck
                   <input type="search" value={deckFilters.query} onChange={(e) => setDeckFilters((f) => ({ ...f, query: e.target.value }))} />
                 </label>
+                {dna&&<label>Deck DNA theme<select value={deckFilters.theme||''} onChange={e=>setDeckFilters(f=>({...f,theme:e.target.value}))}><option value="">All themes</option>{dna.themes.map(theme=><option key={theme.id} value={theme.id}>{theme.label}</option>)}</select></label>}
                 <label>
                   Card type
                   <select value={deckFilters.type} onChange={(e) => setDeckFilters((f) => ({ ...f, type: e.target.value as DeckFilters["type"] }))}>
@@ -794,6 +801,7 @@ export function DeckLibrary({
         return (
           <CardDetail
             card={row.card}
+            synergy={dna?cardSynergy(dna,row.card):undefined}
             collection={state}
             onOpenDeck={(id) => { setDetail(null); onOpen(id); }}
             onClose={() => setDetail(null)}
