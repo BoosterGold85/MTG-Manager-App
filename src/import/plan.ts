@@ -202,6 +202,7 @@ export function buildImportPlan(
     summary,
     next: {
       schemaVersion: 1,
+      ...(base.intelligence ? {intelligence: base.intelligence} : {}),
       revision: base.revision + 1,
       items: [...items.values()],
       metadata,

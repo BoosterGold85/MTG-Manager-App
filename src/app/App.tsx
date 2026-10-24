@@ -1,3 +1,9 @@
+import { tagCollection, tagInWorker } from "../intelligence/client";
+import { cardIdentity, effectiveAssignments, needsAnalysis } from "../intelligence/tagger";
+import { RULESET_VERSION } from "../intelligence/types";
+import type { Override } from "../intelligence/types";
+import { ownedCanonicalCards } from "../intelligence/process";
+import { quickTags, tagDefinition } from "../intelligence/taxonomy";
 import { useEffect, useState } from "react";
 import {
   ArrowDownUp,
@@ -46,6 +52,8 @@ type Overlay =
   | null;
 export default function App() {
   const [cards, setCards] = useState<SampleCollectionCard[]>([]);
+  const [tagging,setTagging] = useState(false);
+  const [tagStatus,setTagStatus] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [savedCollection, setSavedCollection] =
@@ -65,15 +73,27 @@ export default function App() {
   const [overlay, setOverlay] = useState<Overlay>(null);
   useEffect(() => {
     let cancelled = false;
+    const controller = new AbortController();
     collectionRepository
       .load()
       .then(async (state) => {
         if (state) {
-          const imported = collectionCards(state);
-          if (!cancelled) setSavedCollection(state);
-          return imported;
+          const pending=ownedCanonicalCards(state).some(card=>needsAnalysis(card,state.intelligence?.auto[cardIdentity(card)]));
+          let current=state;
+          if(pending) {
+            if(!cancelled) {setTagging(true);setTagStatus('Preparing Auto-Tags…');}
+            current=await tagCollection(state,message=>{if(!cancelled)setTagStatus(message);},controller.signal);
+            current={...current,revision:state.revision+1};
+            controller.signal.throwIfAborted();
+            await collectionRepository.save(current,state.revision);
+            if(!cancelled) {setTagging(false);setTagStatus('Auto-tags ready');}
+          }
+          if (!cancelled) setSavedCollection(current);
+          return collectionCards(current);
         }
-        return sampleCollectionSource.load();
+        const sample=await sampleCollectionSource.load();
+        const intelligence=await tagInWorker(sample,undefined,false,()=>{},controller.signal);
+        return sample.map(card=>({...card,analysis:intelligence.auto[cardIdentity(card)],intelligentTags:effectiveAssignments(intelligence.auto[cardIdentity(card)],undefined).map(a=>a.tagId)}));
       })
       .then((data) => {
         if (!cancelled) {
@@ -89,10 +109,12 @@ export default function App() {
               : "Could not read the saved collection.",
           );
           setLoading(false);
+          setTagging(false);
         }
       });
     return () => {
       cancelled = true;
+      controller.abort();
     };
   }, []);
   useEffect(() => {
@@ -107,6 +129,26 @@ export default function App() {
   function closeOverlay() {
     if (history.state?.binderOverlay) history.back();
     else setOverlay(null);
+  }
+  async function saveTags(card:SampleCollectionCard,override:Override) {
+    if(!savedCollection || tagging) throw new Error('Wait for auto-tags to finish, then retry.');
+    const identity=card.analysis?.cardIdentity || cardIdentity(card);
+    const intelligence=savedCollection.intelligence || {auto:{},overrides:{}};
+    const assignments=[...override.added.map(tagId=>({tagId,source:'manual-add' as const})),...override.suppressed.map(tagId=>({tagId,source:'manual-remove' as const}))].map(a=>({...a,cardIdentity:identity,confidence:1,evidence:[{field:'user',snippet:a.source==='manual-add'?'Added by you':'Hidden by you',reason:'Your manual correction takes precedence over automatic rules.'}],rulesetVersion:RULESET_VERSION}));
+    const next={...savedCollection,revision:savedCollection.revision+1,intelligence:{...intelligence,overrides:{...intelligence.overrides,[identity]:{...override,assignments}}}};
+    await collectionRepository.save(next,savedCollection.revision);
+    acceptState(next);
+  }
+  async function recalculate() {
+    if(!savedCollection || tagging) return;
+    setTagging(true); setTagStatus(`Preparing ${ownedCanonicalCards(savedCollection).length} canonical cards…`);
+    try {
+      const next=await tagCollection(savedCollection,setTagStatus,undefined,true);
+      next.revision=savedCollection.revision+1;
+      await collectionRepository.save(next,savedCollection.revision);
+      acceptState(next);setTagStatus('Auto-tags recalculated. Your manual corrections are preserved.');
+    } catch(error) {setTagStatus(error instanceof Error?error.message:'Could not save auto-tags. Try again.');}
+    finally {setTagging(false);}
   }
   function reset() {
     setQuery("");
@@ -169,7 +211,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.2.1</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.3.0</span>
           </span>
         </div>
       </header>
@@ -213,9 +255,10 @@ export default function App() {
                 <span>KEEP YOURS CLOSE.</span>
               </div>
             </section>
+            {tagging && <p role="status" className="tagging-status">{tagStatus}</p>}
             <div className="collection-management-actions">
               <button className="management-button" onClick={() => openOverlay({ type: "manage" })} disabled={loading || !!loadError}><Settings2 size={16} />Manage Collection</button>
-              <button className="management-button" aria-pressed={selecting} disabled={!savedCollection || !cards.length} onClick={() => selecting ? cancelSelection() : setSelecting(true)}><CheckSquare size={16} />{selecting ? 'Cancel selection' : 'Select'}</button>
+              <button className="management-button" aria-pressed={selecting} disabled={tagging || !savedCollection || !cards.length} onClick={() => selecting ? cancelSelection() : setSelecting(true)}><CheckSquare size={16} />{selecting ? 'Cancel selection' : 'Select'}</button>
             </div>
             <section
               className="collection-controls"
@@ -248,6 +291,7 @@ export default function App() {
                   <button
                     className="import-button"
                     aria-label="Import Collection"
+                    disabled={loading || tagging || !!loadError}
                     onClick={() => openOverlay({ type: "import" })}
                   >
                     <Upload size={17} />
@@ -336,6 +380,7 @@ export default function App() {
                   ))}
               </div>
             </section>
+            <div className="quick-synergy" role="group" aria-label="Quick synergy tags"><span>EXPLORE</span>{quickTags.map(id=><button key={id} className={`chip ${filters.synergyTags?.includes(id)?'selected':''}`} aria-pressed={filters.synergyTags?.includes(id)||false} onClick={()=>setFilters(f=>({...f,synergyTags:f.synergyTags?.includes(id)?f.synergyTags.filter(t=>t!==id):[...(f.synergyTags||[]),id]}))}>{tagDefinition(id)?.label}</button>)}</div>
             <div className="results-line">
               <p aria-live="polite" aria-atomic="true">
                 {loading ? (
@@ -443,7 +488,7 @@ export default function App() {
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.2.1</span>
+            MTG Manager <span className="muted">· v0.3.0</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>
@@ -457,9 +502,9 @@ export default function App() {
       </div>}
       {nav(true)}
       {overlay?.type === "card" && (
-        <CardDetail card={overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
+        <CardDetail onSaveTags={savedCollection && overlay.card.ownership ? override=>saveTags(cards.find(c=>c.id===overlay.card.id)||overlay.card,override) : undefined} card={cards.find(c=>c.id===overlay.card.id)||overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
       )}
-      {overlay?.type === "manage" && <ManageCollection state={savedCollection} onClose={closeOverlay} onClear={() => setOverlay({ type: "clear" })} />}
+      {overlay?.type === "manage" && <ManageCollection onRecalculate={recalculate} tagging={tagging} tagStatus={tagStatus} state={savedCollection} onClose={closeOverlay} onClear={() => setOverlay({ type: "clear" })} />}
       {(overlay?.type === "clear" || overlay?.type === "remove") && savedCollection && <ConfirmCollectionChange key={overlay.type} state={savedCollection} clear={overlay.type === "clear"} ids={overlay.type === "remove" ? overlay.ids : []} onClose={closeOverlay} onSaved={state => { acceptState(state); if (overlay.type === "clear") { cancelSelection(); reset(); } closeOverlay(); }} />}
       {overlay?.type === "import" && (
         <ImportCollection

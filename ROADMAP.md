@@ -7,9 +7,9 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.1.0               | Digital Binder Foundation: sample collection, premium mobile UI, artwork, search, filters, sorting and card details.                                                          |
 | 0.1.1 — Frozen      | Binder polish: Commander Colors subset filtering; continued ergonomics, accessibility and visual review.                                                                      |
 | 0.2.0 — Approved | Real Collection Foundation: ManaBox CSV preview/import, deterministic matching, safe re-import upserts, local persistence and physical ownership.                             |
-| **0.2.1 — Current** | Collection Management & Multi-Select: safe local removal/clear, statistics, import history and JSON backup. |
-| 0.3.0               | Card Intelligence & Taxonomy: inspectable semantic tags, evidence, confidence and correction.                                                                                 |
-| 0.4.0               | Commander Library: managed decklists, card assignment, copy tracking and history.                                                                                             |
+| 0.2.1 — Approved | Collection Management & Multi-Select: safe local removal/clear, statistics, import history and JSON backup. |
+| **0.3.0 — Current** | Card Intelligence & Taxonomy: inspectable semantic tags, evidence, confidence and correction.                                                                                 |
+| 0.4.0 — Next        | Commander Library: managed decklists, card assignment, copy tracking and history.                                                                                             |
 | 0.5.0               | Deck DNA: explain a deck's identity, archetypes, interactions and strategy.                                                                                                   |
 | 0.6.0               | Synergy Explorer: explainable candidates from owned, preferably unassigned copies; no automatic changes.                                                                      |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |

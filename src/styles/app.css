@@ -2216,3 +2216,35 @@ body:has(.selection-bar) .main-content { padding-bottom:210px; }
 @media (max-width:699px) {
  .management-dialog { width:100%; max-width:100%; border-radius:19px 19px 0 0; padding-bottom:calc(24px + env(safe-area-inset-bottom)); }
 }
+
+/* Local card intelligence: restrained discovery and inspectable evidence. */
+.quick-synergy { display:flex; align-items:center; gap:8px; overflow-x:auto; padding:14px 0 4px; scrollbar-width:thin; }
+.quick-synergy > span { font-size:9px; letter-spacing:1.5px; color:#b3bda3; padding-right:4px; }
+.quick-synergy .chip { flex-shrink:0; }
+.synergy-filter input,.tag-editor input { width:100%; padding:11px; background:#171b14; border:1px solid #636c55; border-radius:7px; color:inherit; }
+.tag-match-options { display:flex; gap:8px; margin:12px 0; }
+.synergy-options { display:flex; flex-wrap:wrap; gap:6px; max-height:210px; overflow:auto; padding:5px; margin:0 -5px 10px; }
+.tag-category h4 { text-transform:capitalize; font-size:12px; color:#c7ceb9; font-weight:500; margin:20px 0 9px; }
+.intelligent-tags { display:flex; flex-wrap:wrap; gap:7px; }
+.tag-evidence { border:1px solid #565f48; border-radius:9px; max-width:100%; background:#242a1e; }
+.tag-evidence summary { list-style:none; display:flex; gap:9px; flex-wrap:wrap; padding:9px 11px; cursor:pointer; color:#e8e3d3; font-size:12px; }
+.tag-evidence small,.tag-edit-row small { font-size:10px; color:#c3cbb6; }
+.tag-evidence[open] { width:100%; }
+.tag-evidence > div { padding:0 12px 12px; font-size:12px; line-height:1.6; }
+.tag-evidence blockquote { border-left:2px solid #839066; margin:12px 0; padding:0 12px; overflow-wrap:anywhere; }
+.intelligence .intelligence-note { color:#b4bda7; font-size:11px; line-height:1.6; }
+.tag-editor { padding-top:18px; }
+.tag-edit-options { max-height:320px; overflow:auto; padding:4px; }
+.tag-edit-row { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #ffffff15; }
+.tag-edit-row > span { font-size:12px; }
+.tag-edit-row small { display:block; margin-top:4px; }
+.tag-edit-row button { flex-shrink:0; min-height:44px; }
+.type-signals,.sample-provenance { font-size:12px; line-height:1.65; margin-top:20px; }
+.type-signals summary,.sample-provenance summary { cursor:pointer; color:#c7ceb9; }
+.retag-control { margin-top:18px; }
+.tagging-status { color:#d3dfbd; font-size:13px; padding:12px 0; }
+.tag-evidence summary:focus-visible,.type-signals summary:focus-visible,.sample-provenance summary:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+/* Focus must scroll the inner details region, never the clipped dialog shell. */
+.detail-dialog { overflow:clip; }
+/* Phase changes reuse footer buttons; avoid interpolating a low-contrast label. */
+.import-footer > button { transition:transform .18s; }

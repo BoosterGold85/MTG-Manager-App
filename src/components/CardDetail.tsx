@@ -1,4 +1,5 @@
-import { Sparkles } from "lucide-react";
+import { CardIntelligence } from "./CardIntelligence";
+import type { Override } from "../intelligence/types";
 import type { SampleCollectionCard } from "../models/card";
 import { colorOptions } from "../utils/filters";
 import { Dialog } from "./Dialog";
@@ -7,10 +8,12 @@ export function CardDetail({
   card,
   onClose,
   onRemove,
+  onSaveTags,
 }: {
   card: SampleCollectionCard;
   onClose: () => void;
   onRemove?: () => void;
+  onSaveTags?: (override:Override) => Promise<void>;
 }) {
   return (
     <Dialog titleId="detail-title" onClose={onClose} className="detail-dialog">
@@ -120,27 +123,7 @@ export function CardDetail({
             </details>
           )}
           {onRemove && <div className="danger-zone"><button className="danger-button" onClick={onRemove}>Remove from Collection</button></div>}
-          <section className="intelligence">
-            <div className="section-label">
-              <Sparkles size={16} />
-              <h3>Card Intelligence</h3>
-              <span className="preview-badge">Preview</span>
-            </div>
-            <p>
-              {card.ownership
-                ? "No automated analysis in this release"
-                : "Manually curated sample tags"}
-            </p>
-            <div className="tags">
-              {card.tags?.length ? (
-                card.tags.map((tag) => <span key={tag}>{tag}</span>)
-              ) : (
-                <span>
-                  {card.ownership ? "No curated tags" : "No sample tags"}
-                </span>
-              )}
-            </div>
-          </section>
+          <CardIntelligence card={card} onSave={onSaveTags} />
         </div>
       </div>
     </Dialog>

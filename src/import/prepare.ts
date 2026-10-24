@@ -1,3 +1,4 @@
+import { tagCollection } from "../intelligence/client";
 import type {
   CollectionRepository,
   ImportPlan,
@@ -38,5 +39,7 @@ export async function prepareImport(
     progress,
   );
   signal.throwIfAborted();
-  return buildImportPlan(parsed, resolved, current, filename);
+  const plan = buildImportPlan(parsed, resolved, current, filename);
+  plan.next = await tagCollection(plan.next, progress, signal);
+  return plan;
 }

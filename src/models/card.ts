@@ -1,3 +1,4 @@
+import type { AutoAnalysis, Override } from "../intelligence/types";
 import type { CollectionItem } from "./collection";
 export type Color = "W" | "U" | "B" | "R" | "G";
 export type Rarity = "common" | "uncommon" | "rare" | "mythic";
@@ -20,5 +21,16 @@ export interface SampleCollectionCard {
   oracleText?: string;
   tags?: string[];
   artist?: string;
+  oracleId?: string;
+  keywords?: string[];
+  producedMana?: string[];
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
+  layout?: string;
+  cardFaces?: { name: string; oracleText?: string; typeLine?: string; keywords?: string[]; power?: string; toughness?: string; loyalty?: string }[];
+  analysis?: AutoAnalysis;
+  tagOverrides?: Override;
+  intelligentTags?: string[];
   ownership?: CollectionItem;
 }

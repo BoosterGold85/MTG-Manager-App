@@ -1,4 +1,4 @@
-# MTG Manager · v0.2.1
+# MTG Manager · v0.3.0
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
 
@@ -13,6 +13,28 @@ Use **Select** to toggle records with a tap or keyboard. Selections use stable i
 **Clear Collection** displays the full stored scope and requires typing `CLEAR` before confirmation. It atomically empties records, canonical caches, import history and unresolved rows, resets selection/search/filters and saves an empty binder across reload. It does not return to sample data. Removal and clear use the existing revision-checked repository; failed writes leave cards and selection intact and offer retry. If another tab changed the collection, reload before retrying.
 
 Data is stored only in this browser on this device, with no server backup, accounts or cloud sync. Keep your original ManaBox exports and download local backups. Browser data clearing or switching origins/devices does not preserve local storage.
+
+## Card Intelligence & Auto-Tags
+
+Cards are automatically analyzed locally after import and when an existing collection first upgrades. No re-import, API key or AI service is required. Use the restrained **Explore** chips or **Filters → Tags / Synergy** to find what your cards do. Search the tag list and select **Match ANY** (default: at least one) or **Match ALL** (every selected tag). Tags combine with search, normal color, type, printing/finish, mana, sorting and the unchanged Commander Colors subset filter.
+
+**Card Intelligence** replaces the old sample preview. Tags are grouped by category and marked **Auto** or **Added by you**. Open a tag to inspect its rule, confidence heuristic, field, face where available, and concise evidence. Confidence is a rule-strength indicator, not a calibrated probability or a deck recommendation.
+
+**Edit Tags** lets you add a taxonomy tag manually, hide an automatic tag, or restore automatic behavior. Hidden tags retain their original evidence and are marked **Hidden by you**. Corrections are saved atomically and survive reload, re-import, recalculation and ruleset upgrades. Changes apply to the canonical card across printings, not to individual physical copies. **Manage Collection → Recalculate Auto-Tags** reports canonical-card progress and preserves corrections.
+
+### Taxonomy and engine
+
+`src/intelligence/taxonomy.ts` centralizes **78 built-in tags** across strategy, mechanic, role, resource, payoff, enabler and interaction. This covers the executable's full named list (Go Wide is defined once), which exceeds its approximate 50–70 target. Dynamic creature-type tags such as **Elves Matter** are structured `typal:Elf` identifiers, not hundreds of top-level constants. Own creature types, ability references and actual synergy signals are stored separately; merely being an Elf is insufficient.
+
+Thirteen testable rule modules cover counters, lands, tokens, graveyard, sacrifice, card advantage, mana, interaction, permanents, creatures, spells, life and miscellaneous mechanics. The central tagger deduplicates assignments, merges evidence and keeps strongest confidence. Canonical keyword/type fields supplement Oracle text; multi-face evidence retains its originating face. Structured assignments contain canonical identity, tag ID, source, heuristic confidence, evidence and ruleset version.
+
+Canonical Scryfall Oracle IDs are preferred; normalized canonical English names provide a fallback for the v0.2.x cache that predates Oracle IDs. If a later import supplies an Oracle ID, name-based corrections migrate to it. New metadata retains keywords, faces, produced mana, layout and characteristic fields where available. Existing cards use their saved text without requiring network enrichment; missing face/keyword data limits inference until richer metadata arrives through import.
+
+Analysis runs in a dedicated module Web Worker, once per canonical card rather than per printing, record or physical copy, with progress and yielding batches. Versioned results and separate user overrides live inside the existing repository snapshot. Current-rule results are reused; stale versions or changed canonical-input fingerprints are recalculated. Import previews prepare tags without writing; confirming import commits inventory and analysis together. Existing-collection upgrade and explicit recalculation also use revision-checked atomic writes. Backup includes analysis and corrections; full clear removes them. The schema remains an additive, backward-compatible version 1 extension. `IntelligenceProvider` defines a future extension boundary; no remote semantic provider is shipped or invoked.
+
+### Tagging limits
+
+Rules are conservative English-text heuristics, not complete Magic rules interpretation. Unusual wording, cross-face dependencies, complex antecedents, token copies and rare creature-type phrasing can be missed; incidental references can sometimes be over-tagged. Ambiguous death triggers do not automatically imply Aristocrats, ordinary lands are not Ramp merely for producing mana, and draw/life restrictions are excluded. Inspect evidence and correct imperfect results. Tag coverage describes card functionality, not format legality, synergy scores or deck optimization.
 
 ## Develop
 
@@ -81,7 +103,7 @@ Data belongs to this **browser profile and site origin**. It is not synced betwe
 
 Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 120 ms apart. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
 
-`src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. No accounts, automated tags, deck management or v0.3.0 capabilities are implemented.
+`src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. No accounts, deck management, deck optimization or v0.4.0 capabilities are implemented.
 
 ## Validate
 
@@ -96,11 +118,13 @@ git diff --check
 
 `npm test` runs the same browser suite against a Vite development server. `TEST_PRODUCTION=1` requires an existing production build and uses preview instead. Playwright manages port 4173; set `CI=1` to require a fresh server. Browser tests use `/usr/bin/chromium` in this cloud environment; elsewhere set `CHROMIUM_PATH` to a compatible Chromium executable.
 
-The complete frozen v0.1.1 suite is retained unchanged. Added coverage includes valid/malformed/minimal ManaBox CSV, duplicates, repeated imports, changed totals, foil/nonfoil, different printings, missing IDs, ambiguous/unknown/conflicting metadata, purchase fields, storage/revision failures, ownership invariants, 10,000 parsed rows, 1,000 distinct batched printings, 5,000-row browser imports, imported filters and Commander Colors. Browser tests run at 360×800, 390×844, 430×932, 768×1024 and 1440×1000, with axe checks on the binder and import states.
+All prior regression cases are retained, with obsolete sample-preview expectations updated for real intelligence and stronger focus checks. Added coverage includes valid/malformed/minimal ManaBox CSV, duplicates, repeated imports, changed totals, foil/nonfoil, different printings, missing IDs, ambiguous/unknown/conflicting metadata, purchase fields, storage/revision failures, ownership invariants, 10,000 parsed rows, 1,000 distinct batched printings, 5,000-row browser imports, imported filters and Commander Colors. Browser tests run at 360×800, 390×844, 430×932, 768×1024 and 1440×1000, with axe checks on the binder and import states.
 
 Deterministic browser tests intercept remote metadata for the external-enrichment case; known printings use the bundled canonical cache. They do not depend on Scryfall availability. See [v0.2.0 validation](docs/VALIDATION-v0.2.0.md) for the separate live-API check and its cloud-browser transport limitation. Reports and screenshots are generated under ignored `playwright-report/` and `test-results/`.
 
 Management adds stable-ID selection, filtered select all beyond rendered tiles, confirmed atomic deletion/clear, JSON backups, re-import and write-failure regression coverage. See [v0.2.1 validation](docs/VALIDATION-v0.2.1.md) for all 72 unit and 140 browser results, responsive review and release limitations.
+
+See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
 ## Deploy to Cloudflare Pages
 
@@ -120,7 +144,7 @@ Push the chosen production branch to the connected GitHub repository. A configur
 - **Commander Colors** remains independent: a card matches only if every Scryfall identity color is included in the selected Commander identity. All 32 identities are available; colorless cards match every identity. This is color-identity compatibility, not every format legality rule.
 - Drawer edits apply only on confirmation; cancel discards them; clear/reset remains one action.
 - Native card dialog focus, keyboard/backdrop/browser-back dismissal, reduced motion, safe-area padding and responsive 2/4/6-column layouts remain intact.
-- Imported cards have no generated sample tags. Card Intelligence stays a restrained future preview.
+- Real deterministic tags replace the sample intelligence preview; demo artwork/ownership separation remains intact.
 
 ## Sample assets
 
@@ -132,4 +156,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). Stop at v0.2.0; intelligence and Commander management remain later roadmap layers.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). Stop at v0.3.0; Commander Library remains the next capability layer.

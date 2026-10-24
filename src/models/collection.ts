@@ -1,10 +1,12 @@
+import { cardIdentity, effectiveAssignments } from "../intelligence/tagger";
+import type { IntelligenceState } from "../intelligence/types";
 import type { SampleCollectionCard } from "./card";
 export interface CollectionSource {
   load: () => Promise<SampleCollectionCard[]>;
 }
 export type CardMetadata = Omit<
   SampleCollectionCard,
-  "id" | "quantity" | "foil" | "tags" | "ownership"
+  "id" | "quantity" | "foil" | "tags" | "ownership" | "analysis" | "tagOverrides" | "intelligentTags"
 > & { aliases?: string[]; printedLanguage?: string };
 export type Finish = "nonfoil" | "foil" | "etched";
 export interface CollectionItem {
@@ -65,6 +67,7 @@ export interface ImportSummary {
 }
 export interface CollectionState {
   schemaVersion: 1;
+  intelligence?: IntelligenceState;
   revision: number;
   items: CollectionItem[];
   metadata: Record<string, CardMetadata>;
@@ -102,6 +105,7 @@ export const emptyCollection = (): CollectionState => ({
 export function collectionCards(
   state: CollectionState,
 ): SampleCollectionCard[] {
+  const oracleByName = new Map(Object.values(state.metadata).filter(c=>c.oracleId).map(c=>[c.name.toLowerCase(),c.oracleId!]));
   return state.items
     .filter((item) => item.quantityOwned > 0)
     .map((item) => {
@@ -110,12 +114,18 @@ export function collectionCards(
         throw new Error(
           "Saved collection metadata is missing. Your data has not been overwritten.",
         );
+      const identity = cardIdentity({...card,oracleId:card.oracleId || oracleByName.get(card.name.toLowerCase())});
+      const analysis = state.intelligence?.auto[identity];
+      const tagOverrides = state.intelligence?.overrides[identity];
       return {
         ...card,
         id: item.id,
         quantity: item.quantityOwned,
         foil: item.finish !== "nonfoil",
         ownership: item,
+        analysis,
+        tagOverrides,
+        intelligentTags: effectiveAssignments(analysis, tagOverrides).map(assignment=>assignment.tagId),
       };
     });
 }

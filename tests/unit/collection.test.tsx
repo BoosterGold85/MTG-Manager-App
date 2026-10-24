@@ -130,7 +130,7 @@ describe("sorting and missing optional metadata", () => {
     );
     expect(html).toContain("Colorless");
     expect(html).toContain("ABC");
-    expect(html).toContain("No sample tags");
+    expect(html).toContain("No confident automatic tags yet");
     expect(html).not.toContain("undefined");
   });
 });

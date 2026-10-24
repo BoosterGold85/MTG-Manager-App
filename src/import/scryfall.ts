@@ -4,6 +4,13 @@ import { identifierKey, normalizedName } from "./csv";
 interface ScryfallCard {
   object: "card";
   lang?: string;
+  oracle_id?: string;
+  keywords?: string[];
+  produced_mana?: string[];
+  power?: string;
+  toughness?: string;
+  loyalty?: string;
+  layout?: string;
   id: string;
   name: string;
   set: string;
@@ -20,6 +27,11 @@ interface ScryfallCard {
   image_uris?: { normal?: string; large?: string };
   card_faces?: {
     name?: string;
+    type_line?: string;
+    keywords?: string[];
+    power?: string;
+    toughness?: string;
+    loyalty?: string;
     oracle_text?: string;
     mana_cost?: string;
     image_uris?: { normal?: string; large?: string };
@@ -63,6 +75,11 @@ export function normalizeCard(c: ScryfallCard): CardMetadata {
   const image = c.image_uris || c.card_faces?.[0]?.image_uris;
   return {
     scryfallId: c.id,
+    oracleId: c.oracle_id,
+    keywords: c.keywords,
+    producedMana: c.produced_mana,
+    power: c.power, toughness: c.toughness, loyalty: c.loyalty, layout: c.layout,
+    cardFaces: c.card_faces?.map(f => ({name:f.name || c.name,oracleText:f.oracle_text,typeLine:f.type_line,keywords:f.keywords,power:f.power,toughness:f.toughness,loyalty:f.loyalty})),
     printedLanguage: c.lang || "en",
     name: c.name,
     setCode: c.set,

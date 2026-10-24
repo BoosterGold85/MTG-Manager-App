@@ -26,6 +26,19 @@ export function validateState(value: unknown): CollectionState {
     throw new Error(
       "Saved collection data is not supported or could not be read. It has not been overwritten.",
     );
+  if (state.intelligence) {
+    const intelligence=state.intelligence;
+    if (!intelligence.auto || !intelligence.overrides || Array.isArray(intelligence.auto) || Array.isArray(intelligence.overrides))
+      throw new Error("Saved card intelligence is inconsistent. It has not been overwritten.");
+    for (const analysis of Object.values(intelligence.auto)) {
+      if (!analysis || typeof analysis.rulesetVersion !== 'string' || !Array.isArray(analysis.assignments) || !analysis.creatureTypes || !Array.isArray(analysis.creatureTypes.own) || !Array.isArray(analysis.creatureTypes.referenced) || !Array.isArray(analysis.creatureTypes.synergy) || analysis.assignments.some(a=>!a.tagId || !Array.isArray(a.evidence) || !Number.isFinite(a.confidence)))
+        throw new Error("Saved card intelligence is inconsistent. It has not been overwritten.");
+    }
+    for (const override of Object.values(intelligence.overrides)) {
+      if (!override || !Array.isArray(override.added) || !Array.isArray(override.suppressed) || [...override.added,...override.suppressed].some(id=>typeof id !== 'string'))
+        throw new Error("Saved tag corrections are inconsistent. They have not been overwritten.");
+    }
+  }
   const ids = new Set<string>();
   for (const item of state.items) {
     const card = state.metadata[item.scryfallId];

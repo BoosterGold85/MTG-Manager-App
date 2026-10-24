@@ -3,7 +3,8 @@ import { Dialog } from './Dialog';
 import { collectionRepository } from '../storage/collectionRepository';
 import { collectionBackup, collectionStats } from '../storage/collectionManagement';
 import type { CollectionState } from '../models/collection';
-export function ManageCollection({ state, onClose, onClear }: {
+export function ManageCollection({ state, onClose, onClear, onRecalculate, tagging, tagStatus }: {
+  onRecalculate?: () => void; tagging?: boolean; tagStatus?: string;
   state: CollectionState | null; onClose: () => void; onClear: () => void;
 }) {
   const stats = collectionStats(state);
@@ -36,6 +37,7 @@ export function ManageCollection({ state, onClose, onClear }: {
     <p>Last successful import: {state?.lastImport ? <><time dateTime={state.lastImport.importedAt}>{new Date(state.lastImport.importedAt).toLocaleString()}</time> · {state.lastImport.filename}</> : 'No successful import yet'}</p>
     {error && <p role="alert">{error}</p>}
     <button className="primary-button" disabled={busy} onClick={backup}>{busy ? 'Exporting…' : 'Export Backup'}</button>
-    <div className="danger-zone"><button className="danger-button" disabled={!state} onClick={onClear}>Clear Collection</button></div>
+    {onRecalculate && <div className="retag-control"><button className="management-button" disabled={tagging || !state?.items.length} onClick={onRecalculate}>Recalculate Auto-Tags</button>{tagStatus && <p role="status">{tagStatus}</p>}</div>}
+    <div className="danger-zone"><button className="danger-button" disabled={!state || tagging} onClick={onClear}>Clear Collection</button></div>
   </Dialog>;
 }

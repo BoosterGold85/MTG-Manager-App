@@ -1,3 +1,4 @@
+import { taxonomy, tagDefinition } from "../intelligence/taxonomy";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import type { SampleCollectionCard } from "../models/card";
@@ -28,6 +29,7 @@ export function FilterDrawer({
   onApply: (f: Filters) => void;
   onClose: () => void;
 }) {
+  const [tagQuery,setTagQuery] = useState("");
   const [draft, setDraft] = useState<Filters>({ ...filters });
   function update<K extends keyof Filters>(key: K, value: Filters[K]) {
     setDraft((f) => ({ ...f, [key]: value }));
@@ -37,7 +39,6 @@ export function FilterDrawer({
       cards.map((c) => [c.setCode, c.setName || c.setCode.toUpperCase()]),
     ).entries(),
   ].sort((a, b) => a[1].localeCompare(b[1]));
-  const tags = [...new Set(cards.flatMap((c) => c.tags || []))].sort();
   const count = filterCards(cards, query, draft).length;
   return (
     <Dialog titleId="filter-title" onClose={onClose} className="filter-dialog">
@@ -49,6 +50,13 @@ export function FilterDrawer({
         </h2>
       </header>
       <div className="filter-content">
+        <fieldset className="synergy-filter"><legend>Tags / Synergy</legend>
+          <label>Search tags<input type="search" value={tagQuery} onChange={e=>setTagQuery(e.target.value)} /></label>
+          <div role="group" aria-label="Tag matching" className="tag-match-options">{(["ANY","ALL"] as const).map(mode=><button key={mode} className={`choice ${(draft.tagMatch || 'ANY')===mode?'selected':''}`} aria-pressed={(draft.tagMatch || 'ANY')===mode} onClick={()=>update('tagMatch',mode)}>Match {mode}</button>)}</div>
+          <p className="filter-help">{draft.synergyTags?.length || 0} selected · {(draft.tagMatch || 'ANY') === 'ANY' ? 'At least one selected tag' : 'Every selected tag'}</p>
+          <div className="synergy-options">{[...taxonomy,...[...new Set(cards.flatMap(c=>c.intelligentTags||[]))].filter(id=>id.startsWith('typal:')).map(id=>tagDefinition(id)!)].filter(t=>`${t.label} ${t.aliases?.join(' ')||''}`.toLowerCase().includes(tagQuery.toLowerCase())).map(t=><button key={t.id} className={`choice ${draft.synergyTags?.includes(t.id)?'selected':''}`} aria-pressed={draft.synergyTags?.includes(t.id)||false} onClick={()=>update('synergyTags',toggle(draft.synergyTags||[],t.id))}>{t.label}{draft.synergyTags?.includes(t.id) && <Check size={14}/>}</button>)}</div>
+          <button className="text-button" onClick={()=>update('synergyTags',[])}>Clear tags</button>
+        </fieldset>
         <div>
           <label htmlFor="commander-colors">Commander Colors</label>
           <select
@@ -193,19 +201,7 @@ export function FilterDrawer({
             ))}
           </select>
         </label>
-        <label>
-          Sample synergy tag <span className="muted">· manually curated</span>
-          <select
-            aria-label="Sample synergy tag"
-            value={draft.tag}
-            onChange={(e) => update("tag", e.target.value)}
-          >
-            <option value="">All sample tags</option>
-            {tags.map((t) => (
-              <option key={t}>{t}</option>
-            ))}
-          </select>
-        </label>
+
       </div>
       <footer className="filter-footer">
         <button

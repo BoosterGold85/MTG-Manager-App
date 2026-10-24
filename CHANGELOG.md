@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 — Card Intelligence & Auto-Tags
+
+- Added a centralized 78-tag taxonomy and dynamic creature-type synergy signals, with 13 explainable rule modules and canonical-identity deduplication.
+- Added structured assignments with evidence, face/field provenance, confidence heuristics and ruleset version; retained richer Scryfall metadata where available.
+- Added worker-based import/upgrade/recalculation lifecycle, progress, persisted auto-tag caches and canonical-input fingerprint invalidation. No model API, API key or new network provider.
+- Added searchable ANY/ALL synergy filtering and restrained quick-tag browsing, combined with all approved binder filters and Commander Colors.
+- Replaced sample intelligence previews with real grouped tags, keyboard-accessible evidence, manual add/hide/restore and preserved automatic evidence. Corrections survive reload, re-import and recalculation.
+- Added Recalculate Auto-Tags to management; backups include intelligence and clear resets it through the existing atomic repository. Existing inventory behavior is preserved.
+- Added curated/negative/multi-face/lifecycle/filter/performance fixtures and browser tests. Updated only obsolete sample-preview expectations and strengthened evidence focus checks in prior tests.
+- Fixed detail-shell scrolling when focusing the expanded tag editor, keeping the close control reachable.
+- No Commander Library, deck assignment, Deck DNA, recommendations, accounts, cloud sync or v0.4+ features.
+
 ## 0.2.1 — Collection Management & Multi-Select
 
 - Added stable-ID multi-select, selected indicators, hidden-selection retention and a safe-area-aware sticky action bar. Select all includes every filtered/searched result, beyond rendered tiles.

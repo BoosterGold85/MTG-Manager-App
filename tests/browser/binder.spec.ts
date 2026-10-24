@@ -96,7 +96,7 @@ test("combines quick color, type, search and sort; resets in one action", async 
   await page.getByRole("button", { name: "Red", exact: true }).click();
   await expect(page.locator(".card-tile")).toHaveCount(4);
 });
-test("drawer applies mana, rarity, set, foil and manually authored tag together", async ({
+test("drawer applies mana, rarity, set, foil and automatic synergy tag together", async ({
   page,
 }) => {
   await ready(page);
@@ -107,9 +107,7 @@ test("drawer applies mana, rarity, set, foil and manually authored tag together"
   await dialog.getByLabel("Rarity", { exact: true }).selectOption("rare");
   await dialog.getByLabel("Set", { exact: true }).selectOption("ktk");
   await dialog.getByLabel("Finish", { exact: true }).selectOption("foil");
-  await dialog
-    .getByLabel("Sample synergy tag", { exact: false })
-    .selectOption("+1/+1 Counters");
+  await dialog.getByRole("button", {name: "+1/+1 Counters", exact:true}).click();
   await page.screenshot({ path: test.info().outputPath("filters.png") });
   await dialog.getByRole("button", { name: "Apply · Show 1 cards" }).click();
   await expect(dialog).not.toBeVisible();
@@ -171,9 +169,15 @@ test("details open first and last; explicit close, Escape, backdrop and browser 
     dialog.getByRole("region", { name: "Card details" }),
   ).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(
-    dialog.getByRole("button", { name: "Close dialog" }),
-  ).toBeFocused();
+  await expect(dialog.locator(".tag-evidence summary").first()).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(dialog.getByRole("region", { name: "Card details" })).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(dialog.getByRole("button", { name: "Close dialog" })).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(dialog.locator("summary").last()).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(dialog.getByRole("button", { name: "Close dialog" })).toBeFocused();
   await expect(dialog.locator(".card-image img")).toBeVisible();
   await expect(dialog.locator(".card-image img")).toHaveCSS("opacity", "1");
   await page.screenshot({ path: info.outputPath("detail.png") });
@@ -186,7 +190,8 @@ test("details open first and last; explicit close, Escape, backdrop and browser 
     dialog.getByRole("heading", { name: "Zulaport Cutthroat" }),
   ).toBeVisible();
   await dialog.locator(".intelligence").scrollIntoViewIfNeeded();
-  await expect(dialog.getByText("Manually curated sample tags")).toBeVisible();
+  await expect(dialog.getByRole("heading", {name:"Card Intelligence", exact:true})).toBeVisible();
+  await expect(dialog.locator(".tag-evidence").filter({hasText:"Death Triggers"})).toBeVisible();
   await dialog.getByRole("button", { name: "Close dialog" }).click();
   await expect(dialog).not.toBeVisible();
   await first.click();
@@ -206,7 +211,7 @@ test("broken artwork has a graceful fallback and optional metadata stays readabl
   const dialog = page.getByRole("dialog");
   await expect(dialog.locator(".image-fallback")).toBeVisible();
   await dialog.locator(".intelligence").scrollIntoViewIfNeeded();
-  await expect(dialog.getByText("No sample tags")).toBeVisible();
+  await expect(dialog.getByText("No confident automatic tags yet. You can add a tag manually.")).toBeVisible();
 });
 test("commanders remains a clearly marked future destination; binder state survives", async ({
   page,

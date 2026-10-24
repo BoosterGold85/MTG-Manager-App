@@ -47,6 +47,8 @@ export interface Filters {
   set: string;
   finish: string;
   tag: string;
+  synergyTags?: string[];
+  tagMatch?: "ANY" | "ALL";
 }
 export const emptyFilters: Filters = {
   colors: [],
@@ -62,6 +64,7 @@ export const emptyFilters: Filters = {
 export function activeFilterCount(f: Filters) {
   return (
     Number(f.commanderColors !== null) +
+    (f.synergyTags?.length || 0) +
     f.colors.length +
     f.types.length +
     [f.minMana, f.maxMana, f.rarity, f.set, f.finish, f.tag].filter(Boolean)
@@ -74,6 +77,7 @@ export function filterCards(
   f: Filters,
 ) {
   const commanderIdentity = f.commanderColors;
+  const tags=f.synergyTags || [];
   return cards.filter(
     (c) =>
       c.name.toLowerCase().includes(query.trim().toLowerCase()) &&
@@ -93,6 +97,7 @@ export function filterCards(
       (!f.rarity || c.rarity === f.rarity) &&
       (!f.set || c.setCode === f.set) &&
       (!f.finish || Boolean(c.foil) === (f.finish === "foil")) &&
-      (!f.tag || c.tags?.includes(f.tag)),
+      (!f.tag || c.tags?.includes(f.tag)) &&
+      (!tags.length || (f.tagMatch === "ALL" ? tags.every(id=>c.intelligentTags?.includes(id)) : tags.some(id=>c.intelligentTags?.includes(id)))),
   );
 }
