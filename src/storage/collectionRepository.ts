@@ -5,10 +5,10 @@ import type {
 const storageError = (error: unknown) => {
   if (error instanceof Error && error.name === "QuotaExceededError")
     return new Error(
-      "This browser has run out of storage. No collection changes were saved. Free space and retry.",
+      "This browser has run out of storage. No collection changes were saved. Free space and retry.", {cause:error},
     );
   return new Error(
-    "Could not access browser storage. No collection changes were saved. Allow site storage and try again.",
+    "Could not access browser storage. No collection changes were saved. Allow site storage and try again.", {cause:error},
   );
 };
 export function validateState(value: unknown): CollectionState {
@@ -112,56 +112,72 @@ export class IndexedDbCollectionRepository implements CollectionRepository {
           "This browser does not support local collection storage. Use a browser with IndexedDB enabled.",
         ),
       );
-    if (!this.database)
-      this.database = new Promise<IDBDatabase>((resolve, reject) => {
+    if (!this.database) {
+      const connection = new Promise<IDBDatabase>((resolve, reject) => {
         const request = this.factory.open(this.name, 1);
-        request.onupgradeneeded = () =>
-          request.result.createObjectStore("state");
+        request.onupgradeneeded = () => request.result.createObjectStore("state");
         request.onerror = () => reject(storageError(request.error));
-        request.onblocked = () =>
-          reject(
-            new Error(
-              "Another tab is blocking collection storage. Close other MTG Manager tabs and retry.",
-            ),
-          );
+        request.onblocked = () => reject(new Error("Another tab is blocking collection storage. Close other MTG Manager tabs and retry."));
         request.onsuccess = () => {
           const db = request.result;
-          db.onversionchange = () => {
-            db.close();
-            this.database = null;
+          const invalidate = () => {
+            // An older connection's late event must not evict its replacement.
+            if (this.database === connection) this.database = null;
           };
+          db.onclose = invalidate;
+          db.onversionchange = () => { invalidate(); db.close(); };
+          // A blocked open may already have rejected; don't leak its eventual connection.
+          if (this.database !== connection) { db.close(); return; }
           resolve(db);
         };
       }).catch((error) => {
-        this.database = null;
+        if (this.database === connection) this.database = null;
         throw error;
       });
+      this.database = connection;
+    }
     return this.database;
   }
+  private async transact<T>(mode:IDBTransactionMode, operation:(tx:IDBTransaction)=>Promise<T>):Promise<T> {
+    for (let attempt=0;attempt<2;attempt++) {
+      const connection=this.open();
+      const db=await connection;
+      let transaction:IDBTransaction;
+      try { transaction=db.transaction("state",mode); }
+      catch(error) {
+        const detail=error && typeof error==='object' ? error as {name?:unknown;message?:unknown} : null;
+        const closing=detail?.name==='InvalidStateError' || (typeof detail?.message==='string' && /(?:connection|database).*clos(?:ing|ed)/i.test(detail.message));
+        if (!closing) throw storageError(error);
+        if(this.database===connection)this.database=null;
+        try { db.close(); } catch { /* Already unusable; invalidation is sufficient. */ }
+        if(attempt===0)continue;
+        throw storageError(error);
+      }
+      // Start requests/attach handlers immediately, without an await after transaction creation.
+      // Only creation is retried: an uncertain or aborted write is NEVER replayed.
+      return operation(transaction);
+    }
+    throw storageError(undefined);
+  }
   async load(): Promise<CollectionState | null> {
-    const db = await this.open();
-    return new Promise((resolve, reject) => {
-      const transaction = db.transaction("state", "readonly");
-      const request = transaction.objectStore("state").get("collection");
-      request.onsuccess = () => {
-        try {
-          resolve(
-            request.result === undefined ? null : validateState(request.result),
-          );
-        } catch (error) {
-          reject(error);
-        }
+    return this.transact("readonly", transaction=>new Promise((resolve,reject)=>{
+      let result:CollectionState|null=null;
+      let failure:unknown;
+      const request=transaction.objectStore("state").get("collection");
+      request.onsuccess=()=>{
+        try { result=request.result===undefined?null:validateState(request.result); }
+        catch(error) {failure=error;transaction.abort();}
       };
-      request.onerror = () => reject(storageError(request.error));
-    });
+      request.onerror=()=>{failure=storageError(request.error);};
+      transaction.oncomplete=()=>resolve(result);
+      transaction.onabort=transaction.onerror=()=>reject(failure || storageError(transaction.error));
+    }));
   }
   async save(next: CollectionState, expectedRevision: number): Promise<void> {
     validateState(next);
     if (next.revision !== expectedRevision + 1)
       throw new Error("Invalid collection revision. Reload the collection and try again.");
-    const db = await this.open();
-    return new Promise((resolve, reject) => {
-      const transaction = db.transaction("state", "readwrite");
+    return this.transact("readwrite", transaction=>new Promise<void>((resolve, reject) => {
       let failure: Error | null = null;
       const store = transaction.objectStore("state");
       const request = store.get("collection");
@@ -176,18 +192,16 @@ export class IndexedDbCollectionRepository implements CollectionRepository {
           store.put(next, "collection");
         } catch (error) {
           failure =
-            error instanceof Error && error.name === "QuotaExceededError"
-              ? storageError(error)
-              : error instanceof Error
-                ? error
-                : new Error("Could not save this collection.");
+            error instanceof Error && error.name === "Error"
+              ? error // Preserve revision/validation messages; native storage errors stay controlled.
+              : storageError(error);
           transaction.abort();
         }
       };
       transaction.oncomplete = () => resolve();
       transaction.onabort = transaction.onerror = () =>
         reject(failure || storageError(transaction.error));
-    });
+    }));
   }
 }
 export const collectionRepository = new IndexedDbCollectionRepository();

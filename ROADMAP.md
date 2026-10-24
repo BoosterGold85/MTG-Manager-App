@@ -14,7 +14,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.4.0 — Approved | Commander Library: local decklists, owned-printing assignments, copy availability, re-import conflicts and backup. History remains future scope. |
 | 0.4.1 — Approved | ManaBox Deck Import: preview-first text/paste import, explicit commander confirmation, ownership reconciliation, missing-card decklist entries separate from physical-copy assignments. No sync engine. |
 | 0.4.2 — Approved | Deck Browsing & Card Navigation: shared Card Detail from decks, Previous/Next following the visible sort/filter order, deck sorting and lightweight filters. No Deck DNA. |
-| **0.5.0 — Current** | Deck DNA Core: local deterministic theme families, Commander influence, evidence-led summaries/Core Plan, per-card Synergy and contextual browsing.                                                                                                   |
+| 0.5.0 — Approved | Deck DNA Core: local deterministic theme families, Commander influence, evidence-led summaries/Core Plan, per-card Synergy and contextual browsing.                                                                                                   |
+| **0.5.1 — Current** | Storage / Deck Import Reliability: bounded connection recovery and fail-closed ownership preview; no new DNA features. |
 | 0.6.0               | Synergy Explorer: explainable candidates from owned, preferably unassigned copies; no automatic changes.                                                                      |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
 | 0.8.0               | Uniqueness: separate originality, cohesion and power; lawful comparison-provider abstraction. EDHREC only through a permitted data relationship, never unauthorized scraping. |

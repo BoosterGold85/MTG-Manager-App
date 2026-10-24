@@ -282,7 +282,7 @@ it("backup includes decks, commander and stable printing references; removal/cle
   const { decks, state, repo } = await setup();
   const s = await create(state, decks);
   const backup = JSON.parse(await collectionBackup(repo));
-  expect(backup.applicationVersion).toBe("0.5.0");
+  expect(backup.applicationVersion).toBe("0.5.1");
   expect(backup.collection.decks).toEqual(s.decks);
   expect(backup.collection.items).toEqual(s.items);
   await expect(changeCollection(repo, s, { type: "clear" })).rejects.toThrow(

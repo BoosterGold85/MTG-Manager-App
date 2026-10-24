@@ -1,3 +1,6 @@
+import { collectionRepository } from "../storage/collectionRepository";
+import { emptyCollection } from "../models/collection";
+import type { CollectionRepository } from "../models/collection";
 import { useEffect, useRef, useState } from "react";
 import { FileUp, LoaderCircle, TriangleAlert } from "lucide-react";
 import type { CollectionState } from "../models/collection";
@@ -88,19 +91,23 @@ function entryState(entry: PreviewEntry, choices: DeckImportChoices, conflict: b
   return { mark: "—", text: "Owned · left unassigned" };
 }
 export function DeckImport({
-  state,
+  state: initialState,
+  collection = collectionRepository,
   repository,
   onClose,
   onImported,
 }: {
   state: CollectionState;
+  collection?: CollectionRepository;
   repository: DeckRepository;
   onClose: () => void;
   onImported: (state: CollectionState, deckId: string) => void;
 }) {
+  const [state,setOwnershipState]=useState(initialState);
+  const [ownershipReady,setOwnershipReady]=useState(false);
   const [mode, setMode] = useState<"file" | "paste">("file");
   const [text, setText] = useState("");
-  const [phase, setPhase] = useState<"source" | "lookup" | "interrupted" | "preview" | "saving">("source");
+  const [phase, setPhase] = useState<"source" | "lookup" | "interrupted" | "ownership-error" | "preview" | "saving">("source");
   const [progress, setProgress] = useState("");
   const [error, setError] = useState("");
   const [preview, setPreview] = useState<DeckImportPreview | null>(null);
@@ -115,11 +122,22 @@ export function DeckImport({
     controller.current = next;
     last.current = { text: source, filename };
     setError("");
+    setPreview(null);setChoices(null);setOwnershipReady(false);
     setPhase("lookup");
     setProgress("Reading decklist…");
+    let current:CollectionState;
+    try { current=await collection.load() || emptyCollection(); }
+    catch {
+      if(next.signal.aborted)return;
+      // Repository errors retain their original cause; show an actionable ownership message here.
+      setError("MTG Manager could not read your collection from this device. Your deck has not been imported. Retry the ownership check or reload the app.");
+      setPhase("ownership-error");return;
+    }
+    if(next.signal.aborted)return;
     try {
-      const result = await prepareDeckImport(source, state, next.signal, setProgress, { filename });
+      const result = await prepareDeckImport(source, current, next.signal, setProgress, { filename });
       if (next.signal.aborted) return;
+      setOwnershipState(current);setOwnershipReady(true);
       setPreview(result);
       setChoices(initialChoices(result));
       setPhase("preview");
@@ -137,7 +155,7 @@ export function DeckImport({
     await prepare(await file.text(), file.name);
   }
   async function confirm() {
-    if (!preview || !choices) return;
+    if (!preview || !choices || !ownershipReady || phase!=="preview") return;
     setPhase("saving");
     setError("");
     try {
@@ -312,13 +330,14 @@ export function DeckImport({
             <p className="allocation-copy">No account connection. Your collection quantities are never changed by importing a deck.</p>
           </>
         )}
+        {phase === "ownership-error" && <section className="sync-note"><h3>Ownership check interrupted</h3><p>Your decklist is retained. No ownership results or changes have been saved.</p></section>}
         {phase === "lookup" && (
           <div className="import-progress" role="status">
             <LoaderCircle className="import-spinner" size={31} />
             <p>{progress}</p>
           </div>
         )}
-        {(phase === "preview" || phase === "saving") && preview && choices && summary && (
+        {(phase === "preview" || phase === "saving") && ownershipReady && preview && choices && summary && (
           <>
             <p className="eyebrow">REVIEW BEFORE SAVING</p>
             <label className="deck-import-name">
@@ -441,6 +460,7 @@ export function DeckImport({
         )}
       </div>
       <footer className="import-footer">
+        {phase === "ownership-error" && last.current && <button className="primary-button" onClick={()=>void prepare(last.current!.text,last.current!.filename)}>Retry ownership check</button>}
         {phase === "interrupted" && last.current && (
           <button className="primary-button" onClick={() => void prepare(last.current!.text, last.current!.filename)}>
             Retry lookup
@@ -449,8 +469,8 @@ export function DeckImport({
         <button className="text-button" disabled={phase === "saving"} onClick={onClose}>
           Cancel
         </button>
-        {(phase === "preview" || phase === "saving") && (
-          <button className="primary-button" disabled={phase === "saving" || blocking.length > 0} onClick={() => void confirm()}>
+        {(phase === "preview" || phase === "saving" || phase === "ownership-error") && (
+          <button className="primary-button" disabled={!ownershipReady || phase === "saving" || blocking.length > 0} onClick={() => void confirm()}>
             {phase === "saving" ? "Saving deck…" : "Confirm import"}
           </button>
         )}

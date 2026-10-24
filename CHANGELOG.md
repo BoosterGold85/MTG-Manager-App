@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1 — Storage / Deck Import Reliability
+
+- Recover once from closing/invalid cached IndexedDB connections when starting load/save transactions; invalidate on close/versionchange and guard against late older-connection events. No retry after requests have started, duplicate writes or weakened revision checks.
+- Wait for read transaction completion and retain technical causes behind controlled storage messages.
+- Verify collection ownership freshly before deck preview. Read failure blocks reconciliation and confirmation, retains source text and offers Retry ownership check / Cancel; failure never becomes a false all-Missing preview. No database clear, ownership reset or collection re-import.
+- Added deterministic connection/revision/failure tests and five-size 100-card import/retry/atomic-save browser workflows. Deck DNA and prior collection/deck behavior are unchanged.
+
 ## 0.5.0 — Deck DNA Core
 
 - Added a local deterministic derived Deck DNA engine over canonical Card Intelligence: bounded theme families, repeated-strategy weighting, capped Commander reinforcement and normalized explanatory weights. Missing/unassigned cards count equally; no taxonomy, ownership or persistence schema changes.

@@ -1,6 +1,10 @@
-# MTG Manager · v0.5.0
+# MTG Manager · v0.5.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Storage reliability hotfix (v0.5.1)
+
+Closing IndexedDB connections are invalidated, reopened and retried once when a transaction cannot start. Revision checks and atomic writes remain unchanged; a write already in progress is never replayed. Deck import now verifies saved collection ownership with a fresh storage read. If it fails, ownership results are withheld and Confirm import stays disabled; **Retry ownership check** reuses the retained decklist. Storage failure never means “you own zero cards.” No collection reset or ManaBox collection re-import is required for this connection recovery. See [hotfix validation](docs/VALIDATION-v0.5.1.md).
 
 ## Deck DNA Core (v0.5.0)
 
@@ -12,7 +16,7 @@ Analysis includes the entire conceptual decklist, including missing cards and un
 
 Select a displayed DNA theme or use **Deck DNA theme** in the existing controls to browse its contributors. Search, type and ownership filters still combine with sorting, and Previous/Next follows the exact visible sequence and position. Missing cards remain fully browsable.
 
-Derived DNA uses a bounded in-memory cache keyed by deck ID, stable conceptual-content revision, DNA version and Card Intelligence ruleset. Add/remove/Commander/metadata/manual-tag changes invalidate it; browsing and ownership-only changes reuse it. An unchanged deck reopens from cache; reload safely rebuilds it locally. No database migration or persisted derived data is needed, and backups retain their existing collection/deck/source/correction fields with release version 0.5.0.
+Derived DNA uses a bounded in-memory cache keyed by deck ID, stable conceptual-content revision, DNA version and Card Intelligence ruleset. Add/remove/Commander/metadata/manual-tag changes invalidate it; browsing and ownership-only changes reuse it. An unchanged deck reopens from cache; reload safely rebuilds it locally. No database migration or persisted derived data is needed, and backups retain their existing collection/deck/source/correction fields with the current application version.
 
 See [v0.5.0 validation and methodology](docs/VALIDATION-v0.5.0.md) for weights, regression decks, limitations and commands. v0.4.2 is approved. No v0.6.0 recommendations, cuts, optimization or new-set work is implemented.
 
@@ -217,7 +221,7 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
-See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.5.0 validation](docs/VALIDATION-v0.5.0.md) for current results, [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for browsing, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.5.0 validation](docs/VALIDATION-v0.5.0.md) for DNA results, [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for browsing, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
 
 ## Deploy to Cloudflare Pages
 
@@ -249,4 +253,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is current. Work stops before v0.6.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability is current. Work stops before v0.6.0.
