@@ -1,0 +1,150 @@
+/* MTG Manager visual foundation. Values belong here; components consume roles.
+   Keep artwork dominant. Gold marks actions/selections, never large panel fills. */
+:root {
+  --color-obsidian-olive: #151713;
+  --color-panel-charcoal: #1D201A;
+  --color-elevated-surface: #232720;
+  --color-soft-border: #34382F;
+  --color-parchment-white: #F4F1E8;
+  --color-muted-sage: #9DA39A;
+  --color-dusty-sage: #7A8478;
+  --color-antique-gold: #D0C098;
+  --color-highlight-gold: #D8B058;
+  --color-muted-rose: #B57C72;
+
+  --font-body: "DM Sans Variable", sans-serif;
+  --font-display: "Libre Caslon Display", Georgia, serif;
+  --font-symbol: serif;
+  --decoration-muted: color-mix(in srgb, var(--color-dusty-sage) 20%, transparent);
+
+  --background-app: var(--color-obsidian-olive);
+  --surface-panel: var(--color-panel-charcoal);
+  --surface-elevated: var(--color-elevated-surface);
+  --surface-hover: color-mix(in srgb, var(--color-parchment-white) 4%, transparent);
+  --surface-overlay: color-mix(in srgb, var(--surface-elevated) 96%, transparent);
+  --border-soft: var(--color-soft-border);
+  --border-subtle: color-mix(in srgb, var(--border-soft) 65%, transparent);
+  --border-strong: color-mix(in srgb, var(--color-muted-sage) 35%, var(--border-soft));
+  --border-accent: color-mix(in srgb, var(--color-antique-gold) 30%, transparent);
+  --text-primary: var(--color-parchment-white);
+  --text-secondary: var(--color-muted-sage);
+  /* Dusty Sage alone is <4.5:1 on panels; lift only functional small labels. */
+  --text-muted: color-mix(in srgb, var(--color-dusty-sage) 85%, var(--color-parchment-white));
+  --text-subtle: var(--color-dusty-sage);
+  --text-on-accent: var(--color-obsidian-olive);
+  --accent: var(--color-antique-gold);
+  --accent-hover: var(--color-highlight-gold);
+  --accent-soft: color-mix(in srgb, var(--accent) 5%, transparent);
+  --danger: var(--color-muted-rose);
+  --danger-text: color-mix(in srgb, var(--danger) 80%, var(--text-primary));
+  --danger-soft: color-mix(in srgb, var(--danger) 8%, transparent);
+  --focus-color: var(--color-highlight-gold);
+  --focus-width: 2px;
+  --focus-offset: 4px;
+  --selected-surface: color-mix(in srgb, var(--accent) 8%, var(--surface-panel));
+  --selected-border: var(--color-highlight-gold);
+  --selected-text: var(--color-antique-gold);
+  --disabled-opacity: .45;
+  --text-disabled: var(--text-muted);
+  --dialog-backdrop: color-mix(in srgb, var(--background-app) 78%, transparent);
+  --shadow-ink: #000;
+  --shadow-lift: 0 6px 12px color-mix(in srgb, var(--shadow-ink) 33%, transparent);
+  --shadow-badge: 0 2px 6px color-mix(in srgb, var(--shadow-ink) 47%, transparent);
+  --shadow-dialog: 0 32px 120px color-mix(in srgb, var(--shadow-ink) 50%, transparent);
+  --shadow-artwork: 0 15px 30px color-mix(in srgb, var(--shadow-ink) 40%, transparent);
+  --shadow-navigation: 0 -10px 30px color-mix(in srgb, var(--shadow-ink) 13%, transparent);
+  --shadow-indicator: 0 1px 6px color-mix(in srgb, var(--shadow-ink) 60%, transparent);
+  --shadow-selection: 0 5px 32px color-mix(in srgb, var(--shadow-ink) 60%, transparent);
+
+  /* Existing optical spacing is retained, including fine 1px adjustments. */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-7: 7px;
+  --space-8: 8px;
+  --space-9: 9px;
+  --space-10: 10px;
+  --space-11: 11px;
+  --space-12: 12px;
+  --space-13: 13px;
+  --space-14: 14px;
+  --space-15: 15px;
+  --space-16: 16px;
+  --space-17: 17px;
+  --space-18: 18px;
+  --space-19: 19px;
+  --space-20: 20px;
+  --space-21: 21px;
+  --space-22: 22px;
+  --space-23: 23px;
+  --space-24: 24px;
+  --space-25: 25px;
+  --space-26: 26px;
+  --space-27: 27px;
+  --space-28: 28px;
+  --space-29: 29px;
+  --space-30: 30px;
+  --space-32: 32px;
+  --space-34: 34px;
+  --space-35: 35px;
+  --space-36: 36px;
+  --space-38: 38px;
+  --space-40: 40px;
+  --space-42: 42px;
+  --space-43: 43px;
+  --space-45: 45px;
+  --space-48: 48px;
+  --space-49: 49px;
+  --space-55: 55px;
+  --space-60: 60px;
+  --space-65: 65px;
+  --space-100: 100px;
+  --space-210: 210px;
+
+  /* Existing radii are preserved so token adoption cannot reshape the binder. */
+  --radius-2: 2px;
+  --radius-3: 3px;
+  --radius-4: 4px;
+  --radius-5: 5px;
+  --radius-6: 6px;
+  --radius-7: 7px;
+  --radius-8: 8px;
+  --radius-9: 9px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-13: 13px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-19: 19px;
+  --radius-20: 20px;
+  --radius-circle: 50%;
+  --radius-control: var(--radius-7);
+  --radius-panel: var(--radius-12);
+  --radius-dialog: var(--radius-19);
+  --space-section: var(--space-24);
+  --space-control-x: var(--space-14);
+  --space-control-y: var(--space-10);
+
+  /* Functional Magic data colors are distinct from the interface/brand accent. */
+  --mana-white: #d9d3b3;
+  --mana-blue: #8ca9bb;
+  --mana-black: #a095b0;
+  --mana-red: #c28e7e;
+  --mana-green: #91a68c;
+  --mana-multi-gold: #d3c999;
+  --mana-multi-red: #b18a7e;
+  --mana-multi-green: #8da18b;
+  --mana-multi-blue: #8fa5b3;
+  --mana-colorless: #9daba5;
+  --rarity-rare: #c7b780;
+  --rarity-mythic: #c99470;
+  --rarity-uncommon: #b0c0be;
+
+  /* Compatibility roles used throughout the approved binder. */
+  --muted: var(--text-secondary);
+  --border: var(--border-soft);
+  --surface: var(--surface-panel);
+}

@@ -2,6 +2,9 @@
 
 ## 0.3.2 — Intelligence Polish & Tagging Accuracy
 
+- Formalized the approved visual identity into centralized palette/semantic tokens for surfaces, text, borders, focus, selection, disabled/destructive states, spacing, radii, typography and shadows. Existing layout and functionality are retained.
+- Added temporary diamond SVG/ICO/PNG app icons, Apple touch asset and PWA/maskable manifest references, generated from token colors. Added brand/asset validation; no naming change, offline service worker or rebrand.
+
 - Fixed self-type Oracle references being mistaken for Artifacts/Enchantments Matter; require actual strategic references.
 - Replaced capitalized-word subtype inference with a bundled Scryfall creature-type catalog, validated dynamic IDs and explicit payoff/enabler detection. Fixed Éowyn Human synergy and rejected Eachs Matter/other junk types.
 - Separated generic Death Triggers from Sacrifice Payoff while retaining valid aristocrats drain classification.

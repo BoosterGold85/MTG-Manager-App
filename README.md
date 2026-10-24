@@ -2,6 +2,12 @@
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
 
+## Visual identity
+
+The approved binder language is formalized in [design-system tokens](src/styles/tokens.css) and the [visual identity guide](docs/DESIGN-SYSTEM.md). Components share the Obsidian Olive/Parchment/Antique Gold palette, neutral surfaces, subtle borders, accessible focus/selected/disabled states, spacing, radii and dark shadows. Geometry and behavior remain unchanged. Functional Magic mana/rarity colors stay distinct from brand accents.
+
+The temporary diamond app icon has SVG, ICO, 16–1024px PNG, Apple touch and maskable PWA assets with matching manifest/favicon/theme references. `npm run icons:generate` recreates them from palette tokens using the existing Chromium toolchain. This adds installation identity metadata, not an offline service worker or a product rebrand. See [visual validation](docs/VALIDATION-VISUAL-IDENTITY.md).
+
 ## Intelligence polish (v0.3.2)
 
 Ruleset **0.3.2** automatically refreshes older saved analysis once, using the existing worker and atomic repository path. Manual additions/suppressions remain intact. The importer, retry/cache/backoff behavior, physical quantities and collection-management architecture are unchanged.
