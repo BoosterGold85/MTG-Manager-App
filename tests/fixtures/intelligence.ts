@@ -19,7 +19,7 @@ export const curated:[string,CardMetadata,string[]][]=[
  ['populate',card('Populate.'),['populate']],
  ['sac outlet',card('Sacrifice another creature: Scry 1.'),['sacrifice-outlet','topdeck']],
  ['sac payoff',card('Whenever you sacrifice a permanent, draw a card.'),['sacrifice-payoff','card-draw']],
- ['aristocrats',card('Whenever another creature dies, each opponent loses 1 life and you gain 1 life.'),['aristocrats','sacrifice-payoff','death-triggers','lifegain','drain']],
+ ['aristocrats',card('Whenever another creature dies, each opponent loses 1 life and you gain 1 life.'),['aristocrats','death-triggers','lifegain','drain']],
  ['self mill',card('Mill three cards.'),['self-mill','mill','graveyard']],
  ['opponent mill',card('Target opponent mills three cards.'),['mill']],
  ['recursion',card('Return target card from your graveyard to your hand.'),['recursion','graveyard']],

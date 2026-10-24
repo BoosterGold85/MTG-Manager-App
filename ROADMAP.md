@@ -9,7 +9,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.2.0 — Approved | Real Collection Foundation: ManaBox CSV preview/import, deterministic matching, safe re-import upserts, local persistence and physical ownership.                             |
 | 0.2.1 — Approved | Collection Management & Multi-Select: safe local removal/clear, statistics, import history and JSON backup. |
 | 0.3.0 — Approved | Card Intelligence & Taxonomy: inspectable semantic tags, evidence, confidence and correction.                                                                                 |
-| **0.3.1 — Current** | Importer reliability: recoverable lookup interruptions, retries, safe pacing and durable metadata checkpoints; no new intelligence scope. |
+| 0.3.1 — Approved | Importer reliability: recoverable lookup interruptions, retries, safe pacing and durable metadata checkpoints; no new intelligence scope. |
+| **0.3.2 — Current** | Intelligence Polish & Tagging Accuracy: semantic corrections, validated typal signals, canonical Keywords and optional Oracle text search. |
 | 0.4.0 — Next        | Commander Library: managed decklists, card assignment, copy tracking and history.                                                                                             |
 | 0.5.0               | Deck DNA: explain a deck's identity, archetypes, interactions and strategy.                                                                                                   |
 | 0.6.0               | Synergy Explorer: explainable candidates from owned, preferably unassigned copies; no automatic changes.                                                                      |

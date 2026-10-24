@@ -1,3 +1,4 @@
+import { collectionKeywords } from "../utils/cardKeywords";
 import { taxonomy, tagDefinition } from "../intelligence/taxonomy";
 import { useState } from "react";
 import { Check } from "lucide-react";
@@ -29,6 +30,8 @@ export function FilterDrawer({
   onApply: (f: Filters) => void;
   onClose: () => void;
 }) {
+  const [keywordQuery,setKeywordQuery] = useState("");
+  const keywords = collectionKeywords(cards);
   const [tagQuery,setTagQuery] = useState("");
   const [draft, setDraft] = useState<Filters>({ ...filters });
   function update<K extends keyof Filters>(key: K, value: Filters[K]) {
@@ -56,6 +59,14 @@ export function FilterDrawer({
           <p className="filter-help">{draft.synergyTags?.length || 0} selected · {(draft.tagMatch || 'ANY') === 'ANY' ? 'At least one selected tag' : 'Every selected tag'}</p>
           <div className="synergy-options">{[...taxonomy,...[...new Set(cards.flatMap(c=>c.intelligentTags||[]))].filter(id=>id.startsWith('typal:')).map(id=>tagDefinition(id)!)].filter(t=>`${t.label} ${t.aliases?.join(' ')||''}`.toLowerCase().includes(tagQuery.toLowerCase())).map(t=><button key={t.id} className={`choice ${draft.synergyTags?.includes(t.id)?'selected':''}`} aria-pressed={draft.synergyTags?.includes(t.id)||false} onClick={()=>update('synergyTags',toggle(draft.synergyTags||[],t.id))}>{t.label}{draft.synergyTags?.includes(t.id) && <Check size={14}/>}</button>)}</div>
           <button className="text-button" onClick={()=>update('synergyTags',[])}>Clear tags</button>
+        </fieldset>
+        <fieldset className="keyword-filter"><legend>Keywords</legend>
+          <label>Search keywords<input type="search" value={keywordQuery} onChange={e=>setKeywordQuery(e.target.value)} /></label>
+          <p className="filter-help">Canonical named mechanics · match any selected keyword. Separate from strategic tags.</p>
+          <p className="filter-help">{draft.keywords?.length || 0} selected</p>
+          <div className="synergy-options">{keywords.filter(word=>word.toLowerCase().includes(keywordQuery.toLowerCase())).map(word=><button key={word} className={`choice ${draft.keywords?.includes(word)?'selected':''}`} aria-pressed={draft.keywords?.includes(word)||false} onClick={()=>update('keywords',toggle(draft.keywords||[],word))}>{word}{draft.keywords?.includes(word)&&<Check size={14}/>}</button>)}</div>
+          {!keywords.length && <p className="filter-help">No canonical keywords in this saved metadata. Older cached cards may not include keyword fields.</p>}
+          <button className="text-button" onClick={()=>update('keywords',[])}>Clear keywords</button>
         </fieldset>
         <div>
           <label htmlFor="commander-colors">Commander Colors</label>

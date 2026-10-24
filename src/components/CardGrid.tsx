@@ -63,10 +63,10 @@ export function CardGrid({
             key={card.id}
             onClick={() => selecting ? onToggle?.(card.id) : onOpen(card)}
             aria-pressed={selecting ? selected.has(card.id) : undefined}
-            aria-label={selecting ? undefined : `View ${card.name}`}
+            aria-description={`${card.setCode.toUpperCase()}${card.collectorNumber ? ` #${card.collectorNumber}` : ""}, ${card.rarity}, ${card.quantity} ${card.quantity === 1 ? "copy" : "copies"}${card.foil ? ", foil" : ""}`}
           >
-            {selecting && <span className="sr-only">Select </span>}
-            <div className="tile-art">
+            <span className="sr-only">{selecting ? "Select" : "View"} {card.name}</span>
+            <div className="tile-art" aria-hidden="true">
               <CardImage card={card} eager={i < 6} />
               {selecting && <span className="selection-indicator" aria-hidden="true">{selected.has(card.id) && <Check size={17} />}</span>}
               {card.quantity > 1 && (
@@ -84,8 +84,8 @@ export function CardGrid({
                 </span>
               )}
             </div>
-            <span className="tile-title">{card.name}</span>
-            <span className="tile-subtitle">
+            <span className="tile-title" aria-hidden="true">{card.name}</span>
+            <span className="tile-subtitle" aria-hidden="true">
               {card.setCode.toUpperCase()} <span>·</span>{" "}
               <span className={`rarity ${card.rarity}`}>{card.rarity}</span>
             </span>

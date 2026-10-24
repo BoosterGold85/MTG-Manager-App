@@ -6,6 +6,6 @@ export const mana: Rule = c => {
  return [...add,...land,
  ...(add.length && /Creature/i.test(c.type)?[{...add[0],tagId:'mana-dork',reason:'Creature type plus mana-production ability.',source:'derived' as const,confidence:0.99}]:[]),
  ...(add.length && /Artifact/i.test(c.type)&& !/Creature/i.test(c.type)?[{...add[0],tagId:'mana-rock',reason:'Noncreature artifact type plus mana-production ability.',source:'derived' as const,confidence:0.99}]:[]),
- ...match(c,'cost-reduction',/cost[^.\n]{0,70}(?:less|reduced)/i,'Reduces mana costs instead of directly producing mana.'),
+ ...match(c,'cost-reduction',/cost[^.\n]{0,70}(?:less|reduced)|pay \{0\} rather than pay[^.\n]{0,65}cost|without paying[^.\n]{0,65}(?:mana|equip) cost/i,'Reduces or waives a mana/equip cost instead of directly producing mana.'),
  ...match(c,'mana-fixing',/mana of any (?:one )?colou?r|mana in any combination of colou?rs|search[^.\n]{0,100}basic land/i,'Provides flexible colors or finds basic lands.',true)];
 };

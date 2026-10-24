@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.2 — Intelligence Polish & Tagging Accuracy
+
+- Fixed self-type Oracle references being mistaken for Artifacts/Enchantments Matter; require actual strategic references.
+- Replaced capitalized-word subtype inference with a bundled Scryfall creature-type catalog, validated dynamic IDs and explicit payoff/enabler detection. Fixed Éowyn Human synergy and rejected Eachs Matter/other junk types.
+- Separated generic Death Triggers from Sacrifice Payoff while retaining valid aristocrats drain classification.
+- Distinguished self-exile graveyard resources from Graveyard Hate, added token-copy reanimation, tightened self-cast versus Recursion, and recognized optional discard outlets.
+- Added waived equip costs as Cost Reduction; protected Doubling Season, Diregraf Colossus, Desecrated Tomb and Ghirapur Orrery results with canonical fixtures.
+- Added canonical Keywords filtering/detail metadata as a separate layer from strategic tags, plus optional Name/Oracle Text/All search across faces.
+- Bumped ruleset to 0.3.2 for one-time recalculation with manual overrides preserved. Added ten real-card snapshots, rule-quality/unit/browser regressions and accessibility checks. Card tile names use natural text with printing/quantity descriptions, preserving visuals and action names even when art is unavailable.
+- Preserved v0.3.1 importer reliability and all collection-management behavior. No v0.4.0 functionality.
+
 ## 0.3.1 — Importer Reliability
 
 - Fixed service/batch failures being converted into one false Problem Row per card. Interrupted lookups now block preview and offer Retry unresolved with retained parsed input and successful lookups.

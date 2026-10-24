@@ -1,6 +1,22 @@
-# MTG Manager · v0.3.1
+# MTG Manager · v0.3.2
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Intelligence polish (v0.3.2)
+
+Ruleset **0.3.2** automatically refreshes older saved analysis once, using the existing worker and atomic repository path. Manual additions/suppressions remain intact. The importer, retry/cache/backoff behavior, physical quantities and collection-management architecture are unchanged.
+
+The rules now distinguish permanent type from strategic interest in that type, recognize waived equip costs, separate generic death triggers from explicit Sacrifice Payoff, distinguish self-graveyard exile from graveyard disruption, recognize token-copy reanimation, and exclude a spell's self-only graveyard-cast permission from generic Recursion. Optional self-discard choices count as outlets. Ten named-card snapshots protect both the corrected and strong existing results.
+
+Dynamic typal intelligence uses a bundled **366-type Scryfall creature-type catalog** (`src/intelligence/data/creatureTypes.json`) and parsed subtype/ability signals. Arbitrary capitalized words no longer generate tags. Token creation alone records a type reference, not a typal payoff. Cards such as Éowyn and Diregraf require actual Human/Zombie conditions or payoffs. No new runtime catalog calls or intelligence providers are introduced.
+
+### Keywords and text search
+
+**Filters → Keywords** is a searchable multi-select built from canonical `keywords` metadata on cards and faces in the current collection. It matches **any** selected keyword and combines with Tags/Synergy, Commander Colors, normal color/type/printing filters and sorting. Clear keywords, cancel, Clear all and Reset all retain the existing draft/apply interaction. Card Detail shows Keywords separately from strategic Card Intelligence. New mechanic names appear automatically when supplied in canonical metadata; there is no fixed list of the example keyword names.
+
+Keywords describe named mechanics; tags describe strategic/function meaning. Mayhem can be a canonical keyword without becoming a new taxonomy tag named Mayhem. This patch does not add Discard Matters/Cast From Graveyard taxonomy entries. Older cache entries with no keyword fields are not guessed from Oracle prose or silently refreshed through thousands of API calls: the filter explains when keyword data is absent. Existing metadata caching remains intact.
+
+The search control now offers **Card Name** (unchanged default), **Oracle Text**, and **All** (name + Oracle text). Text search includes every available face, supports ordinary case-insensitive substring queries, and combines with semantic/keyword filters. It does not replace strategic tagging. Reset all returns to Card Name.
 
 ## Import reliability patch (v0.3.1)
 
@@ -136,6 +152,8 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and current release results.
+
 ## Deploy to Cloudflare Pages
 
 The repository uses a static Vite build; no Cloudflare infrastructure, functions, database bindings or secrets are added:
@@ -166,4 +184,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.1 is an importer reliability patch on the v0.3.0 baseline; Commander Library remains unimplemented.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.2 polishes intelligence on the v0.3.1 importer baseline; Commander Library remains unimplemented.

@@ -1,3 +1,4 @@
+import { cardKeywords } from "../utils/cardKeywords";
 import { CardIntelligence } from "./CardIntelligence";
 import type { Override } from "../intelligence/types";
 import type { SampleCollectionCard } from "../models/card";
@@ -112,6 +113,7 @@ export function CardDetail({
               </>
             )}
           </dl>
+          {cardKeywords(card).length > 0 && <section className="canonical-keywords" aria-label="Canonical keywords"><h3>Keywords</h3><p>Canonical named mechanics · separate from strategic tags</p><div className="tags">{cardKeywords(card).map(word=><span key={word}>{word}</span>)}</div></section>}
           {card.ownership && (
             <details className="source-fields">
               <summary>Original import fields</summary>

@@ -2248,3 +2248,10 @@ body:has(.selection-bar) .main-content { padding-bottom:210px; }
 .detail-dialog { overflow:clip; }
 /* Phase changes reuse footer buttons; avoid interpolating a low-contrast label. */
 .import-footer > button { transition:transform .18s; }
+
+/* Canonical mechanics and optional text search remain separate from synergy. */
+.search-bar .search-scope { width:108px; flex:0 0 108px; min-height:44px; padding:0 4px; background:transparent; color:#c7cfb8; border:0; border-left:1px solid #525a46; font-size:11px; }
+.keyword-filter input { width:100%; padding:11px; background:#171b14; border:1px solid #636c55; border-radius:7px; color:inherit; }
+.canonical-keywords { margin-top:24px; }
+.canonical-keywords h3 { font-size:12px; font-weight:500; color:#d4c398; }
+.canonical-keywords p { font-size:11px; line-height:1.6; color:#b4bda7; }

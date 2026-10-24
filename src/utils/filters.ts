@@ -1,3 +1,4 @@
+import { cardKeywords, oracleText } from "./cardKeywords";
 import type { Color, SampleCollectionCard } from "../models/card";
 export const colorOptions = [
   { value: "W", label: "White", symbol: "☀" },
@@ -49,6 +50,8 @@ export interface Filters {
   tag: string;
   synergyTags?: string[];
   tagMatch?: "ANY" | "ALL";
+  keywords?: string[];
+  searchIn?: "name" | "oracle" | "all";
 }
 export const emptyFilters: Filters = {
   colors: [],
@@ -65,6 +68,7 @@ export function activeFilterCount(f: Filters) {
   return (
     Number(f.commanderColors !== null) +
     (f.synergyTags?.length || 0) +
+    (f.keywords?.length || 0) +
     f.colors.length +
     f.types.length +
     [f.minMana, f.maxMana, f.rarity, f.set, f.finish, f.tag].filter(Boolean)
@@ -78,9 +82,14 @@ export function filterCards(
 ) {
   const commanderIdentity = f.commanderColors;
   const tags=f.synergyTags || [];
+  const search=query.trim().toLowerCase();
+  const keywords=(f.keywords||[]).map(k=>k.toLowerCase());
   return cards.filter(
     (c) =>
-      c.name.toLowerCase().includes(query.trim().toLowerCase()) &&
+      (f.searchIn === 'oracle' ? oracleText(c).toLowerCase().includes(search)
+        : f.searchIn === 'all' ? `${c.name}\n${oracleText(c)}`.toLowerCase().includes(search)
+        : c.name.toLowerCase().includes(search)) &&
+      (!keywords.length || cardKeywords(c).some(word=>keywords.includes(word.toLowerCase()))) &&
       (!f.colors.length ||
         f.colors.some((color) =>
           color === "multi"

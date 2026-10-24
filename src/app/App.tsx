@@ -211,7 +211,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.3.1</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.3.2</span>
           </span>
         </div>
       </header>
@@ -268,9 +268,9 @@ export default function App() {
                 <div className="search-bar">
                   <Search size={19} />
                   <input
-                    aria-label="Search cards by name"
+                    aria-label={filters.searchIn === 'oracle' ? 'Search Oracle text' : filters.searchIn === 'all' ? 'Search card name and Oracle text' : 'Search cards by name'}
                     type="search"
-                    placeholder="Find a card in your collection…"
+                    placeholder={filters.searchIn === "oracle" ? "Find words in Oracle text…" : "Find a card in your collection…"}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                   />
@@ -283,9 +283,9 @@ export default function App() {
                       <X size={17} />
                     </button>
                   )}
-                  <span className="search-hint" aria-hidden="true">
-                    BY NAME
-                  </span>
+                  <select className="search-scope" aria-label="Search in" value={filters.searchIn || 'name'} onChange={e=>setFilters(f=>({...f,searchIn:e.target.value as 'name'|'oracle'|'all'}))}>
+                    <option value="name">Card Name</option><option value="oracle">Oracle Text</option><option value="all">All</option>
+                  </select>
                 </div>
                 <div className="toolbar-actions">
                   <button
@@ -488,7 +488,7 @@ export default function App() {
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.3.1</span>
+            MTG Manager <span className="muted">· v0.3.2</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>

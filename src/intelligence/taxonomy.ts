@@ -1,3 +1,4 @@
+import { canonicalCreatureType, pluralCreatureType } from "./subtypes";
 import type { TagDefinition } from "./types";
 export const taxonomy: TagDefinition[] = [
   {id:"instants-sorceries",label:"Instants / Sorceries Matter",category:"strategy",description:"Explicitly enables or rewards instants and sorceries."},
@@ -30,7 +31,7 @@ export const taxonomy: TagDefinition[] = [
   { id: 'ramp', label: 'Ramp', category: 'role', description: 'Produces additional mana or accelerates lands, excluding ordinary lands.' },
   { id: 'card-draw', label: 'Card Draw', category: 'role', description: 'Positively instructs a player to draw cards.' },
   { id: 'tutor', label: 'Tutor', category: 'role', description: 'Searches a library for a card.' },
-  { id: 'recursion', label: 'Recursion', category: 'role', description: 'Returns or allows reuse of graveyard cards.' },
+  { id: 'recursion', label: 'Recursion', category: 'role', description: 'Recovers graveyard cards or permits replaying other cards; self-only cast permission is separate.' },
   { id: 'reanimator', label: 'Reanimator', category: 'role', description: 'Returns creatures from graveyards to the battlefield.' },
   { id: 'extra-land-drops', label: 'Extra Land Drops', category: 'role', description: 'Allows additional land plays.' },
   { id: 'land-recursion', label: 'Land Recursion', category: 'role', description: 'Returns or allows playing lands from the graveyard.' },
@@ -55,7 +56,7 @@ export const taxonomy: TagDefinition[] = [
   { id: 'counter-payoff', label: 'Counter Payoff', category: 'payoff', description: 'Rewards or amplifies counters.' },
   { id: 'token-payoff', label: 'Token Payoff', category: 'payoff', description: 'Rewards or amplifies tokens.' },
   { id: 'graveyard-payoff', label: 'Graveyard Payoff', category: 'payoff', description: 'Rewards cards or events in graveyards.' },
-  { id: 'sacrifice-payoff', label: 'Sacrifice Payoff', category: 'payoff', description: 'Rewards a sacrifice or creature death.' },
+  { id: 'sacrifice-payoff', label: 'Sacrifice Payoff', category: 'payoff', description: 'Rewards an explicit sacrifice event or sacrifice-specific interaction.' },
   { id: 'lifegain-payoff', label: 'Lifegain Payoff', category: 'payoff', description: 'Rewards gaining life.' },
   { id: 'planeswalkers', label: 'Planeswalkers Matter', category: 'payoff', description: 'Explicitly supports planeswalkers or loyalty.' },
   { id: 'flash', label: 'Flash / Instant-Speed Matters', category: 'payoff', description: 'Enables flash or rewards instant-speed play.' },
@@ -81,7 +82,7 @@ export const taxonomy: TagDefinition[] = [
 ];
 export const tagById = new Map(taxonomy.map(tag => [tag.id, tag]));
 export function tagDefinition(id: string): TagDefinition | undefined {
- if (id.startsWith("typal:")) { const type = id.slice(6); return { id, label: `${type === "Elf" ? "Elves" : type === "Dwarf" ? "Dwarves" : type === "Wolf" ? "Wolves" : `${type}s`} Matter`, category: "strategy", description: `Explicit support for ${type} creatures.` }; }
+ if (id.startsWith("typal:") && canonicalCreatureType(id.slice(6)) === id.slice(6)) { const type = id.slice(6); return { id, label: `${pluralCreatureType(type)} Matter`, category: "strategy", description: `Explicit support for ${type} creatures.` }; }
  return tagById.get(id);
 }
 export const quickTags = ["plus-counters", "landfall", "tokens", "graveyard", "artifacts", "lifegain", "ramp", "card-draw", "removal"];
