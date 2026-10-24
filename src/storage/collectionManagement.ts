@@ -13,9 +13,11 @@ export function collectionStats(state: CollectionState | null) {
 // Use the same revision-checked atomic snapshot write as the importer.
 export async function changeCollection(repository: CollectionRepository, base: CollectionState,
   action: { type: 'remove'; ids: string[] } | { type: 'clear' }) {
+  const affected = action.type === 'clear' ? base.items : base.items.filter(i=>action.ids.includes(i.id));
+  if (affected.some(i=>i.quantityAssigned>0)) throw new Error('Copies are assigned to decks. Remove those assignments or delete the decks before removing collection records.');
   const removed = new Set(action.type === 'remove' ? action.ids : []);
   const next: CollectionState = action.type === 'clear'
-    ? { ...emptyCollection(), revision: base.revision + 1 }
+    ? { ...emptyCollection(), ...(base.decks ? {decks: base.decks} : {}), revision: base.revision + 1 }
     : { ...base, revision: base.revision + 1,
         items: base.items.filter(item => !removed.has(item.id)) };
   await repository.save(next, base.revision);
@@ -24,7 +26,7 @@ export async function changeCollection(repository: CollectionRepository, base: C
 
 export async function collectionBackup(repository: CollectionRepository) {
   const state = await repository.load() || emptyCollection();
-  return JSON.stringify({ application: 'MTG Manager', applicationVersion: '0.3.2',
+  return JSON.stringify({ application: 'MTG Manager', applicationVersion: '0.4.0',
     exportedAt: new Date().toISOString(), schemaVersion: state.schemaVersion,
     collection: state }, null, 2);
 }

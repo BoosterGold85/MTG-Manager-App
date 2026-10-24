@@ -2265,3 +2265,56 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 
 .dialog { background:var(--surface-panel); }
 .search-bar:has(input:focus-visible) { outline:var(--focus-width) solid var(--focus-color); outline-offset:var(--focus-offset); }
+
+/* Commander Library uses the binder's existing tokens and card treatment. */
+.deck-heading { display:flex; justify-content:space-between; gap:var(--space-20); align-items:center; margin:var(--space-24) 0; }
+.deck-heading h1 { overflow-wrap:anywhere; }
+.deck-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:var(--space-24); }
+.deck-card { padding:0; text-align:left; overflow:hidden; border:1px solid var(--border-soft); border-radius:var(--radius-panel); background:var(--surface-panel); color:var(--text-primary); }
+.deck-cover { height:220px; overflow:hidden; background:var(--surface-elevated); }
+.deck-cover img { width:100%; height:auto; transform:translateY(-12%); }
+.deck-card-copy { padding:var(--space-20); }
+.deck-card-copy h2 { font-family:var(--font-display); font-size:1.5rem; }
+.deck-card-copy p, .allocation-copy { font-size:.8rem; color:var(--text-secondary); line-height:1.7; }
+.deck-commander { margin:var(--space-24) 0; padding:var(--space-20); border:1px solid var(--border-soft); border-radius:var(--radius-panel); background:var(--surface-panel); }
+.deck-commander>div { display:flex; gap:var(--space-20); align-items:center; }
+.commander-art { width:115px; flex-shrink:0; }
+.commander-art img { width:100%; border-radius:var(--radius-control); }
+.deck-commander h2 { font-family:var(--font-display); }
+.deck-commander p { font-size:.8rem; color:var(--text-secondary); }
+.deck-warning, .deck-statistics { color:var(--text-secondary); font-size:.85rem; line-height:1.7; }
+.deck-statistics { margin:var(--space-20) 0; }
+.deck-tabs { display:flex; gap:var(--space-12); margin:var(--space-24) 0; border-bottom:1px solid var(--border-soft); padding-bottom:var(--space-12); }
+.deck-search { display:flex; gap:var(--space-12); align-items:end; margin:var(--space-20) 0; }
+.deck-search label:first-child { flex:1; min-width:0; }
+.deck-library label { display:block; color:var(--text-secondary); font-size:.85rem; }
+.deck-library input, .deck-library select, .deck-dialog input, .deck-dialog select { width:100%; display:block; padding:var(--space-12); margin:var(--space-8) 0; color:var(--text-primary); background:var(--surface-panel); border:1px solid var(--border-soft); border-radius:var(--radius-control); font:inherit; }
+.deck-candidates { margin-top:var(--space-24); }
+.tile-allocation { display:block; text-align:left; }
+.tile-allocation p { font-size:.73rem; margin:var(--space-8) 0; }
+.deck-owned-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:var(--space-24); }
+.deck-owned-card { min-width:0; }
+.deck-owned-card h3 { font-size:.9rem; margin:var(--space-12) 0; }
+.deck-owned-card>p { font-size:.78rem; color:var(--text-secondary); }
+.deck-art-button { padding:0; border:0; width:100%; background:var(--surface-panel); border-radius:var(--radius-control); overflow:hidden; }
+.deck-art-button img { width:100%; }
+.deck-owned-card .management-button { width:100%; font-size:.75rem; }
+.deck-dialog { width:min(620px,calc(100vw - 24px)); }
+.deck-dialog-content { padding:0 var(--space-24) var(--space-24); line-height:1.7; }
+.deck-dialog-content>.primary-button,.deck-dialog-content>.management-button,.deck-dialog-content form button { margin:var(--space-12) var(--space-8) var(--space-12) 0; }
+.deck-dialog-content p { color:var(--text-secondary); }
+.commander-options { display:grid; gap:var(--space-12); }
+.commander-option { display:flex; gap:var(--space-16); width:100%; padding:var(--space-12); background:var(--surface-panel); border:1px solid var(--border-soft); border-radius:var(--radius-panel); text-align:left; color:var(--text-primary); align-items:center; }
+.commander-option>img,.commander-option>.card-image { width:70px; flex-shrink:0; }
+.commander-option>span { min-width:0; }
+.commander-option>span>span { display:block; font-size:.8rem; color:var(--text-secondary); }
+.allocation-conflicts { margin:var(--space-24) 0; padding:var(--space-20); border:1px solid var(--danger); border-radius:var(--radius-panel); color:var(--text-primary); background:var(--danger-soft); font-size:.85rem; line-height:1.8; }
+.deck-error { color:var(--danger-text) !important; }
+.deck-usage { border-top:1px solid var(--border-soft); margin-top:var(--space-24); padding-top:var(--space-20); color:var(--text-secondary); font-size:.85rem; }
+@media(max-width:600px) { .deck-heading { align-items:flex-start; flex-direction:column; } .deck-search { flex-direction:column; align-items:stretch; } .deck-owned-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-16); } .deck-commander>div { align-items:flex-start; gap:var(--space-12); } .commander-art { width:85px; } .deck-dialog-content { padding-inline:var(--space-16); } }
+
+.deck-cover .card-image { border-radius:0; }
+.deck-card-copy h2,.deck-card-copy p { margin:var(--space-8) 0; }
+.deck-dialog-content label { display:block; color:var(--text-secondary); }
+.allocation-copy { display:block; }
+.tile-allocation .allocation-copy { font-size:.73rem; margin:var(--space-8) 0; }

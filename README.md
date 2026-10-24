@@ -1,6 +1,26 @@
-# MTG Manager · v0.3.2
+# MTG Manager · v0.4.0
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Commander Library (v0.4.0)
+
+Open **Decks → New Deck**, name it, then choose an owned commander. Candidates use canonical legendary-creature types or explicit “can be your commander” Oracle text, never strategic tags. The selected printing reserves one owned copy. Sample cards remain a demo and cannot be assigned.
+
+The artwork-first library shows commander, identity, count, allocation status and last modified date. Open a deck to view its Commander and Deck sections, add/remove owned copies, rename it or explicitly confirm deletion. Basic composition is secondary and collapsed by default; average mana value excludes lands. The commander list is modeled as an array for future multiple-commander support, but this release creates one commander per deck.
+
+**Add Cards** reuses the binder card grid, Name/Oracle Text/All search and filter drawer (tags, Keywords, normal Color, Commander Colors, type, mana and printing filters). Candidates are always restricted to the commander's canonical color-identity subset. Colorless cards remain compatible. Changing Commander Colors can further narrow candidates but cannot bypass the deck boundary. Other Commander rules, singleton limits, banned lists and Partner combinations are not fully validated; the editor states that limitation.
+
+Tiles show **Owned · Assigned · Available** for each actual inventory printing/variant. Tap one to allocate a copy. Exhausted inventory shows **No unassigned copy available** and the decks using those copies. Nothing silently moves from another deck. Removing one deck copy releases that assignment only; deleting a deck releases all its assignments, including the commander. Collection ownership and ManaBox are unchanged. Collection Card Detail adds a subordinate **Deck Usage** section with per-deck navigation.
+
+### Deck storage and reconciliation
+
+`DeckRepository` is a separate data-access boundary implemented by `LocalDeckRepository` over the existing IndexedDB `CollectionRepository`. Decks, commander references, card assignments and derived physical counts commit together in one revision-checked snapshot. The additive optional `decks` field preserves schema-version-1 compatibility. A deck stores stable inventory IDs and canonical identity/printing references rather than duplicating complete card metadata. Finish, language, condition, binder and source fields stay on the collection item.
+
+For every record, assigned count is the sum of commander reservations and deck-card assignments; available is `max(0, owned - assigned)`. A normal re-import preserves these relationships and replaces exported owned quantities as before. If ownership drops below assignments, **all assignments remain**, available becomes zero and both preview warnings and the binder/deck UI flag an allocation conflict. Explicitly remove excess deck copies (or delete the deck), or correct inventory and re-import, to resolve it. Zero-owned conflicting records remain visible inside decks even though the binder normally hides zero ownership. Omitted export records retain the approved upsert behavior; changes to binder/variant fields create distinct inventory keys and are not guessed to be copy transfers.
+
+Removing or clearing allocated collection records is blocked with an explanation: release their deck assignments first. This prevents dangling deck references. Once assignments are released, the existing removal/typed-clear flow works normally. Deleting decks never deletes collection cards.
+
+**Export Backup** retains all prior collection/metadata/import/intelligence/source fields and now includes decks, commander selections, assignments and printing references under `collection.decks`. Backup restore, server persistence, accounts, cloud sync, deck history, full rules validation and all v0.5.0 Deck DNA features remain unimplemented. Data survives browser restarts on this origin/device; clearing site storage removes it. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md).
 
 ## Visual identity
 
@@ -10,7 +30,7 @@ The temporary diamond app icon has SVG, ICO, 16–1024px PNG, Apple touch and ma
 
 ## Intelligence polish (v0.3.2)
 
-Ruleset **0.3.2** automatically refreshes older saved analysis once, using the existing worker and atomic repository path. Manual additions/suppressions remain intact. The importer, retry/cache/backoff behavior, physical quantities and collection-management architecture are unchanged.
+Ruleset **0.3.2** automatically refreshes older saved analysis once, using the existing worker and atomic repository path. Manual additions/suppressions remain intact. The importer matching, retry/cache/backoff and intelligence architecture remain unchanged; v0.4.0 integrates deck allocations and explicit quantity conflicts.
 
 The rules now distinguish permanent type from strategic interest in that type, recognize waived equip costs, separate generic death triggers from explicit Sacrifice Payoff, distinguish self-graveyard exile from graveyard disruption, recognize token-copy reanimation, and exclude a spell's self-only graveyard-cast permission from generic Recursion. Optional self-discard choices count as outlets. Ten named-card snapshots protect both the corrected and strong existing results.
 
@@ -38,11 +58,11 @@ Scryfall IDs remain the primary authoritative printing identifiers. Only confirm
 
 Use **Select** to toggle records with a tap or keyboard. Selections use stable inventory IDs and survive search, filtering, sorting and loading more cards. **Select all** adds every current search/filter result, including unrendered records; changing results never silently changes your selection. Hidden selections count too. Clear selection or Cancel to reset them.
 
-**Remove** requires confirmation and removes entire selected inventory records, including all their physical copies. Card Detail also offers **Remove from Collection**. Your ManaBox collection and original CSV files are unaffected. A later confirmed ManaBox export containing a locally removed record may recreate it; there are no tombstones or suppression rules. Untouched records retain the existing absolute-quantity synchronization behavior.
+**Remove** requires confirmation and removes entire selected inventory records, including all their physical copies, after deck assignments are released. Card Detail also offers **Remove from Collection**. Your ManaBox collection and original CSV files are unaffected. A later confirmed ManaBox export containing a locally removed record may recreate it; there are no tombstones or suppression rules. Untouched records retain the existing absolute-quantity synchronization behavior.
 
 **Manage Collection** shows stored unique records (including zero-quantity records), owned/assigned/unassigned copies, the most recent successful import and local storage status. **Export Backup** downloads `mtg-manager-backup-YYYY-MM-DD.json` with version, timestamp, inventory, canonical metadata and provenance. The backup reflects persisted data, not sample cards. It can contain original purchase/binder information: keep it private. Backup restore is not implemented in this release.
 
-**Clear Collection** displays the full stored scope and requires typing `CLEAR` before confirmation. It atomically empties records, canonical caches, import history and unresolved rows, resets selection/search/filters and saves an empty binder across reload. It does not return to sample data. Removal and clear use the existing revision-checked repository; failed writes leave cards and selection intact and offer retry. If another tab changed the collection, reload before retrying.
+Allocated records must first be released from decks. **Clear Collection** displays the full stored scope and requires typing `CLEAR` before confirmation. It atomically empties records, canonical caches, import history and unresolved rows, resets selection/search/filters and saves an empty binder across reload. It does not return to sample data. Removal and clear use the existing revision-checked repository; failed writes leave cards and selection intact and offer retry. If another tab changed the collection, reload before retrying.
 
 Data is stored only in this browser on this device, with no server backup, accounts or cloud sync. Keep your original ManaBox exports and download local backups. Browser data clearing or switching origins/devices does not preserve local storage.
 
@@ -123,7 +143,7 @@ This release performs a **non-destructive upsert**, not an additive import or a 
 - Different printings, foil/nonfoil/etched finishes, languages, conditions or binder locations stay separate. Purchase changes update the same record and retain all source lots.
 - Records absent from an export are kept. Moving/renaming a binder, or changing a condition/language/finish, changes the identity; this release does not infer a physical move or delete the old record. Use zero quantities for known records you want hidden. Split exports must not independently overlap the same identity: the last confirmed total for it wins.
 - A zero quantity is stored and hidden from the binder, rather than deleting provenance.
-- Imported records start with `quantityAssigned = 0`, `quantityUnassigned = quantityOwned`. No deck assignments are created—even if ManaBox labels a list as a deck. The model preserves future assigned counts and rejects imports below an assigned quantity.
+- Imported records start with `quantityAssigned = 0`, `quantityUnassigned = quantityOwned`. No deck assignments are created—even if ManaBox labels a list as a deck. Re-import preserves existing deck assignments; a reduced owned quantity below those assignments becomes an explicit allocation conflict, with availability clamped to zero.
 
 New/updated/unchanged counts refer to grouped records; recognized/problem/duplicate counts refer to source rows. These units are labeled separately in the preview.
 
@@ -135,7 +155,7 @@ Data belongs to this **browser profile and site origin**. It is not synced betwe
 
 Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 120 ms apart. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
 
-`src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. No accounts, deck management, deck optimization or v0.4.0 capabilities are implemented.
+`src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. v0.4.0 adds the separate deck repository boundary on this same atomic snapshot. Accounts, deck optimization and cloud synchronization remain future scope.
 
 ## Validate
 
@@ -158,7 +178,7 @@ Management adds stable-ID selection, filtered select all beyond rendered tiles, 
 
 See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, lifecycle, manual overrides, worker performance, accessibility and current release results. Prior sample-preview assertions now verify real tags and evidence keyboard access; import and management suites remain unchanged.
 
-See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and current release results.
+See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for current release results.
 
 ## Deploy to Cloudflare Pages
 
@@ -190,4 +210,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.2 polishes intelligence on the v0.3.1 importer baseline; Commander Library remains unimplemented.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.3.2 is approved; v0.4.0 Commander Library is current. Work stops before v0.5.0.

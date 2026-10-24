@@ -160,13 +160,14 @@ export function buildImportPlan(
     const old = items.get(item.id);
     item.quantityAssigned = old?.quantityAssigned || 0;
     if (
-      item.quantityOwned < item.quantityAssigned ||
+      (!base.decks && item.quantityOwned < item.quantityAssigned) ||
       !Number.isSafeInteger(item.quantityOwned)
     )
       throw new Error(
         "An imported quantity is invalid or below an assigned quantity. No changes were saved.",
       );
-    item.quantityUnassigned = item.quantityOwned - item.quantityAssigned;
+    item.quantityUnassigned = Math.max(0, item.quantityOwned - item.quantityAssigned);
+    if (item.quantityAssigned > item.quantityOwned) warnings.push(`${metadata[item.scryfallId].name}: allocation conflict — Owned ${item.quantityOwned} · Assigned ${item.quantityAssigned}. Assignments were preserved; remove excess copies from decks to reconcile.`);
     const status = !old
       ? "new"
       : old.quantityOwned !== item.quantityOwned ||
@@ -202,6 +203,7 @@ export function buildImportPlan(
     summary,
     next: {
       schemaVersion: 1,
+      ...(base.decks ? {decks: base.decks} : {}),
       ...(base.intelligence ? {intelligence: base.intelligence} : {}),
       revision: base.revision + 1,
       items: [...items.values()],

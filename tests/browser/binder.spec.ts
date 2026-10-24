@@ -213,7 +213,7 @@ test("broken artwork has a graceful fallback and optional metadata stays readabl
   await dialog.locator(".intelligence").scrollIntoViewIfNeeded();
   await expect(dialog.getByText("No confident automatic tags yet. You can add a tag manually.")).toBeVisible();
 });
-test("commanders remains a clearly marked future destination; binder state survives", async ({
+test("Decks library opens and binder state survives", async ({
   page,
 }, info) => {
   await ready(page);
@@ -223,9 +223,9 @@ test("commanders remains a clearly marked future destination; binder state survi
       ? "Mobile navigation"
       : "Main navigation",
   });
-  await nav.getByRole("button", { name: "Commanders" }).click();
+  await nav.getByRole("button", { name: "Decks" }).click();
   await expect(
-    page.getByText("Coming in a future release.", { exact: false }),
+    page.getByRole("heading", {name:"Build your first Commander deck."}),
   ).toBeVisible();
   await page.getByRole("button", { name: "Back to your collection" }).click();
   await expect(page.locator(".card-tile")).toHaveCount(1);

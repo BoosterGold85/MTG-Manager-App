@@ -52,14 +52,34 @@ export function validateState(value: unknown): CollectionState {
       !Number.isSafeInteger(item.quantityAssigned) ||
       item.quantityOwned < 0 ||
       item.quantityAssigned < 0 ||
-      item.quantityAssigned > item.quantityOwned ||
-      item.quantityUnassigned !== item.quantityOwned - item.quantityAssigned ||
+      (!state.decks && item.quantityAssigned > item.quantityOwned) ||
+      item.quantityUnassigned !== Math.max(0, item.quantityOwned - item.quantityAssigned) ||
       !Array.isArray(item.sourceRows)
     )
       throw new Error(
         "Saved collection records are inconsistent. They have not been overwritten.",
       );
     ids.add(item.id);
+  }
+  if (state.decks) {
+    if (!Array.isArray(state.decks)) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
+    const deckIds = new Set<string>();
+    const assigned = new Map<string,number>();
+    for (const deck of state.decks) {
+      if (!deck.id || deckIds.has(deck.id) || !deck.name?.trim() || !Array.isArray(deck.commanders) || !deck.commanders.length || !Array.isArray(deck.assignments) || !Number.isFinite(Date.parse(deck.createdAt)) || !Number.isFinite(Date.parse(deck.modifiedAt))) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
+      deckIds.add(deck.id);
+      const assignmentIds = new Set<string>();
+      for (const c of deck.commanders) {
+        const item = state.items.find(i=>i.id===c.itemId);
+        if (!item || c.scryfallId!==item.scryfallId || !c.cardIdentity || !c.name || !Array.isArray(c.colorIdentity) || c.colorIdentity.some(color=>!['W','U','B','R','G'].includes(color))) throw new Error('Saved commander reference is inconsistent.');
+        assigned.set(c.itemId,(assigned.get(c.itemId)||0)+1);
+      }
+      for (const a of deck.assignments) {
+        if (!ids.has(a.itemId) || assignmentIds.has(a.itemId) || !Number.isSafeInteger(a.quantity) || a.quantity<1) throw new Error('Saved deck assignment is inconsistent.');
+        assignmentIds.add(a.itemId);assigned.set(a.itemId,(assigned.get(a.itemId)||0)+a.quantity);
+      }
+    }
+    if (state.items.some(i=>i.quantityAssigned!==(assigned.get(i.id)||0))) throw new Error('Saved deck allocation totals are inconsistent.');
   }
   return state;
 }

@@ -19,9 +19,11 @@ export function CardGrid({
   selecting = false,
   selected = new Set<string>(),
   onToggle,
+  caption,
 }: {
   cards: SampleCollectionCard[];
   loading: boolean;
+  caption?: (card: SampleCollectionCard) => React.ReactNode;
   selecting?: boolean;
   selected?: Set<string>;
   onToggle?: (id: string) => void;
@@ -63,7 +65,7 @@ export function CardGrid({
             key={card.id}
             onClick={() => selecting ? onToggle?.(card.id) : onOpen(card)}
             aria-pressed={selecting ? selected.has(card.id) : undefined}
-            aria-description={`${card.setCode.toUpperCase()}${card.collectorNumber ? ` #${card.collectorNumber}` : ""}, ${card.rarity}, ${card.quantity} ${card.quantity === 1 ? "copy" : "copies"}${card.foil ? ", foil" : ""}`}
+            aria-description={`${card.setCode.toUpperCase()}${card.collectorNumber ? ` #${card.collectorNumber}` : ""}, ${card.rarity}, ${card.quantity} ${card.quantity === 1 ? "copy" : "copies"}${card.foil ? ", foil" : ""}${caption && card.ownership ? `, Owned ${card.ownership.quantityOwned}, Assigned ${card.ownership.quantityAssigned}, Available ${card.ownership.quantityUnassigned}` : ""}`}
           >
             <span className="sr-only">{selecting ? "Select" : "View"} {card.name}</span>
             <div className="tile-art" aria-hidden="true">
@@ -89,6 +91,7 @@ export function CardGrid({
               {card.setCode.toUpperCase()} <span>·</span>{" "}
               <span className={`rarity ${card.rarity}`}>{card.rarity}</span>
             </span>
+            {caption && <span className="tile-allocation" aria-hidden="true">{caption(card)}</span>}
           </button>
         ))}
       </div>

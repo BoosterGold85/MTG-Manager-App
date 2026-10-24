@@ -1,3 +1,7 @@
+import { DeckLibrary } from '../components/DeckLibrary';
+import { LocalDeckRepository } from '../storage/deckRepository';
+import { allocationConflicts } from '../decks/decks';
+const deckRepository = new LocalDeckRepository(collectionRepository);
 import { tagCollection, tagInWorker } from "../intelligence/client";
 import { cardIdentity, effectiveAssignments, needsAnalysis } from "../intelligence/tagger";
 import { RULESET_VERSION } from "../intelligence/types";
@@ -7,7 +11,6 @@ import { quickTags, tagDefinition } from "../intelligence/taxonomy";
 import { useEffect, useState } from "react";
 import {
   ArrowDownUp,
-  ArrowRight,
   BookOpen,
   ChevronDown,
   Crown,
@@ -69,7 +72,8 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
   const [sort, setSort] = useState<Sort>("name");
-  const [area, setArea] = useState<"collection" | "commanders">("collection");
+  const [activeDeckId,setActiveDeckId] = useState<string|null>(null);
+  const [area, setArea] = useState<"collection" | "decks">("collection");
   const [overlay, setOverlay] = useState<Overlay>(null);
   useEffect(() => {
     let cancelled = false;
@@ -177,12 +181,11 @@ export default function App() {
         <span>Collection</span>
       </button>
       <button
-        aria-current={area === "commanders" ? "page" : undefined}
-        onClick={() => setArea("commanders")}
+        aria-current={area === "decks" ? "page" : undefined}
+        onClick={() => setArea("decks")}
       >
         <Crown size={mobile ? 21 : 17} />
-        <span>Commanders</span>
-        {!mobile && <span className="soon-dot" />}
+        <span>Decks</span>
       </button>
     </nav>
   );
@@ -211,7 +214,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.3.2</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.4.0</span>
           </span>
         </div>
       </header>
@@ -255,6 +258,7 @@ export default function App() {
                 <span>KEEP YOURS CLOSE.</span>
               </div>
             </section>
+            {savedCollection && allocationConflicts(savedCollection).length>0 && <div className="allocation-conflicts" role="status"><strong>Inventory needs reconciliation.</strong> Re-import preserved deck assignments that exceed ownership. <button className="text-button" onClick={()=>setArea('decks')}>Review allocation conflicts</button></div>}
             {tagging && <p role="status" className="tagging-status">{tagStatus}</p>}
             <div className="collection-management-actions">
               <button className="management-button" onClick={() => openOverlay({ type: "manage" })} disabled={loading || !!loadError}><Settings2 size={16} />Manage Collection</button>
@@ -468,27 +472,12 @@ export default function App() {
             )}
           </>
         ) : (
-          <section className="coming-soon">
-            <div className="coming-emblem">
-              <Crown size={35} strokeWidth={1} />
-            </div>
-            <p className="eyebrow">THE NEXT CHAPTER</p>
-            <h1>A place for your commanders.</h1>
-            <p>
-              Coming in a future release. For now, enjoy the cards that make
-              every deck possible.
-            </p>
-            <button
-              className="primary-button"
-              onClick={() => setArea("collection")}
-            >
-              Back to your collection <ArrowRight size={17} />
-            </button>
-          </section>
+          <DeckLibrary state={savedCollection} repository={deckRepository} onSaved={acceptState} activeId={activeDeckId} onOpen={setActiveDeckId} onCollection={()=>setArea('collection')}/>
+
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.3.2</span>
+            MTG Manager <span className="muted">· v0.4.0</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>
@@ -502,7 +491,7 @@ export default function App() {
       </div>}
       {nav(true)}
       {overlay?.type === "card" && (
-        <CardDetail onSaveTags={savedCollection && overlay.card.ownership ? override=>saveTags(cards.find(c=>c.id===overlay.card.id)||overlay.card,override) : undefined} card={cards.find(c=>c.id===overlay.card.id)||overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
+        <CardDetail collection={savedCollection} onOpenDeck={id=>{closeOverlay();setActiveDeckId(id);setArea('decks');}} onSaveTags={savedCollection && overlay.card.ownership ? override=>saveTags(cards.find(c=>c.id===overlay.card.id)||overlay.card,override) : undefined} card={cards.find(c=>c.id===overlay.card.id)||overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
       )}
       {overlay?.type === "manage" && <ManageCollection onRecalculate={recalculate} tagging={tagging} tagStatus={tagStatus} state={savedCollection} onClose={closeOverlay} onClear={() => setOverlay({ type: "clear" })} />}
       {(overlay?.type === "clear" || overlay?.type === "remove") && savedCollection && <ConfirmCollectionChange key={overlay.type} state={savedCollection} clear={overlay.type === "clear"} ids={overlay.type === "remove" ? overlay.ids : []} onClose={closeOverlay} onSaved={state => { acceptState(state); if (overlay.type === "clear") { cancelSelection(); reset(); } closeOverlay(); }} />}

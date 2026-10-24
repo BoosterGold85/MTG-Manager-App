@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 — Commander Library
+
+- Added artwork-first Decks navigation/library, name → owned commander creation, saved editor, basic composition, rename and confirmed deletion.
+- Added canonical commander eligibility and color-identity subset enforcement; reused collection search, tags, Keywords and filters for owned-card additions. Full format validation remains explicitly limited.
+- Introduced Deck/DeckCommander/DeckCardAssignment references and a DeckRepository boundary using the existing revision-checked IndexedDB transaction. Commander reservations and printing-level assignments derive assigned/available quantities atomically; no automatic copy movement or over-allocation.
+- Added per-printing owned/assigned/available captions, exhausted-copy deck usage, release actions and subordinate Collection Card Detail Deck Usage.
+- Preserved assignments across ManaBox re-import/recalculation. Reduced quantities produce visible recoverable conflicts rather than deleted assignments; zero-owned deck records remain manageable. Allocated collection removal/clear is guarded to prevent dangling references.
+- Extended JSON backup with decks, commander references and assignments without removing existing fields. Added allocation/re-import/storage regressions and five-size production browser flows. Preserved v0.3.2 intelligence/brand/PWA and v0.3.1 importer systems. No v0.5.0 features.
+
 ## 0.3.2 — Intelligence Polish & Tagging Accuracy
 
 - Formalized the approved visual identity into centralized palette/semantic tokens for surfaces, text, borders, focus, selection, disabled/destructive states, spacing, radii, typography and shadows. Existing layout and functionality are retained.

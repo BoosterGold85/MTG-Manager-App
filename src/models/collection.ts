@@ -1,3 +1,4 @@
+import type { Deck } from './deck';
 import { cardIdentity, effectiveAssignments } from "../intelligence/tagger";
 import type { IntelligenceState } from "../intelligence/types";
 import type { SampleCollectionCard } from "./card";
@@ -67,6 +68,7 @@ export interface ImportSummary {
 }
 export interface CollectionState {
   schemaVersion: 1;
+  decks?: Deck[];
   intelligence?: IntelligenceState;
   revision: number;
   items: CollectionItem[];

@@ -1,3 +1,5 @@
+import { deckUsage } from '../decks/decks';
+import type { CollectionState } from '../models/collection';
 import { cardKeywords } from "../utils/cardKeywords";
 import { CardIntelligence } from "./CardIntelligence";
 import type { Override } from "../intelligence/types";
@@ -7,11 +9,15 @@ import { Dialog } from "./Dialog";
 import { CardImage } from "./CardImage";
 export function CardDetail({
   card,
+  collection,
+  onOpenDeck,
   onClose,
   onRemove,
   onSaveTags,
 }: {
   card: SampleCollectionCard;
+  collection?: CollectionState|null;
+  onOpenDeck?: (id:string)=>void;
   onClose: () => void;
   onRemove?: () => void;
   onSaveTags?: (override:Override) => Promise<void>;
@@ -126,6 +132,7 @@ export function CardDetail({
           )}
           {onRemove && <div className="danger-zone"><button className="danger-button" onClick={onRemove}>Remove from Collection</button></div>}
           <CardIntelligence card={card} onSave={onSaveTags} />
+          {collection && card.ownership && <section className="deck-usage" aria-label="Deck Usage"><h3>Deck Usage</h3><p>Owned: {card.ownership.quantityOwned} · Available: {card.ownership.quantityUnassigned} · Assigned: {card.ownership.quantityAssigned}</p>{card.ownership.quantityAssigned>card.ownership.quantityOwned&&<p className="deck-error">Allocation conflict: inventory needs reconciliation.</p>}{deckUsage(collection,card.id).map(u=><p key={u.deck.id}><button className="text-button" onClick={()=>onOpenDeck?.(u.deck.id)}>{u.deck.name} ×{u.quantity}</button></p>)}{!card.ownership.quantityAssigned&&<p>No deck assignments.</p>}</section>}
         </div>
       </div>
     </Dialog>
