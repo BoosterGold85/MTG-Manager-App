@@ -74,7 +74,7 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   await dialog.getByRole("button", { name: "Confirm import", exact: true }).click();
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(page.getByRole("heading", { name: "Imported deck", exact: true })).toBeVisible();
-  await expect(page.locator(".collection-subtitle").first()).toContainText("8 cards · 5 owned / assigned · 3 missing");
+  await expect(page.locator(".collection-subtitle").first()).toContainText("8 cards · 5 copies assigned · 3 missing");
   const missing = page.getByRole("region", { name: "Missing and unassigned cards" });
   await expect(missing).toContainText("Eternal Witness ×1");
   await expect(missing).toContainText("Missing — not owned");
@@ -86,7 +86,7 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   expect(scryfall.length).toBe(1);
   await page.reload();
   await nav(page, "Decks");
-  await expect(page.locator(".deck-card")).toContainText("8 cards · 5 owned / assigned · 3 missing");
+  await expect(page.locator(".deck-card")).toContainText("8 cards · 5 copies assigned · 3 missing");
   await page.locator(".deck-card").click();
   await expect(page.getByRole("heading", { name: "Sol Ring ×1", exact: true })).toBeVisible();
   await nav(page, "Collection");
@@ -128,8 +128,8 @@ test("ManaBox file upload with Commander section, printing choice and duplicate 
     await page.getByRole("button", { name: "All decks", exact: true }).click();
   }
   await expect(page.locator(".deck-card")).toHaveCount(2);
-  await expect(page.locator(".deck-card").nth(0)).toContainText("4 cards · 4 owned / assigned · 0 missing");
-  await expect(page.locator(".deck-card").nth(1)).toContainText("4 cards · 3 owned / assigned · 1 missing");
+  await expect(page.locator(".deck-card").nth(0)).toContainText("4 cards · 4 copies assigned · 0 missing");
+  await expect(page.locator(".deck-card").nth(1)).toContainText("4 cards · 3 copies assigned · 1 missing");
   await nav(page, "Collection");
   await page.getByRole("button", { name: "View Sol Ring", exact: true }).nth(1).click();
   await expect(page.getByRole("region", { name: "Deck Usage" })).toContainText("Owned: 1 · Available: 0 · Assigned: 1");

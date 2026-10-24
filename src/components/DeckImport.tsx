@@ -380,7 +380,7 @@ export function DeckImport({
               ))}
             </dl>
             <p className="sync-note">
-              {summary.total} cards · {summary.exact + summary.alternate} owned / assigned · {summary.missing + summary.allocated} missing or unassigned
+              {summary.total} cards · {summary.exact + summary.alternate} copies to assign · {summary.missing + summary.allocated} missing or unassigned
               {summary.problems ? ` · ${summary.problems} problem rows` : ""}. Missing cards are kept in the decklist without fake ownership. No copy is moved from another deck.
             </p>
             {preview.warnings.map((w) => (

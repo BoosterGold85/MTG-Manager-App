@@ -101,7 +101,7 @@ export function DeckLibrary({
   const ownershipLine = (d: Deck) => {
     const o = deckOwnership(d);
     return d.entries
-      ? `${o.total} cards · ${o.assigned} owned / assigned · ${o.missing} missing`
+      ? `${o.total} cards · ${o.assigned} copies assigned · ${o.missing} missing`
       : `${o.total} cards`;
   };
   const conflicts = state ? allocationConflicts(state) : [];
@@ -248,12 +248,14 @@ export function DeckLibrary({
               <Crown size={32} />
               <h2>Build your first Commander deck.</h2>
               <p>
-                Choose a commander from your owned collection, then give every
-                copy a home.
+                Import an existing deck now — cards you don’t own are kept as
+                missing, never faked. Or build one with New Deck from an owned
+                commander and assign physical copies.
               </p>
               {!cards.length && (
                 <p>
-                  Import your collection first. Sample cards cannot be assigned.
+                  New Deck and copy assignments need your imported collection;
+                  sample cards can’t be assigned. Import Deck works either way.
                 </p>
               )}
               <button className="management-button" onClick={onCollection}>

@@ -1,6 +1,13 @@
-# MTG Manager · v0.5.1
+# MTG Manager · v0.5.2
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Audit fixes (v0.5.2)
+
+- **Multiple tabs:** when another tab or window saves, this tab shows “Your collection changed in another tab or window” with **Load latest**. It never swaps data under an open preview, and stale writes are still refused.
+- **Links and history:** Decks is `?view=decks`, and a deck is `?view=decks&deck=<id>`. Reload, Back/Forward and bookmarks return to the same screen; the browser tab title names the deck.
+- **Units:** a *record* is one printing/finish/language/condition group; *copies* are physical cards. Deck summaries separate decklist cards from copies assigned.
+- **Safari/iPhone:** default browser tests use Chromium. Run `TEST_WEBKIT=1 TEST_PRODUCTION=1 npx playwright test --project=webkit-iphone` after `npx playwright install webkit`, and follow [the iPhone smoke checklist](docs/IPHONE-SMOKE-CHECKLIST.md) on a device before releases.
 
 ## Storage reliability hotfix (v0.5.1)
 
@@ -43,7 +50,7 @@ Tap any card in a deck to open the same Card Detail used in Collection: artwork,
 - **Problem rows** (unrecognized card, malformed quantity, ambiguous name, sideboard/maybeboard rows) are kept with their reasons on the saved deck and can be copied or downloaded.
 - **Same name:** an existing deck is never overwritten. Choose **Import as new deck**, rename, or **Cancel**.
 
-The deck model separates `DecklistEntry` (what the deck contains) from `DeckCardAssignment` (which owned printing group supplies a copy, linked by `entryId`). The deck editor shows `100 cards · 94 owned / assigned · 6 missing` and a **Missing / Unassigned** section. Adding an available copy from **Add Cards** fills a matching missing entry first. See [v0.4.1 validation](docs/VALIDATION-v0.4.1.md).
+The deck model separates `DecklistEntry` (what the deck contains) from `DeckCardAssignment` (which owned printing group supplies a copy, linked by `entryId`). The deck editor shows `100 cards · 94 copies assigned · 6 missing` and a **Missing / Unassigned** section. Adding an available copy from **Add Cards** fills a matching missing entry first. See [v0.4.1 validation](docs/VALIDATION-v0.4.1.md).
 
 ## Commander Library (v0.4.0)
 
@@ -196,7 +203,7 @@ The simplest static-Cloudflare-compatible beta solution is **IndexedDB**, behind
 
 Data belongs to this **browser profile and site origin**. It is not synced between devices, Cloudflare preview URLs or domains. Clearing site data, private browsing, browser eviction or changing origins can remove local data. No server backup or account recovery is claimed. Keep the ManaBox export as the authoritative backup. No CSV contents or purchase/binder fields are sent to a server; Scryfall receives only matching identifiers/names and set information.
 
-Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 120 ms apart. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
+Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 250 ms apart (slowing further after HTTP 429), the same contract as the importer reliability section. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
 
 `src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. v0.4.0 adds the separate deck repository boundary on this same atomic snapshot. Accounts, deck optimization and cloud synchronization remain future scope.
 
@@ -253,4 +260,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability is current. Work stops before v0.6.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability is approved; v0.5.2 audit fixes are current ([validation](docs/VALIDATION-v0.5.2.md)). Work stops before v0.6.0.

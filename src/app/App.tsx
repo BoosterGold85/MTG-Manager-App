@@ -8,7 +8,8 @@ import { RULESET_VERSION } from "../intelligence/types";
 import type { Override } from "../intelligence/types";
 import { ownedCanonicalCards } from "../intelligence/process";
 import { quickTags, tagDefinition } from "../intelligence/taxonomy";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { subscribeCollectionChanges } from "../storage/collectionSync";
 import {
   ArrowDownUp,
   BookOpen,
@@ -53,6 +54,24 @@ type Overlay =
   | { type: "remove"; ids: string[] }
   | { type: "clear" }
   | null;
+type Area = "collection" | "decks";
+// Screen and deck identity live in the query string so static hosting needs no route fallback.
+function readRoute(): { area: Area; deckId: string | null } {
+  const params = new URLSearchParams(location.search);
+  const deckId = params.get("deck");
+  return params.get("view") === "decks" || deckId ? { area: "decks", deckId } : { area: "collection", deckId: null };
+}
+function routeUrl(area: Area, deckId: string | null) {
+  const params = new URLSearchParams(location.search);
+  params.delete("view");
+  params.delete("deck");
+  if (area === "decks") {
+    params.set("view", "decks");
+    if (deckId) params.set("deck", deckId);
+  }
+  const query = params.toString();
+  return `${location.pathname}${query ? `?${query}` : ""}${location.hash}`;
+}
 export default function App() {
   const [cards, setCards] = useState<SampleCollectionCard[]>([]);
   const [tagging,setTagging] = useState(false);
@@ -72,8 +91,22 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
   const [sort, setSort] = useState<Sort>("name");
-  const [activeDeckId,setActiveDeckId] = useState<string|null>(null);
-  const [area, setArea] = useState<"collection" | "decks">("collection");
+  const [activeDeckId,setActiveDeckId] = useState<string|null>(()=>readRoute().deckId);
+  const [area, setArea] = useState<Area>(()=>readRoute().area);
+  const [newerRevision, setNewerRevision] = useState<number | null>(null);
+  const revision = useRef(0);
+  useEffect(() => { revision.current = savedCollection?.revision || 0; }, [savedCollection]);
+  // Omitting deckId keeps the deck that was open, so Collection → Decks returns to it (approved v0.4 behavior).
+  function navigate(nextArea: Area, requestedDeck?: string | null) {
+    const deckId = requestedDeck === undefined ? activeDeckId : requestedDeck;
+    if (nextArea === area && deckId === activeDeckId) return;
+    const url = routeUrl(nextArea, nextArea === "decks" ? deckId : null);
+    // From an open overlay, replace its history entry instead of racing an async back().
+    if (history.state?.binderOverlay) { history.replaceState({ route: true }, "", url); setOverlay(null); }
+    else history.pushState({ route: true }, "", url);
+    setArea(nextArea);
+    setActiveDeckId(deckId);
+  }
   const [overlay, setOverlay] = useState<Overlay>(null);
   useEffect(() => {
     let cancelled = false;
@@ -122,10 +155,46 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
-    const close = () => setOverlay(null);
+    const close = () => {
+      setOverlay(null);
+      const route = readRoute();
+      setArea(route.area);
+      if (route.area === "decks") setActiveDeckId(route.deckId);
+    };
     window.addEventListener("popstate", close);
     return () => window.removeEventListener("popstate", close);
   }, []);
+  // Another tab saved a newer revision: offer to load it. Never replace state silently,
+  // so an open preview or edit keeps its input; stale writes are still rejected by revision.
+  useEffect(() => {
+    const check = (latest: number) => { if (latest > revision.current) setNewerRevision(latest); };
+    const unsubscribe = subscribeCollectionChanges(change => check(change.revision));
+    const visible = () => {
+      if (document.visibilityState !== "visible") return;
+      collectionRepository.load().then(state => { if (state) check(state.revision); }).catch(() => {});
+    };
+    document.addEventListener("visibilitychange", visible);
+    return () => { unsubscribe(); document.removeEventListener("visibilitychange", visible); };
+  }, []);
+  async function loadLatest() {
+    try {
+      const state = await collectionRepository.load();
+      if (state) acceptState(state);
+      setNewerRevision(null);
+    } catch (error) {
+      setTagStatus(error instanceof Error ? error.message : "Could not load the latest collection. Reload the page.");
+    }
+  }
+  const activeDeck = savedCollection?.decks?.find(d => d.id === activeDeckId);
+  useEffect(() => {
+    document.title = area === "collection" ? "MTG Manager — My Collection" : activeDeck ? `MTG Manager — ${activeDeck.name}` : "MTG Manager — Decks";
+  }, [area, activeDeck]);
+  // A deck link whose deck no longer exists falls back to the library without a dead history entry.
+  useEffect(() => {
+    if (loading || area !== "decks" || !activeDeckId || activeDeck) return;
+    history.replaceState(history.state, "", routeUrl("decks", null));
+    setActiveDeckId(null);
+  }, [loading, area, activeDeckId, activeDeck]);
   function openOverlay(next: Overlay) {
     history.pushState({ ...history.state, binderOverlay: true }, "");
     setOverlay(next);
@@ -167,6 +236,8 @@ export default function App() {
     }));
   }
   const results = sortCards(filterCards(cards, query, filters), sort);
+  // A record is one printing/finish/condition group; copies are physical cards.
+  const copies = results.reduce((n, card) => n + card.quantity, 0);
   const filterCount = activeFilterCount(filters);
   const nav = (mobile = false) => (
     <nav
@@ -175,14 +246,14 @@ export default function App() {
     >
       <button
         aria-current={area === "collection" ? "page" : undefined}
-        onClick={() => setArea("collection")}
+        onClick={() => navigate("collection")}
       >
         <BookOpen size={mobile ? 21 : 17} />
         <span>Collection</span>
       </button>
       <button
         aria-current={area === "decks" ? "page" : undefined}
-        onClick={() => setArea("decks")}
+        onClick={() => (area === "decks" ? navigate("decks", null) : navigate("decks"))}
       >
         <Crown size={mobile ? 21 : 17} />
         <span>Decks</span>
@@ -201,7 +272,7 @@ export default function App() {
             className="wordmark"
             onClick={(e) => {
               e.preventDefault();
-              setArea("collection");
+              navigate("collection");
             }}
             aria-label="MTG Manager home"
           >
@@ -214,11 +285,17 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.5.1</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.5.2</span>
           </span>
         </div>
       </header>
       <main id="main" className="main-content">
+        {newerRevision !== null && (
+          <div className="sync-banner" role="status">
+            <span>Your collection changed in another tab or window.</span>
+            <button className="management-button" onClick={() => void loadLatest()}>Load latest</button>
+          </div>
+        )}
         {area === "collection" ? (
           <>
             <section className="collection-heading">
@@ -258,7 +335,7 @@ export default function App() {
                 <span>KEEP YOURS CLOSE.</span>
               </div>
             </section>
-            {savedCollection && allocationConflicts(savedCollection).length>0 && <div className="allocation-conflicts" role="status"><strong>Inventory needs reconciliation.</strong> Re-import preserved deck assignments that exceed ownership. <button className="text-button" onClick={()=>setArea('decks')}>Review allocation conflicts</button></div>}
+            {savedCollection && allocationConflicts(savedCollection).length>0 && <div className="allocation-conflicts" role="status"><strong>Inventory needs reconciliation.</strong> Re-import preserved deck assignments that exceed ownership. <button className="text-button" onClick={()=>navigate('decks')}>Review allocation conflicts</button></div>}
             {tagging && <p role="status" className="tagging-status">{tagStatus}</p>}
             <div className="collection-management-actions">
               <button className="management-button" onClick={() => openOverlay({ type: "manage" })} disabled={loading || !!loadError}><Settings2 size={16} />Manage Collection</button>
@@ -392,7 +469,8 @@ export default function App() {
                 ) : (
                   <>
                     <strong>{results.length}</strong>{" "}
-                    {results.length === 1 ? "card" : "cards"}
+                    {results.length === 1 ? "record" : "records"} ·{" "}
+                    {copies} {copies === 1 ? "copy" : "copies"}
                     {query || filterCount ? " found" : " in your binder"}
                   </>
                 )}
@@ -465,19 +543,20 @@ export default function App() {
                 <p>A collection worth getting lost in.</p>
                 <span>
                   {results.length} collection{" "}
-                  {results.length === 1 ? "record" : "records"} ·{" "}
+                  {results.length === 1 ? "record" : "records"} · {copies}{" "}
+                  {copies === 1 ? "copy" : "copies"} ·{" "}
                   {savedCollection ? "Your binder" : "Sample binder"}
                 </span>
               </footer>
             )}
           </>
         ) : (
-          <DeckLibrary state={savedCollection} repository={deckRepository} onSaved={acceptState} activeId={activeDeckId} onOpen={setActiveDeckId} onCollection={()=>setArea('collection')} onSaveTags={saveTags}/>
+          <DeckLibrary state={savedCollection} repository={deckRepository} onSaved={acceptState} activeId={activeDeckId} onOpen={id=>navigate('decks',id)} onCollection={()=>navigate('collection')} onSaveTags={saveTags}/>
 
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.5.1</span>
+            MTG Manager <span className="muted">· v0.5.2</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>
@@ -491,7 +570,7 @@ export default function App() {
       </div>}
       {nav(true)}
       {overlay?.type === "card" && (
-        <CardDetail collection={savedCollection} onOpenDeck={id=>{closeOverlay();setActiveDeckId(id);setArea('decks');}} onSaveTags={savedCollection && overlay.card.ownership ? override=>saveTags(cards.find(c=>c.id===overlay.card.id)||overlay.card,override) : undefined} card={cards.find(c=>c.id===overlay.card.id)||overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
+        <CardDetail collection={savedCollection} onOpenDeck={id=>navigate('decks',id)} onSaveTags={savedCollection && overlay.card.ownership ? override=>saveTags(cards.find(c=>c.id===overlay.card.id)||overlay.card,override) : undefined} card={cards.find(c=>c.id===overlay.card.id)||overlay.card} onClose={closeOverlay} onRemove={overlay.card.ownership ? () => setOverlay({ type: "remove", ids: [overlay.card.id] }) : undefined} />
       )}
       {overlay?.type === "manage" && <ManageCollection onRecalculate={recalculate} tagging={tagging} tagStatus={tagStatus} state={savedCollection} onClose={closeOverlay} onClear={() => setOverlay({ type: "clear" })} />}
       {(overlay?.type === "clear" || overlay?.type === "remove") && savedCollection && <ConfirmCollectionChange key={overlay.type} state={savedCollection} clear={overlay.type === "clear"} ids={overlay.type === "remove" ? overlay.ids : []} onClose={closeOverlay} onSaved={state => { acceptState(state); if (overlay.type === "clear") { cancelSelection(); reset(); } closeOverlay(); }} />}

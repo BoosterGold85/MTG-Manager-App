@@ -32,7 +32,7 @@ export async function changeCollection(repository: CollectionRepository, base: C
 
 export async function collectionBackup(repository: CollectionRepository) {
   const state = await repository.load() || emptyCollection();
-  return JSON.stringify({ application: 'MTG Manager', applicationVersion: '0.5.1',
+  return JSON.stringify({ application: 'MTG Manager', applicationVersion: '0.5.2',
     exportedAt: new Date().toISOString(), schemaVersion: state.schemaVersion,
     collection: state }, null, 2);
 }
