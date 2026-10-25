@@ -1,7 +1,7 @@
 import { SynergyExplorer } from './SynergyExplorer';
 import { DeckDnaPanel } from './DeckDnaPanel';
 import { deckDnaCache, cardSynergy } from '../dna/engine';
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Crown, Plus, ArrowLeft, Settings2, FileUp, Trash2 } from "lucide-react";
 import type { CollectionState } from "../models/collection";
 import { collectionCards, emptyCollection } from "../models/collection";
@@ -74,6 +74,7 @@ export function DeckLibrary({
   const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
   const [importing, setImporting] = useState(false);
   const [exploring,setExploring]=useState(false);
+  useEffect(()=>setExploring(false),[activeId]);
   const [sort, setSort] = useState<DeckSort>("type");
   const [deckFilters, setDeckFilters] = useState<DeckFilters>(emptyDeckFilters);
   // Card Detail opened from the deck: a browsable row, or a commander (outside the 99).
@@ -103,7 +104,7 @@ export function DeckLibrary({
   const ownershipLine = (d: Deck) => {
     const o = deckOwnership(d);
     return d.entries
-      ? `${o.total} cards · ${o.assigned} owned / assigned · ${o.missing} missing`
+      ? `${o.total} cards · ${o.assigned} copies assigned · ${o.missing} missing`
       : `${o.total} cards`;
   };
   const conflicts = state ? allocationConflicts(state) : [];
@@ -235,7 +236,6 @@ export function DeckLibrary({
               </p>
             </div>
             <span className="deck-heading-actions">
-              <button className="management-button" onClick={()=>setExploring(true)}>Explore Synergy</button>
               <button className="management-button" onClick={() => { setError(""); setImporting(true); }}>
                 <FileUp size={16} />
                 Import Deck
@@ -251,12 +251,14 @@ export function DeckLibrary({
               <Crown size={32} />
               <h2>Build your first Commander deck.</h2>
               <p>
-                Choose a commander from your owned collection, then give every
-                copy a home.
+                Import an existing deck now — cards you don’t own are kept as
+                missing, never faked. Or build one with New Deck from an owned
+                commander and assign physical copies.
               </p>
               {!cards.length && (
                 <p>
-                  Import your collection first. Sample cards cannot be assigned.
+                  New Deck and copy assignments need your imported collection;
+                  sample cards can’t be assigned. Import Deck works either way.
                 </p>
               )}
               <button className="management-button" onClick={onCollection}>

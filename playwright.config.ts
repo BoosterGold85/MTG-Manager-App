@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests/browser",
   fullyParallel: true,
@@ -48,5 +48,15 @@ export default defineConfig({
     },
     { name: "tablet", use: { viewport: { width: 768, height: 1024 } } },
     { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } },
+    // Opt-in Safari engine coverage (TEST_WEBKIT=1, after `npx playwright install webkit`).
+    // WebKit is not the installed iOS Safari/home-screen app: also run docs/IPHONE-SMOKE-CHECKLIST.md on a device.
+    ...(process.env.TEST_WEBKIT
+      ? [
+          {
+            name: "webkit-iphone",
+            use: { ...devices["iPhone 13"], browserName: "webkit" as const, launchOptions: {} },
+          },
+        ]
+      : []),
   ],
 });

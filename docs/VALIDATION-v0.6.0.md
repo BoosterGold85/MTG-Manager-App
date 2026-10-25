@@ -1,6 +1,6 @@
 # v0.6.0 — Synergy Explorer / Upgrades I Own
 
-Baseline: approved v0.5.1 (`85e1480`). Scope is the user's owned-card discovery and manual-comparison request. Suggested cuts, automatic swaps/moves, new-set recommendations and later roadmap functionality are not implemented.
+Baseline: approved v0.5.1 (`85e1480`), integrated with the newer `main` audit-fix release v0.5.2 (`3434b53`) before publishing. Scope is the user's owned-card discovery and manual-comparison request. Suggested cuts, automatic swaps/moves, new-set recommendations and later roadmap functionality are not implemented.
 
 ## Shipped workflow
 
@@ -23,7 +23,7 @@ Analysis is local and synchronous over cached normalized metadata; browsing does
 
 ## Tests added
 
-**12 unit tests** cover grouped printings/finishes and physical counts, named deck usage, availability-first ordering with score invariance, zero-owned/off-identity/deck/Commander exclusion, mono/two/five/colorless identities, parity with existing deck-card scores, unchanged deck DNA, deterministic immutable snapshots, missing Oracle-ID fallback, manual suppression, legacy decks, empty inventory, 4,421 distinct owned candidates and availability-neutral canonical evidence selection. Existing 270 unit tests remain intact; only current backup-version expectations change.
+**12 unit tests** cover grouped printings/finishes and physical counts, named deck usage, availability-first ordering with score invariance, zero-owned/off-identity/deck/Commander exclusion, mono/two/five/colorless identities, parity with existing deck-card scores, unchanged deck DNA, deterministic immutable snapshots, missing Oracle-ID fallback, manual suppression, legacy decks, empty inventory, 4,421 distinct owned candidates and availability-neutral canonical evidence selection. Existing 272 unit tests (including v0.5.2 cross-tab coverage) remain intact; only current backup-version expectations change.
 
 **Three browser workflows × five sizes = 15 new cases** cover:
 
@@ -37,7 +37,9 @@ Synthetic curated fixtures isolate semantic behavior; they are not claims of liv
 
 Focused browser run: **15 passed** at 360×800, 390×844, 430×932, 768×1024 and 1440×1000. A contrast failure found during development was fixed using the existing secondary-text token within the selected comparison surface; accessibility assertions were retained.
 
-**Passed:** lint, all **282 unit tests** (270 preserved + 12 new), production build, all **300 production browser tests** (285 preserved + 15 new) across five sizes with no skips in **11.6 minutes**, dependency audit (**0 known vulnerabilities**) and `git diff --check`. After final scoped dialog-padding and introductory-copy polish, lint, all 282 unit tests, the production build and all 15 explorer browser cases were rerun. No dependency versions changed; the lockfile changes only the root application version.
+Before integration, all 282 unit tests and 300 production browser tests passed, followed by all 15 explorer cases after scoped spacing/copy polish.
+
+The final integrated release passes lint, all **284 unit tests** (272 preserved + 12 new), production build, dependency audit (**0 known vulnerabilities**) and `git diff --check`. Its 15 explorer cases include saved-deck-only action visibility and reload/Back navigation against v0.5.2's routes. All **315 production browser tests passed**, with no skips, across all five default sizes in **12.7 minutes** (300 preserved v0.5.2 cases + 15 new explorer cases). The integrated focused explorer run also passed all 15 cases before that full run. No dependency versions changed; the lockfile changes only the root application version.
 
 Manual local-production visual review also used real bundled artwork in isolated owned-card fixtures at 390px and 1440px. It did not touch the owner's saved collection. Commands:
 
@@ -50,6 +52,8 @@ npm audit --cache /workspace/.npm-cache
 git diff --check
 ```
 
+The integrated release also preserves v0.5.2 URL/title/history routes, advisory cross-tab refresh, records/copies wording, mobile text sizing, optional WebKit configuration and iPhone smoke checklist. The initial push was rejected safely when the remote v0.5.2 release was discovered; both histories were merged without a force push.
+
 The complete suite preserves collection import/re-import, v0.3.1 interrupted lookup recovery and the 4,421-row CSV test, physical assignments/conflicts, fail-closed v0.5.1 ownership preview, storage reconnection, deck navigation, intelligence/manual corrections, PWA assets and existing accessibility checks.
 
 ## Limitations and release boundary
@@ -57,8 +61,8 @@ The complete suite preserves collection import/re-import, v0.3.1 interrupted loo
 - The explorer is intentionally read-only. Add/remove/copy assignment still belongs to the existing deck editor; no suggested cuts are generated.
 - Commander color compatibility is enforced; existing singleton, banned-list and Partner/Background legality limitations remain.
 - Sparse deck evidence yields limited fit explanations rather than invented themes. Scores rely on saved metadata and the existing deterministic ruleset; they do not evaluate every rules interaction, mana-base need or card-quality tradeoff.
-- Data remains local to this browser/origin. Existing backup-restore/cloud-sync limitations are unchanged. No unrelated audit fixes or redesign are bundled into this release.
-- Five viewport projects run Chromium. Actual Safari/iPhone lifecycle behavior is not independently verified.
+- Data remains local to this browser/origin. Existing backup-restore/cloud-sync limitations are unchanged. No additional audit fixes or redesign beyond the approved v0.5.2 integration are bundled into this release.
+- Five default viewport projects run Chromium. v0.5.2’s opt-in WebKit project and physical-iPhone checklist are preserved; WebKit and actual Safari/iPhone lifecycle behavior were not independently run in this release.
 
 ## Deployment
 

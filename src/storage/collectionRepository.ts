@@ -1,3 +1,4 @@
+import { announceCollectionChange } from "./collectionSync";
 import type {
   CollectionRepository,
   CollectionState,
@@ -198,7 +199,11 @@ export class IndexedDbCollectionRepository implements CollectionRepository {
           transaction.abort();
         }
       };
-      transaction.oncomplete = () => resolve();
+      transaction.oncomplete = () => {
+        // Advisory only: other open tabs offer to load the newer revision.
+        try { announceCollectionChange(next.revision); } catch { /* Notification is optional. */ }
+        resolve();
+      };
       transaction.onabort = transaction.onerror = () =>
         reject(failure || storageError(transaction.error));
     }));

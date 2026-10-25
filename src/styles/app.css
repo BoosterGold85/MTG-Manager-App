@@ -2396,6 +2396,19 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .in-this-deck details { margin-top:var(--space-16); }
 @media(max-width:420px) { .dna-heading>span { display:none; } .deck-dna { padding:var(--space-16); } }
 
+/* v0.5.2 audit fixes */
+.sync-banner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-12); margin:var(--space-16) 0 0; padding:var(--space-12) var(--space-16); border:1px solid var(--accent); border-radius:var(--radius-panel); background:var(--accent-soft); color:var(--text-primary); font-size:.85rem; }
+@media (max-width: 699px) {
+  .tile-title { font-size: 12px; }
+  .tile-subtitle, .tile-subtitle .rarity { font-size: 10px; }
+  .bottom-nav button { font-size: 11px; }
+  .header-note .version, .collection-footer > span:last-child, .app-footer { font-size: 10px; }
+}
+@media (max-width: 374px) {
+  .tile-title { font-size: 11px; }
+  .sample-label { font-size: 9px; }
+}
+
 /* Owned-card discovery uses the binder's existing surfaces and interaction tokens. */
 .synergy-dialog { width:min(920px,calc(100% - 24px)); padding:var(--space-24); color:var(--text-primary); }
 .synergy-dialog>.eyebrow { padding-right:var(--space-48); overflow-wrap:anywhere; }

@@ -4,8 +4,19 @@
 
 - Added Explore Synergy from a saved deck: owned canonical cards outside the full decklist and within Commander color identity, with grouped printings and available-copy priority. Fully assigned candidates show where copies are used.
 - Extracted the existing per-card scorer without changing Deck DNA behavior; candidate scores use frozen deck themes and the same evidence, Commander connections and five-point scale. Availability affects ordering only.
-- Added local search, available-only filtering, bounded initial rendering, printing counts, shared card details and explicit manual comparison against a current deck card. No swaps, deck edits, assignments, ownership changes, remote analysis or suggested cuts.
+- Added local search, copy-availability views, bounded initial rendering, printing counts, shared card details and explicit manual comparison against a current deck card. No swaps, deck edits, assignments, ownership changes, remote analysis or suggested cuts.
 - Preserved storage recovery, imports, allocations, browsing, intelligence, backups and design tokens. No schema migration.
+
+## 0.5.2 — Audit fixes
+
+- Other open tabs now detect a newer saved revision (BroadcastChannel after each committed save, plus a check when the tab becomes visible) and offer **Load latest**. Nothing is replaced silently, so open previews keep their input; revision-checked writes still reject stale saves.
+- Screen and deck identity live in the URL (`?view=decks`, `?view=decks&deck=<id>`) with browser history and document titles (`MTG Manager — <deck name>`). Reload and Back/Forward restore the screen; overlay Back behavior is unchanged; an unknown deck link falls back to the library. Tapping Decks returns to the deck library.
+- Deck empty state explains both paths: Import Deck works without owned cards; New Deck and copy assignments need the imported collection.
+- Consistent units: the binder results line and footer show records (printing/finish/condition groups) and physical copies; deck summaries say copies assigned vs. decklist cards.
+- Larger mobile supporting text: tile names 12px (11px under 375px), tile subtitles/rarity 10px, bottom navigation labels 11px, version/footer 10px, sample label 9px. Grid and artwork hierarchy unchanged.
+- README request pacing corrected to the actual 250 ms contract.
+- Added an opt-in `webkit-iphone` Playwright project (`TEST_WEBKIT=1`) and `docs/IPHONE-SMOKE-CHECKLIST.md` for physical-device verification. WebKit is not run by default and was not run for this release.
+- Added cross-tab unit tests and three browser workflows across five sizes.
 
 ## 0.5.1 — Storage / Deck Import Reliability
 

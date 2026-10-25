@@ -62,6 +62,9 @@ async function setup(page: Page, assignedOnly = false, large = false) {
     .filter({ visible: true })
     .getByRole("button", { name: "Decks", exact: true })
     .click();
+  await expect(
+    page.getByRole("button", { name: "Explore Synergy", exact: true }),
+  ).toHaveCount(0);
   await page
     .locator(".deck-card")
     .filter({ hasText: "Regression Deck" })
@@ -141,7 +144,21 @@ test("owned candidates explain fit, group printings, show availability and usage
   expect(await snapshot(page)).toEqual(before);
   expect(calls).toEqual([]);
   await page.reload();
-  await expect(page.locator(".sample-label")).toHaveText("YOUR COLLECTION");
+  await expect(
+    page.getByRole("heading", { name: "Regression Deck", exact: true }),
+  ).toBeVisible();
+  expect(await snapshot(page)).toEqual(before);
+  await page
+    .getByRole("button", { name: "Explore Synergy", exact: true })
+    .click();
+  await page.goBack();
+  await expect(page.getByRole("heading", { name: /My Decks/ })).toBeVisible();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await page
+    .locator(".deck-card")
+    .filter({ hasText: "Regression Deck" })
+    .click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
   expect(await snapshot(page)).toEqual(before);
 });
 test("available copies rank first while assigned candidates stay visible; search, availability filter and empty state work", async ({
