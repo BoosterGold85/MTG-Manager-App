@@ -1,0 +1,116 @@
+[
+  {
+    "id": "d3871fe6-e26e-4ab4-bd81-7e3c7b8135c1",
+    "oracle_id": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "mana_cost": "{3}{R}",
+    "cmc": 4.0,
+    "type_line": "Creature \u2014 Otter Wizard",
+    "oracle_text": "When this creature enters, exile the top card of your library. Until the end of your next turn, you may play that card.",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": [],
+    "power": "4",
+    "toughness": "2"
+  },
+  {
+    "id": "b56beeb6-88ca-475e-8654-1d4e8b4aa3c0",
+    "oracle_id": "fb8f7047-280b-464f-aca2-6add3e21df8f",
+    "name": "Harnesser of Storms",
+    "mana_cost": "{2}{R}",
+    "cmc": 3.0,
+    "type_line": "Creature \u2014 Otter Wizard",
+    "oracle_text": "Whenever you cast a noncreature or Otter spell, you may exile the top card of your library. Until end of turn, you may play that card. This ability triggers only once each turn.",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": [],
+    "power": "1",
+    "toughness": "4"
+  },
+  {
+    "id": "7d40b9cb-82ef-44c5-8d3c-c8bb4ce9891c",
+    "oracle_id": "a9bae56c-9666-42e8-94ec-03b0a964b142",
+    "name": "Mongoose Lizard",
+    "mana_cost": "{4}{R}{R}",
+    "cmc": 6.0,
+    "type_line": "Creature \u2014 Mongoose Lizard",
+    "oracle_text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhen this creature enters, it deals 1 damage to any target.\nMountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": [
+      "Mountaincycling",
+      "Landcycling",
+      "Menace",
+      "Typecycling",
+      "Cycling"
+    ],
+    "power": "5",
+    "toughness": "6"
+  },
+  {
+    "id": "39ac7ad0-e570-4209-988c-7c0f9b9d2004",
+    "oracle_id": "b9bacb46-fd1d-459b-81c2-d7d08fe73848",
+    "name": "Dragon Tempest",
+    "mana_cost": "{1}{R}",
+    "cmc": 2.0,
+    "type_line": "Enchantment",
+    "oracle_text": "Whenever a creature you control with flying enters, it gains haste until end of turn.\nWhenever a Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control.",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": []
+  },
+  {
+    "id": "be6fa0dc-74e7-4fad-9bdd-8e986612577a",
+    "oracle_id": "faf81ae0-0b35-45ef-a50d-6cecf0c0eeeb",
+    "name": "Dragonlord's Servant",
+    "mana_cost": "{1}{R}",
+    "cmc": 2.0,
+    "type_line": "Creature \u2014 Goblin Shaman",
+    "oracle_text": "Dragon spells you cast cost {1} less to cast.",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": [],
+    "power": "1",
+    "toughness": "3"
+  },
+  {
+    "id": "df459109-d6ab-4b1d-9570-c7677ff4a014",
+    "oracle_id": "05a6a571-643e-429e-8e5c-1c3f8b0dc746",
+    "name": "Utvara Hellkite",
+    "mana_cost": "{6}{R}{R}",
+    "cmc": 8.0,
+    "type_line": "Creature \u2014 Dragon",
+    "oracle_text": "Flying\nWhenever a Dragon you control attacks, create a 6/6 red Dragon creature token with flying.",
+    "color_identity": [
+      "R"
+    ],
+    "keywords": [
+      "Flying"
+    ],
+    "power": "6",
+    "toughness": "6"
+  },
+  {
+    "id": "3de308cc-14ac-407e-99e7-568572ecd0e7",
+    "oracle_id": "24d0f5e7-0d9e-4b76-900e-a7274e80312d",
+    "name": "Mulldrifter",
+    "mana_cost": "{4}{U}",
+    "cmc": 5.0,
+    "type_line": "Creature \u2014 Elemental",
+    "oracle_text": "Flying\nWhen this creature enters, draw two cards.\nEvoke {2}{U} (You may cast this spell for its evoke cost. If you do, it's sacrificed when it enters.)",
+    "color_identity": [
+      "U"
+    ],
+    "keywords": [
+      "Flying",
+      "Evoke"
+    ],
+    "power": "2",
+    "toughness": "2"
+  }
+]

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1 — Deck-aware Synergy Scoring
+
+- Replaced the generic overlap score with a cached DeckStrategyProfile and seven bounded components: Commander 30, primary strategy 25, role need 15, packages 10, contextual efficiency 10, generic overlap 5 and curve fit 5. Signed penalties can override generic value; scores clamp to 0–100 without artificial distribution or five-point rounding.
+- Added canonical object/type/action matching, own-vs-other triggers, nontoken/noncreature and keyword constraints, contextual counters, exact damage requirements, compatible trigger amplification, nonlegendary copy, blink and combat support. No card/deck-name recommendation tables, price or owned-quantity scoring.
+- Retained descriptive Deck DNA themes, card tags, manual corrections, imports, ownership and printing logic. Candidate order is now final score first, then copy availability as a tie-breaker. Recommended ≥70; Worth Considering 50–69; Other Legal Cards <50 is collapsed and clearly labeled.
+- Added exact collapsed score breakdowns and component/negative evidence to candidates and shared deck-relative detail, with bounded local caches and lazy breakdown rendering. No automatic swaps/moves, suggested cuts, database migration or later-roadmap work.
+
 ## 0.6.0 — Synergy Explorer / Upgrades I Own
 
 - Added Explore Synergy from a saved deck: owned canonical cards outside the full decklist and within Commander color identity, with grouped printings and available-copy priority. Fully assigned candidates show where copies are used.

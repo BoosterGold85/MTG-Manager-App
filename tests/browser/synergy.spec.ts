@@ -95,7 +95,7 @@ test("owned candidates explain fit, group printings, show availability and usage
   await expect(candidate).toContainText("Utvara Hellkite");
   await expect(candidate).toContainText("Available: 2 · Owned: 3");
   await expect(candidate).toContainText("Used in: Miirym (1)");
-  await expect(candidate).toContainText("Dragons Matter");
+  await expect(candidate).toContainText("Dragon");
   expect(await dialog.locator(".synergy-candidates>li").count()).toBe(2);
   await dialog
     .getByRole("button", { name: "Compare Utvara Hellkite", exact: true })
@@ -161,7 +161,7 @@ test("owned candidates explain fit, group printings, show availability and usage
   await expect(page.getByRole("dialog")).toHaveCount(0);
   expect(await snapshot(page)).toEqual(before);
 });
-test("available copies rank first while assigned candidates stay visible; search, availability filter and empty state work", async ({
+test("higher Synergy ranks first while assigned candidates stay visible; search, availability filter and empty state work", async ({
   page,
 }) => {
   await setup(page, true);
@@ -171,12 +171,12 @@ test("available copies rank first while assigned candidates stay visible; search
     .click();
   const dialog = page.getByRole("dialog");
   await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
-    "Quiet Owned Card",
+    "Utvara Hellkite",
   );
-  await expect(dialog.locator(".synergy-candidates>li").last()).toContainText(
+  await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
     "No unassigned copies",
   );
-  await expect(dialog.locator(".synergy-candidates>li").last()).toContainText(
+  await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
     "Miirym",
   );
   await dialog
@@ -220,7 +220,14 @@ test("large candidate lists render progressively while search covers all owned c
     .click();
   const dialog = page.getByRole("dialog");
   await expect(dialog.getByRole("status")).toHaveText("72 candidates");
-  await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(40);
+  await expect(dialog.locator(".other-legal-cards")).not.toHaveAttribute(
+    "open",
+    "",
+  );
+  await expect(
+    dialog.locator(".other-legal-cards .synergy-candidates>li"),
+  ).toHaveCount(40);
+  await dialog.locator(".other-legal-cards>summary").click();
   await dialog.getByRole("button", { name: "Show more candidates" }).click();
   await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(72);
   await dialog

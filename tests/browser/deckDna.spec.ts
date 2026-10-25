@@ -69,7 +69,7 @@ const names = async (page: Page) =>
   );
 const scores = async (page: Page) =>
   (await page.locator(".deck-sort-metric").allTextContents()).map((n) =>
-    Number(n.replace("SYNERGY", "").trim()),
+    Number(n.match(/SYNERGY (\d+)/)?.[1]),
   );
 async function walk(page: Page, expected: string[]) {
   await page
@@ -148,8 +148,8 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
   await expect(
     page.getByRole("region", { name: "Deck entry", exact: true }),
   ).toContainText("Not currently owned");
-  await context.getByText("Why this Synergy score?", { exact: true }).click();
-  await expect(context).toContainText("Explicit Commander connections");
+  await context.getByText("Score breakdown", { exact: true }).click();
+  await expect(context).toContainText("Commander synergy");
   await expect(context).toContainText("Whenever");
   await expect(
     page.getByRole("region", { name: "Card Intelligence", exact: true }),
@@ -221,8 +221,9 @@ test("physical assignment leaves DNA unchanged, conceptual additions/removals re
   await page
     .getByRole("button", { name: "Remove one Sol Ring", exact: true })
     .click();
+  // Wait for the revision-checked asynchronous save and resulting render.
   // The original conceptual composition can reuse its cached result.
-  expect(await themeLabels(page)).toEqual(labels);
+  await expect.poll(() => themeLabels(page)).toEqual(labels);
   expect(await computations(page)).toBe(before + 1);
   await nav(page, "Collection");
   await page

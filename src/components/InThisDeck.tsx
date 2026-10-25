@@ -1,7 +1,12 @@
+import { ScoreBreakdown } from "./ScoreBreakdown";
 import type { CardSynergy } from "../dna/engine";
 export function InThisDeck({ synergy }: { synergy: CardSynergy }) {
   return (
-    <section className="in-this-deck" aria-label="In This Deck">
+    <section
+      className="in-this-deck"
+      data-fit={synergy.tier}
+      aria-label="In This Deck"
+    >
       <p className="eyebrow">DECK-RELATIVE FIT</p>
       <h3>In This Deck</h3>
       <div className="synergy-score">
@@ -10,12 +15,12 @@ export function InThisDeck({ synergy }: { synergy: CardSynergy }) {
       </div>
       <p>{synergy.explanation}</p>
       <p>
-        Coarse theme fit, not raw power or card quality. Nearby scores mean
-        similar fit.
+        Deck-relative strategy, role need and efficiency, less conflicts. This
+        is not a universal power rating or a guaranteed upgrade.
       </p>
       <dl>
         <div>
-          <dt>Strongest Deck DNA connections</dt>
+          <dt>Recorded theme / tag connections</dt>
           <dd>
             {synergy.connections
               .slice(0, 3)
@@ -26,10 +31,8 @@ export function InThisDeck({ synergy }: { synergy: CardSynergy }) {
         <div>
           <dt>Commander connection</dt>
           <dd>
-            {synergy.commanderConnections
-              .map((c) => `${c.name} — ${c.theme}`)
-              .join(" · ") ||
-              "No explicit shared Commander-theme connection identified"}
+            {synergy.debug.commanderInteractions.join(" · ") ||
+              "No direct Commander interaction identified"}
           </dd>
         </div>
         <div>
@@ -43,23 +46,19 @@ export function InThisDeck({ synergy }: { synergy: CardSynergy }) {
           </div>
         )}
       </dl>
-      <details>
-        <summary>Why this Synergy score?</summary>
-        <p>
-          The model combines dominant-theme overlap, breadth of supported
-          themes, explicit Commander connections, payoff/enabler relationships
-          and supporting roles. Prices, popularity and external rankings are
-          excluded. The total is capped at 100 and rounded to the nearest five.
-        </p>
-        <ul>
-          {synergy.components
-            .filter((c) => c.points > 0)
-            .map((c) => (
-              <li key={c.label}>
-                {c.label}: {c.points.toFixed(1)} points
-              </li>
+      {synergy.conflicts.length > 0 && (
+        <section aria-label="Conflicts">
+          <h4>Conflicts</h4>
+          <ul>
+            {synergy.conflicts.map((reason, i) => (
+              <li key={i}>{reason}</li>
             ))}
-        </ul>
+          </ul>
+        </section>
+      )}
+      <ScoreBreakdown synergy={synergy} />
+      <details>
+        <summary>Card tag evidence</summary>
         {synergy.connections.map((con) => (
           <div key={con.themeId}>
             <h4>{con.label}</h4>

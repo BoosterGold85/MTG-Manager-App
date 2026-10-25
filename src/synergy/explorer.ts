@@ -100,8 +100,8 @@ export function exploreSynergy(
     })
     .sort(
       (a, b) =>
-        Number(b.available > 0) - Number(a.available > 0) ||
         b.synergy.score - a.synergy.score ||
+        Number(b.available > 0) - Number(a.available > 0) ||
         a.card.name.localeCompare(b.card.name, "en") ||
         a.identity.localeCompare(b.identity, "en"),
     );

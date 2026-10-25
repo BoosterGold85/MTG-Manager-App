@@ -1,3 +1,9 @@
+import { buildDeckStrategyProfile, scoreStrategyCard } from "./strategy";
+import type {
+  DeckStrategyProfile,
+  SynergyScoreDebug,
+  StrategyScore,
+} from "./strategy";
 import type { CardMetadata, CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
 import type { Assignment, AutoAnalysis, Evidence } from "../intelligence/types";
@@ -30,6 +36,10 @@ export interface Signal {
   evidence: Evidence[];
 }
 export interface CardSynergy {
+  debug: SynergyScoreDebug;
+  reasons: string[];
+  conflicts: string[];
+  tier: "Recommended" | "Worth Considering" | "Other Legal Cards";
   identity: string;
   name: string;
   score: number;
@@ -58,6 +68,7 @@ export interface DnaTheme {
   evidence: { name: string; commander: boolean; signals: Signal[] }[];
 }
 export interface DeckDna {
+  strategyProfile: DeckStrategyProfile;
   version: string;
   rulesetVersion: string;
   revision: string;
@@ -156,6 +167,8 @@ export function deckDnaInput(state: CollectionState, deck: Deck): DnaInput {
       c.quantity,
       inputFingerprint(c.card),
       c.card.manaValue,
+      c.card.manaCost,
+      c.card.colorIdentity,
       c.analysis.rulesetVersion,
       c.analysis.creatureTypes,
       c.assignments,
@@ -296,12 +309,17 @@ const signalWeight = (signals: Signal[]) => {
         )
     : 0;
 };
+const cardFitCache = new WeakMap<StrategyScore, CardSynergy>();
 function scoreCard(
   c: DnaInputCard,
   ownSignals: Signal[],
   meaningful: DnaTheme[],
   commanders: { card: DnaInputCard; signals: Signal[] }[],
+  profile: DeckStrategyProfile,
 ): CardSynergy {
+  const scored = scoreStrategyCard(profile, c);
+  const cached = cardFitCache.get(scored);
+  if (cached) return cached;
   const connections = meaningful
     .flatMap((theme) => {
       const matched = ownSignals.filter((s) => s.themeId === theme.id);
@@ -337,30 +355,6 @@ function scoreCard(
           : [];
       }),
   );
-  const maxWeight = meaningful[0]?.percent || 100;
-  const peak = Math.max(
-    0,
-    ...connections.map(
-      (con) =>
-        Math.min(1, con.strength / 4) *
-        (meaningful.find((t) => t.id === con.themeId)!.percent / maxWeight),
-    ),
-  );
-  const coverage = connections.reduce(
-    (n, con) =>
-      n +
-      (Math.min(1, con.strength / 4) *
-        meaningful.find((t) => t.id === con.themeId)!.percent) /
-        100,
-    0,
-  );
-  const relationship = connections.some((con) =>
-    con.signals.some((s) => s.kind === "payoff"),
-  )
-    ? 10
-    : connections.some((con) => con.signals.some((s) => s.kind === "enabler"))
-      ? 6
-      : 0;
   const roleAssignments = c.assignments
     .filter((a) =>
       ["role", "payoff", "enabler", "interaction"].includes(
@@ -384,54 +378,24 @@ function scoreCard(
     label: tagDefinition(a.tagId)!.label,
     evidence: a.evidence,
   }));
-  const support = roles.length ? 5 : 0;
-  const components = connections.length
-    ? [
-        { label: "Theme-support baseline", points: 10 },
-        { label: "Dominant-theme alignment", points: 40 * peak },
-        { label: "Breadth of theme connections", points: 25 * coverage },
-        {
-          label: "Explicit Commander connections",
-          points: Math.min(15, commanderConnections.length * 10),
-        },
-        { label: "Payoff / enabler relationship", points: relationship },
-        { label: "Supporting role", points: support },
-      ]
-    : [
-        {
-          label: roles.length ? "General supporting role" : "No theme evidence",
-          points: roles.length ? 15 : 0,
-        },
-      ];
-  const score = Math.min(
-    100,
-    Math.round(components.reduce((n, c) => n + c.points, 0) / 5) * 5,
-  );
-  const explanation = connections.length
-    ? `Supports ${connections
-        .slice(0, 3)
-        .map((con) => con.label)
-        .join(", ")} through the evidence below.`
-    : /\bLand\b/.test(c.card.typeLine)
-      ? "Part of the mana base; no specific primary-theme connection was identified."
-      : "No strong connection to the displayed themes was identified. This is not a card-quality or power judgment.";
-  return {
+  const result: CardSynergy = {
     identity: c.identity,
     name: c.card.name,
-    score,
-    band:
-      score >= 75
-        ? "Strong fit"
-        : score >= 45
-          ? "Supporting fit"
-          : "Limited theme evidence",
+    score: scored.score,
+    band: scored.band,
+    debug: scored.debug,
+    reasons: scored.reasons,
+    conflicts: scored.conflicts,
+    tier: scored.tier,
     connections,
     commanderConnections,
-    roles,
+    roles: [...new Set([...roles, ...scored.roles])],
     roleEvidence,
-    components,
-    explanation,
+    components: scored.components,
+    explanation: scored.explanation,
   };
+  cardFitCache.set(scored, result);
+  return result;
 }
 
 function deckSignals(cards: DnaInputCard[]) {
@@ -543,6 +507,7 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
     (a, b) => b.fraction - a.fraction || compare(a.theme.id, b.theme.id),
   ))
     if (remainder-- > 0) f.theme.percent++;
+  const strategyProfile = buildDeckStrategyProfile(input);
   const perCard: Record<string, CardSynergy> = {},
     byName: Record<string, string> = {};
   for (const c of cards.filter((c) => !c.commander)) {
@@ -554,6 +519,7 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
       cards
         .filter((card) => card.commander)
         .map((card) => ({ card, signals: signals.get(card)! })),
+      strategyProfile,
     );
     byName[nameKey(c.card.name)] = c.identity;
   }
@@ -622,6 +588,7 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
       ),
     )[0] || "No explicit primary payoff identified.";
   return {
+    strategyProfile,
     version: DNA_VERSION,
     rulesetVersion: RULESET_VERSION,
     revision: input.revision,
@@ -719,6 +686,7 @@ export function candidateScorer(
       cardSignals(input, types, deckTags),
       dna.themes,
       commanders,
+      dna.strategyProfile,
     );
   };
 }

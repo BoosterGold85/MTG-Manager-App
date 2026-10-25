@@ -2427,3 +2427,10 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .synergy-comparison h3 { font-size:1rem; }
 @media(max-width:420px) { .synergy-candidates>li { grid-template-columns:64px minmax(0,1fr); gap:var(--space-12); } .synergy-art { width:64px; } }
 .synergy-comparison .in-this-deck dt { color:var(--text-secondary); }
+.score-breakdown { margin-block:var(--space-12); color:var(--text-secondary); font-size:.85rem; line-height:1.7; }
+.score-breakdown dl>div { display:flex; justify-content:space-between; gap:var(--space-12); padding-block:var(--space-4); }
+.score-breakdown dd { margin:0; color:var(--text-primary); font-variant-numeric:tabular-nums; }
+.synergy-candidates li[data-fit="Other Legal Cards"] h3 span { color:var(--text-secondary); }
+.other-legal-cards>summary { min-height:44px; padding-block:var(--space-12); color:var(--text-secondary); cursor:pointer; }
+.in-this-deck[data-fit="Other Legal Cards"] .synergy-score strong,
+.in-this-deck[data-fit="Other Legal Cards"] .synergy-score span { color:var(--text-secondary); }

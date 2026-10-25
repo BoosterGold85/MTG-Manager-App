@@ -115,7 +115,7 @@ export function DeckLibrary({
   const filtering = !!(deckFilters.query || deckFilters.type || deckFilters.ownership || deckFilters.theme);
   const caption = (row: DeckRow) =>
     sort === "synergy-desc" || sort === "synergy-asc"
-      ? `SYNERGY ${dna ? cardSynergy(dna,row.card)?.score||0 : 0}`
+      ? `SYNERGY ${dna ? cardSynergy(dna,row.card)?.score||0 : 0} · ${dna?cardSynergy(dna,row.card)?.band||'Not Recommended':'Not Recommended'}`
       : sort === "mv-asc" || sort === "mv-desc"
       ? `MV ${row.card.manaValue}`
       : sort === "type"

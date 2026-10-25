@@ -1,3 +1,4 @@
+import { ScoreBreakdown } from "./ScoreBreakdown";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
@@ -70,11 +71,11 @@ export function SynergyExplorer({
       <p className="eyebrow">EXPLORE SYNERGY · {deck.name}</p>
       <h2 id="synergy-title">Upgrades I Own</h2>
       <p>
-        Available copies rank first, then Synergy. Cards already in this deck
-        or outside its Commander colors are excluded.
+        Ranked by final Synergy score. Available copies break ties. Cards
+        already in this deck or outside its Commander colors are excluded.
       </p>
       <p className="muted">
-        Theme fit, not power or a guaranteed upgrade. Comparing never changes
+        Deck fit includes role needs and efficiency. Comparing never changes
         your deck or moves copies. Other Commander legality rules are not fully
         validated.
       </p>
@@ -99,7 +100,7 @@ export function SynergyExplorer({
               setLimit(40);
             }}
           >
-            <option value="all">All owned — available first</option>
+            <option value="all">All owned — highest Synergy first</option>
             <option value="available">Available copies only</option>
             <option value="assigned">Fully assigned copies only</option>
           </select>
@@ -108,6 +109,12 @@ export function SynergyExplorer({
       <p role="status">
         {results.length} {results.length === 1 ? "candidate" : "candidates"}
       </p>
+      {results.length > 0 && !results.some((c) => c.synergy.score >= 50) && (
+        <p>
+          No candidates reach 50 in this deck profile. Expand Other Legal Cards
+          to inspect lower-scoring options.
+        </p>
+      )}
       {!results.length && (
         <p>
           No owned candidates match. Try another search or import more of your
@@ -122,7 +129,8 @@ export function SynergyExplorer({
           aria-label="Candidate comparison"
         >
           <h3>
-            Candidate: {candidate.card.name} · Synergy {candidate.synergy.score}
+            Candidate: {candidate.card.name} · Synergy {candidate.synergy.score}{" "}
+            — {candidate.synergy.band}
           </h3>
           <p>
             Available: {candidate.available} · Owned: {candidate.owned}
@@ -186,76 +194,111 @@ export function SynergyExplorer({
           </button>
         </section>
       )}
-      <ul className="synergy-candidates">
-        {results.slice(0, limit).map((c) => (
-          <li key={c.identity}>
-            <button
-              className="synergy-art deck-art-button"
-              aria-label={`View ${c.card.name} details`}
-              onClick={() => setDetail(c.card)}
-            >
-              <CardImage card={c.card} />
-            </button>
-            <div>
+      {(["Recommended", "Worth Considering", "Other Legal Cards"] as const).map(
+        (tier) => {
+          const group = results.filter((c) => c.synergy.tier === tier);
+          if (!group.length) return null;
+          const list = (
+            <ul className="synergy-candidates">
+              {group.slice(0, limit).map((c) => (
+                <li key={c.identity} data-fit={c.synergy.tier}>
+                  <button
+                    className="synergy-art deck-art-button"
+                    aria-label={`View ${c.card.name} details`}
+                    onClick={() => setDetail(c.card)}
+                  >
+                    <CardImage card={c.card} />
+                  </button>
+                  <div>
+                    <h3>
+                      {c.card.name}{" "}
+                      <span>
+                        Synergy {c.synergy.score} — {c.synergy.band}
+                      </span>
+                    </h3>
+                    <p>
+                      Available: {c.available} · Owned: {c.owned}
+                      {c.available === 0 ? " · No unassigned copies" : ""}
+                    </p>
+                    {c.usage.length > 0 && (
+                      <p>
+                        Used in:{" "}
+                        {c.usage
+                          .map((u) => `${u.name} (${u.quantity})`)
+                          .join(" · ")}
+                      </p>
+                    )}
+                    <p>
+                      {c.synergy.score >= 70
+                        ? "Why it fits:"
+                        : c.synergy.score >= 50
+                          ? "Limited fit:"
+                          : ""}{" "}
+                      {c.synergy.explanation}
+                    </p>
+                    {c.synergy.score < 50 && c.synergy.roles.length > 0 && (
+                      <p>
+                        Some utility: {c.synergy.roles.slice(0, 3).join(" · ")}
+                      </p>
+                    )}
+                    {c.synergy.conflicts.length > 0 && (
+                      <p>Conflicts: {c.synergy.conflicts.join(" ")}</p>
+                    )}
+                    <ScoreBreakdown synergy={c.synergy} />
+                    <details>
+                      <summary>
+                        {c.printings.length} owned{" "}
+                        {c.printings.length === 1
+                          ? "printing / variant"
+                          : "printings / variants"}
+                      </summary>
+                      {c.printings.map((card) => (
+                        <p key={card.id}>
+                          {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
+                          {card.ownership!.finish} · {card.ownership!.language}{" "}
+                          · {card.ownership!.binderName || "No binder"} ·
+                          Available {card.ownership!.quantityUnassigned} / Owned{" "}
+                          {card.quantity}
+                        </p>
+                      ))}
+                    </details>
+                    <button
+                      className="management-button"
+                      aria-pressed={selected === c.identity}
+                      onClick={() => {
+                        setSelected(c.identity);
+                        setAgainst("");
+                      }}
+                    >
+                      Compare {c.card.name}
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          );
+          return tier === "Other Legal Cards" ? (
+            <details key={tier} className="other-legal-cards">
+              <summary>Other Legal Cards · {group.length}</summary>
+              <p>
+                Scores below 50. These cards are color-compatible options, not
+                primary recommendations.
+              </p>
+              {list}
+            </details>
+          ) : (
+            <section key={tier} aria-label={tier}>
               <h3>
-                {c.card.name} <span>Synergy {c.synergy.score}</span>
+                {tier} · {group.length}
               </h3>
-              <p>
-                Available: {c.available} · Owned: {c.owned}
-                {c.available === 0 ? " · No unassigned copies" : ""}
-              </p>
-              {c.usage.length > 0 && (
-                <p>
-                  Used in:{" "}
-                  {c.usage.map((u) => `${u.name} (${u.quantity})`).join(" · ")}
-                </p>
-              )}
-              <p>
-                Why it fits:{" "}
-                {c.synergy.connections
-                  .slice(0, 3)
-                  .map((con) => con.label)
-                  .join(" · ") || "Limited theme evidence"}
-              </p>
-              {c.synergy.commanderConnections.length > 0 && (
-                <p>
-                  Commander connection:{" "}
-                  {c.synergy.commanderConnections
-                    .map((con) => con.theme)
-                    .join(" · ")}
-                </p>
-              )}
-              <details>
-                <summary>
-                  {c.printings.length} owned{" "}
-                  {c.printings.length === 1
-                    ? "printing / variant"
-                    : "printings / variants"}
-                </summary>
-                {c.printings.map((card) => (
-                  <p key={card.id}>
-                    {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
-                    {card.ownership!.finish} · {card.ownership!.language} ·{" "}
-                    {card.ownership!.binderName || "No binder"} · Available{" "}
-                    {card.ownership!.quantityUnassigned} / Owned {card.quantity}
-                  </p>
-                ))}
-              </details>
-              <button
-                className="management-button"
-                aria-pressed={selected === c.identity}
-                onClick={() => {
-                  setSelected(c.identity);
-                  setAgainst("");
-                }}
-              >
-                Compare {c.card.name}
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      {results.length > limit && (
+              {list}
+            </section>
+          );
+        },
+      )}
+      {["Recommended", "Worth Considering", "Other Legal Cards"].some(
+        (tier) => results.filter((c) => c.synergy.tier === tier).length > limit,
+      ) && (
         <button
           className="primary-button"
           onClick={() => setLimit((n) => n + 40)}

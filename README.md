@@ -1,16 +1,26 @@
-# MTG Manager · v0.6.0
+# MTG Manager · v0.6.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Deck-aware scoring rebuild (v0.6.1)
+
+Synergy now uses a cached **DeckStrategyProfile** built from the actual conceptual decklist and separately analyzed Commanders. It measures explicit Commander interactions (30), primary archetype fit (25), unmet role needs (15), established packages (10), local efficiency (10), generic overlap (5), and curve/mana fit (5), then subtracts signed penalties and clamps the result to 0–100. Scores are integers, not forced into five-point steps or an artificial distribution. Card Intelligence tags and the existing descriptive Deck DNA percentages remain intact.
+
+**Upgrades I Own sorts by final score first**, with available copies breaking ties. **Recommended** contains scores ≥70; **Worth Considering** contains 50–69; **Other Legal Cards** contains scores below 50 and is collapsed by default. Those lower scores explicitly say Weak Fit, Poor Fit or Not Recommended and use subdued styling. Color compatibility is enforced as before; the existing full-Commander-legality limitations remain.
+
+Every candidate has a collapsed **Score breakdown** with all seven components, exact raw/clamped totals, role counts/targets, matching packages, printed Commander evidence and negative reasons. The same model powers deck-relative Card Detail and comparison. Off-archetype bodies, absent Commander interaction, redundant roles, curve congestion, low impact for mana value and concrete anti-synergy can subtract points. Generic value alone cannot produce a primary recommendation. No price, rarity rank, popularity or owned quantity contributes to the score. Efficiency is a transparent local heuristic, not a universal power rating.
+
+Strategy profiles and card scores are cached independently of physical ownership. Semantic deck/Commander changes, metadata, manual corrections and model/ruleset versions invalidate the relevant results; scrolling, search and availability changes reuse them. No database migration, collection reset, automatic swaps or moves are introduced. See [the executable](docs/v0.6.1-scoring-executable.md) and [validation / limitations](docs/VALIDATION-v0.6.1.md).
 
 ## Synergy Explorer — Upgrades I Own (v0.6.0)
 
 Open a saved deck and choose **Explore Synergy**. The read-only explorer searches your owned collection, groups printings/finishes of the same canonical card, excludes every card already in the conceptual decklist (including missing entries and Commanders), and enforces the Commander's canonical color-identity subset. Colorless cards remain eligible.
 
-Candidates with an unassigned copy come first; within each availability group they rank by the existing coarse Synergy score, then name. Fully assigned candidates remain visible with **Used in** deck names and quantities. Scores remain ownership-neutral: availability changes ordering, not fit. Expand printing/variant details for exact owned and available counts; zero-owned cards are excluded.
+Candidates rank by final deck-aware Synergy score, with available copies breaking ties, then name. Fully assigned candidates remain visible with **Used in** deck names and quantities. Scores remain ownership-neutral: availability changes ordering, not fit. Expand printing/variant details for exact owned and available counts; zero-owned cards are excluded.
 
 Choose **Compare [card]**, then explicitly choose a card currently in the deck. Both use the same Deck DNA scoring model and expose theme, Commander, role and source evidence. Card details remain available for both owned and missing deck cards. Candidate evaluation uses the unchanged saved deck's DNA; candidates cannot promote their own themes by being temporarily inserted into it. All analysis stays local, with no card lookup calls during exploration.
 
-This release makes **no swaps, additions, assignments or physical-copy moves**. “Upgrades I Own” describes candidates to consider, not guaranteed upgrades, power ratings or cuts. Scores remain rounded to five-point steps. Existing Commander legality limitations still apply. Search, available/fully-assigned views, empty results and progressive candidate rendering keep the existing binder visual language. No schema migration or persisted recommendation cache is added. See [v0.6.0 validation](docs/VALIDATION-v0.6.0.md).
+This release makes **no swaps, additions, assignments or physical-copy moves**. “Upgrades I Own” describes candidates to consider, not guaranteed upgrades, power ratings or cuts. Scores use the v0.6.1 integer model and signed breakdown. Existing Commander legality limitations still apply. Search, available/fully-assigned views, empty results and progressive candidate rendering keep the existing binder visual language. No schema migration or persisted recommendation cache is added. See [v0.6.0 validation](docs/VALIDATION-v0.6.0.md).
 
 ## Audit fixes (v0.5.2)
 
@@ -29,7 +39,7 @@ Each saved deck now explains its **Deck DNA**, **What This Deck Does** and **Cor
 
 Analysis includes the entire conceptual decklist, including missing cards and unassigned commanders. Related tags are grouped into presentation families (Graveyard, Counters, Tokens, Sacrifice/Death Payoffs and others); the universal taxonomy is unchanged. Repeated strategies and explicit payoffs carry more weight than characteristics. Commander reinforcement is amplified but capped; unsupported Commander themes cannot replace the actual decklist's strategy. Summaries use deterministic evidence-led templates and do not invent win conditions or turn sequences.
 
-**Synergy High → Low / Low → High** sorts each non-Commander card by its fit within this deck. Only these sort modes emphasize a Synergy metric on tiles. Open a card's **In This Deck** section for theme connections, Commander links, roles, source evidence and a coarse score breakdown. Card Intelligence continues to describe the card generally; deck-relative reasoning stays separate. Scores use five-point steps: nearby values mean similar fit, and a low theme score does not mean a utility card is bad. No price, popularity, external rankings or LLM/API analysis is used.
+**Synergy High → Low / Low → High** sorts each non-Commander card by its fit within this deck. Only these sort modes emphasize a Synergy metric on tiles. Open a card's **In This Deck** section for theme connections, Commander links, roles, source evidence and a coarse score breakdown. Card Intelligence continues to describe the card generally; deck-relative reasoning stays separate. v0.6.1 replaces the original five-point theme-overlap score with contextual components and penalties; a low score means limited fit in this deck rather than a universal judgment of the card. No price, popularity, external rankings or LLM/API analysis is used.
 
 Select a displayed DNA theme or use **Deck DNA theme** in the existing controls to browse its contributors. Search, type and ownership filters still combine with sorting, and Previous/Next follows the exact visible sequence and position. Missing cards remain fully browsable.
 
@@ -270,4 +280,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is current. Work stops before v0.7.0.

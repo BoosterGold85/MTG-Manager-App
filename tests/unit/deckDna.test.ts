@@ -148,7 +148,7 @@ it("missing and owned printings have identical conceptual analysis; prices and s
   expect(dna(assigned)).toEqual(first);
   expect(Object.values(first.cards)).toHaveLength(dragons.length);
 });
-it("explanations name actual evidence, roles and Commander connections; all scores are coarse and bounded", () => {
+it("explanations name actual evidence, roles and Commander connections; all scores are bounded with exact signed breakdowns", () => {
   const result = dna();
   const card = cardSynergy(result, dragons[0])!;
   expect(
@@ -166,7 +166,8 @@ it("explanations name actual evidence, roles and Commander connections; all scor
   for (const fit of Object.values(result.cards)) {
     expect(fit.score).toBeGreaterThanOrEqual(0);
     expect(fit.score).toBeLessThanOrEqual(100);
-    expect(fit.score % 5).toBe(0);
+    expect(Number.isInteger(fit.score)).toBe(true);
+    expect(fit.debug.rawScore).toBe(fit.components.reduce((n,c)=>n+c.points,0));
     expect(fit.explanation).not.toBe("");
   }
 });

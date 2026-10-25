@@ -28,16 +28,16 @@ it("groups printings and finishes, sums physical availability and labels other-d
     true,
   );
 });
-it("fully assigned strong candidates remain visible below available cards without changing scores", () => {
+it("fully assigned stronger candidates rank ahead of available weak cards without changing scores", () => {
   const f = synergyFixture();
   const before = exploreSynergy(f.state, f.deck).find(
     (c) => c.card.name === "Utvara Hellkite",
   )!;
   f.state.items = f.state.items.filter((i) => i.id !== "utvara-foil");
   const after = exploreSynergy(f.state, f.deck);
-  expect(after[0].card.name).toBe("Quiet Owned Card");
-  expect(after[1].available).toBe(0);
-  expect(after[1].synergy).toEqual(before.synergy);
+  expect(after[0].card.name).toBe("Utvara Hellkite");
+  expect(after[0].available).toBe(0);
+  expect(after[0].synergy).toEqual(before.synergy);
 });
 it("excludes zero ownership, off-identity cards, all missing deck entries, commander and alternate printings of existing cards", () => {
   const f = synergyFixture();
