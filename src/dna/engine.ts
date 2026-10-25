@@ -296,8 +296,145 @@ const signalWeight = (signals: Signal[]) => {
         )
     : 0;
 };
-export function analyzeDeckDna(input: DnaInput): DeckDna {
-  const { cards } = input;
+function scoreCard(
+  c: DnaInputCard,
+  ownSignals: Signal[],
+  meaningful: DnaTheme[],
+  commanders: { card: DnaInputCard; signals: Signal[] }[],
+): CardSynergy {
+  const connections = meaningful
+    .flatMap((theme) => {
+      const matched = ownSignals.filter((s) => s.themeId === theme.id);
+      if (!matched.length) return [];
+      const typalSupport =
+        theme.id.startsWith("typal:") &&
+        theme.evidence.some((e) =>
+          e.signals.some((s) => s.kind === "payoff" || s.kind === "enabler"),
+        );
+      const strength =
+        typalSupport && matched.some((s) => s.kind === "characteristic")
+          ? Math.max(2.8, signalWeight(matched))
+          : signalWeight(matched);
+      return [
+        { themeId: theme.id, label: theme.label, strength, signals: matched },
+      ];
+    })
+    .sort((a, b) => b.strength - a.strength || compare(a.themeId, b.themeId));
+  const commanderConnections = commanders.flatMap(
+    ({ card: cmdr, signals: commanderSignals }) =>
+      connections.flatMap((connection) => {
+        const matched = commanderSignals.filter(
+          (s) => s.themeId === connection.themeId && s.strength >= 2,
+        );
+        return matched.length
+          ? [
+              {
+                name: cmdr.card.name,
+                theme: connection.label,
+                evidence: matched.flatMap((s) => s.evidence),
+              },
+            ]
+          : [];
+      }),
+  );
+  const maxWeight = meaningful[0]?.percent || 100;
+  const peak = Math.max(
+    0,
+    ...connections.map(
+      (con) =>
+        Math.min(1, con.strength / 4) *
+        (meaningful.find((t) => t.id === con.themeId)!.percent / maxWeight),
+    ),
+  );
+  const coverage = connections.reduce(
+    (n, con) =>
+      n +
+      (Math.min(1, con.strength / 4) *
+        meaningful.find((t) => t.id === con.themeId)!.percent) /
+        100,
+    0,
+  );
+  const relationship = connections.some((con) =>
+    con.signals.some((s) => s.kind === "payoff"),
+  )
+    ? 10
+    : connections.some((con) => con.signals.some((s) => s.kind === "enabler"))
+      ? 6
+      : 0;
+  const roleAssignments = c.assignments
+    .filter((a) =>
+      ["role", "payoff", "enabler", "interaction"].includes(
+        tagDefinition(a.tagId)?.category || "",
+      ),
+    )
+    .sort(
+      (a, b) =>
+        weights[tagDefinition(b.tagId)!.category] -
+          weights[tagDefinition(a.tagId)!.category] ||
+        compare(a.tagId, b.tagId),
+    );
+  const roles = roleAssignments.map((a) => tagDefinition(a.tagId)!.label);
+  if (
+    connections.some((con) => con.themeId === "ramp") &&
+    c.card.manaValue <= 2 &&
+    !/\bLand\b/.test(c.card.typeLine)
+  )
+    roles.push(`Early mana support (mana value ${c.card.manaValue})`);
+  const roleEvidence = roleAssignments.map((a) => ({
+    label: tagDefinition(a.tagId)!.label,
+    evidence: a.evidence,
+  }));
+  const support = roles.length ? 5 : 0;
+  const components = connections.length
+    ? [
+        { label: "Theme-support baseline", points: 10 },
+        { label: "Dominant-theme alignment", points: 40 * peak },
+        { label: "Breadth of theme connections", points: 25 * coverage },
+        {
+          label: "Explicit Commander connections",
+          points: Math.min(15, commanderConnections.length * 10),
+        },
+        { label: "Payoff / enabler relationship", points: relationship },
+        { label: "Supporting role", points: support },
+      ]
+    : [
+        {
+          label: roles.length ? "General supporting role" : "No theme evidence",
+          points: roles.length ? 15 : 0,
+        },
+      ];
+  const score = Math.min(
+    100,
+    Math.round(components.reduce((n, c) => n + c.points, 0) / 5) * 5,
+  );
+  const explanation = connections.length
+    ? `Supports ${connections
+        .slice(0, 3)
+        .map((con) => con.label)
+        .join(", ")} through the evidence below.`
+    : /\bLand\b/.test(c.card.typeLine)
+      ? "Part of the mana base; no specific primary-theme connection was identified."
+      : "No strong connection to the displayed themes was identified. This is not a card-quality or power judgment.";
+  return {
+    identity: c.identity,
+    name: c.card.name,
+    score,
+    band:
+      score >= 75
+        ? "Strong fit"
+        : score >= 45
+          ? "Supporting fit"
+          : "Limited theme evidence",
+    connections,
+    commanderConnections,
+    roles,
+    roleEvidence,
+    components,
+    explanation,
+  };
+}
+
+function deckSignals(cards: DnaInputCard[]) {
   const typeCounts = new Map<string, number>();
   for (const c of cards)
     for (const type of c.analysis.creatureTypes.own)
@@ -314,6 +451,11 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
   const signals = new Map(
     cards.map((c) => [c, cardSignals(c, types, deckTags)]),
   );
+  return { types, deckTags, signals };
+}
+export function analyzeDeckDna(input: DnaInput): DeckDna {
+  const { cards } = input;
+  const { types, signals } = deckSignals(cards);
   const repetitionFloor = Math.max(
     2,
     Math.ceil(cards.filter((c) => !c.commander).length * 0.06),
@@ -405,139 +547,14 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
     byName: Record<string, string> = {};
   for (const c of cards.filter((c) => !c.commander)) {
     const ownSignals = signals.get(c)!;
-    const connections = meaningful
-      .flatMap((theme) => {
-        const matched = ownSignals.filter((s) => s.themeId === theme.id);
-        if (!matched.length) return [];
-        const typalSupport =
-          theme.id.startsWith("typal:") &&
-          theme.evidence.some((e) =>
-            e.signals.some((s) => s.kind === "payoff" || s.kind === "enabler"),
-          );
-        const strength =
-          typalSupport && matched.some((s) => s.kind === "characteristic")
-            ? Math.max(2.8, signalWeight(matched))
-            : signalWeight(matched);
-        return [
-          { themeId: theme.id, label: theme.label, strength, signals: matched },
-        ];
-      })
-      .sort((a, b) => b.strength - a.strength || compare(a.themeId, b.themeId));
-    const commanderConnections = cards
-      .filter((card) => card.commander)
-      .flatMap((cmdr) =>
-        connections.flatMap((connection) => {
-          const matched = signals
-            .get(cmdr)!
-            .filter((s) => s.themeId === connection.themeId && s.strength >= 2);
-          return matched.length
-            ? [
-                {
-                  name: cmdr.card.name,
-                  theme: connection.label,
-                  evidence: matched.flatMap((s) => s.evidence),
-                },
-              ]
-            : [];
-        }),
-      );
-    const maxWeight = meaningful[0]?.percent || 100;
-    const peak = Math.max(
-      0,
-      ...connections.map(
-        (con) =>
-          Math.min(1, con.strength / 4) *
-          (meaningful.find((t) => t.id === con.themeId)!.percent / maxWeight),
-      ),
+    perCard[c.identity] = scoreCard(
+      c,
+      ownSignals,
+      meaningful,
+      cards
+        .filter((card) => card.commander)
+        .map((card) => ({ card, signals: signals.get(card)! })),
     );
-    const coverage = connections.reduce(
-      (n, con) =>
-        n +
-        (Math.min(1, con.strength / 4) *
-          meaningful.find((t) => t.id === con.themeId)!.percent) /
-          100,
-      0,
-    );
-    const relationship = connections.some((con) =>
-      con.signals.some((s) => s.kind === "payoff"),
-    )
-      ? 10
-      : connections.some((con) => con.signals.some((s) => s.kind === "enabler"))
-        ? 6
-        : 0;
-    const roleAssignments = c.assignments
-      .filter((a) =>
-        ["role", "payoff", "enabler", "interaction"].includes(
-          tagDefinition(a.tagId)?.category || "",
-        ),
-      )
-      .sort(
-        (a, b) =>
-          weights[tagDefinition(b.tagId)!.category] -
-            weights[tagDefinition(a.tagId)!.category] ||
-          compare(a.tagId, b.tagId),
-      );
-    const roles = roleAssignments.map((a) => tagDefinition(a.tagId)!.label);
-    if (
-      connections.some((con) => con.themeId === "ramp") &&
-      c.card.manaValue <= 2 &&
-      !/\bLand\b/.test(c.card.typeLine)
-    )
-      roles.push(`Early mana support (mana value ${c.card.manaValue})`);
-    const roleEvidence = roleAssignments.map((a) => ({
-      label: tagDefinition(a.tagId)!.label,
-      evidence: a.evidence,
-    }));
-    const support = roles.length ? 5 : 0;
-    const components = connections.length
-      ? [
-          { label: "Theme-support baseline", points: 10 },
-          { label: "Dominant-theme alignment", points: 40 * peak },
-          { label: "Breadth of theme connections", points: 25 * coverage },
-          {
-            label: "Explicit Commander connections",
-            points: Math.min(15, commanderConnections.length * 10),
-          },
-          { label: "Payoff / enabler relationship", points: relationship },
-          { label: "Supporting role", points: support },
-        ]
-      : [
-          {
-            label: roles.length
-              ? "General supporting role"
-              : "No theme evidence",
-            points: roles.length ? 15 : 0,
-          },
-        ];
-    const score = Math.min(
-      100,
-      Math.round(components.reduce((n, c) => n + c.points, 0) / 5) * 5,
-    );
-    const explanation = connections.length
-      ? `Supports ${connections
-          .slice(0, 3)
-          .map((con) => con.label)
-          .join(", ")} through the evidence below.`
-      : /\bLand\b/.test(c.card.typeLine)
-        ? "Part of the mana base; no specific primary-theme connection was identified."
-        : "No strong connection to the displayed themes was identified. This is not a card-quality or power judgment.";
-    perCard[c.identity] = {
-      identity: c.identity,
-      name: c.card.name,
-      score,
-      band:
-        score >= 75
-          ? "Strong fit"
-          : score >= 45
-            ? "Supporting fit"
-            : "Limited theme evidence",
-      connections,
-      commanderConnections,
-      roles,
-      roleEvidence,
-      components,
-      explanation,
-    };
     byName[nameKey(c.card.name)] = c.identity;
   }
   const strategic = meaningful.filter((t) => !familyById.get(t.id)?.support),
@@ -670,3 +687,38 @@ export class DeckDnaCache {
   }
 }
 export const deckDnaCache = new DeckDnaCache();
+
+// Candidates are measured against the unchanged saved deck, never inserted into its DNA.
+export function candidateScorer(
+  state: CollectionState,
+  deck: Deck,
+  dna: DeckDna,
+) {
+  const { cards } = deckDnaInput(state, deck);
+  const { types, deckTags, signals } = deckSignals(cards);
+  const commanders = cards
+    .filter((c) => c.commander)
+    .map((card) => ({ card, signals: signals.get(card)! }));
+  return (card: CardMetadata): CardSynergy => {
+    const analysis = deckCardAnalysis(state, card);
+    const assignments = effectiveAssignments(
+      analysis,
+      state.intelligence?.overrides[analysis.cardIdentity] ||
+        state.intelligence?.overrides[`name:${nameKey(card.name)}`],
+    );
+    const input = {
+      card,
+      analysis,
+      assignments,
+      identity: analysis.cardIdentity,
+      quantity: 1,
+      commander: false,
+    };
+    return scoreCard(
+      input,
+      cardSignals(input, types, deckTags),
+      dna.themes,
+      commanders,
+    );
+  };
+}

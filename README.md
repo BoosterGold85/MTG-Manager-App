@@ -1,6 +1,16 @@
-# MTG Manager · v0.5.1
+# MTG Manager · v0.6.0
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Synergy Explorer — Upgrades I Own (v0.6.0)
+
+Open a saved deck and choose **Explore Synergy**. The read-only explorer searches your owned collection, groups printings/finishes of the same canonical card, excludes every card already in the conceptual decklist (including missing entries and Commanders), and enforces the Commander's canonical color-identity subset. Colorless cards remain eligible.
+
+Candidates with an unassigned copy come first; within each availability group they rank by the existing coarse Synergy score, then name. Fully assigned candidates remain visible with **Used in** deck names and quantities. Scores remain ownership-neutral: availability changes ordering, not fit. Expand printing/variant details for exact owned and available counts; zero-owned cards are excluded.
+
+Choose **Compare [card]**, then explicitly choose a card currently in the deck. Both use the same Deck DNA scoring model and expose theme, Commander, role and source evidence. Card details remain available for both owned and missing deck cards. Candidate evaluation uses the unchanged saved deck's DNA; candidates cannot promote their own themes by being temporarily inserted into it. All analysis stays local, with no card lookup calls during exploration.
+
+This release makes **no swaps, additions, assignments or physical-copy moves**. “Upgrades I Own” describes candidates to consider, not guaranteed upgrades, power ratings or cuts. Scores remain rounded to five-point steps. Existing Commander legality limitations still apply. Search, available/fully-assigned views, empty results and progressive candidate rendering keep the existing binder visual language. No schema migration or persisted recommendation cache is added. See [v0.6.0 validation](docs/VALIDATION-v0.6.0.md).
 
 ## Storage reliability hotfix (v0.5.1)
 
@@ -18,7 +28,7 @@ Select a displayed DNA theme or use **Deck DNA theme** in the existing controls 
 
 Derived DNA uses a bounded in-memory cache keyed by deck ID, stable conceptual-content revision, DNA version and Card Intelligence ruleset. Add/remove/Commander/metadata/manual-tag changes invalidate it; browsing and ownership-only changes reuse it. An unchanged deck reopens from cache; reload safely rebuilds it locally. No database migration or persisted derived data is needed, and backups retain their existing collection/deck/source/correction fields with the current application version.
 
-See [v0.5.0 validation and methodology](docs/VALIDATION-v0.5.0.md) for weights, regression decks, limitations and commands. v0.4.2 is approved. No v0.6.0 recommendations, cuts, optimization or new-set work is implemented.
+See [v0.5.0 validation and methodology](docs/VALIDATION-v0.5.0.md) for weights, regression decks, limitations and commands. v0.4.2 is approved. The v0.5.0 engine remains the scoring foundation; automated cuts, optimization and new-set work remain unimplemented.
 
 ## Deck Browsing & Card Navigation (v0.4.2)
 
@@ -63,7 +73,7 @@ For every record, assigned count is the sum of commander reservations and deck-c
 
 Removing or clearing allocated collection records is blocked with an explanation: release their deck assignments first. This prevents dangling deck references. Once assignments are released, the existing removal/typed-clear flow works normally. Deleting decks never deletes collection cards.
 
-**Export Backup** retains all prior collection/metadata/import/intelligence/source fields and now includes decks, commander selections, assignments and printing references under `collection.decks`. Backup restore, server persistence, accounts, cloud sync, deck history, full rules validation and all v0.6.0 recommendation features remain unimplemented. Data survives browser restarts on this origin/device; clearing site storage removes it. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md).
+**Export Backup** retains all prior collection/metadata/import/intelligence/source fields and now includes decks, commander selections, assignments and printing references under `collection.decks`. Backup restore, server persistence, accounts, cloud sync, deck history and full rules validation remain unimplemented. Data survives browser restarts on this origin/device; clearing site storage removes it. See [v0.4.0 validation](docs/VALIDATION-v0.4.0.md).
 
 ## Visual identity
 
@@ -196,7 +206,7 @@ The simplest static-Cloudflare-compatible beta solution is **IndexedDB**, behind
 
 Data belongs to this **browser profile and site origin**. It is not synced between devices, Cloudflare preview URLs or domains. Clearing site data, private browsing, browser eviction or changing origins can remove local data. No server backup or account recovery is claimed. Keep the ManaBox export as the authoritative backup. No CSV contents or purchase/binder fields are sent to a server; Scryfall receives only matching identifiers/names and set information.
 
-Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 120 ms apart. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
+Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 250 ms apart. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
 
 `src/models/collection.ts` separates physical ownership from `CardMetadata`. `collectionCards()` adapts persisted inventory to the frozen binder's existing card interface. A future authenticated provider can replace the repository without replacing the binder UI. v0.4.0 adds the separate deck repository boundary on this same atomic snapshot. Accounts, deck optimization and cloud synchronization remain future scope.
 
@@ -253,4 +263,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability is current. Work stops before v0.6.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability is preserved; v0.6.0 Synergy Explorer is current. Work stops before v0.7.0.

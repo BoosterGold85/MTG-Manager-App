@@ -2395,3 +2395,22 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .synergy-score span { color:var(--text-secondary); }
 .in-this-deck details { margin-top:var(--space-16); }
 @media(max-width:420px) { .dna-heading>span { display:none; } .deck-dna { padding:var(--space-16); } }
+
+/* Owned-card discovery uses the binder's existing surfaces and interaction tokens. */
+.synergy-dialog { width:min(920px,calc(100% - 24px)); padding:var(--space-24); color:var(--text-primary); }
+.synergy-dialog>.eyebrow { padding-right:var(--space-48); overflow-wrap:anywhere; }
+.synergy-dialog>p { color:var(--text-secondary); line-height:1.7; font-size:.85rem; }
+.synergy-dialog h2 { font-family:var(--font-display); font-size:2rem; }
+.synergy-controls { display:flex; flex-wrap:wrap; gap:var(--space-16); align-items:center; }
+.synergy-controls label,.synergy-comparison>label { display:flex; gap:var(--space-10); align-items:center; flex-wrap:wrap; color:var(--text-secondary); font-size:.85rem; }
+.synergy-controls input[type=search],.synergy-controls select,.synergy-comparison select { min-height:44px; max-width:100%; background:var(--surface-panel); border:1px solid var(--border-soft); border-radius:var(--radius-control); padding:var(--space-10); color:var(--text-primary); }
+.synergy-candidates { list-style:none; padding:0; }
+.synergy-candidates>li { display:grid; grid-template-columns:80px minmax(0,1fr); gap:var(--space-16); border-top:1px solid var(--border-soft); padding-block:var(--space-20); overflow-wrap:anywhere; }
+.synergy-candidates h3 { margin:0; font-size:1rem; }
+.synergy-candidates h3 span { color:var(--accent); display:block; font-size:.85rem; margin-top:var(--space-6); }
+.synergy-candidates p,.synergy-candidates details { color:var(--text-secondary); font-size:.8rem; line-height:1.7; }
+.synergy-art { width:80px; align-self:start; }
+.synergy-comparison { border:1px solid var(--selected-border); background:var(--selected-surface); border-radius:var(--radius-panel); padding:var(--space-16); margin-block:var(--space-20); overflow-wrap:anywhere; }
+.synergy-comparison h3 { font-size:1rem; }
+@media(max-width:420px) { .synergy-candidates>li { grid-template-columns:64px minmax(0,1fr); gap:var(--space-12); } .synergy-art { width:64px; } }
+.synergy-comparison .in-this-deck dt { color:var(--text-secondary); }

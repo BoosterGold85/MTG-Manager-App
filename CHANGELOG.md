@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 — Synergy Explorer / Upgrades I Own
+
+- Added Explore Synergy from a saved deck: owned canonical cards outside the full decklist and within Commander color identity, with grouped printings and available-copy priority. Fully assigned candidates show where copies are used.
+- Extracted the existing per-card scorer without changing Deck DNA behavior; candidate scores use frozen deck themes and the same evidence, Commander connections and five-point scale. Availability affects ordering only.
+- Added local search, available-only filtering, bounded initial rendering, printing counts, shared card details and explicit manual comparison against a current deck card. No swaps, deck edits, assignments, ownership changes, remote analysis or suggested cuts.
+- Preserved storage recovery, imports, allocations, browsing, intelligence, backups and design tokens. No schema migration.
+
 ## 0.5.1 — Storage / Deck Import Reliability
 
 - Recover once from closing/invalid cached IndexedDB connections when starting load/save transactions; invalidate on close/versionchange and guard against late older-connection events. No retry after requests have started, duplicate writes or weakened revision checks.

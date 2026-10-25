@@ -1,3 +1,4 @@
+import { SynergyExplorer } from './SynergyExplorer';
 import { DeckDnaPanel } from './DeckDnaPanel';
 import { deckDnaCache, cardSynergy } from '../dna/engine';
 import { useMemo, useState } from "react";
@@ -72,6 +73,7 @@ export function DeckLibrary({
   const [busy, setBusy] = useState(false);
   const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
   const [importing, setImporting] = useState(false);
+  const [exploring,setExploring]=useState(false);
   const [sort, setSort] = useState<DeckSort>("type");
   const [deckFilters, setDeckFilters] = useState<DeckFilters>(emptyDeckFilters);
   // Card Detail opened from the deck: a browsable row, or a commander (outside the 99).
@@ -233,6 +235,7 @@ export function DeckLibrary({
               </p>
             </div>
             <span className="deck-heading-actions">
+              <button className="management-button" onClick={()=>setExploring(true)}>Explore Synergy</button>
               <button className="management-button" onClick={() => { setError(""); setImporting(true); }}>
                 <FileUp size={16} />
                 Import Deck
@@ -325,6 +328,7 @@ export function DeckLibrary({
               </p>
             </div>
             <span className="deck-heading-actions">
+              <button className="management-button" onClick={()=>setExploring(true)}>Explore Synergy</button>
               <button
                 className="management-button"
                 onClick={() => {
@@ -901,6 +905,7 @@ export function DeckLibrary({
           </div>
         </Dialog>
       )}
+      {exploring&&state&&deck&&<SynergyExplorer state={state} deck={deck} onClose={()=>setExploring(false)}/>}
     </section>
   );
 }
