@@ -29,4 +29,4 @@ Baseline: `6c1a78d` (v0.6.3, now Approved). Scope: the supplied "Basic Land Impo
 
 ## Validation results
 
-See the commit report: lint, unit tests, build, full five-size production browser suite, `npm audit`, `git diff --check`.
+**Passed:** lint; **401 unit tests** (394 + 7); production build; `TEST_PRODUCTION=1 npm test`: **335 browser tests** across 360×800, 390×844, 430×932, 768×1024 and 1440×1000 (13.0 min); `npm audit`: 0 vulnerabilities; `git diff --check`.
