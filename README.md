@@ -1,6 +1,20 @@
-# MTG Manager · v0.6.2
+# MTG Manager · v0.6.3
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Recommendation Engine vNext (v0.6.3)
+
+Owned-card recommendations now use canonical **CardFacts → typed effects → verified Commander / existing-card relationships → typed role gaps → curve / redundancy / conflicts → score → optional comparison targets**. Broad Card Intelligence tags still support discovery and descriptive Deck DNA; they do not independently earn recommendation points. Existing binder/import/storage, manual Card Intelligence corrections and ownership behavior remain intact.
+
+Facts distinguish basic-land-to-hand smoothing from unrestricted tutors and land ramp, relevant creature tokens from Soldiers/Treasure/Clues/Food/copies, and persistent mana from rituals or token-scoped combat mana. Changeling counts as every recognized creature type. Reminder text and ability-word prefixes cannot fabricate an ability or turn a self-only trigger into a trigger supplied by another creature. Controller, nontoken, cast/ETB and keyword restrictions remain part of relationship validation. Unknown classifications are surfaced conservatively.
+
+The six configurable weighted contributions are **Commander 20, deck/theme 20, actual role need 25, contextual efficiency 20, curve 10, existing-card interactions 5**. These are calibrated from the brief’s proposed starting weights so needed, efficient removal can reach Worth Considering without fabricated tribal points. The underlying Commander relationship is independently scored **0–25**, with evidence for every nonzero score. Signed penalties and explicit eligibility/80+ gates are included in exact arithmetic before the final 0–100 clamp. Confidence (High/Medium/Low) is separate from fit.
+
+Bands: Exceptional 90+, Excellent 80–89, Strong 70–79, Reasonable 60–69, Situational 50–59, Weak 35–49, Poor 0–34. An 80+ result requires strong verified Commander interaction, two distinct major deck engines, or exceptional unmet role need with excellent efficiency and no resolved conflict. Recommended remains ≥70; Worth Considering 50–69; below 50 stays collapsed in Other Legal Cards. Ranking is score first, then confidence, Commander interaction, role need, efficiency, availability and stable name/identity ties.
+
+**Compare** can suggest up to three lower-scoring, role/type-compatible comparisons and shows the six component differences. These are local heuristic suggestions: Commanders are excluded, land slots are protected, uncovered essential functions are protected, and low-confidence results do not propose cuts. There is no swap/save action, automatic removal, allocation change or movement of physical copies. Manual comparison remains available when no cut qualifies.
+
+The exact supplied **Reign of Dragons** deck is now a permanent 100-card regression using 69 exact FDC/FDN printings. Changeling Wayfinder must prove its Dragon entry and basic-land-to-hand effect; Fire Nation Attacks must identify Soldiers and token-only firebending, with zero Lathliss interaction. See [the brief](docs/v0.6.3-recommendation-vnext-executable.md) and [review gates, results and limitations](docs/VALIDATION-v0.6.3.md).
 
 ## Synergy Explorer UX Polish (v0.6.2)
 
@@ -8,11 +22,11 @@ Candidates now show artwork, name, Synergy score/band, concise ownership, one sh
 
 The deterministic presentation helper translates cached strategy, role and conflict evidence into one or two plain-language sentences. Exact role counts, penalties, packages, raw totals and clamping remain in the lazy, default-collapsed **Why this score?** section, including in comparison and deck-relative details. Expanding it does not run the scoring engine. No LLM or extra lookup is used.
 
-The approved v0.6.1 scoring model is unchanged: Recommended ≥70, Worth Considering 50–69, Other Legal Cards <50 (collapsed initially), score-first order, availability tie-breaks, full-set search and progressive rendering. Collection ownership, saved decks and comparison remain read-only here. See [v0.6.2 executable](docs/v0.6.2-executable.md) and [validation](docs/VALIDATION-v0.6.2.md).
+At the v0.6.2 release the approved v0.6.1 scoring model was unchanged (v0.6.3 supersedes it): Recommended ≥70, Worth Considering 50–69, Other Legal Cards <50 (collapsed initially), score-first order, availability tie-breaks, full-set search and progressive rendering. Collection ownership, saved decks and comparison remain read-only here. See [v0.6.2 executable](docs/v0.6.2-executable.md) and [validation](docs/VALIDATION-v0.6.2.md).
 
-## Deck-aware scoring rebuild (v0.6.1)
+## Deck-aware scoring rebuild (v0.6.1, historical model)
 
-Synergy now uses a cached **DeckStrategyProfile** built from the actual conceptual decklist and separately analyzed Commanders. It measures explicit Commander interactions (30), primary archetype fit (25), unmet role needs (15), established packages (10), local efficiency (10), generic overlap (5), and curve/mana fit (5), then subtracts signed penalties and clamps the result to 0–100. Scores are integers, not forced into five-point steps or an artificial distribution. Card Intelligence tags and the existing descriptive Deck DNA percentages remain intact.
+v0.6.1 introduced a cached **DeckStrategyProfile** built from the actual conceptual decklist and separately analyzed Commanders. It measures explicit Commander interactions (30), primary archetype fit (25), unmet role needs (15), established packages (10), local efficiency (10), generic overlap (5), and curve/mana fit (5), then subtracts signed penalties and clamps the result to 0–100. Scores are integers, not forced into five-point steps or an artificial distribution. Card Intelligence tags and the existing descriptive Deck DNA percentages remain intact.
 
 **Upgrades I Own sorts by final score first**, with available copies breaking ties. **Recommended** contains scores ≥70; **Worth Considering** contains 50–69; **Other Legal Cards** contains scores below 50 and is collapsed by default. Those lower scores explicitly say Weak Fit, Poor Fit or Not Recommended and use subdued styling. Color compatibility is enforced as before; the existing full-Commander-legality limitations remain.
 
@@ -24,7 +38,7 @@ Strategy profiles and card scores are cached independently of physical ownership
 
 Open a saved deck and choose **Explore Synergy**. The read-only explorer searches your owned collection, groups printings/finishes of the same canonical card, excludes every card already in the conceptual decklist (including missing entries and Commanders), and enforces the Commander's canonical color-identity subset. Colorless cards remain eligible.
 
-Candidates rank by final deck-aware Synergy score, with available copies breaking ties, then name. Fully assigned candidates remain visible with **Used in** deck names and quantities. Scores remain ownership-neutral: availability changes ordering, not fit. Expand printing/variant details for exact owned and available counts; zero-owned cards are excluded.
+Candidates rank by final deck-aware Synergy score, then confidence, Commander interaction, role need, efficiency, availability and stable name/identity ties. Fully assigned candidates remain visible with **Used in** deck names and quantities. Scores remain ownership-neutral: availability changes ordering, not fit. Expand printing/variant details for exact owned and available counts; zero-owned cards are excluded.
 
 Choose **Compare [card]**, then explicitly choose a card currently in the deck. Both use the same Deck DNA scoring model and expose theme, Commander, role and source evidence. Card details remain available for both owned and missing deck cards. Candidate evaluation uses the unchanged saved deck's DNA; candidates cannot promote their own themes by being temporarily inserted into it. All analysis stays local, with no card lookup calls during exploration.
 
@@ -288,4 +302,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is current. Work stops before v0.7.0.

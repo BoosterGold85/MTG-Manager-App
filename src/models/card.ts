@@ -14,6 +14,7 @@ export interface SampleCollectionCard {
   manaCost?: string;
   manaValue: number;
   colorIdentity: Color[];
+  colors?: Color[];
   typeLine: string;
   rarity: Rarity;
   quantity: number;

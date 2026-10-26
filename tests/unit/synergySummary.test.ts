@@ -15,7 +15,7 @@ for (const example of archetypeCases) {
     expect(summary).not.toMatch(/\d+\/\d+|contextual target|deficit|\braw\b|clamped|contribution|penalty/i);
     if (summary.includes("directly reinforces")) expect(score.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
     if (summary.includes("fills a needed")) expect(score.debug.roleNeed).toBeGreaterThan(0);
-    if (summary.includes("already has plenty")) expect(score.debug.penalties.some((p) => p.name === "Redundant role")).toBe(true);
+    if (summary.includes("already has plenty")) expect(score.debug.penalties.some((p) => p.name === "role_redundancy")).toBe(true);
     expect(JSON.stringify(score)).toBe(before);
     expect(candidateScorer(fixture.state, fixture.deck, dna)(example.support)).toBe(score);
   });
@@ -23,14 +23,14 @@ for (const example of archetypeCases) {
 it("translates actual role redundancy into plain language and preserves exact math", () => {
   const f = dragonScoringFixture(), dna = deckDnaCache.get(f.state, f.deck);
   const score = candidateScorer(f.state, f.deck, dna)(namedScoringCard("Harnesser of Storms"));
-  expect(score.debug.penalties.find((p) => p.name === "Redundant role")?.reason).toMatch(/contextual target/);
-  expect(candidateSummary(score, dna.strategyProfile)).toContain("already has plenty of cards serving its roles");
+  expect(score.debug.penalties.find((p) => p.name === "role_redundancy")?.reason).toMatch(/role target/);
+  expect(candidateSummary(score, dna.strategyProfile)).toContain("already has plenty of payoff cards");
 });
 it("does not fabricate strategy support or a missing role for an off-plan card", () => {
   const f = dragonScoringFixture(), dna = deckDnaCache.get(f.state, f.deck);
   const score = candidateScorer(f.state, f.deck, dna)(namedScoringCard("Mongoose Lizard"));
   const summary = candidateSummary(score, dna.strategyProfile);
-  expect(summary).toContain("Does not meaningfully support");
-  expect(summary).toContain("does not fill an identified missing role");
+  expect(summary).toContain("No strong interaction or missing role");
+  expect(score.recommendation!.roleNeedSeverity).toBe(0);
   expect(summary).not.toContain("directly reinforces");
 });

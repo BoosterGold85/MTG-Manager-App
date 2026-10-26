@@ -1,0 +1,34 @@
+[
+  {
+    "id": "6c6061aa-a4da-4115-85b6-d0aa22f2386c",
+    "oracle_id": "93409d98-93c8-4742-a635-2a4408e66c32",
+    "name": "Changeling Wayfinder",
+    "mana_cost": "{3}",
+    "cmc": 3.0,
+    "type_line": "Creature \u2014 Shapeshifter",
+    "oracle_text": "Changeling (This card is every creature type.)\nWhen this creature enters, you may search your library for a basic land card, reveal it, put it into your hand, then shuffle.",
+    "keywords": [
+      "Changeling"
+    ],
+    "colors": [],
+    "color_identity": []
+  },
+  {
+    "id": "9cc10845-8989-46ca-a57a-fd728fca0729",
+    "oracle_id": "399fba23-fc13-440b-ab67-192eede6ecab",
+    "name": "Fire Nation Attacks",
+    "mana_cost": "{4}{R}",
+    "cmc": 5.0,
+    "type_line": "Instant",
+    "oracle_text": "Create two 2/2 red Soldier creature tokens with firebending 1. (Whenever a creature with firebending 1 attacks, add {R}. This mana lasts until end of combat.)\nFlashback {8}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+    "keywords": [
+      "Flashback"
+    ],
+    "colors": [
+      "R"
+    ],
+    "color_identity": [
+      "R"
+    ]
+  }
+]

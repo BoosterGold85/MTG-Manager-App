@@ -1,4 +1,6 @@
-import { buildDeckStrategyProfile, scoreStrategyCard } from "./strategy";
+import { buildDeckStrategyProfile } from "./strategy";
+import { scoreRecommendation } from "../synergy/recommendation";
+import type { RecommendationData } from "../synergy/recommendation";
 import type {
   DeckStrategyProfile,
   SynergyScoreDebug,
@@ -36,6 +38,7 @@ export interface Signal {
   evidence: Evidence[];
 }
 export interface CardSynergy {
+  recommendation?: RecommendationData;
   debug: SynergyScoreDebug;
   reasons: string[];
   conflicts: string[];
@@ -317,7 +320,7 @@ function scoreCard(
   commanders: { card: DnaInputCard; signals: Signal[] }[],
   profile: DeckStrategyProfile,
 ): CardSynergy {
-  const scored = scoreStrategyCard(profile, c);
+  const scored = scoreRecommendation(profile, c);
   const cached = cardFitCache.get(scored);
   if (cached) return cached;
   const connections = meaningful
@@ -384,12 +387,13 @@ function scoreCard(
     score: scored.score,
     band: scored.band,
     debug: scored.debug,
+    recommendation: scored.recommendation,
     reasons: scored.reasons,
     conflicts: scored.conflicts,
     tier: scored.tier,
     connections,
     commanderConnections,
-    roles: [...new Set([...roles, ...scored.roles])],
+    roles: scored.recommendation ? scored.roles : [...new Set([...roles, ...scored.roles])],
     roleEvidence,
     components: scored.components,
     explanation: scored.explanation,

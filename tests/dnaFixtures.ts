@@ -21,7 +21,7 @@ function card(
     keywords,
     manaValue,
     manaCost: "",
-    colorIdentity: ["R", "G", "B", "U", "W"],
+    colorIdentity: [],
     rarity: "rare",
     scryfallId: `55555555-0000-4000-8000-${String(index).padStart(12, "0")}`,
     oracleId: `dna:${name.toLowerCase()}`,
@@ -38,6 +38,7 @@ export const lathliss = card(
   ["Flying"],
   6,
 );
+lathliss.colorIdentity = ["R"];
 export const dragons = [
   card(
     "Utvara Hellkite",

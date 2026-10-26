@@ -20,6 +20,7 @@ interface ScryfallCard {
   collector_number: string;
   cmc: number;
   color_identity: Color[];
+  colors?: Color[];
   type_line: string;
   rarity: Rarity;
   mana_cost?: string;
@@ -102,6 +103,7 @@ export function normalizeCard(raw: ScryfallCard): CardMetadata {
     collectorNumber: c.collector_number,
     manaValue: c.cmc,
     colorIdentity: c.color_identity,
+    ...(c.colors ? { colors: c.colors } : {}),
     typeLine: c.type_line,
     rarity: c.rarity,
     manaCost:
@@ -111,7 +113,7 @@ export function normalizeCard(raw: ScryfallCard): CardMetadata {
         .filter(Boolean)
         .join(" // "),
     oracleText:
-      c.oracle_text ||
+      c.oracle_text ??
       c.card_faces
         ?.map((f) => `${f.name}\n${f.oracle_text || ""}`)
         .join("\n\n"),

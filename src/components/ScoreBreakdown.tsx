@@ -11,22 +11,47 @@ export function ScoreBreakdown({ synergy }: { synergy: CardSynergy }) {
       {expanded && (
         <>
           <p>
-            Commander interaction (30), primary strategy (25), needed role (15),
-            packages (10), contextual efficiency (10), generic overlap (5), and
-            curve fit (5), less penalties. Prices and owned quantities do not
-            affect these points.
+            Six weighted, evidence-based components, less negative adjustments.
+            Generic tags, prices and owned quantities do not earn points.
           </p>
           <dl>
-            {synergy.components.map((c) => (
+            {synergy.components.map((c, index) => (
               <div key={c.label}>
                 <dt>{c.label}</dt>
                 <dd>
                   {c.points > 0 ? "+" : ""}
                   {c.points}
+                  {synergy.recommendation && index < 6
+                    ? ` / ${synergy.recommendation.componentCaps[index]}`
+                    : ""}
                 </dd>
               </div>
             ))}
           </dl>
+          {synergy.recommendation && (
+            <>
+              <h4>Confidence: {synergy.recommendation.confidence}</h4>
+              <p>{synergy.recommendation.confidenceReasons.join(" ")}</p>
+              <p>
+                Commander relationship: {synergy.recommendation.commander.score}
+                /25 ·{" "}
+                {synergy.recommendation.commander.direct
+                  ? "Direct"
+                  : "Indirect / none"}
+              </p>
+              <p>
+                80+ eligibility:{" "}
+                {synergy.recommendation.gate.reasons.join(" ") ||
+                  "No qualifying major interaction or exceptional role gap."}
+              </p>
+              <h4>Typed effects</h4>
+              <p>
+                {synergy.recommendation.typedRoles
+                  .map((r) => r.replaceAll("_", " "))
+                  .join(" · ") || "No resolved typed effect"}
+              </p>
+            </>
+          )}
           {synergy.debug.componentReasons.map((c) => (
             <p key={c.label}>
               <strong>{c.label}:</strong> {c.reason}

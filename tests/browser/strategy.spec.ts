@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 import type { Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { dragonScoringFixture, namedScoringCard, scoringCard } from "../scoringFixtures";
+import { namedScoringCard, scoringCard } from "../scoringFixtures";
+import { reignOfDragonsFixture } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";
 async function snapshot(page: Page) {
   return page.evaluate(
@@ -22,11 +23,13 @@ async function snapshot(page: Page) {
   );
 }
 async function setup(page: Page) {
-  const f = dragonScoringFixture(),
+  const f = reignOfDragonsFixture(),
     owned = synergyFixture().owned;
   f.state.revision = 1;
   f.deck.name = "Dragon scoring regression";
-  f.deck.entries = f.deck.entries!.filter((e) => e.name !== "Dragon Tempest");
+  f.deck.entries = f.deck.entries!.filter(
+    (e) => !["Dragon Tempest", "Utvara Hellkite"].includes(e.name),
+  );
   for (const name of [
     "Alania's Pathmaker",
     "Harnesser of Storms",
@@ -41,7 +44,15 @@ async function setup(page: Page) {
     );
   }
   // Deliberately inefficient but relevant support exercises the middle tier.
-  const middle = { ...scoringCard("Costly Dragon Support", "Creature — Goblin", "Dragon spells you cast cost {1} less to cast.", 6), colorIdentity: ["R"] as const };
+  const middle = {
+    ...scoringCard(
+      "Costly Dragon Support",
+      "Creature — Goblin",
+      "Dragon spells you cast cost {1} less to cast.",
+      6,
+    ),
+    colorIdentity: ["R"] as const,
+  };
   const middleCard = { ...middle, colorIdentity: [...middle.colorIdentity] };
   f.state.metadata[middleCard.scryfallId] = middleCard;
   f.state.items.push(owned(middleCard, middleCard.scryfallId, 1));
@@ -113,7 +124,10 @@ test("strong engines are recommendations; named beta false positives stay collap
   await expect(recommended).toContainText("Other Dragons");
   await expect(recommended).toContainText("Owned 1 · Available 0");
   await expect(recommended).toContainText("Available 1 · Owned 1");
-  for (const [tier, min, max] of [["Recommended", 70, 100], ["Worth Considering", 50, 69]] as const) {
+  for (const [tier, min, max] of [
+    ["Recommended", 70, 100],
+    ["Worth Considering", 50, 69],
+  ] as const) {
     const region = dialog.getByRole("region", { name: tier, exact: true });
     await expect(region).toBeVisible();
     for (const label of await region.locator("h3>span").allTextContents()) {
@@ -122,9 +136,16 @@ test("strong engines are recommendations; named beta false positives stay collap
       expect(score).toBeLessThanOrEqual(max);
     }
   }
-  await expect(recommended.getByRole("button", { name: "Compare Dragon Tempest", exact: true })).toBeVisible();
+  await expect(
+    recommended.getByRole("button", {
+      name: "Compare Dragon Tempest",
+      exact: true,
+    }),
+  ).toBeVisible();
   await expect(recommended.locator(".score-breakdown dl")).toHaveCount(0);
-  for (const summary of await recommended.locator(".candidate-summary").allTextContents()) {
+  for (const summary of await recommended
+    .locator(".candidate-summary")
+    .allTextContents()) {
     expect(summary).not.toMatch(/\d|contextual target|raw total|clamped/i);
   }
   for (const name of [
@@ -146,20 +167,30 @@ test("strong engines are recommendations; named beta false positives stay collap
   const row = other
     .locator("li")
     .filter({ has: page.getByRole("heading", { name: /Alania.s Pathmaker/ }) });
-  await expect(row).toContainText("Not Recommended");
-  await expect(row.locator(".candidate-summary")).toContainText("Limited fit");
-  await expect(row.locator(".candidate-summary")).not.toContainText("contextual target");
+  await expect(row).toContainText("Poor Fit");
+  await expect(row.locator(".candidate-summary")).not.toHaveText("");
+  await expect(row.locator(".candidate-summary")).not.toContainText(
+    "contextual target",
+  );
   await expect(row.locator(".candidate-summary")).not.toContainText(/\d/);
   await expect(row).not.toContainText("Conflicts:");
-  const count = await page.evaluate(() => performance.getEntriesByName("mtg:strategy-profile").length);
+  const count = await page.evaluate(
+    () => performance.getEntriesByName("mtg:strategy-profile").length,
+  );
   await expect(row.locator(".score-breakdown dl")).toHaveCount(0);
   await row.getByText("Why this score?", { exact: true }).click();
-  expect(await page.evaluate(() => performance.getEntriesByName("mtg:strategy-profile").length)).toBe(count);
+  expect(
+    await page.evaluate(
+      () => performance.getEntriesByName("mtg:strategy-profile").length,
+    ),
+  ).toBe(count);
   const breakdown = row.locator(".score-breakdown");
-  await expect(breakdown).toContainText("Off-archetype creature");
-  await expect(breakdown).toContainText("No Commander interaction");
-  await expect(breakdown).toContainText("Generic overlap");
-  const points = (await breakdown.locator("dd").allTextContents()).map(Number),
+  await expect(breakdown).toContainText("wrong_tribal_type");
+  await expect(breakdown).toContainText("No verified Commander interaction");
+  await expect(breakdown).toContainText("Existing-card interaction");
+  const points = (await breakdown.locator("dd").allTextContents()).map(
+      (value) => parseFloat(value),
+    ),
     raw = points.reduce((n, p) => n + p, 0),
     score = Number(
       (await row.locator("h3>span").innerText()).match(/Synergy (\d+)/)![1],
@@ -219,7 +250,7 @@ test("search, availability and reopen reuse the strategy profile and preserve sc
     );
     await dialog.locator(".other-legal-cards>summary").click();
     await expect(dialog.locator(".synergy-candidates>li")).toContainText(
-      "Not Recommended",
+      "Poor Fit",
     );
     await page.keyboard.press("Escape");
   }

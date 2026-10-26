@@ -2444,3 +2444,6 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .synergy-candidates summary::before { content:"▸"; margin-right:var(--space-6); }
 .synergy-candidates details[open]>summary::before { content:"▾"; }
 .synergy-candidates .management-button { margin-block:var(--space-4); }
+
+.comparison-deltas>div { display:flex; justify-content:space-between; gap:var(--space-12); padding-block:var(--space-4); }
+.comparison-deltas dd { margin:0; white-space:nowrap; font-variant-numeric:tabular-nums; }

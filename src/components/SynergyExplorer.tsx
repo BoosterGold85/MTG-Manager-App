@@ -1,3 +1,4 @@
+import { suggestReplacements } from "../synergy/replacements";
 import { candidateSummary } from "../synergy/summary";
 import { ScoreBreakdown } from "./ScoreBreakdown";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -55,6 +56,13 @@ export function SynergyExplorer({
   }, [selected, detail]);
   const candidate = candidates.find((c) => c.identity === selected),
     comparison = rows.find((r) => r.key === against);
+  const comparisonFit = comparison
+    ? cardSynergy(dna, comparison.card)
+    : undefined;
+  const suggestions = useMemo(
+    () => (candidate ? suggestReplacements(candidate.synergy, dna) : []),
+    [candidate, dna],
+  );
   if (detail)
     return (
       <CardDetail
@@ -72,8 +80,8 @@ export function SynergyExplorer({
       <p className="eyebrow">EXPLORE SYNERGY · {deck.name}</p>
       <h2 id="synergy-title">Upgrades I Own</h2>
       <p>
-        Ranked by final Synergy score. Available copies break ties. Cards
-        already in this deck or outside its Commander colors are excluded.
+        Ranked by final Synergy score, then confidence and verified interaction.
+        Cards already in this deck or outside its Commander colors are excluded.
       </p>
       <p className="muted">
         Deck fit includes role needs and efficiency. Comparing never changes
@@ -146,6 +154,44 @@ export function SynergyExplorer({
           >
             View candidate card details
           </button>
+          <section aria-label="Potential replacements">
+            <h4>Potential comparisons</h4>
+            <p>
+              Based on the local Synergy heuristic, not guaranteed upgrades.
+              Nothing is swapped or removed.
+            </p>
+            {suggestions.length ? (
+              suggestions.map((suggestion) => (
+                <div key={suggestion.identity}>
+                  <p>
+                    <strong>{suggestion.name}</strong> · Confidence:{" "}
+                    {suggestion.confidence}
+                  </p>
+                  <p>{suggestion.reasons.join(" ")}</p>
+                  <button
+                    className="management-button"
+                    onClick={() => {
+                      const row = rows.find(
+                        (r) =>
+                          r.card.oracleId === suggestion.identity ||
+                          dna.byName[
+                            r.name.normalize("NFKC").trim().toLowerCase()
+                          ] === suggestion.identity,
+                      );
+                      if (row) setAgainst(row.key);
+                    }}
+                  >
+                    Compare against {suggestion.name}
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>
+                No sufficiently confident, role-compatible replacement was
+                identified. You can still choose a comparison below.
+              </p>
+            )}
+          </section>
           <label>
             Compare with a card in this deck
             <select
@@ -175,8 +221,37 @@ export function SynergyExplorer({
               >
                 View current card details
               </button>
-              {cardSynergy(dna, comparison.card) && (
-                <InThisDeck synergy={cardSynergy(dna, comparison.card)!} />
+              {comparisonFit && (
+                <>
+                  <section aria-label="Heuristic comparison delta">
+                    <h4>
+                      Local Synergy difference:{" "}
+                      {candidate.synergy.score - comparisonFit.score > 0
+                        ? "+"
+                        : ""}
+                      {candidate.synergy.score - comparisonFit.score}
+                    </h4>
+                    <p>
+                      A difference in local deck fit, not a universal power
+                      rating or a guaranteed upgrade. Review roles and mana
+                      before making any change.
+                    </p>
+                    <dl className="comparison-deltas">
+                      {candidate.synergy.components
+                        .slice(0, 6)
+                        .map((component, index) => (
+                          <div key={component.label}>
+                            <dt>{component.label}</dt>
+                            <dd>
+                              {component.points} vs{" "}
+                              {comparisonFit.components[index]?.points || 0}
+                            </dd>
+                          </div>
+                        ))}
+                    </dl>
+                  </section>
+                  <InThisDeck synergy={comparisonFit} />
+                </>
               )}
               <p>
                 Consider roles and mana needs alongside theme fit. Choosing this
@@ -230,7 +305,12 @@ export function SynergyExplorer({
                           .join(" · ")}
                       </p>
                     )}
-                    <p className="candidate-summary">{candidateSummary(c.synergy, dna.strategyProfile)}</p>
+                    {c.synergy.recommendation && (
+                      <p>Confidence: {c.synergy.recommendation.confidence}</p>
+                    )}
+                    <p className="candidate-summary">
+                      {candidateSummary(c.synergy, dna.strategyProfile)}
+                    </p>
                     <ScoreBreakdown synergy={c.synergy} />
                     <button
                       className="management-button"

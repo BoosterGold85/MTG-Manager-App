@@ -17,7 +17,7 @@ export function scoringCard(
     keywords,
     scryfallId: `scoring:${name}`,
     oracleId: `scoring:${name}`,
-    colorIdentity: ["W", "U", "B", "R", "G"],
+    colorIdentity: /Legendary/.test(typeLine) ? ["W", "U", "B", "R", "G"] : [],
     imageUrl: sol.imageUrl,
     thumbnailUrl: sol.thumbnailUrl,
     setCode: "tst",

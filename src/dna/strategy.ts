@@ -1,3 +1,5 @@
+import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
+import type { RecommendationData } from "../synergy/recommendation";
 import type { CardMetadata } from "../models/collection";
 import type { DnaInput, DnaInputCard } from "./engine";
 import type { Evidence } from "../intelligence/types";
@@ -5,7 +7,7 @@ import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 
-export const SYNERGY_VERSION = "0.6.1";
+export const SYNERGY_VERSION = "0.6.3";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -44,6 +46,7 @@ export interface ManaCurveProfile {
   coloredPips: Record<string, number>;
 }
 export interface CommanderSynergyTag {
+  controller?: "you" | "opponent";
   commander: string;
   event: string;
   objects: string[];
@@ -111,6 +114,7 @@ export interface SynergyScoreDebug {
   finalScore: number;
 }
 export interface StrategyScore {
+  recommendation?: RecommendationData;
   score: number;
   band: string;
   tier: "Recommended" | "Worth Considering" | "Other Legal Cards";
@@ -197,38 +201,6 @@ const featureTags: Record<string, string[]> = {
   drawEngine: [],
   damage: [],
 };
-const roleLabels: Record<Role, string> = {
-  ramp: "Ramp",
-  cardAdvantage: "Card advantage",
-  removal: "Removal",
-  boardWipes: "Board wipes",
-  protection: "Protection",
-  graveyardHate: "Graveyard hate",
-  tutors: "Tutors",
-  recursion: "Recursion",
-  finishers: "Finishers",
-  lands: "Lands",
-  manaFixing: "Mana fixing",
-  tokenGeneration: "Token generation",
-  sacrificeOutlet: "Sacrifice outlets",
-  payoff: "Payoffs",
-  enabler: "Enablers",
-};
-const genericTags = new Set([
-  "card-draw",
-  "impulse-draw",
-  "looting",
-  "ramp",
-  "mana-dork",
-  "mana-rock",
-  "removal",
-  "creature-removal",
-  "permanent-removal",
-  "attack-triggers",
-  "combat-damage-triggers",
-  "etb",
-  "instants-sorceries",
-]);
 const objects = [
   "Creature",
   "Artifact",
@@ -254,12 +226,12 @@ const label = (id: string) =>
   id.startsWith("typal:") ? `${id.slice(6)} Typal` : labels[id] || id;
 function receivers(c: DnaInputCard): CommanderSynergyTag[] {
   const result: CommanderSynergyTag[] = [];
-  for (const clause of oracleText(c.card)
+  for (const clause of stripReminderText(oracleText(c.card))
     .split(/[.\n]/)
     .map((s) => s.trim())
     .filter(Boolean)) {
     if (!/\b(?:whenever|when|at the beginning)\b/i.test(clause)) continue;
-    const trigger = clause.split(",")[0];
+    const trigger = stripAbilityWord(clause).split(",")[0];
     // Keep the Commander's own abilities, but never let another card masquerade as their subject.
     const selfOnly =
       (/^(?:when|whenever) this (?:creature|permanent|artifact|enchantment)/i.test(
@@ -269,7 +241,7 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
           trigger.toLowerCase().startsWith(prefix + c.card.name.toLowerCase()),
         )) &&
       !/\bor another\b/i.test(trigger);
-    const event = /\bcast\b/i.test(trigger)
+    const event = /\bcasts?\b/i.test(trigger)
       ? "cast"
       : /\benter(?:s|ed)?\b/i.test(trigger)
         ? "enters"
@@ -283,7 +255,7 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
                 ? "sacrifice"
                 : /\bgain.*life/i.test(trigger)
                   ? "lifegain"
-                  : /\bdraw\b/i.test(trigger)
+                  : /\bdraws?\b/i.test(trigger)
                     ? "draw"
                     : /\bcounters?\b/i.test(trigger) &&
                         /put|place|remove|proliferat/i.test(trigger)
@@ -304,6 +276,12 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
     );
     result.push({
       commander: c.card.name,
+      controller:
+        /\b(?:an?|each|your) opponents? (?:casts?|sacrifices?|draws?|gains?|creates?|controls?)\b|under (?:an? |your )?opponent(?:['’]s|s['’]?)? control/i.test(
+          trigger,
+        )
+          ? "opponent"
+          : "you",
       event,
       objects: objects.filter((o) =>
         new RegExp(`\\b${o}(?:s)?\\b`, "i").test(trigger),
@@ -336,6 +314,7 @@ function characteristics(c: DnaInputCard): Characteristics {
     "typeLine",
     "oracleText",
     "colorIdentity",
+    "colors",
     "keywords",
     "cardFaces",
     "power",
@@ -361,7 +340,7 @@ function characteristics(c: DnaInputCard): Characteristics {
   };
 
   const tags = new Set(c.assignments.map((a) => a.tagId)),
-    text = oracleText(c.card),
+    text = stripReminderText(oracleText(c.card)),
     types = cardKeywords(c.card).some((k) => k.toLowerCase() === "changeling")
       ? creatureTypePatterns.map((p) => p.type)
       : c.analysis.creatureTypes.own;
@@ -945,7 +924,7 @@ function staticTypeSupport(
   const pattern = creatureTypePatterns.find((p) => p.type === type);
   return owner.text
     .split(/[.\n]/)
-    .map((clause) => clause.trim())
+    .map((clause) => stripAbilityWord(clause.trim()))
     .find((clause) => {
       if (
         /^(?:when|whenever|at the beginning)/i.test(clause) ||
@@ -959,35 +938,6 @@ function staticTypeSupport(
         return false;
       return /\bcost|\bgets?|\bhave|\bgain|\bsearch|\bput/i.test(clause);
     });
-}
-function objectSupport(
-  owner: Characteristics,
-  wanted: string[],
-  recipient: Characteristics,
-): boolean {
-  const own = recipient.card.card.typeLine.split("—")[0];
-  return owner.text.split(/[.\n]/).some((clause) => {
-    const effect = /^(?:when|whenever|at the beginning)/i.test(clause.trim())
-      ? clause.slice(clause.indexOf(",") + 1)
-      : clause;
-    if (!/cost|search|put|equip|attach|gets?|have|gain|copy|add/i.test(effect))
-      return false;
-    if (/noncreature/i.test(effect) && /Creature/.test(own)) return false;
-    if (
-      /nontoken|spells?[^.\n]{0,35}(?:cast|cost)/i.test(effect) &&
-      /Token/.test(own)
-    )
-      return false;
-    const limit = /mana value (\d+) or less/i.exec(effect);
-    if (limit && recipient.card.card.manaValue > Number(limit[1])) return false;
-    return wanted.some(
-      (object) =>
-        new RegExp(`\\b${object}(?:s)?\\b`, "i").test(effect) &&
-        (/spell|cast|cost/i.test(effect)
-          ? new RegExp(`\\b${object}\\b`, "i").test(own)
-          : recipient.emits.has(object)),
-    );
-  });
 }
 function amplifiesCommander(
   c: Characteristics,
@@ -1031,529 +981,154 @@ export function scoreBand(score: number) {
       : score >= 70
         ? "Strong Fit"
         : score >= 60
-          ? "Good Fit"
+          ? "Reasonable Fit"
           : score >= 50
             ? "Situational"
-            : score >= 40
+            : score >= 35
               ? "Weak Fit"
-              : score >= 25
-                ? "Poor Fit"
-                : "Not Recommended";
+              : "Poor Fit";
 }
-const scoreCaches = new Map<DeckStrategyProfile, Map<string, StrategyScore>>();
-export function scoreStrategyCard(
+/** Rules relationships reused by vNext; deliberately excludes family/tag fallback bonuses. */
+export function mechanicalRelationships(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
-): StrategyScore {
-  const key = JSON.stringify([
-    SYNERGY_VERSION,
-    input.identity,
-    input.card.name,
-    input.card.typeLine,
-    input.card.oracleText,
-    input.card.cardFaces,
-    input.card.keywords,
-    input.card.manaValue,
-    input.card.manaCost,
-    input.card.power,
-    input.card.toughness,
-    input.card.producedMana,
-    input.assignments,
-  ]); // Canonical characteristics only: never price, printing, ownership or quantity.
-  let cache = scoreCaches.get(profile);
-  if (!cache) {
-    cache = new Map();
-    scoreCaches.set(profile, cache);
-    if (scoreCaches.size > 4)
-      scoreCaches.delete(scoreCaches.keys().next().value!);
-  }
-  const cached = cache.get(key);
-  if (cached) return cached;
-  const c = characteristics(input),
-    interactions: string[] = [],
-    packageInteractions: string[] = [],
-    reasons: string[] = [];
-  let commanderStrength = 0;
-  for (const cmdr of profile.cards.filter((c) => c.card.commander)) {
-    for (const receiver of cmdr.receivers) {
-      const strength = interaction(receiver, c);
-      if (strength > commanderStrength) commanderStrength = strength;
-      if (strength > 0)
-        interactions.push(
-          `${strength >= 0.8 ? "Direct interaction" : "Weak potential interaction"}: ${input.card.name} supports ${cmdr.card.card.name}: ${receiver.evidence.snippet}`,
-        );
-    }
-    for (const receiver of c.receivers) {
-      const strength = interaction(receiver, cmdr);
-      if (strength > commanderStrength) commanderStrength = strength;
-      if (strength > 0)
-        interactions.push(
-          `${strength >= 0.8 ? "Direct interaction" : "Weak potential interaction"}: ${cmdr.card.card.name} supports ${input.card.name}: ${receiver.evidence.snippet}`,
-        );
-    }
-    const blinkOwnEtb =
-      input.assignments.some((a) => a.tagId === "blink") &&
-      cmdr.receivers.some((r) => r.selfOnly && r.event === "enters");
-    const equipment =
-      /Equipment/.test(input.card.typeLine) ||
-      (/Aura/.test(input.card.typeLine) &&
-        /enchant (?:creature|permanent)/i.test(c.text));
-    const combatSupport =
-      cmdr.receivers.some(
-        (r) => r.selfOnly && ["attacks", "combat-damage"].includes(r.event),
-      ) &&
-      (equipment ||
-        /target creature[^.\n]{0,45}gains?[^.\n]{0,45}(?:hexproof|indestructible|haste|double strike)/i.test(
-          c.text,
-        ));
-    if (blinkOwnEtb || combatSupport) {
-      commanderStrength = Math.max(commanderStrength, blinkOwnEtb ? 0.9 : 0.8);
-      interactions.push(
-        `${blinkOwnEtb ? "Reuses the Commander’s own ETB ability" : "Supports the Commander’s combat ability"}: ${cmdr.card.card.name}; review target restrictions.`,
-      );
-    }
-    const doublesTrigger = amplifiesCommander(c, cmdr);
-    const copiesCommander =
-      /copy of[^.\n]{0,100}(?:creature|permanent)/i.test(c.text) &&
-      /(?:isn.t|not) legendary/i.test(c.text);
-    const untapsCommander =
-      input.assignments.some((a) => a.tagId === "untap") &&
-      /\{T\}[^.\n]*:/i.test(cmdr.text);
-    if (doublesTrigger || copiesCommander || untapsCommander) {
-      commanderStrength = Math.max(commanderStrength, doublesTrigger ? 1 : 0.8);
-      interactions.push(
-        `${doublesTrigger ? "Additional triggered abilities" : copiesCommander ? "Nonlegendary copy support" : "Untap support"} for ${cmdr.card.card.name}; review the printed conditions.`,
-      );
-    }
-    for (const a of cmdr.card.assignments) {
-      if (
-        a.tagId.startsWith("typal:") &&
-        c.types.includes(a.tagId.slice(6)) &&
-        staticTypeSupport(cmdr, a.tagId.slice(6), c)
-      ) {
-        commanderStrength = Math.max(commanderStrength, 0.85);
-        interactions.push(
-          `Receives ${a.tagId.slice(6)}-specific support from ${cmdr.card.card.name}: ${staticTypeSupport(cmdr, a.tagId.slice(6), c)}`,
-        );
-      }
-    }
-    const supplied: Record<string, string[]> = {
-      artifacts: ["artifact"],
-      enchantments: ["enchantment"],
-      voltron: ["equipment", "aura"],
-      lands: ["land"],
-      spells: ["instant", "sorcery"],
+  validate: (receiver: CommanderSynergyTag, source: DnaInputCard) => boolean,
+  canonicalize?: (source: DnaInputCard) => {
+    events: string[];
+    creatureTypes: string[];
+    changeling: boolean;
+    sacrificeOutlet: boolean;
+  },
+) {
+  const canonical = (card: Characteristics): Characteristics => {
+    if (!canonicalize) return card;
+    const facts = canonicalize(card.card);
+    return {
+      ...card,
+      emits: new Set(facts.events),
+      types: facts.changeling
+        ? creatureTypePatterns.map((p) => p.type)
+        : facts.creatureTypes,
+      roles: new Set<Role>([
+        ...[...card.roles].filter((r) => r !== "sacrificeOutlet"),
+        ...(facts.sacrificeOutlet ? ["sacrificeOutlet" as Role] : []),
+      ]),
     };
-    for (const [family, wanted] of Object.entries(supplied))
-      if (
-        (cmdr.features.get(family) || 0) >= 1 &&
-        objectSupport(cmdr, wanted, c)
-      ) {
-        commanderStrength = Math.max(commanderStrength, 0.8);
-        interactions.push(
-          `Supplies objects explicitly supported by ${cmdr.card.card.name}: ${label(family)}.`,
+  };
+  const candidate = canonical(characteristics(input));
+  const relationships: {
+    identity: string;
+    name: string;
+    commander: boolean;
+    strength: number;
+    evidence: string[];
+  }[] = [];
+  for (const original of profile.cards) {
+    const other = canonical(original);
+    if (other.card.identity === input.identity) continue;
+    let strength = 0;
+    const evidence: string[] = [];
+    for (const [receiverCard, source] of [
+      [other, candidate],
+      [candidate, other],
+    ] as const) {
+      for (const receiver of receiverCard.receivers) {
+        if (!validate(receiver, source.card)) continue;
+        const value = interaction(receiver, source);
+        if (value > 0) {
+          strength = Math.max(strength, value);
+          evidence.push(
+            `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}`,
+          );
+        }
+      }
+    }
+    if (other.card.commander) {
+      if (amplifiesCommander(candidate, other)) {
+        strength = 1;
+        evidence.push(
+          `Additional triggered abilities for ${other.card.card.name}: ${candidate.text}`,
         );
       }
-    if (
-      cmdr.card.assignments.some((a) => a.tagId === "blink") &&
-      (c.features.get("blink") || 0) > 0.8
-    ) {
-      commanderStrength = Math.max(commanderStrength, 0.9);
-      interactions.push(
-        `Reusable creature ETB effect for ${cmdr.card.card.name}'s blink ability.`,
-      );
-    }
-    if (
-      cmdr.card.assignments.some((a) =>
-        ["reanimator", "recursion"].includes(a.tagId),
-      ) &&
-      (c.features.get("graveyard") || 0) >= 1
-    ) {
-      commanderStrength = Math.max(commanderStrength, 0.8);
-      interactions.push(`Supports ${cmdr.card.card.name}'s graveyard engine.`);
-    }
-    if (
-      cmdr.card.assignments.some((a) =>
-        ["proliferate", "counter-payoff"].includes(a.tagId),
-      ) &&
-      (c.features.get("counters") || 0) > 0
-    ) {
-      const payoff = input.assignments.some((a) =>
-        ["counter-payoff", "proliferate"].includes(a.tagId),
-      );
-      commanderStrength = Math.max(commanderStrength, payoff ? 0.9 : 0.55);
-      interactions.push(
-        `Provides ${payoff ? "counter amplification" : "counter resources"} for ${cmdr.card.card.name}.`,
-      );
-    }
-    for (const type of cmdr.types)
       if (
-        input.assignments.some((a) => a.tagId === `typal:${type}`) &&
-        staticTypeSupport(c, type, cmdr)
+        /copy of[^.\n]{0,100}(?:creature|permanent)/i.test(candidate.text) &&
+        /(?:isn.t|not) legendary/i.test(candidate.text)
       ) {
-        commanderStrength = Math.max(commanderStrength, 0.85);
-        interactions.push(
-          `Explicit ${type} support also benefits Commander ${cmdr.card.card.name}: ${staticTypeSupport(c, type, cmdr)}`,
+        strength = Math.max(strength, 0.8);
+        evidence.push(
+          `Nonlegendary copy support for ${other.card.card.name}: ${candidate.text}`,
         );
       }
-  }
-  const commanderSynergy = Math.round(Math.min(30, commanderStrength * 30));
-  const matches = profile.primaryArchetypes
-    .map((w) => ({ w, strength: c.features.get(w.tag) || 0 }))
-    .filter((m) => m.strength > 0);
-  const peak = Math.max(0, ...matches.map((m) => m.strength * m.w.weight));
-  let archetypeFit = Math.round(
-    Math.min(25, 25 * peak + Math.min(3, Math.max(0, matches.length - 1))),
-  );
-  if (
-    profile.primaryArchetypes.some((p) => p.tag === "goodstuff") &&
-    c.roles.size &&
-    c.quality >= 6
-  )
-    archetypeFit = Math.round(c.quality * 2);
-  if (
-    commanderSynergy >= 24 &&
-    interactions.some((r) =>
-      /Additional triggered abilities|Nonlegendary copy support|Untap support|Reuses the Commander|Supports the Commander.s combat/.test(
-        r,
-      ),
-    ) &&
-    profile.primaryArchetypes.some((p) => p.tag !== "goodstuff")
-  ) {
-    archetypeFit = Math.max(20, archetypeFit);
-    reasons.push("Commander engine support");
-  }
-  for (const m of matches)
-    reasons.push(
-      `${m.w.label}${m.strength >= 1 ? " engine / payoff" : " support"}`,
-    );
-  if (commanderSynergy >= 20) reasons.unshift("Direct Commander interaction");
-  const needed = [...c.roles]
-    .map((role) => ({ role, need: profile.roleNeeds[role] }))
-    .filter((r) => r.need.deficit > 0)
-    .sort((a, b) => b.need.deficit - a.need.deficit);
-  const roleNeed = Math.round(15 * (needed[0]?.need.deficit || 0));
-  if (needed[0])
-    reasons.push(
-      `Needed ${roleLabels[needed[0].role]} (${needed[0].need.count}/${needed[0].need.target})`,
-    );
-  let packageStrength = 0;
-  for (const pack of profile.synergyPackages) {
-    const strength = c.features.get(pack.tag) || 0;
-    if (strength >= 0.8) {
-      packageStrength = Math.max(
-        packageStrength,
-        strength * Math.min(1, pack.members.length / 3),
+      if (
+        /untap (?:target|another|each|all)[^.\n]*(?:creature|permanent)/i.test(
+          candidate.text,
+        ) &&
+        /\{T\}[^.\n]*:/i.test(other.text)
+      ) {
+        strength = Math.max(strength, 0.8);
+        evidence.push(
+          `Untap support for ${other.card.card.name}: ${candidate.text}`,
+        );
+      }
+      const blink =
+        /exile[^.\n]*(?:creature|permanent)[^.\n]*(?:return|then)[^.\n]*battlefield/i.test(
+          candidate.text,
+        );
+      if (
+        blink &&
+        other.receivers.some((r) => r.selfOnly && r.event === "enters")
+      ) {
+        strength = Math.max(strength, 0.9);
+        evidence.push(
+          `Reuses the Commander’s own ETB ability: ${other.card.card.name}; ${candidate.text}`,
+        );
+      }
+      const combat = other.receivers.some(
+        (r) => r.selfOnly && ["attacks", "combat-damage"].includes(r.event),
       );
-      packageInteractions.push(
-        `${pack.label}: ${pack.members.slice(0, 4).join(", ")}`,
-      );
+      if (
+        combat &&
+        (/Equipment/.test(input.card.typeLine) ||
+          /target creature[^.\n]*gains?[^.\n]*(?:haste|double strike|hexproof|indestructible)/i.test(
+            candidate.text,
+          ))
+      ) {
+        strength = Math.max(strength, 0.8);
+        evidence.push(
+          `Supports the Commander’s combat ability: ${other.card.card.name}; ${candidate.text}`,
+        );
+      }
+      for (const [giver, recipient] of [
+        [other, candidate],
+        [candidate, other],
+      ] as const) {
+        for (const type of recipient.types) {
+          const clause = staticTypeSupport(giver, type, recipient);
+          if (!clause) continue;
+          const keyword =
+            /with (flying|haste|trample|lifelink|vigilance)/i.exec(clause)?.[1];
+          if (
+            keyword &&
+            !cardKeywords(recipient.card.card).some(
+              (k) => k.toLowerCase() === keyword.toLowerCase(),
+            )
+          )
+            continue;
+          strength = Math.max(strength, 0.8);
+          evidence.push(
+            `Explicit ${type} support: ${giver.card.card.name} → ${recipient.card.card.name}: ${clause}`,
+          );
+        }
+      }
     }
+    if (strength > 0 && evidence.length)
+      relationships.push({
+        identity: other.card.identity,
+        name: other.card.card.name,
+        commander: other.card.commander,
+        strength,
+        evidence,
+      });
   }
-  // Cross-card ETB/trigger packages require an actual ability relationship, not merely shared ETB tags.
-  const linked = profile.cards.filter(
-    (other) =>
-      !other.card.commander &&
-      other.card.identity !== input.identity &&
-      other.receivers.some((r) => interaction(r, c) >= 0.8),
-  );
-  if (linked.length >= 2) {
-    packageStrength = 1;
-    packageInteractions.push(
-      `Triggered-ability package: ${linked
-        .slice(0, 4)
-        .map((other) => other.card.card.name)
-        .join(", ")}`,
-    );
-  }
-  if (
-    profile.cards.filter((other) => amplifiesCommander(c, other)).length >= 1
-  ) {
-    const count = profile.cards.filter((other) =>
-      amplifiesCommander(c, other),
-    ).length;
-    packageStrength = Math.max(packageStrength, Math.min(1, count / 3));
-    packageInteractions.push(
-      `Amplifies compatible triggered abilities on ${count} saved deck cards.`,
-    );
-  }
-  const packageMatch = Math.round(10 * packageStrength),
-    cardQuality = Math.min(
-      10,
-      Math.max(
-        0,
-        c.quality +
-          (c.quality >= profile.powerBaseline + 2 && archetypeFit > 0 ? 1 : 0) -
-          (c.quality + 2 < profile.powerBaseline &&
-          input.card.manaValue >= profile.manaCurve.average
-            ? 1
-            : 0),
-      ),
-    );
-  const generic = new Set(
-    input.assignments
-      .filter((a) => genericTags.has(a.tagId))
-      .map((a) => a.tagId),
-  );
-  const deckGeneric = new Set(
-    profile.cards.flatMap((c) =>
-      c.card.assignments
-        .filter((a) => genericTags.has(a.tagId))
-        .map((a) => a.tagId),
-    ),
-  );
-  const genericOverlap = Math.min(
-    5,
-    [...generic].filter((tag) => deckGeneric.has(tag)).length,
-  );
-  const bucket = Math.min(7, Math.floor(input.card.manaValue)),
-    density =
-      (profile.manaCurve.buckets[bucket] || 0) /
-      Math.max(1, profile.manaCurve.nonlands);
-  const demanding =
-    (input.card.manaCost?.match(/[WUBRG]/g) || []).length >= 4 &&
-    profile.roleNeeds.manaFixing.deficit > 0.4;
-  let curveFit = c.roles.has("lands")
-    ? profile.roleNeeds.lands.deficit > 0
-      ? 5
-      : 1
-    : Math.max(
-        0,
-        5 -
-          (density > 0.3 ? 2 : 0) -
-          (input.card.manaValue >= 6 && profile.roleNeeds.ramp.deficit > 0.3
-            ? 2
-            : 0) -
-          (demanding ? 2 : 0) -
-          (profile.manaCurve.commanderCost >= 5 &&
-          input.card.manaValue >= profile.manaCurve.commanderCost &&
-          profile.roleNeeds.ramp.deficit > 0.5
-            ? 1
-            : 0),
-      );
-  if (profile.manaCurve.nonlands === 0 && !c.roles.has("lands")) curveFit = 2;
-  const penalties: SynergyScoreDebug["penalties"] = [];
-  const penalize = (name: string, value: number, reason: string) => {
-    if (/anti-synergy|engine conflict/i.test(name))
-      value = Math.min(
-        value,
-        25 -
-          penalties
-            .filter((p) => /anti-synergy|engine conflict/i.test(p.name))
-            .reduce((n, p) => n - p.value, 0),
-      );
-    if (value > 0) penalties.push({ name, value: -Math.round(value), reason });
-  };
-  const isCreature = /\bCreature\b/.test(input.card.typeLine.split("—")[0]);
-  const exceptionalUtility =
-    (c.quality >= 8 &&
-      (needed.length > 0 ||
-        c.roles.has("tutors") ||
-        c.roles.has("protection"))) ||
-    commanderSynergy >= 20 ||
-    (archetypeFit >= 20 &&
-      (!profile.primaryCreatureType ||
-        (c.features.get(`typal:${profile.primaryCreatureType}`) || 0) >= 0.8));
-  if (
-    isCreature &&
-    profile.primaryCreatureType &&
-    !c.types.includes(profile.primaryCreatureType) &&
-    !input.assignments.some(
-      (a) => a.tagId === `typal:${profile.primaryCreatureType}`,
-    ) &&
-    !exceptionalUtility
-  )
-    penalize(
-      "Off-archetype creature",
-      Math.min(20, profile.tribalDensity * 18),
-      `Non-${profile.primaryCreatureType} creature without exceptional utility or a direct engine interaction.`,
-    );
-  const dependent = profile.commanderSynergyTags.some(
-    (r) => r.event !== "turn",
-  );
-  if (
-    dependent &&
-    commanderSynergy === 0 &&
-    archetypeFit < 15 &&
-    !exceptionalUtility
-  )
-    penalize(
-      "No Commander interaction",
-      8,
-      "No supported interaction with the Commander’s referenced objects or actions.",
-    );
-  const redundant = [...c.roles].filter(
-    (role) =>
-      profile.roleNeeds[role].target > 0 &&
-      profile.roleNeeds[role].count > profile.roleNeeds[role].target * 1.25,
-  );
-  if (redundant.length && archetypeFit < 20)
-    penalize(
-      "Redundant role",
-      Math.min(8, 3 + redundant.length * 2),
-      `${redundant.map((r) => `${roleLabels[r]} ${profile.roleNeeds[r].count}/${profile.roleNeeds[r].target}`).join(", ")} already exceeds the contextual target.`,
-    );
-  if (density > 0.25 && !c.roles.has("lands"))
-    penalize(
-      "Curve congestion",
-      Math.min(8, (density - 0.2) * 20),
-      `Crowded ${input.card.manaValue >= 7 ? "7+" : Math.floor(input.card.manaValue)}-mana slot (${Math.round(density * 100)}% of nonlands).`,
-    );
-  if (input.card.manaValue >= 4 && cardQuality <= 4 && c.effects <= 1)
-    penalize(
-      "Low impact for mana value",
-      Math.min(10, (input.card.manaValue - 2) * 2),
-      "Saved effect evidence is limited relative to its mana cost.",
-    );
-  const graveyard =
-    profile.primaryArchetypes.some((p) => p.tag === "graveyard") ||
-    profile.secondaryArchetypes.some(
-      (p) => p.tag === "graveyard" && p.weight > 0.4,
-    );
-  const ownGraveyardConflict = c.text.split(/[.\n]/).some((clause) => {
-    if (
-      /opponent(?:s|['’]s|s['’])? graveyard/i.test(clause) &&
-      !/all graveyards|your graveyard/i.test(clause)
-    )
-      return false;
-    return /exile (?:all|each)[^.\n]{0,65}(?:graveyard|graveyards)|(?:card|permanent)[^.\n]{0,70}graveyard[^.\n]{0,40}exile it instead/i.test(
-      clause,
-    );
-  });
-  if (graveyard && ownGraveyardConflict)
-    penalize(
-      "Graveyard anti-synergy",
-      25,
-      "Exiles or replaces your graveyard resources used by this deck.",
-    );
-  if (
-    profile.cardTypeDistribution.Artifact /
-      Math.max(1, profile.manaCurve.nonlands) >
-      0.3 &&
-    /(?:destroy|exile) all artifacts(?:[.,\n]|$| and)/i.test(c.text) &&
-    !/artifacts (?:you don.t control|your opponents control)/i.test(c.text)
-  )
-    penalize(
-      "Artifact anti-synergy",
-      25,
-      "Removes your own artifact engine alongside opposing artifacts.",
-    );
-  if (
-    profile.cardTypeDistribution.Creature /
-      Math.max(1, profile.manaCurve.nonlands) >
-      0.6 &&
-    /(?:destroy|exile) all creatures(?:[.,\n]|$| and)/i.test(c.text) &&
-    !/creatures (?:you don.t control|your opponents control)/i.test(c.text) &&
-    !profile.primaryArchetypes.some((p) =>
-      ["graveyard", "sacrifice"].includes(p.tag),
-    )
-  )
-    penalize(
-      "Creature-engine conflict",
-      15,
-      "Clears the creature board this deck depends on; consider the reset cost.",
-    );
-  const components = [
-    { label: "Commander synergy", points: commanderSynergy },
-    { label: "Primary strategy", points: archetypeFit },
-    { label: "Needed role", points: roleNeed },
-    { label: "Synergy packages", points: packageMatch },
-    { label: "Card quality / efficiency", points: cardQuality },
-    { label: "Generic overlap", points: genericOverlap },
-    { label: "Curve fit", points: curveFit },
-    ...penalties.map((p) => ({ label: p.name, points: p.value })),
-  ];
-  const rawScore = components.reduce((n, c) => n + c.points, 0),
-    score = Math.max(0, Math.min(100, rawScore));
-  const debug: SynergyScoreDebug = {
-    cardId: input.identity,
-    version: SYNERGY_VERSION,
-    profileRevision: profile.revision,
-    commanderSynergy,
-    archetypeFit,
-    roleNeed,
-    packageMatch,
-    cardQuality,
-    genericOverlap,
-    curveFit,
-    penalties,
-    matchedTags: matches.map((m) => m.w.tag),
-    commanderInteractions: interactions,
-    packageInteractions,
-    componentReasons: [
-      {
-        label: "Commander synergy",
-        reason:
-          interactions.join(" ") ||
-          "No evidenced direct Commander interaction.",
-      },
-      {
-        label: "Primary strategy",
-        reason:
-          matches
-            .map(
-              (m) =>
-                `${m.w.label}: candidate support ${m.strength.toFixed(2)} × deck weight ${m.w.weight.toFixed(2)}`,
-            )
-            .join("; ") || "No primary-archetype match.",
-      },
-      {
-        label: "Needed role",
-        reason:
-          needed
-            .map(
-              (r) =>
-                `${roleLabels[r.role]} ${r.need.count}/${r.need.target}; ${Math.round(r.need.deficit * 100)}% deficit`,
-            )
-            .join("; ") || "Candidate roles do not fill an identified deficit.",
-      },
-      {
-        label: "Synergy packages",
-        reason:
-          packageInteractions.join("; ") || "No established matching package.",
-      },
-      {
-        label: "Card quality / efficiency",
-        reason: `Mana value ${input.card.manaValue}; ${c.effects} recorded supporting effects; ${c.repeatable ? "repeatable/ongoing" : "no repeatability evidence"}; local efficiency baseline ${profile.powerBaseline}/10.`,
-      },
-      {
-        label: "Generic overlap",
-        reason:
-          [...generic].filter((tag) => deckGeneric.has(tag)).join(", ") ||
-          "No generic overlap points.",
-      },
-      {
-        label: "Curve fit",
-        reason: `${Math.round(density * 100)}% of nonlands in this mana slot; deck average ${profile.manaCurve.average.toFixed(1)}, Commander cost ${profile.manaCurve.commanderCost}; ramp ${profile.roleNeeds.ramp.count}/${profile.roleNeeds.ramp.target}${demanding ? "; demanding colored cost with fixing deficit" : ""}.`,
-      },
-    ],
-    rawScore,
-    finalScore: score,
-  };
-  const conflicts = penalties.map((p) => p.reason);
-  const explanation =
-    score >= 50
-      ? `Supports ${reasons.slice(0, 3).join(" · ") || "the measured role needs"} in this deck.`
-      : matches.length
-        ? `Limited fit: ${matches.map((m) => m.w.label).join(" · ")}. ${conflicts[0] || "Insufficient direct interaction or unmet role need for a recommendation."}`
-        : `Poor fit: does not support the primary ${profile.primaryArchetypes.map((p) => p.label).join(" / ") || "saved"} strategy. ${conflicts[0] || "Any utility is limited to the roles shown below."}`;
-  const result: StrategyScore = {
-    score,
-    band: scoreBand(score),
-    tier:
-      score >= 70
-        ? "Recommended"
-        : score >= 50
-          ? "Worth Considering"
-          : "Other Legal Cards",
-    components,
-    debug,
-    roles: [...c.roles].map((r) => roleLabels[r]),
-    reasons,
-    conflicts,
-    explanation,
-  };
-  cache.set(key, result);
-  if (cache.size > 10000) cache.delete(cache.keys().next().value!);
-  return result;
+  return relationships;
 }

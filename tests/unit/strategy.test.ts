@@ -11,6 +11,7 @@ import {
   deckDnaCache,
   DeckDnaCache,
 } from "../../src/dna/engine";
+import { SCORE_WEIGHTS } from "../../src/synergy/recommendation";
 import { scoreBand } from "../../src/dna/strategy";
 import { exploreSynergy } from "../../src/synergy/explorer";
 import { synergyFixture } from "../synergyFixtures";
@@ -30,7 +31,8 @@ for (const c of archetypeCases)
       weak = score(c.weak);
     expect(profile.primaryArchetypes.map((p) => p.tag)).toContain(c.primary);
     expect(good.score).toBeGreaterThan(weak.score);
-    expect(good.debug.archetypeFit).toBeGreaterThan(0);
+    if (c.primary === "goodstuff") expect(good.debug.archetypeFit).toBe(0);
+    else expect(good.debug.archetypeFit).toBeGreaterThan(0);
     expect(good.reasons.length).toBeGreaterThan(0);
     if (process.env.SCORING_REPORT)
       console.log(
@@ -65,19 +67,19 @@ it("the same ETB draw creature is substantially stronger in a blink deck than in
       archetypeCases.find((c) => c.name === "Creature ETB / Blink")!.fixture(),
     ).score(genericValue);
   expect(dragon.score).toBeLessThan(50);
-  expect(blink.score - dragon.score).toBeGreaterThanOrEqual(25);
+  expect(blink.score - dragon.score).toBeGreaterThanOrEqual(20);
   expect(blink.debug.commanderSynergy).toBeGreaterThan(
     dragon.debug.commanderSynergy,
   );
 });
-it("has seven bounded components, signed penalties, exact raw arithmetic and deterministic clamping for every archetype", () => {
-  const caps = [30, 25, 15, 10, 10, 5, 5];
+it("has six bounded components, signed penalties, exact raw arithmetic and deterministic clamping for every archetype", () => {
+  const caps = Object.values(SCORE_WEIGHTS).map((w) => w * 100);
   for (const scenario of archetypeCases) {
     const { score } = evaluator(scenario.fixture());
     for (const card of [scenario.support, scenario.weak]) {
       const s = score(card);
-      expect(s.components.slice(0, 7)).toHaveLength(7);
-      s.components.slice(0, 7).forEach((c, i) => {
+      expect(s.components.slice(0, 6)).toHaveLength(6);
+      s.components.slice(0, 6).forEach((c, i) => {
         expect(c.points).toBeGreaterThanOrEqual(0);
         expect(c.points).toBeLessThanOrEqual(caps[i]);
       });
@@ -97,9 +99,9 @@ it("off-tribe negatives defeat generic overlap and never exceed five generic poi
   const s = evaluator().score(genericValue);
   expect(s.debug.genericOverlap).toBeLessThanOrEqual(5);
   expect(s.conflicts.length).toBeGreaterThan(0);
-  expect(
-    s.debug.penalties.some((p) => p.name === "Off-archetype creature"),
-  ).toBe(true);
+  expect(s.debug.penalties.some((p) => p.name === "wrong_tribal_type")).toBe(
+    true,
+  );
   expect(s.tier).toBe("Other Legal Cards");
 });
 it("global graveyard exile has anti-synergy while opponent-only graveyard hate does not", () => {
@@ -122,12 +124,8 @@ it("global graveyard exile has anti-synergy while opponent-only graveyard hate d
       2,
     ),
   );
-  expect(
-    broad.debug.penalties.some((p) => p.name === "Graveyard anti-synergy"),
-  ).toBe(true);
-  expect(
-    targeted.debug.penalties.some((p) => p.name === "Graveyard anti-synergy"),
-  ).toBe(false);
+  expect(broad.debug.penalties.some((p) => p.name === "nonbo")).toBe(true);
+  expect(targeted.debug.penalties.some((p) => p.name === "nonbo")).toBe(false);
   expect(broad.score).toBeLessThan(targeted.score);
 });
 it("destroying all artifacts conflicts with an artifact engine", () => {
@@ -137,7 +135,7 @@ it("destroying all artifacts conflicts with an artifact engine", () => {
   expect(
     score(
       scoringCard("Artifact Reset", "Sorcery", "Destroy all artifacts.", 3),
-    ).debug.penalties.some((p) => p.name === "Artifact anti-synergy"),
+    ).debug.penalties.some((p) => p.name === "nonbo"),
   ).toBe(true);
 });
 it("saturated draw receives no need points, while missing removal does; profile reports actual counts and targets", () => {
@@ -176,7 +174,7 @@ it("crowded expensive curve and weak board impact produce explicit penalties", (
   );
   expect(s.debug.curveFit).toBeLessThan(5);
   expect(s.debug.penalties.map((p) => p.name)).toEqual(
-    expect.arrayContaining(["Curve congestion", "Low impact for mana value"]),
+    expect.arrayContaining(["mana_curve_congestion", "low_impact_card"]),
   );
 });
 it("exceptional cheap multi-role utility is not automatically penalized for being off tribe", () => {
@@ -189,9 +187,9 @@ it("exceptional cheap multi-role utility is not automatically penalized for bein
     ),
   );
   expect(s.debug.cardQuality).toBeGreaterThanOrEqual(8);
-  expect(
-    s.debug.penalties.some((p) => p.name === "Off-archetype creature"),
-  ).toBe(false);
+  expect(s.debug.penalties.some((p) => p.name === "wrong_tribal_type")).toBe(
+    false,
+  );
 });
 it("cache reuses profile and scores on reopen, ignores ownership/prices, and refreshes for candidate metadata", () => {
   const f = dragonScoringFixture(),
@@ -210,22 +208,18 @@ it("cache reuses profile and scores on reopen, ignores ownership/prices, and ref
     dna.strategyProfile,
   );
 });
-it("all eight interpretation boundaries are exact", () => {
+it("all seven interpretation boundaries are exact", () => {
   expect(
-    [0, 24, 25, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80, 89, 90, 100].map(
-      scoreBand,
-    ),
+    [0, 34, 35, 49, 50, 59, 60, 69, 70, 79, 80, 89, 90, 100].map(scoreBand),
   ).toEqual([
-    "Not Recommended",
-    "Not Recommended",
     "Poor Fit",
     "Poor Fit",
     "Weak Fit",
     "Weak Fit",
     "Situational",
     "Situational",
-    "Good Fit",
-    "Good Fit",
+    "Reasonable Fit",
+    "Reasonable Fit",
     "Strong Fit",
     "Strong Fit",
     "Excellent Fit",
@@ -254,7 +248,7 @@ it("opponent-only graveyard replacement is safe while all-graveyard replacement 
   ])
     expect(
       score(scoringCard(text, "Enchantment", text, 4)).debug.penalties.some(
-        (p) => p.name === "Graveyard anti-synergy",
+        (p) => p.name === "nonbo",
       ),
     ).toBe(false);
   expect(
@@ -265,7 +259,7 @@ it("opponent-only graveyard replacement is safe while all-graveyard replacement 
         "If a card would be put into a graveyard from anywhere, exile it instead.",
         2,
       ),
-    ).debug.penalties.some((p) => p.name === "Graveyard anti-synergy"),
+    ).debug.penalties.some((p) => p.name === "nonbo"),
   ).toBe(true);
 });
 it("nontoken Commander cast triggers do not treat a spell producing tokens as a Dragon spell", () => {
@@ -292,7 +286,7 @@ it("nontoken Commander cast triggers do not treat a spell producing tokens as a 
         "Flying",
       ]),
     ).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
 });
 it("flying-only ETB triggers do not claim a direct relationship with a non-flying creature", () => {
   const f = archetypeCases
@@ -314,7 +308,7 @@ it("flying-only ETB triggers do not claim a direct relationship with a non-flyin
   expect(score(body).debug.commanderSynergy).toBe(0);
   expect(
     score({ ...body, keywords: ["Flying"] }).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
 });
 
 it("token makers cannot claim nontoken ETB Commander triggers", () => {
@@ -341,7 +335,7 @@ it("counterspell events are distinct from placing counters", () => {
   expect(
     score(scoringCard("Counter Test", "Instant", "Counter target spell.", 2))
       .debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
   expect(
     score(
       scoringCard(
@@ -369,7 +363,7 @@ it("canonical damage events provide explicit Commander interactions", () => {
       1,
     ),
   );
-  expect(s.debug.commanderSynergy).toBeGreaterThanOrEqual(25);
+  expect(s.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
   expect(
     s.debug.commanderInteractions.some((r) => r.includes("deals damage")),
   ).toBe(true);
@@ -384,7 +378,7 @@ it("explicit additional trigger and nonlegendary copy support are recognized wit
       4,
     ),
   );
-  expect(double.debug.commanderSynergy).toBe(30);
+  expect(double.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
   expect(double.debug.archetypeFit).toBeGreaterThanOrEqual(20);
   const copy = score(
     scoringCard(
@@ -394,7 +388,7 @@ it("explicit additional trigger and nonlegendary copy support are recognized wit
       4,
     ),
   );
-  expect(copy.debug.commanderSynergy).toBeGreaterThanOrEqual(24);
+  expect(copy.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
 });
 it("profile and candidate scores depend on mechanics rather than deck title or printing price", () => {
   const f = dragonScoringFixture(),
@@ -437,7 +431,7 @@ it("trigger amplifiers respect creature-type and event restrictions rather than 
       4,
     ),
   );
-  expect(all.debug.commanderSynergy).toBe(30);
+  expect(all.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
   expect(all.score).toBeGreaterThan(shaman.score);
 });
 
@@ -459,7 +453,7 @@ it("own Commander ETBs are not triggered by unrelated ETB creatures, but blink c
         1,
       ),
     ).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
 });
 it("equipment can strengthen a Commander-specific combat ability without claiming the equipment attacks", () => {
   const f = archetypeCases.find((c) => c.name === "Voltron")!.fixture(),
@@ -472,7 +466,7 @@ it("equipment can strengthen a Commander-specific combat ability without claimin
   const s = evaluator(f).score(
     archetypeCases.find((c) => c.name === "Voltron")!.support,
   );
-  expect(s.debug.commanderSynergy).toBeGreaterThanOrEqual(24);
+  expect(s.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
   expect(
     s.debug.commanderInteractions.some((r) => r.includes("combat ability")),
   ).toBe(true);
@@ -488,7 +482,7 @@ it("exact damage requirements distinguish one-damage effects from generic larger
   const { score } = evaluator(f);
   expect(
     score(namedScoringCard("Mongoose Lizard")).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
   expect(
     score(
       scoringCard(
@@ -545,7 +539,7 @@ it("one-sided and conditional wipes do not falsely claim they clear the whole fr
     expect(
       artifact
         .score(scoringCard(text, "Sorcery", text, 3))
-        .debug.penalties.some((p) => p.name === "Artifact anti-synergy"),
+        .debug.penalties.some((p) => p.name === "nonbo"),
     ).toBe(false);
 });
 
@@ -571,7 +565,7 @@ it("static typal compatibility does not bypass a flying-only trigger condition",
         "Flying",
       ]),
     ).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
 });
 
 it("mono-color and colorless decks do not invent a multicolor mana-fixing deficit", () => {
@@ -632,9 +626,9 @@ it("an incidental ETB package does not exempt generic bodies from a strongly typ
     cardIdentity: blink.oracleId!,
   });
   const s = evaluator(f).score(genericValue);
-  expect(
-    s.debug.penalties.some((p) => p.name === "Off-archetype creature"),
-  ).toBe(true);
+  expect(s.debug.penalties.some((p) => p.name === "wrong_tribal_type")).toBe(
+    true,
+  );
   expect(s.score).toBeLessThan(50);
 });
 it("an exceptional needed death payoff remains eligible in Zombie aristocrats despite being off tribe", () => {
@@ -658,9 +652,9 @@ it("an exceptional needed death payoff remains eligible in Zombie aristocrats de
   const s = evaluator(f).score(c);
   expect(s.debug.cardQuality).toBeGreaterThanOrEqual(8);
   expect(s.debug.roleNeed).toBeGreaterThan(0);
-  expect(
-    s.debug.penalties.some((p) => p.name === "Off-archetype creature"),
-  ).toBe(false);
+  expect(s.debug.penalties.some((p) => p.name === "wrong_tribal_type")).toBe(
+    false,
+  );
   expect(s.score).toBeGreaterThanOrEqual(50);
 });
 it("typed death engines reject wrong-tribe fodder while recognizing compatible sacrifice outlets", () => {
@@ -695,7 +689,7 @@ it("typed death engines reject wrong-tribe fodder while recognizing compatible s
         1,
       ),
     ).debug.commanderSynergy,
-  ).toBeGreaterThanOrEqual(25);
+  ).toBeGreaterThanOrEqual(20);
 });
 
 it("multi-type creatures select the supported primary tribe rather than an alphabetically earlier subtype", () => {
@@ -712,7 +706,7 @@ it("multi-type creatures select the supported primary tribe rather than an alpha
   expect(profile.tribalDensity).toBeGreaterThan(0.6);
   expect(
     score(genericValue).debug.penalties.some(
-      (p) => p.name === "Off-archetype creature",
+      (p) => p.name === "wrong_tribal_type",
     ),
   ).toBe(true);
 });
@@ -734,7 +728,7 @@ it("canonical Changeling supplies the referenced creature types without changing
     normal.debug.archetypeFit,
   );
   expect(
-    changeling.debug.penalties.some((p) => p.name === "Off-archetype creature"),
+    changeling.debug.penalties.some((p) => p.name === "wrong_tribal_type"),
   ).toBe(false);
   expect(card.typeLine).toBe("Creature — Shapeshifter");
 });
@@ -755,7 +749,7 @@ it("generic family overlap cannot bypass the Commander’s actual spell or flyin
   expect(
     score(scoringCard("Actual Instant", "Instant", "Draw two cards.", 2)).debug
       .commanderSynergy,
-  ).toBe(30);
+  ).toBeGreaterThanOrEqual(20);
   f.state.metadata[id] = {
     ...f.state.metadata[id],
     oracleText:

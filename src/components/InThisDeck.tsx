@@ -13,6 +13,9 @@ export function InThisDeck({ synergy }: { synergy: CardSynergy }) {
         <strong>Synergy {synergy.score}</strong>
         <span>{synergy.band}</span>
       </div>
+      {synergy.recommendation && (
+        <p>Confidence: {synergy.recommendation.confidence}</p>
+      )}
       <p>{synergy.explanation}</p>
       <p>
         Deck-relative strategy, role need and efficiency, less conflicts. This

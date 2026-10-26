@@ -1,0 +1,416 @@
+[
+  {
+    "name": "Changeling Wayfinder",
+    "score": 70,
+    "band": "Strong Fit",
+    "commanderRelationship": {
+      "score": 25,
+      "direct": true,
+      "evidence": [
+        "Changeling makes Changeling Wayfinder a Dragon, so entering triggers Lathliss, Dragon Queen.",
+        "Changeling Wayfinder → Lathliss, Dragon Queen: Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying",
+        "Explicit Dragon support: Lathliss, Dragon Queen → Changeling Wayfinder: {1}{R}: Dragons you control get +1/+0 until end of turn"
+      ]
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 20
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 20
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 17
+      },
+      {
+        "label": "Curve fit",
+        "points": 9
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "mana_curve_congestion",
+        "points": -1
+      }
+    ],
+    "summary": "Changeling makes Changeling Wayfinder a Dragon, so entering triggers Lathliss, Dragon Queen. Searches for a basic land to hand, helping future land drops."
+  },
+  {
+    "name": "Fire Nation Attacks",
+    "score": 12,
+    "band": "Poor Fit",
+    "commanderRelationship": {
+      "score": 0,
+      "direct": false,
+      "evidence": []
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 0
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 4
+      },
+      {
+        "label": "Needed role",
+        "points": 2
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 10
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "wrong_token_type",
+        "points": -8
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      },
+      {
+        "label": "poor_mana_efficiency",
+        "points": -6
+      }
+    ],
+    "summary": "Creates Soldier tokens. These tokens do not satisfy Lathliss, Dragon Queen’s printed tribal condition."
+  },
+  {
+    "name": "Dragon Tempest",
+    "score": 70,
+    "band": "Strong Fit",
+    "commanderRelationship": {
+      "score": 25,
+      "direct": true,
+      "evidence": [
+        "Lathliss, Dragon Queen → Dragon Tempest: Whenever a creature you control with flying enters, it gains haste until end of turn",
+        "Lathliss, Dragon Queen → Dragon Tempest: Whenever a Dragon you control enters, it deals X damage to any target, where X is the number of Dragons you control"
+      ]
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 20
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 20
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 20
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      }
+    ],
+    "summary": "The Commander matches this card’s printed Dragon payoff condition. This deck already has plenty of cards serving these roles."
+  },
+  {
+    "name": "Utvara Hellkite",
+    "score": 86,
+    "band": "Excellent Fit",
+    "commanderRelationship": {
+      "score": 25,
+      "direct": true,
+      "evidence": [
+        "Utvara Hellkite → Lathliss, Dragon Queen: Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying",
+        "Lathliss, Dragon Queen → Utvara Hellkite: Whenever a Dragon you control attacks, create a 6/6 red Dragon creature token with flying",
+        "Explicit Dragon support: Lathliss, Dragon Queen → Utvara Hellkite: {1}{R}: Dragons you control get +1/+0 until end of turn"
+      ]
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 20
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 20
+      },
+      {
+        "label": "Needed role",
+        "points": 17
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 19
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      }
+    ],
+    "summary": "The Commander matches this card’s printed Dragon payoff condition. This deck already has plenty of payoff cards."
+  },
+  {
+    "name": "Chaos Warp",
+    "score": 21,
+    "band": "Poor Fit",
+    "commanderRelationship": {
+      "score": 0,
+      "direct": false,
+      "evidence": []
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 0
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 0
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 18
+      },
+      {
+        "label": "Curve fit",
+        "points": 9
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 0
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      },
+      {
+        "label": "mana_curve_congestion",
+        "points": -1
+      }
+    ],
+    "summary": "No strong interaction or missing role was resolved. This deck already has plenty of cards serving these roles."
+  },
+  {
+    "name": "Dragonlord's Servant",
+    "score": 59,
+    "band": "Situational",
+    "commanderRelationship": {
+      "score": 20,
+      "direct": true,
+      "evidence": [
+        "Explicit Dragon support: Dragonlord's Servant → Lathliss, Dragon Queen: Dragon spells you cast cost {1} less to cast"
+      ]
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 16
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 20
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 11
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "role_redundancy",
+        "points": -3
+      }
+    ],
+    "summary": "Its printed Dragon spell discount supports the Commander and matching creatures. This deck already has plenty of cards serving these roles."
+  },
+  {
+    "name": "Alania's Pathmaker",
+    "score": 14,
+    "band": "Poor Fit",
+    "commanderRelationship": {
+      "score": 0,
+      "direct": false,
+      "evidence": []
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 0
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 4
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 11
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "wrong_tribal_type",
+        "points": -10
+      },
+      {
+        "label": "low_impact_card",
+        "points": -6
+      }
+    ],
+    "summary": "No strong interaction or missing role was resolved. Its creature type does not support the deck’s main tribal plan."
+  },
+  {
+    "name": "Harnesser of Storms",
+    "score": 17,
+    "band": "Poor Fit",
+    "commanderRelationship": {
+      "score": 0,
+      "direct": false,
+      "evidence": []
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 0
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 4
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 15
+      },
+      {
+        "label": "Curve fit",
+        "points": 9
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "wrong_tribal_type",
+        "points": -10
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      },
+      {
+        "label": "mana_curve_congestion",
+        "points": -1
+      }
+    ],
+    "summary": "No strong interaction or missing role was resolved. This deck already has plenty of payoff cards."
+  },
+  {
+    "name": "Mongoose Lizard",
+    "score": 6,
+    "band": "Poor Fit",
+    "commanderRelationship": {
+      "score": 0,
+      "direct": false,
+      "evidence": []
+    },
+    "components": [
+      {
+        "label": "Commander interaction",
+        "points": 0
+      },
+      {
+        "label": "Deck / theme interaction",
+        "points": 4
+      },
+      {
+        "label": "Needed role",
+        "points": 0
+      },
+      {
+        "label": "Card quality / efficiency",
+        "points": 8
+      },
+      {
+        "label": "Curve fit",
+        "points": 10
+      },
+      {
+        "label": "Existing-card interaction",
+        "points": 5
+      },
+      {
+        "label": "wrong_tribal_type",
+        "points": -10
+      },
+      {
+        "label": "role_redundancy",
+        "points": -5
+      },
+      {
+        "label": "poor_mana_efficiency",
+        "points": -6
+      }
+    ],
+    "summary": "No strong interaction or missing role was resolved. This deck already has plenty of cards serving these roles."
+  }
+]

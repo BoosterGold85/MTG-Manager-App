@@ -19,7 +19,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.5.2 — Approved | Audit fixes: cross-tab change notice, URL/history screen and deck routes, consistent records/copies wording, readable mobile labels, opt-in WebKit + iPhone smoke checklist. No new DNA features. |
 | 0.6.0 — Approved | Synergy Explorer / Upgrades I Own: owned canonical candidates, availability-first ranking, explicit other-deck usage, evidence and read-only comparison; no automatic changes.                                                                      |
 | 0.6.1 — Approved | Deck-aware Synergy scoring: strategy profiles, Commander interactions, role deficits, packages, efficiency, negative modifiers, exact breakdowns and recommendation tiers. |
-| **0.6.2 — Current** | Synergy Explorer UX Polish: compact evidence-based summaries, concise ownership, lazy Why this score? diagnostics; approved v0.6.1 scoring unchanged. |
+| 0.6.2 — Approved | Synergy Explorer UX Polish: compact evidence-based summaries, concise ownership, lazy Why this score? diagnostics; approved v0.6.1 scoring unchanged. |
+| **0.6.3 — Current** | Recommendation Engine vNext: typed canonical facts, verified interactions, role gaps, calibrated scoring/confidence and conservative read-only replacement comparisons. |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
 | 0.8.0               | Uniqueness: separate originality, cohesion and power; lawful comparison-provider abstraction. EDHREC only through a permitted data relationship, never unauthorized scraping. |
 | 0.9.0               | Invite-only Playgroup: authentication, private collections and selective sharing.                                                                                             |

@@ -105,7 +105,7 @@ it("excludes canonical alternate printings even if an older deck entry lacks an 
     card.name,
   );
 });
-it("manual tag suppression changes candidate evidence without changing the deck DNA", () => {
+it("manual tag suppression changes discovery evidence without inventing or deleting canonical rules relationships", () => {
   const f = synergyFixture(),
     before = exploreSynergy(f.state, f.deck)[0],
     dna = deckDnaCache.get(f.state, f.deck);
@@ -123,7 +123,8 @@ it("manual tag suppression changes candidate evidence without changing the deck 
   const after = exploreSynergy(f.state, f.deck).find(
     (c) => c.card.name === f.candidate.name,
   )!;
-  expect(after.synergy.score).toBeLessThan(before.synergy.score);
+  expect(after.synergy.score).toBe(before.synergy.score);
+  expect(after.synergy.connections).not.toEqual(before.synergy.connections);
   expect(deckDnaCache.get(f.state, f.deck)).toBe(dna);
 });
 it("legacy assignment-only decks exclude their assigned canonical cards", () => {

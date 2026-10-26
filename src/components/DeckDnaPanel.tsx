@@ -55,8 +55,9 @@ export function DeckDnaPanel({
             Primary weights sum to 100% when themes are supported. They are not
             the percentage of cards carrying a tag. Missing cards count equally.
             Synergy uses a separate deck strategy profile, contextual role needs,
-            efficiency and explicit penalties. Generic overlap contributes at most
-            five points. Utility cards can still have value outside the main plan.
+            efficiency and explicit penalties. Canonical facts and verified rules
+            relationships earn points; generic tags alone do not. Utility cards
+            can still have value outside the main plan.
           </p>
           {dna.themes.map((theme) => (
             <details key={theme.id}>

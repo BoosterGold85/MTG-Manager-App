@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.3 — Recommendation Engine vNext
+
+- Replaced the seven-part tag-informed per-card scorer with typed canonical facts, validated rules relationships, six configurable weighted components, signed penalties, a separate confidence level and an evidence gate for 80+. Broad tags remain discovery/descriptive data rather than independent point sources.
+- Added typed tutors, tokens, mana and tribal effects; basic-land-to-hand is smoothing rather than unrestricted tutoring/ramp. Corrected reminder-text, ability-word, controller and sacrifice-versus-death relationship errors.
+- Added typed role-gap/token-priority profiles, saturation/curve/conflict analysis, exact score evidence and developer-only traces. Updated bands and confidence/interaction/need/efficiency tie-breakers.
+- Added optional conservative potential replacements and component deltas to existing Compare; never writes a deck or moves a copy. Preserved compact candidate hierarchy and lazy Why this score? disclosures.
+- Added the supplied exact 100-card Reign of Dragons fixture with 69 confirmed printing snapshots and the canonical Wayfinder/Fire Nation cases. Existing non-scoring regression contracts remain intact; scoring assertions now reflect the requested model. No dependencies, accounts, cloud sync, external recommendations or v0.7.0 work.
+
 ## 0.6.2 — Synergy Explorer UX Polish
 
 - Compact candidate cards now show concise ownership and one or two deterministic evidence-based sentences instead of repeated technical explanations, utility lists and conflicts. Fully assigned copies retain deck usage.

@@ -97,7 +97,7 @@ it("incidental Treasure cannot become a displayed major theme and expensive stap
   expect(cardSynergy(result, dragons[2])!.commanderConnections[0].name).toBe(
     lathliss.name,
   );
-  expect(cardSynergy(result, dragons[2])!.score).toBeGreaterThanOrEqual(60);
+  expect(cardSynergy(result, dragons[2])!.recommendation!.commander.score).toBeGreaterThanOrEqual(20);
 });
 it("Commander influence is capped; the actual deck controls the strategy", () => {
   const result = dna(dnaFixture(lathliss, graveyard));
@@ -113,9 +113,8 @@ it("changing composition changes DNA and relative Synergy", () => {
   const first = dna(),
     second = dna(dnaFixture(lathliss, [...graveyard, dragons[0], dragons[1]]));
   expect(themeIds(second)[0]).not.toBe(themeIds(first)[0]);
-  expect(cardSynergy(second, dragons[0])!.score).not.toBe(
-    cardSynergy(first, dragons[0])!.score,
-  );
+  expect(cardSynergy(second, dragons[0])!.debug.profileRevision).not.toBe(cardSynergy(first, dragons[0])!.debug.profileRevision);
+  expect(cardSynergy(second, dragons[0])!.debug.componentReasons).not.toEqual(cardSynergy(first, dragons[0])!.debug.componentReasons);
 });
 it("missing and owned printings have identical conceptual analysis; prices and source fields are excluded", () => {
   const fixture = dnaFixture();

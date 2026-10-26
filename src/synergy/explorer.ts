@@ -101,6 +101,10 @@ export function exploreSynergy(
     .sort(
       (a, b) =>
         b.synergy.score - a.synergy.score ||
+        ({ High: 3, Medium: 2, Low: 1 }[b.synergy.recommendation?.confidence || "Low"] - { High: 3, Medium: 2, Low: 1 }[a.synergy.recommendation?.confidence || "Low"]) ||
+        (b.synergy.recommendation?.commander.score || 0) - (a.synergy.recommendation?.commander.score || 0) ||
+        (b.synergy.recommendation?.roleNeedSeverity || 0) - (a.synergy.recommendation?.roleNeedSeverity || 0) ||
+        (b.synergy.recommendation?.efficiency || 0) - (a.synergy.recommendation?.efficiency || 0) ||
         Number(b.available > 0) - Number(a.available > 0) ||
         a.card.name.localeCompare(b.card.name, "en") ||
         a.identity.localeCompare(b.identity, "en"),

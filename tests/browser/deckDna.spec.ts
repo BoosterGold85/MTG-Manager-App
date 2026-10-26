@@ -149,7 +149,7 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
     page.getByRole("region", { name: "Deck entry", exact: true }),
   ).toContainText("Not currently owned");
   await context.getByText("Why this score?", { exact: true }).click();
-  await expect(context).toContainText("Commander synergy");
+  await expect(context).toContainText("Commander interaction");
   await expect(context).toContainText("Whenever");
   await expect(
     page.getByRole("region", { name: "Card Intelligence", exact: true }),
