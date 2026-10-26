@@ -60,10 +60,13 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   await dialog.getByRole("checkbox", { name: /Meren of Clan Nel Toth/ }).check();
   const summary = dialog.getByRole("definition");
   await expect(summary.nth(0)).toHaveText("8");
-  await expect(summary.nth(1)).toHaveText("5");
+  // Meren + Sol Ring are exact owned copies; the 4 Forests are basic lands and are never allocated.
+  await expect(summary.nth(1)).toHaveText("2");
   await expect(summary.nth(4)).toHaveText("1");
   await expect(dialog.getByRole("region", { name: "Decklist preview" })).toContainText("Deck requests: CMM #410");
   await expect(dialog.getByRole("region", { name: "Decklist preview" })).toContainText("Exact owned copy");
+  await expect(dialog.getByRole("region", { name: "Decklist preview" })).toContainText("Basic land — allocation not tracked");
+  await expect(dialog.locator(".sync-note").first()).toContainText("4 basic lands (not allocated)");
   await expect(dialog.getByRole("region", { name: "Decklist preview" })).toContainText("Eternal Witness ×1");
   await expect(dialog.getByRole("region", { name: "Color identity conflicts" })).toContainText(tatyova.name);
   await expect(dialog.getByRole("region", { name: "Problem rows" })).toContainText("Bogus Card");
@@ -74,11 +77,12 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   await dialog.getByRole("button", { name: "Confirm import", exact: true }).click();
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(page.getByRole("heading", { name: "Imported deck", exact: true })).toBeVisible();
-  await expect(page.locator(".collection-subtitle").first()).toContainText("8 cards · 5 copies assigned · 3 missing");
+  await expect(page.locator(".collection-subtitle").first()).toContainText("8 cards · 2 copies assigned · 2 missing · 4 basic lands (not allocated)");
   const missing = page.getByRole("region", { name: "Missing and unassigned cards" });
   await expect(missing).toContainText("Eternal Witness ×1");
   await expect(missing).toContainText("Missing — not owned");
   await expect(missing).toContainText("Outside commander color identity");
+  await expect(missing).not.toContainText("Forest");
   await expect(page.getByRole("region", { name: "Rows not imported" })).toContainText("Bogus Card");
   await fits(page);
   await axe(page);
@@ -86,7 +90,7 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   expect(scryfall.length).toBe(1);
   await page.reload();
   await nav(page, "Decks");
-  await expect(page.locator(".deck-card")).toContainText("8 cards · 5 copies assigned · 3 missing");
+  await expect(page.locator(".deck-card")).toContainText("8 cards · 2 copies assigned · 2 missing · 4 basic lands (not allocated)");
   await page.locator(".deck-card").click();
   await expect(page.getByRole("heading", { name: "Sol Ring ×1", exact: true })).toBeVisible();
   await nav(page, "Collection");
@@ -128,8 +132,8 @@ test("ManaBox file upload with Commander section, printing choice and duplicate 
     await page.getByRole("button", { name: "All decks", exact: true }).click();
   }
   await expect(page.locator(".deck-card")).toHaveCount(2);
-  await expect(page.locator(".deck-card").nth(0)).toContainText("4 cards · 4 copies assigned · 0 missing");
-  await expect(page.locator(".deck-card").nth(1)).toContainText("4 cards · 3 copies assigned · 1 missing");
+  await expect(page.locator(".deck-card").nth(0)).toContainText("4 cards · 2 copies assigned · 0 missing · 2 basic lands (not allocated)");
+  await expect(page.locator(".deck-card").nth(1)).toContainText("4 cards · 2 copies assigned · 0 missing · 2 basic lands (not allocated)");
   await nav(page, "Collection");
   await page.getByRole("button", { name: "View Sol Ring", exact: true }).nth(1).click();
   await expect(page.getByRole("region", { name: "Deck Usage" })).toContainText("Owned: 1 · Available: 0 · Assigned: 1");

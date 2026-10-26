@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.4 — Basic Land Import Exception
+
+- Basic lands are detected from card data (the Basic supertype in the type line, front face first), never by name. This covers Plains–Forest, Snow-Covered basics and Wastes; Command Tower, Dryad Arbor and other nonbasic lands are excluded.
+- Deck import treats basic lands as decklist resources: no quantity, printing, allocation or shortage checks; never "needs review"; never blocking. The imported or requested printing is kept on the entry (`requestedPrinting` / reference `scryfallId`), which is flagged `basicLand: true`. No physical copy is reserved and owned basics stay available to every deck.
+- Deck summaries, rows, filters and Card Detail show basics as "Basic land — allocation not tracked" rather than missing or assigned. They still count toward deck size, land counts, mana value statistics and Deck DNA.
+- Adding a basic land from Add Cards to an imported (decklist) deck grows the decklist without consuming a copy. Decks made with New Deck before v0.4.1 keep their existing allocation behavior.
+- Nonbasic lands and all other cards keep strict allocation, including "owned but fully assigned" and no taking copies from other decks.
+- Added 7 unit tests (A–G scenarios, detection and editor behavior). Updated v0.4.1 tests that used Forest as the multi-printing example to Command Tower, and deck browser expectations for basic Forests.
+
 ## 0.6.3 — Recommendation Engine vNext
 
 - Replaced the seven-part tag-informed per-card scorer with typed canonical facts, validated rules relationships, six configurable weighted components, signed penalties, a separate confidence level and an evidence gate for 80+. Broad tags remain discovery/descriptive data rather than independent point sources.

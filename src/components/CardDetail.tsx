@@ -19,6 +19,7 @@ export interface DeckDetailContext {
   ownedElsewhere: number;
   availableElsewhere: number;
   commander?: boolean;
+  basicLand?: boolean;
 }
 export interface DetailNavigation {
   position: number;
@@ -131,7 +132,7 @@ export function CardDetail({
             {unassigned ? (
               <div>
                 <dt>Ownership</dt>
-                <dd>{deck.ownedElsewhere ? `Owned elsewhere · ${deck.ownedElsewhere} ${deck.ownedElsewhere === 1 ? 'copy' : 'copies'} (${deck.availableElsewhere} available)` : 'Not currently owned'}</dd>
+                <dd>{deck.basicLand ? `Basic land — allocation not tracked${deck.ownedElsewhere ? ` · ${deck.ownedElsewhere} owned` : ''}` : deck.ownedElsewhere ? `Owned elsewhere · ${deck.ownedElsewhere} ${deck.ownedElsewhere === 1 ? 'copy' : 'copies'} (${deck.availableElsewhere} available)` : 'Not currently owned'}</dd>
               </div>
             ) : (
             <div>
@@ -182,9 +183,9 @@ export function CardDetail({
                 Physical assignment:{' '}
                 {card.ownership
                   ? `${card.setCode.toUpperCase()}${card.collectorNumber ? ` #${card.collectorNumber}` : ''} · ${card.ownership.finish} · ${card.ownership.language} · ${card.ownership.condition}`
-                  : 'None'}
+                  : deck.basicLand ? 'Not tracked (basic land)' : 'None'}
               </p>
-              {!card.ownership && (
+              {!card.ownership && !deck.basicLand && (
                 <p>{deck.ownedElsewhere ? `Owned elsewhere: ${deck.ownedElsewhere} ${deck.ownedElsewhere === 1 ? 'copy' : 'copies'} · ${deck.availableElsewhere} available · none assigned to this entry` : 'Not currently owned'}</p>
               )}
             </section>

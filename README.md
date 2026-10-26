@@ -1,6 +1,10 @@
-# MTG Manager · v0.6.3
+# MTG Manager · v0.6.4
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Basic lands in decks (v0.6.4)
+
+Basic lands are deck-building resources, not exclusive inventory. Any card with the **Basic** supertype qualifies: Plains, Island, Swamp, Mountain, Forest, the Snow-Covered basics and Wastes, detected from card type data rather than names. In Import Deck it never blocks, needs review, counts as missing or reserves a physical copy. Its requested printing is kept for display, and it still counts toward deck size and mana statistics. It shows as "Basic land — allocation not tracked". Nonbasic lands (Command Tower, Path of Ancestry, …) and every other card keep strict per-copy allocation.
 
 ## Recommendation Engine vNext (v0.6.3)
 
@@ -302,4 +306,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is current. Work stops before v0.7.0.

@@ -75,6 +75,7 @@ export function DeckIssues({ issues, title = "Problem rows" }: { issues: DeckImp
 }
 function entryState(entry: PreviewEntry, choices: DeckImportChoices, conflict: boolean) {
   if (conflict) return { mark: "!", text: "Outside commander color identity — kept in decklist, no copy will be assigned" };
+  if (entry.status === "basic") return { mark: "✓", text: "Basic land — allocation not tracked" };
   if (!choices.reviewed.includes(entry.key)) return { mark: "?", text: "Choose a printing" };
   const picks = choices.picks[entry.key] || {};
   const assigned = picked(picks);
@@ -233,7 +234,7 @@ export function DeckImport({
         </strong>
         {entry.requested && <p>Deck requests: {printing(entry.requested)}</p>}
         <p>
-          Owned: {entry.owned ? [...new Set(entry.options.map((o) => printing(o)))].join(", ") : 0} · Available: {entry.available}
+          Owned: {entry.owned ? [...new Set(entry.options.map((o) => printing(o)))].join(", ") : 0} {entry.status === "basic" ? "" : ` · Available: ${entry.available}`}
         </p>
         {entry.usedBy.length > 0 && !entry.available && (
           <p>Used in: {entry.usedBy.map((u) => `${u.deckName} ×${u.quantity}`).join(" · ")}</p>
@@ -246,7 +247,7 @@ export function DeckImport({
         <p className={`deck-import-state state-${s.mark === "✓" ? "exact" : s.mark === "~" ? "alternate" : s.mark === "?" ? "review" : "missing"}`}>
           <span aria-hidden="true">{s.mark}</span> {s.text}
         </p>
-        {!conflicts.has(entry.key) && entry.available > 0 &&
+        {!conflicts.has(entry.key) && entry.status !== "basic" && entry.available > 0 &&
           (choices!.reviewed.includes(entry.key) ? (
             <details>
               <summary>Change copies for {entry.name}</summary>
@@ -381,6 +382,7 @@ export function DeckImport({
             </dl>
             <p className="sync-note">
               {summary.total} cards · {summary.exact + summary.alternate} copies to assign · {summary.missing + summary.allocated} missing or unassigned
+              {summary.basic ? ` · ${summary.basic} basic lands (not allocated)` : ""}
               {summary.problems ? ` · ${summary.problems} problem rows` : ""}. Missing cards are kept in the decklist without fake ownership. No copy is moved from another deck.
             </p>
             {preview.warnings.map((w) => (

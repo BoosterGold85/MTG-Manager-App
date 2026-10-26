@@ -6,7 +6,7 @@ import type { Deck, DecklistEntry } from "../models/deck";
 import { collectionCards } from "../models/collection";
 import { effectiveAssignments } from "../intelligence/tagger";
 import { deckCardAnalysis } from "../intelligence/canonicalAnalysis";
-import { entryAssigned, sameCard } from "./decks";
+import { entryAssigned, entryIsBasic, sameCard } from "./decks";
 
 // One browsable deck card: either copies assigned from one printing group, or a decklist
 // entry's remaining copies with no physical assignment. Ownership is never fabricated.
@@ -18,6 +18,8 @@ export interface DeckRow {
   itemId?: string;
   entry?: DecklistEntry;
   assigned: boolean;
+  // Basic-supertype entry copies with no physical assignment: tracked, not missing.
+  basicLand?: boolean;
   ownedElsewhere: number;
   availableElsewhere: number;
 }
@@ -99,6 +101,7 @@ export function deckRows(state: CollectionState, deck: Deck): DeckRow[] {
       card,
       entry,
       assigned: false,
+      basicLand: entryIsBasic(entry, state),
       ownedElsewhere: holdings.owned,
       availableElsewhere: holdings.available,
     });
@@ -166,7 +169,7 @@ export function filterDeckRows(rows: DeckRow[], filters: DeckFilters, dna?:DeckD
       (!filters.theme || !!(dna&&cardSynergy(dna,row.card)?.connections.some(c=>c.themeId===filters.theme))) &&
       (!query || row.name.toLowerCase().includes(query)) &&
       (!filters.type || typeGroup(row.card) === filters.type) &&
-      (!filters.ownership || (filters.ownership === "assigned") === row.assigned),
+      (!filters.ownership || (filters.ownership === "assigned") === (row.assigned || !!row.basicLand)),
   );
 }
 // The browsable sequence used by both the grid and Card Detail Previous/Next.

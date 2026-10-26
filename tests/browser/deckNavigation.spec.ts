@@ -102,7 +102,9 @@ test("deck cards open full Card Detail and Previous/Next browses in place with b
   await expect(position(page)).toHaveText("9 of 9");
   await expect(detail(page).getByRole("button", { name: "Next card" })).toBeDisabled();
   await expect(detail(page).getByRole("region", { name: "Deck entry" })).toContainText("Forest ×2");
-  await expect(detail(page).getByRole("region", { name: "Deck entry" })).toContainText(`Physical assignment: ${card("Forest").setCode.toUpperCase()} #${card("Forest").collectorNumber}`);
+  // Basic lands are tracked in the decklist but never exclusively allocated.
+  await expect(detail(page).getByRole("region", { name: "Deck entry" })).toContainText("Physical assignment: Not tracked (basic land)");
+  await expect(detail(page).getByText("Basic land — allocation not tracked", { exact: false })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(detail(page)).toHaveCount(0);
 });

@@ -5,7 +5,7 @@ import type { DeckCardLookup, DeckIdentifier } from "../import/scryfall";
 import { normalizedName } from "../import/csv";
 import { cardIdentity } from "../intelligence/tagger";
 import type { DeckSection, DeckTextLine, ParsedDeckText } from "./deckText";
-import { commanderEligible, deckUsage, sameCard } from "./decks";
+import { commanderEligible, deckUsage, isBasicLand, sameCard } from "./decks";
 
 export interface ResolvedDeckLine {
   line: DeckTextLine;
@@ -100,7 +100,8 @@ export async function resolveDeckLines(
   return results;
 }
 
-export type OwnershipStatus = "exact" | "alternate" | "allocated" | "missing" | "ambiguous";
+// "basic": a Basic-supertype land. Never allocated, never missing, never blocking.
+export type OwnershipStatus = "exact" | "alternate" | "allocated" | "missing" | "ambiguous" | "basic";
 export interface CopyOption {
   itemId: string;
   setCode: string;
@@ -229,6 +230,11 @@ export function buildDeckImportPreview(
         usage.set(u.deck.id, current);
       }
     entry.usedBy = [...usage.values()];
+    // Basic lands keep their card and requested printing but skip quantity/allocation checks entirely.
+    if (isBasicLand(entry.card)) {
+      entry.status = "basic";
+      continue;
+    }
     let need = entry.quantity;
     let exactTaken = 0;
     for (const item of items.filter((i) => isExact(i, entry.requested))) {
@@ -305,9 +311,13 @@ export const duplicateName = (state: CollectionState, name: string) =>
 
 export function deckImportSummary(preview: DeckImportPreview, choices: DeckImportChoices) {
   const conflicts = new Set(colorConflicts(preview, choices).map((e) => e.key));
-  const summary = { total: 0, exact: 0, alternate: 0, allocated: 0, missing: 0, review: 0, colorConflicts: conflicts.size, problems: preview.issues.length };
+  const summary = { total: 0, exact: 0, alternate: 0, allocated: 0, missing: 0, review: 0, basic: 0, colorConflicts: conflicts.size, problems: preview.issues.length };
   for (const entry of preview.entries) {
     summary.total += entry.quantity;
+    if (entry.status === "basic") {
+      summary.basic += entry.quantity;
+      continue;
+    }
     if (!choices.reviewed.includes(entry.key)) {
       summary.review += entry.quantity;
       continue;
@@ -385,9 +395,11 @@ export function finalizeDeckImport(
       scryfallId: p.card.scryfallId,
       ...(p.requested ? { requestedPrinting: { ...p.requested } } : {}),
       sourceLines: [...p.lines],
+      ...(p.status === "basic" ? { basicLand: true } : {}),
     };
     entries.push(entry);
-    const picks = Object.entries(conflicts.has(p.key) ? {} : choices.picks[p.key] || {}).filter(([, q]) => q > 0);
+    // Basic lands are tracked in the decklist only; no physical copy is reserved.
+    const picks = Object.entries(conflicts.has(p.key) || p.status === "basic" ? {} : choices.picks[p.key] || {}).filter(([, q]) => q > 0);
     if (isCommander) {
       const item = picks[0] && state.items.find((i) => i.id === picks[0][0]);
       commanders.push({

@@ -54,10 +54,23 @@ export function entryAssigned(deck: Deck, entry: DecklistEntry) {
     deck.commanders.filter((c) => c.entryId === entry.id && c.itemId).length
   );
 }
-export function deckOwnership(deck: Deck) {
+// Basic lands (the Basic supertype, from card data — not names) are deck-building resources,
+// not exclusive inventory: they never need a physical assignment and never count as missing.
+export function isBasicLand(card: Pick<CardMetadata, "typeLine" | "cardFaces"> | undefined) {
+  if (!card) return false;
+  const supertypes = (card.cardFaces?.[0]?.typeLine || card.typeLine || "").split("—")[0];
+  return /\bBasic\b/.test(supertypes) && /\bLand\b/.test(supertypes);
+}
+export const entryIsBasic = (entry: DecklistEntry, state?: CollectionState | null) =>
+  !!entry.basicLand || (entry.board === "main" && isBasicLand(state?.metadata[entry.scryfallId]));
+export function deckOwnership(deck: Deck, state?: CollectionState | null) {
   const total = deckCount(deck);
   const assigned = assignedCount(deck);
-  return { total, assigned, missing: Math.max(0, total - assigned) };
+  // Unassigned basic-land copies are not tracked and are never "missing".
+  const basic = (deck.entries || [])
+    .filter((e) => entryIsBasic(e, state))
+    .reduce((n, e) => n + Math.max(0, e.quantity - entryAssigned(deck, e)), 0);
+  return { total, assigned, basic, missing: Math.max(0, total - assigned - basic) };
 }
 export interface MissingEntry {
   entry: DecklistEntry;
@@ -70,6 +83,7 @@ export interface MissingEntry {
 // Decklist entries without an assigned physical copy, with an explanation. Never fabricated ownership.
 export function missingEntries(state: CollectionState, deck: Deck): MissingEntry[] {
   return (deck.entries || [])
+    .filter((entry) => !entryIsBasic(entry, state))
     .map((entry) => {
       const missing = entry.quantity - entryAssigned(deck, entry);
       const card = state.metadata[entry.scryfallId];

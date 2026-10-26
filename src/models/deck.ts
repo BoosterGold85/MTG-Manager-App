@@ -26,6 +26,8 @@ export interface DecklistEntry {
   scryfallId: string;
   requestedPrinting?: { setCode: string; collectorNumber?: string };
   sourceLines?: number[];
+  // Basic supertype: the entry is tracked in the deck but never exclusively allocated.
+  basicLand?: boolean;
 }
 export interface DeckImportIssue {
   line: number;

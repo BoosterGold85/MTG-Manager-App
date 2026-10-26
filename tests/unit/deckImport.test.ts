@@ -21,7 +21,7 @@ import {
 import type { DeckImportChoices, DeckImportPreview } from "../../src/decks/deckImport";
 import { deckCount, deckOwnership, deckStats, missingEntries } from "../../src/decks/decks";
 import { changeCollection } from "../../src/storage/collectionManagement";
-import { metadata, meren, tatyova, sol, forest, fixtureRow, exportCsv, apiCard } from "../importFixtures";
+import { metadata, meren, tatyova, sol, fixtureRow, exportCsv, apiCard } from "../importFixtures";
 import data from "../../src/data/sampleCards.json" with { type: "json" };
 
 const sample = data as unknown as CardMetadata[];
@@ -30,7 +30,9 @@ const skullclamp = card("Skullclamp");
 const signet = card("Arcane Signet");
 const atraxa = card("Atraxa, Praetors' Voice");
 const solPip: CardMetadata = { ...sol, scryfallId: "sol-pip-239", setCode: "pip", collectorNumber: "239" };
-const forestZnr: CardMetadata = { ...forest, scryfallId: "forest-znr-280", setCode: "znr", collectorNumber: "280" };
+// A nonbasic land in two printings: still finite inventory that may need a printing choice.
+const tower = card("Command Tower");
+const towerAlt: CardMetadata = { ...tower, scryfallId: "tower-znr-280", setCode: "znr", collectorNumber: "280" };
 const witness: CardMetadata = { ...sol, scryfallId: "witness-id", name: "Eternal Witness", setCode: "c21", collectorNumber: "185", colorIdentity: ["G"], typeLine: "Creature — Human Shaman", manaValue: 3 };
 const guardianship: CardMetadata = { ...sol, scryfallId: "fierce-id", name: "Fierce Guardianship", setCode: "c20", collectorNumber: "35", colorIdentity: ["U"], typeLine: "Instant", manaValue: 3 };
 const delver: CardMetadata = { ...sol, scryfallId: "delver-id", name: "Delver of Secrets // Insectile Aberration", setCode: "mid", collectorNumber: "47", colorIdentity: ["U"], typeLine: "Creature — Human Wizard // Creature — Human Insect", cardFaces: [{ name: "Delver of Secrets" }, { name: "Insectile Aberration" }] };
@@ -54,20 +56,20 @@ function makeItem(c: CardMetadata, quantity: number, finish: CollectionItem["fin
   i.id = inventoryKey(i);
   return i;
 }
-// Owned: Meren, Atraxa, Sol Ring (PIP only), Skullclamp C14 #268, Arcane Signet ×1, Forest in two printings, Tatyova.
+// Owned: Meren, Atraxa, Sol Ring (PIP only), Skullclamp C14 #268, Arcane Signet ×1, Command Tower in two printings, Tatyova.
 function initial(): CollectionState {
   return {
     ...emptyCollection(),
     revision: 1,
-    metadata: { ...structuredClone(metadata), [solPip.scryfallId]: solPip, [forestZnr.scryfallId]: forestZnr },
+    metadata: { ...structuredClone(metadata), [solPip.scryfallId]: solPip, [towerAlt.scryfallId]: towerAlt },
     items: [
       makeItem(meren, 1),
       makeItem(atraxa, 1),
       makeItem(solPip, 1),
       makeItem(skullclamp, 1),
       makeItem(signet, 1),
-      makeItem(forest, 2),
-      makeItem(forestZnr, 2),
+      makeItem(tower, 2),
+      makeItem(towerAlt, 2),
       makeItem(tatyova, 1),
     ],
   };
@@ -107,7 +109,7 @@ Deck
 1 Skullclamp (C14) 268
 1 Arcane Signet
 1 Eternal Witness
-4 Forest
+4 Command Tower
 1 Tatyova, Benthic Druid
 1 Not A Real Card
 x Sol Ring
@@ -199,21 +201,21 @@ describe("Ownership reconciliation", () => {
     expect(entry(p, "Sol Ring").options[0]).toMatchObject({ setCode: "pip", collectorNumber: "239", exact: false });
     expect(entry(p, "Arcane Signet")).toMatchObject({ status: "allocated", owned: 1, available: 0, usedBy: [{ deckName: "Other deck", quantity: 1 }] });
     expect(entry(p, "Eternal Witness")).toMatchObject({ status: "missing", owned: 0 });
-    expect(entry(p, "Forest")).toMatchObject({ status: "ambiguous", suggested: {} });
+    expect(entry(p, "Command Tower")).toMatchObject({ status: "ambiguous", suggested: {} });
     const choices = initialChoices(p);
     expect(deckImportSummary(p, choices)).toMatchObject({ total: 10, exact: 2, alternate: 1, allocated: 2, missing: 1, review: 4, colorConflicts: 1, problems: 3 });
     expect(blockingIssues(p, state, choices).join(" ")).toMatch(/1 card need a printing choice/);
-    // Choose one Forest of each printing, leaving two unassigned.
-    const forestEntry = entry(p, "Forest");
-    choices.picks[forestEntry.key] = { [forestEntry.options[0].itemId]: 1, [forestEntry.options[1].itemId]: 1 };
-    choices.reviewed.push(forestEntry.key);
+    // Choose one Command Tower of each printing, leaving two unassigned.
+    const towerEntry = entry(p, "Command Tower");
+    choices.picks[towerEntry.key] = { [towerEntry.options[0].itemId]: 1, [towerEntry.options[1].itemId]: 1 };
+    choices.reviewed.push(towerEntry.key);
     expect(blockingIssues(p, state, choices)).toEqual([]);
     expect(deckImportSummary(p, choices)).toMatchObject({ exact: 4, review: 0, allocated: 4 });
   });
   it("rejects picks beyond availability and never takes copies another deck uses", async () => {
-    const { p, state } = await preview("Commander\n1 Meren of Clan Nel Toth\nDeck\n4 Forest");
+    const { p, state } = await preview("Commander\n1 Meren of Clan Nel Toth\nDeck\n4 Command Tower");
     const choices = initialChoices(p);
-    const f = entry(p, "Forest");
+    const f = entry(p, "Command Tower");
     choices.picks[f.key] = { [f.options[0].itemId]: 3 };
     choices.reviewed.push(f.key);
     expect(blockingIssues(p, state, choices).join(" ")).toMatch(/not enough available copies/);
@@ -241,13 +243,13 @@ describe("Confirmed deck import", () => {
       ["Skullclamp", "main", 1],
       ["Arcane Signet", "main", 1],
       ["Eternal Witness", "main", 1],
-      ["Forest", "main", 4],
+      ["Command Tower", "main", 4],
       [tatyova.name, "main", 1],
     ]);
     expect(deck.commanders[0]).toMatchObject({ name: meren.name, itemId: before.items[0].id });
     expect(deckCount(deck)).toBe(10);
-    // Meren + Sol Ring (PIP) + Skullclamp + Arcane Signet. Forests left unassigned by review; Tatyova is outside identity.
-    expect(deckOwnership(deck)).toEqual({ total: 10, assigned: 4, missing: 6 });
+    // Meren + Sol Ring (PIP) + Skullclamp + Arcane Signet. Command Towers left unassigned by review; Tatyova is outside identity.
+    expect(deckOwnership(deck)).toEqual({ total: 10, assigned: 4, basic: 0, missing: 6 });
     const missing = missingEntries(next, deck);
     expect(missing.find((m) => m.entry.name === "Eternal Witness")).toMatchObject({ missing: 1, owned: 0, reason: "Missing — not owned" });
     expect(missing.find((m) => m.entry.name === tatyova.name)!.outsideIdentity).toBe(true);
@@ -310,17 +312,17 @@ describe("Confirmed deck import", () => {
   });
   it("editor additions fill missing entries; missing entries can be removed; collection clear keeps decklist metadata", async () => {
     const { repo, decks, next, deck } = await importDeck(MEREN_DECK);
-    const forestItem = next.items.find((i) => i.scryfallId === forest.scryfallId)!;
-    const filled = await decks.change(next, { type: "add", deckId: deck.id, itemId: forestItem.id });
+    const towerItem = next.items.find((i) => i.scryfallId === tower.scryfallId)!;
+    const filled = await decks.change(next, { type: "add", deckId: deck.id, itemId: towerItem.id });
     const after = filled.decks!.find((d) => d.id === deck.id)!;
     expect(deckCount(after)).toBe(10);
     expect(deckOwnership(after).assigned).toBe(5);
-    expect(after.assignments.at(-1)).toMatchObject({ itemId: forestItem.id, entryId: deck.entries![5].id });
+    expect(after.assignments.at(-1)).toMatchObject({ itemId: towerItem.id, entryId: deck.entries![5].id });
     const removed = await decks.change(filled, { type: "remove-missing", deckId: deck.id, entryId: deck.entries![4].id });
     expect(removed.decks!.find((d) => d.id === deck.id)!.entries!.some((e) => e.name === "Eternal Witness")).toBe(false);
-    const released = await decks.change(removed, { type: "remove", deckId: deck.id, itemId: forestItem.id });
-    expect(released.decks!.find((d) => d.id === deck.id)!.entries!.find((e) => e.name === "Forest")!.quantity).toBe(3);
-    expect(released.items.find((i) => i.id === forestItem.id)!.quantityOwned).toBe(2);
+    const released = await decks.change(removed, { type: "remove", deckId: deck.id, itemId: towerItem.id });
+    expect(released.decks!.find((d) => d.id === deck.id)!.entries!.find((e) => e.name === "Command Tower")!.quantity).toBe(3);
+    expect(released.items.find((i) => i.id === towerItem.id)!.quantityOwned).toBe(2);
     await expect(changeCollection(repo, released, { type: "clear" })).rejects.toThrow(/assigned to decks/);
   });
   it("an unowned commander is a decklist entry without an assigned copy and blocks no clear", async () => {
@@ -328,7 +330,7 @@ describe("Confirmed deck import", () => {
     base.items = base.items.filter((i) => i.scryfallId !== meren.scryfallId);
     const { repo, deck, next } = await importDeck("Commander\n1 Meren of Clan Nel Toth\nDeck\n1 Eternal Witness", () => {}, base);
     expect(deck.commanders[0].itemId).toBeUndefined();
-    expect(deckOwnership(deck)).toEqual({ total: 2, assigned: 0, missing: 2 });
+    expect(deckOwnership(deck)).toEqual({ total: 2, assigned: 0, basic: 0, missing: 2 });
     const cleared = await changeCollection(repo, next, { type: "clear" });
     expect(cleared.items).toEqual([]);
     expect(cleared.decks![0].entries!.length).toBe(2);

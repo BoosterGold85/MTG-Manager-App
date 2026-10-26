@@ -6,7 +6,7 @@ import type {
 import type { Deck } from "../models/deck";
 import { cardIdentity } from "../intelligence/tagger";
 import { normalizedName } from "../import/csv";
-import { entryAssigned, legalInDeck, newDeck, reconcileAllocations, sameCard } from "../decks/decks";
+import { entryAssigned, isBasicLand, legalInDeck, newDeck, reconcileAllocations, sameCard } from "../decks/decks";
 export type DeckChange =
   | { type: "create"; name: string; itemId: string }
   | { type: "rename"; deckId: string; name: string }
@@ -91,6 +91,20 @@ export class LocalDeckRepository implements DeckRepository {
             throw new Error(
               "This card is outside the commander color identity.",
             );
+          if (deck.entries && isBasicLand(card)) {
+            // Basic lands are decklist resources: add to the list, keep the chosen printing, reserve nothing.
+            const same = deck.entries.find((e) => e.board === "main" && base.metadata[e.scryfallId] && sameCard(base.metadata[e.scryfallId], card));
+            if (same) {
+              same.quantity++;
+              same.basicLand = true;
+            } else
+              deck.entries.push({
+                id: `${deck.id}:${crypto.randomUUID()}`, board: "main", quantity: 1, name: card.name, cardIdentity: cardIdentity(card),
+                scryfallId: card.scryfallId, requestedPrinting: { setCode: item.setCode.toLowerCase(), collectorNumber: item.collectorNumber.toLowerCase() }, basicLand: true,
+              });
+            deck.modifiedAt = now;
+            return this.commit(base, decks, metadata);
+          }
           if (item.quantityUnassigned < 1)
             throw new Error(
               "No unassigned copy available. Release a copy from its deck first.",
@@ -127,6 +141,9 @@ export class LocalDeckRepository implements DeckRepository {
         deck.modifiedAt = now;
       }
     }
+    return this.commit(base, decks, metadata);
+  }
+  private async commit(base: CollectionState, decks: Deck[], metadata: CollectionState["metadata"]) {
     const next = reconcileAllocations({
       ...base,
       metadata,

@@ -102,9 +102,9 @@ export function DeckLibrary({
       ? cardFor(c.itemId)
       : { ...state!.metadata[c.scryfallId], id: `commander:${c.scryfallId}`, quantity: 0 };
   const ownershipLine = (d: Deck) => {
-    const o = deckOwnership(d);
+    const o = deckOwnership(d, state);
     return d.entries
-      ? `${o.total} cards · ${o.assigned} copies assigned · ${o.missing} missing`
+      ? `${o.total} cards · ${o.assigned} copies assigned · ${o.missing} missing${o.basic ? ` · ${o.basic} basic lands (not allocated)` : ""}`
       : `${o.total} cards`;
   };
   const conflicts = state ? allocationConflicts(state) : [];
@@ -293,7 +293,7 @@ export function DeckLibrary({
                         conflicts.some((i) => i.id === a.itemId),
                       )
                         ? "Allocation needs reconciliation"
-                        : deckOwnership(d).missing
+                        : deckOwnership(d, state).missing
                           ? "Some decklist cards have no assigned copy"
                           : "Owned copies assigned"}
                     </p>
@@ -507,9 +507,11 @@ export function DeckLibrary({
                         </>
                       ) : (
                         <p className="allocation-copy">
-                          {row.ownedElsewhere
-                            ? `Unassigned · owned elsewhere ${row.ownedElsewhere} (${row.availableElsewhere} available)`
-                            : "Missing · not currently owned"}
+                          {row.basicLand
+                            ? "Basic land — allocation not tracked"
+                            : row.ownedElsewhere
+                              ? `Unassigned · owned elsewhere ${row.ownedElsewhere} (${row.availableElsewhere} available)`
+                              : "Missing · not currently owned"}
                         </p>
                       )}
                     </article>
@@ -747,7 +749,7 @@ export function DeckLibrary({
                 <p>
                   Delete {deck.name}? All {assignedCount(deck)} assigned copies will
                   return to Available
-                  {deck.entries ? ` and its ${deckOwnership(deck).missing} missing decklist cards are discarded` : ""}.
+                  {deck.entries ? ` and its ${deckOwnership(deck, state).missing} missing decklist cards are discarded` : ""}.
                   Collection cards and ManaBox are unchanged.
                 </p>
                 <button
@@ -812,7 +814,7 @@ export function DeckLibrary({
             onOpenDeck={(id) => { setDetail(null); onOpen(id); }}
             onClose={() => setDetail(null)}
             onSaveTags={row.card.ownership && onSaveTags ? (o) => onSaveTags(row.card, o) : undefined}
-            deck={{ deckName: deck.name, quantity: row.quantity, assigned: row.assigned, ownedElsewhere: row.ownedElsewhere, availableElsewhere: row.availableElsewhere }}
+            deck={{ deckName: deck.name, quantity: row.quantity, assigned: row.assigned, basicLand: row.basicLand, ownedElsewhere: row.ownedElsewhere, availableElsewhere: row.availableElsewhere }}
             navigation={{
               position: index + 1,
               total: visible.length,
