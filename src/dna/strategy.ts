@@ -157,6 +157,7 @@ const roleTags: Record<Role, string[]> = {
 const labels: Record<string, string> = {
   spells: "Spellslinger",
   clones: "Clones / Copies",
+  discard: "Discard / Mayhem",
   tokens: "Tokens",
   sacrifice: "Aristocrats / Sacrifice",
   graveyard: "Graveyard / Reanimator",
@@ -176,6 +177,7 @@ const labels: Record<string, string> = {
 const featureTags: Record<string, string[]> = {
   spells: ["spellslinger", "instants-sorceries", "copy-spells"],
   clones: ["clones", "copy-creature-spells"],
+  discard: ["mayhem", "madness", "discard-payoff"],
   tokens: ["tokens", "token-payoff", "populate", "go-wide"],
   sacrifice: [
     "aristocrats",

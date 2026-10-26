@@ -6,7 +6,7 @@ import {
   canonicalCreatureType,
 } from "../intelligence/subtypes";
 
-export const CARD_FACTS_VERSION = "1.0.0";
+export const CARD_FACTS_VERSION = "1.1.0";
 export type TutorRole =
   | "unrestricted_tutor"
   | "creature_tutor"
@@ -53,7 +53,19 @@ export type TribalRole =
   | "tribal_lord"
   | "tribal_card_draw"
   | "tribal_recursion";
-export type TypedRole = TutorRole | TokenRole | RampRole | TribalRole;
+export type DiscardRole =
+  // Casts itself from the graveyard only in a turn it was discarded (Mayhem). Not reusable recursion.
+  | "mayhem_card"
+  // Cast for an alternative cost as it is discarded (Madness).
+  | "madness_card"
+  // You choose to discard: a cost, an optional choice, looting or rummaging. Enables Mayhem/Madness.
+  | "controlled_discard"
+  | "looting"
+  | "rummaging"
+  // Opponents discard: disruption, never a Mayhem/Madness enabler for you.
+  | "opponent_discard"
+  | "discard_payoff";
+export type TypedRole = TutorRole | TokenRole | RampRole | TribalRole | DiscardRole;
 export interface FactEvidence {
   face: string;
   text: string;
@@ -88,6 +100,22 @@ export interface TribalFact extends FactEvidence {
   role: TribalRole;
   creatureTypes: string[];
 }
+export type DiscardWho =
+  | "you"
+  | "opponent"
+  | "each_player"
+  | "target_player"
+  | "unknown";
+export interface DiscardFact extends FactEvidence {
+  who: DiscardWho;
+  mode: "cost" | "choice" | "loot" | "rummage" | "hand" | "effect";
+}
+export interface GraveyardCastFact extends FactEvidence {
+  mechanic: "mayhem" | "madness";
+  cost?: string;
+  // Mayhem/Madness need the card itself to be discarded; they are not repeatable recursion.
+  condition: "discarded-this-turn" | "as-discarded";
+}
 export interface CardFaceFacts {
   name: string;
   cardTypes: string[];
@@ -108,6 +136,8 @@ export interface CardFaceFacts {
     restrictions: string[];
   })[];
   tribalEffects: TribalFact[];
+  discards: DiscardFact[];
+  castFromDiscard: GraveyardCastFact[];
   triggers: string[];
   staticEffects: string[];
   typedRoles: TypedRole[];
@@ -192,6 +222,43 @@ function evidence(face: string, text: string): FactEvidence {
             : "unknown",
   };
 }
+// Who discards, and how. Only "you" (or a symmetric "each player") can enable Mayhem/Madness.
+export function discardOf(face: string, line: string): DiscardFact | null {
+  const text = stripAbilityWord(line);
+  if (!/\bdiscards?\b/i.test(text) || /\b(?:can't|cannot|don't|doesn't) discard/i.test(text))
+    return null;
+  const effect = text.replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
+  // A trigger condition alone ("Whenever you discard…") is a payoff, not a discard effect.
+  if (!/\bdiscards?\b/i.test(effect)) return null;
+  const who: DiscardWho =
+    /\b(?:target|each|an?) opponents?\b[^.;]*\bdiscards?\b|\bdefending player discards?\b|\bthat player discards?\b/i.test(effect)
+      ? "opponent"
+      : /\beach player discards?\b/i.test(effect)
+        ? "each_player"
+        : /\btarget player discards?\b/i.test(effect)
+          ? "target_player"
+          : /\byou (?:may )?discard\b|^discard\b|(?:^|[.,:]\s*|then |and )discard\b|as an additional cost[^.]*discard/i.test(effect)
+            ? "you"
+            : "unknown";
+  const cost = /discard[^.:]*:/i.test(text) || /as an additional cost[^.]*discard/i.test(text);
+  const mode: DiscardFact["mode"] = cost
+    ? "cost"
+    : /\bdiscards? (?:your|their|his or her) hands?\b/i.test(effect)
+      ? "hand"
+      : /\bdraw[^.]*,? then discard|\bdraw[^.]*\band discard/i.test(effect)
+        ? "loot"
+        : /\bdiscard[^.]*,? then draw|\bdiscard[^.]*\. (?:if you do, )?draw/i.test(effect)
+          ? "rummage"
+          : /\byou may discard\b/i.test(effect)
+            ? "choice"
+            : "effect";
+  return {
+    ...evidence(face, line),
+    controller: who === "you" ? "you" : who === "opponent" ? "opponent" : who === "unknown" ? "unknown" : "any",
+    who,
+    mode,
+  };
+}
 function faceFacts(face: {
   name: string;
   typeLine?: string;
@@ -231,6 +298,8 @@ function faceFacts(face: {
     removal: [],
     costReductions: [],
     tribalEffects: [],
+    discards: [],
+    castFromDiscard: [],
     triggers: [],
     staticEffects: [],
     typedRoles: [],
@@ -238,6 +307,28 @@ function faceFacts(face: {
   };
   const roles = new Set<TypedRole>();
   if (hasChangeling) roles.add("changeling");
+  // Mayhem/Madness keyword lines keep their cost after reminder text is removed.
+  for (const [mechanic, condition] of [
+    ["mayhem", "discarded-this-turn"],
+    ["madness", "as-discarded"],
+  ] as const) {
+    const keywordLine = lines.find((line) =>
+      new RegExp(`^${mechanic}\\b`, "i").test(line),
+    );
+    if (
+      keywordLine ||
+      face.keywords?.some((k) => k.toLowerCase() === mechanic)
+    ) {
+      result.castFromDiscard.push({
+        ...evidence(face.name, keywordLine || mechanic),
+        controller: "you",
+        mechanic,
+        cost: keywordLine?.match(/((?:\{[^}]+\})+)/)?.[1],
+        condition,
+      });
+      roles.add(mechanic === "mayhem" ? "mayhem_card" : "madness_card");
+    }
+  }
   if (ownTypes.includes("Dragon")) roles.add("dragon");
   for (const line of lines) {
     const fact = evidence(face.name, line);
@@ -439,6 +530,25 @@ function faceFacts(face: {
           roles.add("land_smoothing");
       }
     }
+    const discardFact = discardOf(face.name, line);
+    if (discardFact) {
+      result.discards.push(discardFact);
+      if (discardFact.who === "opponent") roles.add("opponent_discard");
+      else if (discardFact.who === "you" || discardFact.who === "each_player") {
+        roles.add("controlled_discard");
+        if (discardFact.mode === "loot") roles.add("looting");
+        if (discardFact.mode === "rummage") roles.add("rummaging");
+      } else
+        result.uncertainties.push(
+          `Discard by ${discardFact.who.replace("_", " ")} may not be you: ${line}`,
+        );
+    }
+    if (
+      /^(?:when|whenever)\b[^,]*\b(?:you|a player) discards?\b|\bif you(?:'ve)? discarded\b|\bcards? (?:you )?discarded this turn\b/i.test(
+        stripAbilityWord(line),
+      )
+    )
+      roles.add("discard_payoff");
     if (/\b(?:can't|cannot|don't|doesn't)\b/i.test(directEffect)) continue;
     if (
       /\bdraw(?:s)? (?:a|an|one|two|three|four|five|six|x|\d+|that many) cards?\b/i.test(

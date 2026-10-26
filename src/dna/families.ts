@@ -96,6 +96,12 @@ export const families: ThemeFamily[] = [
     plan: "support an individual threat with Equipment or Auras",
   },
   {
+    id: "discard",
+    label: "Discard / Mayhem",
+    tags: ["mayhem", "madness", "discard-payoff"],
+    plan: "discard cards on purpose and cast or cash them in from the graveyard",
+  },
+  {
     id: "clones",
     label: "Clones & Copies",
     tags: ["clones", "copy-creature-spells"],

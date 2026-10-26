@@ -116,6 +116,13 @@ function factsOf(input: DnaInputCard) {
 }
 const has = (facts: CardFacts, role: TypedRole) =>
   facts.typedRoles.includes(role);
+// Cards that want to be discarded (Mayhem, Madness) or reward discarding.
+const wantsDiscard = (facts: CardFacts) =>
+  has(facts, "mayhem_card") || has(facts, "madness_card") || has(facts, "discard_payoff");
+// Only discard you control enables them; opponent discard never does.
+const enablesDiscard = (facts: CardFacts) => has(facts, "controlled_discard");
+const discardLabel = (facts: CardFacts) =>
+  has(facts, "mayhem_card") ? "Mayhem" : has(facts, "madness_card") ? "Madness" : "discard payoff";
 const ownFace = (facts: CardFacts, type: string) =>
   facts.faces.some((f) => f.cardTypes.includes(type));
 function actualRoles(
@@ -680,6 +687,18 @@ export function scoreRecommendation(
     if (other.card.identity === input.identity) continue;
     const otherText = textOf(other.card),
       otherFacts = factsOf(other.card);
+    if (wantsDiscard(f) && enablesDiscard(otherFacts))
+      addRelationship(
+        other,
+        other.card.commander ? 1 : 0.8,
+        `Discard enabler: ${other.card.card.name} lets you discard ${input.card.name} on purpose (${discardLabel(f)}): ${otherFacts.faces.flatMap((face) => face.discards).find((d) => d.who === "you" || d.who === "each_player")?.text || otherText}`,
+      );
+    if (enablesDiscard(f) && wantsDiscard(otherFacts))
+      addRelationship(
+        other,
+        other.card.commander ? 1 : 0.8,
+        `Discard enabler: ${input.card.name} lets you discard ${other.card.card.name} on purpose (${discardLabel(otherFacts)}): ${f.faces.flatMap((face) => face.discards).find((d) => d.who === "you" || d.who === "each_player")?.text || text}`,
+      );
     const returnsCreature =
       /return[^.\n]*(?:creature|permanent) card[^.\n]*from (?:your|a) graveyard[^.\n]*(?:battlefield|hand)/i;
     if (
@@ -1135,6 +1154,7 @@ export function scoreRecommendation(
       .flatMap((r) =>
         r.evidence.map((e) => {
           if (e.startsWith("Graveyard setup")) return "graveyard";
+          if (e.startsWith("Discard enabler")) return "discard";
           if (e.startsWith("Counter resources")) return "counters";
           const ability = e.slice(e.indexOf(":") + 1).split(",")[0];
           return /enters?|ETB/i.test(ability)

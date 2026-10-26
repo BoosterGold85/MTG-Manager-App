@@ -6,7 +6,7 @@ import { metadata, sol, meren } from "./importFixtures";
 // Curated canonical-shaped semantic fixtures, not live Scryfall snapshots. Oracle excerpts
 // isolate the tested interactions; no network, price data or external rankings are used.
 let next = 0;
-function card(
+export function card(
   name: string,
   typeLine: string,
   oracleText: string,
@@ -297,6 +297,30 @@ export const clones = [
   gu(card("Unsummon", "Instant", "Return target creature to its owner's hand.", [], 1)),
   gu(card("Llanowar Elves", "Creature — Elf Druid", "{T}: Add {G}.", [], 1), ["G"]),
   gu(card("Cultivate", "Sorcery", "Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.", [], 3), ["G"]),
+];
+// Mayhem: generic Mayhem wording (keyword line + reminder) on synthetic cards, plus real controlled-discard enablers.
+const mayhemCost = (cost: string) => `Mayhem ${cost} (You may cast this card from your graveyard for ${cost} if you discarded it this turn. Timing rules still apply.)`;
+const red = (c: CardMetadata) => ((c.colorIdentity = ["R"]), c);
+export const mayhemCards = [
+  red(card("Mayhem Brawler", "Creature — Human Villain", `When this creature enters, it deals 2 damage to any target.\n${mayhemCost("{1}{R}")}`, ["Mayhem"], 3)),
+  red(card("Mayhem Blast", "Instant", `Mayhem Blast deals 3 damage to any target.\n${mayhemCost("{R}")}`, ["Mayhem"], 2)),
+  red(card("Mayhem Raider", "Creature — Goblin Villain", `Haste\n${mayhemCost("{2}{R}")}`, ["Haste", "Mayhem"], 4)),
+  red(card("Mayhem Payday", "Sorcery", `Create two Treasure tokens.\n${mayhemCost("{1}{R}")}`, ["Mayhem"], 3)),
+  red(card("Mayhem Rocket", "Artifact", `{2}, {T}: This artifact deals 1 damage to each opponent.\n${mayhemCost("{R}")}`, ["Mayhem"], 2)),
+];
+export const discardEnablers = [
+  red(card("Faithless Looting", "Sorcery", "Draw two cards, then discard two cards.\nFlashback {2}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)", ["Flashback"], 1)),
+  red(card("Thrill of Possibility", "Instant", "As an additional cost to cast this spell, discard a card.\nDraw two cards.", [], 2)),
+  red(card("Tormenting Voice", "Sorcery", "As an additional cost to cast this spell, discard a card.\nDraw two cards.", [], 2)),
+  red(card("Wild Guess", "Sorcery", "As an additional cost to cast this spell, discard a card.\nDraw two cards.", [], 2)),
+  red(card("Magmatic Insight", "Sorcery", "As an additional cost to cast this spell, discard a land card.\nDraw two cards.", [], 1)),
+  red(card("Big Score", "Instant", "As an additional cost to cast this spell, discard a card.\nDraw two cards and create two Treasure tokens.", [], 4)),
+];
+// Opponent discard is disruption, never a Mayhem enabler.
+export const opponentDiscard = [
+  card("Mind Rot", "Sorcery", "Target player discards two cards.", [], 3),
+  card("Raven's Crime", "Sorcery", "Target player discards a card.\nRetrace (You may cast this card from your graveyard by discarding a land card in addition to paying its other costs.)", ["Retrace"], 1),
+  card("Burglar Rat", "Creature — Rat", "When this creature enters, each opponent discards a card.", [], 2),
 ];
 export const regressionDecks = [
   { name: "Dragon Typal", commander: lathliss, main: dragons },

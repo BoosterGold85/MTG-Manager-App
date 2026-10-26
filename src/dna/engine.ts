@@ -15,6 +15,7 @@ import { tagDefinition } from "../intelligence/taxonomy";
 import { pluralCreatureType } from "../intelligence/subtypes";
 import { deckCardAnalysis } from "../intelligence/canonicalAnalysis";
 import { cardKeywords } from "../utils/cardKeywords";
+import { extractCardFacts } from "../synergy/facts";
 import { DNA_VERSION, families, tagFamily } from "./families";
 export interface DnaInputCard {
   identity: string;
@@ -194,6 +195,27 @@ function cardSignals(
   deckTags: Set<string>,
 ): Signal[] {
   const signals: Signal[] = [];
+  // Typed discard: only discard you control enables Mayhem/Madness/discard payoffs; opponent discard never does.
+  if (["mayhem", "madness", "discard-payoff"].some((id) => deckTags.has(id))) {
+    const own = extractCardFacts(card.card)
+      .faces.flatMap((face) => face.discards)
+      .filter((d) => d.who === "you" || d.who === "each_player");
+    if (own.length)
+      signals.push({
+        themeId: "discard",
+        tagId: "controlled-discard",
+        label: own.some((d) => d.mode === "loot" || d.mode === "rummage")
+          ? "Looting / Rummaging"
+          : "Controlled Discard",
+        strength: 3,
+        kind: "enabler",
+        evidence: own.map((d) => ({
+          field: "oracleText",
+          snippet: d.text.slice(0, 180),
+          reason: `You choose to discard (${d.mode}), so cards with Mayhem or Madness can be cast and discard payoffs trigger.`,
+        })),
+      });
+  }
   for (const assignment of card.assignments) {
     const definition = tagDefinition(assignment.tagId);
     if (!definition) continue;
