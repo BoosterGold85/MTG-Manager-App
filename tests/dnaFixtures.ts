@@ -271,9 +271,37 @@ export function dnaFixture(
   state.decks = [deck];
   return { state, deck };
 }
+// Clones: a trimmed version of a real Jackal, Genius Geneticist list. Oracle text for each card is canonical
+// wording; Jackal's text is reconstructed from its printed ability and should be re-checked against Scryfall.
+export const jackal = card(
+  "Jackal, Genius Geneticist",
+  "Legendary Creature — Human Scientist Villain",
+  "Trample\nWhenever you cast a creature spell with mana value equal to Jackal's power, copy that spell, except the copy isn't legendary. Then put a +1/+1 counter on Jackal.",
+  ["Trample"],
+  2,
+);
+jackal.colorIdentity = ["G", "U"];
+const gu = (c: CardMetadata, colors: CardMetadata["colorIdentity"] = ["U"]) => ((c.colorIdentity = colors), c);
+export const clones = [
+  gu(card("Body Double", "Creature — Shapeshifter", "You may have Body Double enter as a copy of any creature card in a graveyard.", [], 5)),
+  gu(card("Clever Impersonator", "Creature — Shapeshifter", "You may have Clever Impersonator enter as a copy of any nonland permanent on the battlefield.", [], 4)),
+  gu(card("Mockingbird", "Creature — Bird Bard", "Flying\nYou may have Mockingbird enter as a copy of any creature on the battlefield with mana value less than or equal to the amount of mana spent to cast Mockingbird, except it's a Bird in addition to its other types and it has flying.", ["Flying"], 1)),
+  gu(card("Gigantoplasm", "Creature — Shapeshifter", "You may have Gigantoplasm enter as a copy of any creature on the battlefield, except it has \"{X}: This creature has base power and toughness X/X.\"", [], 4)),
+  gu(card("Mercurial Pretender", "Creature — Shapeshifter", "You may have Mercurial Pretender enter as a copy of a creature you control, except it has \"{2}{U}{U}: Return this creature to its owner's hand.\"", [], 5)),
+  gu(card("Doppelgang", "Sorcery", "For each of X target permanents, create X tokens that are copies of that permanent.", [], 2), ["G", "U"]),
+  gu(card("Deepfathom Echo", "Creature — Merfolk Spirit", "At the beginning of combat on your turn, Deepfathom Echo explores. Then you may have it become a copy of another creature you control until end of turn.", [], 4), ["G", "U"]),
+  gu(card("Haunting Imitation", "Sorcery", "Each player reveals the top card of their library. For each creature card revealed this way, create a token that's a copy of that card, except it's 1/1, it's a Spirit in addition to its other types, and it has flying. If no creature cards were revealed this way, return Haunting Imitation to its owner's hand.", [], 3)),
+  gu(card("Vesuva", "Land", "You may have Vesuva enter tapped as a copy of any land on the battlefield.", [], 0), []),
+  gu(card("Doubling Season", "Enchantment", "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\nIf an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.", [], 5), ["G"]),
+  gu(card("Narset's Reversal", "Instant", "Copy target instant or sorcery spell, then return it to its owner's hand. You may choose new targets for the copy.", [], 2)),
+  gu(card("Unsummon", "Instant", "Return target creature to its owner's hand.", [], 1)),
+  gu(card("Llanowar Elves", "Creature — Elf Druid", "{T}: Add {G}.", [], 1), ["G"]),
+  gu(card("Cultivate", "Sorcery", "Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.", [], 3), ["G"]),
+];
 export const regressionDecks = [
   { name: "Dragon Typal", commander: lathliss, main: dragons },
   { name: "Counters", commander: atraxa, main: counters },
   { name: "Graveyard", commander: meren, main: graveyard },
   { name: "Tokens / Aristocrats", commander: ghave, main: aristocrats },
+  { name: "Clones / Copies", commander: jackal, main: clones },
 ];

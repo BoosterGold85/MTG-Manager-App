@@ -5,6 +5,7 @@ import { analyze } from '../../src/intelligence/tagger';
 import { creatureTypeSignals } from '../../src/intelligence/creatureTypes';
 import { tagDefinition } from '../../src/intelligence/taxonomy';
 import { card } from '../fixtures/intelligence';
+import { RULESET_VERSION } from '../../src/intelligence/types';
 // Deterministic snapshots of canonical Scryfall data. No live requests during tests.
 export const regressionCards=fixtures.map(data=>normalizeCard(data as Parameters<typeof normalizeCard>[0]));
 const expected:[string,string[],string[]][]=[
@@ -88,5 +89,5 @@ it('the new ruleset refreshes prior false positives and preserves manual correct
  const {processCards}=await import('../../src/intelligence/process');const {cardIdentity,effectiveAssignments}=await import('../../src/intelligence/tagger');
  const fixture=regressionCards.find(c=>c.name==='All Will Be One')!;const identity=cardIdentity(fixture);const previous=await processCards([fixture]);
  previous.auto[identity].rulesetVersion='0.3.0';previous.overrides[identity]={added:['enchantments'],suppressed:['counter-payoff']};
- const next=await processCards([fixture],previous);expect(next.auto[identity].rulesetVersion).toBe('0.3.2');expect(next.auto[identity].assignments.map(a=>a.tagId)).not.toContain('enchantments');expect(effectiveAssignments(next.auto[identity],next.overrides[identity]).map(a=>a.tagId)).toContain('enchantments');expect(next.overrides).toEqual(previous.overrides);
+ const next=await processCards([fixture],previous);expect(next.auto[identity].rulesetVersion).toBe(RULESET_VERSION);expect(next.auto[identity].assignments.map(a=>a.tagId)).not.toContain('enchantments');expect(effectiveAssignments(next.auto[identity],next.overrides[identity]).map(a=>a.tagId)).toContain('enchantments');expect(next.overrides).toEqual(previous.overrides);
 });

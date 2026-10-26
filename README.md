@@ -1,6 +1,10 @@
-# MTG Manager · v0.6.4
+# MTG Manager · v0.6.5
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Clones & Copies (v0.6.5)
+
+Card Intelligence tags clone effects ("enter as a copy of", "become a copy of", token copies of permanents) as **Clones / Copies**. It tags copying creature spells (e.g. Jackal, Genius Geneticist) as **Copy Creature Spells**. Copy Spells now means instant, sorcery and noncreature spells only. Clone decks get a **Clones & Copies** Deck DNA theme and a **Clones / Copies** Synergy Explorer archetype. Ruleset 0.3.3 refreshes saved auto-tags once; your manual tag edits are kept.
 
 ## Basic lands in decks (v0.6.4)
 
@@ -306,4 +310,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is approved; v0.6.5 Clones & Copies is current. Work stops before v0.7.0.

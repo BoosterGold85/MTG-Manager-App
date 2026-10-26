@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.5 — Clones & Copies theme
+
+- Fixed clone/copy decks (e.g. Jackal, Genius Geneticist) not being identified. Card Intelligence had no tag for copying permanents, and it labelled "copy that creature spell" as Copy Spells, pulling such decks toward Spellslinger.
+- Added Card Intelligence tags **Clones / Copies** (strategy: "enter as a copy of", "become a copy of", "create … token(s) that are copies of") and **Copy Creature Spells** (enabler). Copy Spells is now limited to instant, sorcery and noncreature spells. Reminder text such as populate's is ignored for clone detection.
+- Added a **Clones & Copies** Deck DNA family and a **Clones / Copies** Synergy Explorer archetype.
+- Ruleset 0.3.3: saved auto-tags recalculate once on next load; manual tag corrections are preserved. DNA and synergy versions are 0.6.5.
+- Added a Jackal clone regression deck and 5 unit tests.
+
 ## 0.6.4 — Basic Land Import Exception
 
 - Basic lands are detected from card data (the Basic supertype in the type line, front face first), never by name. This covers Plains–Forest, Snow-Covered basics and Wastes; Command Tower, Dryad Arbor and other nonbasic lands are excluded.

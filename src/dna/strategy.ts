@@ -7,7 +7,7 @@ import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 
-export const SYNERGY_VERSION = "0.6.3";
+export const SYNERGY_VERSION = "0.6.5";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -156,6 +156,7 @@ const roleTags: Record<Role, string[]> = {
 };
 const labels: Record<string, string> = {
   spells: "Spellslinger",
+  clones: "Clones / Copies",
   tokens: "Tokens",
   sacrifice: "Aristocrats / Sacrifice",
   graveyard: "Graveyard / Reanimator",
@@ -174,6 +175,7 @@ const labels: Record<string, string> = {
 };
 const featureTags: Record<string, string[]> = {
   spells: ["spellslinger", "instants-sorceries", "copy-spells"],
+  clones: ["clones", "copy-creature-spells"],
   tokens: ["tokens", "token-payoff", "populate", "go-wide"],
   sacrifice: [
     "aristocrats",

@@ -96,6 +96,12 @@ export const families: ThemeFamily[] = [
     plan: "support an individual threat with Equipment or Auras",
   },
   {
+    id: "clones",
+    label: "Clones & Copies",
+    tags: ["clones", "copy-creature-spells"],
+    plan: "copy creatures and permanents to repeat their best effects",
+  },
+  {
     id: "spells",
     label: "Spells",
     tags: ["instants-sorceries", "spellslinger", "copy-spells", "cast-exile"],
@@ -166,4 +172,4 @@ export const families: ThemeFamily[] = [
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.3";
+export const DNA_VERSION = "0.6.5";
