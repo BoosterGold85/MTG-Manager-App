@@ -63,18 +63,26 @@ async function setup(page: Page, assignedOnly = false, large = false) {
     .getByRole("button", { name: "Decks", exact: true })
     .click();
   await expect(
-    page.getByRole("button", { name: "Explore Synergy", exact: true }),
+    page.getByRole("button", { name: "Upgrades I Own", exact: true }),
   ).toHaveCount(0);
   await page
     .locator(".deck-card")
     .filter({ hasText: "Regression Deck" })
     .click();
   await expect(
-    page.getByRole("button", { name: "Explore Synergy", exact: true }),
+    page.getByRole("button", { name: "Upgrades I Own", exact: true }),
   ).toBeVisible();
   return f;
 }
-test("owned candidates explain fit, group printings, show availability and usage, compare without writes or lookups", async ({
+async function openBuild(page: Page) {
+  await page
+    .getByRole("button", { name: "Upgrades I Own", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
+  return dialog;
+}
+test("goal chooser separates the two questions; Build Around My Commander explains fit and priority without writes or lookups", async ({
   page,
 }, info) => {
   await setup(page);
@@ -84,39 +92,32 @@ test("owned candidates explain fit, group printings, show availability and usage
     if (r.url().includes("api.scryfall.com")) calls.push(r.url());
   });
   await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
+    .getByRole("button", { name: "Upgrades I Own", exact: true })
     .click();
   const dialog = page.getByRole("dialog");
   await expect(
     dialog.getByRole("heading", { name: "Upgrades I Own", exact: true }),
   ).toBeVisible();
+  const goals = dialog.getByRole("region", { name: "Choose a goal" });
+  await expect(
+    goals.getByRole("heading", { name: "What are you trying to do?" }),
+  ).toBeVisible();
+  // A nine-card deck cannot simulate one-for-one swaps.
+  await expect(
+    goals.getByRole("button", { name: /Improve My Current Deck/ }),
+  ).toBeDisabled();
+  await expect(goals).toContainText("This deck has 9 of 99 cards");
+  await goals.getByRole("button", { name: /Build Around My Commander/ }).click();
   await expect(dialog.getByRole("status")).toHaveText("2 candidates");
   const candidate = dialog.locator(".synergy-candidates>li").first();
   await expect(candidate).toContainText("Utvara Hellkite");
+  await expect(candidate).toContainText(/Build Priority: [A-Za-z ]+ · \d+/);
+  await expect(candidate).toContainText(/Commander Fit: [A-Za-z]+ — \d+/);
   await expect(candidate).toContainText("Available 2 · Owned 3");
   await expect(candidate).toContainText("Used in: Miirym (1)");
   await expect(candidate).toContainText("Dragon");
-  expect(await dialog.locator(".synergy-candidates>li").count()).toBe(2);
-  await dialog
-    .getByRole("button", { name: "Compare Utvara Hellkite", exact: true })
-    .click();
-  const comparison = dialog.getByRole("region", {
-    name: "Candidate comparison",
-    exact: true,
-  });
-  await expect(comparison).toBeFocused();
-  await comparison
-    .getByLabel("Compare with a card in this deck")
-    .selectOption({ label: "Dragon Hatchling" });
-  await expect(
-    comparison.getByRole("region", { name: "Current deck card", exact: true }),
-  ).toContainText("Dragon Hatchling");
-  await expect(
-    comparison.getByRole("region", { name: "In This Deck", exact: true }),
-  ).toHaveCount(2);
-  await expect(comparison).toContainText(
-    "Choosing this comparison makes no deck changes.",
-  );
+  await expect(candidate.getByRole("button", { name: /^Compare/ })).toHaveCount(0);
+  await expect(dialog.getByText("Developer trace")).toHaveCount(0);
   expect(
     (
       await new AxeBuilder({ page })
@@ -130,15 +131,24 @@ test("owned candidates explain fit, group printings, show availability and usage
     ),
   ).toBe(true);
   await page.screenshot({
-    path: info.outputPath("owned-synergy-comparison.png"),
+    path: info.outputPath("upgrades-build-around.png"),
   });
-  await comparison
-    .getByRole("button", { name: "View candidate card details", exact: true })
+  await candidate
+    .getByRole("button", { name: "View Utvara Hellkite details", exact: true })
     .click();
   await expect(page.locator("#detail-title")).toHaveText("Utvara Hellkite");
+  const scores = page.getByRole("region", { name: "Upgrades I Own scores" });
+  await expect(scores).toContainText("Commander Fit");
+  await expect(scores).toContainText("Build Priority");
+  await expect(scores).toContainText("Upgrade Value");
+  await expect(scores).toContainText("Needs at least 60 cards in the deck.");
   await page.keyboard.press("Escape");
   await expect(
     page.getByRole("heading", { name: "Upgrades I Own", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Change goal", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "What are you trying to do?" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   expect(await snapshot(page)).toEqual(before);
@@ -149,7 +159,7 @@ test("owned candidates explain fit, group printings, show availability and usage
   ).toBeVisible();
   expect(await snapshot(page)).toEqual(before);
   await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
+    .getByRole("button", { name: "Upgrades I Own", exact: true })
     .click();
   await page.goBack();
   await expect(page.getByRole("heading", { name: /My Decks/ })).toBeVisible();
@@ -161,15 +171,12 @@ test("owned candidates explain fit, group printings, show availability and usage
   await expect(page.getByRole("dialog")).toHaveCount(0);
   expect(await snapshot(page)).toEqual(before);
 });
-test("higher Synergy ranks first while assigned candidates stay visible; search, availability filter and empty state work", async ({
+test("assigned candidates stay visible; search, availability filter, sorting and empty state work", async ({
   page,
 }) => {
   await setup(page, true);
   const before = await snapshot(page);
-  await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog");
+  const dialog = await openBuild(page);
   await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
     "Utvara Hellkite",
   );
@@ -179,6 +186,11 @@ test("higher Synergy ranks first while assigned candidates stay visible; search,
   await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
     "Miirym",
   );
+  await dialog.getByRole("combobox", { name: "Sort" }).selectOption("name");
+  await expect(dialog.locator(".synergy-candidates>li h3").first()).toContainText(
+    "Quiet Owned Card",
+  );
+  await dialog.getByRole("combobox", { name: "Sort" }).selectOption("default");
   await dialog
     .getByRole("combobox", { name: "Copy availability" })
     .selectOption("available");
@@ -215,19 +227,9 @@ test("large candidate lists render progressively while search covers all owned c
 }) => {
   await setup(page, false, true);
   const before = await snapshot(page);
-  await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog");
+  const dialog = await openBuild(page);
   await expect(dialog.getByRole("status")).toHaveText("72 candidates");
-  await expect(dialog.locator(".other-legal-cards")).not.toHaveAttribute(
-    "open",
-    "",
-  );
-  await expect(
-    dialog.locator(".other-legal-cards .synergy-candidates>li"),
-  ).toHaveCount(40);
-  await dialog.locator(".other-legal-cards>summary").click();
+  await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(40);
   await dialog.getByRole("button", { name: "Show more candidates" }).click();
   await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(72);
   await dialog

@@ -69,7 +69,15 @@ async function setup(page: Page) {
     .filter({ hasText: "Reign of Dragons" })
     .click();
 }
-test("actual Reign proves Changeling and typed smoothing, rejects Soldier Commander claims, and compares potential cuts without writes", async ({
+async function openImprove(page: Page) {
+  await page
+    .getByRole("button", { name: "Upgrades I Own", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByRole("button", { name: /Improve My Current Deck/ }).click();
+  return dialog;
+}
+test("Reign: Improve My Current Deck ranks by best one-for-one swap, explains the cut and compares any deck card without writes", async ({
   page,
 }, info) => {
   await setup(page);
@@ -78,89 +86,43 @@ test("actual Reign proves Changeling and typed smoothing, rejects Soldier Comman
   page.on("request", (r) => {
     if (r.url().includes("api.scryfall.com")) calls.push(r.url());
   });
-  await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog"),
-    recommended = dialog.getByRole("region", {
-      name: "Recommended",
-      exact: true,
-    });
-  const wayfinder = recommended
-    .locator(".synergy-candidates>li")
-    .filter({ hasText: "Changeling Wayfinder" });
-  await expect(wayfinder).toContainText(/Synergy (7\d|8[0-2])/);
+  const dialog = await openImprove(page);
+  await expect(dialog.getByRole("status")).toHaveText("3 candidates");
+  const rows = dialog.locator(".synergy-candidates>li");
+  const wayfinder = rows.filter({ hasText: "Changeling Wayfinder" });
+  await expect(rows.first()).toContainText("Changeling Wayfinder");
+  await expect(wayfinder).toContainText(/Minor Upgrade · \+0\.\d\d/);
+  await expect(wayfinder).toContainText("Best swap: cut");
   await expect(wayfinder).toContainText("Confidence: High");
-  await expect(wayfinder.locator(".candidate-summary")).toContainText(
-    /Changeling.*Dragon.*entering triggers Lathliss/,
+  await expect(wayfinder).toContainText(/Commander Fit: [A-Za-z]+ — \d+/);
+  await expect(rows.filter({ hasText: "Fire Nation Attacks" })).toContainText(
+    "Sidegrade",
   );
-  await expect(wayfinder.locator(".candidate-summary")).toContainText(
-    "basic land to hand",
-  );
-  await expect(wayfinder.locator(".score-breakdown dl")).toHaveCount(0);
-  const measures = () =>
-    page.evaluate(() => [
-      performance.getEntriesByName("mtg:strategy-profile").length,
-      performance.getEntriesByName("mtg:recommendation-profile").length,
-    ]);
-  const counts = await measures();
-  await wayfinder.getByText("Why this score?", { exact: true }).click();
-  const details = wayfinder.locator(".score-breakdown");
-  await expect(details).toContainText("basic land to hand");
-  await expect(details).not.toContainText("fills a needed unrestricted tutor");
-  await expect(
-    details.getByText("basic land to hand · changeling · land smoothing", {
-      exact: true,
-    }),
-  ).toBeVisible();
-  await expect(details).toContainText("Commander interaction");
-  await expect(details).toContainText("Existing-card interaction");
-  const points = (await details.locator("dd").allTextContents()).map(
-    parseFloat,
-  );
-  await expect(details).toContainText(
-    `Raw total: ${points.reduce((n, p) => n + p, 0)}`,
-  );
-  expect(await measures()).toEqual(counts);
   await wayfinder
     .getByRole("button", { name: "Compare Changeling Wayfinder", exact: true })
     .click();
-  const comparisons = dialog.getByRole("region", {
-    name: "Potential replacements",
+  const comparison = dialog.getByRole("region", {
+    name: "Candidate comparison",
+    exact: true,
   });
-  await expect(comparisons).toContainText("local Synergy heuristic");
-  const choose = comparisons
-    .getByRole("button", { name: /^Compare against/ })
-    .first();
-  await expect(choose).toBeVisible();
-  await choose.click();
+  await expect(comparison).toBeFocused();
   await expect(
-    dialog.getByRole("region", { name: "Current deck card", exact: true }),
+    comparison.getByRole("heading", { name: /^Best swap: cut / }),
   ).toBeVisible();
   await expect(
-    dialog.getByRole("region", { name: "Heuristic comparison delta" }),
-  ).toContainText("not a universal power rating");
-  await dialog
-    .getByRole("button", { name: "Close comparison", exact: true })
-    .click();
-  await dialog
-    .getByRole("searchbox", { name: "Search owned candidates" })
-    .fill("Fire Nation");
-  const other = dialog.locator(".other-legal-cards");
-  await expect(other).not.toHaveAttribute("open", "");
-  await other.locator(":scope>summary").click();
-  await expect(other).toContainText("Poor Fit");
-  await expect(other.locator(".candidate-summary")).toContainText("Soldier");
-  await expect(other.locator(".candidate-summary")).toContainText(
-    "do not satisfy",
-  );
-  await other.getByText("Why this score?", { exact: true }).click();
-  await expect(other.locator(".score-breakdown")).toContainText(
-    "Commander relationship: 0/25",
-  );
-  await expect(other.locator(".score-breakdown")).toContainText(
-    "wrong_token_type",
-  );
+    comparison.getByRole("definition").first(),
+  ).toBeVisible();
+  await comparison
+    .getByLabel("Compare with a card in this deck")
+    .selectOption({ label: "Lightning Bolt" });
+  const chosen = comparison.getByRole("region", { name: "Chosen swap" });
+  await expect(chosen).toContainText("Swap for Lightning Bolt");
+  await expect(chosen).toContainText("Upgrade Value for this swap");
+  await comparison
+    .getByLabel("Compare with a card in this deck")
+    .selectOption({ label: "Mountain" });
+  await expect(chosen).toContainText("Not a valid swap");
+  await expect(comparison).toContainText("Comparing makes no deck changes.");
   expect(
     (
       await new AxeBuilder({ page })
@@ -174,39 +136,44 @@ test("actual Reign proves Changeling and typed smoothing, rejects Soldier Comman
     ),
   ).toBe(true);
   await page.screenshot({
-    path: info.outputPath("reign-typed-recommendations.png"),
+    path: info.outputPath("reign-improve-current-deck.png"),
   });
+  await comparison
+    .getByRole("button", { name: "Close comparison", exact: true })
+    .click();
   await page.keyboard.press("Escape");
   expect(await read(page)).toEqual(before);
   expect(calls).toEqual([]);
 });
-test("low-confidence candidates retain manual comparison but never propose cuts; search and cached profiles survive disclosures", async ({
+test("low confidence stays capped and below confident results; the detail view shows all three scores separately", async ({
   page,
 }) => {
   await setup(page);
   const before = await read(page);
-  await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog");
+  const dialog = await openImprove(page);
   await dialog
     .getByRole("searchbox", { name: "Search owned candidates" })
     .fill("Uncertain");
-  const other = dialog.locator(".other-legal-cards");
-  if (await other.count()) await other.locator(":scope>summary").click();
   const row = dialog.locator(".synergy-candidates>li");
   await expect(row).toContainText("Confidence: Low");
-  await row
-    .getByRole("button", { name: "Compare Uncertain Dragon", exact: true })
+  await expect(row).not.toContainText(/Major Upgrade|Strong Upgrade|Moderate Upgrade/);
+  await dialog
+    .getByRole("searchbox", { name: "Search owned candidates" })
+    .fill("");
+  await dialog.getByRole("button", { name: "Change goal", exact: true }).click();
+  await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
+  const priorities = (
+    await dialog.locator(".synergy-candidates>li h3>span").allTextContents()
+  ).map((t) => Number(t.match(/· (\d+)/)![1]));
+  expect(priorities).toEqual([...priorities].sort((a, b) => b - a));
+  await dialog
+    .getByRole("button", { name: "View Changeling Wayfinder details", exact: true })
     .click();
-  const suggestions = dialog.getByRole("region", {
-    name: "Potential replacements",
-  });
-  await expect(suggestions).toContainText("No sufficiently confident");
-  await expect(suggestions.getByRole("button")).toHaveCount(0);
-  await expect(
-    dialog.getByRole("combobox", { name: "Compare with a card in this deck" }),
-  ).toBeVisible();
+  const scores = page.getByRole("region", { name: "Upgrades I Own scores" });
+  await expect(scores).toContainText(/Commander Fit[A-Za-z]+ — \d+/);
+  await expect(scores).toContainText(/Build Priority[A-Za-z ]+ — \d+/);
+  await expect(scores).toContainText(/Upgrade ValueMinor Upgrade \(\+0\.\d\d\) · best swap: cut/);
+  await page.keyboard.press("Escape");
   await page.keyboard.press("Escape");
   expect(await read(page)).toEqual(before);
 });

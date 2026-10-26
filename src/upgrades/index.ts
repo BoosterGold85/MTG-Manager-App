@@ -18,10 +18,10 @@ import { canonicalInput } from "./inputs";
 export const UPGRADES_VERSION = "0.6.6";
 /** A deck needs most of its 99 before "Improve My Current Deck" can simulate meaningful swaps. */
 export const MIN_CURRENT_DECK_CARDS = 60;
-export interface BuildCandidate extends Omit<OwnedCandidateGroup, "canonical"> {
+export interface BuildCandidate extends OwnedCandidateGroup {
   build: BuildEvaluation;
 }
-export interface UpgradeCandidate extends Omit<OwnedCandidateGroup, "canonical"> {
+export interface UpgradeCandidate extends OwnedCandidateGroup {
   upgrade: UpgradeEvaluation;
   build: BuildEvaluation;
 }
@@ -44,7 +44,7 @@ export function buildAroundCommander(state: CollectionState, deck: Deck): BuildC
   return memo(state, `build:${deckKey(deck)}`, () => {
     const blueprint = commanderBlueprint(state, deck);
     return ownedCandidateGroups(state, deck)
-      .map(({ canonical, ...group }) => ({ ...group, build: evaluateForBuild(blueprint, canonicalInput(state, canonical)) }))
+      .map((group) => ({ ...group, build: evaluateForBuild(blueprint, canonicalInput(state, group.canonical)) }))
       .sort((a, b) => compareBuild(a.build, b.build));
   });
 }
@@ -56,20 +56,25 @@ export function improveCurrentDeck(state: CollectionState, deck: Deck): UpgradeC
     const dna = deckDnaCache.get(state, deck),
       score = candidateScorer(state, deck, dna),
       model = currentDeckModel(state, deck),
-      blueprint = commanderBlueprint(state, deck);
+      builds = new Map(buildAroundCommander(state, deck).map((c) => [c.identity, c.build]));
     return ownedCandidateGroups(state, deck)
-      .map(({ canonical, ...group }) => {
-        const input = canonicalInput(state, canonical);
-        return {
-          ...group,
-          upgrade: evaluateUpgrade(model, canonical, input.identity, score(canonical).recommendation),
-          build: evaluateForBuild(blueprint, input),
-        };
-      })
+      .map((group) => ({
+        ...group,
+        upgrade: evaluateUpgrade(model, group.canonical, group.identity, score(group.canonical).recommendation),
+        build: builds.get(group.identity)!,
+      }))
       .sort((a, b) => compareUpgrade(a.upgrade, b.upgrade));
   });
 }
-export function compareSwap(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["card"], cutIdentity: string) {
+export function compareSwap(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["canonical"], cutIdentity: string) {
   const dna = deckDnaCache.get(state, deck);
   return simulateSwap(currentDeckModel(state, deck), candidate, candidateScorer(state, deck, dna)(candidate).recommendation, cutIdentity);
+}
+/** One candidate's Upgrade Value, without evaluating the whole collection (Card Detail from Build mode). */
+export function upgradeFor(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["canonical"], identity: string): UpgradeEvaluation {
+  const cached = cache.get(state)?.get(`upgrade:${deckKey(deck)}`) as UpgradeCandidate[] | undefined;
+  const known = cached?.find((c) => c.identity === identity);
+  if (known) return known.upgrade;
+  const dna = deckDnaCache.get(state, deck);
+  return evaluateUpgrade(currentDeckModel(state, deck), candidate, identity, candidateScorer(state, deck, dna)(candidate).recommendation);
 }

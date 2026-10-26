@@ -7,7 +7,7 @@ import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 
-export const SYNERGY_VERSION = "0.6.5";
+export const SYNERGY_VERSION = "0.6.6";
 export type Role =
   | "ramp"
   | "cardAdvantage"

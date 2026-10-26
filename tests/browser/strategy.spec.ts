@@ -100,7 +100,19 @@ async function setup(page: Page) {
     .filter({ hasText: "Dragon scoring regression" })
     .click();
 }
-test("strong engines are recommendations; named beta false positives stay collapsed with honest labels and exact signed breakdowns", async ({
+async function openGoal(page: Page, goal: RegExp) {
+  await page
+    .getByRole("button", { name: "Upgrades I Own", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByRole("button", { name: goal }).click();
+  return dialog;
+}
+const names = async (dialog: ReturnType<Page["getByRole"]>) =>
+  (await dialog.locator(".synergy-candidates>li h3").allTextContents()).map(
+    (t) => t.split(/ (?:Build Priority|Major|Strong|Moderate|Minor|Sidegrade|Downgrade)/)[0].trim(),
+  );
+test("the two goals answer different questions: real engines lead upgrades, off-plan staples keep priority but not fit", async ({
   page,
 }, info) => {
   await setup(page);
@@ -109,95 +121,29 @@ test("strong engines are recommendations; named beta false positives stay collap
   page.on("request", (r) => {
     if (r.url().includes("api.scryfall.com")) calls.push(r.url());
   });
-  await page
-    .getByRole("button", { name: "Explore Synergy", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog"),
-    recommended = dialog.getByRole("region", {
-      name: "Recommended",
-      exact: true,
-    }),
-    other = dialog.locator(".other-legal-cards");
-  await expect(recommended).toBeVisible();
-  await expect(recommended).toContainText("Dragon Tempest");
-  await expect(recommended).toContainText("Utvara Hellkite");
-  await expect(recommended).toContainText("Other Dragons");
-  await expect(recommended).toContainText("Owned 1 · Available 0");
-  await expect(recommended).toContainText("Available 1 · Owned 1");
-  for (const [tier, min, max] of [
-    ["Recommended", 70, 100],
-    ["Worth Considering", 50, 69],
-  ] as const) {
-    const region = dialog.getByRole("region", { name: tier, exact: true });
-    await expect(region).toBeVisible();
-    for (const label of await region.locator("h3>span").allTextContents()) {
-      const score = Number(label.match(/Synergy (\d+)/)![1]);
-      expect(score).toBeGreaterThanOrEqual(min);
-      expect(score).toBeLessThanOrEqual(max);
-    }
-  }
+  let dialog = await openGoal(page, /Improve My Current Deck/);
+  const improve = await names(dialog);
+  for (const offPlan of ["Alania's Pathmaker", "Mongoose Lizard", "Costly Dragon Support"])
+    expect(improve.indexOf("Dragon Tempest")).toBeLessThan(improve.indexOf(offPlan));
+  expect(improve.indexOf("Utvara Hellkite")).toBeLessThan(improve.indexOf("Alania's Pathmaker"));
   await expect(
-    recommended.getByRole("button", {
-      name: "Compare Dragon Tempest",
-      exact: true,
-    }),
-  ).toBeVisible();
-  await expect(recommended.locator(".score-breakdown dl")).toHaveCount(0);
-  for (const summary of await recommended
-    .locator(".candidate-summary")
-    .allTextContents()) {
-    expect(summary).not.toMatch(/\d|contextual target|raw total|clamped/i);
-  }
-  for (const name of [
-    "Alania's Pathmaker",
-    "Harnesser of Storms",
-    "Mongoose Lizard",
-  ]) {
-    await expect(recommended).not.toContainText(name);
-    await expect(other).toContainText(name);
-  }
-  await expect(other).not.toHaveAttribute("open", "");
+    dialog.locator(".synergy-candidates>li").filter({ hasText: "Dragon Tempest" }),
+  ).toContainText("Best swap: cut");
+  await dialog.getByRole("button", { name: "Change goal", exact: true }).click();
+  await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
   await expect(
-    other.getByRole("button", { name: /Compare Alania/ }),
-  ).not.toBeVisible();
-  await expect(
-    recommended.locator(".score-breakdown").first(),
-  ).not.toHaveAttribute("open", "");
-  await other.locator(":scope>summary").click();
-  const row = other
-    .locator("li")
-    .filter({ has: page.getByRole("heading", { name: /Alania.s Pathmaker/ }) });
-  await expect(row).toContainText("Poor Fit");
-  await expect(row.locator(".candidate-summary")).not.toHaveText("");
-  await expect(row.locator(".candidate-summary")).not.toContainText(
-    "contextual target",
-  );
-  await expect(row.locator(".candidate-summary")).not.toContainText(/\d/);
-  await expect(row).not.toContainText("Conflicts:");
-  const count = await page.evaluate(
-    () => performance.getEntriesByName("mtg:strategy-profile").length,
-  );
-  await expect(row.locator(".score-breakdown dl")).toHaveCount(0);
-  await row.getByText("Why this score?", { exact: true }).click();
-  expect(
-    await page.evaluate(
-      () => performance.getEntriesByName("mtg:strategy-profile").length,
-    ),
-  ).toBe(count);
-  const breakdown = row.locator(".score-breakdown");
-  await expect(breakdown).toContainText("wrong_tribal_type");
-  await expect(breakdown).toContainText("No verified Commander interaction");
-  await expect(breakdown).toContainText("Existing-card interaction");
-  const points = (await breakdown.locator("dd").allTextContents()).map(
-      (value) => parseFloat(value),
-    ),
-    raw = points.reduce((n, p) => n + p, 0),
-    score = Number(
-      (await row.locator("h3>span").innerText()).match(/Synergy (\d+)/)![1],
-    );
-  expect(score).toBe(Math.max(0, Math.min(100, raw)));
-  expect(points.some((p) => p < 0)).toBe(true);
-  await expect(breakdown).toContainText(`Raw total: ${raw}`);
+    dialog.getByRole("region", { name: "Commander Blueprint" }),
+  ).toContainText("Lathliss");
+  const row = (name: string) =>
+    dialog.locator(".synergy-candidates>li").filter({
+      has: page.getByRole("heading", { name: new RegExp(name) }),
+    });
+  await expect(row("Utvara Hellkite")).toContainText(/Commander Fit: (Excellent|Exceptional)/);
+  await expect(row("Alania.s Pathmaker")).toContainText("Commander Fit: Weak");
+  await expect(row("Harnesser of Storms")).toContainText("Commander Fit: Weak");
+  await dialog.getByRole("combobox", { name: "Sort" }).selectOption("fit");
+  const byFit = await names(dialog);
+  expect(byFit.indexOf("Utvara Hellkite")).toBeLessThan(byFit.indexOf("Harnesser of Storms"));
   expect(
     (
       await new AxeBuilder({ page })
@@ -210,12 +156,14 @@ test("strong engines are recommendations; named beta false positives stay collap
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await page.screenshot({ path: info.outputPath("contextual-scoring.png") });
+  await page.screenshot({ path: info.outputPath("upgrades-two-goals.png") });
   await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   expect(await snapshot(page)).toEqual(before);
   expect(calls).toEqual([]);
+  dialog = page.getByRole("dialog");
+  await expect(dialog).toHaveCount(0);
 });
-test("search, availability and reopen reuse the strategy profile and preserve score order without saved changes", async ({
+test("search, availability and reopen reuse cached analysis and keep the same order without saved changes", async ({
   page,
 }) => {
   await setup(page);
@@ -223,17 +171,16 @@ test("search, availability and reopen reuse the strategy profile and preserve sc
     computations = () =>
       page.evaluate(
         () => performance.getEntriesByName("mtg:strategy-profile").length,
-      ),
-    initial = await computations();
+      );
+  let first: string[] = [],
+    initial = 0;
   for (let i = 0; i < 2; i++) {
-    await page
-      .getByRole("button", { name: "Explore Synergy", exact: true })
-      .click();
-    const dialog = page.getByRole("dialog");
-    const values = (
-      await dialog.locator(".synergy-candidates>li h3>span").allTextContents()
-    ).map((t) => Number(t.match(/Synergy (\d+)/)![1]));
-    expect(values).toEqual([...values].sort((a, b) => b - a));
+    const dialog = await openGoal(page, /Improve My Current Deck/);
+    const order = await names(dialog);
+    if (i === 0) {
+      first = order;
+      initial = await computations();
+    } else expect(order).toEqual(first);
     await dialog
       .getByRole("combobox", { name: "Copy availability" })
       .selectOption("assigned");
@@ -244,15 +191,8 @@ test("search, availability and reopen reuse the strategy profile and preserve sc
     await dialog
       .getByRole("searchbox", { name: "Search owned candidates" })
       .fill("Mongoose");
-    await expect(dialog.locator(".other-legal-cards")).not.toHaveAttribute(
-      "open",
-      "",
-    );
-    await dialog.locator(".other-legal-cards>summary").click();
-    await expect(dialog.locator(".synergy-candidates>li")).toContainText(
-      "Poor Fit",
-    );
-    await page.keyboard.press("Escape");
+    await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(1);
+    await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   }
   expect(await computations()).toBe(initial);
   expect(await snapshot(page)).toEqual(before);

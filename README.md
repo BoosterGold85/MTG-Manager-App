@@ -1,6 +1,16 @@
-# MTG Manager · v0.6.5
+# MTG Manager · v0.6.6
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Upgrades I Own: two separate questions (v0.6.6)
+
+Open a deck and choose **Upgrades I Own**. The app first asks **What are you trying to do?**
+
+- **Build Around My Commander** needs only a Commander. It builds a **Commander Blueprint** from the Commander's own typed mechanics plus normal Commander structure (for example a six-mana Commander raises the ramp target). Each owned card gets a **Commander Fit** (0–100: Exceptional, Excellent, Strong, Good, Situational, Weak — does it belong in this strategy?) and a **Build Priority** (Core, High Priority, Strong Consideration, Consider, Situational, Low Priority — how much you would want it when building from scratch). A Dragon that does little on its own can fit well and still have a lower priority; Sol Ring is Core without pretending to fit the Commander.
+- **Improve My Current Deck** needs at least 60 main-deck cards. For each owned card it simulates every reasonable one-for-one cut and keeps the best: **Upgrade Value** = deck utility after that swap − current utility (Major / Strong / Moderate / Minor Upgrade, Sidegrade, Downgrade). Utility is an explainable vector (Commander plan, mana, curve, card advantage, interaction breadth, protection, resilience, engines, finishing, card quality, redundancy, Commander dependency) with diminishing returns. Cuts protect functions, not card names: the only artifact answer or last protection piece is not cut for a card that doesn't replace it, and lands only swap for lands. Scoped engines count only what they actually multiply (Xorn counts Treasure sources, never Dragon tokens; extra combats count attack triggers; damage multipliers count damage engines). Low-confidence cards never rise above Minor Upgrade.
+- Card Detail opened from Upgrades I Own shows Commander Fit, Build Priority and Upgrade Value separately. Comparing a candidate with any deck card shows component deltas. Nothing changes your deck or moves copies; there is no multi-card optimizer. Add `?trace` to the URL for a developer trace per candidate.
+
+**Mayhem** is understood as a mechanic, not just a word: a Mayhem card can be cast from your graveyard only after you discarded it this turn. Controlled discard, looting and rummaging are its enablers; making opponents discard is not; Mayhem is not reusable recursion. Decks with Mayhem, Madness or discard payoffs get a **Discard / Mayhem** Deck DNA theme backed by their real discard outlets, and upgrade scoring uses the deck's actual discard support.
 
 ## Clones & Copies (v0.6.5)
 
@@ -310,4 +320,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is approved; v0.6.5 Clones & Copies is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is approved; v0.6.5 Clones & Copies is approved; v0.6.6 Upgrades I Own (two goals) and Mayhem is current. Work stops before v0.7.0.

@@ -9,6 +9,7 @@ import {
   compareSwap,
   improveCurrentDeck,
   mainDeckCount,
+  upgradeFor,
 } from "../upgrades";
 import type { BuildCandidate, UpgradeCandidate } from "../upgrades";
 import type { BuildEvaluation } from "../upgrades/build";
@@ -104,10 +105,18 @@ export function SynergyExplorer({ state, deck, onClose }: { state: CollectionSta
     [against, setAgainst] = useState(""),
     [detail, setDetail] = useState<Candidate | null>(null),
     [limit, setLimit] = useState(40);
+  // Analysis runs after the goal is shown, so large collections never freeze the dialog without feedback.
+  const [ready, setReady] = useState<Mode>("");
+  useEffect(() => {
+    if (!mode) return;
+    const id = setTimeout(() => setReady(mode), 0);
+    return () => clearTimeout(id);
+  }, [mode]);
+  const analyzing = !!mode && ready !== mode;
   const trace = developerTrace();
   const blueprint = useMemo(() => commanderBlueprint(state, deck), [state, deck]);
-  const build = useMemo(() => (mode === "build" ? buildAroundCommander(state, deck) : []), [mode, state, deck]);
-  const improve = useMemo(() => (mode === "improve" ? improveCurrentDeck(state, deck) : []), [mode, state, deck]);
+  const build = useMemo(() => (mode === "build" && ready === "build" ? buildAroundCommander(state, deck) : []), [mode, ready, state, deck]);
+  const improve = useMemo(() => (mode === "improve" && ready === "improve" ? improveCurrentDeck(state, deck) : []), [mode, ready, state, deck]);
   const rows = useMemo(
     () =>
       deckRows(state, deck)
@@ -142,10 +151,10 @@ export function SynergyExplorer({ state, deck, onClose }: { state: CollectionSta
   const chosenSwap = useMemo(() => {
     if (!candidate || !chosenRow) return null;
     const identity = chosenRow.card.analysis?.cardIdentity || chosenRow.card.oracleId || "";
-    return compareSwap(state, deck, candidate.card, identity);
+    return compareSwap(state, deck, candidate.canonical, identity);
   }, [candidate, chosenRow, state, deck]);
   if (detail) {
-    const upgrade = canImprove ? improveCurrentDeck(state, deck).find((c) => c.identity === detail.identity)?.upgrade : undefined;
+    const upgrade = canImprove ? upgradeFor(state, deck, detail.canonical, detail.identity) : undefined;
     return (
       <CardDetail
         card={detail.card}
@@ -280,9 +289,9 @@ export function SynergyExplorer({ state, deck, onClose }: { state: CollectionSta
             </label>
           </div>
           <p role="status">
-            {results.length} {results.length === 1 ? "candidate" : "candidates"}
+            {analyzing ? "Analyzing owned cards…" : `${results.length} ${results.length === 1 ? "candidate" : "candidates"}`}
           </p>
-          {!results.length && <p>No owned candidates match. Try another search or import more of your collection.</p>}
+          {!analyzing && !results.length && <p>No owned candidates match. Try another search or import more of your collection.</p>}
           {candidate && (
             <section ref={comparisonRef} tabIndex={-1} className="synergy-comparison" aria-label="Candidate comparison">
               <h3>

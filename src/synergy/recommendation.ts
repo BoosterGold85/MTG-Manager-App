@@ -70,7 +70,16 @@ const profiles = new Map<
   DeckStrategyProfile,
   { typed: TypedDeckProfile; scores: Map<string, StrategyScore> }
 >();
-const textOf = (input: DnaInputCard) =>
+// Per-input derived data is reused across every candidate scored against the same deck.
+const inputText = new WeakMap<DnaInputCard, string>();
+const inputRoles = new WeakMap<DnaInputCard, Partial<Record<Role, number>>>();
+const inputEvents = new WeakMap<DnaInputCard, SourceEvents>();
+const textOf = (input: DnaInputCard) => {
+  let text = inputText.get(input);
+  if (text === undefined) inputText.set(input, (text = rawTextOf(input)));
+  return text;
+};
+const rawTextOf = (input: DnaInputCard) =>
   stripReminderText(
     (input.card.cardFaces?.length
       ? input.card.cardFaces.map((f) => f.oracleText || "").join("\n")
@@ -128,6 +137,14 @@ const discardLabel = (facts: CardFacts) =>
 const ownFace = (facts: CardFacts, type: string) =>
   facts.faces.some((f) => f.cardTypes.includes(type));
 function actualRoles(
+  input: DnaInputCard,
+  facts: CardFacts,
+): Partial<Record<Role, number>> {
+  let roles = inputRoles.get(input);
+  if (!roles) inputRoles.set(input, (roles = computeRoles(input, facts)));
+  return roles;
+}
+function computeRoles(
   input: DnaInputCard,
   facts: CardFacts,
 ): Partial<Record<Role, number>> {
@@ -429,6 +446,70 @@ function stateFor(profile: DeckStrategyProfile) {
 export function recommendationProfile(profile: DeckStrategyProfile) {
   return stateFor(profile).typed;
 }
+type SourceEvents = { events: string[]; creatureTypes: string[]; changeling: boolean; sacrificeOutlet: boolean };
+function sourceEvents(source: DnaInputCard): SourceEvents {
+      const facts = factsOf(source),
+        sourceText = textOf(source),
+        events = new Set<string>();
+      const sourceTypes = facts.faces.flatMap((face) => face.creatureTypes);
+      for (const face of facts.faces) {
+        for (const type of face.cardTypes) events.add(type.toLowerCase());
+        for (const type of face.creatureTypes) events.add(`typal:${type}`);
+        if (face.cardDrawEffects.length) events.add("draw");
+        // Only tokens you receive can satisfy your own triggers.
+        for (const token of face.createsTokens.filter((t) => benefitsYou(t.controller))) {
+          events.add("token");
+          if (token.isCreature) events.add("creature");
+          if (token.tokenTypes.length) events.add("artifact");
+          for (const type of token.creatureTypes) events.add(`typal:${type}`);
+        }
+        if (
+          face.searchesLibrary.some(
+            (search) =>
+              search.targetTypes.includes("Land") &&
+              search.destination === "battlefield",
+          )
+        )
+          events.add("land");
+      }
+      if (
+        /you may play (?:an?|one|two|\d+) additional lands?/i.test(sourceText)
+      )
+        events.add("land");
+      if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
+      if (/Aura/.test(source.card.typeLine)) events.add("aura");
+      if (/counter target[^.]*spell/i.test(sourceText))
+        events.add("counterspell");
+      if (/\bdeals?[^.]*damage/i.test(sourceText)) events.add("damage");
+      if (
+        /\bgain(?:s)? (?:\d+|x|that much|that many|one|two|three) life/i.test(
+          sourceText,
+        )
+      )
+        events.add("lifegain");
+      if (
+        /\b(?:put|double|proliferate)[^.\n]*(?:counter|\bproliferate\b)|\bproliferate\b/i.test(
+          sourceText,
+        )
+      )
+        events.add("counters");
+      const sacrificeOutlet = !!actualRoles(source, facts).sacrificeOutlet;
+      if (
+        sacrificeOutlet ||
+        /(?:additional cost[^.]*|^|:)\s*sacrifice (?:a|another|an?) creature/im.test(
+          sourceText,
+        )
+      ) {
+        events.add("sacrifice");
+        events.add("dies");
+      }
+      return {
+        events: [...events],
+        creatureTypes: sourceTypes,
+        changeling: facts.faces.some((face) => face.hasChangeling),
+        sacrificeOutlet,
+      };
+    }
 function verifies(
   receiver: CommanderSynergyTag,
   source: DnaInputCard,
@@ -603,67 +684,9 @@ export function scoreRecommendation(
     input,
     verifies,
     (source) => {
-      const facts = factsOf(source),
-        sourceText = textOf(source),
-        events = new Set<string>();
-      const sourceTypes = facts.faces.flatMap((face) => face.creatureTypes);
-      for (const face of facts.faces) {
-        for (const type of face.cardTypes) events.add(type.toLowerCase());
-        for (const type of face.creatureTypes) events.add(`typal:${type}`);
-        if (face.cardDrawEffects.length) events.add("draw");
-        // Only tokens you receive can satisfy your own triggers.
-        for (const token of face.createsTokens.filter((t) => benefitsYou(t.controller))) {
-          events.add("token");
-          if (token.isCreature) events.add("creature");
-          if (token.tokenTypes.length) events.add("artifact");
-          for (const type of token.creatureTypes) events.add(`typal:${type}`);
-        }
-        if (
-          face.searchesLibrary.some(
-            (search) =>
-              search.targetTypes.includes("Land") &&
-              search.destination === "battlefield",
-          )
-        )
-          events.add("land");
-      }
-      if (
-        /you may play (?:an?|one|two|\d+) additional lands?/i.test(sourceText)
-      )
-        events.add("land");
-      if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
-      if (/Aura/.test(source.card.typeLine)) events.add("aura");
-      if (/counter target[^.]*spell/i.test(sourceText))
-        events.add("counterspell");
-      if (/\bdeals?[^.]*damage/i.test(sourceText)) events.add("damage");
-      if (
-        /\bgain(?:s)? (?:\d+|x|that much|that many|one|two|three) life/i.test(
-          sourceText,
-        )
-      )
-        events.add("lifegain");
-      if (
-        /\b(?:put|double|proliferate)[^.\n]*(?:counter|\bproliferate\b)|\bproliferate\b/i.test(
-          sourceText,
-        )
-      )
-        events.add("counters");
-      const sacrificeOutlet = !!actualRoles(source, facts).sacrificeOutlet;
-      if (
-        sacrificeOutlet ||
-        /(?:additional cost[^.]*|^|:)\s*sacrifice (?:a|another|an?) creature/im.test(
-          sourceText,
-        )
-      ) {
-        events.add("sacrifice");
-        events.add("dies");
-      }
-      return {
-        events: [...events],
-        creatureTypes: sourceTypes,
-        changeling: facts.faces.some((face) => face.hasChangeling),
-        sacrificeOutlet,
-      };
+      let events = inputEvents.get(source);
+      if (!events) inputEvents.set(source, (events = sourceEvents(source)));
+      return events;
     },
   );
   const addRelationship = (

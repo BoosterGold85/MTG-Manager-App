@@ -77,6 +77,9 @@ export interface DeckCardModel {
   commanderLink: number;
   links: Map<string, number>;
   impact: number;
+  /** One copy's contribution and the deck links lost when that copy leaves: precomputed for swap simulation. */
+  single: Contribution;
+  lostLinks: number;
 }
 export interface DeckModel {
   cards: DeckCardModel[];
@@ -229,6 +232,8 @@ export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): Dec
       commanderLink: link,
       links: deck,
       impact: fn.impact,
+      single: contributionOf(fn, 1, link),
+      lostLinks: 0,
     };
   });
   const targets = Object.fromEntries(Object.entries(blueprint.needs).map(([n, v]) => [n, v.target])) as Record<Need, number>;
@@ -246,7 +251,12 @@ export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): Dec
   }
   const ids = new Set(cards.filter((c) => !c.commander).map((c) => c.identity));
   let links = 0;
-  for (const card of cards.filter((c) => !c.commander)) for (const [other, strength] of card.links) if (ids.has(other) && other !== card.identity) links += strength / 2;
+  for (const card of cards.filter((c) => !c.commander))
+    for (const [other, strength] of card.links)
+      if (ids.has(other) && other !== card.identity) {
+        links += strength / 2;
+        card.lostLinks += strength;
+      }
   totals.links = links;
   const vector = vectorOf(totals, targets);
   return { cards, totals, targets, vector, utility: utilityOf(vector), blueprint };
@@ -268,22 +278,28 @@ function invalidReason(model: DeckModel, before: Totals, after: Totals, cut: Dec
   if (model.targets.controlledDiscard > 0 && before.roles.controlledDiscard >= 1 && after.roles.controlledDiscard < 1) return "Would remove the deck's only controlled discard for its discard mechanic.";
   return null;
 }
-function simulate(
-  model: DeckModel,
-  ids: Map<string, DeckCardModel>,
-  fn: CardFunction,
-  candidate: Contribution,
-  deck: Map<string, number>,
-  cut: DeckCardModel,
-): SwapResult | { invalid: string } {
+interface CandidateContext {
+  fn: CardFunction;
+  contribution: Contribution;
+  deck: Map<string, number>;
+  /** Sum of the candidate's links to non-Commander cards in this deck. */
+  linkTotal: number;
+}
+function candidateContext(model: DeckModel, card: CardMetadata, rec: RecommendationData | undefined): CandidateContext {
+  const fn = cardFunction(card);
+  const { commander, deck } = linkOf(rec);
+  let linkTotal = 0;
+  for (const c of model.cards) if (!c.commander) linkTotal += deck.get(c.identity) || 0;
+  return { fn, contribution: contributionOf(fn, 1, commander), deck, linkTotal };
+}
+function simulate(model: DeckModel, candidate: CandidateContext, cut: DeckCardModel): SwapResult | { invalid: string } {
+  const fn = candidate.fn;
   if (cut.fn.isLand !== fn.isLand) return { invalid: fn.isLand ? "A land only replaces a land." : "Lands are never cut for a spell; land count is preserved." };
   const after = cloneTotals(model.totals);
   // One copy leaves; basics and other multi-copy entries lose one copy, not the whole entry.
-  addInto(after, contributionOf(cut.fn, 1, cut.commanderLink), -1);
-  addInto(after, candidate, 1);
-  let lostLinks = 0;
-  for (const [other, s] of cut.links) if (ids.has(other) && other !== cut.identity) lostLinks += s;
-  after.links = model.totals.links - (cut.quantity === 1 ? lostLinks : 0) + [...deck].filter(([other]) => other !== cut.identity && ids.has(other)).reduce((n, [, s]) => n + s, 0);
+  addInto(after, cut.single, -1);
+  addInto(after, candidate.contribution, 1);
+  after.links = model.totals.links - (cut.quantity === 1 ? cut.lostLinks : 0) + candidate.linkTotal - (cut.quantity === 1 ? candidate.deck.get(cut.identity) || 0 : 0);
   const reason = invalidReason(model, model.totals, after, cut, fn);
   if (reason) return { invalid: reason };
   const vector = vectorOf(after, model.targets);
@@ -297,24 +313,21 @@ function simulate(
 }
 /** A user-chosen comparison: simulate exactly this one-for-one swap (never writes the deck). */
 export function simulateSwap(model: DeckModel, card: CardMetadata, rec: RecommendationData | undefined, cutIdentity: string): SwapResult | { invalid: string } {
-  const fn = cardFunction(card);
-  const { commander, deck } = linkOf(rec);
-  const ids = new Map(model.cards.map((c) => [c.identity, c]));
-  const cut = ids.get(cutIdentity);
+  const cut = model.cards.find((c) => c.identity === cutIdentity);
   if (!cut) return { invalid: "That card is not in this deck." };
-  return simulate(model, ids, fn, contributionOf(fn, 1, commander), deck, cut);
+  return simulate(model, candidateContext(model, card, rec), cut);
 }
 const confidenceRank = { High: 3, Medium: 2, Low: 1 } as const;
 export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: string, rec: RecommendationData | undefined): UpgradeEvaluation {
-  const fn = cardFunction(card);
-  const { commander, deck } = linkOf(rec);
-  const candidate = contributionOf(fn, 1, commander);
+  const candidate = candidateContext(model, card, rec);
+  const { fn, deck } = candidate;
+  const { commander } = linkOf(rec);
   const ids = new Map(model.cards.map((c) => [c.identity, c]));
   const results: SwapResult[] = [];
   const invalid: { name: string; reason: string }[] = [];
   for (const cut of model.cards) {
     if (cut.commander || cut.identity === identity) continue;
-    const swap = simulate(model, ids, fn, candidate, deck, cut);
+    const swap = simulate(model, candidate, cut);
     if ("invalid" in swap) invalid.push({ name: cut.name, reason: swap.invalid });
     else results.push(swap);
   }
@@ -396,5 +409,9 @@ export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: 
     },
   };
 }
+const bandIndex = (label: UpgradeLabel) => UPGRADE_BANDS.findIndex(([, l]) => l === label);
+// Within one label, a confident result outranks an uncertain one: low confidence never reads as certainty.
 export const compareUpgrade = (a: UpgradeEvaluation, b: UpgradeEvaluation) =>
+  bandIndex(a.label) - bandIndex(b.label) ||
+  confidenceRank[b.confidence] - confidenceRank[a.confidence] ||
   b.upgradeValue - a.upgradeValue || confidenceRank[b.confidence] - confidenceRank[a.confidence] || a.name.localeCompare(b.name, "en") || a.identity.localeCompare(b.identity, "en");

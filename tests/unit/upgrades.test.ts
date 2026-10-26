@@ -228,3 +228,23 @@ describe("cross-archetype: the same generic system across seven strategies", () 
     });
   }
 });
+
+describe("large collections", () => {
+  it("evaluates both goals for 1500 distinct owned candidates deterministically within budget", async () => {
+    const { synergyFixture } = await import("../synergyFixtures");
+    const { buildAroundCommander, improveCurrentDeck } = await import("../../src/upgrades");
+    const f = reignOfDragonsFixture(), owned = synergyFixture().owned, pool = Object.values(candidates);
+    for (let i = 0; i < 1500; i++) {
+      const base = pool[i % pool.length];
+      const card = { ...base, scryfallId: `large-${i}`, oracleId: `large-${i}`, name: `${base.name} ${String(i).padStart(4, "0")}` };
+      f.state.metadata[card.scryfallId] = card;
+      f.state.items.push(owned(card, card.scryfallId, 1));
+    }
+    const start = performance.now();
+    const build = buildAroundCommander(f.state, f.deck), improve = improveCurrentDeck(f.state, f.deck);
+    expect(performance.now() - start).toBeLessThan(15000);
+    expect(build.length).toBe(improve.length);
+    expect(build.length).toBeGreaterThan(1000);
+    expect(improve.map((c) => c.identity)).toEqual(improveCurrentDeck(f.state, f.deck).map((c) => c.identity));
+  }, 30000);
+});

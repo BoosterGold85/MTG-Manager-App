@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.6 — Upgrades I Own: two separate questions, and Mayhem
+
+- Upgrades I Own now asks **What are you trying to do?** and answers two questions that are never combined: **Build Around My Commander** (Commander Fit + Build Priority) and **Improve My Current Deck** (Upgrade Value). The v0.6.3 factual engine (canonical card → CardFacts → typed effects → mechanical relationships) is shared by both.
+- Commander Blueprint: derived from the Commander's typed mechanics, token types, features and cost plus a normal 100-card structure, with generic adjustments (high-cost Commander → more ramp, self-attacking Commander → more protection, graveyard/spells/tokens/sacrifice/lands/discard plans). No empty-99 deck analysis, no card-name exceptions.
+- Commander Fit (Exceptional ≥90, Excellent ≥80, Strong ≥68, Good ≥55, Situational ≥35, Weak) and Build Priority (Core ≥85, High Priority ≥72, Strong Consideration ≥60, Consider ≥47, Situational ≥34, Low Priority) are separate scores. Default order: Build Priority → Commander Fit → confidence → name; optional Fit, Priority, mana value and name sorts.
+- Upgrade Value: deck utility after the best valid one-for-one swap minus current utility, from a weighted utility vector with diminishing returns, tribal saturation, effective mana value for self-reducing costs, low-impact body analysis and Commander dependency. Bands: Major ≥2, Strong ≥1, Moderate ≥0.45, Minor ≥0.15, Sidegrade ≥−0.15, Downgrade. Best swap, close alternatives, reasons, concerns, confidence and a developer trace (`?trace`) are reported. Low confidence caps at Minor Upgrade and ranks after confident results in the same band.
+- Cut validity protects functions: lands only for lands; essential role floors (ramp, card advantage, interaction, protection, wipes, finishers); the only creature/artifact/enchantment answer; controlled discard when the deck needs it.
+- CardFacts 1.2.0: controller/beneficiary scope (never widened from "any" to "you"), damage sources and multipliers, combat roles and attack triggers, scoped token multipliers (e.g. Treasure only), answer coverage by permanent type, discard roles.
+- **Mayhem** (ruleset 0.3.4): Card Intelligence tags Mayhem, Madness and discard payoffs. CardFacts model Mayhem as a conditional cast from the graveyard after being discarded this turn; controlled discard, looting and rummaging are enablers; opponent discard is not; Mayhem is not reusable recursion. New **Discard / Mayhem** Deck DNA family surfaces with the deck's real discard outlets; recommendations and upgrades use actual discard support. DNA and synergy versions are 0.6.6.
+- Card Detail opened from Upgrades I Own shows the three scores separately. The Deck screen button is renamed **Upgrades I Own**.
+- Tests: Reign of Dragons regressions (Dragon Hatchling, Hoarding Dragon, Fiery Emancipation, Savage Beating, Combat Celebrant, Xorn, Vandalblast, Chaos Warp, Death by Dragons), mutation tests (Treasure sources, attack triggers, damage engines, Dragon density, broad answers), eight cross-archetype fixtures, Mayhem and scope tests; browser specs rewritten for the two-goal flow.
+
 ## 0.6.5 — Clones & Copies theme
 
 - Fixed clone/copy decks (e.g. Jackal, Genius Geneticist) not being identified. Card Intelligence had no tag for copying permanents, and it labelled "copy that creature spell" as Copy Spells, pulling such decks toward Spellslinger.
