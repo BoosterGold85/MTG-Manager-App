@@ -28,7 +28,7 @@ Canonical card → CardFacts → typed Oracle effects → mechanical relationshi
 
 Mayhem is a typed mechanic, not a keyword label:
 
-- Card Intelligence (ruleset 0.3.4): `mayhem`, `madness`, `discard-payoff` tags (`src/intelligence/rules/discard.ts`).
+- Card Intelligence (ruleset 0.3.4): `mayhem` ("Mayhem Discard-Cast"), `madness` ("Madness Discard-Cast"), `discard-payoff` tags, labelled distinctly from the keyword filters (`src/intelligence/rules/discard.ts`).
 - CardFacts: a Mayhem card is a conditional cast from your graveyard after being discarded this turn. Controlled discard, looting and rummaging are enablers; opponent discard is not; Mayhem is not reusable recursion.
 - Deck DNA: **Discard / Mayhem** family. Its weight is backed by typed `controlled-discard` signals from the deck's real outlets.
 - Recommendation and upgrade scoring use actual discard support (verified enabler ↔ payoff relationships and the `controlledDiscard` blueprint need).
@@ -54,3 +54,8 @@ The shared recommendation engine now caches per-deck-card text, roles and source
 - Mode 2 evaluates one-for-one swaps only; it does not solve multi-card changes.
 - Small archetype fixtures (10 cards) only check the Commander-plan component in Mode 2; full Mode 2 calibration is pinned on the 100-card Reign of Dragons deck.
 - The pre-existing 4421-card synergy timing test (5 s budget) can still be flaky under parallel load.
+
+## Validation run
+
+- `npm run lint`: clean. `npm run test:unit`: 447 passed. `npm run build`: passed. `npm audit`: 0 vulnerabilities. `git diff --check`: clean.
+- Playwright (production build): 335 passed across mobile-360, mobile-390, mobile-430, tablet and desktop.
