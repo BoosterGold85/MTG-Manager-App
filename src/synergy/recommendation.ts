@@ -8,8 +8,8 @@ import type {
   StrategyScore,
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
-import { extractCardFacts, hasCreatureType } from "./facts";
-import type { CardFacts, TypedRole } from "./facts";
+import { benefitsYou, extractCardFacts, hasCreatureType, reachesOpponents } from "./facts";
+import type { CardFacts, Scope, TypedRole } from "./facts";
 
 export const RECOMMENDATION_VERSION = "0.6.3";
 // Calibrated from the proposed starting weights: needed, efficient interaction
@@ -132,8 +132,8 @@ function actualRoles(
   const roles: Partial<Record<Role, number>> = {},
     text = textOf(input);
   if (ownFace(facts, "Land")) roles.lands = 1;
-  const own = (effect: { controller: string }) =>
-    effect.controller !== "opponent";
+  const own = (effect: { controller: Scope }) =>
+    benefitsYou(effect.controller);
   const landRamp =
     facts.faces.some((face) =>
       face.searchesLibrary.some(
@@ -187,7 +187,7 @@ function actualRoles(
   if (
     facts.faces.some((f) =>
       f.removal.some(
-        (r) => r.controller !== "opponent" && !/graveyard/i.test(r.text),
+        (r) => benefitsYou(r.controller) && !/graveyard/i.test(r.text),
       ),
     ) ||
     /\bcounter target (?:noncreature |creature )?spell/i.test(text)
@@ -218,7 +218,7 @@ function actualRoles(
       f.searchesLibrary.some(
         (s) =>
           s.roles.some((r) => !/^(?:basic_land|land_tutor)/.test(r)) &&
-          s.controller !== "opponent",
+          benefitsYou(s.controller),
       ),
     )
   )
@@ -237,7 +237,7 @@ function actualRoles(
     roles.manaFixing = 1;
   if (
     facts.faces.some((f) =>
-      f.createsTokens.some((t) => t.controller !== "opponent"),
+      f.createsTokens.some((t) => benefitsYou(t.controller)),
     )
   )
     roles.tokenGeneration = 1;
@@ -285,7 +285,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
             .flatMap((c) =>
               factsOf(c.card).faces.flatMap((f) =>
                 f.tribalEffects
-                  .filter((e) => e.controller !== "opponent")
+                  .filter((e) => benefitsYou(e.controller))
                   .flatMap((e) => e.creatureTypes),
               ),
             ),
@@ -297,7 +297,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
     for (const card of profile.cards)
       for (const effect of factsOf(card.card)
         .faces.flatMap((f) => f.tribalEffects)
-        .filter((e) => e.controller !== "opponent"))
+        .filter((e) => benefitsYou(e.controller)))
         for (const type of effect.creatureTypes)
           counts.set(type, (counts.get(type) || 0) + card.card.quantity);
     for (const [type, n] of counts) if (n >= 2) supportedTypes.push(type);
@@ -344,7 +344,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
     const relevantToken = f.faces.some((face) =>
       face.createsTokens.some(
         (token) =>
-          token.controller !== "opponent" &&
+          benefitsYou(token.controller) &&
           token.creatureTypes.some((type) => supportedTypes.includes(type)),
       ),
     );
@@ -358,7 +358,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
     const tokenMatch = f.faces.some((face) =>
       face.createsTokens.some(
         (token) =>
-          token.controller !== "opponent" &&
+          benefitsYou(token.controller) &&
           (genericTokenEngine ||
             token.creatureTypes.some((type) => supportedTypes.includes(type))),
       ),
@@ -438,7 +438,7 @@ function verifies(
       return f.faces.some((face) =>
         face.cardDrawEffects.some(
           (effect) =>
-            effect.controller === "opponent" || effect.controller === "any",
+            reachesOpponents(effect.controller) || effect.controller === "target_player",
         ),
       );
     if (receiver.event === "sacrifice")
@@ -449,7 +449,7 @@ function verifies(
       return f.faces.some((face) =>
         face.createsTokens.some(
           (token) =>
-            token.controller === "opponent" &&
+            reachesOpponents(token.controller) &&
             (!receiver.creatureTypes.length ||
               token.creatureTypes.some((type) =>
                 receiver.creatureTypes.includes(type),
@@ -462,7 +462,7 @@ function verifies(
     return /\bcounter target[^.]*spell/i.test(text);
   if (receiver.event === "draw")
     return f.faces.some((face) =>
-      face.cardDrawEffects.some((effect) => effect.controller !== "opponent"),
+      face.cardDrawEffects.some((effect) => benefitsYou(effect.controller)),
     );
   if (receiver.event === "lifegain")
     return /\bgain(?:s)? (?:\d+|x|that much|that many|one|two|three) life/i.test(
@@ -522,7 +522,7 @@ function verifies(
         f.faces.some((face) =>
           face.createsTokens.some(
             (t) =>
-              t.controller !== "opponent" &&
+              benefitsYou(t.controller) &&
               t.creatureTypes.some((type) =>
                 receiver.creatureTypes.includes(type),
               ),
@@ -532,7 +532,7 @@ function verifies(
     }
     if (receiver.objects.includes("Token"))
       return f.faces.some((face) =>
-        face.createsTokens.some((token) => token.controller !== "opponent"),
+        face.createsTokens.some((token) => benefitsYou(token.controller)),
       );
     if (
       receiver.nontoken &&
@@ -825,7 +825,7 @@ export function scoreRecommendation(
     } else if (
       f.faces.some((face) =>
         face.createsTokens.some(
-          (t) => t.controller !== "opponent" && t.creatureTypes.includes(type),
+          (t) => benefitsYou(t.controller) && t.creatureTypes.includes(type),
         ),
       )
     ) {
@@ -861,7 +861,7 @@ export function scoreRecommendation(
   }
   const ownTokens = f.faces
     .flatMap((face) => face.createsTokens)
-    .filter((t) => t.controller !== "opponent");
+    .filter((t) => benefitsYou(t.controller));
   if (typed.genericTokenEngine && ownTokens.length) {
     themeStrength = Math.max(themeStrength, 0.8);
     matchedThemes.push("tokens");
@@ -897,7 +897,7 @@ export function scoreRecommendation(
     f.faces.some((face) =>
       face.searchesLibrary.some(
         (s) =>
-          s.controller !== "opponent" &&
+          benefitsYou(s.controller) &&
           s.targetTypes.includes("Land") &&
           s.destination === "hand",
       ),
@@ -1202,7 +1202,7 @@ export function scoreRecommendation(
   const score = Math.max(0, Math.min(100, raw));
   const factPositives = f.faces.flatMap((face) =>
     face.searchesLibrary
-      .filter((s) => s.controller !== "opponent")
+      .filter((s) => benefitsYou(s.controller))
       .map(
         (s) =>
           `Searches for ${s.basicOnly ? "a basic land" : s.targetTypes.join(" / ") || "a card"} to ${s.destination}${s.destination === "hand" && s.targetTypes.includes("Land") ? ", helping future land drops" : ""}.`,

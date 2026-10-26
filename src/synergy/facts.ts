@@ -6,7 +6,7 @@ import {
   canonicalCreatureType,
 } from "../intelligence/subtypes";
 
-export const CARD_FACTS_VERSION = "1.1.0";
+export const CARD_FACTS_VERSION = "1.2.0";
 export type TutorRole =
   | "unrestricted_tutor"
   | "creature_tutor"
@@ -65,12 +65,76 @@ export type DiscardRole =
   // Opponents discard: disruption, never a Mayhem/Madness enabler for you.
   | "opponent_discard"
   | "discard_payoff";
-export type TypedRole = TutorRole | TokenRole | RampRole | TribalRole | DiscardRole;
+export type CombatRole =
+  | "additional_combat"
+  | "attack_trigger"
+  | "combat_damage_trigger"
+  | "on_attack_token_generation"
+  | "combat_multiplier";
+export type DamageRole =
+  | "damage_source"
+  | "noncombat_damage"
+  | "triggered_damage"
+  | "creature_damage"
+  | "damage_multiplier"
+  | "combat_damage_multiplier"
+  | "noncombat_damage_multiplier";
+export type TypedRole =
+  | TutorRole
+  | TokenRole
+  | RampRole
+  | TribalRole
+  | DiscardRole
+  | CombatRole
+  | DamageRole
+  | "scoped_token_multiplier";
+/** Who performs, creates, receives or benefits from an effect. "each_player" includes you; never assume "you" otherwise. */
+export type Scope =
+  | "you"
+  | "opponent"
+  | "each_opponent"
+  | "target_player"
+  | "each_player"
+  | "other_players"
+  | "unknown";
+export const benefitsYou = (scope: Scope) => scope === "you" || scope === "each_player";
+export const reachesOpponents = (scope: Scope) =>
+  scope === "opponent" || scope === "each_opponent" || scope === "each_player" || scope === "other_players";
 export interface FactEvidence {
   face: string;
   text: string;
   conditional: boolean;
-  controller: "you" | "opponent" | "any" | "unknown";
+  controller: Scope;
+}
+export interface TokenMultiplierFact extends FactEvidence {
+  // "any" = every token you create; otherwise exact token scopes such as "Treasure" or "Dragon".
+  scopes: string[];
+}
+export interface DamageFact extends FactEvidence {
+  role: "source" | "multiplier";
+  combat: "combat" | "noncombat" | "any";
+  amount?: number;
+  targetsCreatures: boolean;
+  reachesOpponents: boolean;
+  triggered: boolean;
+}
+export type AnswerTarget =
+  | "creature"
+  | "artifact"
+  | "enchantment"
+  | "planeswalker"
+  | "land"
+  | "battle"
+  | "permanent"
+  | "nonland_permanent"
+  | "graveyard"
+  | "spell";
+export interface AnswerFact extends FactEvidence {
+  targets: AnswerTarget[];
+  mode: "destroy" | "exile" | "damage" | "bounce" | "shuffle" | "sacrifice" | "counter";
+  mass: boolean;
+  instantSpeed: boolean;
+  opponentsOnly: boolean;
 }
 export interface TokenFact extends FactEvidence {
   count?: number;
@@ -138,6 +202,10 @@ export interface CardFaceFacts {
   tribalEffects: TribalFact[];
   discards: DiscardFact[];
   castFromDiscard: GraveyardCastFact[];
+  tokenMultipliers: TokenMultiplierFact[];
+  damage: DamageFact[];
+  answers: AnswerFact[];
+  attackTriggers: FactEvidence[];
   triggers: string[];
   staticEffects: string[];
   typedRoles: TypedRole[];
@@ -199,6 +267,17 @@ const typesIn = (text: string) =>
   creatureTypePatterns.filter((p) => p.reference.test(text)).map((p) => p.type);
 const cardTypesIn = (text: string) =>
   cardTypes.filter((type) => new RegExp(`\\b${type}s?\\b`, "i").test(text));
+export function scopeOf(effect: string): Scope {
+  if (/\beach player other than\b|\beach other player\b|\bplayers? other than\b/i.test(effect)) return "other_players";
+  if (/\beach opponent (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "each_opponent";
+  if (/\bspells? (?:your )?opponents? cast\b|\b(?:target|an?) opponent (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "opponent";
+  if (/\btarget player (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "target_player";
+  if (/\beach player (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "each_player";
+  if (/\byou\b|^(?:create|search|add|draw|\{[^}]+\}[^:]*:)/i.test(effect.trim())) return "you";
+  // An imperative with no named player is performed by the spell or ability's controller.
+  if (/^(?:destroy|exile|return|counter|tap|untap|put|gain control|sacrifice|look|reveal|scry|surveil|mill|choose|copy|investigate|proliferate|populate|target|the owner of target)\b/i.test(effect.trim())) return "you";
+  return "unknown";
+}
 function evidence(face: string, text: string): FactEvidence {
   const effect = text.replace(/^\s*(?:When(?:ever)?|If)\b[^,]*,\s*/i, "");
   return {
@@ -208,19 +287,107 @@ function evidence(face: string, text: string): FactEvidence {
       /\b(?:if|may|unless|only|whenever|when|at the beginning|as long as)\b/i.test(
         text,
       ),
-    controller:
-      /\bspells? (?:your )?opponents? cast\b|\b(?:target|each|an?) opponent (?:creates?|searches?|draws?|adds?)\b/i.test(
-        effect,
-      )
-        ? "opponent"
-        : /\b(?:target|each|a) player\b/i.test(effect)
-          ? "any"
-          : /\byou\b|^(?:create|search|add|draw|\{[^}]+\}[^:]*:)/i.test(
-                effect.trim(),
-              )
-            ? "you"
-            : "unknown",
+    controller: scopeOf(effect),
   };
+}
+// "If you would create one or more Treasure tokens…" multiplies Treasure only; "tokens under your control" multiplies all.
+export function tokenMultiplierOf(face: string, line: string): TokenMultiplierFact | null {
+  const m =
+    line.match(/\bwould create (?:one or more |a |an |any number of )?([^.,]*?)\btokens?\b[^.]*?\b(?:twice|double|three times|instead|additional)/i) ||
+    line.match(/\b(?:one or more |a )?([^.,]*?)\btokens? would be created\b[^.]*\b(?:twice|instead)/i);
+  if (!m) return null;
+  const words = m[1].trim();
+  const scopes = [
+    ...resourceTokens.filter((t) => new RegExp(`\\b${t}\\b`, "i").test(words)),
+    ...typesIn(words),
+    ...(/\bcreature\b/i.test(words) ? ["creature"] : []),
+  ];
+  return { ...evidence(face, line), controller: /under your control|\byou would\b|you control/i.test(line) ? "you" : scopeOf(line), scopes: scopes.length ? unique(scopes) : ["any"] };
+}
+const numberWord = (text?: string) => (text === undefined ? undefined : count(text) ?? (/^x$/i.test(text) ? undefined : undefined));
+export function damageOf(face: string, line: string, ability: string): DamageFact[] {
+  const out: DamageFact[] = [];
+  const base = evidence(face, line);
+  const multiplier = line.match(/\bwould deal (combat |noncombat )?damage\b[^.]*\b(?:double|twice|triple|three times|instead|plus \d+)/i);
+  if (multiplier) {
+    const yours = /\b(?:source|creature|permanent|spell)s? you control\b|\byour\b|\bsource you control\b/i.test(line);
+    out.push({
+      ...base,
+      controller: yours ? "you" : base.controller,
+      role: "multiplier",
+      combat: multiplier[1]?.trim().toLowerCase() === "combat" ? "combat" : multiplier[1]?.trim().toLowerCase() === "noncombat" ? "noncombat" : "any",
+      targetsCreatures: /\b(?:creature|permanent)\b/i.test(line),
+      reachesOpponents: /\b(?:opponent|player)\b/i.test(line),
+      triggered: false,
+    });
+    return out;
+  }
+  const effect = line.replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
+  for (const m of effect.matchAll(/\bdeals? (\w+|that much|damage equal to [^.]*?|twice that much) damage to ([^.;]+)/gi)) {
+    if (/\bcombat damage\b/i.test(m[0])) continue;
+    const targets = m[2];
+    out.push({
+      ...base,
+      controller: /\b(?:target|an?) opponent\b[^.]*\bdeals\b/i.test(effect) ? "opponent" : "you",
+      role: "source",
+      combat: "noncombat",
+      amount: numberWord(m[1]),
+      targetsCreatures: /\b(?:any target|creature|planeswalker|permanent)\b/i.test(targets),
+      reachesOpponents: /\b(?:any target|opponent|player|each player)\b/i.test(targets),
+      triggered: /^(?:when|whenever|at the beginning)\b/i.test(ability),
+    });
+  }
+  return out;
+}
+const answerWords: [RegExp, AnswerTarget][] = [
+  [/\bnonland permanents?\b/i, "nonland_permanent"],
+  [/\bcreatures?\b/i, "creature"],
+  [/\bartifacts?\b/i, "artifact"],
+  [/\benchantments?\b/i, "enchantment"],
+  [/\bplaneswalkers?\b/i, "planeswalker"],
+  [/\bbattles?\b/i, "battle"],
+  [/\blands?\b/i, "land"],
+];
+// Specific answer coverage, not one broad "removal" count.
+export function answerOf(face: string, line: string, types: string[], keywords: string[]): AnswerFact | null {
+  const effect = stripAbilityWord(line).replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
+  const patterns: [AnswerFact["mode"], RegExp][] = [
+    ["counter", /\bcounter (?:target|all|each|up to \w+ target) ([^.]*?)\b(?:spells?|abilit(?:y|ies))\b/i],
+    ["shuffle", /\b(?:owner of target ([^.]*?)|target ([^.]*?)'s owner) shuffles?\b/i],
+    ["destroy", /\bdestroy (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
+    ["exile", /\bexile (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
+    ["bounce", /\breturn (?:target|all|each|up to \w+ target) ([^.]*?) to (?:its|their) owners?'? hands?/i],
+    ["sacrifice", /\b(?:target|each) (?:opponent|player) sacrifices? (?:a|an|one|two|\w+) ([^.]*)/i],
+    ["damage", /\bdeals? [^.]*?damage to ((?:any target|target [^.]*?|each [^.]*?))(?:[.,]|$)/i],
+  ];
+  for (const [mode, pattern] of patterns) {
+    const m = effect.match(pattern);
+    if (!m) continue;
+    const phrase = (m[1] || m[2] || "").trim();
+    if (mode === "exile" && /\bcards? (?:from|in) (?:your|a|target player's|all|an opponent's|each)?\s*graveyards?|\bgraveyards?\b/i.test(phrase)) {
+      return { ...evidence(face, line), targets: ["graveyard"], mode, mass: /\ball|each\b/i.test(effect), instantSpeed: true, opponentsOnly: !/your graveyard/i.test(phrase) };
+    }
+    if (/\byou control\b/i.test(phrase) && !/\bdon't control|opponents? control/i.test(phrase)) continue;
+    const targets: AnswerTarget[] =
+      mode === "counter"
+        ? ["spell"]
+        : /\bany target\b/i.test(phrase)
+          ? ["creature", "planeswalker"]
+          : answerWords.filter(([r]) => r.test(phrase)).map(([, t]) => t);
+    if (!targets.length && /\bpermanents?\b/i.test(phrase)) targets.push("permanent");
+    if (!targets.length) continue;
+    const base = evidence(face, line);
+    return {
+      ...base,
+      controller: base.controller === "unknown" ? "you" : base.controller,
+      targets: unique(targets),
+      mode,
+      mass: /^(?:destroy|exile|return) (?:all|each)\b|\beach (?:creature|opponent|player)\b/i.test(effect) || keywords.some((k) => /^overload$/i.test(k)),
+      instantSpeed: types.includes("Instant") || keywords.some((k) => /^flash$/i.test(k)) || /^[^:]*:/.test(line),
+      opponentsOnly: /\byou don't control|\ban opponent controls|\bopponents? control|\beach opponent\b|\btarget opponent\b/i.test(effect),
+    };
+  }
+  return null;
 }
 // Who discards, and how. Only "you" (or a symmetric "each player") can enable Mayhem/Madness.
 export function discardOf(face: string, line: string): DiscardFact | null {
@@ -254,7 +421,7 @@ export function discardOf(face: string, line: string): DiscardFact | null {
             : "effect";
   return {
     ...evidence(face, line),
-    controller: who === "you" ? "you" : who === "opponent" ? "opponent" : who === "unknown" ? "unknown" : "any",
+    controller: who,
     who,
     mode,
   };
@@ -300,6 +467,10 @@ function faceFacts(face: {
     tribalEffects: [],
     discards: [],
     castFromDiscard: [],
+    tokenMultipliers: [],
+    damage: [],
+    answers: [],
+    attackTriggers: [],
     triggers: [],
     staticEffects: [],
     typedRoles: [],
@@ -530,6 +701,36 @@ function faceFacts(face: {
           roles.add("land_smoothing");
       }
     }
+    const multiplier = tokenMultiplierOf(face.name, line);
+    if (multiplier) {
+      result.tokenMultipliers.push(multiplier);
+      // Only an unscoped multiplier doubles every token; Xorn-style effects multiply their exact scope.
+      roles.add(multiplier.scopes.includes("any") ? "token_doubler" : "scoped_token_multiplier");
+    }
+    for (const damage of damageOf(face.name, line, ability)) {
+      result.damage.push(damage);
+      if (damage.role === "multiplier") {
+        roles.add("damage_multiplier");
+        if (damage.combat !== "noncombat") roles.add("combat_damage_multiplier");
+        if (damage.combat !== "combat") roles.add("noncombat_damage_multiplier");
+      } else {
+        roles.add("damage_source");
+        if (damage.combat !== "combat") roles.add("noncombat_damage");
+        if (damage.triggered) roles.add("triggered_damage");
+        if (damage.targetsCreatures) roles.add("creature_damage");
+      }
+    }
+    const answer = answerOf(face.name, line, printedTypes, face.keywords || []);
+    if (answer) result.answers.push(answer);
+    const condition0 = stripAbilityWord(semantic).match(/^(?:When|Whenever)\b([^,]+),/i)?.[1] || "";
+    if (/\battacks?\b/i.test(condition0) && !/\bopponents? attacks?\b|\battacks? you\b/i.test(condition0)) {
+      roles.add("attack_trigger");
+      result.attackTriggers.push(fact);
+      if (/\bcreates?\b[^.]*\btokens?\b/i.test(line)) roles.add("on_attack_token_generation");
+    }
+    if (/\bdeals? combat damage\b/i.test(condition0)) roles.add("combat_damage_trigger");
+    if (/\badditional combat phase\b|\bextra combat\b/i.test(line)) roles.add("additional_combat");
+    if (/creatures you control (?:gain|have) double strike|double (?:the )?(?:combat )?damage/i.test(line)) roles.add("combat_multiplier");
     const discardFact = discardOf(face.name, line);
     if (discardFact) {
       result.discards.push(discardFact);
@@ -565,6 +766,8 @@ function faceFacts(face: {
     )
       result.removal.push({
         ...fact,
+        // Removal is performed by its controller unless an opponent is named as the actor.
+        controller: fact.controller === "unknown" ? "you" : fact.controller,
         permanentTypes: cardTypesIn(directEffect),
         targetRestrictions: [directEffect],
       });
@@ -594,13 +797,7 @@ function faceFacts(face: {
       )
     )
       roles.add("land_ramp");
-    if (
-      /\bwould (?:create|be created)\b[^.]*\btokens?\b[^.]*(?:twice|double|three times|instead)/i.test(
-        line,
-      ) ||
-      /\btokens? would be created\b[^.]*\b(?:twice|instead)/i.test(line)
-    )
-      roles.add("token_doubler");
+
     const condition =
       stripAbilityWord(semantic).match(/^(?:When|Whenever)\b([^,]+),/i)?.[1] ||
       "";
