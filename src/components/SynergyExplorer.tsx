@@ -1,3 +1,4 @@
+import { candidateSummary } from "../synergy/summary";
 import { ScoreBreakdown } from "./ScoreBreakdown";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CollectionState } from "../models/collection";
@@ -217,8 +218,9 @@ export function SynergyExplorer({
                       </span>
                     </h3>
                     <p>
-                      Available: {c.available} · Owned: {c.owned}
-                      {c.available === 0 ? " · No unassigned copies" : ""}
+                      {c.available > 0
+                        ? `Available ${c.available} · Owned ${c.owned}`
+                        : `Owned ${c.owned} · Available 0`}
                     </p>
                     {c.usage.length > 0 && (
                       <p>
@@ -228,23 +230,18 @@ export function SynergyExplorer({
                           .join(" · ")}
                       </p>
                     )}
-                    <p>
-                      {c.synergy.score >= 70
-                        ? "Why it fits:"
-                        : c.synergy.score >= 50
-                          ? "Limited fit:"
-                          : ""}{" "}
-                      {c.synergy.explanation}
-                    </p>
-                    {c.synergy.score < 50 && c.synergy.roles.length > 0 && (
-                      <p>
-                        Some utility: {c.synergy.roles.slice(0, 3).join(" · ")}
-                      </p>
-                    )}
-                    {c.synergy.conflicts.length > 0 && (
-                      <p>Conflicts: {c.synergy.conflicts.join(" ")}</p>
-                    )}
+                    <p className="candidate-summary">{candidateSummary(c.synergy, dna.strategyProfile)}</p>
                     <ScoreBreakdown synergy={c.synergy} />
+                    <button
+                      className="management-button"
+                      aria-pressed={selected === c.identity}
+                      onClick={() => {
+                        setSelected(c.identity);
+                        setAgainst("");
+                      }}
+                    >
+                      Compare {c.card.name}
+                    </button>
                     <details>
                       <summary>
                         {c.printings.length} owned{" "}
@@ -262,16 +259,6 @@ export function SynergyExplorer({
                         </p>
                       ))}
                     </details>
-                    <button
-                      className="management-button"
-                      aria-pressed={selected === c.identity}
-                      onClick={() => {
-                        setSelected(c.identity);
-                        setAgainst("");
-                      }}
-                    >
-                      Compare {c.card.name}
-                    </button>
                   </div>
                 </li>
               ))}

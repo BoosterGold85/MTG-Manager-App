@@ -7,7 +7,7 @@ export function ScoreBreakdown({ synergy }: { synergy: CardSynergy }) {
       className="score-breakdown"
       onToggle={(e) => setExpanded(e.currentTarget.open)}
     >
-      <summary>Score breakdown</summary>
+      <summary>Why this score?</summary>
       {expanded && (
         <>
           <p>

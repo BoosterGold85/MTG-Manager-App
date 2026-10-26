@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.2 — Synergy Explorer UX Polish
+
+- Compact candidate cards now show concise ownership and one or two deterministic evidence-based sentences instead of repeated technical explanations, utility lists and conflicts. Fully assigned copies retain deck usage.
+- Renamed the lazy collapsed diagnostic section to Why this score?; all exact components, counts, penalties, raw/final totals and interaction evidence remain available. Compare precedes printing diagnostics.
+- Reduced candidate spacing without shrinking approved type or artwork. Preserved v0.6.1 scores, tier boundaries, ranking, caches, full-set search, progressive rendering, comparisons and saved data. No v0.7.0 work.
+
 ## 0.6.1 — Deck-aware Synergy Scoring
 
 - Replaced the generic overlap score with a cached DeckStrategyProfile and seven bounded components: Commander 30, primary strategy 25, role need 15, packages 10, contextual efficiency 10, generic overlap 5 and curve fit 5. Signed penalties can override generic value; scores clamp to 0–100 without artificial distribution or five-point rounding.

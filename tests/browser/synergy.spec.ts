@@ -93,7 +93,7 @@ test("owned candidates explain fit, group printings, show availability and usage
   await expect(dialog.getByRole("status")).toHaveText("2 candidates");
   const candidate = dialog.locator(".synergy-candidates>li").first();
   await expect(candidate).toContainText("Utvara Hellkite");
-  await expect(candidate).toContainText("Available: 2 · Owned: 3");
+  await expect(candidate).toContainText("Available 2 · Owned 3");
   await expect(candidate).toContainText("Used in: Miirym (1)");
   await expect(candidate).toContainText("Dragon");
   expect(await dialog.locator(".synergy-candidates>li").count()).toBe(2);
@@ -174,7 +174,7 @@ test("higher Synergy ranks first while assigned candidates stay visible; search,
     "Utvara Hellkite",
   );
   await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
-    "No unassigned copies",
+    "Owned 1 · Available 0",
   );
   await expect(dialog.locator(".synergy-candidates>li").first()).toContainText(
     "Miirym",

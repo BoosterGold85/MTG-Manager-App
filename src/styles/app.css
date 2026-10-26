@@ -2434,3 +2434,13 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .other-legal-cards>summary { min-height:44px; padding-block:var(--space-12); color:var(--text-secondary); cursor:pointer; }
 .in-this-deck[data-fit="Other Legal Cards"] .synergy-score strong,
 .in-this-deck[data-fit="Other Legal Cards"] .synergy-score span { color:var(--text-secondary); }
+
+/* Compact candidate presentation; detailed diagnostics retain their own spacing. */
+.synergy-candidates>li { padding-block:var(--space-16); }
+.synergy-candidates h3 span { margin-top:var(--space-4); }
+.synergy-candidates p { margin-block:var(--space-6); line-height:1.5; }
+.synergy-candidates .score-breakdown { margin-block:var(--space-4); }
+.synergy-candidates summary { min-height:44px; display:flex; align-items:center; cursor:pointer; }
+.synergy-candidates summary::before { content:"▸"; margin-right:var(--space-6); }
+.synergy-candidates details[open]>summary::before { content:"▾"; }
+.synergy-candidates .management-button { margin-block:var(--space-4); }

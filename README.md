@@ -1,6 +1,14 @@
-# MTG Manager · v0.6.1
+# MTG Manager · v0.6.2
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Synergy Explorer UX Polish (v0.6.2)
+
+Candidates now show artwork, name, Synergy score/band, concise ownership, one short evidence-based explanation, **Why this score?**, and **Compare**. Fully assigned copies still show their deck usage. Printing details follow Compare. Candidate spacing is tighter without reducing type sizes or artwork dimensions.
+
+The deterministic presentation helper translates cached strategy, role and conflict evidence into one or two plain-language sentences. Exact role counts, penalties, packages, raw totals and clamping remain in the lazy, default-collapsed **Why this score?** section, including in comparison and deck-relative details. Expanding it does not run the scoring engine. No LLM or extra lookup is used.
+
+The approved v0.6.1 scoring model is unchanged: Recommended ≥70, Worth Considering 50–69, Other Legal Cards <50 (collapsed initially), score-first order, availability tie-breaks, full-set search and progressive rendering. Collection ownership, saved decks and comparison remain read-only here. See [v0.6.2 executable](docs/v0.6.2-executable.md) and [validation](docs/VALIDATION-v0.6.2.md).
 
 ## Deck-aware scoring rebuild (v0.6.1)
 
@@ -8,7 +16,7 @@ Synergy now uses a cached **DeckStrategyProfile** built from the actual conceptu
 
 **Upgrades I Own sorts by final score first**, with available copies breaking ties. **Recommended** contains scores ≥70; **Worth Considering** contains 50–69; **Other Legal Cards** contains scores below 50 and is collapsed by default. Those lower scores explicitly say Weak Fit, Poor Fit or Not Recommended and use subdued styling. Color compatibility is enforced as before; the existing full-Commander-legality limitations remain.
 
-Every candidate has a collapsed **Score breakdown** with all seven components, exact raw/clamped totals, role counts/targets, matching packages, printed Commander evidence and negative reasons. The same model powers deck-relative Card Detail and comparison. Off-archetype bodies, absent Commander interaction, redundant roles, curve congestion, low impact for mana value and concrete anti-synergy can subtract points. Generic value alone cannot produce a primary recommendation. No price, rarity rank, popularity or owned quantity contributes to the score. Efficiency is a transparent local heuristic, not a universal power rating.
+Every candidate has a collapsed **Why this score?** with all seven components, exact raw/clamped totals, role counts/targets, matching packages, printed Commander evidence and negative reasons. The same model powers deck-relative Card Detail and comparison. Off-archetype bodies, absent Commander interaction, redundant roles, curve congestion, low impact for mana value and concrete anti-synergy can subtract points. Generic value alone cannot produce a primary recommendation. No price, rarity rank, popularity or owned quantity contributes to the score. Efficiency is a transparent local heuristic, not a universal power rating.
 
 Strategy profiles and card scores are cached independently of physical ownership. Semantic deck/Commander changes, metadata, manual corrections and model/ruleset versions invalidate the relevant results; scrolling, search and availability changes reuse them. No database migration, collection reset, automatic swaps or moves are introduced. See [the executable](docs/v0.6.1-scoring-executable.md) and [validation / limitations](docs/VALIDATION-v0.6.1.md).
 
@@ -280,4 +288,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is current. Work stops before v0.7.0.
