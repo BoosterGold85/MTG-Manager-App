@@ -2447,3 +2447,23 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 
 .comparison-deltas>div { display:flex; justify-content:space-between; gap:var(--space-12); padding-block:var(--space-4); }
 .comparison-deltas dd { margin:0; white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+/* v0.6.6 Upgrades I Own: two goals, three separate concepts */
+.upgrade-modes { display:grid; gap:var(--space-16); margin-block:var(--space-20); }
+.upgrade-modes h3 { margin:0; font-size:1.05rem; }
+.upgrade-mode { display:grid; gap:var(--space-6); text-align:left; padding:var(--space-16); min-height:44px; border:1px solid var(--border-soft); border-radius:var(--radius-panel); background:var(--surface-panel); color:var(--text-primary); cursor:pointer; overflow-wrap:anywhere; }
+.upgrade-mode:hover:not(:disabled) { border-color:var(--accent); }
+.upgrade-mode strong { font-size:1rem; font-weight:500; color:var(--accent); }
+.upgrade-mode span { color:var(--text-secondary); font-size:.85rem; line-height:1.6; }
+.upgrade-mode:disabled { opacity:var(--disabled-opacity); cursor:default; }
+.upgrade-mode-line { display:flex; flex-wrap:wrap; gap:var(--space-12); align-items:center; }
+.upgrade-metric strong { color:var(--accent); font-weight:500; }
+.upgrade-concern { color:var(--text-secondary); }
+.upgrade-why ul, .blueprint ul, .synergy-comparison ul { margin:var(--space-6) 0; padding-left:var(--space-20); }
+.upgrade-scores { border-top:1px solid var(--border-soft); margin-top:var(--space-20); padding-top:var(--space-16); }
+.upgrade-scores h3 { font-size:.95rem; font-weight:500; margin:0 0 var(--space-8); }
+.upgrade-scores dl { display:grid; gap:var(--space-10); margin:0; }
+.upgrade-scores dt { color:var(--text-secondary); font-size:.8rem; }
+.upgrade-scores dd { margin:0; font-size:.9rem; overflow-wrap:anywhere; }
+.upgrade-scores small { display:block; color:var(--text-secondary); font-size:.75rem; }
+.developer-trace pre { max-height:320px; overflow:auto; font-size:.7rem; white-space:pre-wrap; }

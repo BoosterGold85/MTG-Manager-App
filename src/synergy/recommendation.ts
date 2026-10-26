@@ -49,6 +49,8 @@ export interface RecommendationData {
   componentCaps: number[];
   roleNeedSeverity: number;
   efficiency: number;
+  // Verified typed relationships with the saved deck's cards (Commander included), for swap simulation.
+  links: { identity: string; name: string; commander: boolean; strength: number }[];
 }
 interface TypedDeckProfile {
   facts: Map<string, CardFacts>;
@@ -609,7 +611,8 @@ export function scoreRecommendation(
         for (const type of face.cardTypes) events.add(type.toLowerCase());
         for (const type of face.creatureTypes) events.add(`typal:${type}`);
         if (face.cardDrawEffects.length) events.add("draw");
-        for (const token of face.createsTokens) {
+        // Only tokens you receive can satisfy your own triggers.
+        for (const token of face.createsTokens.filter((t) => benefitsYou(t.controller))) {
           events.add("token");
           if (token.isCreature) events.add("creature");
           if (token.tokenTypes.length) events.add("artifact");
@@ -1325,6 +1328,12 @@ export function scoreRecommendation(
       componentCaps: Object.values(SCORE_WEIGHTS).map((w) => w * 100),
       roleNeedSeverity: roleSeverity,
       efficiency,
+      links: relationships.map((r) => ({
+        identity: r.identity,
+        name: r.name,
+        commander: r.commander,
+        strength: r.strength,
+      })),
     },
   };
   state.scores.set(key, result);

@@ -323,7 +323,7 @@ export function damageOf(face: string, line: string, ability: string): DamageFac
     return out;
   }
   const effect = line.replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
-  for (const m of effect.matchAll(/\bdeals? (\w+|that much|damage equal to [^.]*?|twice that much) damage to ([^.;]+)/gi)) {
+  for (const m of effect.matchAll(/\bdeals? (?:(\w+|that much|twice that much|x) damage|damage equal to [^.]*?) to ([^.;]+)/gi)) {
     if (/\bcombat damage\b/i.test(m[0])) continue;
     const targets = m[2];
     out.push({
@@ -358,7 +358,7 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
     ["exile", /\bexile (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
     ["bounce", /\breturn (?:target|all|each|up to \w+ target) ([^.]*?) to (?:its|their) owners?'? hands?/i],
     ["sacrifice", /\b(?:target|each) (?:opponent|player) sacrifices? (?:a|an|one|two|\w+) ([^.]*)/i],
-    ["damage", /\bdeals? [^.]*?damage to ((?:any target|target [^.]*?|each [^.]*?))(?:[.,]|$)/i],
+    ["damage", /\bdeals? [^.]*?damage(?: equal to [^.]*?)? to ((?:any target|target [^.]*?|each [^.]*?))(?:[.,]|$)/i],
   ];
   for (const [mode, pattern] of patterns) {
     const m = effect.match(pattern);

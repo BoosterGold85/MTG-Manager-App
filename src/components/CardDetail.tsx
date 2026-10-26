@@ -1,6 +1,7 @@
 import { InThisDeck } from './InThisDeck';
 import type { CardSynergy } from '../dna/engine';
 import { useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { deckUsage } from '../decks/decks';
 import type { CollectionState } from '../models/collection';
@@ -39,6 +40,7 @@ export function CardDetail({
   deck,
   navigation,
   synergy,
+  extra,
 }: {
   card: SampleCollectionCard;
   collection?: CollectionState|null;
@@ -49,6 +51,8 @@ export function CardDetail({
   deck?: DeckDetailContext;
   navigation?: DetailNavigation;
   synergy?: CardSynergy;
+  /** Context-specific section (e.g. Upgrades I Own scores) shown after Card Intelligence. */
+  extra?: ReactNode;
 }) {
   const layout = useRef<HTMLDivElement>(null);
   // Card content is swapped in place; start each card at its logical top.
@@ -204,6 +208,7 @@ export function CardDetail({
           {onRemove && <div className="danger-zone"><button className="danger-button" onClick={onRemove}>Remove from Collection</button></div>}
           <CardIntelligence key={card.id} card={card} onSave={onSaveTags} />
           {deck && synergy && <InThisDeck synergy={synergy}/>}
+          {extra}
           {collection && card.ownership && <section className="deck-usage" aria-label="Deck Usage"><h3>Deck Usage</h3><p>Owned: {card.ownership.quantityOwned} · Available: {card.ownership.quantityUnassigned} · Assigned: {card.ownership.quantityAssigned}</p>{card.ownership.quantityAssigned>card.ownership.quantityOwned&&<p className="deck-error">Allocation conflict: inventory needs reconciliation.</p>}{deckUsage(collection,card.id).map(u=><p key={u.deck.id}><button className="text-button" onClick={()=>onOpenDeck?.(u.deck.id)}>{u.deck.name} ×{u.quantity}</button></p>)}{!card.ownership.quantityAssigned&&<p>No deck assignments.</p>}</section>}
         </div>
       </div>

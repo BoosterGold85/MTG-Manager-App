@@ -621,6 +621,10 @@ function interaction(
   }
   return source.emits.has(receiver.event) ? 1 : 0;
 }
+/** Archetype features a single canonical card contributes (same rules the deck profile uses). */
+export function cardFeatures(card: DnaInputCard): Map<string, number> {
+  return characteristics(card).features;
+}
 export function buildDeckStrategyProfile(input: DnaInput): DeckStrategyProfile {
   const start = performance.now(),
     cards = input.cards.map(characteristics),

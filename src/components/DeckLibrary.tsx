@@ -330,7 +330,7 @@ export function DeckLibrary({
               </p>
             </div>
             <span className="deck-heading-actions">
-              <button className="management-button" onClick={()=>setExploring(true)}>Explore Synergy</button>
+              <button className="management-button" onClick={()=>setExploring(true)}>Upgrades I Own</button>
               <button
                 className="management-button"
                 onClick={() => {

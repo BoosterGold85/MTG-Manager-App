@@ -1,51 +1,134 @@
-import { suggestReplacements } from "../synergy/replacements";
-import { candidateSummary } from "../synergy/summary";
-import { ScoreBreakdown } from "./ScoreBreakdown";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
-import { exploreSynergy } from "../synergy/explorer";
-import { cardSynergy, deckDnaCache } from "../dna/engine";
 import { deckRows } from "../decks/deckBrowse";
+import {
+  MIN_CURRENT_DECK_CARDS,
+  buildAroundCommander,
+  commanderBlueprint,
+  compareSwap,
+  improveCurrentDeck,
+  mainDeckCount,
+} from "../upgrades";
+import type { BuildCandidate, UpgradeCandidate } from "../upgrades";
+import type { BuildEvaluation } from "../upgrades/build";
+import type { SwapResult, UpgradeEvaluation } from "../upgrades/upgrade";
+import { COMPONENTS, componentLabels } from "../upgrades/upgrade";
 import { Dialog } from "./Dialog";
 import { CardImage } from "./CardImage";
 import { CardDetail } from "./CardDetail";
-import { InThisDeck } from "./InThisDeck";
-import type { SampleCollectionCard } from "../models/card";
-export function SynergyExplorer({
-  state,
-  deck,
-  onClose,
-}: {
-  state: CollectionState;
-  deck: Deck;
-  onClose: () => void;
-}) {
-  const candidates = useMemo(() => exploreSynergy(state, deck), [state, deck]);
-  const dna = useMemo(() => deckDnaCache.get(state, deck), [state, deck]);
+
+type Mode = "" | "improve" | "build";
+type Candidate = BuildCandidate | UpgradeCandidate;
+const developerTrace = () => {
+  try {
+    return new URLSearchParams(location.search).has("trace");
+  } catch {
+    return false;
+  }
+};
+const signed = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}`;
+function Availability({ c }: { c: Candidate }) {
+  return (
+    <>
+      <p>{c.available > 0 ? `Available ${c.available} · Owned ${c.owned}` : `Owned ${c.owned} · Available 0`}</p>
+      {c.usage.length > 0 && <p>Used in: {c.usage.map((u) => `${u.name} (${u.quantity})`).join(" · ")}</p>}
+    </>
+  );
+}
+function Printings({ c }: { c: Candidate }) {
+  return (
+    <details>
+      <summary>
+        {c.printings.length} owned {c.printings.length === 1 ? "printing / variant" : "printings / variants"}
+      </summary>
+      {c.printings.map((card) => (
+        <p key={card.id}>
+          {card.setCode.toUpperCase()} #{card.collectorNumber} · {card.ownership!.finish} · {card.ownership!.language} ·{" "}
+          {card.ownership!.binderName || "No binder"} · Available {card.ownership!.quantityUnassigned} / Owned {card.quantity}
+        </p>
+      ))}
+    </details>
+  );
+}
+function BuildSummary({ build }: { build: BuildEvaluation }) {
+  return (
+    <>
+      <p className="upgrade-metric">
+        Commander Fit: <strong>{build.fitLabel}</strong> — {build.commanderFit}
+      </p>
+      <details className="upgrade-why">
+        <summary>Why it fits</summary>
+        <ul>
+          {build.fitReasons.map((r) => (
+            <li key={r}>{r}</li>
+          ))}
+        </ul>
+      </details>
+    </>
+  );
+}
+function SwapDeltas({ swap }: { swap: SwapResult }) {
+  const changed = COMPONENTS.filter((c) => swap.deltas[c] !== undefined);
+  return (
+    <dl className="comparison-deltas" aria-label="Component changes">
+      {changed.map((c) => (
+        <div key={c}>
+          <dt>{componentLabels[c]}</dt>
+          <dd>
+            {swap.deltas[c]! > 0 ? "+" : ""}
+            {swap.deltas[c]}
+          </dd>
+        </div>
+      ))}
+      {!changed.length && <p>No component changes.</p>}
+    </dl>
+  );
+}
+function Trace({ trace }: { trace: unknown }) {
+  return (
+    <details className="developer-trace">
+      <summary>Developer trace</summary>
+      <pre>{JSON.stringify(trace, null, 2)}</pre>
+    </details>
+  );
+}
+export function SynergyExplorer({ state, deck, onClose }: { state: CollectionState; deck: Deck; onClose: () => void }) {
+  const count = mainDeckCount(deck);
+  const canImprove = count >= MIN_CURRENT_DECK_CARDS;
+  const [mode, setMode] = useState<Mode>("");
+  const [query, setQuery] = useState(""),
+    [availability, setAvailability] = useState("all"),
+    [sort, setSort] = useState("default"),
+    [selected, setSelected] = useState(""),
+    [against, setAgainst] = useState(""),
+    [detail, setDetail] = useState<Candidate | null>(null),
+    [limit, setLimit] = useState(40);
+  const trace = developerTrace();
+  const blueprint = useMemo(() => commanderBlueprint(state, deck), [state, deck]);
+  const build = useMemo(() => (mode === "build" ? buildAroundCommander(state, deck) : []), [mode, state, deck]);
+  const improve = useMemo(() => (mode === "improve" ? improveCurrentDeck(state, deck) : []), [mode, state, deck]);
   const rows = useMemo(
     () =>
       deckRows(state, deck)
-        .filter(
-          (row, index, all) =>
-            all.findIndex((r) => r.name === row.name) === index,
-        )
+        .filter((row, index, all) => all.findIndex((r) => r.name === row.name) === index)
         .sort((a, b) => a.name.localeCompare(b.name, "en")),
     [state, deck],
   );
-  const [query, setQuery] = useState(""),
-    [availability, setAvailability] = useState("all"),
-    [selected, setSelected] = useState(""),
-    [against, setAgainst] = useState(""),
-    [detail, setDetail] = useState<SampleCollectionCard | null>(null),
-    [limit, setLimit] = useState(40);
-  const results = candidates.filter(
+  const pool: Candidate[] = mode === "build" ? build : improve;
+  const sorted = useMemo(() => {
+    const list = [...pool];
+    const name = (a: Candidate, b: Candidate) => a.card.name.localeCompare(b.card.name, "en") || a.identity.localeCompare(b.identity, "en");
+    if (sort === "fit") return list.sort((a, b) => b.build.commanderFit - a.build.commanderFit || name(a, b));
+    if (sort === "priority") return list.sort((a, b) => b.build.buildPriority - a.build.buildPriority || name(a, b));
+    if (sort === "mv") return list.sort((a, b) => a.card.manaValue - b.card.manaValue || name(a, b));
+    if (sort === "name") return list.sort(name);
+    return list;
+  }, [pool, sort]);
+  const results = sorted.filter(
     (c) =>
-      (availability === "all" ||
-        (availability === "available" ? c.available > 0 : c.available === 0)) &&
-      c.card.name
-        .toLocaleLowerCase()
-        .includes(query.trim().toLocaleLowerCase()),
+      (availability === "all" || (availability === "available" ? c.available > 0 : c.available === 0)) &&
+      c.card.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
   );
   const comparisonRef = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -54,325 +137,283 @@ export function SynergyExplorer({
       comparisonRef.current?.focus();
     }
   }, [selected, detail]);
-  const candidate = candidates.find((c) => c.identity === selected),
-    comparison = rows.find((r) => r.key === against);
-  const comparisonFit = comparison
-    ? cardSynergy(dna, comparison.card)
-    : undefined;
-  const suggestions = useMemo(
-    () => (candidate ? suggestReplacements(candidate.synergy, dna) : []),
-    [candidate, dna],
-  );
-  if (detail)
+  const candidate = improve.find((c) => c.identity === selected);
+  const chosenRow = rows.find((r) => r.key === against);
+  const chosenSwap = useMemo(() => {
+    if (!candidate || !chosenRow) return null;
+    const identity = chosenRow.card.analysis?.cardIdentity || chosenRow.card.oracleId || "";
+    return compareSwap(state, deck, candidate.card, identity);
+  }, [candidate, chosenRow, state, deck]);
+  if (detail) {
+    const upgrade = canImprove ? improveCurrentDeck(state, deck).find((c) => c.identity === detail.identity)?.upgrade : undefined;
     return (
       <CardDetail
-        card={detail}
+        card={detail.card}
         collection={state}
         onClose={() => setDetail(null)}
+        extra={
+          <section className="upgrade-scores" aria-label="Upgrades I Own scores">
+            <h3>Upgrades I Own</h3>
+            <dl>
+              <div>
+                <dt>Commander Fit</dt>
+                <dd>
+                  {detail.build.fitLabel} — {detail.build.commanderFit}
+                  <small>Does it belong in this Commander's strategy?</small>
+                </dd>
+              </div>
+              <div>
+                <dt>Build Priority</dt>
+                <dd>
+                  {detail.build.priorityLabel} — {detail.build.buildPriority}
+                  <small>Should I prioritize adding it while building from scratch?</small>
+                </dd>
+              </div>
+              <div>
+                <dt>Upgrade Value</dt>
+                <dd>
+                  {upgrade ? `${upgrade.label} (${signed(upgrade.upgradeValue)})${upgrade.best ? ` · best swap: cut ${upgrade.best.cutName}` : ""}` : `Needs at least ${MIN_CURRENT_DECK_CARDS} cards in the deck.`}
+                  <small>Would it improve this exact deck through its best one-for-one replacement?</small>
+                </dd>
+              </div>
+            </dl>
+          </section>
+        }
       />
     );
+  }
   return (
-    <Dialog
-      titleId="synergy-title"
-      onClose={onClose}
-      className="synergy-dialog"
-    >
-      <p className="eyebrow">EXPLORE SYNERGY · {deck.name}</p>
+    <Dialog titleId="synergy-title" onClose={onClose} className="synergy-dialog">
+      <p className="eyebrow">UPGRADES I OWN · {deck.name}</p>
       <h2 id="synergy-title">Upgrades I Own</h2>
-      <p>
-        Ranked by final Synergy score, then confidence and verified interaction.
-        Cards already in this deck or outside its Commander colors are excluded.
-      </p>
-      <p className="muted">
-        Deck fit includes role needs and efficiency. Comparing never changes
-        your deck or moves copies. Other Commander legality rules are not fully
-        validated.
-      </p>
-      <div className="synergy-controls">
-        <label>
-          Search owned candidates
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setLimit(40);
-            }}
-          />
-        </label>
-        <label>
-          Copy availability
-          <select
-            value={availability}
-            onChange={(e) => {
-              setAvailability(e.target.value);
-              setLimit(40);
-            }}
-          >
-            <option value="all">All owned — highest Synergy first</option>
-            <option value="available">Available copies only</option>
-            <option value="assigned">Fully assigned copies only</option>
-          </select>
-        </label>
-      </div>
-      <p role="status">
-        {results.length} {results.length === 1 ? "candidate" : "candidates"}
-      </p>
-      {results.length > 0 && !results.some((c) => c.synergy.score >= 50) && (
-        <p>
-          No candidates reach 50 in this deck profile. Expand Other Legal Cards
-          to inspect lower-scoring options.
-        </p>
-      )}
-      {!results.length && (
-        <p>
-          No owned candidates match. Try another search or import more of your
-          collection.
-        </p>
-      )}
-      {candidate && (
-        <section
-          ref={comparisonRef}
-          tabIndex={-1}
-          className="synergy-comparison"
-          aria-label="Candidate comparison"
-        >
-          <h3>
-            Candidate: {candidate.card.name} · Synergy {candidate.synergy.score}{" "}
-            — {candidate.synergy.band}
-          </h3>
-          <p>
-            Available: {candidate.available} · Owned: {candidate.owned}
-          </p>
-          <p>
-            Mana value {candidate.card.manaValue} · {candidate.card.typeLine}
-          </p>
-          <p>{candidate.card.oracleText}</p>
-          <button
-            className="management-button"
-            onClick={() => setDetail(candidate.card)}
-          >
-            View candidate card details
+      {!mode ? (
+        <section className="upgrade-modes" aria-label="Choose a goal">
+          <h3>What are you trying to do?</h3>
+          <button className="upgrade-mode" disabled={!canImprove} onClick={() => setMode("improve")} aria-describedby="improve-help">
+            <strong>Improve My Current Deck</strong>
+            <span id="improve-help">
+              Find cards you own that would make this exact deck better. Requires an existing deck. Primary result: Upgrade Value.
+              {!canImprove && ` This deck has ${count} of 99 cards; at least ${MIN_CURRENT_DECK_CARDS} are needed.`}
+            </span>
           </button>
-          <section aria-label="Potential replacements">
-            <h4>Potential comparisons</h4>
-            <p>
-              Based on the local Synergy heuristic, not guaranteed upgrades.
-              Nothing is swapped or removed.
-            </p>
-            {suggestions.length ? (
-              suggestions.map((suggestion) => (
-                <div key={suggestion.identity}>
-                  <p>
-                    <strong>{suggestion.name}</strong> · Confidence:{" "}
-                    {suggestion.confidence}
-                  </p>
-                  <p>{suggestion.reasons.join(" ")}</p>
-                  <button
-                    className="management-button"
-                    onClick={() => {
-                      const row = rows.find(
-                        (r) =>
-                          r.card.oracleId === suggestion.identity ||
-                          dna.byName[
-                            r.name.normalize("NFKC").trim().toLowerCase()
-                          ] === suggestion.identity,
-                      );
-                      if (row) setAgainst(row.key);
-                    }}
-                  >
-                    Compare against {suggestion.name}
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>
-                No sufficiently confident, role-compatible replacement was
-                identified. You can still choose a comparison below.
-              </p>
-            )}
-          </section>
-          <label>
-            Compare with a card in this deck
-            <select
-              value={against}
-              onChange={(e) => setAgainst(e.target.value)}
-            >
-              <option value="">Choose a deck card</option>
-              {rows.map((r) => (
-                <option key={r.key} value={r.key}>
-                  {r.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <InThisDeck synergy={candidate.synergy} />
-          {comparison && (
-            <section aria-label="Current deck card">
-              <h3>Currently in deck: {comparison.name}</h3>
-              <p>
-                Mana value {comparison.card.manaValue} ·{" "}
-                {comparison.card.typeLine}
-              </p>
-              <p>{comparison.card.oracleText}</p>
-              <button
-                className="management-button"
-                onClick={() => setDetail(comparison.card)}
-              >
-                View current card details
-              </button>
-              {comparisonFit && (
-                <>
-                  <section aria-label="Heuristic comparison delta">
-                    <h4>
-                      Local Synergy difference:{" "}
-                      {candidate.synergy.score - comparisonFit.score > 0
-                        ? "+"
-                        : ""}
-                      {candidate.synergy.score - comparisonFit.score}
-                    </h4>
-                    <p>
-                      A difference in local deck fit, not a universal power
-                      rating or a guaranteed upgrade. Review roles and mana
-                      before making any change.
-                    </p>
-                    <dl className="comparison-deltas">
-                      {candidate.synergy.components
-                        .slice(0, 6)
-                        .map((component, index) => (
-                          <div key={component.label}>
-                            <dt>{component.label}</dt>
-                            <dd>
-                              {component.points} vs{" "}
-                              {comparisonFit.components[index]?.points || 0}
-                            </dd>
-                          </div>
-                        ))}
-                    </dl>
-                  </section>
-                  <InThisDeck synergy={comparisonFit} />
-                </>
-              )}
-              <p>
-                Consider roles and mana needs alongside theme fit. Choosing this
-                comparison makes no deck changes.
-              </p>
-            </section>
-          )}
-          <button
-            className="text-button"
-            onClick={() => {
-              setSelected("");
-              setAgainst("");
-            }}
-          >
-            Close comparison
+          <button className="upgrade-mode" onClick={() => setMode("build")} aria-describedby="build-help">
+            <strong>Build Around My Commander</strong>
+            <span id="build-help">
+              Find cards you own that naturally support {blueprint.commanders.join(" + ")} and are worth considering for a new build. Requires only a Commander.
+              Primary results: Build Priority and Commander Fit.
+            </span>
           </button>
         </section>
-      )}
-      {(["Recommended", "Worth Considering", "Other Legal Cards"] as const).map(
-        (tier) => {
-          const group = results.filter((c) => c.synergy.tier === tier);
-          if (!group.length) return null;
-          const list = (
-            <ul className="synergy-candidates">
-              {group.slice(0, limit).map((c) => (
-                <li key={c.identity} data-fit={c.synergy.tier}>
-                  <button
-                    className="synergy-art deck-art-button"
-                    aria-label={`View ${c.card.name} details`}
-                    onClick={() => setDetail(c.card)}
-                  >
+      ) : (
+        <>
+          <p className="upgrade-mode-line">
+            <strong>{mode === "improve" ? "Improve My Current Deck" : "Build Around My Commander"}</strong>{" "}
+            <button
+              className="text-button"
+              onClick={() => {
+                setMode("");
+                setSelected("");
+                setAgainst("");
+                setSort("default");
+                setLimit(40);
+              }}
+            >
+              Change goal
+            </button>
+          </p>
+          {mode === "build" ? (
+            <section className="blueprint" aria-label="Commander Blueprint">
+              <details>
+                <summary>Commander Blueprint · {blueprint.commanders.join(" + ")}</summary>
+                <ul>
+                  {blueprint.plan.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </details>
+              <p className="muted">
+                Commander Fit asks whether a card belongs in this strategy. Build Priority asks how much you would want it when building from scratch. They are
+                separate on purpose.
+              </p>
+            </section>
+          ) : (
+            <p className="muted">
+              Upgrade Value simulates replacing each reasonable card in this deck with the candidate and keeps the best one-for-one swap. It never changes your
+              deck or moves copies, and does not solve multi-card changes.
+            </p>
+          )}
+          <div className="synergy-controls">
+            <label>
+              Search owned candidates
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setLimit(40);
+                }}
+              />
+            </label>
+            <label>
+              Copy availability
+              <select
+                value={availability}
+                onChange={(e) => {
+                  setAvailability(e.target.value);
+                  setLimit(40);
+                }}
+              >
+                <option value="all">All owned</option>
+                <option value="available">Available copies only</option>
+                <option value="assigned">Fully assigned copies only</option>
+              </select>
+            </label>
+            <label>
+              Sort
+              <select value={sort} onChange={(e) => setSort(e.target.value)}>
+                <option value="default">{mode === "improve" ? "Upgrade Value" : "Build Priority, then Commander Fit"}</option>
+                {mode === "improve" && <option value="priority">Build Priority</option>}
+                <option value="fit">Commander Fit</option>
+                <option value="mv">Mana value</option>
+                <option value="name">Name</option>
+              </select>
+            </label>
+          </div>
+          <p role="status">
+            {results.length} {results.length === 1 ? "candidate" : "candidates"}
+          </p>
+          {!results.length && <p>No owned candidates match. Try another search or import more of your collection.</p>}
+          {candidate && (
+            <section ref={comparisonRef} tabIndex={-1} className="synergy-comparison" aria-label="Candidate comparison">
+              <h3>
+                {candidate.card.name} · {candidate.upgrade.label} ({signed(candidate.upgrade.upgradeValue)})
+              </h3>
+              {candidate.upgrade.best ? (
+                <section aria-label="Best swap">
+                  <h4>Best swap: cut {candidate.upgrade.best.cutName}</h4>
+                  <ul>
+                    {candidate.upgrade.cutReasons.map((r) => (
+                      <li key={r}>{r}</li>
+                    ))}
+                  </ul>
+                  <SwapDeltas swap={candidate.upgrade.best} />
+                  {candidate.upgrade.alternatives.length > 0 && (
+                    <p>Alternative reasonable cuts: {candidate.upgrade.alternatives.map((a) => `${a.cutName} (${signed(a.delta)})`).join(" · ")}</p>
+                  )}
+                </section>
+              ) : (
+                <p>No valid one-for-one cut keeps this deck's essential functions.</p>
+              )}
+              <label>
+                Compare with a card in this deck
+                <select value={against} onChange={(e) => setAgainst(e.target.value)}>
+                  <option value="">Choose a deck card</option>
+                  {rows.map((r) => (
+                    <option key={r.key} value={r.key}>
+                      {r.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {chosenRow && chosenSwap && (
+                <section aria-label="Chosen swap">
+                  <h4>Swap for {chosenRow.name}</h4>
+                  {"invalid" in chosenSwap ? (
+                    <p>Not a valid swap: {chosenSwap.invalid}</p>
+                  ) : (
+                    <>
+                      <p>
+                        Upgrade Value for this swap: {signed(Math.round(chosenSwap.delta * 100) / 100)}
+                      </p>
+                      <SwapDeltas swap={chosenSwap} />
+                    </>
+                  )}
+                </section>
+              )}
+              <p>Comparing makes no deck changes.</p>
+              <button
+                className="text-button"
+                onClick={() => {
+                  setSelected("");
+                  setAgainst("");
+                }}
+              >
+                Close comparison
+              </button>
+            </section>
+          )}
+          <ul className="synergy-candidates">
+            {results.slice(0, limit).map((c) => {
+              const u = "upgrade" in c ? (c as UpgradeCandidate).upgrade : null;
+              return (
+                <li key={c.identity} data-fit={u ? u.label : c.build.priorityLabel}>
+                  <button className="synergy-art deck-art-button" aria-label={`View ${c.card.name} details`} onClick={() => setDetail(c)}>
                     <CardImage card={c.card} />
                   </button>
                   <div>
                     <h3>
                       {c.card.name}{" "}
                       <span>
-                        Synergy {c.synergy.score} — {c.synergy.band}
+                        {u ? `${u.label} · ${signed(u.upgradeValue)}` : `Build Priority: ${c.build.priorityLabel} · ${c.build.buildPriority}`}
                       </span>
                     </h3>
-                    <p>
-                      {c.available > 0
-                        ? `Available ${c.available} · Owned ${c.owned}`
-                        : `Owned ${c.owned} · Available 0`}
-                    </p>
-                    {c.usage.length > 0 && (
-                      <p>
-                        Used in:{" "}
-                        {c.usage
-                          .map((u) => `${u.name} (${u.quantity})`)
-                          .join(" · ")}
-                      </p>
-                    )}
-                    {c.synergy.recommendation && (
-                      <p>Confidence: {c.synergy.recommendation.confidence}</p>
-                    )}
-                    <p className="candidate-summary">
-                      {candidateSummary(c.synergy, dna.strategyProfile)}
-                    </p>
-                    <ScoreBreakdown synergy={c.synergy} />
-                    <button
-                      className="management-button"
-                      aria-pressed={selected === c.identity}
-                      onClick={() => {
-                        setSelected(c.identity);
-                        setAgainst("");
-                      }}
-                    >
-                      Compare {c.card.name}
-                    </button>
-                    <details>
-                      <summary>
-                        {c.printings.length} owned{" "}
-                        {c.printings.length === 1
-                          ? "printing / variant"
-                          : "printings / variants"}
-                      </summary>
-                      {c.printings.map((card) => (
-                        <p key={card.id}>
-                          {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
-                          {card.ownership!.finish} · {card.ownership!.language}{" "}
-                          · {card.ownership!.binderName || "No binder"} ·
-                          Available {card.ownership!.quantityUnassigned} / Owned{" "}
-                          {card.quantity}
+                    <BuildSummary build={c.build} />
+                    {u ? (
+                      <UpgradeLines u={u} />
+                    ) : (
+                      <>
+                        {c.build.priorityConcerns.length > 0 && (
+                          <p className="upgrade-concern">
+                            {c.build.buildPriority < c.build.commanderFit ? "Why priority is lower: " : "Concerns: "}
+                            {c.build.priorityConcerns.join(" ")}
+                          </p>
+                        )}
+                        {c.build.priorityReasons.length > 0 && <p>Impact: {c.build.priorityReasons.join(" ")}</p>}
+                        <p>
+                          {c.build.dependency}
+                          {c.build.timing ? ` · ${c.build.timing}` : ""}
                         </p>
-                      ))}
-                    </details>
+                      </>
+                    )}
+                    <p>Confidence: {u ? u.confidence : c.build.confidence}</p>
+                    <Availability c={c} />
+                    {u && (
+                      <button
+                        className="management-button"
+                        aria-pressed={selected === c.identity}
+                        onClick={() => {
+                          setSelected(c.identity);
+                          setAgainst("");
+                        }}
+                      >
+                        Compare {c.card.name}
+                      </button>
+                    )}
+                    <Printings c={c} />
+                    {trace && <Trace trace={u ? u.trace : c.build.trace} />}
                   </div>
                 </li>
-              ))}
-            </ul>
-          );
-          return tier === "Other Legal Cards" ? (
-            <details key={tier} className="other-legal-cards">
-              <summary>Other Legal Cards · {group.length}</summary>
-              <p>
-                Scores below 50. These cards are color-compatible options, not
-                primary recommendations.
-              </p>
-              {list}
-            </details>
-          ) : (
-            <section key={tier} aria-label={tier}>
-              <h3>
-                {tier} · {group.length}
-              </h3>
-              {list}
-            </section>
-          );
-        },
-      )}
-      {["Recommended", "Worth Considering", "Other Legal Cards"].some(
-        (tier) => results.filter((c) => c.synergy.tier === tier).length > limit,
-      ) && (
-        <button
-          className="primary-button"
-          onClick={() => setLimit((n) => n + 40)}
-        >
-          Show more candidates
-        </button>
+              );
+            })}
+          </ul>
+          {results.length > limit && (
+            <button className="primary-button" onClick={() => setLimit((n) => n + 40)}>
+              Show more candidates
+            </button>
+          )}
+        </>
       )}
     </Dialog>
+  );
+}
+function UpgradeLines({ u }: { u: UpgradeEvaluation }) {
+  return (
+    <>
+      <p className="upgrade-metric">Current Deck Upgrade: <strong>{u.label}</strong></p>
+      {u.best && <p>Best swap: cut {u.best.cutName}</p>}
+      {u.reasons.length > 0 && <p>Why: {u.reasons.join(" ")}</p>}
+      {u.concerns.length > 0 && <p className="upgrade-concern">Concerns: {u.concerns.join(" ")}</p>}
+      {u.alternatives.length > 0 && <p>Alternative cuts: {u.alternatives.map((a) => a.cutName).join(" · ")}</p>}
+    </>
   );
 }

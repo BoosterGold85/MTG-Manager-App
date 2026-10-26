@@ -15,6 +15,19 @@ export interface SynergyCandidate {
   usage: { id: string; name: string; quantity: number }[];
   synergy: CardSynergy;
 }
+export interface OwnedCandidateGroup {
+  identity: string;
+  card: SampleCollectionCard;
+  canonical: SampleCollectionCard;
+  printings: SampleCollectionCard[];
+  owned: number;
+  available: number;
+  usage: { id: string; name: string; quantity: number }[];
+}
+/** Owned canonical cards legal for the deck and not already in it; printings grouped, never scored separately. */
+export function ownedCandidateGroups(state: CollectionState, deck: Deck): OwnedCandidateGroup[] {
+  return exploreGroups(state, deck);
+}
 // Derived read-only view. Availability affects ordering, never the theme-fit score.
 export function exploreSynergy(
   state: CollectionState,
@@ -22,6 +35,21 @@ export function exploreSynergy(
 ): SynergyCandidate[] {
   const dna = deckDnaCache.get(state, deck),
     score = candidateScorer(state, deck, dna);
+  return exploreGroups(state, deck)
+    .map(({ canonical, ...group }) => ({ ...group, synergy: score(canonical) }))
+    .sort(
+      (a, b) =>
+        b.synergy.score - a.synergy.score ||
+        ({ High: 3, Medium: 2, Low: 1 }[b.synergy.recommendation?.confidence || "Low"] - { High: 3, Medium: 2, Low: 1 }[a.synergy.recommendation?.confidence || "Low"]) ||
+        (b.synergy.recommendation?.commander.score || 0) - (a.synergy.recommendation?.commander.score || 0) ||
+        (b.synergy.recommendation?.roleNeedSeverity || 0) - (a.synergy.recommendation?.roleNeedSeverity || 0) ||
+        (b.synergy.recommendation?.efficiency || 0) - (a.synergy.recommendation?.efficiency || 0) ||
+        Number(b.available > 0) - Number(a.available > 0) ||
+        a.card.name.localeCompare(b.card.name, "en") ||
+        a.identity.localeCompare(b.identity, "en"),
+    );
+}
+function exploreGroups(state: CollectionState, deck: Deck): OwnedCandidateGroup[] {
   const input = deckDnaInput(state, deck);
   const names = new Set(input.cards.map((c) => normalizedName(c.card.name)));
   const identities = new Set(input.cards.map((c) => c.identity));
@@ -81,6 +109,12 @@ export function exploreSynergy(
       return {
         identity,
         card,
+        canonical: {
+          ...canonical,
+          oracleId:
+            oracleByName.get(normalizedName(canonical.name)) ||
+            canonical.oracleId,
+        },
         printings,
         owned: printings.reduce((n, c) => n + c.ownership!.quantityOwned, 0),
         available: printings.reduce(
@@ -90,23 +124,7 @@ export function exploreSynergy(
         usage: [...usage.values()].sort((a, b) =>
           a.name.localeCompare(b.name, "en"),
         ),
-        synergy: score({
-          ...canonical,
-          oracleId:
-            oracleByName.get(normalizedName(canonical.name)) ||
-            canonical.oracleId,
-        }),
       };
     })
-    .sort(
-      (a, b) =>
-        b.synergy.score - a.synergy.score ||
-        ({ High: 3, Medium: 2, Low: 1 }[b.synergy.recommendation?.confidence || "Low"] - { High: 3, Medium: 2, Low: 1 }[a.synergy.recommendation?.confidence || "Low"]) ||
-        (b.synergy.recommendation?.commander.score || 0) - (a.synergy.recommendation?.commander.score || 0) ||
-        (b.synergy.recommendation?.roleNeedSeverity || 0) - (a.synergy.recommendation?.roleNeedSeverity || 0) ||
-        (b.synergy.recommendation?.efficiency || 0) - (a.synergy.recommendation?.efficiency || 0) ||
-        Number(b.available > 0) - Number(a.available > 0) ||
-        a.card.name.localeCompare(b.card.name, "en") ||
-        a.identity.localeCompare(b.identity, "en"),
-    );
+    .sort((a, b) => a.card.name.localeCompare(b.card.name, "en") || a.identity.localeCompare(b.identity, "en"));
 }
