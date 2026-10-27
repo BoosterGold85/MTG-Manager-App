@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.8 — Evaluator fixes from the Miles "Tails" Prower Vehicles deck
+
+- **Mass removal**: wipes are detected from the removal clause itself, so modal bullets ("Choose one — • Destroy all creatures"), choices and earlier clauses ("Return a creature you control …, then destroy all other creatures") count as board wipes. Cleansing Nova and Time Wipe now count toward Board Wipes in Deck Health.
+- **Key Cards** use strategic centrality instead of general deck fit: primary-theme connections (payoffs and enablers weigh most), verified Commander relationships and the number of verified relationships with other deck cards. A card with no primary-theme or Commander connection is never a key card, however good its fit score; fit only breaks ties.
+- **Core Plan payoff**: an explicit payoff signal is still preferred, but a payoff is now also derived from typed relationships. A Commander trigger verified against several primary-theme cards (for example "Whenever a Vehicle you control enters, … draw a card") is named with its full ability line, or failing that, the primary-theme card connected to the most deck cards.
+- **Vehicles** are a recognized trigger object: Vehicle cards and Vehicle tokens satisfy "Whenever a Vehicle … enters/attacks" relationships, and the Vehicles plan reads "crew Vehicles and attack with them".
+- **Finishers and threats**: Vehicles count as threat bodies (slightly discounted for crewing), large evasive Vehicles count as finishers, and a repeatable attack trigger that adds attacking creatures (e.g. Parhelion-style engines) is a finisher. No card names are used.
+- Added the supplied 100-card Miles "Tails" Prower deck as a permanent regression fixture with tests for each behavior, plus generic modal/multi-clause wipe and attack-engine tests.
+- Commander Fit, Build Priority and Upgrade Value architecture is unchanged. The golden engine fixture moved in one reviewed way: Utvara Hellkite (attacking Dragon tokens) gained finisher credit, which reorders three near-tie alternative cuts in Reign of Dragons; all values, labels, best cuts and rankings are unchanged.
+
 ## 0.6.7 — Deck Workspace UX & Actionability
 
 - An open deck is now a workspace with four sections: **Overview**, **Cards**, **Upgrades** and **Settings**. The section is part of the URL (`&tab=cards|upgrades|settings`; Overview is the default and older deck links still work), so refresh, Back and Forward keep your place; unknown tabs fall back to Overview.

@@ -1,5 +1,6 @@
 // v0.6.7 is a UX pass: these engine outputs were captured from v0.6.6 (09b82e3) before any UI refactor
-// and must not drift. Regenerate only for an intentional, reviewed scoring change.
+// and must not drift. Regenerate only for an intentional, reviewed scoring change (v0.6.8: Utvara Hellkite gained
+// attack-token finisher credit, shifting three near-tie alternative cuts; values, labels, best cuts and order unchanged).
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";
@@ -48,6 +49,6 @@ export function goldenOutputs() {
   }
   return result;
 }
-it("Upgrades I Own engine output is identical to v0.6.6", async () => {
+it("Upgrades I Own engine output matches the reviewed golden fixture", async () => {
   await expect(JSON.stringify(goldenOutputs(), null, 1)).toMatchFileSnapshot("../golden/upgrades-v0.6.6.json");
 });

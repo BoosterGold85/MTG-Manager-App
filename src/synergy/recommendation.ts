@@ -477,6 +477,7 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
       )
         events.add("land");
       if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
+      if (/\bVehicle\b/.test(source.card.typeLine) || /create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(sourceText)) events.add("vehicle");
       if (/Aura/.test(source.card.typeLine)) events.add("aura");
       if (/counter target[^.]*spell/i.test(sourceText))
         events.add("counterspell");

@@ -192,6 +192,10 @@ export function cardFunction(card: CardMetadata): CardFunction {
   // Finishing and engines
   const evasive = keywords.some((k) => ["flying", "trample", "menace", "shadow", "fear", "intimidate", "unblockable"].includes(k));
   const power = Number(card.power), toughness = Number(card.toughness);
+  // Vehicles are threats too: printed power that attacks once crewed (a little less reliable than a creature).
+  const isVehicle = /\bVehicle\b/.test(card.cardFaces?.[0]?.typeLine || card.typeLine),
+    threatBody = (isCreature || isVehicle) && Number.isFinite(power),
+    crewFactor = isCreature ? 1 : 0.85;
   if (has("additional_combat")) {
     add("finishers", 1);
     reasons.push({ value: 0.55, reason: "Grants an additional combat phase." });
@@ -227,12 +231,17 @@ export function cardFunction(card: CardMetadata): CardFunction {
     add("finishers", 0.8);
     reasons.push({ value: 0.5, reason: "Repeatedly damages or drains each opponent." });
   }
-  const bodyScore = isCreature && Number.isFinite(power)
-    ? Math.min(0.5, ((power + (Number.isFinite(toughness) ? toughness : 0)) / Math.max(2, 2 * mv)) * 0.35 + (evasive ? 0.12 : 0) + (keywords.includes("haste") ? 0.05 : 0))
+  const bodyScore = threatBody
+    ? crewFactor * Math.min(0.5, ((power + (Number.isFinite(toughness) ? toughness : 0)) / Math.max(2, 2 * mv)) * 0.35 + (evasive ? 0.12 : 0) + (keywords.includes("haste") ? 0.05 : 0))
     : 0;
-  if (isCreature && power >= 5 && evasive) {
+  if (threatBody && power >= 5 && evasive) {
     add("finishers", 0.8);
-    reasons.push({ value: 0.45, reason: `Large evasive threat (${power} power).` });
+    reasons.push({ value: 0.45, reason: `Large evasive threat (${power} power${isVehicle && !isCreature ? ", once crewed" : ""}).` });
+  }
+  // A repeatable attack trigger that puts more creatures into the attack converts the plan into lethal pressure.
+  if (has("on_attack_token_generation") && ownTokens.some((t) => t.isCreature)) {
+    add("finishers", 0.9);
+    reasons.push({ value: 0.55, reason: "Each attack adds more attacking creatures: a repeatable threat." });
   }
   if (bodyScore) reasons.push({ value: bodyScore, reason: `Body ${card.power}/${card.toughness}${evasive ? " with evasion" : ""}.` });
   // Repeatable engine value from triggered/static abilities not already explained above.
@@ -248,7 +257,7 @@ export function cardFunction(card: CardMetadata): CardFunction {
   const lowImpactBody = isCreature && or(functional.map((r) => r.value)) < 0.25;
   const pieces: EnginePieces = {
     noncombatDamageSources: faces.flatMap((f) => f.damage).filter((d) => d.role === "source" && benefitsYou(d.controller)).reduce((n, d) => n + (d.triggered ? 1 : 0.4), 0),
-    combatThreat: isCreature && Number.isFinite(power) ? Math.min(1.5, (Math.max(0, power) / 4) * (evasive ? 1 : 0.5)) : 0,
+    combatThreat: threatBody ? crewFactor * Math.min(1.5, (Math.max(0, power) / 4) * (evasive ? 1 : 0.5)) : 0,
     attackTriggers: faces.flatMap((f) => f.attackTriggers).length,
     // Doubling/tripling outweighs a flat "+N" bonus.
     damageMultipliers: faces.flatMap((f) => f.damage).filter((d) => d.role === "multiplier").reduce((n, d) => Math.max(n, /triple|three times/i.test(d.text) ? 1.4 : /double|twice/i.test(d.text) ? 1.2 : 0.8), 0),

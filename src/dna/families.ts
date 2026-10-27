@@ -172,10 +172,12 @@ export const families: ThemeFamily[] = [
       } as Record<string, string>
     )[id],
     tags: [id],
-    plan: `support ${id.replaceAll("-", " ")} effects`,
+    plan:
+      ({ vehicles: "crew Vehicles and attack with them", planeswalkers: "protect and use planeswalkers", "extra-turns": "take extra turns", flash: "play at instant speed" } as Record<string, string>)[id] ||
+      `support ${id.replaceAll("-", " ")} effects`,
   })),
 ];
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.6";
+export const DNA_VERSION = "0.6.8";

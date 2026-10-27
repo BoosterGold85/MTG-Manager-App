@@ -605,14 +605,56 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
       .join(
         " and ",
       )} reinforces ${reinforced.map((t) => t.label).join(" and ")} through its recorded abilities.`;
-  const payoff =
-    primary.flatMap((t) =>
-      t.evidence.flatMap((e) =>
-        e.signals
-          .filter((s) => s.kind === "payoff")
-          .map((s) => `${s.label} via ${e.name}`),
-      ),
-    )[0] || "No explicit primary payoff identified.";
+  // Strategic centrality, separate from general deck fit: primary-theme payoffs/enablers, verified Commander
+  // relationships and how many verified relationships a card has with the rest of the deck. A generically efficient
+  // card with no primary-theme or Commander connection never becomes a key card, whatever its fit score.
+  const primaryIds = new Set(primary.map((t) => t.id));
+  const centrality = Object.values(perCard)
+    .filter((c) => !cards.find((card) => card.identity === c.identity)?.commander)
+    .map((c) => {
+      const themed = c.connections.filter((con) => primaryIds.has(con.themeId));
+      const primaryStrength = themed.reduce((n, con) => n + con.strength, 0);
+      const keySignal = themed.some((con) => con.signals.some((sig) => sig.kind === "payoff" || sig.kind === "enabler"));
+      const links = c.recommendation?.links || [];
+      const commanderLink = Math.max(0, ...links.filter((l) => l.commander).map((l) => l.strength));
+      const engine = links.filter((l) => !l.commander).reduce((n, l) => n + l.strength, 0);
+      const strategic = primaryStrength > 0 && (keySignal || commanderLink >= 0.5 || engine >= 1);
+      return { c, strategic, value: 2 * Math.min(primaryStrength, 4) + 4 * commanderLink + 1.2 * Math.min(engine, 5) + c.score / 100 };
+    })
+    .filter((x) => x.strategic)
+    .sort((a, b) => b.value - a.value || compare(a.c.name, b.c.name));
+  // Core Plan payoff: an explicit payoff signal when one exists; otherwise a typed mechanical relationship, such as a
+  // Commander trigger that rewards the primary theme's cards and is verified against several of them.
+  const signalPayoff = primary.flatMap((t) =>
+    t.evidence.flatMap((e) =>
+      e.signals
+        .filter((s) => s.kind === "payoff")
+        .map((s) => `${s.label} via ${e.name}`),
+    ),
+  )[0];
+  const relationshipPayoff = (() => {
+    for (const theme of primary) {
+      const rewarded = centrality.filter(
+        (x) =>
+          x.c.connections.some((con) => con.themeId === theme.id) &&
+          (x.c.recommendation?.links || []).some((l) => l.commander && l.strength >= 0.8),
+      );
+      const commander = cards.find((card) => card.commander);
+      const tag = strategyProfile.commanderSynergyTags.find((t) => t.controller !== "opponent" && !t.selfOnly && (t.objects.length || t.creatureTypes.length));
+      if (rewarded.length >= 2 && commander && tag)
+      {
+        // Quote the Commander's whole ability line, so the reward (e.g. "draw a card") is visible, not only the trigger.
+        const start = tag.evidence.snippet.trim().slice(0, 40).toLowerCase();
+        const ability =
+          (commander.card.oracleText || "").split("\n").find((line) => line.toLowerCase().includes(start)) || tag.evidence.snippet;
+        return `${theme.label} payoff via ${commander.card.name}: ${ability.replace(/\s+/g, " ").trim().slice(0, 180)}`;
+      }
+      const engine = centrality.find((x) => x.c.connections.some((con) => con.themeId === theme.id) && (x.c.recommendation?.links || []).filter((l) => !l.commander).length >= 3);
+      if (engine) return `${theme.label} payoff via ${engine.c.name}: connects ${(engine.c.recommendation?.links || []).filter((l) => !l.commander).length} cards in this deck`;
+    }
+    return undefined;
+  })();
+  const payoff = signalPayoff || relationshipPayoff || "No explicit primary payoff identified.";
   return {
     strategyProfile,
     version: DNA_VERSION,
@@ -629,11 +671,7 @@ export function analyzeDeckDna(input: DnaInput): DeckDna {
         .map((t) => t.label),
       payoff,
     },
-    central: Object.values(perCard)
-      .sort((a, b) => b.score - a.score || compare(a.name, b.name))
-      .filter((c) => c.score >= 45)
-      .slice(0, 3)
-      .map(({ identity, name, score }) => ({ identity, name, score })),
+    central: centrality.slice(0, 3).map(({ c: { identity, name, score } }) => ({ identity, name, score })),
     warnings: [
       ...(meaningful.length < 4
         ? [

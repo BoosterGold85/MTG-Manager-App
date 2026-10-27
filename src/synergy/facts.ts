@@ -382,7 +382,12 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
       controller: base.controller === "unknown" ? "you" : base.controller,
       targets: unique(targets),
       mode,
-      mass: /^(?:destroy|exile|return) (?:all|each)\b|\beach (?:other )?(?:creature|opponent|player)\b/i.test(effect) || keywords.some((k) => /^overload$/i.test(k)),
+      // Judge the removal clause itself, not the start of the line: modal bullets ("• Destroy all creatures") and
+      // earlier clauses ("Return a creature you control …, then destroy all other creatures") still make a wipe.
+      mass:
+        /^(?:destroy|exile|return) (?:all|each)\b/i.test(m[0]) ||
+        /\beach (?:other )?(?:creature|opponent|player)\b/i.test(effect) ||
+        keywords.some((k) => /^overload$/i.test(k)),
       instantSpeed: types.includes("Instant") || keywords.some((k) => /^flash$/i.test(k)) || /^[^:]*:/.test(line),
       // "each other creature and each opponent" still hits your own creatures: only restricted creature wording is one-sided.
       opponentsOnly:

@@ -7,7 +7,7 @@ import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 
-export const SYNERGY_VERSION = "0.6.6";
+export const SYNERGY_VERSION = "0.6.8";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -211,6 +211,7 @@ const objects = [
   "Enchantment",
   "Equipment",
   "Aura",
+  "Vehicle",
   "Instant",
   "Sorcery",
   "Land",
@@ -429,6 +430,12 @@ function characteristics(c: DnaInputCard): Characteristics {
   if (tags.has("treasure")) {
     emits.add("token");
     emits.add("artifact");
+  }
+  // A Vehicle token (e.g. "create a 3/2 colorless Vehicle artifact token") satisfies "Whenever a Vehicle enters".
+  if (/create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(text)) {
+    emits.add("vehicle");
+    emits.add("artifact");
+    emits.add("token");
   }
   const effectText = text
     .split(/[.\n]/)

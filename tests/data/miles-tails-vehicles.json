@@ -1,0 +1,2198 @@
+[
+ {
+  "id": "d4ab6742-065d-55d6-a266-f1276c4b10fa",
+  "oracle_id": "9ffe46bb-1cd5-586b-aacf-3036ab0c98b7",
+  "name": "Miles \"Tails\" Prower",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Fox Pilot",
+  "oracle_text": "Flying\nWhenever a Vehicle you control enters, it gains flying until end of turn. If it's your turn, draw a card.\nCrew abilities you activate cost {1} less to activate.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "sld",
+  "collector_number": "2085",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "3"
+ },
+ {
+  "id": "8f31684a-7b3b-53a1-992b-9727de6962b1",
+  "oracle_id": "d3c68482-4811-596d-bbac-1d1812297d6a",
+  "name": "Absorb",
+  "mana_cost": "{W}{U}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target spell. You gain 3 life.",
+  "keywords": [],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "dmr",
+  "collector_number": "186",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "a1aec3c3-23b2-5a50-ba5e-a4e0fe6cf0e9",
+  "oracle_id": "a890772e-e157-5894-9a04-ec3f2373c43d",
+  "name": "Aeronaut Admiral",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Creature — Human Pilot",
+  "oracle_text": "Flying\nVehicles you control have flying.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "79",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "1"
+ },
+ {
+  "id": "a47879f8-71a6-5300-9e82-678532afd8e7",
+  "oracle_id": "57c49ccb-a64a-545c-94c9-096787993d85",
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "m3c",
+  "collector_number": "283",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "67687b0a-ac60-5876-ba70-e40d84543d75",
+  "oracle_id": "4e4c7ca1-d205-55e2-81ef-c227336e790e",
+  "name": "Azorius Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{1}, {T}: Add {W}{U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "312",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "cf774894-fa61-5eb6-b454-51ad9ae6bb0e",
+  "oracle_id": "692a8db3-24a7-5b5c-92ea-10b0dbf3c7bb",
+  "name": "Banishing Light",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "When Banishing Light enters, exile target nonland permanent an opponent controls until Banishing Light leaves the battlefield.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "blb",
+  "collector_number": "1",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "f413f48d-c6cb-5b5f-899f-243ba982ccd2",
+  "oracle_id": "490caf4f-076c-5caf-b464-bc8a2bff7d96",
+  "name": "Bident of Thassa",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment Artifact",
+  "oracle_text": "Whenever a creature you control deals combat damage to a player, you may draw a card.\n{1}{U}, {T}: Creatures your opponents control attack this turn if able.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "m3c",
+  "collector_number": "177",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "8ed39dcb-e3e5-54f8-ba01-d8b285982759",
+  "oracle_id": "f64d236e-c2c1-547a-b89f-566c02c5a469",
+  "name": "Brute Suit",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Crew 1",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "241",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "3"
+ },
+ {
+  "id": "ff2d36e5-02e6-5f50-a7ad-3cfe8c0eed67",
+  "oracle_id": "968d2b47-d381-5af4-903d-ff422bf61e18",
+  "name": "Cargo Ship",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying, vigilance\n{T}: Add {C}. Spend this mana only to cast artifact spells or activate abilities of artifacts.\nCrew 1",
+  "keywords": [
+   "Flying",
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "fin",
+  "collector_number": "47",
+  "rarity": "uncommon",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "3"
+ },
+ {
+  "id": "38eb3c4d-546f-52e2-8921-b96dd1715e70",
+  "oracle_id": "00c7f344-c02d-5cbf-b7af-1c77317f7356",
+  "name": "Chrome Host Seedshark",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Phyrexian Shark",
+  "oracle_text": "Flying\nWhenever you cast a noncreature spell, incubate X, where X is that spell's mana value.",
+  "keywords": [
+   "Flying",
+   "Incubate"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "mom",
+  "collector_number": "51",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "4"
+ },
+ {
+  "id": "2eebbf0b-ff68-50d6-985d-27a482ececbb",
+  "oracle_id": "2e00dcbc-4f59-5759-8322-cc92b2d92722",
+  "name": "Cid, Freeflier Pilot",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Human Pilot",
+  "oracle_text": "Flying\nVehicle spells you cast cost {1} less to cast.\nWhenever a Vehicle you control attacks, put a +1/+1 counter on it.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "fic",
+  "collector_number": "13",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "fe83d45d-2510-561a-a67e-98e6cf626083",
+  "oracle_id": "ae292c42-c47f-5692-ae1d-8e78f0cc273b",
+  "name": "Cleansing Nova",
+  "mana_cost": "{3}{W}{W}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Choose one —\n• Destroy all creatures.\n• Destroy all artifacts and enchantments.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "cmm",
+  "collector_number": "817",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "88de2530-7fe9-5440-9617-7e1e4d78d556",
+  "oracle_id": "4f53972a-aef1-5f8a-8003-6aff33448b9a",
+  "name": "Cloudspire Captain",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Creature — Kor Pilot",
+  "oracle_text": "Flying\nOther Vehicles and Pilots you control get +1/+1.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "9",
+  "rarity": "uncommon",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "52909d8a-8f70-5c7d-882c-bdd7edd50c05",
+  "oracle_id": "ca174254-ae69-54c4-9b33-98158fca54e3",
+  "name": "Coastal Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Coastal Tower enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "8ed",
+  "collector_number": "323",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "ab9a4185-e4bb-59ce-b61d-5c2844faa4fc",
+  "oracle_id": "c8355363-c10f-5634-905d-fea7093c4269",
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "lcc",
+  "collector_number": "325",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "8902ac7d-f3ec-5a98-99eb-2d744eb6ceba",
+  "oracle_id": "a51ebf7f-51c2-56c7-8c63-b7607bd39105",
+  "name": "Commander's Sphere",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.\nSacrifice Commander's Sphere: Draw a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "drc",
+  "collector_number": "125",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d2c69077-11b2-5e16-827f-393f289a7a50",
+  "oracle_id": "65afb867-ca55-53bc-806c-3c35e42a4445",
+  "name": "Condemn",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Put target attacking creature on the bottom of its owner's library. Its controller gains life equal to its toughness.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "rvr",
+  "collector_number": "14",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "590c805c-cc0c-5be9-b744-7fedafa9cf8e",
+  "oracle_id": "4254a654-9155-5ec4-9466-c33e7c3e4009",
+  "name": "Deluxe Dragster",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Deluxe Dragster can't be blocked except by Vehicles.\nWhenever Deluxe Dragster deals combat damage to a player, you may cast target instant or sorcery card from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nCrew 2",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "moc",
+  "collector_number": "21",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "3"
+ },
+ {
+  "id": "3836721b-08fc-5908-82e6-2f492d98124e",
+  "oracle_id": "e55c53e9-c6df-5a17-aa8f-bc14c058a002",
+  "name": "Empyrean Eagle",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Bird Spirit",
+  "oracle_text": "Flying\nOther Spirits you control get +1/+1.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "239",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "122da80b-28e1-59cf-a90a-262270be140a",
+  "oracle_id": "10d1c655-2218-587b-8d43-44969737fe92",
+  "name": "Favorable Winds",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Creatures you control with flying get +1/+1.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "xln",
+  "collector_number": "56",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "a30eff7f-f7a5-5114-98fd-ed8e44f82a0a",
+  "oracle_id": "dc107b0c-11f9-51a7-b387-f5b00fb3235f",
+  "name": "Gearseeker Serpent",
+  "mana_cost": "{5}{U}{U}",
+  "cmc": 7.0,
+  "type_line": "Creature — Serpent",
+  "oracle_text": "Improvise\n{5}{U}: Gearseeker Serpent can't be blocked this turn.",
+  "keywords": [
+   "Improvise"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "kld",
+  "collector_number": "48",
+  "rarity": "common",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "6"
+ },
+ {
+  "id": "73d6dab5-0de1-5072-b59d-a099dcea7b46",
+  "oracle_id": "a724125b-6849-5fa2-83f0-f2d6e0347aff",
+  "name": "Gearshift Ace",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Dwarf Pilot",
+  "oracle_text": "First strike\nWhenever Gearshift Ace crews a Vehicle, that Vehicle gains first strike until end of turn.",
+  "keywords": [
+   "First strike"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "kld",
+  "collector_number": "16",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "1"
+ },
+ {
+  "id": "e00b6b96-ff98-5895-9ba0-5c520a6cf4b4",
+  "oracle_id": "7f57cfe9-bba7-531b-8fff-4b424d4136f8",
+  "name": "Goldbug, Humanity's Ally",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Artifact Creature — Robot",
+  "oracle_text": "More Than Meets the Eye {W}{U}\nFlying\nWhenever you cast a historic spell, draw a card. This ability triggers only once each turn.",
+  "keywords": [
+   "Flying",
+   "More Than Meets the Eye"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "bot",
+  "collector_number": "11",
+  "rarity": "mythic",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "59bf01bc-2113-5ad2-90f7-447c5dd1c8d1",
+  "oracle_id": "40596150-0bb4-5ff1-8242-cbd9dbc9da79",
+  "name": "Guidelight Pathmaker",
+  "mana_cost": "{6}",
+  "cmc": 6.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Vigilance\nWhen Guidelight Pathmaker enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. Then shuffle.\nCrew 2",
+  "keywords": [
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "206",
+  "rarity": "uncommon",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "7",
+  "toughness": "5"
+ },
+ {
+  "id": "96284bda-20ad-5fb0-8f52-f805e6a56cb1",
+  "oracle_id": "b3757cab-6cdc-55c9-b303-cbd8f5b3d6d7",
+  "name": "Hotshot Mechanic",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Artifact Creature — Fox Pilot",
+  "oracle_text": "Crew 1",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "16",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "1"
+ },
+ {
+  "id": "0e258f76-e1aa-547f-8656-9169d9c787ba",
+  "oracle_id": "73fa4259-724f-5fcd-8202-347e207ec76b",
+  "name": "Irontread Crusher",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact Creature — Construct",
+  "oracle_text": "Trample",
+  "keywords": [
+   "Trample"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "aer",
+  "collector_number": "161",
+  "rarity": "common",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "6",
+  "toughness": "4"
+ },
+ {
+  "id": "18fe782f-cc9a-54fb-9fd5-a3e225d59003",
+  "oracle_id": "c04fc9ac-fa42-54d7-bc1f-8789803772e0",
+  "name": "Island",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Island",
+  "oracle_text": "({T}: Add {U}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "clu",
+  "collector_number": "258",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "6c5ed1ee-bea1-52f9-8a51-c7d6b5952040",
+  "oracle_id": "37d9a7ff-4290-5d3c-8a79-de301eac77ad",
+  "name": "Jubilant Skybonder",
+  "mana_cost": "{1}{W/U}{W/U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "Flying\nCreatures you control with flying have \"Spells your opponents cast that target this creature cost {2} more to cast.\"",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "iko",
+  "collector_number": "223",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "297199e2-dd93-514e-b1e1-5f17d5befe04",
+  "oracle_id": "b3e3e7ba-5597-5f8b-8aa6-b2b022e219d5",
+  "name": "Kitsune Ace",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Fox Pilot",
+  "oracle_text": "Whenever a Vehicle you control attacks, choose one —\n• That Vehicle gains first strike until end of turn.\n• Untap target creature you control.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "22",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "32b9cccd-8661-5f10-9766-8a19e19340b9",
+  "oracle_id": "de3cd8a7-2e7a-5a4a-860c-9f93af81f345",
+  "name": "Mask of Memory",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Whenever equipped creature deals combat damage to a player, you may draw two cards. If you do, discard a card.\nEquip {1}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "40k",
+  "collector_number": "243",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d359060d-6f1b-5b4a-9a90-04664cb63fd5",
+  "oracle_id": "93f955dd-cbf8-5453-9b2e-f08eed11a3cb",
+  "name": "Meandering River",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Meandering River enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "114",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4711b01b-d9b1-5069-9af8-11489d8f5b5a",
+  "oracle_id": "3fa20e91-881a-5e33-9941-b16ab8cbdccf",
+  "name": "Mishra's Bauble",
+  "mana_cost": "{0}",
+  "cmc": 0.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}, Sacrifice Mishra's Bauble: Look at the top card of target player's library. Draw a card at the beginning of the next turn's upkeep.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "mb2",
+  "collector_number": "97",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "2cb6ebce-4c7d-58ee-9f3b-0f7c10734e83",
+  "oracle_id": "6c71b693-5977-5367-b392-a8d4953c6b31",
+  "name": "Momentary Blink",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature you control, then return it to the battlefield under its owner's control.\nFlashback {3}{U}",
+  "keywords": [
+   "Flashback"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "dmr",
+  "collector_number": "15",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "0a6c2260-e38b-54e9-a8b8-eb03edfa38dd",
+  "oracle_id": "aa17516e-c718-5c05-b3ee-c601c3e048f9",
+  "name": "Moorland Haunt",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{W}{U}, {T}, Exile a creature card from your graveyard: Create a 1/1 white Spirit creature token with flying.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "voc",
+  "collector_number": "175",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4ee382b5-987d-5b5f-bd2c-c7f2c03d1efb",
+  "oracle_id": "82cec55d-cab7-516b-bfb4-d5e8997884fc",
+  "name": "Mu Yanling, Wind Rider",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Human Pilot",
+  "oracle_text": "When Mu Yanling, Wind Rider enters, create a 3/2 colorless Vehicle artifact token with crew 1.\nVehicles you control have flying.\nWhenever one or more creatures you control with flying deal combat damage to a player, draw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "52",
+  "rarity": "mythic",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "32d260d9-01da-5836-891c-28f869ad5a70",
+  "oracle_id": "f8592c40-1c34-5bdb-aecf-0325931e4361",
+  "name": "Negate",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target noncreature spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "m20",
+  "collector_number": "69",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "ad28eecb-81ac-5086-a863-30285f79e361",
+  "oracle_id": "ca5fa9dc-daf9-507d-a49c-42ec6ccf0557",
+  "name": "Parhelion II",
+  "mana_cost": "{6}{W}{W}",
+  "cmc": 8.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying, vigilance\nWhenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are attacking.\nCrew 4",
+  "keywords": [
+   "Flying",
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "87",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "5"
+ },
+ {
+  "id": "8dfb2694-43db-5b70-8717-04b27c48706c",
+  "oracle_id": "86ec273c-f390-54ff-8df6-0d7fca350a3b",
+  "name": "Plains",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Plains",
+  "oracle_text": "({T}: Add {W}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "clu",
+  "collector_number": "254",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4c45767d-6e95-5776-b542-5f8d9006e08e",
+  "oracle_id": "79e1db22-040c-5fdb-8852-cb1e42fe01b4",
+  "name": "Port Town",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "As Port Town enters, you may reveal a Plains or Island card from your hand. If you don't, Port Town enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "m3c",
+  "collector_number": "364",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d4f75c2d-bbca-5179-9359-46b2a1477ef2",
+  "oracle_id": "305f12df-6783-5ee9-9ce7-ea3d02af33e3",
+  "name": "Prairie Stream",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Plains Island",
+  "oracle_text": "({T}: Add {W} or {U}.)\nPrairie Stream enters tapped unless you control two or more basic lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "384",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "6f4c117b-b893-5685-b893-250b2758fcdd",
+  "oracle_id": "94a2de2a-fc4c-52d2-9c8a-ffff58dfdf44",
+  "name": "Rally of Wings",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Untap all creatures you control. Creatures you control with flying get +2/+2 until end of turn.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "war",
+  "collector_number": "27",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "a60bd93c-fffc-5caa-b40f-4bf038179a0d",
+  "oracle_id": "adf71aab-d62c-586f-825a-e39cf3bd4748",
+  "name": "Rolling Hamsphere",
+  "mana_cost": "{4}{W}",
+  "cmc": 5.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Trample\nWhenever Rolling Hamsphere attacks, create a 1/1 white Hamster creature token for each creature that crewed it this turn.\nCrew 3",
+  "keywords": [
+   "Trample",
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "blc",
+  "collector_number": "71",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "5"
+ },
+ {
+  "id": "6ab0ec74-15ec-5931-8c0f-3c664a889859",
+  "oracle_id": "70bb3c73-909b-54f0-a0ac-bdf848255840",
+  "name": "Safe Passage",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Prevent all damage that would be dealt to you and creatures you control this turn.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "m13",
+  "collector_number": "30",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "3d25b49f-dab3-5f4b-a656-2032a9fd2b76",
+  "oracle_id": "e3153105-85c3-51e9-8e1f-12d93fc3d713",
+  "name": "Sage Owl",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Bird",
+  "oracle_text": "Flying\nWhen Sage Owl enters, look at the top four cards of your library, then put them back in any order.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "10e",
+  "collector_number": "104",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "1",
+  "toughness": "1"
+ },
+ {
+  "id": "d884d682-d6da-5289-ad14-353053be8482",
+  "oracle_id": "5002f119-7915-5404-8738-fe3ab59b083c",
+  "name": "Sanwell, Avenger Ace",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Human Pilot",
+  "oracle_text": "Vigilance\nWhenever Sanwell, Avenger Ace becomes tapped, exile the top six cards of your library. You may put a Vehicle card from among them onto the battlefield. Put the rest on the bottom of your library in a random order.",
+  "keywords": [
+   "Vigilance"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "brc",
+  "collector_number": "52",
+  "rarity": "mythic",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "4"
+ },
+ {
+  "id": "269348bd-5c6f-55e5-be50-c4b4af339fbe",
+  "oracle_id": "9655655e-58ca-54a1-a73e-8552795d90e8",
+  "name": "Sejiri Refuge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Sejiri Refuge enters tapped.\nWhen Sejiri Refuge enters, you gain 1 life.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "118",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "e41ae62d-e7d1-5ef0-a485-8c0fc2c719a6",
+  "oracle_id": "23720ca0-2174-58bd-8e3e-30c2857396fc",
+  "name": "Sephara, Sky's Blade",
+  "mana_cost": "{4}{W}{W}{W}",
+  "cmc": 7.0,
+  "type_line": "Legendary Creature — Angel",
+  "oracle_text": "As an additional cost to cast this spell, you may tap any number of untapped creatures you control with flying. This spell costs {1} less to cast for each creature tapped this way.\nFlying, lifelink\nOther creatures you control with flying have indestructible.",
+  "keywords": [
+   "Flying",
+   "Lifelink"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "cmm",
+  "collector_number": "54",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "3"
+ },
+ {
+  "id": "8e68cd35-e4fe-5864-b823-cc59970e0850",
+  "oracle_id": "6dbc669a-0c27-5303-9ace-5a1934c429f6",
+  "name": "Serra Disciple",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Bird Cleric",
+  "oracle_text": "Flying, first strike\nWhenever you cast a historic spell, Serra Disciple gets +1/+1 until end of turn.",
+  "keywords": [
+   "Flying",
+   "First strike"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "dom",
+  "collector_number": "34",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "1",
+  "toughness": "1"
+ },
+ {
+  "id": "ab2a1a21-932b-53f6-a42f-d0f30a14349d",
+  "oracle_id": "2952ea8d-2bb9-5586-ad3e-9674242e77fe",
+  "name": "Shorikai, Genesis Engine",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "{1}, {T}: Draw two cards, then discard a card. Create a 1/1 colorless Pilot creature token with \"This creature crews Vehicles as though its power were 2 greater.\"\nCrew 8",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "4",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "8",
+  "toughness": "8"
+ },
+ {
+  "id": "de612223-306a-5619-b5db-5d37360fc788",
+  "oracle_id": "df03e9c2-2037-5fc4-b248-7e2bb3d1519b",
+  "name": "Skybox Ferry",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever Skybox Ferry attacks, draw a card, then discard a card.\nCrew 2",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "332",
+  "rarity": "common",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "14f524e5-64f7-5e9c-b084-32a3fb7b5e84",
+  "oracle_id": "6c48a3fb-10f5-58ca-af73-154bf031517c",
+  "name": "Skysovereign, Consul Flagship",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever Skysovereign, Consul Flagship enters or attacks, it deals 3 damage to target creature or planeswalker an opponent controls.\nCrew 3",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "159",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "6",
+  "toughness": "5"
+ },
+ {
+  "id": "5151228b-798e-58da-ac02-42ca3d334ec0",
+  "oracle_id": "536224c7-d259-51e2-adae-c5f3fd049552",
+  "name": "Smuggler's Copter",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever Smuggler's Copter attacks or blocks, you may draw a card. If you do, discard a card.\nCrew 1",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "160",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "2345a819-b50c-50db-9f03-1032b8aeb548",
+  "oracle_id": "a2a439ef-e33c-51f1-af6e-8e59576b0cae",
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "m3c",
+  "collector_number": "305",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "83137dbd-b16a-5b65-a5fd-9d008b8b83b1",
+  "oracle_id": "6437cd75-30c9-525b-8de0-eddb2d1511b1",
+  "name": "Sram, Senior Edificer",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Dwarf Advisor",
+  "oracle_text": "Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "88",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "5177b74e-61fe-5d98-9049-9bcdc520ca0d",
+  "oracle_id": "0f3fb3c9-b349-526b-bf38-49bb2300a60a",
+  "name": "Staggering Insight",
+  "mana_cost": "{W}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment — Aura",
+  "oracle_text": "Enchant creature\nEnchanted creature gets +1/+1 and has lifelink and \"Whenever this creature deals combat damage to a player, draw a card.\"",
+  "keywords": [
+   "Enchant"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "thb",
+  "collector_number": "228",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "1305d7bc-78c6-5008-b017-3947cd1daa6c",
+  "oracle_id": "09517484-ad71-5ab7-aca2-8162028275f5",
+  "name": "Subterranean Schooner",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Whenever Subterranean Schooner attacks, target creature that crewed it this turn explores.\nCrew 1",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "lci",
+  "collector_number": "80",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "4"
+ },
+ {
+  "id": "3c68e885-a35e-5697-9e9f-cbf1f4c49c72",
+  "oracle_id": "7c02da90-b0c1-5ad9-9679-46e502d9060e",
+  "name": "Swords to Plowshares",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature. Its controller gains life equal to its power.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "134",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4556b1a1-568d-5ecf-b411-87600b2a7f05",
+  "oracle_id": "fad52d6f-3c53-55bd-9447-f39323e58736",
+  "name": "Talisman of Progress",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {U}. Talisman of Progress deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "333",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "de2e7208-d037-5b0f-b8a8-fcaaf6e323c1",
+  "oracle_id": "7e22630b-a882-53f2-9edc-3d096ccdb06c",
+  "name": "Tangle Tumbler",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Vigilance\n{3}, {T}: Put a +1/+1 counter on target creature.\nTap two untapped tokens you control: Tangle Tumbler becomes an artifact creature until end of turn.",
+  "keywords": [
+   "Vigilance"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "blb",
+  "collector_number": "250",
+  "rarity": "uncommon",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "4"
+ },
+ {
+  "id": "993e40b0-b055-593a-8aff-7f3ffae0f468",
+  "oracle_id": "ac1ee976-10af-51e9-a231-1331cba3a2b4",
+  "name": "Temple of Enlightenment",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Temple of Enlightenment enters tapped.\nWhen Temple of Enlightenment enters, scry 1.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "401",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "6f10865c-d5db-59ac-9d1c-8aa2605f7426",
+  "oracle_id": "b6c1f8f8-7efb-5db5-92a7-a9ae46930bca",
+  "name": "The Lunar Whale",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever The Lunar Whale attacks, draw a card for each other attacking creature you control with flying.\nCrew 3",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "fin",
+  "collector_number": "60",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "5"
+ },
+ {
+  "id": "2023fffc-c992-521c-bef4-72f85871edd9",
+  "oracle_id": "86f9d135-c190-559d-b9af-3f2157e96f8a",
+  "name": "The Prydwen, Steel Flagship",
+  "mana_cost": "{4}{W}{W}",
+  "cmc": 6.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever another nontoken artifact you control enters, create a 2/2 white Human Knight creature token with \"This creature gets +2/+2 as long as an artifact entered the battlefield under your control this turn.\"\nCrew 2",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "pip",
+  "collector_number": "22",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "6",
+  "toughness": "6"
+ },
+ {
+  "id": "9cf7a17b-bfd4-5fd9-8b78-58677999e116",
+  "oracle_id": "431b1279-f4b8-50b7-9b9c-fbe82c01912a",
+  "name": "Thopter Fabricator",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Artificer",
+  "oracle_text": "Whenever a Vehicle you control enters, create a 1/1 colorless Thopter artifact creature token with flying.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "68",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "a7749a28-1dd0-5477-80c3-a00a8669c83a",
+  "oracle_id": "06b90e0d-82dd-5e61-9003-c5a65c630e5a",
+  "name": "Thunderclap Wyvern",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Drake",
+  "oracle_text": "Flash\nFlying\nOther creatures you control with flying get +1/+1.",
+  "keywords": [
+   "Flash",
+   "Flying"
+  ],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "94",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "3"
+ },
+ {
+  "id": "4fd9b168-ecf7-509f-bd23-e4d0d1f90fd7",
+  "oracle_id": "472a53f3-9c24-525f-8e8a-754979b46b26",
+  "name": "Time Wipe",
+  "mana_cost": "{2}{W}{W}{U}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Return a creature you control to its owner's hand, then destroy all other creatures.",
+  "keywords": [],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "308",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4ad64eee-be7a-5d00-b640-3fa1d99dfbb9",
+  "oracle_id": "e4530c21-d7ff-5c35-afee-c14ebb40f609",
+  "name": "Tranquil Cove",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Tranquil Cove enters tapped.\nWhen Tranquil Cove enters, you gain 1 life.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "280",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "6b0101ba-face-53c6-ba16-4b676836ec49",
+  "oracle_id": "3a2bd587-4a49-56bc-bc40-afddd34d12a4",
+  "name": "Turn to Mist",
+  "mana_cost": "{1}{W/U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
+  "keywords": [],
+  "colors": [
+   "W",
+   "U"
+  ],
+  "color_identity": [
+   "W",
+   "U"
+  ],
+  "layout": "normal",
+  "set": "clu",
+  "collector_number": "214",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "2c8d3492-7434-55cc-b977-326cf528b54c",
+  "oracle_id": "abec8a1d-3ed7-54d1-872e-9db5a4b15e19",
+  "name": "Ugin, Eye of the Storms",
+  "mana_cost": "{7}",
+  "cmc": 7.0,
+  "type_line": "Legendary Planeswalker — Ugin",
+  "oracle_text": "When you cast this spell, exile up to one target permanent that's one or more colors.\nWhenever you cast a colorless spell, exile up to one target permanent that's one or more colors.\n+2: You gain 3 life and draw a card.\n0: Add {C}{C}{C}.\n−11: Search your library for any number of colorless nonland cards, exile them, then shuffle. Until end of turn, you may cast those cards without paying their mana costs.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "tdm",
+  "collector_number": "1",
+  "rarity": "mythic",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "09737fee-1473-503d-a50a-18c02d4f4b5e",
+  "oracle_id": "04b081ff-0419-502c-aee2-62c184267a02",
+  "name": "Warden of Evos Isle",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Bird Wizard",
+  "oracle_text": "Flying\nCreature spells with flying you cast cost {1} less to cast.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "cmr",
+  "collector_number": "106",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "9bc1ed3a-82cf-56c3-9e59-27b671bf388b",
+  "oracle_id": "03734707-0763-5a90-be91-bfec8a447d2b",
+  "name": "Winged Words",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell costs {1} less to cast if you control a creature with flying.\nDraw two cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "m20",
+  "collector_number": "80",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "f55b4de7-d8f8-5308-bc4f-f24d60aedf8a",
+  "oracle_id": "852ae331-70e4-5d4c-bc1e-1e6d6ae9970a",
+  "name": "Worn Powerstone",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "Worn Powerstone enters tapped.\n{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "lcc",
+  "collector_number": "120",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "de33a6e7-96f4-5140-aa58-dd1ddaf24731",
+  "oracle_id": "cb6342f2-d713-523e-aa03-f63eac0ea844",
+  "name": "_____ _____ Rocketship",
+  "mana_cost": "{4}{U}",
+  "cmc": 5.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever _____ _____ Rocketship attacks, draw a card.\nCrew 1",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "unf",
+  "collector_number": "191",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "5"
+ }
+]
