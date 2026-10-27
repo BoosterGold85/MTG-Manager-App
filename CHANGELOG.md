@@ -10,8 +10,20 @@
   - **Ramp**: Auras and Equipment that grant a mana ability.
   - **Tutors**: searches by any card type (instant, sorcery, Equipment, Aura, permanent…) are tutors; land and named-card searches are not. "Search your library" is always yours (spree modes included).
   - **Commander triggers**: card names with commas or periods ("Gregor, Shrewd Magistrate", "Ms. Bumbleflower") no longer cut triggers short. New events: you discard, leaves the battlefield, you create tokens, scry/surveil, proliferate. Unclassified commander triggers fell from 671 (561 commanders) to 206 (179 commanders).
+- **Untagged popular cards** (reviewed by Commander popularity):
+  - Bounce never matched "to its owner's hand" (an apostrophe bug), so Unsummon-style and mass bounce counted for nothing; it now does, with Aetherize and Cyclonic Rift as sweeps.
+  - Single-target "-X/-X" is removal: Dismember, Tragic Slip, Defile.
+  - Damage to "each of up to X targets" is removal: Crackle with Power, Drakuseth.
+  - "Draw cards equal to …", additional draws and Fact or Fiction-style selection are card advantage.
+  - "Deals damage to them" (the opponent who triggered it) is an opponent ping.
+  - Doubling opponents' life loss is a pings payoff and finisher.
+  - Multi-target blink ("Exile two target …, then return") is blink.
+
+  Popular untagged cards in the top 1,000 fell from 32 to 23. What remains is mostly pillowfort, stax and trigger doublers, which aren't modeled yet by design.
 - Audit gap counts before → after: wipes 95 → 12, removal 42 → 30, protection 23 → 0, card draw 220 → 27, tutors 233 → 130, mana rocks 21 → 7. Most of what remains are audit false positives (blink, land searches, opponents drawing).
-- Golden engine fixture: The Elder Dragon War now reads as card draw + tokens (not only a sweep), so Reign of Dragons' best cut moves from Chain Reaction to Hit the Mother Lode, with values within ±0.03 and the same labels.
+- Golden engine fixture:
+  - The Elder Dragon War now reads as card draw + tokens (not only a sweep), so Reign of Dragons' best cut moves from Chain Reaction to Hit the Mother Lode, with values within ±0.03 and the same labels.
+  - Drakuseth now counts as removal, so Vandalblast's Reign upgrade value moves from 0.25 to 0.18 (still Minor Upgrade).
 
 ## 0.6.9 — Pings / punisher decks (Valgavoth)
 

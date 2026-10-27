@@ -143,7 +143,10 @@ export function cardFunction(card: CardMetadata): CardFunction {
   }
   // Cards
   const draw = drawAmount(text);
-  const impulse = /exile the top[^\n]*?\b(?:you may )?(?:play|cast)\b|(?:play|cast)[^.\n]*exiled card/i.test(text);
+  // Impulse draw, and card selection that puts cards from the top of your library into your hand (Fact or Fiction).
+  const impulse =
+    /exile the top[^\n]*?\b(?:you may )?(?:play|cast)\b|(?:play|cast)[^.\n]*exiled card/i.test(text) ||
+    /\b(?:reveal|look at) the top (?:two|three|four|five|six|seven|x|\d+) cards of your library\b[^\n]*\b(?:put|puts) (?:one pile|those cards|that pile|them|\w+ of (?:them|those cards)|any number of [^.]{0,40}|up to \w+ of them|all [^.]{0,30}) into your hand/i.test(text);
   // Free spells (discover, cascade, "cast it without paying its mana cost") are card and tempo advantage.
   const freeSpell = /\b(?:discover|cascade)\b|cast (?:it|that card|that spell|the exiled card)[^.\n]*without paying/i.test(text);
   if (freeSpell) {
@@ -206,6 +209,11 @@ export function cardFunction(card: CardMetadata): CardFunction {
   if (has("additional_combat")) {
     add("finishers", 1);
     reasons.push({ value: 0.55, reason: "Grants an additional combat phase." });
+  }
+  // Doubling opponents' life loss is a multiplier for drain / pings plans.
+  if (/\bif an? opponent would lose life\b[^.]*\b(?:twice|double|three times)\b/i.test(text)) {
+    add("finishers", 1);
+    reasons.push({ value: 0.65, reason: "Multiplies the life your opponents lose." });
   }
   if (has("damage_multiplier")) {
     add("finishers", 1);

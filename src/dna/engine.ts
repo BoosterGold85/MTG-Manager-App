@@ -220,7 +220,7 @@ function cardSignals(
   // A card that rewards opponents losing life (e.g. "Whenever an opponent loses life …") is a pings payoff.
   {
     const reward = stripReminderText(card.card.oracleText || card.card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "").match(
-      /[^.\n]*\bwhenever (?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b[^.\n]*|[^.\n]*\bwhenever (?:an? )?(?:opponents?|player) (?:is|are) dealt damage\b[^.\n]*/i,
+      /[^.\n]*\bwhenever (?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b[^.\n]*|[^.\n]*\bwhenever (?:an? )?(?:opponents?|player) (?:is|are) dealt damage\b[^.\n]*|[^.\n]*\bif an? opponent would lose life\b[^.\n]*\b(?:twice|double)\b[^.\n]*/i,
     );
     if (reward)
       signals.push({

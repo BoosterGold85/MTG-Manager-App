@@ -149,17 +149,6 @@
     "confidence": "High"
    },
    {
-    "identity": "candidate:Vandalblast",
-    "upgradeValue": 0.25,
-    "label": "Minor Upgrade",
-    "best": "Hit the Mother Lode",
-    "alternatives": [
-     "Chain Reaction",
-     "Chandra's Ignition"
-    ],
-    "confidence": "High"
-   },
-   {
     "identity": "candidate:Dragon Hatchling",
     "upgradeValue": 0.24,
     "label": "Minor Upgrade",
@@ -173,6 +162,17 @@
    {
     "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
     "upgradeValue": 0.2,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Vandalblast",
+    "upgradeValue": 0.18,
     "label": "Minor Upgrade",
     "best": "Hit the Mother Lode",
     "alternatives": [

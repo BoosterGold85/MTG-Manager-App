@@ -53,27 +53,43 @@ See CHANGELOG 0.6.10:
 - comma- and period-safe Commander triggers;
 - trigger events for discard, leaves, token creation, scry and proliferate.
 
+## Untagged popular cards
+
+The 3,604 abilities-but-no-role cards were ranked by Scryfall's EDHREC rank. Most are keyword bodies and combat tricks, correctly role-less. These real misses were fixed:
+- A bounce regex bug ("its owner's hand" never matched).
+- Single-target -X/-X.
+- "Each of up to X targets" damage.
+- "Draw cards equal to …", additional draws and Fact or Fiction-style selection.
+- "Damage to them".
+- Opponent life-loss doublers.
+- Multi-target blink.
+
+Untagged non-vanilla cards went from 3,604 to 3,477; in the top 1,000 by popularity, from 32 to 23. Still not modeled, by design: pillowfort (Propaganda), stax and turn protection (Grand Abolisher, Silence) and trigger doublers (Panharmonicon, Strionic Resonator). The audit now also checks bounce: its 31 remaining hits are self-bounce ("return target creature you control"), which is correctly not removal.
+
 ## Golden fixture
 
-One reviewed change. The Elder Dragon War now reads as card draw plus tokens, not just a sweep. Reign of Dragons' best cut moves from Chain Reaction to Hit the Mother Lode, with values within ±0.03 and unchanged labels.
+Two reviewed changes:
+- The Elder Dragon War now reads as card draw plus tokens, not just a sweep. Reign of Dragons' best cut moves from Chain Reaction to Hit the Mother Lode, with values within ±0.03 and unchanged labels.
+- Drakuseth now counts as removal, so Vandalblast's Reign upgrade value moves from 0.25 to 0.18 (still Minor Upgrade).
 
 ## Tests
 
-`tests/unit/cardPoolRules.test.ts` (9), using real cards:
+`tests/unit/cardPoolRules.test.ts` (13), using real cards:
 - clause-scoped draws and removal;
 - shrink, permanent, multi-sentence and exception sweeps, with "-2/-0" not counted;
 - Aura protection, Greaves and mana Auras;
 - type tutors versus named searches;
 - Exhume recursion;
 - Gregor's comma name;
-- the discard, leaves, token, scry and proliferate trigger events.
+- the discard, leaves, token, scry and proliferate trigger events;
+- the popular-card fixes: -X/-X and "up to X targets" removal, bounce, draw wording, "damage to them", life-loss doublers, multi-target blink.
 
 ## Validation run
 
 - `npm run lint` and `npx tsc -b`: clean.
-- `npm run test:unit`: 482 passed.
+- `npm run test:unit`: 486 passed.
 - `npm run build`: passed.
 - `npm audit`: 0 vulnerabilities.
 - `git diff --check`: clean.
-- Playwright on the production build: 375 passed across all five viewports.
+- Playwright on the production build: 374 of 375 passed in the full run. The one failure (desktop, deck editor flow) passed 24 times in a row on rerun, so it was intermittent and unrelated to these engine changes.
 - Card-pool audit: 32,094 cards, 0 crashes, about 25 s.

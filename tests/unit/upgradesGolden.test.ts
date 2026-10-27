@@ -2,7 +2,8 @@
 // Regenerate only for an intentional, reviewed scoring change. Reviewed changes so far:
 //   v0.6.8  Utvara Hellkite gained attack-token finisher credit: three near-tie alternative cuts reordered.
 //   v0.6.10 The Elder Dragon War reads as card draw + tokens: Reign best cuts move from Chain Reaction to
-//           Hit the Mother Lode; values within ±0.03, labels unchanged.
+//           Hit the Mother Lode; values within ±0.03, labels unchanged. Drakuseth now counts as removal, so
+//           Vandalblast's Reign value moves 0.25 → 0.18 (still Minor Upgrade).
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";

@@ -716,5 +716,336 @@
   "legalities": {
    "commander": "legal"
   }
+ },
+ {
+  "name": "Dismember",
+  "mana_cost": "{1}{B/P}{B/P}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "({B/P} can be paid with either {B} or 2 life.)\nTarget creature gets -5/-5 until end of turn.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "3d286cf6-3e16-4941-9326-1818b1e06d69",
+  "oracle_id": "fd74f8eb-0253-42dd-8277-186d4934da38",
+  "set": "mm2",
+  "collector_number": "79",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Tragic Slip",
+  "mana_cost": "{B}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Target creature gets -1/-1 until end of turn.\nMorbid — That creature gets -13/-13 until end of turn instead if a creature died this turn.",
+  "keywords": [
+   "Morbid"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "132ccc20-cb42-4474-b747-7e41a661060e",
+  "oracle_id": "fa6e2a47-a8cb-4224-ae3e-f61c90477285",
+  "set": "inr",
+  "collector_number": "134",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Defile",
+  "mana_cost": "{B}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Target creature gets -1/-1 until end of turn for each Swamp you control.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "5bcb4398-edd1-41a7-a496-b12bce22ceb6",
+  "oracle_id": "49dddec0-d958-4810-8c6e-225fc8118c8f",
+  "set": "mh1",
+  "collector_number": "86",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sylvan Library",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of your draw step, you may draw two additional cards. If you do, choose two cards in your hand drawn this turn. For each of those cards, pay 4 life or put the card on top of your library.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "6ada256f-2e55-4c1f-b4d3-d7b10b498956",
+  "oracle_id": "92eed395-62ca-4293-882b-8565c40daab5",
+  "set": "dmr",
+  "collector_number": "179",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fact or Fiction",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "eb1a25c5-1918-40f3-b54f-5d31cf6b4eb2",
+  "oracle_id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+  "set": "frc",
+  "collector_number": "41",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Last March of the Ents",
+  "mana_cost": "{6}{G}{G}",
+  "cmc": 8.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell can't be countered.\nDraw cards equal to the greatest toughness among creatures you control, then put any number of creature cards from your hand onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "7f1b99e0-ffb7-4f98-8ee5-4357bb79dd2e",
+  "oracle_id": "3999cd64-ff5c-4e2c-8aa6-d14f9f8a2b4c",
+  "set": "ltr",
+  "collector_number": "172",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Crackle with Power",
+  "mana_cost": "{X}{X}{X}{R}{R}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Crackle with Power deals five times X damage to each of up to X targets.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "de547f52-3798-4b3a-947d-24873251204b",
+  "oracle_id": "273f5483-b67e-4dd6-bba8-c0a047fa34d7",
+  "set": "stx",
+  "collector_number": "95",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Razorkin Needlehead",
+  "mana_cost": "{R}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Assassin",
+  "oracle_text": "This creature has first strike during your turn.\nWhenever an opponent draws a card, this creature deals 1 damage to them.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "bc73b963-23c0-46d2-853a-34a8b463994e",
+  "oracle_id": "a78f981a-bf8a-42a4-b171-d655cc2cc1a2",
+  "set": "dsk",
+  "collector_number": "153",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Bloodletter of Aclazotz",
+  "mana_cost": "{1}{B}{B}{B}",
+  "cmc": 4.0,
+  "type_line": "Creature — Vampire Demon",
+  "oracle_text": "Flying\nIf an opponent would lose life during your turn, they lose twice that much life instead. (Damage causes loss of life.)",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "d4f6027a-003a-4f9d-929a-0b6da1fa42c9",
+  "oracle_id": "469956a2-7cd4-4695-b8f4-c841526f160d",
+  "set": "lci",
+  "collector_number": "92",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Aetherize",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Return all attacking creatures to their owner's hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "1e5530fc-0291-4a17-b048-c5d24e6f51d8",
+  "oracle_id": "7c779721-cd1b-4696-9ae9-68ccc284ed2a",
+  "set": "fdn",
+  "collector_number": "151",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ghostly Flicker",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile two target artifacts, creatures, and/or lands you control, then return those cards to the battlefield under your control.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "dc143ba3-2a58-4980-9fa0-a05a9e9ed082",
+  "oracle_id": "ad0070db-6454-41cb-861f-8f5b8fc2a3b8",
+  "set": "cmm",
+  "collector_number": "98",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Unsummon",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Return target creature to its owner's hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "ddad9f16-52d5-49de-82b0-b1a5294a9c44",
+  "oracle_id": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+  "set": "fra",
+  "collector_number": "46",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Cyclonic Rift",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Return target nonland permanent you don't control to its owner's hand.\nOverload {6}{U} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+  "keywords": [
+   "Overload"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "dfb7c4b9-f2f4-4d4e-baf2-86551c8150fe",
+  "oracle_id": "d75b9c82-1b49-4c3e-a1b5-aeef57d6644b",
+  "set": "rvr",
+  "collector_number": "40",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
  }
 ]

@@ -268,6 +268,8 @@ const typesIn = (text: string) =>
   creatureTypePatterns.filter((p) => p.reference.test(text)).map((p) => p.type);
 const cardTypesIn = (text: string) =>
   cardTypes.filter((type) => new RegExp(`\\b${type}s?\\b`, "i").test(text));
+// "draw two cards", "draw X cards", "draw cards equal to …", "draw two additional cards", "draws that many cards".
+const DRAW = /\bdraw(?:s)? (?:(?:a|an|one|two|three|four|five|six|seven|x|\d+|that many)(?: additional)? cards?\b|cards equal to\b|an additional card\b)/i;
 /** Who performs the verb at `index`, read from its grammatical subject ("you draw", "target player draws", ", draw"). */
 export function subjectScope(line: string, index: number): Scope {
   const before = line.slice(0, index);
@@ -389,10 +391,11 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
     ["shuffle", /\b(?:owner of target ([^.]*?)|target ([^.]*?)'s owner) shuffles?\b/i],
     ["destroy", /\bdestroy (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
     ["exile", /\bexile (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
-    ["bounce", /\breturn (?:target|all|each|up to \w+ target) ([^.]*?) to (?:its|their) owners?'? hands?/i],
+    ["bounce", /\breturn (?:target|all|each|up to \w+ target|\w+ target) ([^.]*?) to (?:its|their) owner(?:'s|s'|s)? hands?/i],
     ["sacrifice", /\b(?:target|each) (?:opponent|player) sacrifices? (?:a|an|one|two|\w+) ([^.]*)/i],
-    ["damage", /\bdeals? [^.]*?damage(?: equal to [^.]*?)? to ((?:any target|target [^.]*?|each [^.]*?))(?:[.,]|$)/i],
+    ["damage", /\bdeals? [^.]*?damage(?: equal to [^.]*?)? to ((?:any target|target [^.]*?|each [^.]*?|up to \w+ targets?|any number of targets?))(?:[.,]|$)/i],
     // Shrink sweeps: "All creatures get -2/-2", "Creatures your opponents control get -1/-1" (toughness must drop).
+    ["shrink", /\b(target creature(?: or planeswalker)?(?: an opponent controls| you don't control)?) gets? -(?:\d+|x)\/-(?:[1-9]\d*|x)\b/i],
     ["shrink", /\b((?:all|each) (?:other )?creatures?(?: your opponents control| you don't control)?|creatures your opponents control|creatures you don't control) gets? -(?:\d+|x)\/-(?:[1-9]\d*|x)\b/i],
   ];
   // Every pattern is tried; a line keeps its strongest answer (a mass creature/permanent sweep first), so
@@ -415,7 +418,9 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
         ? ["spell"]
         : /\bany target\b/i.test(phrase)
           ? ["creature", "planeswalker"]
-          : answerWords.filter(([r]) => r.test(phrase)).map(([, t]) => t);
+          : /\b(?:each of )?(?:up to \w+|any number of) (?:other )?targets?\b|\bdivided as you choose among\b/i.test(phrase)
+            ? ["creature", "planeswalker"]
+            : answerWords.filter(([r]) => r.test(phrase)).map(([, t]) => t);
     // "Destroy all permanents except for artifacts and lands" sweeps permanents; the exceptions aren't targets.
     if (/^(?:all |each )?(?:other )?(?:nonland )?permanents?\b/i.test(phrase)) targets.splice(0, targets.length, /nonland/i.test(phrase) ? "nonland_permanent" : "permanent");
     if (!targets.length && /\bpermanents?\b/i.test(phrase)) targets.push("permanent");
@@ -431,7 +436,7 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
       // Judge the removal clause itself, not the start of the line: modal bullets ("• Destroy all creatures") and
       // earlier clauses ("Return a creature you control …, then destroy all other creatures") still make a wipe.
       mass:
-        mode === "shrink" ||
+        (mode === "shrink" && !/^target\b/i.test(phrase)) ||
         /^(?:destroy|exile|return) (?:all|each)\b/i.test(m[0]) ||
         /\beach (?:other )?(?:creature|opponent|player)\b/i.test(m[0]) ||
         keywords.some((k) => /^overload$/i.test(k)),
@@ -819,12 +824,10 @@ function faceFacts(face: {
       roles.add("discard_payoff");
     if (/\b(?:can't|cannot|don't|doesn't)\b/i.test(directEffect)) continue;
     if (
-      /\bdraw(?:s)? (?:a|an|one|two|three|four|five|six|x|\d+|that many) cards?\b/i.test(
-        directEffect,
-      )
+      DRAW.test(directEffect)
     ) {
       result.drawsCards = true;
-      const at = line.search(/\bdraw(?:s)? (?:a|an|one|two|three|four|five|six|x|\d+|that many) cards?\b/i);
+      const at = line.search(DRAW);
       result.cardDrawEffects.push(at >= 0 ? { ...fact, controller: subjectScope(line, at) } : fact);
     }
     if (
@@ -972,7 +975,8 @@ const theirTurnLifeLoss =
   /whenever (?:a player|an opponent|each opponent|a creature[^,]{0,40}(?:an opponent|a player))[^.]{0,140}(?:damage|loses? \w+ life)|at the beginning of (?:each opponent's|each player's) (?:upkeep|draw step|end step)[^.]{0,120}(?:damage|loses? \w+ life)|unless (?:that player|they) (?:sacrifices?|pays?|discards?)/i;
 export function opponentLifeLoss(text: string): { direct: boolean; theirTurn: boolean; anyTarget: boolean } {
   const clean = stripReminderText(text);
-  const direct = directLifeLoss.test(clean);
+  // "Whenever an opponent draws a card, this deals 1 damage to them": "them" is that player.
+  const direct = directLifeLoss.test(clean) || /\b(?:an? opponent|each opponent|a player|target opponent|target player)\b[^.]{0,90}\b(?:deals?\b[^.]{0,60}\bdamage to|(?:causes?|makes?)) them\b|\b(?:an? opponent|a player)\b[^.]{0,90}\bthey lose \w+ life/i.test(clean);
   const anyTarget = /\bdeals?\b[^.\n]{0,70}\bdamage\b[^.\n]{0,50}\bto any (?:other )?target/i.test(clean);
   // A punisher trigger fires on opponents' turns, so even "any target" damage there usually hits that opponent.
   return { direct, theirTurn: (direct || anyTarget) && theirTurnLifeLoss.test(clean), anyTarget };

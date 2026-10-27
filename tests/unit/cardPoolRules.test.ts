@@ -60,3 +60,23 @@ describe("Commander triggers", () => {
     expect(triggers("Ezuri, Stalker of Spheres").map((t) => t.event)).toContain("counters");
   });
 });
+
+describe("popular cards the untagged review found", () => {
+  it("single-target -X/-X and 'up to X targets' damage are removal; bounce is removal", () => {
+    for (const name of ["Dismember", "Tragic Slip", "Defile", "Crackle with Power", "Unsummon"]) expect(roles(name).interaction, name).toBeGreaterThan(0);
+    for (const name of ["Aetherize", "Cyclonic Rift"]) expect((roles(name).interaction || 0) + (roles(name).wipes || 0), name).toBeGreaterThan(0);
+  });
+  it("'draw cards equal to', additional draws and Fact or Fiction-style selection are card advantage", () => {
+    for (const name of ["Sylvan Library", "Fact or Fiction", "Last March of the Ents"]) expect(roles(name).cardAdvantage, name).toBeGreaterThan(0);
+  });
+  it("'damage to them' is an opponent ping and life-loss doublers are pings payoffs", async () => {
+    const { analyze } = await import("../../src/intelligence/tagger");
+    expect(analyze(card("Razorkin Needlehead")).assignments.map((a) => a.tagId)).toContain("opponent-life-loss");
+    expect(analyze(card("Bloodletter of Aclazotz")).assignments.map((a) => a.tagId)).toContain("punisher");
+    expect(roles("Bloodletter of Aclazotz").finishers).toBe(1);
+  });
+  it("multi-target blink is blink", async () => {
+    const { analyze } = await import("../../src/intelligence/tagger");
+    expect(analyze(card("Ghostly Flicker")).assignments.map((a) => a.tagId)).toContain("blink");
+  });
+});

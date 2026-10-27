@@ -19,6 +19,7 @@ const text = (c: CardMetadata) => stripReminderText(c.oracleText || c.cardFaces?
 const expectations: { id: string; role: string; pattern: RegExp; check: (fn: ReturnType<typeof cardFunction>) => boolean }[] = [
   { id: "wipe", role: "wipes", pattern: /\b(?:destroy|exile) (?:all|each) (?:other )?(?:nonland permanents|creatures|permanents|nontoken creatures)\b|\bdeals? \w+ damage to each creature\b|\ball creatures get -\d+\/-\d+|\beach player sacrifices (?:all|\w+) creatures/i, check: (f) => !!f.roles.wipes },
   { id: "removal", role: "interaction", pattern: /\b(?:destroy|exile) target (?:creature|artifact|enchantment|planeswalker|nonland permanent|permanent)/i, check: (f) => !!f.roles.interaction || !!f.roles.wipes },
+  { id: "bounce", role: "interaction", pattern: /\breturn (?:target|up to \w+ target|\w+ target) (?:creature|nonland permanent|permanent|artifact|enchantment)[^.]* to (?:its|their) owner(?:'s|s'|s)? hands?/i, check: (f) => !!f.roles.interaction || !!f.roles.wipes },
   { id: "counterspell", role: "interaction", pattern: /\bcounter target (?:spell|noncreature spell|creature spell|instant|activated)/i, check: (f) => !!f.roles.interaction },
   { id: "ramp-rock", role: "ramp", pattern: /^\{T\}: Add \{[WUBRGC]\}|\{T\}: Add (?:one mana of any color|\{C\}\{C\}|two mana)/im, check: (f) => !!f.roles.ramp || f.isLand },
   { id: "ramp-land", role: "ramp", pattern: /search your library for (?:a|up to (?:one|two)) basic land cards?[^.]*onto the battlefield/i, check: (f) => !!f.roles.ramp || f.isLand },

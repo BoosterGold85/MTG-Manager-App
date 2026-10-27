@@ -1,7 +1,7 @@
 import type { Rule } from '../types';
 import { match } from './helpers';
 export const misc: Rule = c => [
- ...match(c,'blink',/exile (?:target|another|up to|any number)[^]{0,170}return[^]{0,140}battlefield/i,'Exiles a permanent and returns it to the battlefield.',true),
+ ...match(c,'blink',/exile (?:target|another|up to|any number|\w+ target)[^]{0,170}return[^]{0,140}battlefield/i,'Exiles a permanent and returns it to the battlefield.',true),
  ...match(c,'untap',/\buntap (?:target|all|each|up to|another|that|it|two|three)/i,'Explicitly untaps permanents.'),
  ...match(c,'tap-matters',/whenever[^.\n]{0,80}(?:becomes? tapped|you tap)|tap (?:an?|another|two|three|\d+) untapped (?:creatures?|artifacts?)[^.\n]{0,50}:/i,'Rewards tapping or uses tapping your permanents as a cost.',true),
  ...match(c,'extra-combat',/additional combat (?:phase|step)|another combat phase/i,'Creates an extra combat phase.'),
