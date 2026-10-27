@@ -6,6 +6,8 @@ import { cardKeywords } from "../utils/cardKeywords";
 import { extractCardFacts, benefitsYou } from "../synergy/facts";
 import type { AnswerFact, AnswerTarget, CardFacts } from "../synergy/facts";
 import { isBasicLand } from "../decks/decks";
+import { conditionFactor, crewCondition, effectConditions, withoutLines } from "./conditions";
+import type { ConditionCredit, SupplyIndex } from "./conditions";
 
 export const CARD_FUNCTION_VERSION = "1.0.0";
 export type Need =
@@ -74,6 +76,8 @@ export interface CardFunction {
   bodyScore: number;
   confidence: "High" | "Medium" | "Low";
   uncertainties: string[];
+  /** Deck-relative only: each conditional ability, the deck cards that satisfy it and the credit it earned. */
+  conditions?: ConditionCredit[];
 }
 const cache = new Map<string, CardFunction>();
 const pieces0 = (facts: CardFacts) => [...new Set(facts.faces.flatMap((f) => f.tokenMultipliers).flatMap((m) => m.scopes))];
@@ -336,4 +340,103 @@ export function cardFunction(original: CardMetadata): CardFunction {
   cache.set(key, result);
   if (cache.size > 10000) cache.delete(cache.keys().next().value!);
   return result;
+}
+
+const ENGINE_KEYS = ["noncombatDamageSources", "combatThreat", "attackTriggers", "damageMultipliers", "extraCombats", "controlledDiscard", "wantsDiscard"] as const;
+const lowerConfidence = (a: CardFunction["confidence"], b: CardFunction["confidence"]) => (a === "Low" || b === "Low" ? "Low" : a === "Medium" || b === "Medium" ? "Medium" : "High");
+const listNames = (names: string[]) => (names.length > 3 ? `${names.slice(0, 3).join(", ")} and ${names.length - 3} more` : names.join(", "));
+/**
+ * The card's function in one deck. An ability that needs a condition ("Whenever you cast a colorless spell") earns
+ * credit only in proportion to the deck cards that reliably satisfy it; with fewer than two suppliers it earns none.
+ * Unconditional abilities are unaffected. Without a supply index this is the context-free card function.
+ */
+export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): CardFunction {
+  if (!supply) return cardFunction(card);
+  const fn = conditionedFunction(card, supply);
+  const crew = crewCondition(card);
+  if (!crew) return fn;
+  // A Vehicle's attacks and body need creatures to crew it; its other abilities don't.
+  const { supply: amount, suppliers } = supply.supply(crew, card);
+  const f = conditionFactor(crew, amount);
+  const credit: ConditionCredit = { needs: crew.needs, line: crew.line, understood: true, supply: amount, suppliers, factor: f };
+  const note =
+    f >= 1
+      ? `Crewed by the ${amount} creatures here.`
+      : `Only ${amount} creature${amount === 1 ? "" : "s"} here to crew it, so its attacks get ${f > 0 ? "partial" : "no"} credit.`;
+  if (f >= 1) return { ...fn, impactReasons: [...fn.impactReasons, note], conditions: [...(fn.conditions || []), credit] };
+  const roles = { ...fn.roles };
+  if (roles.finishers) roles.finishers *= f;
+  if (!roles.finishers) delete roles.finishers;
+  return {
+    ...fn,
+    roles,
+    engines: { ...fn.engines, combatThreat: fn.engines.combatThreat * f, attackTriggers: fn.engines.attackTriggers * f },
+    impact: Math.round((fn.impact - (1 - f) * fn.bodyScore) * 1000) / 1000,
+    impactReasons: [...fn.impactReasons, note],
+    conditions: [...(fn.conditions || []), credit],
+  };
+}
+function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunction {
+  const full = cardFunction(card);
+  const conditions = effectConditions(card);
+  if (!conditions.length) return full;
+  const credits: (ConditionCredit & { lineIndex: number })[] = conditions.map((condition, lineIndex) => {
+    const { supply: amount, suppliers } = supply.supply(condition, card);
+    return { needs: condition.needs, line: condition.line, understood: condition.understood, supply: amount, suppliers, factor: conditionFactor(condition, amount), lineIndex };
+  });
+  const confidence = credits.some((c) => !c.understood) ? lowerConfidence(full.confidence, "Medium") : full.confidence;
+  const notes = credits.map((c) =>
+    !c.understood
+      ? `Couldn't check whether this deck supports "${c.line.slice(0, 90)}", so that ability gets half credit.`
+      : c.factor >= 1
+        ? `Its "${c.needs}" ability is fed by ${c.supply >= 10 ? c.supply : c.suppliers.length} cards here: ${listNames(c.suppliers)}.`
+        : c.factor > 0
+          ? `Its "${c.needs}" ability is fed by only ${c.suppliers.length} cards here (${listNames(c.suppliers)}), so it gets partial credit.`
+          : `Its "${c.needs}" ability has ${c.suppliers.length ? `only ${listNames(c.suppliers)}` : "no cards"} to feed it here, so it gets no credit.`,
+  );
+  const strip = (c: ConditionCredit) => ({ needs: c.needs, line: c.line, understood: c.understood, supply: c.supply, suppliers: c.suppliers, factor: c.factor });
+  if (credits.every((c) => c.factor >= 1)) return { ...full, impactReasons: [...full.impactReasons, ...notes], conditions: credits.map(strip) };
+  const lines = [...new Set(conditions.map((c) => c.line))];
+  const base = cardFunction(withoutLines(card, lines));
+  const roles: Partial<Record<Need, number>> = { ...base.roles };
+  const engines: EnginePieces = { ...base.engines, tokenSourcesByScope: { ...base.engines.tokenSourcesByScope }, tokenMultipliers: { ...base.engines.tokenMultipliers } };
+  let impact = base.impact;
+  const answers = [...base.answers];
+  const reasons = [...base.impactReasons];
+  let repeatable = base.repeatable;
+  // Each condition's own ability, scaled by its supply. Several conditions on one line share the weakest supply.
+  const byLine = new Map<string, number>();
+  for (const c of credits) byLine.set(c.line, Math.min(byLine.get(c.line) ?? 1, c.factor));
+  for (const [line, f] of byLine) {
+    if (f <= 0) continue;
+    const withLine = cardFunction(withoutLines(card, lines.filter((l) => l !== line)));
+    for (const need of Object.keys(withLine.roles) as Need[]) {
+      const b = base.roles[need] || 0;
+      roles[need] = Math.max(roles[need] || 0, b + f * ((withLine.roles[need] || 0) - b));
+    }
+    for (const key of ENGINE_KEYS) engines[key] += f * (withLine.engines[key] - base.engines[key]);
+    for (const [scope, n] of Object.entries(withLine.engines.tokenSourcesByScope)) engines.tokenSourcesByScope[scope] = (engines.tokenSourcesByScope[scope] || 0) + f * (n - (base.engines.tokenSourcesByScope[scope] || 0));
+    for (const [scope, n] of Object.entries(withLine.engines.tokenMultipliers)) engines.tokenMultipliers[scope] = Math.max(engines.tokenMultipliers[scope] || 0, f * n);
+    impact = Math.max(impact, base.impact + f * (withLine.impact - base.impact));
+    if (f >= 0.5) {
+      for (const a of withLine.answers) if (!answers.some((b) => b.text === a.text)) answers.push(a);
+      repeatable ||= withLine.repeatable;
+    }
+    for (const r of withLine.impactReasons) if (!reasons.includes(r)) reasons.push(r);
+  }
+  for (const need of Object.keys(roles) as Need[]) if ((roles[need] || 0) < 0.05) delete roles[need];
+  return {
+    ...full,
+    roles,
+    engines,
+    answers,
+    coverage: [...new Set(answers.flatMap((a) => a.targets))],
+    instantInteraction: answers.some((a) => a.instantSpeed),
+    repeatable,
+    impact: Math.round(impact * 1000) / 1000,
+    impactReasons: [...reasons, ...notes],
+    lowImpactBody: full.isCreature && impact < 0.25,
+    confidence,
+    conditions: credits.map(strip),
+  };
 }

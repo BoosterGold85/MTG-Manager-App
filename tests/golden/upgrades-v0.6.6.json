@@ -95,29 +95,29 @@
   "improve": [
    {
     "identity": "candidate:Combat Celebrant",
-    "upgradeValue": 0.75,
+    "upgradeValue": 0.74,
     "label": "Moderate Upgrade",
-    "best": "Hit the Mother Lode",
+    "best": "Chandra's Ignition",
     "alternatives": [
-     "Chain Reaction",
-     "Chandra's Ignition"
+     "Hit the Mother Lode",
+     "Chain Reaction"
     ],
     "confidence": "High"
    },
    {
     "identity": "candidate:Fiery Emancipation",
-    "upgradeValue": 0.7,
+    "upgradeValue": 0.68,
     "label": "Moderate Upgrade",
-    "best": "Hit the Mother Lode",
+    "best": "Chandra's Ignition",
     "alternatives": [
-     "Chain Reaction",
-     "Chandra's Ignition"
+     "Hit the Mother Lode",
+     "Chain Reaction"
     ],
     "confidence": "High"
    },
    {
     "identity": "candidate:Hoarding Dragon",
-    "upgradeValue": 0.78,
+    "upgradeValue": 0.77,
     "label": "Moderate Upgrade",
     "best": "Hit the Mother Lode",
     "alternatives": [
@@ -128,18 +128,18 @@
    },
    {
     "identity": "candidate:Savage Beating",
-    "upgradeValue": 0.67,
+    "upgradeValue": 0.65,
     "label": "Moderate Upgrade",
-    "best": "Hit the Mother Lode",
+    "best": "Chandra's Ignition",
     "alternatives": [
-     "Chain Reaction",
-     "Chandra's Ignition"
+     "Hit the Mother Lode",
+     "Chain Reaction"
     ],
     "confidence": "Medium"
    },
    {
     "identity": "candidate:Xorn",
-    "upgradeValue": 0.31,
+    "upgradeValue": 0.3,
     "label": "Minor Upgrade",
     "best": "Hit the Mother Lode",
     "alternatives": [
@@ -150,7 +150,7 @@
    },
    {
     "identity": "candidate:Dragon Hatchling",
-    "upgradeValue": 0.24,
+    "upgradeValue": 0.23,
     "label": "Minor Upgrade",
     "best": "Hit the Mother Lode",
     "alternatives": [
@@ -172,7 +172,7 @@
    },
    {
     "identity": "candidate:Vandalblast",
-    "upgradeValue": 0.18,
+    "upgradeValue": 0.17,
     "label": "Minor Upgrade",
     "best": "Hit the Mother Lode",
     "alternatives": [
@@ -183,7 +183,7 @@
    },
    {
     "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
-    "upgradeValue": 0.03,
+    "upgradeValue": 0.02,
     "label": "Sidegrade",
     "best": "Hit the Mother Lode",
     "alternatives": [
@@ -255,7 +255,7 @@
   "improve": [
    {
     "identity": "scoring:Focused Study",
-    "upgradeValue": 0.49,
+    "upgradeValue": 0.45,
     "label": "Moderate Upgrade",
     "best": "Study 4",
     "alternatives": [
@@ -266,7 +266,7 @@
    },
    {
     "identity": "scoring:Off-plan Fighter",
-    "upgradeValue": -1.26,
+    "upgradeValue": -1.19,
     "label": "Downgrade",
     "best": "Study 4",
     "alternatives": [
@@ -347,7 +347,7 @@
   "improve": [
    {
     "identity": "scoring:Additional Land Engine",
-    "upgradeValue": 0.64,
+    "upgradeValue": 0.97,
     "label": "Moderate Upgrade",
     "best": "Landfall Value 4",
     "alternatives": [
@@ -358,8 +358,8 @@
    },
    {
     "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
-    "upgradeValue": -0.32,
-    "label": "Downgrade",
+    "upgradeValue": 0.12,
+    "label": "Sidegrade",
     "best": "Landfall Value 4",
     "alternatives": [
      "Landfall Value 3",
@@ -393,7 +393,7 @@
   "improve": [
    {
     "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
-    "upgradeValue": 1.54,
+    "upgradeValue": 1.44,
     "label": "Strong Upgrade",
     "best": "Equipment 0",
     "alternatives": [
@@ -439,7 +439,7 @@
   "improve": [
    {
     "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
-    "upgradeValue": 0.46,
+    "upgradeValue": 0.49,
     "label": "Moderate Upgrade",
     "best": "Artifact 4",
     "alternatives": [
@@ -450,7 +450,7 @@
    },
    {
     "identity": "scoring:Artifact Mana Engine",
-    "upgradeValue": 0.27,
+    "upgradeValue": 0.26,
     "label": "Minor Upgrade",
     "best": "Artifact 4",
     "alternatives": [
@@ -530,8 +530,8 @@
   ],
   "improve": [
    {
-    "identity": "scoring:Cheap Reanimation",
-    "upgradeValue": 0.95,
+    "identity": "scoring:Graveyard Reset",
+    "upgradeValue": 0.91,
     "label": "Moderate Upgrade",
     "best": "Self Mill 0",
     "alternatives": [
@@ -541,8 +541,8 @@
     "confidence": "High"
    },
    {
-    "identity": "scoring:Graveyard Reset",
-    "upgradeValue": 0.91,
+    "identity": "scoring:Cheap Reanimation",
+    "upgradeValue": 0.86,
     "label": "Moderate Upgrade",
     "best": "Self Mill 0",
     "alternatives": [
@@ -680,10 +680,13 @@
    },
    {
     "identity": "scoring:Generic Fight",
-    "upgradeValue": 0,
+    "upgradeValue": -1.2,
     "label": "Downgrade",
-    "best": null,
-    "alternatives": [],
+    "best": "ETB Value 4",
+    "alternatives": [
+     "ETB Value 3",
+     "ETB Value 8"
+    ],
     "confidence": "High"
    }
   ]

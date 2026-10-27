@@ -7,6 +7,9 @@
 //   v0.6.12 Mana sources costing 5 count as 0.7 ramp (6+ as 0.4), and planeswalker ultimates beyond starting
 //           loyalty no longer count: the Artifact case's 5-mana rocks count for less, so its two cheap mana
 //           candidates rise 0.38 → 0.46 (Minor → Moderate) and 0.19 → 0.27. Nothing else moved.
+//   v0.6.12 Deck-relative conditions and deck-derived targets: Landfall's two candidates rise (its payoffs have
+//           few lands to feed them); Reign values move ≤ 0.02 and three best cuts become Chandra's Ignition;
+//           synthetic cases move ≤ 0.1; the blink case's Generic Fight now has a valid (Downgrade) cut.
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";

@@ -15,7 +15,7 @@ import type { BuildEvaluation } from "./build";
 import { buildDeckModel, compareUpgrade, evaluateUpgrade, simulateSwap } from "./upgrade";
 import type { DeckModel, UpgradeEvaluation } from "./upgrade";
 import { canonicalInput } from "./inputs";
-import { needLabels } from "./cardFunction";
+import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
 
 export const UPGRADES_VERSION = "0.6.6";
@@ -50,8 +50,9 @@ export function candidateGroups(state: CollectionState, deck: Deck): OwnedCandid
 export function buildAroundCommander(state: CollectionState, deck: Deck): BuildCandidate[] {
   return memo(state, `build:${deckKey(deck)}`, () => {
     const blueprint = commanderBlueprint(state, deck);
+    const supply = currentDeckModel(state, deck).supply;
     return candidateGroups(state, deck)
-      .map((group) => ({ ...group, build: evaluateForBuild(blueprint, canonicalInput(state, group.canonical)) }))
+      .map((group) => ({ ...group, build: evaluateForBuild(blueprint, canonicalInput(state, group.canonical), deckCardFunction(group.canonical, supply)) }))
       .sort((a, b) => compareBuild(a.build, b.build));
   });
 }
@@ -104,7 +105,7 @@ export function deckHealth(state: CollectionState, deck: Deck): DeckHealthRow[] 
     const rows: DeckHealthRow[] = HEALTH_NEEDS.filter((need) => model.targets[need] > 0).map((need) => {
       const count = model.totals.roles[need], target = model.targets[need];
       const ratio = count / target;
-      return { need, label: needLabels[need], count, target, status: ratio >= 1 ? "Good" : ratio >= 0.75 ? "Slightly Low" : "Low", reasons: needs[need].reasons };
+      return { need, label: needLabels[need], count, target, status: ratio >= 1 ? "Good" : ratio >= 0.75 ? "Slightly Low" : "Low", reasons: model.targetReasons[need] };
     });
     const lands = model.totals.land, landTarget = model.targets.lands;
     rows.push({
@@ -122,7 +123,7 @@ export function deckHealth(state: CollectionState, deck: Deck): DeckHealthRow[] 
 export function buildFor(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["canonical"]): BuildEvaluation {
   const cached = cache.get(state)?.get(`build:${deckKey(deck)}`) as BuildCandidate[] | undefined;
   const known = cached?.find((c) => c.canonical.scryfallId === candidate.scryfallId);
-  return known ? known.build : evaluateForBuild(commanderBlueprint(state, deck), canonicalInput(state, candidate));
+  return known ? known.build : evaluateForBuild(commanderBlueprint(state, deck), canonicalInput(state, candidate), deckCardFunction(candidate, currentDeckModel(state, deck).supply));
 }
 export type AnalysisNoteKind = "commander-trigger" | "commander-links" | "weak-plan" | "untracked-cards" | "missing-text";
 export interface AnalysisNote {

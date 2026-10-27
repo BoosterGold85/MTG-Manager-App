@@ -43,11 +43,13 @@ for (const regression of regressionDecks)
       );
     }
   });
-it("Dragon typal connects explicit type payoffs, creature tokens, combat and ramp without artifact-type inflation", () => {
+it("Dragon typal connects explicit type payoffs, creature tokens and ramp without artifact-type inflation", () => {
   const result = dna();
   expect(themeIds(result)).toEqual(
-    expect.arrayContaining(["typal:Dragon", "tokens", "combat", "ramp"]),
+    expect.arrayContaining(["typal:Dragon", "tokens", "ramp"]),
   );
+  // Flying Dragons alone are not a combat plan (v0.6.12 audit): this fixture has no repeated attack payoffs.
+  expect(themeIds(result)).not.toContain("combat");
   expect(result.themes[0].id).toBe("typal:Dragon");
   expect(themeIds(result)).not.toContain("artifacts");
   expect(result.summary).toContain("Lathliss");

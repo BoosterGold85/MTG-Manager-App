@@ -190,10 +190,12 @@ const weights = {
   enabler: 3,
   interaction: 1.5,
 };
+const ATTACK_TAGS = ["attack-triggers", "combat-damage-triggers", "extra-combat", "combat-trick"];
 function cardSignals(
   card: DnaInputCard,
   types: Set<string>,
   deckTags: Set<string>,
+  attackPlan = true,
 ): Signal[] {
   const signals: Signal[] = [];
   // Typed discard: only discard you control enables Mayhem/Madness/discard payoffs; opponent discard never does.
@@ -322,7 +324,8 @@ function cardSignals(
       "menace",
     ].includes(k.toLowerCase()),
   );
-  if (combat.length)
+  // Only when the deck repeatedly rewards attacking: fliers in a reanimator deck are not a combat plan.
+  if (combat.length && attackPlan)
     signals.push({
       themeId: "combat",
       tagId: "keyword:combat",
@@ -440,6 +443,12 @@ function scoreCard(
   return result;
 }
 
+/** Repeated attack payoffs in the 99 (or an attacking Commander): the evidence a combat plan needs. */
+function attackPlanOf(cards: DnaInputCard[]) {
+  const main = cards.filter((c) => !c.commander);
+  const payoffs = main.filter((c) => c.assignments.some((a) => ATTACK_TAGS.includes(a.tagId))).length;
+  return payoffs >= Math.max(3, Math.ceil(main.length * 0.04)) || cards.some((c) => c.commander && c.assignments.some((a) => ATTACK_TAGS.includes(a.tagId)));
+}
 function deckSignals(cards: DnaInputCard[]) {
   const typeCounts = new Map<string, number>();
   for (const c of cards)
@@ -454,10 +463,11 @@ function deckSignals(cards: DnaInputCard[]) {
   const deckTags = new Set(
     cards.flatMap((c) => c.assignments.map((a) => a.tagId)),
   );
+  const attackPlan = attackPlanOf(cards);
   const signals = new Map(
-    cards.map((c) => [c, cardSignals(c, types, deckTags)]),
+    cards.map((c) => [c, cardSignals(c, types, deckTags, attackPlan)]),
   );
-  return { types, deckTags, signals };
+  return { types, deckTags, signals, attackPlan };
 }
 export function analyzeDeckDna(input: DnaInput): DeckDna {
   const { cards } = input;
@@ -742,7 +752,7 @@ export function candidateScorer(
   dna: DeckDna,
 ) {
   const { cards } = deckDnaInput(state, deck);
-  const { types, deckTags, signals } = deckSignals(cards);
+  const { types, deckTags, signals, attackPlan } = deckSignals(cards);
   const commanders = cards
     .filter((c) => c.commander)
     .map((card) => ({ card, signals: signals.get(card)! }));
@@ -763,7 +773,7 @@ export function candidateScorer(
     };
     return scoreCard(
       input,
-      cardSignals(input, types, deckTags),
+      cardSignals(input, types, deckTags, attackPlan),
       dna.themes,
       commanders,
       dna.strategyProfile,

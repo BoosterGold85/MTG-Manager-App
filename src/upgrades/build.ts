@@ -38,8 +38,8 @@ export interface BuildEvaluation {
 const rank = { High: 3, Medium: 2, Low: 1 } as const;
 const lower = (a: Confidence, b: Confidence): Confidence => (rank[a] <= rank[b] ? a : b);
 const generalFeatures = new Set(["lands", "artifacts", "enchantments", "spells", "drawEngine", "damage", "goodstuff"]);
-export function evaluateForBuild(blueprint: CommanderBlueprint, input: DnaInputCard): BuildEvaluation {
-  const fn: CardFunction = cardFunction(input.card);
+/** `fn` is the card's function in this deck (conditions checked against its cards); context-free when omitted. */
+export function evaluateForBuild(blueprint: CommanderBlueprint, input: DnaInputCard, fn: CardFunction = cardFunction(input.card)): BuildEvaluation {
   const scored = scoreRecommendation(blueprint.profile, input);
   const rec = scored.recommendation!;
   const faces = fn.facts.faces;

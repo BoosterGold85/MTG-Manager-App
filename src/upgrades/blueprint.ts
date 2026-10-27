@@ -33,7 +33,7 @@ export interface CommanderBlueprint {
   profile: DeckStrategyProfile;
 }
 // Normal structure of a 100-card Commander deck before any Commander-specific adjustment.
-const baseline: Record<Need, [number, number, string]> = {
+export const baseline: Record<Need, [number, number, string]> = {
   lands: [36, 1, "Every Commander deck needs a reliable land base."],
   ramp: [10, 1, "Acceleration lets the deck cast its Commander and threats on time."],
   cardAdvantage: [10, 1, "Card flow keeps resources coming after the first turns."],
@@ -122,7 +122,9 @@ export function buildCommanderBlueprint(commanders: DnaInputCard[]): CommanderBl
     adjust("cardAdvantage", 2, 0.15, "A spell-casting plan needs extra card flow.");
     adjust("interaction", 0, 0.1, "Cheap instant-speed interaction doubles as spell fuel.");
   }
-  if (has("tokens") || tokenTypes.length || tags.some((t) => t.objects.includes("Token"))) adjust("tokens", 8, 0.35, "The Commander's plan wants many bodies or tokens.");
+  // Treasure, Clues and Food are resources, not bodies: only creature tokens raise the token target.
+  const bodyTokens = functions.some((f) => f.facts.faces.some((face) => face.createsTokens.some((t) => t.isCreature)));
+  if (has("tokens") || bodyTokens || tags.some((t) => t.objects.includes("Token"))) adjust("tokens", 8, 0.35, "The Commander's plan wants many bodies or tokens.");
   if (has("sacrifice") || tags.some((t) => t.event === "sacrifice" || t.event === "dies")) adjust("sacrificeOutlets", 3, 0.35, "Death and sacrifice payoffs need reliable sacrifice outlets.");
   if (has("lands") || tags.some((t) => t.objects.includes("Land"))) {
     adjust("lands", 2, 0.1, "A lands plan wants extra land drops.");

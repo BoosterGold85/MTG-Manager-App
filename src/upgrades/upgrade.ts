@@ -7,9 +7,11 @@ import type { CardMetadata } from "../models/collection";
 import type { DeckDna, DnaInputCard } from "../dna/engine";
 import type { RecommendationData } from "../synergy/recommendation";
 import type { AnswerTarget } from "../synergy/facts";
-import { cardFunction, needLabels } from "./cardFunction";
+import { deckCardFunction, needLabels } from "./cardFunction";
+import { SupplyIndex } from "./conditions";
 import type { CardFunction, EnginePieces, Need } from "./cardFunction";
 import type { CommanderBlueprint } from "./blueprint";
+import { baseline } from "./blueprint";
 
 export const UPGRADE_VERSION = "1.0.0";
 export type UpgradeLabel = "Major Upgrade" | "Strong Upgrade" | "Moderate Upgrade" | "Minor Upgrade" | "Sidegrade" | "Downgrade";
@@ -85,9 +87,13 @@ export interface DeckModel {
   cards: DeckCardModel[];
   totals: Totals;
   targets: Record<Need, number>;
+  /** Why each target is what it is: the Commander Blueprint's reasons plus what the 99 itself shows. */
+  targetReasons: Record<Need, string[]>;
   vector: Vector;
   utility: number;
   blueprint: CommanderBlueprint;
+  /** The deck's cards as suppliers of conditions ("creature spells with power 4+"), shared by every evaluation. */
+  supply: SupplyIndex;
 }
 export interface SwapResult {
   cut: string;
@@ -218,9 +224,10 @@ const linkOf = (rec: RecommendationData | undefined) => ({
 });
 /** The saved deck as a utility model; built once per deck revision. */
 export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): DeckModel {
+  const supply = new SupplyIndex(dna.strategyProfile.cards.map((c) => ({ card: c.card.card, quantity: c.card.quantity, commander: c.card.commander })));
   const cards: DeckCardModel[] = dna.strategyProfile.cards.map((c) => {
     const input: DnaInputCard = c.card;
-    const fn = cardFunction(input.card);
+    const fn = deckCardFunction(input.card, supply);
     const { commander, deck } = linkOf(dna.cards[input.identity]?.recommendation);
     const link = input.commander ? 0 : commander;
     return {
@@ -237,11 +244,13 @@ export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): Dec
       lostLinks: 0,
     };
   });
-  const targets = Object.fromEntries(Object.entries(blueprint.needs).map(([n, v]) => [n, v.target])) as Record<Need, number>;
+  const { targets, reasons: targetReasons } = deckTargets(dna, blueprint, cards);
   const totals: Totals = { land: 0, nonland: 0, roles: emptyRoles(), coverage: emptyCoverage(), commanderLink: 0, heavyDependency: 0, threat: 0, impact: 0, mvSum: 0, highMv: 0, engines: emptyEngines(), links: 0 };
   for (const card of cards) addInto(totals, card.contribution, 1);
-  // Commanders are always available as engine sources (e.g. Lathliss makes Dragon tokens), never as cuts.
+  // Commanders are always available as engine sources (e.g. Lathliss makes Dragon tokens), never as cuts, and the roles
+  // they fill themselves (Niv-Mizzet's card draw, Kenrith's reanimation) count toward the deck's totals.
   for (const card of cards.filter((c) => c.commander)) {
+    for (const need of ROLE_NEEDS) totals.roles[need] += card.fn.roles[need] || 0;
     const e = card.fn.engines;
     for (const [scope, n] of Object.entries(e.tokenSourcesByScope)) totals.engines.tokenSourcesByScope[scope] = (totals.engines.tokenSourcesByScope[scope] || 0) + n;
     totals.engines.noncombatDamageSources += e.noncombatDamageSources;
@@ -260,7 +269,43 @@ export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): Dec
       }
   totals.links = links;
   const vector = vectorOf(totals, targets);
-  return { cards, totals, targets, vector, utility: utilityOf(vector), blueprint };
+  return { cards, totals, targets, targetReasons, vector, utility: utilityOf(vector), blueprint, supply };
+}
+// Strategy-specific needs rise only when the 99 itself pursues that plan, whatever the Commander's text suggests.
+const PLAN_NEEDS: [Need, string, number][] = [
+  ["recursion", "graveyard", 5],
+  ["tokens", "tokens", 8],
+  ["sacrificeOutlets", "sacrifice", 3],
+  ["controlledDiscard", "discard", 6],
+];
+/** Role targets for this deck: the Commander Blueprint as a prior, adjusted by the curve and themes of the actual 99. */
+function deckTargets(dna: DeckDna, blueprint: CommanderBlueprint, cards: DeckCardModel[]) {
+  const targets = Object.fromEntries(Object.entries(blueprint.needs).map(([n, v]) => [n, v.target])) as Record<Need, number>;
+  const reasons = Object.fromEntries(Object.entries(blueprint.needs).map(([n, v]) => [n, [...v.reasons]])) as Record<Need, string[]>;
+  const main = cards.filter((c) => !c.commander && !c.fn.isLand);
+  const count = main.reduce((n, c) => n + c.quantity, 0);
+  if (count >= 20) {
+    const average = main.reduce((n, c) => n + c.fn.effectiveManaValue * c.quantity, 0) / count;
+    const shift = Math.max(-4, Math.min(3, Math.round(3 * (average - 3.2))));
+    if (shift) {
+      targets.ramp = Math.max(4, targets.ramp + shift);
+      reasons.ramp.push(`The 99's average mana value is ${average.toFixed(1)}, so this deck needs ${shift < 0 ? "less" : "more"} acceleration (target ${targets.ramp}).`);
+    }
+  }
+  const theme = (id: string) => dna.themes.find((t) => t.id === id);
+  for (const [need, family, planTarget] of PLAN_NEEDS) {
+    const t = theme(family);
+    const pursued = !!t && (t.percent >= 15 || (dna.core.primary.includes(t.label) && t.percent >= 10));
+    const prior = baseline[need][0];
+    if (pursued && targets[need] < planTarget) {
+      targets[need] = planTarget;
+      reasons[need].push(`${t!.label} is one of this deck's main themes (${t!.percent}%).`);
+    } else if (!pursued && targets[need] > prior && (t?.percent || 0) < 10) {
+      targets[need] = prior;
+      reasons[need].push(`The Commander suggests it, but this deck's 99 doesn't pursue ${family} (${t ? `${t.percent}% of the deck` : "no theme"}), so the target stays at ${prior}.`);
+    }
+  }
+  return { targets, reasons };
 }
 const ESSENTIAL: Need[] = ["ramp", "cardAdvantage", "interaction", "protection", "wipes", "finishers"];
 function invalidReason(model: DeckModel, before: Totals, after: Totals, cut: DeckCardModel, fn: CardFunction): string | null {
@@ -287,7 +332,7 @@ interface CandidateContext {
   linkTotal: number;
 }
 function candidateContext(model: DeckModel, card: CardMetadata, rec: RecommendationData | undefined): CandidateContext {
-  const fn = cardFunction(card);
+  const fn = deckCardFunction(card, model.supply);
   const { commander, deck } = linkOf(rec);
   let linkTotal = 0;
   for (const c of model.cards) if (!c.commander) linkTotal += deck.get(c.identity) || 0;
@@ -356,7 +401,7 @@ export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: 
     const d = best.deltas;
     const linked = [...deck.keys()].map((id) => ids.get(id)?.name).filter((n): n is string => !!n && n !== best.cutName);
     // A reason needs a visible change (a point or more out of 100), not rounding noise.
-    if ((d.commanderPlan || 0) >= 1) reasons.push(`Strengthens the ${commanderNames.join(" + ")} plan${model.vector.commanderPlan > 85 ? " (already well supported, so the gain is small)" : ""}.`);
+    if ((d.commanderPlan || 0) >= 1 && commander >= 0.5) reasons.push(`Strengthens the ${commanderNames.join(" + ")} plan${model.vector.commanderPlan > 85 ? " (already well supported, so the gain is small)" : ""}.`);
     if ((d.engines || 0) >= 1) reasons.push(`Improves existing engines${linked.length ? `: ${linked.slice(0, 3).join(", ")}` : ""}.`);
     if ((d.finishing || 0) >= 1) reasons.push("Improves finishing power.");
     if ((d.interaction || 0) >= 1) reasons.push(`Improves interaction${fn.coverage.length ? ` (${fn.coverage.join(" / ").replaceAll("_", " ")} answers)` : ""}.`);
@@ -366,6 +411,11 @@ export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: 
     if ((d.curve || 0) >= 1) reasons.push("Smooths the curve.");
     for (const [c, v] of Object.entries(d) as [Component, number][]) if (v < -0.5) concerns.push(`${componentLabels[c]} ${v.toFixed(1)}.`);
     if (fn.lowImpactBody) concerns.push("Adds little beyond its creature type and body.");
+    for (const c of fn.conditions || []) {
+      if (c.factor >= 0.5 && c.understood) reasons.push(`Its "${c.needs}" ability has ${c.suppliers.length} cards here to feed it: ${c.suppliers.slice(0, 3).join(", ")}${c.suppliers.length > 3 ? "…" : ""}.`);
+      else if (c.understood) concerns.push(`Its "${c.needs}" ability ${c.suppliers.length ? `has only ${c.suppliers.join(", ")} to feed it` : "has nothing in this deck to feed it"}, so it gets ${c.factor > 0 ? "little" : "no"} credit.`);
+      else concerns.push(`Couldn't check what feeds "${c.line.slice(0, 80)}" in this deck; that ability gets half credit.`);
+    }
     if (commander >= 0.8 && model.vector.commanderPlan > 85) concerns.push("The Commander plan is already saturated; another on-plan card adds little.");
     const cut = ids.get(best.cut)!;
     if (cut.impact < fn.impact) cutReasons.push(`${cut.name} has lower standalone impact (${Math.round(cut.impact * 100)} vs ${Math.round(fn.impact * 100)}).`);

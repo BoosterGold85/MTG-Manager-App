@@ -6,9 +6,9 @@ import type { Evidence } from "../intelligence/types";
 import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
-import { extractCardFacts, opponentLifeLoss } from "../synergy/facts";
+import { benefitsYou, extractCardFacts, opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.11";
+export const SYNERGY_VERSION = "0.6.12";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -54,7 +54,7 @@ export function isUnclassifiedTrigger(tag: CommanderSynergyTag) {
   return (
     tag.event === "turn" &&
     !tag.selfOnly &&
-    !/^(?:[^—]{1,40} — )?(?:At the beginning of (?:your|each|combat on your turn|the next|your first|your second|your precombat|your postcombat)|When you do\b|.{0,80}\bat the beginning of the next end step)/i.test(tag.evidence.snippet)
+    !/^(?:[^—]{1,40} — )?(?:At the beginning of (?:your|each|combat on your turn|the next|your first|your second|your precombat|your postcombat)|When you do\b|.{0,80}\bat the beginning of (?:the|your) next end step)/i.test(tag.evidence.snippet)
   );
 }
 export interface CommanderSynergyTag {
@@ -1059,6 +1059,19 @@ export function scoreBand(score: number) {
               : "Poor Fit";
 }
 /** Rules relationships reused by vNext; deliberately excludes family/tag fallback bonuses. */
+/** Whether a card creates the receiver's event repeatedly (tokens of that kind, or a triggered/activated producer)
+ * rather than only satisfying it once by itself. */
+function producesRepeatedly(source: DnaInputCard, receiver: CommanderSynergyTag) {
+  if (!["cast", "enters", "attacks", "combat-damage", "dies"].includes(receiver.event)) return true;
+  const facts = extractCardFacts(source.card);
+  return facts.faces.some((face) =>
+    face.createsTokens.some(
+      (t) =>
+        benefitsYou(t.controller) &&
+        (receiver.creatureTypes.length ? t.creatureTypes.some((type) => receiver.creatureTypes.includes(type)) : receiver.objects.includes("Artifact") ? t.tokenTypes.length > 0 || t.isCreature : t.isCreature),
+    ),
+  );
+}
 export function mechanicalRelationships(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
@@ -1104,7 +1117,10 @@ export function mechanicalRelationships(
     ] as const) {
       for (const receiver of receiverCard.receivers) {
         if (!validate(receiver, source.card)) continue;
-        const value = interaction(receiver, source);
+        let value = interaction(receiver, source);
+        // The Commander feeding a candidate's trigger only by being such a card (Kenrith is a 5-power creature
+        // spell, Ziatora is a flying Dragon) is one trigger source among the deck's, not a Commander strategy.
+        if (source.card.commander && receiverCard === candidate && !producesRepeatedly(source.card, receiver)) value = Math.min(value, 0.3);
         if (value > 0) {
           strength = Math.max(strength, value);
           evidence.push(
