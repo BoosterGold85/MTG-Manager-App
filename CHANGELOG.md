@@ -2,6 +2,7 @@
 
 ## 0.6.10 — Full card-pool audit and real card data
 
+- Card Intelligence ruleset 0.3.6: the blink, "damage to them" and life-loss-doubler tag rules changed, so saved auto-tags refresh once on next load. Manual tag corrections are kept.
 - Test fixtures now use real Oracle text from Scryfall bulk data instead of text written from memory: the Miles and Valgavoth decks, upgrade candidates and clone fixtures. Every earlier regression still holds on the real text.
 - New card-pool audit (`tests/audit/cardPool.audit.test.ts`): runs all 32,094 Commander-legal cards and 3,441 commanders through the evaluator in about 25 s and reports wording the engine misses. Fixes from the audit, all generic:
   - **Effect scope** comes from the clause that contains the effect, not the whole line. Draws read their grammatical subject ("you draw", ", then draw", "• Draw", "Target player draws"). "Draw three cards. Target player mills three cards." and "Exile target nonland permanent. Each player other than its controller…" are now yours. "Target player draws" counts as card advantage.

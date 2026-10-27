@@ -53,6 +53,10 @@ See CHANGELOG 0.6.10:
 - comma- and period-safe Commander triggers;
 - trigger events for discard, leaves, token creation, scry and proliferate.
 
+## Saved tags
+
+Three Card Intelligence tag rules changed (multi-target blink, "damage to them", life-loss doublers), so `RULESET_VERSION` is now 0.3.6. Saved auto-tags are re-derived once on the next load; manual tag corrections are kept. Everything else in this release (CardFacts, card functions, Deck Health, upgrade scoring, Commander triggers) is computed live from card text and applies immediately.
+
 ## Untagged popular cards
 
 The 3,604 abilities-but-no-role cards were ranked by Scryfall's EDHREC rank. Most are keyword bodies and combat tricks, correctly role-less. These real misses were fixed:
