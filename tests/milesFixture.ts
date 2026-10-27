@@ -1,7 +1,5 @@
 // Miles "Tails" Prower Vehicles deck, supplied by the user as a permanent regression fixture.
-// Oracle wording is written from memory: Scryfall was not reachable from the build environment. Entries marked
-// fixture_confidence "low" (recent, Universes Beyond and Un-set printings) are reconstructed and should be re-checked
-// against Scryfall when this fixture is refreshed.
+// Card data is the real Oracle record from Scryfall bulk data (oracle-cards, 2026-10-27).
 import milesRaw from "./data/miles-tails-vehicles.json" with { type: "json" };
 import { normalizeCard } from "../src/import/scryfall";
 import { dnaFixture } from "./dnaFixtures";
