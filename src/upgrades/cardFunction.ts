@@ -164,8 +164,12 @@ export function cardFunction(card: CardMetadata): CardFunction {
   const instantInteraction = answers.some((a) => a.instantSpeed);
   // Protection & resilience
   if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|protection from|phase out)|equipped creature has[^.]*(?:hexproof|indestructible)|counter target spell that targets/i.test(text)) {
-    add("protection", 1);
-    reasons.push({ value: 0.45 + (front.includes("Instant") ? 0.1 : 0) + (mv <= 2 ? 0.1 : 0), reason: "Protects your permanents." });
+    // One protection mode (only hexproof, only indestructible…) is partial; several modes, protection from,
+    // phasing or countering the removal spell are full protection.
+    const modes = ["hexproof", "indestructible", "shroud", "protection from", "phase out", "counter target spell that targets"].filter((m) => text.toLowerCase().includes(m));
+    const full = modes.length > 1 || modes.some((m) => m === "protection from" || m === "phase out" || m.startsWith("counter"));
+    add("protection", full ? 1 : 0.7);
+    reasons.push({ value: (full ? 0.45 : 0.35) + (front.includes("Instant") ? 0.1 : 0) + (mv <= 2 ? 0.1 : 0), reason: full ? "Protects your permanents." : `Partial protection (${modes[0] || "one mode"} only).` });
   }
   if (/return[^.\n]*from (?:your|a) graveyard[^.\n]*(?:hand|battlefield)/i.test(text)) {
     add("recursion", 1);

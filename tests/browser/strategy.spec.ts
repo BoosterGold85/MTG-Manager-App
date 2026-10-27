@@ -106,6 +106,7 @@ async function openGoal(page: Page, goal: RegExp) {
     .click();
   const dialog = page.getByRole("dialog");
   await dialog.getByRole("button", { name: goal }).click();
+  await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   return dialog;
 }
 const names = async (dialog: ReturnType<Page["getByRole"]>) =>
@@ -131,6 +132,7 @@ test("the two goals answer different questions: real engines lead upgrades, off-
   ).toContainText("Best swap: cut");
   await dialog.getByRole("button", { name: "Change goal", exact: true }).click();
   await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
+  await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   await expect(
     dialog.getByRole("region", { name: "Commander Blueprint" }),
   ).toContainText("Lathliss");

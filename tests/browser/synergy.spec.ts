@@ -80,6 +80,7 @@ async function openBuild(page: Page) {
     .click();
   const dialog = page.getByRole("dialog");
   await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
+  await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   return dialog;
 }
 test("goal chooser separates the two questions; Build Around My Commander explains fit and priority without writes or lookups", async ({

@@ -24,7 +24,7 @@ export const deckIdentity = (deck: Deck): Color[] => [
 ];
 // Cards that never go in a Commander deck's 99: Archenemy schemes, Planechase planes/phenomena, Vanguard,
 // Conspiracy draft cards, dungeons, tokens, emblems, art cards and Unfinity attraction/contraption decks.
-const NON_DECK_TYPES = /\b(?:Scheme|Plane|Phenomenon|Vanguard|Conspiracy|Dungeon|Emblem|Token|Attraction|Contraption)\b/;
+const NON_DECK_TYPES = /^Card\b|\b(?:Scheme|Plane|Phenomenon|Vanguard|Conspiracy|Dungeon|Emblem|Token|Attraction|Contraption)\b/;
 const NON_DECK_LAYOUTS = new Set(["scheme", "planar", "vanguard", "token", "double_faced_token", "emblem", "art_series"]);
 export const deckPlayable = (card: Pick<SampleCollectionCard, "typeLine" | "layout" | "cardFaces">) =>
   !NON_DECK_LAYOUTS.has(card.layout || "") && !NON_DECK_TYPES.test(card.cardFaces?.[0]?.typeLine || card.typeLine);

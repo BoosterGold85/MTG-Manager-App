@@ -201,7 +201,8 @@ export function vectorOf(t: Totals, targets: Record<Need, number>): Vector {
     curve: Math.max(0, 100 - Math.max(0, average - 3.2) * 20 - Math.max(0, t.highMv / nonland - 0.12) * 100),
     cardAdvantage: sat(t.roles.cardAdvantage, targets.cardAdvantage),
     interaction: 0.45 * sat(t.roles.interaction, targets.interaction) + 40 * coverage + 0.15 * sat(t.roles.wipes, targets.wipes),
-    protection: sat(t.roles.protection, Math.max(1, targets.protection)),
+    // Protection climbs gradually: each piece helps, but one piece never outweighs a real engine.
+    protection: sat(t.roles.protection, Math.max(2, 2 * targets.protection)),
     resilience: 0.75 * sat(t.roles.recursion, Math.max(1, targets.recursion)) + 0.25 * sat(t.roles.tutors, Math.max(1, targets.tutors)),
     engines: 0.6 * sat(linkDensity, 6) + 0.4 * sat(scoped, 6),
     finishing: sat(t.roles.finishers + 0.3 * t.threat, Math.max(2, 2 * targets.finishers)),
@@ -266,7 +267,7 @@ function invalidReason(model: DeckModel, before: Totals, after: Totals, cut: Dec
   if (cut.commander) return "The Commander is never a cut.";
   if (cut.fn.isLand !== fn.isLand) return fn.isLand ? "A land only replaces a land." : "Lands are never cut for a spell; land count is preserved.";
   for (const need of ESSENTIAL) {
-    const floor = need === "protection" || need === "wipes" || need === "finishers" ? 1 : Math.max(1, 0.5 * model.targets[need]);
+    const floor = need === "protection" || need === "wipes" || need === "finishers" ? 0.5 : Math.max(1, 0.5 * model.targets[need]);
     if (before.roles[need] >= floor && after.roles[need] < floor && !(fn.roles[need] || 0))
       return `Would drop ${needLabels[need].toLowerCase()} below a working minimum (${after.roles[need].toFixed(1)}), and the candidate does not replace it.`;
   }

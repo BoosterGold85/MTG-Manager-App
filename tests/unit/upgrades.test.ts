@@ -257,14 +257,21 @@ describe("real-collection feedback (Reign of Dragons)", () => {
     const scheme = oracleCard("I Call for Slaughter", "", 0, "Scheme", "When you set this scheme in motion, create three 1/1 red Devil creature tokens.", [], { layout: "scheme" });
     const plane = oracleCard("Fixture Plane", "", 0, "Plane — Dominaria", "Whenever you roll the planar die, draw a card.", []);
     const walker = oracleCard("Fixture Planeswalker", "{3}{R}", 4, "Legendary Planeswalker — Chandra", "+1: Draw a card.");
-    for (const c of [scheme, plane, walker]) {
+    const token = oracleCard("Dragon Token", "", 0, "Token Creature — Dragon", "Flying", [], { layout: "token" });
+    const artCard = oracleCard("Fixture Art Card", "", 0, "Card // Card", "", [], { layout: "art_series" });
+    const battle = oracleCard("Fixture Invasion", "{2}{R}", 3, "Battle — Siege", "When this Siege enters, it deals 3 damage to any target.");
+    for (const c of [scheme, plane, walker, token, artCard, battle]) {
       f.state.metadata[c.scryfallId] = c;
       f.state.items.push(owned(c, c.scryfallId, 1));
     }
     const names = ownedCandidateGroups(f.state, f.deck).map((g) => g.card.name);
     expect(names).not.toContain("I Call for Slaughter");
     expect(names).not.toContain("Fixture Plane");
+    expect(names).not.toContain("Dragon Token");
+    expect(names).not.toContain("Fixture Art Card");
+    // Battles are Commander legal and stay eligible.
     expect(names).toContain("Fixture Planeswalker");
+    expect(names).toContain("Fixture Invasion");
   });
   it("Chandra's Ignition is a wipe that spares your creature and reaches each opponent, not one-sided and not the default cut", () => {
     const fn = cardFunction(reign("Chandra's Ignition"));
@@ -273,5 +280,12 @@ describe("real-collection feedback (Reign of Dragons)", () => {
     expect(fn.roles.finishers).toBeGreaterThan(0);
     const cuts = [candidates.hoardingDragon, candidates.combatCelebrant, candidates.fieryEmancipation].map((c) => upgradeIn(reignOfDragonsFixture(), c).best?.cutName);
     expect(cuts).not.toEqual(["Chandra's Ignition", "Chandra's Ignition", "Chandra's Ignition"]);
+  });
+  it("single-mode protection (Mithril Coat) is partial: a useful upgrade, but never above Moderate", () => {
+    const coat = oracleCard("Mithril Coat", "{3}", 3, "Legendary Artifact — Equipment", "Flash\nIndestructible\nWhen Mithril Coat enters the battlefield, attach it to target legendary creature you control.\nEquipped creature has indestructible.\nEquip {3}", []);
+    expect(cardFunction(coat).roles.protection).toBe(0.7);
+    const result = upgradeIn(reignOfDragonsFixture(), coat);
+    expect(result.upgradeValue).toBeGreaterThan(0.15);
+    expect(result.label).not.toMatch(/Major|Strong/);
   });
 });

@@ -75,6 +75,7 @@ async function openImprove(page: Page) {
     .click();
   const dialog = page.getByRole("dialog");
   await dialog.getByRole("button", { name: /Improve My Current Deck/ }).click();
+  await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   return dialog;
 }
 test("Reign: Improve My Current Deck ranks by best one-for-one swap, explains the cut and compares any deck card without writes", async ({
@@ -162,6 +163,7 @@ test("low confidence stays capped and below confident results; the detail view s
     .fill("");
   await dialog.getByRole("button", { name: "Change goal", exact: true }).click();
   await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
+  await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   const priorities = (
     await dialog.locator(".synergy-candidates>li h3>span").allTextContents()
   ).map((t) => Number(t.match(/· (\d+)/)![1]));
