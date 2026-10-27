@@ -49,3 +49,8 @@ Baseline: v0.6.6 at `09b82e3` (approved). This is a UX and actionability pass. T
 - Changing a deck's Commander and updating an existing deck from a new list are not supported. Settings says so instead of faking it.
 - Add Card closes after each successful add, so adding several copies means reopening it.
 - The physical iPhone smoke test (`docs/IPHONE-SMOKE-CHECKLIST.md`) has to be run by hand on a device. It was not run in this environment; Chromium emulation at 360, 390 and 430px covers the responsive checks.
+
+## Validation run
+
+- `npm run lint`: clean. `npx tsc -b`: clean. `npm run test:unit`: 460 passed, including the golden engine-output test. `npm run build`: passed. `npm audit`: 0 vulnerabilities. `git diff --check`: clean.
+- Playwright on the production build: 375 passed across mobile-360, mobile-390, mobile-430, tablet and desktop.
