@@ -4,7 +4,7 @@ import type { SampleCollectionCard } from "../models/card";
 import { collectionCards } from "../models/collection";
 import { candidateScorer, deckDnaCache, deckDnaInput } from "../dna/engine";
 import type { CardSynergy } from "../dna/engine";
-import { deckUsage, legalInDeck } from "../decks/decks";
+import { deckPlayable, deckUsage, legalInDeck } from "../decks/decks";
 import { normalizedName } from "../import/csv";
 export interface SynergyCandidate {
   identity: string;
@@ -66,6 +66,7 @@ function exploreGroups(state: CollectionState, deck: Deck): OwnedCandidateGroup[
       `name:${normalizedName(card.name)}`;
     if (
       !legalInDeck(card, deck) ||
+      !deckPlayable(card) ||
       identities.has(identity) ||
       names.has(normalizedName(card.name))
     )

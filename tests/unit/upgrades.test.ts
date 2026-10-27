@@ -248,3 +248,30 @@ describe("large collections", () => {
     expect(improve.map((c) => c.identity)).toEqual(improveCurrentDeck(f.state, f.deck).map((c) => c.identity));
   }, 30000);
 });
+
+describe("real-collection feedback (Reign of Dragons)", () => {
+  it("non-deck cards such as Archenemy schemes are never candidates", async () => {
+    const { synergyFixture } = await import("../synergyFixtures");
+    const { ownedCandidateGroups } = await import("../../src/synergy/explorer");
+    const f = reignOfDragonsFixture(), owned = synergyFixture().owned;
+    const scheme = oracleCard("I Call for Slaughter", "", 0, "Scheme", "When you set this scheme in motion, create three 1/1 red Devil creature tokens.", [], { layout: "scheme" });
+    const plane = oracleCard("Fixture Plane", "", 0, "Plane — Dominaria", "Whenever you roll the planar die, draw a card.", []);
+    const walker = oracleCard("Fixture Planeswalker", "{3}{R}", 4, "Legendary Planeswalker — Chandra", "+1: Draw a card.");
+    for (const c of [scheme, plane, walker]) {
+      f.state.metadata[c.scryfallId] = c;
+      f.state.items.push(owned(c, c.scryfallId, 1));
+    }
+    const names = ownedCandidateGroups(f.state, f.deck).map((g) => g.card.name);
+    expect(names).not.toContain("I Call for Slaughter");
+    expect(names).not.toContain("Fixture Plane");
+    expect(names).toContain("Fixture Planeswalker");
+  });
+  it("Chandra's Ignition is a wipe that spares your creature and reaches each opponent, not one-sided and not the default cut", () => {
+    const fn = cardFunction(reign("Chandra's Ignition"));
+    expect(fn.answers[0].opponentsOnly).toBe(false);
+    expect(fn.roles.wipes).toBe(1);
+    expect(fn.roles.finishers).toBeGreaterThan(0);
+    const cuts = [candidates.hoardingDragon, candidates.combatCelebrant, candidates.fieryEmancipation].map((c) => upgradeIn(reignOfDragonsFixture(), c).best?.cutName);
+    expect(cuts).not.toEqual(["Chandra's Ignition", "Chandra's Ignition", "Chandra's Ignition"]);
+  });
+});

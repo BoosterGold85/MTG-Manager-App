@@ -32,6 +32,7 @@ import {
   missingEntries,
   deckUsage,
   legalInDeck,
+  deckPlayable,
 } from "../decks/decks";
 import type { DeckChange, DeckRepository } from "../storage/deckRepository";
 import { Dialog } from "./Dialog";
@@ -585,7 +586,7 @@ export function DeckLibrary({
                 <CardGrid
                   key={JSON.stringify([query, filters])}
                   cards={filterCards(
-                    cards.filter((c) => legalInDeck(c, deck)),
+                    cards.filter((c) => legalInDeck(c, deck) && deckPlayable(c)),
                     query,
                     filters,
                   )}
@@ -826,7 +827,7 @@ export function DeckLibrary({
       })()}
       {filterOpen && deck && (
         <FilterDrawer
-          cards={cards.filter((c) => legalInDeck(c, deck))}
+          cards={cards.filter((c) => legalInDeck(c, deck) && deckPlayable(c))}
           query={query}
           filters={filters}
           onClose={() => setFilterOpen(false)}

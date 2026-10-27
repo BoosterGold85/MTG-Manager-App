@@ -206,6 +206,12 @@ export function cardFunction(card: CardMetadata): CardFunction {
     add("finishers", repeatable ? 0.8 : 0.7);
     reasons.push({ value: 0.45, reason: "Pumps your whole team." });
   }
+  if (/damage equal to (?:its|that creature's|target creature's) power to[^.\n]*\beach opponent\b/i.test(text)) {
+    add("finishers", 0.6);
+    reasons.push({ value: 0.5, reason: "Turns a big creature's power into damage to each opponent." });
+  }
+  if (answers.some((a) => a.mass && a.targets.includes("creature") && !a.opponentsOnly) && /target creature you control[^.\n]*each other creature/i.test(text))
+    reasons.push({ value: 0.65, reason: "Board wipe that spares the creature you choose." });
   const damage = faces.flatMap((f) => f.damage).filter((d) => d.role === "source" && benefitsYou(d.controller));
   if (damage.some((d) => d.triggered) && repeatable)
     reasons.push({ value: 0.5, reason: "Repeatable triggered damage engine." });

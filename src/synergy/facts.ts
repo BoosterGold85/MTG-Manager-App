@@ -382,9 +382,12 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
       controller: base.controller === "unknown" ? "you" : base.controller,
       targets: unique(targets),
       mode,
-      mass: /^(?:destroy|exile|return) (?:all|each)\b|\beach (?:creature|opponent|player)\b/i.test(effect) || keywords.some((k) => /^overload$/i.test(k)),
+      mass: /^(?:destroy|exile|return) (?:all|each)\b|\beach (?:other )?(?:creature|opponent|player)\b/i.test(effect) || keywords.some((k) => /^overload$/i.test(k)),
       instantSpeed: types.includes("Instant") || keywords.some((k) => /^flash$/i.test(k)) || /^[^:]*:/.test(line),
-      opponentsOnly: /\byou don't control|\ban opponent controls|\bopponents? control|\beach opponent\b|\btarget opponent\b/i.test(effect),
+      // "each other creature and each opponent" still hits your own creatures: only restricted creature wording is one-sided.
+      opponentsOnly:
+        /\byou don't control|\ban opponent controls|\bopponents? control/i.test(effect) ||
+        (/\beach opponent\b|\btarget opponent\b/i.test(effect) && !/\b(?:each|all) (?:other )?(?:creatures?|permanents?)\b/i.test(effect)),
     };
   }
   return null;
