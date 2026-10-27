@@ -4,7 +4,7 @@
 import { describe, expect, it } from "vitest";
 import { holdoutCard, holdoutDecks, holdoutFixture, holdoutPool } from "../holdoutFixture";
 import { synergyFixture } from "../synergyFixtures";
-import { analysisConfidence, commanderBlueprint, currentDeckModel, deckHealth, upgradeFor } from "../../src/upgrades";
+import { analysisConfidence, buildFor, commanderBlueprint, currentDeckModel, deckHealth, upgradeFor } from "../../src/upgrades";
 import { cardFunction, deckCardFunction } from "../../src/upgrades/cardFunction";
 import type { Need } from "../../src/upgrades/cardFunction";
 import { effectConditions, withoutLines } from "../../src/upgrades/conditions";
@@ -45,7 +45,7 @@ describe("acceptance: no credit for an effect without cards in this deck that sa
     const weak = deckCardFunction(card, currentDeckModel(enchantress.state, enchantress.deck).supply);
     expect(weak.roles.wipes).toBeUndefined();
     expect(weak.roles.finishers).toBeUndefined();
-    expect(weak.impactReasons.join(" ")).toMatch(/power 7\+" ability has no cards to feed it here/);
+    expect(weak.conditionNotes!.join(" ")).toMatch(/power 7\+" ability has no cards to feed it here/);
     const strong = deckCardFunction(card, currentDeckModel(dragons.state, dragons.deck).supply);
     expect(strong.roles.interaction).toBe(1);
     expect(strong.conditions![0].suppliers).toEqual(expect.arrayContaining(["Glorybringer", "Thundermaw Hellkite"]));
@@ -61,6 +61,37 @@ describe("acceptance: no credit for an effect without cards in this deck that sa
     expect(inArtifacts.suppliers.length).toBeGreaterThanOrEqual(8);
     const inEnchantress = deckCardFunction(ugin, currentDeckModel(enchantress.state, enchantress.deck).supply).conditions![0];
     expect(inEnchantress.factor).toBeLessThan(0.5);
+  });
+  it("no Upgrade or Build explanation credits a conditional ability without naming the cards that feed it", () => {
+    for (const d of holdoutDecks) {
+      const f = holdoutFixture(d);
+      const supply = currentDeckModel(f.state, f.deck).supply;
+      for (const card of holdoutPool) {
+        const fn = deckCardFunction(card, supply);
+        if (!fn.conditions?.length) continue;
+        const u = upgradeFor(f.state, f.deck, asCandidate(card), card.scryfallId);
+        const b = buildFor(f.state, f.deck, asCandidate(card));
+        for (const c of fn.conditions.filter((x) => x.understood)) {
+          const said = [...u.reasons, ...u.concerns].find((r) => r.includes(`"${c.needs}"`) || (c.needs === "creatures to crew it" && /crew/i.test(r)));
+          const built = b.priorityReasons.find((r) => r.includes(`"${c.needs}"`) || (c.needs === "creatures to crew it" && /crew/i.test(r)));
+          for (const text of [said, built]) {
+            expect(text, `${card.name} in ${d.id}: ${c.needs}`).toBeDefined();
+            if (c.factor > 0 && c.needs !== "creatures to crew it") expect(c.suppliers.some((n) => text!.includes(n)), `${card.name} in ${d.id}: ${text}`).toBe(true);
+          }
+        }
+      }
+    }
+  });
+  it("Synergy follows the same rule: no role for an unfed ability, and it says why", () => {
+    const synergy = (id: string, name: string) => {
+      const f = fixture(id);
+      return candidateScorer(f.state, f.deck, deckDnaCache.get(f.state, f.deck))(holdoutCard(name));
+    };
+    const weak = synergy("H5", "Sarkhan's Unsealing");
+    expect(weak.roles).not.toContain("Removal");
+    expect(weak.conflicts.join(" ")).toMatch(/power 7\+" ability has nothing in this deck to feed it/);
+    expect(synergy("A1", "Sarkhan's Unsealing").roles).toContain("Removal");
+    expect(synergy("H5", "Ugin, Eye of the Storms").roles).not.toContain("Tutors");
   });
   it("explanations point at the deck's cards", () => {
     const f = fixture("A3");

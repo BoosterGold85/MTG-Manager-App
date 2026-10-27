@@ -78,6 +78,8 @@ export interface CardFunction {
   uncertainties: string[];
   /** Deck-relative only: each conditional ability, the deck cards that satisfy it and the credit it earned. */
   conditions?: ConditionCredit[];
+  /** Deck-relative only: one sentence per condition naming the deck cards that feed it (or that none do). */
+  conditionNotes?: string[];
 }
 const cache = new Map<string, CardFunction>();
 const pieces0 = (facts: CardFacts) => [...new Set(facts.faces.flatMap((f) => f.tokenMultipliers).flatMap((m) => m.scopes))];
@@ -96,7 +98,7 @@ function drawAmount(text: string) {
 // A loyalty ability costing more than the planeswalker's starting loyalty needs several turns of survival
 // ("−11: …" on a 7-loyalty walker). It is not a role the deck can count on, so roles ignore it.
 const ULTIMATE = /^[−-](\d+):[^\n]*\n?/gm;
-function withoutUltimates(card: CardMetadata): { card: CardMetadata; dropped: boolean } {
+export function withoutUltimates(card: CardMetadata): { card: CardMetadata; dropped: boolean } {
   let dropped = false;
   const strip = (text: string | undefined, loyalty: string | undefined) => {
     const start = Number(loyalty);
@@ -363,7 +365,8 @@ export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): Card
     f >= 1
       ? `Crewed by the ${amount} creatures here.`
       : `Only ${amount} creature${amount === 1 ? "" : "s"} here to crew it, so its attacks get ${f > 0 ? "partial" : "no"} credit.`;
-  if (f >= 1) return { ...fn, impactReasons: [...fn.impactReasons, note], conditions: [...(fn.conditions || []), credit] };
+  const conditionNotes = [...(fn.conditionNotes || []), note];
+  if (f >= 1) return { ...fn, conditions: [...(fn.conditions || []), credit], conditionNotes };
   const roles = { ...fn.roles };
   if (roles.finishers) roles.finishers *= f;
   if (!roles.finishers) delete roles.finishers;
@@ -372,8 +375,8 @@ export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): Card
     roles,
     engines: { ...fn.engines, combatThreat: fn.engines.combatThreat * f, attackTriggers: fn.engines.attackTriggers * f },
     impact: Math.round((fn.impact - (1 - f) * fn.bodyScore) * 1000) / 1000,
-    impactReasons: [...fn.impactReasons, note],
     conditions: [...(fn.conditions || []), credit],
+    conditionNotes,
   };
 }
 function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunction {
@@ -395,7 +398,7 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
           : `Its "${c.needs}" ability has ${c.suppliers.length ? `only ${listNames(c.suppliers)}` : "no cards"} to feed it here, so it gets no credit.`,
   );
   const strip = (c: ConditionCredit) => ({ needs: c.needs, line: c.line, understood: c.understood, supply: c.supply, suppliers: c.suppliers, factor: c.factor });
-  if (credits.every((c) => c.factor >= 1)) return { ...full, impactReasons: [...full.impactReasons, ...notes], conditions: credits.map(strip) };
+  if (credits.every((c) => c.factor >= 1)) return { ...full, conditions: credits.map(strip), conditionNotes: notes };
   const lines = [...new Set(conditions.map((c) => c.line))];
   const base = cardFunction(withoutLines(card, lines));
   const roles: Partial<Record<Need, number>> = { ...base.roles };
@@ -434,7 +437,8 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
     instantInteraction: answers.some((a) => a.instantSpeed),
     repeatable,
     impact: Math.round(impact * 1000) / 1000,
-    impactReasons: [...reasons, ...notes],
+    impactReasons: reasons,
+    conditionNotes: notes,
     lowImpactBody: full.isCreature && impact < 0.25,
     confidence,
     conditions: credits.map(strip),

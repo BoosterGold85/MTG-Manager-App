@@ -9,6 +9,8 @@ import type {
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
 import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
+import { conditionFactor, effectConditions, SupplyIndex, withoutLines } from "../upgrades/conditions";
+import { withoutUltimates } from "../upgrades/cardFunction";
 import type { CardFacts, Scope, TypedRole } from "./facts";
 
 export const RECOMMENDATION_VERSION = "0.6.3";
@@ -685,6 +687,22 @@ export function recommendationBand(score: number) {
               ? "Weak Fit"
               : "Poor Fit";
 }
+const supplies = new WeakMap<DeckStrategyProfile, SupplyIndex>();
+function deckRelativeInput(profile: DeckStrategyProfile, input: DnaInputCard): { input: DnaInputCard; notes: string[] } {
+  let supply = supplies.get(profile);
+  if (!supply) supplies.set(profile, (supply = new SupplyIndex(profile.cards.map((c) => ({ card: c.card.card, quantity: c.card.quantity, commander: c.card.commander })))));
+  const notes: string[] = [];
+  const dropped: string[] = [];
+  for (const condition of effectConditions(input.card)) {
+    if (!condition.understood) continue;
+    const { supply: amount, suppliers } = supply.supply(condition, input.card);
+    if (conditionFactor(condition, amount) >= 0.5) continue;
+    dropped.push(condition.line);
+    notes.push(`Its "${condition.needs}" ability ${suppliers.length ? `has only ${suppliers.join(", ")} to feed it` : "has nothing in this deck to feed it"}, so it fills no role here.`);
+  }
+  const { card } = withoutUltimates(withoutLines(input.card, dropped));
+  return card === input.card ? { input, notes } : { input: { ...input, card }, notes };
+}
 export function scoreRecommendation(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
@@ -695,8 +713,11 @@ export function scoreRecommendation(
   if (cached) return cached;
   const f = factsOf(input),
     typed = state.typed,
-    text = textOf(input),
-    rs = actualRoles(input, f);
+    text = textOf(input);
+  // Role credit follows the same rule as Upgrades: an ability whose condition this deck can't feed (or an ultimate
+  // beyond starting loyalty) fills no role here.
+  const gated = deckRelativeInput(profile, input);
+  const rs = gated.input === input ? actualRoles(input, f) : computeRoles(gated.input, extractCardFacts(gated.input.card));
   const relationships = mechanicalRelationships(
     profile,
     input,
@@ -850,7 +871,7 @@ export function scoreRecommendation(
     );
   }
   const positives: string[] = [],
-    negatives: string[] = [],
+    negatives: string[] = [...gated.notes],
     matchedThemes: string[] = [];
   let themeStrength = 0;
   for (const type of typed.supportedTypes) {

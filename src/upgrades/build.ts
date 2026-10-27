@@ -143,7 +143,8 @@ export function evaluateForBuild(blueprint: CommanderBlueprint, input: DnaInputC
     fitReasons: fitReasons.length ? fitReasons : ["No direct relationship with the Commander's mechanics."],
     buildPriority: priority,
     priorityLabel: priorityLabel(priority),
-    priorityReasons: fn.impactReasons.slice(0, 3),
+    // Conditional abilities always come with the deck cards that feed them (or the note that none do).
+    priorityReasons: [...fn.impactReasons.slice(0, 3), ...(fn.conditionNotes || [])],
     priorityConcerns: concerns,
     dependency,
     timing,

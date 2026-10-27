@@ -182,7 +182,8 @@ it("exceptional cheap multi-role utility is not automatically penalized for bein
     scoringCard(
       "Efficient Utility",
       "Creature — Human",
-      "Whenever you cast an instant or sorcery spell, draw two cards.\n{T}: Add {C}{C}.",
+      // Unconditional since v0.6.12: an instant/sorcery trigger earns no credit in this spell-less Dragon deck.
+      "When this creature enters, draw two cards.\n{T}: Add {C}{C}.",
       1,
     ),
   );

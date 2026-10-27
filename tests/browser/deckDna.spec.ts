@@ -110,7 +110,9 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
 }, info) => {
   await setup(page);
   const labels = await themeLabels(page);
-  expect(labels.length).toBeGreaterThanOrEqual(4);
+  // Sparse evidence shows fewer themes rather than filler: since v0.6.12 flying alone isn't a Combat theme, so this
+  // small Dragon fixture shows Dragons, Ramp and Tokens.
+  expect(labels.length).toBeGreaterThanOrEqual(3);
   expect(labels.length).toBeLessThanOrEqual(7);
   expect(
     labels.reduce((n, label) => n + Number(label.match(/(\d+)%/)![1]), 0),

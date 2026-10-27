@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.6.12 — Deck-relative conditions and engine-agnosticism fixes
+
+- **Acceptance rule:** a card gets credit for an effect only when actual cards in this deck reliably satisfy the condition that effect needs. New `src/upgrades/conditions.ts` reads each ability's condition from Oracle text: spells of a kind ("colorless", "creature with power 4+", "instant or sorcery"), permanents or types entering, dying or attacking, +1/+1 counters being placed, sacrifice, life gain, discard, tokens, scry, cycling, cards leaving the graveyard, intervening "if you control…", type anthems and replacement effects (Hardened Scales, Doubling Season).
+  - It counts the deck cards that supply each condition; the Commander counts twice.
+  - An ability with fewer than two suppliers earns no credit; credit reaches full at a reliable count.
+  - A condition the app can't check (about 3% of cards, mostly rare mechanics) gets half credit and lowers confidence.
+  - It applies to Upgrade Value, Build Priority, Deck Health counts and Synergy role credit. Vehicles need creatures to crew them.
+  - Every explanation that credits a conditional ability names the deck cards that feed it, or says that nothing does.
+- **Ugin report:** planeswalker ultimates costing more than starting loyalty no longer count (Ugin, Eye of the Storms' −11 was read as a tutor). Mana sources costing 5 count as 0.7 ramp and 6+ as 0.4. Upgrade reasons need a visible (≥ 1 point) change.
+- **Audit fixes** (`docs/AUDIT-ENGINE-AGNOSTICISM.md`):
+  - A Commander that only satisfies a candidate's trigger by being such a card (a 5-power creature, a flying Dragon) is a weak link (≤ 0.3). "Strengthens the Commander plan" now needs a real link (≥ 0.5).
+  - "non-Human" is no longer read as Human support.
+  - Treasure, Clues and Food don't raise the creature-token target.
+  - Vehicles are no longer tagged go-wide (the Crew reminder text matched).
+  - A delayed "your next end step" return is no longer an unknown Commander trigger.
+  - Combat keywords only count toward a Combat theme when the deck repeatedly rewards attacking.
+  - Deck Health and Upgrade targets follow the actual 99:
+    - Ramp follows the curve.
+    - Recursion, token, sacrifice-outlet and discard targets rise only when the 99 pursues that plan, and drop back when only the Commander suggests it.
+    - The Commander's own roles count toward the totals.
+- **Holdout and adversarial decks:** 11 decks written for the audit, with pre-registered expectations; 13 of 14 checks pass. The harness is `tests/audit/holdout.audit.test.ts`, and parser coverage over the full card pool is `tests/audit/conditions.audit.test.ts`.
+- Card Intelligence ruleset 0.3.7 (the non-Human and Crew fixes change tags, so saved auto-tags refresh once). DNA and Synergy versions 0.6.12.
+- The golden engine fixture changed in reviewed, small ways; see `docs/VALIDATION-v0.6.12.md`.
+
 ## 0.6.11 — "The app isn't sure" warnings
 
 - The Overview now says when the analysis is likely to be wrong, in a callout right before Deck Health. It names exactly what it couldn't read:

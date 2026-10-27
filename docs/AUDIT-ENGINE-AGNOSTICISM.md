@@ -2,7 +2,9 @@
 
 Question: does the engine work out a new deck from its own Commander and 99 cards, or does it judge the deck by how such a Commander, type or archetype is normally built?
 
-**Classification: B — mostly agnostic.** Deck DNA (what the deck does) is derived from the 99 and held up on 11 unseen decks. The Upgrades evaluation (Deck Health targets, Upgrade Value, the "Strengthens the plan" reason) still leans on a fixed Commander-deck template, on Commander-only targets and on Commander links that are too generous. Those issues should be fixed before Brew Score is calibrated, because Brew's bridge and Commander-connection signals read the same links.
+**Status after v0.6.12:** proposed corrections 1–5 are implemented (see `docs/VALIDATION-v0.6.12.md`); correction 6 applies to Brew Score in v0.6.13. Remaining known gaps are listed there.
+
+**Classification at audit time: B — mostly agnostic.** Deck DNA (what the deck does) is derived from the 99 and held up on 11 unseen decks. The Upgrades evaluation (Deck Health targets, Upgrade Value, the "Strengthens the plan" reason) still leans on a fixed Commander-deck template, on Commander-only targets and on Commander links that are too generous. Those issues should be fixed before Brew Score is calibrated, because Brew's bridge and Commander-connection signals read the same links.
 
 Harness: `tests/audit/holdout.audit.test.ts`. Decks and their pre-registered expectations: `tests/audit/holdout-decks.json`. Card data is real Scryfall records in `tests/data/holdout-cards.json`.
 
