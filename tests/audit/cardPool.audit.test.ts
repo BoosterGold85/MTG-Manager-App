@@ -41,14 +41,14 @@ it("audits the Commander-legal card pool", () => {
   const started = performance.now();
   const gaps: Record<string, { name: string; text: string }[]> = {};
   const failures: { name: string; error: string }[] = [];
-  let untagged = 0;
+  const untagged: { name: string; text: string; edhrecRank?: number }[] = [];
   for (const card of cards) {
     try {
       const fn = cardFunction(card);
       const t = text(card);
       for (const e of expectations)
         if (e.pattern.test(t) && !e.check(fn)) (gaps[e.id] ||= []).push({ name: card.name, text: t.replace(/\s+/g, " ").slice(0, 220) });
-      if (!fn.isLand && !Object.keys(fn.roles).length && !analyze(card).assignments.length && t.length > 40) untagged++;
+      if (!fn.isLand && !Object.keys(fn.roles).length && !analyze(card).assignments.length && t.length > 40) untagged.push({ name: card.name, text: t.replace(/\s+/g, " ").slice(0, 200) });
     } catch (e) {
       failures.push({ name: card.name, error: String(e) });
     }
@@ -72,12 +72,12 @@ it("audits the Commander-legal card pool", () => {
     commanders: commanders.length,
     seconds: Math.round((performance.now() - started) / 100) / 10,
     failures,
-    untaggedNonVanilla: untagged,
+    untaggedNonVanilla: { count: untagged.length, examples: untagged },
     gaps: Object.fromEntries(Object.entries(gaps).map(([k, v]) => [k, { count: v.length, examples: v }])),
     unclassifiedCommanderTriggers: { count: unclassified.length, commanders: new Set(unclassified.map((u) => u.name)).size, examples: unclassified },
   };
   if (process.env.AUDIT_OUT) writeFileSync(process.env.AUDIT_OUT, JSON.stringify(report, null, 1));
   console.log(
-    JSON.stringify({ ...report, failures: failures.length, gaps: Object.fromEntries(Object.entries(report.gaps).map(([k, v]) => [k, v.count])), unclassifiedCommanderTriggers: { count: unclassified.length, commanders: report.unclassifiedCommanderTriggers.commanders } }),
+    JSON.stringify({ ...report, untaggedNonVanilla: untagged.length, failures: failures.length, gaps: Object.fromEntries(Object.entries(report.gaps).map(([k, v]) => [k, v.count])), unclassifiedCommanderTriggers: { count: unclassified.length, commanders: report.unclassifiedCommanderTriggers.commanders } }),
   );
 }, 1_800_000);
