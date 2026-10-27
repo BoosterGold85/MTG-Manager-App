@@ -9,6 +9,7 @@ import {
 export const CARD_FACTS_VERSION = "1.2.0";
 export type TutorRole =
   | "unrestricted_tutor"
+  | "typed_tutor"
   | "creature_tutor"
   | "dragon_tutor"
   | "tribal_tutor"
@@ -131,7 +132,7 @@ export type AnswerTarget =
   | "spell";
 export interface AnswerFact extends FactEvidence {
   targets: AnswerTarget[];
-  mode: "destroy" | "exile" | "damage" | "bounce" | "shuffle" | "sacrifice" | "counter";
+  mode: "destroy" | "exile" | "damage" | "bounce" | "shuffle" | "sacrifice" | "counter" | "shrink";
   mass: boolean;
   instantSpeed: boolean;
   opponentsOnly: boolean;
@@ -267,7 +268,39 @@ const typesIn = (text: string) =>
   creatureTypePatterns.filter((p) => p.reference.test(text)).map((p) => p.type);
 const cardTypesIn = (text: string) =>
   cardTypes.filter((type) => new RegExp(`\\b${type}s?\\b`, "i").test(text));
-export function scopeOf(effect: string): Scope {
+/** Who performs the verb at `index`, read from its grammatical subject ("you draw", "target player draws", ", draw"). */
+export function subjectScope(line: string, index: number): Scope {
+  const before = line.slice(0, index);
+  const sentence = before.slice(Math.max(before.lastIndexOf(". "), before.lastIndexOf("\n")) + 1);
+  if (/\b(?:target|an?|chosen) opponent\s*(?:may\s*)?$/i.test(sentence)) return "opponent";
+  if (/\beach opponent\s*(?:may\s*)?$/i.test(sentence)) return "each_opponent";
+  if (/\b(?:each other player|each of (?:that player's|your) opponents|each player other than [^,]*)\s*$/i.test(sentence)) return "other_players";
+  if (/\btarget player\s*(?:may\s*)?$/i.test(sentence)) return "target_player";
+  if (/\beach player\s*(?:may\s*)?$/i.test(sentence)) return "each_player";
+  if (/\b(?:that player|its controller|its owner|their controller)\s*(?:may\s*)?$/i.test(sentence)) return "unknown";
+  if (/\byou\s*(?:may\s*)?$/i.test(sentence)) return "you";
+  // Imperative: sentence start, a bullet/result marker, or after a comma / "then" / "and".
+  if (/(?:^|[,;:—|•])\s*(?:then\s+|and\s+|you may\s+)?$|\b(?:then|and)\s*$/i.test(sentence.trim() ? sentence : "")) return "you";
+  return clauseScope(line, index);
+}
+/** Scope of the one clause (sentence) of a line that contains `index`, so later sentences can't re-assign it. */
+export function clauseScope(line: string, index: number): Scope {
+  let start = 0;
+  for (const sentence of line.split(/(?<=[.;])\s+/)) {
+    const end = start + sentence.length;
+    if (index < end) {
+      // Peel ability words, trigger conditions and intervening "if" clauses: "Threshold — Whenever …, if …, draw a card."
+      let clause = stripAbilityWord(sentence.trim());
+      for (let i = 0; i < 3; i++) clause = clause.replace(/^\s*(?:When(?:ever)?|If|At the beginning|As long as|Unless)\b[^,]*,\s*/i, "");
+      return scopeOf(clause);
+    }
+    start = end + 1;
+  }
+  return scopeOf(line);
+}
+export function scopeOf(raw: string): Scope {
+  // Modal bullets, loyalty costs and ability words don't change who performs the effect.
+  const effect = raw.trim().replace(/^[•●–-]\s*/, "").replace(/^[+−-]?(?:\d+|X):\s*/, "").replace(/^[A-Z][\w' -]{1,40} — /, "").replace(/^\+\s*(?:\{[^}]+\})+\s*—\s*/, "");
   if (/\beach player other than\b|\beach other player\b|\bplayers? other than\b/i.test(effect)) return "other_players";
   if (/\beach opponent (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "each_opponent";
   if (/\bspells? (?:your )?opponents? cast\b|\b(?:target|an?) opponent (?:creates?|searches?|draws?|adds?|discards?|sacrifices?|gains?|mills?|puts?)\b/i.test(effect)) return "opponent";
@@ -359,43 +392,58 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
     ["bounce", /\breturn (?:target|all|each|up to \w+ target) ([^.]*?) to (?:its|their) owners?'? hands?/i],
     ["sacrifice", /\b(?:target|each) (?:opponent|player) sacrifices? (?:a|an|one|two|\w+) ([^.]*)/i],
     ["damage", /\bdeals? [^.]*?damage(?: equal to [^.]*?)? to ((?:any target|target [^.]*?|each [^.]*?))(?:[.,]|$)/i],
+    // Shrink sweeps: "All creatures get -2/-2", "Creatures your opponents control get -1/-1" (toughness must drop).
+    ["shrink", /\b((?:all|each) (?:other )?creatures?(?: your opponents control| you don't control)?|creatures your opponents control|creatures you don't control) gets? -(?:\d+|x)\/-(?:[1-9]\d*|x)\b/i],
   ];
+  // Every pattern is tried; a line keeps its strongest answer (a mass creature/permanent sweep first), so
+  // "Each player sacrifices four lands. … deals 4 damage to each creature." is still a wipe.
+  const found: AnswerFact[] = [];
   for (const [mode, pattern] of patterns) {
     const m = effect.match(pattern);
     if (!m) continue;
     const phrase = (m[1] || m[2] || "").trim();
     if (mode === "exile" && /\bcards? (?:from|in) (?:your|a|target player's|all|an opponent's|each)?\s*graveyards?|\bgraveyards?\b/i.test(phrase)) {
-      return { ...evidence(face, line), targets: ["graveyard"], mode, mass: /\ball|each\b/i.test(effect), instantSpeed: true, opponentsOnly: !/your graveyard/i.test(phrase) };
+      found.push({ ...evidence(face, line), targets: ["graveyard"], mode, mass: /\ball|each\b/i.test(effect), instantSpeed: true, opponentsOnly: !/your graveyard/i.test(phrase) });
+      // "Exile all creatures and graveyards" also sweeps creatures; keep looking at the same clause.
+      if (!/\bcreatures?\b(?! cards?)/i.test(phrase)) continue;
     }
-    if (/\byou control\b/i.test(phrase) && !/\bdon't control|opponents? control/i.test(phrase)) continue;
+    // Skip only answers aimed at your own permanents ("target creature you control"), not "each creature except
+    // creatures you control with flying" or "attacking you or a planeswalker you control".
+    if (/^(?:another |other |up to \w+ )?(?:target )?(?:[\w-]+ )?(?:creatures?|permanents?|artifacts?|enchantments?|lands?|planeswalkers?|nonland permanents?)(?: or (?:creatures?|permanents?|planeswalkers?))? you control\b/i.test(phrase)) continue;
     const targets: AnswerTarget[] =
       mode === "counter"
         ? ["spell"]
         : /\bany target\b/i.test(phrase)
           ? ["creature", "planeswalker"]
           : answerWords.filter(([r]) => r.test(phrase)).map(([, t]) => t);
+    // "Destroy all permanents except for artifacts and lands" sweeps permanents; the exceptions aren't targets.
+    if (/^(?:all |each )?(?:other )?(?:nonland )?permanents?\b/i.test(phrase)) targets.splice(0, targets.length, /nonland/i.test(phrase) ? "nonland_permanent" : "permanent");
     if (!targets.length && /\bpermanents?\b/i.test(phrase)) targets.push("permanent");
     if (!targets.length) continue;
     const base = evidence(face, line);
-    return {
+    const at = line.indexOf(m[0]);
+    const controller = at >= 0 ? clauseScope(line, at) : base.controller;
+    found.push({
       ...base,
-      controller: base.controller === "unknown" ? "you" : base.controller,
+      controller: controller === "unknown" ? "you" : controller,
       targets: unique(targets),
       mode,
       // Judge the removal clause itself, not the start of the line: modal bullets ("• Destroy all creatures") and
       // earlier clauses ("Return a creature you control …, then destroy all other creatures") still make a wipe.
       mass:
+        mode === "shrink" ||
         /^(?:destroy|exile|return) (?:all|each)\b/i.test(m[0]) ||
-        /\beach (?:other )?(?:creature|opponent|player)\b/i.test(effect) ||
+        /\beach (?:other )?(?:creature|opponent|player)\b/i.test(m[0]) ||
         keywords.some((k) => /^overload$/i.test(k)),
       instantSpeed: types.includes("Instant") || keywords.some((k) => /^flash$/i.test(k)) || /^[^:]*:/.test(line),
       // "each other creature and each opponent" still hits your own creatures: only restricted creature wording is one-sided.
       opponentsOnly:
-        /\byou don't control|\ban opponent controls|\bopponents? control/i.test(effect) ||
+        /\byou don't control|\ban opponent controls|\bopponents? control/i.test(mode === "shrink" ? m[0] : effect) ||
         (/\beach opponent\b|\btarget opponent\b/i.test(effect) && !/\b(?:each|all) (?:other )?(?:creatures?|permanents?)\b/i.test(effect)),
-    };
+    });
   }
-  return null;
+  const sweep = found.find((a) => a.mass && a.targets.some((t) => t === "creature" || t === "permanent" || t === "nonland_permanent"));
+  return sweep || found[0] || null;
 }
 // Who discards, and how. Only "you" (or a symmetric "each player") can enable Mayhem/Madness.
 export function discardOf(face: string, line: string): DiscardFact | null {
@@ -690,11 +738,22 @@ function faceFacts(face: {
           searchRoles.push("artifact_tutor");
         if (targetTypes.includes("Enchantment"))
           searchRoles.push("enchantment_tutor");
+        // Any other search by card type (instant, sorcery, Equipment, Aura, permanent…) is a real tutor;
+        // land searches are ramp/fixing and named-card searches only find that one card.
+        if (
+          !searchRoles.length &&
+          !/\bnamed\b/i.test(target) &&
+          !(targetTypes.length && targetTypes.every((t) => t === "Land")) &&
+          !/\b(?:Plains|Island|Swamp|Mountain|Forest|land)\b/i.test(target) &&
+          /\b(?:card|cards)\b/i.test(target)
+        )
+          searchRoles.push("typed_tutor");
         if (destination === "graveyard") searchRoles.push("graveyard_tutor");
         if (destination === "top") searchRoles.push("topdeck_tutor");
         searchRoles.forEach((role) => roles.add(role));
         result.searchesLibrary.push({
           ...fact,
+          ...(/^search(?:es)?\s+your library/i.test(match[0]) ? { controller: "you" as Scope } : {}),
           targetTypes,
           creatureTypes,
           basicOnly,
@@ -765,7 +824,8 @@ function faceFacts(face: {
       )
     ) {
       result.drawsCards = true;
-      result.cardDrawEffects.push(fact);
+      const at = line.search(/\bdraw(?:s)? (?:a|an|one|two|three|four|five|six|x|\d+|that many) cards?\b/i);
+      result.cardDrawEffects.push(at >= 0 ? { ...fact, controller: subjectScope(line, at) } : fact);
     }
     if (
       /\b(?:destroy|exile) (?:target|all|each)\b|\bdeals?[^.]*damage to (?:any target|target (?:creature|permanent))|(?:owner of target permanent|target permanent.s owner)[^.]*shuffles?[^.]*library/i.test(

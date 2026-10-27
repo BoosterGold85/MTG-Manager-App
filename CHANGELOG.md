@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.10 — Full card-pool audit and real card data
+
+- Test fixtures now use real Oracle text from Scryfall bulk data instead of text written from memory: the Miles and Valgavoth decks, upgrade candidates and clone fixtures. Every earlier regression still holds on the real text.
+- New card-pool audit (`tests/audit/cardPool.audit.test.ts`): runs all 32,094 Commander-legal cards and 3,441 commanders through the evaluator in about 25 s and reports wording the engine misses. Fixes from the audit, all generic:
+  - **Effect scope** comes from the clause that contains the effect, not the whole line. Draws read their grammatical subject ("you draw", ", then draw", "• Draw", "Target player draws"). "Draw three cards. Target player mills three cards." and "Exile target nonland permanent. Each player other than its controller…" are now yours. "Target player draws" counts as card advantage.
+  - **Mass removal**: shrink sweeps ("All creatures get -2/-2"; one-sided "Creatures your opponents control get -2/-2"; "-2/-0" doesn't count); "Destroy all (nonland) permanents except …"; sweeps of nonland permanents count as wipes; a line keeps its strongest answer (Wildfire-style multi-sentence sweeps); "exile all creatures and graveyards"; "damage to each creature except creatures you control" is no longer skipped; mass is judged from the removal clause only.
+  - **Protection**: Auras and Equipment that grant hexproof, indestructible, shroud or protection, including "gains".
+  - **Ramp**: Auras and Equipment that grant a mana ability.
+  - **Tutors**: searches by any card type (instant, sorcery, Equipment, Aura, permanent…) are tutors; land and named-card searches are not. "Search your library" is always yours (spree modes included).
+  - **Commander triggers**: card names with commas or periods ("Gregor, Shrewd Magistrate", "Ms. Bumbleflower") no longer cut triggers short. New events: you discard, leaves the battlefield, you create tokens, scry/surveil, proliferate. Unclassified commander triggers fell from 671 (561 commanders) to 206 (179 commanders).
+- Audit gap counts before → after: wipes 95 → 12, removal 42 → 30, protection 23 → 0, card draw 220 → 27, tutors 233 → 130, mana rocks 21 → 7. Most of what remains are audit false positives (blink, land searches, opponents drawing).
+- Golden engine fixture: The Elder Dragon War now reads as card draw + tokens (not only a sweep), so Reign of Dragons' best cut moves from Chain Reaction to Hit the Mother Lode, with values within ±0.03 and the same labels.
+
 ## 0.6.9 — Pings / punisher decks (Valgavoth)
 
 - New Deck DNA theme **Pings / Punisher**: decks that make opponents lose life a little at a time and punish what every player does. Card Intelligence (ruleset 0.3.5) adds **Opponent Life Loss** (opponents or every player lose life or take damage; your own life payments never count; plain "any target" burn is not a ping), **Punisher** (triggers on what players or opponents do, then damages that player) and **Symmetric Draw** (each player draws or wheels). Cards that reward opponents losing life are explicit payoffs for the theme.

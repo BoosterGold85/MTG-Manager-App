@@ -132,6 +132,11 @@ export function cardFunction(card: CardMetadata): CardFunction {
     add("ramp", repeatable ? 0.8 : 0.5);
     reasons.push({ value: repeatable ? 0.55 : 0.35, reason: "Creates Treasure." });
   }
+  // Auras, Equipment and anthems that grant a mana ability ('Enchanted land has "{T}: Add two mana…"').
+  if (!roles.ramp && /\b(?:enchanted|equipped) (?:land|creature|permanent) has "\{T\}: Add|\b(?:creatures|lands|slivers|elves) you control have "\{T\}: Add/i.test(text)) {
+    add("ramp", 0.8);
+    reasons.push({ value: 0.4, reason: "Grants a mana ability." });
+  }
   if (has("ritual") && !roles.ramp) {
     add("ramp", 0.3);
     reasons.push({ value: 0.2, reason: "One-shot mana burst." });
@@ -145,7 +150,8 @@ export function cardFunction(card: CardMetadata): CardFunction {
     add("cardAdvantage", 1);
     reasons.push({ value: 0.55, reason: "Casts a spell for free from the library." });
   }
-  if (faces.some((f) => f.cardDrawEffects.some((d) => benefitsYou(d.controller))) || impulse) {
+  // "Target player draws" is your choice of player, so it is card advantage you control.
+  if (faces.some((f) => f.cardDrawEffects.some((d) => benefitsYou(d.controller) || d.controller === "target_player")) || impulse) {
     const value = repeatable ? 0.8 : draw >= 3 ? 0.7 : draw === 2 ? 0.55 : 0.35;
     add("cardAdvantage", repeatable ? 1.2 : draw >= 2 ? 1 : 0.6);
     reasons.push({ value, reason: repeatable ? "Repeatable card advantage." : `Draws ${draw || "extra"} card${draw === 1 ? "" : "s"}.` });
@@ -156,14 +162,14 @@ export function cardFunction(card: CardMetadata): CardFunction {
   for (const answer of answers) {
     const broad = answer.targets.some((t) => t === "permanent" || t === "nonland_permanent") ? 0.2 : answer.targets.length > 1 ? 0.1 : 0;
     const value = Math.min(0.9, 0.45 + broad + (answer.instantSpeed ? 0.08 : 0) + (mv <= 2 ? 0.1 : 0) + (answer.mode === "exile" || answer.mode === "shuffle" ? 0.05 : 0));
-    if (answer.mass && answer.targets.includes("creature")) add("wipes", 1);
+    if (answer.mass && answer.targets.some((t) => t === "creature" || t === "permanent" || t === "nonland_permanent")) add("wipes", 1);
     else if (answer.targets.includes("graveyard")) add("interaction", 0.4);
     else add("interaction", answer.mass ? 1.2 : 1);
     reasons.push({ value: answer.mass ? Math.max(value, 0.6) : value, reason: `${answer.mass ? "Mass" : "Targeted"} ${answer.mode} answer for ${answer.targets.join(" / ").replaceAll("_", " ")}${answer.instantSpeed ? " at instant speed" : ""}.` });
   }
   const instantInteraction = answers.some((a) => a.instantSpeed);
   // Protection & resilience
-  if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|shroud|protection from|phase out)|equipped creature has[^.]*(?:hexproof|indestructible|shroud)|enchanted creature has[^.]*(?:hexproof|indestructible|shroud)|counter target spell that targets/i.test(text)) {
+  if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|shroud|protection from|phase out)|(?:equipped|enchanted) (?:creature|permanent) (?:has|have|gains?)[^.]*(?:hexproof|indestructible|shroud|protection from)|counter target spell that targets/i.test(text)) {
     // One protection mode (only hexproof, only indestructible…) is partial; several modes, protection from,
     // phasing or countering the removal spell are full protection.
     const modes = ["hexproof", "indestructible", "shroud", "protection from", "phase out", "counter target spell that targets"].filter((m) => text.toLowerCase().includes(m));

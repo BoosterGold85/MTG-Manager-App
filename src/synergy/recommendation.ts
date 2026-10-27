@@ -482,6 +482,9 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
         if (loss.theirTurn) events.add("life-loss-their-turn");
         if (loss.anyTarget) events.add("life-loss-weak");
       }
+      if (facts.faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"))) events.add("discard");
+      if (/\b(?:scry|surveil) (?:\d+|x)\b/i.test(sourceText)) events.add("scry");
+      if (/\bexile (?:target|another target|up to (?:one|two) target)[^.]*you control, then return/i.test(sourceText)) events.add("blink");
       if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
       if (/\bVehicle\b/.test(source.card.typeLine) || /create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(sourceText)) events.add("vehicle");
       if (/Aura/.test(source.card.typeLine)) events.add("aura");
@@ -548,6 +551,10 @@ function verifies(
       );
     return false;
   }
+  if (receiver.event === "discard") return f.faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"));
+  if (receiver.event === "token-created") return f.faces.some((face) => face.createsTokens.some((t) => benefitsYou(t.controller)));
+  if (receiver.event === "scry") return /\b(?:scry|surveil) (?:\d+|x)\b/i.test(text);
+  if (receiver.event === "leaves") return ownFace(f, "Creature") || /\bsacrifice\b|\bexile (?:target|another target)[^.]*you control, then return/i.test(text);
   if (receiver.event === "life-loss") {
     const loss = opponentLifeLoss(text);
     return loss.direct || loss.anyTarget;

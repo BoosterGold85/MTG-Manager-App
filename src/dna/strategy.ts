@@ -6,9 +6,9 @@ import type { Evidence } from "../intelligence/types";
 import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
-import { opponentLifeLoss } from "../synergy/facts";
+import { extractCardFacts, opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.9";
+export const SYNERGY_VERSION = "0.6.10";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -232,22 +232,28 @@ const evidence = (snippet: string, reason: string): Evidence => ({
 });
 const label = (id: string) =>
   id.startsWith("typal:") ? `${id.slice(6)} Typal` : labels[id] || id;
+// The card's own names ("Gregor, Shrewd Magistrate", its short form "Gregor", "Ms. Bumbleflower", each face of a
+// double-faced card) contain commas and periods; replace them before splitting so a trigger isn't cut mid-name.
+const SELF = "\u0001";
+function selfNames(card: CardMetadata) {
+  const full = [card.name, ...card.name.split(" // "), ...(card.cardFaces || []).map((f) => f.name)].filter(Boolean);
+  return [...new Set([...full, ...full.map((n) => n.split(",")[0].trim())])].filter((n) => n.length > 2).sort((a, b) => b.length - a.length);
+}
 function receivers(c: DnaInputCard): CommanderSynergyTag[] {
   const result: CommanderSynergyTag[] = [];
-  for (const clause of stripReminderText(oracleText(c.card))
+  let text = stripReminderText(oracleText(c.card));
+  for (const name of selfNames(c.card)) text = text.split(name).join(SELF);
+  const restore = (s: string) => s.split(SELF).join(c.card.name.split(" // ")[0]);
+  for (const raw of text
     .split(/[.\n]/)
     .map((s) => s.trim())
     .filter(Boolean)) {
-    if (!/\b(?:whenever|when|at the beginning)\b/i.test(clause)) continue;
-    const trigger = stripAbilityWord(clause).split(",")[0];
+    if (!/\b(?:whenever|when|at the beginning)\b/i.test(raw)) continue;
+    const clause = restore(raw);
+    const trigger = stripAbilityWord(raw).split(",")[0];
     // Keep the Commander's own abilities, but never let another card masquerade as their subject.
     const selfOnly =
-      (/^(?:when|whenever) this (?:creature|permanent|artifact|enchantment)/i.test(
-        trigger,
-      ) ||
-        ["when ", "whenever "].some((prefix) =>
-          trigger.toLowerCase().startsWith(prefix + c.card.name.toLowerCase()),
-        )) &&
+      /^(?:when|whenever) (?:this (?:creature|permanent|artifact|enchantment|vehicle|land|planeswalker)\b|\u0001)/i.test(trigger) &&
       !/\bor another\b/i.test(trigger);
     const event = /\bcasts?\b/i.test(trigger)
       ? "cast"
@@ -278,7 +284,17 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
                             ? "graveyard"
                             : /\b(?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b|\b(?:opponents?|player) (?:is|are) dealt damage\b/i.test(trigger)
                               ? "life-loss"
-                              : "turn";
+                              : /\byou discard\b|\bdiscards? (?:one or more|a|an|two|your)\b/i.test(trigger)
+                                ? "discard"
+                                : /\bleaves? the battlefield\b/i.test(trigger)
+                                  ? "leaves"
+                                  : /\bcreates? (?:one or more |a |an |two |\w+ )?[^,]{0,40}\btokens?\b/i.test(trigger)
+                                    ? "token-created"
+                                    : /\b(?:scry|surveil)\b/i.test(trigger)
+                                      ? "scry"
+                                      : /\bproliferate\b/i.test(trigger)
+                                        ? "counters"
+                                        : "turn";
     const types = c.analysis.creatureTypes.synergy.filter((type) =>
       creatureTypePatterns
         .find((p) => p.type === type)
@@ -436,6 +452,10 @@ function characteristics(c: DnaInputCard): Characteristics {
     emits.add("token");
     emits.add("artifact");
   }
+  // Discard you choose, scry/surveil and blink feed "whenever you discard / scry / … leaves the battlefield".
+  if (extractCardFacts(c.card).faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"))) emits.add("discard");
+  if (/\b(?:scry|surveil) (?:\d+|x)\b/i.test(text)) emits.add("scry");
+  if (/\bexile (?:target|another target|up to (?:one|two) target)[^.]*you control, then return/i.test(text) || tags.has("blink")) emits.add("blink");
   {
     const loss = opponentLifeLoss(text);
     if (loss.direct) emits.add("life-loss");
@@ -535,6 +555,11 @@ function interaction(
   if (receiver.event === "turn" || receiver.selfOnly) return 0;
   // "Whenever an opponent loses life": any source that makes opponents lose life or take damage. When the reward only
   // triggers on opponents' own turns, sources that can fire then (punisher, upkeep and draw-step pings) are stronger.
+  if (receiver.event === "discard") return source.emits.has("discard") ? 1 : 0;
+  if (receiver.event === "token-created") return source.emits.has("token") ? 0.9 : 0;
+  if (receiver.event === "scry") return source.emits.has("scry") ? 0.8 : 0;
+  if (receiver.event === "leaves")
+    return source.emits.has("blink") || source.emits.has("sacrifice") ? 0.8 : source.emits.has("creature") ? 0.25 : 0;
   if (receiver.event === "life-loss") {
     const theirTurn = /\btheir turns?\b|\bopponent'?s turn\b/i.test(receiver.evidence.snippet);
     if (source.emits.has("life-loss-their-turn")) return 1;

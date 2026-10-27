@@ -1,0 +1,720 @@
+[
+ {
+  "name": "Weight of Memory",
+  "mana_cost": "{3}{U}{U}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Draw three cards. Target player mills three cards.",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "2f2359aa-9230-4519-b12e-ec395a8dd2a0",
+  "oracle_id": "826c5feb-9e82-49e0-bc6f-6c29004f8151",
+  "set": "dom",
+  "collector_number": "74",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fractured Identity",
+  "mana_cost": "{3}{W}{U}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "b2f73f5d-1aad-48c2-9e74-5f7bdd87900f",
+  "oracle_id": "1515b0c2-1b55-4cd4-ad81-fb6b1f3e8188",
+  "set": "c17",
+  "collector_number": "37",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sram, Senior Edificer",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Dwarf Advisor",
+  "oracle_text": "Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "8fbd18ce-0ac3-4b52-9cd0-0af7e0244207",
+  "oracle_id": "7e00b0cd-d212-4604-ba07-da21f4fe00b0",
+  "set": "soc",
+  "collector_number": "176",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Dangerous Wager",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Discard your hand, then draw two cards.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "636c4042-703f-4548-9a0f-cb550c468bf9",
+  "oracle_id": "7e0d60d7-cb27-4e45-80d4-c29aef5d56b6",
+  "set": "avr",
+  "collector_number": "131",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mind Spiral",
+  "mana_cost": "{4}{U}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Gift a tapped Fish (You may promise an opponent a gift as you cast this spell. If you do, they create a tapped 1/1 blue Fish creature token before its other effects.)\nTarget player draws three cards. If the gift was promised, tap target creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",
+  "keywords": [
+   "Gift"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "7e24fe6a-607b-49b8-9fca-cecb1e40de7f",
+  "oracle_id": "03e356ae-f1e8-4730-8d2b-b9e2f32db915",
+  "set": "blb",
+  "collector_number": "59",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Drown in Sorrow",
+  "mana_cost": "{1}{B}{B}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "All creatures get -2/-2 until end of turn. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
+  "keywords": [
+   "Scry"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "4512357b-0d08-4996-9301-5853eae1ea64",
+  "oracle_id": "5c93ec85-f87f-4121-9fbf-61fd598d1e65",
+  "set": "cmm",
+  "collector_number": "154",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Marsh Gas",
+  "mana_cost": "{B}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "All creatures get -2/-0 until end of turn.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "c8c65bf9-cbab-45ee-9c6e-f8ee832dbe61",
+  "oracle_id": "08ae9f91-48c8-4721-a82d-063defc1b727",
+  "set": "4ed",
+  "collector_number": "146",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Massacre Wurm",
+  "mana_cost": "{3}{B}{B}{B}",
+  "cmc": 6.0,
+  "type_line": "Creature — Phyrexian Wurm",
+  "oracle_text": "When this creature enters, creatures your opponents control get -2/-2 until end of turn.\nWhenever a creature an opponent controls dies, that player loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "6",
+  "toughness": "5",
+  "id": "670a36cc-34e1-4d11-808e-1b6bc88eb5d8",
+  "oracle_id": "93cf50cf-0ecc-4d3e-abea-778c1ebacec4",
+  "set": "fdn",
+  "collector_number": "754",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Scourglass",
+  "mana_cost": "{3}{W}{W}",
+  "cmc": 5.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}, Sacrifice this artifact: Destroy all permanents except for artifacts and lands. Activate only during your upkeep.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "b8993b57-3060-45ca-80ed-3366784ec61d",
+  "oracle_id": "78541a40-c27a-49c0-aa3e-5a48b97065f0",
+  "set": "ala",
+  "collector_number": "25",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ultimate Nullification",
+  "mana_cost": "{4}{W}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "As an additional cost to cast this spell, sacrifice a legendary creature.\nExile all creatures and graveyards. Put Ultimate Nullification on the bottom of its owner's library.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "3c27ca1c-8f2d-4ac8-aef1-bb6201763392",
+  "oracle_id": "2fe0ebf5-52ed-4e92-9b93-81e9ae564439",
+  "set": "msc",
+  "collector_number": "26",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Wildfire",
+  "mana_cost": "{4}{R}{R}",
+  "cmc": 6.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player sacrifices four lands of their choice. Wildfire deals 4 damage to each creature.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "c5924430-1904-47b9-bcf0-3379babd395c",
+  "oracle_id": "0da68ca2-07fd-4359-95a9-fb2f815e6ed0",
+  "set": "mm2",
+  "collector_number": "134",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Flame Sweep",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Flame Sweep deals 2 damage to each creature except for creatures you control with flying.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "4702a838-8577-49b6-8b7a-f9b6d2929481",
+  "oracle_id": "0b34f471-40da-4c7a-81df-245fc3d14092",
+  "set": "m20",
+  "collector_number": "139",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Soul Snare",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Enchantment",
+  "oracle_text": "{W}, Sacrifice this enchantment: Exile target creature that's attacking you or a planeswalker you control.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "18f3a850-b2e1-4970-9971-5f662fb3df31",
+  "oracle_id": "52bd4331-67b6-4eb8-9566-e00359889fc6",
+  "set": "mkc",
+  "collector_number": "85",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Red Ward",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Enchantment — Aura",
+  "oracle_text": "Enchant creature\nEnchanted creature has protection from red. This effect doesn't remove this Aura.",
+  "keywords": [
+   "Enchant"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "543e8ec0-f36a-46a6-b7b1-e983e90a091a",
+  "oracle_id": "73f84440-425f-4cf5-b01a-3ae89f1f6e37",
+  "set": "4ed",
+  "collector_number": "44",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Abundant Growth",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Enchantment — Aura",
+  "oracle_text": "Enchant land\nWhen this Aura enters, draw a card.\nEnchanted land has \"{T}: Add one mana of any color.\"",
+  "keywords": [
+   "Enchant"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "88b8b051-3f05-4cc1-9506-732faa25553a",
+  "oracle_id": "947a2665-2f4d-4193-8768-118f85334549",
+  "set": "ecc",
+  "collector_number": "97",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Solve the Equation",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for an instant or sorcery card, reveal it, put it into your hand, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "66c04ee2-c1e0-45fb-aaf5-1b4459df80fc",
+  "oracle_id": "f02682f0-26c0-4032-9df3-273b6a45d0a8",
+  "set": "stx",
+  "collector_number": "54",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Avarax",
+  "mana_cost": "{3}{R}{R}",
+  "cmc": 5.0,
+  "type_line": "Creature — Beast",
+  "oracle_text": "Haste\nWhen this creature enters, you may search your library for a card named Avarax, reveal it, put it into your hand, then shuffle.\n{1}{R}: This creature gets +1/+0 until end of turn.",
+  "keywords": [
+   "Haste"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "d895ddf9-7d94-411c-ad2e-90d47e51810d",
+  "oracle_id": "2e1deb7e-d40d-437e-b817-b66132d2d1d6",
+  "set": "dmr",
+  "collector_number": "112",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Gregor, Shrewd Magistrate",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Human Advisor",
+  "oracle_text": "Skulk (This creature can't be blocked by creatures with greater power.)\nWhenever Gregor, Shrewd Magistrate deals combat damage to a player, draw cards equal to its power.",
+  "keywords": [
+   "Skulk"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "88818c8b-dfd8-4aa6-b7bb-1c8e67d01c48",
+  "oracle_id": "0b64da77-ca1c-427b-b48b-b919f0fe08e9",
+  "set": "slx",
+  "collector_number": "21",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Kiora, Sovereign of the Deep",
+  "mana_cost": "{3}{G}{U}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Merfolk Noble",
+  "oracle_text": "Vigilance, ward {3}\nWhenever you cast a Kraken, Leviathan, Octopus, or Serpent spell from your hand, look at the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value less than X from among them without paying its mana cost. Put the rest on the bottom of your library in a random order.",
+  "keywords": [
+   "Vigilance",
+   "Ward"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "4",
+  "toughness": "5",
+  "id": "7b599f53-614c-4b1f-9899-15d5d1e35879",
+  "oracle_id": "95df54e2-0196-4e54-8144-de5982ce07f5",
+  "set": "mat",
+  "collector_number": "35",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Akim, the Soaring Wind",
+  "mana_cost": "{2}{U}{R}{W}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Bird Dinosaur",
+  "oracle_text": "Flying\nWhenever you create one or more tokens for the first time each turn, create a 1/1 white Bird creature token with flying.\n{3}{U}{R}{W}: Creature tokens you control gain double strike until end of turn.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "R",
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "R",
+   "U",
+   "W"
+  ],
+  "power": "3",
+  "toughness": "4",
+  "id": "23736c5f-bd1c-4505-8639-5fb92cd74b21",
+  "oracle_id": "2a20530b-d1d6-4dac-8d08-f583bea55e6e",
+  "set": "c20",
+  "collector_number": "6",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Elrond, Master of Healing",
+  "mana_cost": "{2}{G}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Elf Noble",
+  "oracle_text": "Whenever you scry, put a +1/+1 counter on each of up to X target creatures, where X is the number of cards looked at while scrying this way.\nWhenever a creature you control with a +1/+1 counter on it becomes the target of a spell or ability an opponent controls, you may draw a card.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "4",
+  "toughness": "4",
+  "id": "d26ffb2c-f7a5-4a4f-9b99-c8de9dfd49da",
+  "oracle_id": "28aefa3a-16d3-4207-bb8c-588b722a4041",
+  "set": "ltr",
+  "collector_number": "200",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ezuri, Stalker of Spheres",
+  "mana_cost": "{2}{G}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Phyrexian Elf Warrior",
+  "oracle_text": "When Ezuri enters, you may pay {3}. If you do, proliferate twice.\nWhenever you proliferate, draw a card.",
+  "keywords": [
+   "Proliferate"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "d38961ce-0257-412f-acec-c5c9886061f8",
+  "oracle_id": "cffec16f-373b-43e7-a04c-4452987d7e02",
+  "set": "one",
+  "collector_number": "201",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Taeko, the Patient Avalanche",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Turtle Ninja",
+  "oracle_text": "Taeko enters tapped.\nWhenever another creature you control leaves the battlefield, if it didn't die, scry 1 and put a +1/+1 counter on Taeko.\nWhenever Taeko attacks, you may pay {U/B}. When you do, target attacking creature can't be blocked this turn.",
+  "keywords": [
+   "Scry"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "B",
+   "U"
+  ],
+  "power": "4",
+  "toughness": "5",
+  "id": "65b815a1-98d8-47b9-8d6b-b30e0a5f087c",
+  "oracle_id": "3d3eb043-8ce6-461a-b8bc-67f0ba6cd580",
+  "set": "j25",
+  "collector_number": "39",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Anje Falkenrath",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Vampire",
+  "oracle_text": "Haste\n{T}, Discard a card: Draw a card.\nWhenever you discard a card, if it has madness, untap Anje Falkenrath.",
+  "keywords": [
+   "Haste"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "913dd06f-ed2f-4128-9c9d-9cd0d8a55425",
+  "oracle_id": "4dab6a96-4376-4aea-983d-406167993214",
+  "set": "c19",
+  "collector_number": "37",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Lightning Greaves",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.)\nEquip {0}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": null,
+  "toughness": null,
+  "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
+  "oracle_id": "ca204b66-8d0c-431a-8d34-282f7c2d17da",
+  "set": "msc",
+  "collector_number": "202",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Exhume",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player puts a creature card from their graveyard onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d",
+  "oracle_id": "fbe61f74-1b3c-4e12-8758-7029872c9ff1",
+  "set": "jmp",
+  "collector_number": "230",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Plan the Heist",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Surveil 3 if you have no cards in hand. Then draw three cards. (To surveil 3, look at the top three cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nPlot {3}{U} (You may pay {3}{U} and exile this card from your hand. Cast it as a sorcery on a later turn without paying its mana cost. Plot only as a sorcery.)",
+  "keywords": [
+   "Surveil",
+   "Plot"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": null,
+  "toughness": null,
+  "id": "1e8c3a0e-d61c-457f-ac85-577d0bb94b96",
+  "oracle_id": "a9471b33-b5b0-408a-9900-6964e5fe42da",
+  "set": "otj",
+  "collector_number": "62",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]

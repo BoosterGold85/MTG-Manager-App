@@ -62,6 +62,10 @@ const mechanicLabel = (event: string, objects: string[], types: string[], nontok
     damage: "damage being dealt",
     graveyard: "graveyard events",
     "life-loss": "opponents losing life",
+    discard: "you discarding cards",
+    leaves: "leaving the battlefield",
+    "token-created": "token creation",
+    scry: "scrying or surveilling",
     counterspell: "countering spells",
     turn: "each turn",
   };

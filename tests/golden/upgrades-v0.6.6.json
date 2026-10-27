@@ -97,20 +97,20 @@
     "identity": "candidate:Combat Celebrant",
     "upgradeValue": 0.75,
     "label": "Moderate Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
    },
    {
     "identity": "candidate:Fiery Emancipation",
-    "upgradeValue": 0.69,
+    "upgradeValue": 0.7,
     "label": "Moderate Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
@@ -119,31 +119,42 @@
     "identity": "candidate:Hoarding Dragon",
     "upgradeValue": 0.78,
     "label": "Moderate Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "Medium"
    },
    {
     "identity": "candidate:Savage Beating",
-    "upgradeValue": 0.66,
+    "upgradeValue": 0.67,
     "label": "Moderate Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "Medium"
    },
    {
     "identity": "candidate:Xorn",
-    "upgradeValue": 0.28,
+    "upgradeValue": 0.31,
     "label": "Minor Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Vandalblast",
+    "upgradeValue": 0.25,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
@@ -152,20 +163,9 @@
     "identity": "candidate:Dragon Hatchling",
     "upgradeValue": 0.24,
     "label": "Minor Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
-     "Chandra's Ignition"
-    ],
-    "confidence": "High"
-   },
-   {
-    "identity": "candidate:Vandalblast",
-    "upgradeValue": 0.24,
-    "label": "Minor Upgrade",
-    "best": "Chain Reaction",
-    "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
@@ -174,9 +174,9 @@
     "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
     "upgradeValue": 0.2,
     "label": "Minor Upgrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
@@ -185,20 +185,20 @@
     "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
     "upgradeValue": 0.03,
     "label": "Sidegrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"
    },
    {
     "identity": "candidate:Death by Dragons",
-    "upgradeValue": -0.14,
+    "upgradeValue": -0.13,
     "label": "Sidegrade",
-    "best": "Chain Reaction",
+    "best": "Hit the Mother Lode",
     "alternatives": [
-     "The Elder Dragon War",
+     "Chain Reaction",
      "Chandra's Ignition"
     ],
     "confidence": "High"

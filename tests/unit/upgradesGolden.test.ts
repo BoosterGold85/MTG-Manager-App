@@ -1,6 +1,8 @@
-// v0.6.7 is a UX pass: these engine outputs were captured from v0.6.6 (09b82e3) before any UI refactor
-// and must not drift. Regenerate only for an intentional, reviewed scoring change (v0.6.8: Utvara Hellkite gained
-// attack-token finisher credit, shifting three near-tie alternative cuts; values, labels, best cuts and order unchanged).
+// Engine outputs captured from v0.6.6 (09b82e3) before the v0.6.7 UI refactor; they must not drift.
+// Regenerate only for an intentional, reviewed scoring change. Reviewed changes so far:
+//   v0.6.8  Utvara Hellkite gained attack-token finisher credit: three near-tie alternative cuts reordered.
+//   v0.6.10 The Elder Dragon War reads as card draw + tokens: Reign best cuts move from Chain Reaction to
+//           Hit the Mother Lode; values within ±0.03, labels unchanged.
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";
