@@ -355,14 +355,15 @@ export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: 
   if (best) {
     const d = best.deltas;
     const linked = [...deck.keys()].map((id) => ids.get(id)?.name).filter((n): n is string => !!n && n !== best.cutName);
-    if ((d.commanderPlan || 0) > 0) reasons.push(`Strengthens the ${commanderNames.join(" + ")} plan${model.vector.commanderPlan > 85 ? " (already well supported, so the gain is small)" : ""}.`);
-    if ((d.engines || 0) > 0) reasons.push(`Improves existing engines${linked.length ? `: ${linked.slice(0, 3).join(", ")}` : ""}.`);
-    if ((d.finishing || 0) > 0) reasons.push("Improves finishing power.");
-    if ((d.interaction || 0) > 0) reasons.push(`Improves interaction${fn.coverage.length ? ` (${fn.coverage.join(" / ").replaceAll("_", " ")} answers)` : ""}.`);
-    if ((d.cardAdvantage || 0) > 0) reasons.push("Improves card advantage.");
-    if ((d.mana || 0) > 0) reasons.push("Improves mana.");
-    if ((d.protection || 0) > 0) reasons.push("Adds protection.");
-    if ((d.curve || 0) > 0) reasons.push("Smooths the curve.");
+    // A reason needs a visible change (a point or more out of 100), not rounding noise.
+    if ((d.commanderPlan || 0) >= 1) reasons.push(`Strengthens the ${commanderNames.join(" + ")} plan${model.vector.commanderPlan > 85 ? " (already well supported, so the gain is small)" : ""}.`);
+    if ((d.engines || 0) >= 1) reasons.push(`Improves existing engines${linked.length ? `: ${linked.slice(0, 3).join(", ")}` : ""}.`);
+    if ((d.finishing || 0) >= 1) reasons.push("Improves finishing power.");
+    if ((d.interaction || 0) >= 1) reasons.push(`Improves interaction${fn.coverage.length ? ` (${fn.coverage.join(" / ").replaceAll("_", " ")} answers)` : ""}.`);
+    if ((d.cardAdvantage || 0) >= 1) reasons.push("Improves card advantage.");
+    if ((d.mana || 0) >= 1) reasons.push("Improves mana.");
+    if ((d.protection || 0) >= 1) reasons.push("Adds protection.");
+    if ((d.curve || 0) >= 1) reasons.push("Smooths the curve.");
     for (const [c, v] of Object.entries(d) as [Component, number][]) if (v < -0.5) concerns.push(`${componentLabels[c]} ${v.toFixed(1)}.`);
     if (fn.lowImpactBody) concerns.push("Adds little beyond its creature type and body.");
     if (commander >= 0.8 && model.vector.commanderPlan > 85) concerns.push("The Commander plan is already saturated; another on-plan card adds little.");

@@ -89,10 +89,28 @@ function drawAmount(text: string) {
     best = Math.max(best, countWords[m[1].toLowerCase()] ?? Number(m[1]));
   return best;
 }
-export function cardFunction(card: CardMetadata): CardFunction {
-  const key = JSON.stringify([card.name, card.manaValue, card.typeLine, card.oracleText, card.keywords, card.cardFaces, card.power, card.toughness]);
+// A loyalty ability costing more than the planeswalker's starting loyalty needs several turns of survival
+// ("−11: …" on a 7-loyalty walker). It is not a role the deck can count on, so roles ignore it.
+const ULTIMATE = /^[−-](\d+):[^\n]*\n?/gm;
+function withoutUltimates(card: CardMetadata): { card: CardMetadata; dropped: boolean } {
+  let dropped = false;
+  const strip = (text: string | undefined, loyalty: string | undefined) => {
+    const start = Number(loyalty);
+    if (!text || !Number.isFinite(start)) return text;
+    return text.replace(ULTIMATE, (line, cost: string) => (Number(cost) > start ? ((dropped = true), "") : line)).trimEnd();
+  };
+  const next = {
+    ...card,
+    oracleText: strip(card.oracleText, card.loyalty),
+    cardFaces: card.cardFaces?.map((f) => ({ ...f, oracleText: strip(f.oracleText, f.loyalty ?? card.loyalty) })),
+  };
+  return dropped ? { card: next, dropped } : { card, dropped };
+}
+export function cardFunction(original: CardMetadata): CardFunction {
+  const key = JSON.stringify([original.name, original.manaValue, original.typeLine, original.oracleText, original.keywords, original.cardFaces, original.power, original.toughness, original.loyalty]);
   const cached = cache.get(key);
   if (cached) return cached;
+  const { card, dropped: ultimateIgnored } = withoutUltimates(original);
   const facts = extractCardFacts(card),
     text = textOf(card),
     keywords = cardKeywords(card).map((k) => k.toLowerCase()),
@@ -117,8 +135,9 @@ export function cardFunction(card: CardMetadata): CardFunction {
   const landRamp = has("land_ramp");
   if (!isLand && activatedMana) {
     const fast = mv <= 2 ? 0.9 : mv <= 3 ? 0.7 : 0.5;
-    add("ramp", 1);
-    reasons.push({ value: fast, reason: isCreature ? "Repeatable mana from a creature." : "Repeatable mana source." });
+    // Ramp means getting ahead early: a mana source that itself costs 6+ arrives after the game is set up.
+    add("ramp", mv <= 4 ? 1 : mv === 5 ? 0.7 : 0.4);
+    reasons.push({ value: mv >= 6 ? 0.3 : fast, reason: mv >= 6 ? "Makes mana, but costs too much to count as ramp." : isCreature ? "Repeatable mana from a creature." : "Repeatable mana source." });
   }
   if (landRamp) {
     add("ramp", 1);
@@ -288,6 +307,7 @@ export function cardFunction(card: CardMetadata): CardFunction {
     for (const scope of new Set(scopes)) pieces.tokenSourcesByScope[scope] = (pieces.tokenSourcesByScope[scope] || 0) + (repeatable ? 1 : 0.5);
   }
   const uncertainties = [...facts.uncertainties];
+  if (ultimateIgnored) reasons.push({ value: 0, reason: "Its ultimate costs more loyalty than it starts with, so it isn't counted." });
   if (!text && !isLand) uncertainties.push("No Oracle text available; impact is not inferred.");
   const result: CardFunction = {
     version: CARD_FUNCTION_VERSION,

@@ -80,3 +80,18 @@ describe("popular cards the untagged review found", () => {
     expect(analyze(card("Ghostly Flicker")).assignments.map((a) => a.tagId)).toContain("blink");
   });
 });
+describe("expensive cards aren't ramp, and ultimates aren't roles (Ugin feedback, v0.6.12)", () => {
+  it("a planeswalker ultimate beyond its starting loyalty adds no role", () => {
+    expect(roles("Ugin, Eye of the Storms").tutors).toBeUndefined();
+    expect(roles("Ugin, the Spirit Dragon").cardAdvantage).toBeUndefined();
+    expect(cardFunction(card("Ugin, Eye of the Storms")).impactReasons.join(" ")).toMatch(/ultimate costs more loyalty than it starts with/);
+    // Abilities it can actually use still count.
+    expect(roles("Ugin, Eye of the Storms").interaction).toBeGreaterThan(0);
+    expect(roles("Ugin, the Spirit Dragon").wipes).toBe(1);
+  });
+  it("ramp credit shrinks with the mana source's own cost", () => {
+    expect(roles("Hedron Archive").ramp).toBe(1);
+    expect(roles("Gilded Lotus").ramp).toBe(0.7);
+    expect(roles("Ugin, Eye of the Storms").ramp).toBe(0.4);
+  });
+});

@@ -439,8 +439,8 @@
   "improve": [
    {
     "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
-    "upgradeValue": 0.38,
-    "label": "Minor Upgrade",
+    "upgradeValue": 0.46,
+    "label": "Moderate Upgrade",
     "best": "Artifact 4",
     "alternatives": [
      "Artifact 3",
@@ -450,7 +450,7 @@
    },
    {
     "identity": "scoring:Artifact Mana Engine",
-    "upgradeValue": 0.19,
+    "upgradeValue": 0.27,
     "label": "Minor Upgrade",
     "best": "Artifact 4",
     "alternatives": [
