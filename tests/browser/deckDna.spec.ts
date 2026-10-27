@@ -4,6 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { dnaFixture, dragons, lathliss } from "../dnaFixtures";
 import type { CollectionState } from "../../src/models/collection";
 import { sol } from "../importFixtures";
+import { section } from "./workspaceHelpers";
 async function nav(page: Page, label: string) {
   await page
     .getByRole("navigation")
@@ -61,8 +62,11 @@ async function setup(page: Page, withOwned = false) {
 }
 const computations = (page: Page) =>
   page.evaluate(() => performance.getEntriesByName("mtg:deck-dna").length);
-const themeLabels = (page: Page) =>
-  page.locator(".dna-theme").allTextContents();
+// Theme name and percentage only (the row also offers "View Cards").
+const themeLabels = async (page: Page) =>
+  (await page.locator(".dna-theme").all()).length
+    ? Promise.all((await page.locator(".dna-theme").all()).map(async (row) => `${await row.locator(".dna-theme-name").innerText()}${await row.locator(".dna-theme-percent").innerText()}`))
+    : [];
 const names = async (page: Page) =>
   (await page.locator(".deck-owned-grid h3").allTextContents()).map((n) =>
     n.replace(/\s*×\d+\s*$/, "").trim(),
@@ -114,13 +118,14 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
   await expect(
     page.getByRole("region", { name: "What This Deck Does", exact: true }),
   ).toContainText("Lathliss");
-  await page.getByText("Core Plan", { exact: true }).click();
-  await expect(
-    page.getByText("Primary strategy", { exact: true }),
-  ).toBeVisible();
-  await expect(
-    page.getByText("Strategy anchors", { exact: true }),
-  ).toBeVisible();
+  const core = page.getByRole("region", { name: "Core Plan", exact: true });
+  await expect(core.getByText("Primary", { exact: true })).toBeVisible();
+  await expect(core.getByText("Key cards", { exact: true })).toBeVisible();
+  // Overview leads with what the deck does and what it needs; methodology stays closed below.
+  const order = await page.locator(".deck-overview > section, .deck-overview > details").evaluateAll((els) => els.map((e) => e.getAttribute("aria-label") || e.querySelector("summary")?.textContent || ""));
+  expect(order.slice(0, 5)).toEqual(["Commander", "What This Deck Does", "Deck Health", "Core Plan", "Deck DNA"]);
+  await expect(page.locator(".dna-method")).not.toHaveAttribute("open", "");
+  await expect(page.getByRole("region", { name: "Deck Health" })).toContainText("Ramp");
   expect(await computations(page)).toBe(1);
   expect(
     await page.evaluate(
@@ -128,11 +133,11 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
     ),
   ).toBe(true);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
-  await page.getByRole("button", { name: "Add Cards", exact: true }).focus();
   await page.screenshot({
     path: info.outputPath("deck-dna.png"),
     fullPage: true,
   });
+  await section(page, "Cards");
   await page
     .getByRole("button", {
       name: `Open ${dragons[0].name} details`,
@@ -160,6 +165,7 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
   await page.reload();
   await nav(page, "Decks");
   await page.locator(".deck-card").click();
+  await section(page, "Overview");
   expect(await themeLabels(page)).toEqual(labels);
 });
 test("both Synergy sorts and DNA theme filters drive Previous Next and position without recalculation", async ({
@@ -168,7 +174,8 @@ test("both Synergy sorts and DNA theme filters drive Previous Next and position 
   await setup(page);
   const before = await computations(page);
   const labels = await themeLabels(page);
-  const sort = page.getByRole("combobox", { name: "Sort deck", exact: true });
+  await section(page, "Cards");
+  const sort = page.getByRole("combobox", { name: "Sort", exact: true });
   await sort.selectOption("synergy-desc");
   let values = await scores(page);
   expect(values).toEqual([...values].sort((a, b) => b - a));
@@ -177,20 +184,17 @@ test("both Synergy sorts and DNA theme filters drive Previous Next and position 
   values = await scores(page);
   expect(values).toEqual([...values].sort((a, b) => a - b));
   await walk(page, await names(page));
-  await page
-    .locator(".dna-theme")
-    .filter({ hasText: "Dragons Matter" })
-    .click();
-  await expect(
-    page.getByRole("combobox", { name: "Deck DNA theme" }),
-  ).toHaveValue("typal:Dragon");
+  // Selecting a DNA theme is explicit: View Cards opens Cards with a visible, removable chip.
+  await section(page, "Overview");
+  await page.getByRole("button", { name: "View Cards for Dragons Matter", exact: true }).click();
+  await expect(page).toHaveURL(/tab=cards/);
+  await expect(page.getByRole("button", { name: "Remove filter: Dragons Matter" })).toBeVisible();
   const filtered = await names(page);
   expect(filtered.length).toBeLessThan(dragons.length);
   expect(filtered).not.toContain("Sol Ring");
   expect(filtered).toContain("Dragonlord’s Servant");
   await walk(page, filtered);
   expect(await computations(page)).toBe(before);
-  expect(await themeLabels(page)).toEqual(labels);
   await page
     .getByRole("button", { name: "Clear deck filters", exact: true })
     .click();
@@ -199,6 +203,8 @@ test("both Synergy sorts and DNA theme filters drive Previous Next and position 
   );
   await sort.selectOption("name-asc");
   await expect(page.locator(".deck-sort-metric")).toHaveCount(0);
+  await section(page, "Overview");
+  expect(await themeLabels(page)).toEqual(labels);
 });
 test("physical assignment leaves DNA unchanged, conceptual additions/removals recalculate, Collection detail stays universal", async ({
   page,
@@ -206,21 +212,24 @@ test("physical assignment leaves DNA unchanged, conceptual additions/removals re
   await setup(page, true);
   const before = await computations(page);
   const labels = await themeLabels(page);
-  await page.getByRole("button", { name: "Add Cards", exact: true }).click();
-  await page
-    .getByRole("button", { name: "View Sol Ring", exact: true })
-    .click();
-  await page.getByRole("button", { name: "Add one copy", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText("Assigned 1");
+  await section(page, "Cards");
+  const addSol = async () => {
+    await page.getByRole("button", { name: "Add Card", exact: true }).click();
+    await page.getByRole("dialog").getByRole("button", { name: "View Sol Ring", exact: true }).click();
+    await page.getByRole("button", { name: "Add one copy", exact: true }).click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await expect(page.getByRole("status").filter({ hasText: "Sol Ring added to" })).toBeVisible();
+  };
+  await addSol();
   expect(await computations(page)).toBe(before);
-  await page.getByRole("button", { name: "Add one copy", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText("Assigned 2");
+  await addSol();
   expect(await computations(page)).toBe(before + 1);
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
-  await page.getByRole("button", { name: "Deck", exact: true }).click();
+  await page.getByRole("button", { name: "Open Sol Ring details", exact: true }).click();
   await page
     .getByRole("button", { name: "Remove one Sol Ring", exact: true })
     .click();
+  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
+  await section(page, "Overview");
   // Wait for the revision-checked asynchronous save and resulting render.
   // The original conceptual composition can reuse its cached result.
   await expect.poll(() => themeLabels(page)).toEqual(labels);

@@ -1,44 +1,37 @@
-import { SynergyExplorer } from './SynergyExplorer';
-import { DeckDnaPanel } from './DeckDnaPanel';
 import { deckDnaCache, cardSynergy } from '../dna/engine';
-import { useEffect, useMemo, useState } from "react";
-import { Crown, Plus, ArrowLeft, Settings2, FileUp, Trash2 } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Crown, Plus, FileUp } from "lucide-react";
+import { DeckHeader } from "./DeckHeader";
+import type { DeckTab } from "../decks/workspace";
+import { DeckOverview } from "./DeckOverview";
+import { DeckCards } from "./DeckCards";
+import { DeckUpgrades } from "./DeckUpgrades";
+import { DeckSettings } from "./DeckSettings";
 import type { CollectionState } from "../models/collection";
 import { collectionCards, emptyCollection } from "../models/collection";
 import type { Deck, DeckCommander } from "../models/deck";
-import { DeckImport, DeckIssues } from "./DeckImport";
+import { DeckImport } from "./DeckImport";
 import { CardDetail } from "./CardDetail";
 import type { Override } from "../intelligence/types";
 import {
   deckCardAnalysis,
   deckRows,
-  deckSortLabels,
-  deckTypes,
   emptyDeckFilters,
-  typeGroup,
   visibleDeckRows,
 } from "../decks/deckBrowse";
-import type { DeckFilters, DeckRow, DeckSort } from "../decks/deckBrowse";
+import type { DeckFilters, DeckSort } from "../decks/deckBrowse";
 import { effectiveAssignments } from "../intelligence/tagger";
 import type { SampleCollectionCard } from "../models/card";
 import {
   allocationConflicts,
   commanderEligible,
-  deckCount,
   deckIdentity,
-  assignedCount,
   deckOwnership,
-  deckStats,
-  missingEntries,
   deckUsage,
-  legalInDeck,
-  deckPlayable,
 } from "../decks/decks";
 import type { DeckChange, DeckRepository } from "../storage/deckRepository";
 import { Dialog } from "./Dialog";
-import { CardGrid } from "./CardGrid";
 import { CardImage } from "./CardImage";
-import { FilterDrawer } from "./FilterDrawer";
 import { emptyFilters, filterCards } from "../utils/filters";
 import type { Filters } from "../utils/filters";
 const identityLabel = (deck: Deck) =>
@@ -48,6 +41,8 @@ export function DeckLibrary({
   repository,
   onSaved,
   activeId,
+  tab,
+  onTab,
   onOpen,
   onCollection,
   onSaveTags,
@@ -56,26 +51,21 @@ export function DeckLibrary({
   repository: DeckRepository;
   onSaved: (state: CollectionState) => void;
   activeId: string | null;
+  tab: DeckTab;
+  onTab: (tab: DeckTab) => void;
   onOpen: (id: string | null) => void;
   onCollection: () => void;
   onSaveTags?: (card: SampleCollectionCard, override: Override) => Promise<void>;
 }) {
-  const [modal, setModal] = useState<"create" | "rename" | "delete" | null>(
-    null,
-  );
+  const [modal, setModal] = useState<"create" | null>(null);
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
-  const [filterOpen, setFilterOpen] = useState(false);
-  const [tab, setTab] = useState<"deck" | "add">("deck");
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
-  const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
   const [importing, setImporting] = useState(false);
-  const [exploring,setExploring]=useState(false);
-  useEffect(()=>setExploring(false),[activeId]);
   const [sort, setSort] = useState<DeckSort>("type");
   const [deckFilters, setDeckFilters] = useState<DeckFilters>(emptyDeckFilters);
   // Card Detail opened from the deck: a browsable row, or a commander (outside the 99).
@@ -113,19 +103,6 @@ export function DeckLibrary({
   const dna=useMemo(()=>state&&deck?deckDnaCache.get(state,deck):null,[state,deck]);
   // The exact sequence shown in the grid is the Previous/Next sequence.
   const visible = useMemo(() => visibleDeckRows(rows, sort, deckFilters,dna||undefined), [rows, sort, deckFilters,dna]);
-  const filtering = !!(deckFilters.query || deckFilters.type || deckFilters.ownership || deckFilters.theme);
-  const caption = (row: DeckRow) =>
-    sort === "synergy-desc" || sort === "synergy-asc"
-      ? `SYNERGY ${dna ? cardSynergy(dna,row.card)?.score||0 : 0} · ${dna?cardSynergy(dna,row.card)?.band||'Not Recommended':'Not Recommended'}`
-      : sort === "mv-asc" || sort === "mv-desc"
-      ? `MV ${row.card.manaValue}`
-      : sort === "type"
-        ? typeGroup(row.card).toUpperCase()
-        : sort === "color"
-          ? row.card.colorIdentity.join("") || "COLORLESS"
-          : sort === "set"
-            ? `${row.card.setCode.toUpperCase()} #${row.card.collectorNumber || ""}`
-            : null;
   const commanderDetailCard = (c: DeckCommander): SampleCollectionCard => {
     if (c.itemId) return cardFor(c.itemId);
     const card = state!.metadata[c.scryfallId];
@@ -133,8 +110,9 @@ export function DeckLibrary({
     const tagOverrides = state!.intelligence?.overrides[analysis.cardIdentity];
     return { ...card, id: `commander:${c.scryfallId}`, quantity: 0, analysis, tagOverrides, intelligentTags: effectiveAssignments(analysis, tagOverrides).map((a) => a.tagId) };
   };
-  async function change(action: DeckChange) {
-    if (!state || busy) return;
+  // One shared write path for every section: one repository transaction, one status message.
+  async function change(action: DeckChange, success = ""): Promise<boolean> {
+    if (!state || busy) return false;
     setBusy(true);
     setError("");
     setStatus("");
@@ -145,23 +123,13 @@ export function DeckLibrary({
         onOpen(next.decks!.at(-1)!.id);
         setModal(null);
         setQuery("");
-        setTab("deck");
       }
-      if (action.type === "delete") {
-        onOpen(null);
-        setModal(null);
-      }
-      if (action.type === "rename") setModal(null);
-      if (action.type === "add" || action.type === "remove")
-        setStatus(
-          action.type === "add"
-            ? "Copy added to deck."
-            : "Copy returned to Available. Collection ownership is unchanged.",
-        );
+      if (action.type === "delete") onOpen(null);
+      setStatus(success);
+      return true;
     } catch (e) {
-      setError(
-        e instanceof Error ? e.message : "Could not save the deck. Retry.",
-      );
+      setError(e instanceof Error ? e.message : "Could not save the deck. Retry.");
+      return false;
     } finally {
       setBusy(false);
     }
@@ -274,7 +242,6 @@ export function DeckLibrary({
                   key={d.id}
                   onClick={() => {
                     onOpen(d.id);
-                    setTab("deck");
                     reset();
                     setError("");
                     setStatus("");
@@ -307,299 +274,57 @@ export function DeckLibrary({
             </div>
           )}
         </>
-      ) : (
+      ) : state ? (
         <>
-          <button
-            className="text-button"
-            onClick={() => {
+          <DeckHeader
+            state={state}
+            deck={deck}
+            tab={tab}
+            onTab={(next) => {
+              setError("");
+              setStatus("");
+              onTab(next);
+            }}
+            onBack={() => {
               onOpen(null);
               reset();
-              setChosen(null);
               setDetail(null);
               setDeckFilters(emptyDeckFilters());
             }}
-          >
-            <ArrowLeft size={16} />
-            All decks
-          </button>
-          <div className="deck-heading">
-            <div>
-              <p className="eyebrow">COMMANDER LIBRARY</p>
-              <h1>{deck.name}</h1>
-              <p className="collection-subtitle">
-                {identityLabel(deck)} · {ownershipLine(deck)}
-              </p>
-            </div>
-            <span className="deck-heading-actions">
-              <button className="management-button" onClick={()=>setExploring(true)}>Upgrades I Own</button>
-              <button
-                className="management-button"
-                onClick={() => {
-                  setName(deck.name);
-                  setModal("rename");
-                  setError("");
-                }}
-              >
-                <Settings2 size={16} />
-                Edit Deck
-              </button>
-              <button
-                className="danger-button"
-                onClick={() => {
-                  setModal("delete");
-                  setError("");
-                }}
-              >
-                <Trash2 size={16} />
-                Delete this deck
-              </button>
-            </span>
-          </div>
-          <p className="deck-warning">
-            Color identity is enforced. Other Commander rules, singleton limits,
-            banned cards and Partner combinations are not fully validated.
-          </p>
-          <section aria-label="Commander" className="deck-commander">
-            {deck.commanders.map((c, i) => (
-              <div key={`${c.itemId || c.scryfallId}-${i}`}>
-                <button className="commander-art deck-art-button" aria-label={`Open ${c.name} details`} onClick={() => setDetail({ commander: i })}>
-                  <CardImage card={commanderCard(c)} />
-                </button>
-                <div>
-                  <p className="eyebrow">COMMANDER</p>
-                  <h2>{c.name}</h2>
-                  <p>
-                    {commanderCard(c).setCode.toUpperCase()} #
-                    {commanderCard(c).collectorNumber}
-                    {c.itemId ? ` · ${commanderCard(c).ownership!.finish}` : ""}
-                  </p>
-                  {allocation(commanderCard(c))}
-                </div>
-              </div>
-            ))}
-            {deck.commanders.length > 1 && (
-              <p className="deck-warning">Partner/Background pairing rules are not validated.</p>
-            )}
-          </section>
-          {dna&&<DeckDnaPanel dna={dna} selected={deckFilters.theme||''} onSelect={theme=>{setDeckFilters(f=>({...f,theme}));setTab('deck');setDetail(null);}}/>}
-          {(() => {
-            const stats = deckStats(state!, deck);
-            return (
-              <details className="deck-statistics">
-                <summary>Basic composition · {deckCount(deck)} cards</summary>
-                <p>
-                  {Object.entries(stats.counts)
-                    .map(([type, count]) => `${type}: ${count}`)
-                    .join(" · ")}
-                </p>
-                <p>Average mana value (nonlands): {stats.average.toFixed(2)}</p>
-              </details>
-            );
-          })()}
-          <div role="group" aria-label="Deck sections" className="deck-tabs">
-            <button
-              className={`chip ${tab === "deck" ? "selected" : ""}`}
-              aria-pressed={tab === "deck"}
-              onClick={() => setTab("deck")}
-            >
-              Deck
-            </button>
-            <button
-              className={`chip ${tab === "add" ? "selected" : ""}`}
-              aria-pressed={tab === "add"}
-              onClick={() => {
-                setTab("add");
-                reset();
+          />
+          {tab === "overview" && (
+            <DeckOverview
+              state={state}
+              deck={deck}
+              dna={dna}
+              commanderCard={(i) => commanderCard(deck.commanders[i])}
+              onCommander={(i) => setDetail({ commander: i })}
+              onViewTheme={(theme) => {
+                setDeckFilters({ ...emptyDeckFilters(), theme });
+                onTab("cards");
               }}
-            >
-              Add Cards
-            </button>
-          </div>
-          {tab === "deck" ? (
-            <section aria-label="Deck cards">
-              {!deck.assignments.length && !deck.entries && (
-                <p className="collection-subtitle">
-                  Your commander is ready. Add cards from your collection.
-                </p>
-              )}
-              <div className="deck-browse-controls" role="group" aria-label="Sort and filter deck">
-                <label>
-                  Sort deck
-                  <select value={sort} onChange={(e) => setSort(e.target.value as DeckSort)}>
-                    {(Object.keys(deckSortLabels) as DeckSort[]).map((key) => (
-                      <option key={key} value={key}>
-                        {deckSortLabels[key]}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  Search this deck
-                  <input type="search" value={deckFilters.query} onChange={(e) => setDeckFilters((f) => ({ ...f, query: e.target.value }))} />
-                </label>
-                {dna&&<label>Deck DNA theme<select value={deckFilters.theme||''} onChange={e=>setDeckFilters(f=>({...f,theme:e.target.value}))}><option value="">All themes</option>{dna.themes.map(theme=><option key={theme.id} value={theme.id}>{theme.label}</option>)}</select></label>}
-                <label>
-                  Card type
-                  <select value={deckFilters.type} onChange={(e) => setDeckFilters((f) => ({ ...f, type: e.target.value as DeckFilters["type"] }))}>
-                    <option value="">All types</option>
-                    {[...deckTypes, "Other" as const].map((t) => (
-                      <option key={t} value={t}>
-                        {t}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                {deck.entries && (
-                  <label>
-                    Ownership
-                    <select value={deckFilters.ownership} onChange={(e) => setDeckFilters((f) => ({ ...f, ownership: e.target.value as DeckFilters["ownership"] }))}>
-                      <option value="">Owned and missing</option>
-                      <option value="assigned">Owned / assigned</option>
-                      <option value="missing">Missing / unassigned</option>
-                    </select>
-                  </label>
-                )}
-              </div>
-              <p className="allocation-copy" role="status">
-                {filtering ? `${visible.length} of ${rows.length} deck cards shown` : `${rows.length} deck cards`}
-                {filtering && (
-                  <>
-                    {" · "}
-                    <button className="text-button" onClick={() => setDeckFilters(emptyDeckFilters())}>
-                      Clear deck filters
-                    </button>
-                  </>
-                )}
-              </p>
-              <div className="deck-owned-grid">
-                {visible.map((row) => {
-                  const card = row.card;
-                  const label = caption(row);
-                  return (
-                    <article key={row.key} className={`deck-owned-card${row.assigned ? "" : " deck-card-missing"}`}>
-                      <button className="deck-art-button" aria-label={`Open ${card.name} details`} onClick={() => setDetail({ row: row.key })}>
-                        <CardImage card={card} />
-                      </button>
-                      {label && <p className="deck-sort-metric">{label}</p>}
-                      <h3>
-                        {card.name} ×{row.quantity}
-                      </h3>
-                      {row.assigned ? (
-                        <>
-                          <p>
-                            {card.setCode.toUpperCase()} #{card.collectorNumber} ·{" "}
-                            {card.ownership!.finish} · {card.ownership!.language} ·{" "}
-                            {card.ownership!.condition}
-                          </p>
-                          {allocation(card)}
-                          <button
-                            className="management-button"
-                            disabled={busy}
-                            onClick={() =>
-                              void change({
-                                type: "remove",
-                                deckId: deck.id,
-                                itemId: row.itemId!,
-                              })
-                            }
-                          >
-                            Remove one {card.name}
-                          </button>
-                        </>
-                      ) : (
-                        <p className="allocation-copy">
-                          {row.basicLand
-                            ? "Basic land — allocation not tracked"
-                            : row.ownedElsewhere
-                              ? `Unassigned · owned elsewhere ${row.ownedElsewhere} (${row.availableElsewhere} available)`
-                              : "Missing · not currently owned"}
-                        </p>
-                      )}
-                    </article>
-                  );
-                })}
-              </div>
-              {filtering && !visible.length && (
-                <p className="collection-subtitle">No deck cards match these filters.</p>
-              )}
-              <p className="allocation-copy">
-                Removing a deck card returns its copy to Available. It does not
-                remove it from Collection or change ManaBox.
-              </p>
-              {(() => {
-                const missing = missingEntries(state!, deck);
-                if (!missing.length) return null;
-                return (
-                  <section aria-label="Missing and unassigned cards" className="deck-missing">
-                    <h2>Missing / Unassigned · {missing.reduce((n, m) => n + m.missing, 0)}</h2>
-                    <p className="allocation-copy">
-                      These decklist cards have no physical copy assigned. Ownership is never fabricated; add an
-                      available copy from Add Cards to fill one.
-                    </p>
-                    <ul>
-                      {missing.map((m) => (
-                        <li key={m.entry.id}>
-                          <strong>
-                            {m.entry.name} ×{m.missing}
-                          </strong>
-                          {m.entry.board === "commander" && " · Commander"}
-                          {m.entry.requestedPrinting && (
-                            <span>
-                              {" "}
-                              · Requested {m.entry.requestedPrinting.setCode.toUpperCase()}
-                              {m.entry.requestedPrinting.collectorNumber ? ` #${m.entry.requestedPrinting.collectorNumber}` : ""}
-                            </span>
-                          )}
-                          <p className={m.outsideIdentity ? "deck-error" : "allocation-copy"}>
-                            {m.reason} · Owned {m.owned} · Available {m.available}
-                          </p>
-                          {m.entry.board === "main" && (
-                            <button
-                              className="text-button"
-                              disabled={busy}
-                              onClick={() => void change({ type: "remove-missing", deckId: deck.id, entryId: m.entry.id })}
-                            >
-                              Remove one missing {m.entry.name} from decklist
-                            </button>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                );
-              })()}
-              {deck.importIssues && <DeckIssues issues={deck.importIssues} title="Rows not imported" />}
-            </section>
-          ) : (
-            <section aria-label="Add cards from collection">
-              <p className="collection-subtitle">
-                Cards legal within {identityLabel(deck)} · owned printings only
-              </p>
-              {search("Search owned cards")}
-              <button
-                className="management-button"
-                onClick={() => setFilterOpen(true)}
-              >
-                Filters
-              </button>
-              <div className="deck-candidates">
-                <CardGrid
-                  key={JSON.stringify([query, filters])}
-                  cards={filterCards(
-                    cards.filter((c) => legalInDeck(c, deck) && deckPlayable(c)),
-                    query,
-                    filters,
-                  )}
-                  loading={false}
-                  onOpen={setChosen}
-                  onReset={reset}
-                  caption={(card) => allocation(card)}
-                />
-              </div>
-            </section>
+            />
           )}
+          {tab === "cards" && (
+            <DeckCards
+              state={state}
+              deck={deck}
+              dna={dna}
+              rows={rows}
+              visible={visible}
+              sort={sort}
+              onSort={setSort}
+              filters={deckFilters}
+              onFilters={setDeckFilters}
+              busy={busy}
+              change={change}
+              onOpen={(row) => setDetail({ row })}
+            />
+          )}
+          {tab === "upgrades" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
+          {tab === "settings" && <DeckSettings key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
         </>
-      )}
+      ) : null}
       {!!conflicts.length && (
         <section
           className="allocation-conflicts"
@@ -645,27 +370,18 @@ export function DeckLibrary({
           <div className="dialog-heading">
             <p className="eyebrow">COMMANDER LIBRARY</p>
             <h2 id="deck-modal-title">
-              {modal === "create"
-                ? step === 1
-                  ? "Name your deck"
-                  : "Choose your commander"
-                : modal === "rename"
-                  ? "Edit Deck"
-                  : "Delete deck?"}
+                {step === 1 ? "Name your deck" : "Choose your commander"}
             </h2>
           </div>
           <div className="deck-dialog-content">
-            {(modal === "rename" || (modal === "create" && step === 1)) && (
+            {step === 1 && (
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (modal === "create") {
-                    if (name.trim()) {
-                      setStep(2);
-                      setQuery("");
-                    }
-                  } else if (deck)
-                    void change({ type: "rename", deckId: deck.id, name });
+                  if (name.trim()) {
+                    setStep(2);
+                    setQuery("");
+                  }
                 }}
               >
                 <label>
@@ -678,11 +394,11 @@ export function DeckLibrary({
                   />
                 </label>
                 <button className="primary-button" disabled={busy}>
-                  {modal === "create" ? "Choose Commander" : "Save deck name"}
+                  Choose Commander
                 </button>
               </form>
             )}
-            {modal === "create" && step === 2 && (
+            {step === 2 && (
               <>
                 <p>
                   Legendary creatures and cards explicitly allowed as
@@ -737,33 +453,6 @@ export function DeckLibrary({
                 </button>
               </>
             )}
-            {modal === "rename" && deck && (
-              <button
-                className="danger-button"
-                onClick={() => setModal("delete")}
-              >
-                Delete deck
-              </button>
-            )}
-            {modal === "delete" && deck && (
-              <>
-                <p>
-                  Delete {deck.name}? All {assignedCount(deck)} assigned copies will
-                  return to Available
-                  {deck.entries ? ` and its ${deckOwnership(deck, state).missing} missing decklist cards are discarded` : ""}.
-                  Collection cards and ManaBox are unchanged.
-                </p>
-                <button
-                  className="danger-button"
-                  disabled={busy}
-                  onClick={() =>
-                    void change({ type: "delete", deckId: deck.id })
-                  }
-                >
-                  Confirm delete deck
-                </button>
-              </>
-            )}
             {error && (
               <p role="alert" className="deck-error">
                 {error}
@@ -782,7 +471,6 @@ export function DeckLibrary({
             onSaved(next);
             setImporting(false);
             onOpen(id);
-            setTab("deck");
             reset();
             setStatus("Deck imported. Collection quantities are unchanged.");
           }}
@@ -815,6 +503,21 @@ export function DeckLibrary({
             onOpenDeck={(id) => { setDetail(null); onOpen(id); }}
             onClose={() => setDetail(null)}
             onSaveTags={row.card.ownership && onSaveTags ? (o) => onSaveTags(row.card, o) : undefined}
+            extra={
+              row.assigned && row.itemId ? (
+                <section className="deck-card-actions" aria-label="Deck card actions">
+                  <button
+                    className="management-button"
+                    disabled={busy}
+                    onClick={() => void change({ type: "remove", deckId: deck.id, itemId: row.itemId! }, "Copy returned to Available. Collection ownership is unchanged.")}
+                  >
+                    Remove one {row.card.name}
+                  </button>
+                  <p className="meta-text">Removing returns the copy to Available; Collection and ManaBox are unchanged.</p>
+                  {(error || status) && <p role="status">{error || status}</p>}
+                </section>
+              ) : undefined
+            }
             deck={{ deckName: deck.name, quantity: row.quantity, assigned: row.assigned, basicLand: row.basicLand, ownedElsewhere: row.ownedElsewhere, availableElsewhere: row.availableElsewhere }}
             navigation={{
               position: index + 1,
@@ -825,92 +528,6 @@ export function DeckLibrary({
           />
         );
       })()}
-      {filterOpen && deck && (
-        <FilterDrawer
-          cards={cards.filter((c) => legalInDeck(c, deck) && deckPlayable(c))}
-          query={query}
-          filters={filters}
-          onClose={() => setFilterOpen(false)}
-          onApply={(f) => {
-            setFilters(f);
-            setFilterOpen(false);
-          }}
-        />
-      )}
-      {chosen && deck && (
-        <Dialog
-          titleId="allocation-title"
-          className="deck-dialog"
-          onClose={() => {
-            if (!busy) {
-              setChosen(null);
-              setError("");
-            }
-          }}
-          closeDisabled={busy}
-        >
-          <div className="dialog-heading">
-            <h2 id="allocation-title">{chosen.name}</h2>
-          </div>
-          <div className="deck-dialog-content">
-            {(() => {
-              const current = cardFor(chosen.id);
-              const assigned = deck.assignments
-                .filter((a) => a.itemId === current.id)
-                .reduce((n, a) => n + a.quantity, 0);
-              return (
-                <>
-                  <p>
-                    {current.setCode.toUpperCase()} #{current.collectorNumber} ·{" "}
-                    {current.ownership!.finish} · {current.ownership!.language}{" "}
-                    · {current.ownership!.condition}
-                  </p>
-                  {allocation(current)}
-                  {usage(current)}
-                  {current.ownership!.quantityUnassigned < 1 && (
-                    <p>No unassigned copy available</p>
-                  )}
-                  <button
-                    className="primary-button"
-                    disabled={busy || current.ownership!.quantityUnassigned < 1}
-                    onClick={() =>
-                      void change({
-                        type: "add",
-                        deckId: deck.id,
-                        itemId: current.id,
-                      })
-                    }
-                  >
-                    Add one copy
-                  </button>
-                  {assigned > 0 && (
-                    <button
-                      className="management-button"
-                      disabled={busy}
-                      onClick={() =>
-                        void change({
-                          type: "remove",
-                          deckId: deck.id,
-                          itemId: current.id,
-                        })
-                      }
-                    >
-                      Remove one copy
-                    </button>
-                  )}
-                  <p>
-                    Copies stay in Collection. No copies are moved from other
-                    decks.
-                  </p>
-                </>
-              );
-            })()}
-            {error && <p role="alert">{error}</p>}
-            <p role="status">{status}</p>
-          </div>
-        </Dialog>
-      )}
-      {exploring&&state&&deck&&<SynergyExplorer state={state} deck={deck} onClose={()=>setExploring(false)}/>}
     </section>
   );
 }

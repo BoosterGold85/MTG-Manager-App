@@ -1,4 +1,6 @@
 import { DeckLibrary } from '../components/DeckLibrary';
+import { isDeckTab } from '../decks/workspace';
+import type { DeckTab } from '../decks/workspace';
 import { LocalDeckRepository } from '../storage/deckRepository';
 import { allocationConflicts } from '../decks/decks';
 const deckRepository = new LocalDeckRepository(collectionRepository);
@@ -55,19 +57,25 @@ type Overlay =
   | { type: "clear" }
   | null;
 type Area = "collection" | "decks";
-// Screen and deck identity live in the query string so static hosting needs no route fallback.
-function readRoute(): { area: Area; deckId: string | null } {
+
+// Screen, deck identity and deck section live in the query string so static hosting needs no route fallback.
+function readRoute(): { area: Area; deckId: string | null; tab: DeckTab } {
   const params = new URLSearchParams(location.search);
   const deckId = params.get("deck");
-  return params.get("view") === "decks" || deckId ? { area: "decks", deckId } : { area: "collection", deckId: null };
+  const requested = params.get("tab");
+  const tab: DeckTab = isDeckTab(requested) ? requested : "overview";
+  return params.get("view") === "decks" || deckId ? { area: "decks", deckId, tab: deckId ? tab : "overview" } : { area: "collection", deckId: null, tab: "overview" };
 }
-function routeUrl(area: Area, deckId: string | null) {
+function routeUrl(area: Area, deckId: string | null, tab: DeckTab = "overview") {
   const params = new URLSearchParams(location.search);
   params.delete("view");
   params.delete("deck");
+  params.delete("tab");
   if (area === "decks") {
     params.set("view", "decks");
     if (deckId) params.set("deck", deckId);
+    // Overview is the default section: older deck links without a tab keep working unchanged.
+    if (deckId && tab !== "overview") params.set("tab", tab);
   }
   const query = params.toString();
   return `${location.pathname}${query ? `?${query}` : ""}${location.hash}`;
@@ -93,19 +101,23 @@ export default function App() {
   const [sort, setSort] = useState<Sort>("name");
   const [activeDeckId,setActiveDeckId] = useState<string|null>(()=>readRoute().deckId);
   const [area, setArea] = useState<Area>(()=>readRoute().area);
+  const [deckTab, setDeckTab] = useState<DeckTab>(()=>readRoute().tab);
   const [newerRevision, setNewerRevision] = useState<number | null>(null);
   const revision = useRef(0);
   useEffect(() => { revision.current = savedCollection?.revision || 0; }, [savedCollection]);
   // Omitting deckId keeps the deck that was open, so Collection → Decks returns to it (approved v0.4 behavior).
-  function navigate(nextArea: Area, requestedDeck?: string | null) {
+  function navigate(nextArea: Area, requestedDeck?: string | null, requestedTab?: DeckTab) {
     const deckId = requestedDeck === undefined ? activeDeckId : requestedDeck;
-    if (nextArea === area && deckId === activeDeckId) return;
-    const url = routeUrl(nextArea, nextArea === "decks" ? deckId : null);
+    // Opening a different deck starts on Overview; returning to the open deck keeps its section.
+    const tab = requestedTab || (deckId === activeDeckId ? deckTab : "overview");
+    if (nextArea === area && deckId === activeDeckId && tab === deckTab) return;
+    const url = routeUrl(nextArea, nextArea === "decks" ? deckId : null, tab);
     // From an open overlay, replace its history entry instead of racing an async back().
     if (history.state?.binderOverlay) { history.replaceState({ route: true }, "", url); setOverlay(null); }
     else history.pushState({ route: true }, "", url);
     setArea(nextArea);
     setActiveDeckId(deckId);
+    setDeckTab(tab);
   }
   const [overlay, setOverlay] = useState<Overlay>(null);
   useEffect(() => {
@@ -159,7 +171,10 @@ export default function App() {
       setOverlay(null);
       const route = readRoute();
       setArea(route.area);
-      if (route.area === "decks") setActiveDeckId(route.deckId);
+      if (route.area === "decks") {
+        setActiveDeckId(route.deckId);
+        setDeckTab(route.tab);
+      }
     };
     window.addEventListener("popstate", close);
     return () => window.removeEventListener("popstate", close);
@@ -551,7 +566,7 @@ export default function App() {
             )}
           </>
         ) : (
-          <DeckLibrary state={savedCollection} repository={deckRepository} onSaved={acceptState} activeId={activeDeckId} onOpen={id=>navigate('decks',id)} onCollection={()=>navigate('collection')} onSaveTags={saveTags}/>
+          <DeckLibrary state={savedCollection} repository={deckRepository} onSaved={acceptState} activeId={activeDeckId} tab={deckTab} onTab={next=>navigate('decks',activeDeckId,next)} onOpen={id=>navigate('decks',id,'overview')} onCollection={()=>navigate('collection')} onSaveTags={saveTags}/>
 
         )}
         <footer className="app-footer">
