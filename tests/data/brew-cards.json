@@ -1,0 +1,2260 @@
+[
+ {
+  "name": "Vorel of the Hull Clade",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Human Merfolk",
+  "oracle_text": "{G}{U}, {T}: Double the number of each kind of counter on target artifact, creature, or land.",
+  "keywords": [
+   "Double"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "1",
+  "toughness": "4",
+  "id": "82c8cac8-29ce-43cc-bdb4-428c614d8545",
+  "oracle_id": "3001f971-c4db-4176-89b5-e7f4a8890c0f",
+  "set": "lcc",
+  "collector_number": "294",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Hardened Scales",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Enchantment",
+  "oracle_text": "If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "99cfd1a8-49fd-4cc0-96f2-f9f159ce5d55",
+  "oracle_id": "a1f3da21-af6d-450e-bf0b-985d158418e6",
+  "set": "soc",
+  "collector_number": "272",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Branching Evolution",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "c0f1a736-8b12-4f58-a031-bf1733f65c51",
+  "oracle_id": "28fe909b-06e0-424c-9f75-c824a25f5865",
+  "set": "mh3",
+  "collector_number": "285",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ivy Lane Denizen",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elf Warrior",
+  "oracle_text": "Whenever another green creature you control enters, put a +1/+1 counter on target creature.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "id": "b6936a91-db5d-4977-a851-2dc6a4141ceb",
+  "oracle_id": "a5da5ad6-4ed2-4041-a983-76a8c87fa109",
+  "set": "clu",
+  "collector_number": "166",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Forgotten Ancient",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elemental",
+  "oracle_text": "Whenever a player casts a spell, you may put a +1/+1 counter on this creature.\nAt the beginning of your upkeep, you may move any number of +1/+1 counters from this creature onto other creatures.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "0",
+  "toughness": "3",
+  "id": "f8c9d744-8294-4747-ae7e-99be2b6e7479",
+  "oracle_id": "2ef75cf3-30dc-4852-a6d1-1d6391fad022",
+  "set": "soc",
+  "collector_number": "267",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Kalonian Hydra",
+  "mana_cost": "{3}{G}{G}",
+  "cmc": 5.0,
+  "type_line": "Creature — Hydra",
+  "oracle_text": "Trample\nThis creature enters with four +1/+1 counters on it.\nWhenever this creature attacks, double the number of +1/+1 counters on each creature you control.",
+  "keywords": [
+   "Trample",
+   "Double"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "1d21ae20-2ef5-4dc0-aced-97497e6a8025",
+  "oracle_id": "7bd36106-04fe-481f-b16e-e076dcbb183b",
+  "set": "moc",
+  "collector_number": "305",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Experiment One",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Creature — Human Ooze",
+  "oracle_text": "Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\nRemove two +1/+1 counters from this creature: Regenerate it. (The next time this creature would be destroyed this turn, instead tap it, remove it from combat, and heal all damage on it.)",
+  "keywords": [
+   "Evolve",
+   "Heal",
+   "Regenerate"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "3b551403-47dd-4c2b-95c8-0e2e674d6fcf",
+  "oracle_id": "8520ee67-439b-4f15-838b-420bacbb8b13",
+  "set": "rvr",
+  "collector_number": "137",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Cytoplast Root-Kin",
+  "mana_cost": "{2}{G}{G}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elemental Mutant",
+  "oracle_text": "Graft 4 (This creature enters with four +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\nWhen this creature enters, put a +1/+1 counter on each other creature you control with a +1/+1 counter on it.\n{2}: Move a +1/+1 counter from target creature you control onto this creature.",
+  "keywords": [
+   "Graft"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "22e149b2-6bac-4749-ab06-edde21dc408e",
+  "oracle_id": "c9ed4397-e7b7-469c-94e3-8fc70d88664f",
+  "set": "mm2",
+  "collector_number": "143",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Rishkar, Peema Renegade",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Elf Druid",
+  "oracle_text": "When Rishkar enters, put a +1/+1 counter on each of up to two target creatures.\nEach creature you control with a counter on it has \"{T}: Add {G}.\"",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "88f4aecc-b728-4960-8131-1e5aa6c3c030",
+  "oracle_id": "761021ce-4559-464e-aa03-85c2fe78e267",
+  "set": "cmm",
+  "collector_number": "317",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Evolution Sage",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Druid",
+  "oracle_text": "Landfall — Whenever a land you control enters, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)",
+  "keywords": [
+   "Proliferate",
+   "Landfall"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "id": "1d58d08d-cd62-416d-8d8e-7d9c56d5c4da",
+  "oracle_id": "b45fdeab-00cc-4422-af9f-66f30a880a7c",
+  "set": "ecc",
+  "collector_number": "105",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Simic Ascendancy",
+  "mana_cost": "{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "{1}{G}{U}: Put a +1/+1 counter on target creature you control.\nWhenever one or more +1/+1 counters are put on a creature you control, put that many growth counters on this enchantment.\nAt the beginning of your upkeep, if this enchantment has twenty or more growth counters on it, you win the game.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "fec1ffcd-84d3-44b3-b1d5-b33a4fee348a",
+  "oracle_id": "57c1a98e-c4fb-4144-9e3e-d0fe6789ba26",
+  "set": "lcc",
+  "collector_number": "288",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Master Biomancer",
+  "mana_cost": "{2}{G}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elf Wizard",
+  "oracle_text": "Each other creature you control enters with a number of additional +1/+1 counters on it equal to this creature's power and as a Mutant in addition to its other types.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "6f4436d1-7c6a-4ad2-8eba-d5949f960650",
+  "oracle_id": "afeba4d7-b659-4fb1-84dd-27704fbb2621",
+  "set": "clu",
+  "collector_number": "200",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Zameck Guildmage",
+  "mana_cost": "{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Elf Wizard",
+  "oracle_text": "{G}{U}: This turn, each creature you control enters with an additional +1/+1 counter on it.\n{G}{U}, Remove a +1/+1 counter from a creature you control: Draw a card.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "feeaf99b-7720-42e3-8cb1-23218b646458",
+  "oracle_id": "98250fad-7fd0-431e-a87e-551185d26ec1",
+  "set": "gtc",
+  "collector_number": "209",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Bred for the Hunt",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever a creature you control with a +1/+1 counter on it deals combat damage to a player, you may draw a card.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "d11dffef-98c8-400d-98a2-d4fa506f18c7",
+  "oracle_id": "fc7cda6f-7e5e-4a56-8d67-ffdea7edf269",
+  "set": "cm2",
+  "collector_number": "151",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Inspiring Call",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy them.)",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "2555ec7b-5cc2-4ffd-9344-6368019feff9",
+  "oracle_id": "9b9a10ff-5a5d-4df8-88aa-18d84ff9117c",
+  "set": "tle",
+  "collector_number": "168",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Armorcraft Judge",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elf Artificer",
+  "oracle_text": "When this creature enters, draw a card for each creature you control with a +1/+1 counter on it.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "5b76074c-65ca-40e9-b125-4668d3431820",
+  "oracle_id": "d7f49243-a96e-499f-b2d7-8e9842432420",
+  "set": "cmm",
+  "collector_number": "273",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Vigean Graftmage",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Vedalken Wizard Mutant",
+  "oracle_text": "Graft 2 (This creature enters with two +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\n{1}{U}: Untap target creature with a +1/+1 counter on it.",
+  "keywords": [
+   "Graft"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "4aa0a951-0018-41bb-8e82-c3844983a753",
+  "oracle_id": "4c209165-a159-4cd7-8e99-1e533d3a22a6",
+  "set": "mm2",
+  "collector_number": "68",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Biogenic Upgrade",
+  "mana_cost": "{4}{G}{G}",
+  "cmc": 6.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Distribute three +1/+1 counters among one, two, or three target creatures, then double the number of +1/+1 counters on each of those creatures.",
+  "keywords": [
+   "Double"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "ef20af5e-1ffe-426a-805a-ca4a6a122260",
+  "oracle_id": "30812870-87c0-469c-95a5-811d5a181e72",
+  "set": "fdn",
+  "collector_number": "553",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Incubation Druid",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Elf Druid",
+  "oracle_text": "{T}: Add one mana of any type that a land you control could produce. If this creature has a +1/+1 counter on it, add three mana of that type instead.\n{3}{G}{G}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)",
+  "keywords": [
+   "Adapt"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "0",
+  "toughness": "2",
+  "id": "b3d8c95e-09b9-46d6-80e9-95adb2c2ea9d",
+  "oracle_id": "34428f42-03ac-4795-8286-6cbea796df2b",
+  "set": "moc",
+  "collector_number": "302",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Plaxcaster Frogling",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Frog Mutant",
+  "oracle_text": "Graft 3 (This creature enters with three +1/+1 counters on it. Whenever another creature enters, you may move a +1/+1 counter from this creature onto it.)\n{2}: Target creature with a +1/+1 counter on it gains shroud until end of turn. (It can't be the target of spells or abilities.)",
+  "keywords": [
+   "Graft"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "13a5413a-a082-4f9d-93f5-123e689b3b72",
+  "oracle_id": "8c1ea1a5-5966-4d14-8361-ffc6a8d1bd79",
+  "set": "c21",
+  "collector_number": "226",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Gyre Engineer",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Vedalken Wizard",
+  "oracle_text": "{T}: Add {G}{U}.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "26dd6a1d-4dcb-4392-9856-c0e4140efbd7",
+  "oracle_id": "27eef5c1-259a-4d37-93af-7451f50905af",
+  "set": "rna",
+  "collector_number": "180",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Clone",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Shapeshifter",
+  "oracle_text": "You may have this creature enter as a copy of any creature on the battlefield.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "5e648262-3b9b-4c58-8e29-48356e3cb064",
+  "oracle_id": "42226b87-0746-4ebf-9fd0-108d508462af",
+  "set": "m14",
+  "collector_number": "47",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Spark Double",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Illusion",
+  "oracle_text": "You may have this creature enter as a copy of a creature or planeswalker you control, except it enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker, and it isn't legendary.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "c41b9ba2-0006-4d8e-b600-efe81ff5e0cc",
+  "oracle_id": "8dcb35e5-ae44-455f-86e3-4a77d496ff34",
+  "set": "rvr",
+  "collector_number": "62",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Phantasmal Image",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Illusion",
+  "oracle_text": "You may have this creature enter as a copy of any creature on the battlefield, except it's an Illusion in addition to its other types and it has \"When this creature becomes the target of a spell or ability, sacrifice it.\"",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "c1c080cf-a5e8-4d9d-af49-f78588971e87",
+  "oracle_id": "bde94af8-faea-41ff-8eed-ba642eac9968",
+  "set": "afc",
+  "collector_number": "89",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Quasiduplicate",
+  "mana_cost": "{1}{U}{U}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Create a token that's a copy of target creature you control.\nJump-start (You may cast this card from your graveyard by discarding a card in addition to paying its other costs. Then exile this card.)",
+  "keywords": [
+   "Jump",
+   "Jump-start"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "f0b75745-08a8-432c-9175-d39a92406b3d",
+  "oracle_id": "76b709ae-5765-4b7a-99c9-89eade7c8cb8",
+  "set": "rvr",
+  "collector_number": "55",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Progenitor Mimic",
+  "mana_cost": "{4}{G}{U}",
+  "cmc": 6.0,
+  "type_line": "Creature — Shapeshifter",
+  "oracle_text": "You may have this creature enter as a copy of any creature on the battlefield, except it has \"At the beginning of your upkeep, if this creature isn't a token, create a token that's a copy of this creature.\"",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "acba72e1-3f7f-4e5c-af3f-dfe37b5d61f9",
+  "oracle_id": "88929ea9-900f-4dbb-b16c-cf3bad4e410c",
+  "set": "2xm",
+  "collector_number": "212",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mirror Image",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Shapeshifter",
+  "oracle_text": "You may have this creature enter as a copy of a creature you control.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "5b3ffc69-f21b-410e-8993-8c1b4669fc19",
+  "oracle_id": "7275fb8c-571a-4c4c-889a-829419332e51",
+  "set": "m19",
+  "collector_number": "61",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Eternal Witness",
+  "mana_cost": "{1}{G}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Shaman",
+  "oracle_text": "When this creature enters, you may return target card from your graveyard to your hand.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "39704000-65d3-4d39-849e-a3b617376bbc",
+  "oracle_id": "30b24e8e-3b0e-4d8e-90f3-f66eb7c1858c",
+  "set": "cmm",
+  "collector_number": "286",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Satyr Wayfinder",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Satyr",
+  "oracle_text": "When this creature enters, reveal the top four cards of your library. You may put a land card from among them into your hand. Put the rest into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "8bbbe65d-7162-42fb-94ee-d835d6c3f02a",
+  "oracle_id": "ead4c01a-e2ae-49c9-95d9-651d81005907",
+  "set": "eoc",
+  "collector_number": "106",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mulch",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Reveal the top four cards of your library. Put all land cards revealed this way into your hand and the rest into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "9f6afdab-b41f-4713-b74a-e90e8bbbaf0a",
+  "oracle_id": "12c03a03-36bf-487e-b8be-e55399525da5",
+  "set": "dsc",
+  "collector_number": "189",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Life from the Loam",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Return up to three target land cards from your graveyard to your hand.\nDredge 3 (If you would draw a card, you may mill three cards instead. If you do, return this card from your graveyard to your hand.)",
+  "keywords": [
+   "Dredge",
+   "Mill"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "cdb6432f-3f56-4c92-b09a-2a5b64620c04",
+  "oracle_id": "ac8fba34-512c-4f24-999a-ab72f1ce4acb",
+  "set": "tdc",
+  "collector_number": "96",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Grapple with the Past",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Mill three cards, then you may return a creature or land card from your graveyard to your hand. (To mill three cards, put the top three cards of your library into your graveyard.)",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "76c25c9a-245b-41c7-a75d-8061eb231389",
+  "oracle_id": "d14c633d-977a-4f78-85c2-88582b3c3670",
+  "set": "tdc",
+  "collector_number": "257",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ramunap Excavator",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Snake Cleric",
+  "oracle_text": "You may play lands from your graveyard.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "id": "3f8a0a0e-81f7-40a2-b393-bdc1423549f6",
+  "oracle_id": "4f819ba4-52ef-4fdd-8e4c-5ae3b2f44db5",
+  "set": "otc",
+  "collector_number": "202",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Splendid Reclamation",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Return all land cards from your graveyard to the battlefield tapped.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "63c7f172-0aec-4629-967c-37253aed0f0d",
+  "oracle_id": "13fe5e46-77a6-45d8-ac0b-c3d740eccf86",
+  "set": "eoc",
+  "collector_number": "108",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mystic Sanctuary",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Island",
+  "oracle_text": "({T}: Add {U}.)\nThis land enters tapped unless you control three or more other Islands.\nWhen this land enters untapped, you may put target instant or sorcery card from your graveyard on top of your library.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4cd86997-d7b9-4b5b-9488-11f5c679e4d3",
+  "oracle_id": "17b60106-a4c7-410a-8ac3-ec8e74e29a7c",
+  "set": "soc",
+  "collector_number": "388",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Golgari Grave-Troll",
+  "mana_cost": "{4}{G}",
+  "cmc": 5.0,
+  "type_line": "Creature — Troll Skeleton",
+  "oracle_text": "This creature enters with a +1/+1 counter on it for each creature card in your graveyard.\n{1}, Remove a +1/+1 counter from this creature: Regenerate this creature.\nDredge 6 (If you would draw a card, you may mill six cards instead. If you do, return this card from your graveyard to your hand.)",
+  "keywords": [
+   "Dredge",
+   "Regenerate",
+   "Mill"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "d332acbc-6224-43bc-a509-3a7edc877423",
+  "oracle_id": "686f4a37-b5e4-46d4-9e0e-11794b2d12cd",
+  "set": "rvr",
+  "collector_number": "144",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "fc817e07-c1f3-469f-9cf7-0945dea7400f",
+  "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+  "set": "trc",
+  "collector_number": "499",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Rampant Growth",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "b7c47024-5e08-4b17-b41a-7647f8b814b9",
+  "oracle_id": "8539f295-5d58-4436-a73a-b9277c4c7795",
+  "set": "tdc",
+  "collector_number": "265",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Cultivate",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "e60deb92-f7dd-4f4e-9036-e47dd586f985",
+  "oracle_id": "8b755881-a72d-4e21-a369-d2924eb4585a",
+  "set": "msc",
+  "collector_number": "172",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Kodama's Reach",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Sorcery — Arcane",
+  "oracle_text": "Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the other into your hand, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "90c423cc-1264-4067-9c50-e7c88c68ef2d",
+  "oracle_id": "1593ea18-2f2f-4ab4-83fb-6ccc0bec8a90",
+  "set": "ecc",
+  "collector_number": "113",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Counterspell",
+  "mana_cost": "{U}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
+  "oracle_id": "cc187110-1148-4090-bbb8-e205694a39f5",
+  "set": "dsc",
+  "collector_number": "114",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Beast Within",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target permanent. Its controller creates a 3/3 green Beast creature token.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "400b43aa-c1d2-4435-b863-061f43889422",
+  "oracle_id": "7735eeba-693b-47e2-bd51-414379cf1016",
+  "set": "msc",
+  "collector_number": "169",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Rhystic Study",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "9f37c5b6-a59c-45cd-9a99-e9357fe9ea1b",
+  "oracle_id": "53236dd7-845a-444c-96d5-f41ed7325d8f",
+  "set": "j22",
+  "collector_number": "114",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ponder",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Look at the top three cards of your library, then put them back in any order. You may shuffle.\nDraw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "dc69f960-68ba-4315-8146-6a7a82047503",
+  "oracle_id": "02090581-61aa-4348-ad57-451be8ee91c2",
+  "set": "tdc",
+  "collector_number": "159",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Cyclonic Rift",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Return target nonland permanent you don't control to its owner's hand.\nOverload {6}{U} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+  "keywords": [
+   "Overload"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "dfb7c4b9-f2f4-4d4e-baf2-86551c8150fe",
+  "oracle_id": "d75b9c82-1b49-4c3e-a1b5-aeef57d6644b",
+  "set": "rvr",
+  "collector_number": "40",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Heroic Intervention",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Permanents you control gain hexproof and indestructible until end of turn.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "e32c67d1-187f-40df-b3b3-6036f5c92834",
+  "oracle_id": "24882fa2-3fe9-4c1b-aa3d-0e6488b9db27",
+  "set": "cmm",
+  "collector_number": "295",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Swan Song",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target enchantment, instant, or sorcery spell. Its controller creates a 2/2 blue Bird creature token with flying.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "83d0b761-d694-4232-9f40-5bd8c82a05f1",
+  "oracle_id": "8ddfc283-c9b4-41a5-af88-cf0068e986cc",
+  "set": "eoc",
+  "collector_number": "46",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Nature's Lore",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for a Forest card, put that card onto the battlefield, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "7afc4a15-5ff8-457a-aa62-803b2d78d912",
+  "oracle_id": "78826359-fe63-44ad-adc4-a17ffcd710e4",
+  "set": "msc",
+  "collector_number": "177",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Three Visits",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Search your library for a Forest card, put it onto the battlefield, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "99bf792f-963e-4509-8d3c-7db129c6a77f",
+  "oracle_id": "1b882a0e-0ede-4d1a-bd1a-9b7cffbcde8e",
+  "set": "msc",
+  "collector_number": "181",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fact or Fiction",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Reveal the top five cards of your library. An opponent separates those cards into two piles. Put one pile into your hand and the other into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "eb1a25c5-1918-40f3-b54f-5d31cf6b4eb2",
+  "oracle_id": "437b2dab-15e0-4b9a-a204-58622d37a3b3",
+  "set": "frc",
+  "collector_number": "41",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Pongify",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature. It can't be regenerated. Its controller creates a 3/3 green Ape creature token.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4131fa63-5afc-4b63-a4b4-f47b4bced87f",
+  "oracle_id": "05849bd6-8f38-4031-be2b-e2aa03beb8cc",
+  "set": "tdc",
+  "collector_number": "160",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Rapid Hybridization",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature. It can't be regenerated. That creature's controller creates a 3/3 green Frog Lizard creature token.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "ccda5bda-5afd-4548-bd48-12c780bfa68b",
+  "oracle_id": "06692cd9-ac2f-4a32-8fd1-043ba3c0fe71",
+  "set": "soc",
+  "collector_number": "198",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Krosan Grip",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Split second (As long as this spell is on the stack, players can't cast spells or activate abilities that aren't mana abilities.)\nDestroy target artifact or enchantment.",
+  "keywords": [
+   "Split second"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "d3571dee-7b90-4c0c-abc7-59b515ffa129",
+  "oracle_id": "3e39224c-72ce-4ecc-aa17-12c071ea1f3e",
+  "set": "c21",
+  "collector_number": "198",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sylvan Library",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of your draw step, you may draw two additional cards. If you do, choose two cards in your hand drawn this turn. For each of those cards, pay 4 life or put the card on top of your library.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "6ada256f-2e55-4c1f-b4d3-d7b10b498956",
+  "oracle_id": "92eed395-62ca-4293-882b-8565c40daab5",
+  "set": "dmr",
+  "collector_number": "179",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Lightning Greaves",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.)\nEquip {0}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
+  "oracle_id": "ca204b66-8d0c-431a-8d34-282f7c2d17da",
+  "set": "msc",
+  "collector_number": "202",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Craterhoof Behemoth",
+  "mana_cost": "{5}{G}{G}{G}",
+  "cmc": 8.0,
+  "type_line": "Creature — Beast",
+  "oracle_text": "Haste\nWhen this creature enters, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",
+  "keywords": [
+   "Haste"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "id": "276f5cee-a501-4658-bd4d-7a044bf1ccbc",
+  "oracle_id": "8c52bd39-0586-48ca-b263-17210cf9feb6",
+  "set": "tdm",
+  "collector_number": "138",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Thrasios, Triton Hero",
+  "mana_cost": "{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Merfolk Wizard",
+  "oracle_text": "{4}: Scry 1, then reveal the top card of your library. If it's a land card, put it onto the battlefield tapped. Otherwise, draw a card.\nPartner (You can have two commanders if both have partner.)",
+  "keywords": [
+   "Partner",
+   "Scry"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "21e27b91-c7f1-4709-aa0d-8b5d81b22a0a",
+  "oracle_id": "3d867016-2601-4a37-a73d-308898d3bd37",
+  "set": "c16",
+  "collector_number": "46",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Breeding Pool",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Forest Island",
+  "oracle_text": "({T}: Add {G} or {U}.)\nAs this land enters, you may pay 2 life. If you don't, it enters tapped.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "63e4dc07-c742-41bd-8301-861637908fd1",
+  "oracle_id": "20283c4a-f1f0-42f0-bc08-6da87474426b",
+  "set": "trk",
+  "collector_number": "279",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Yavimaya Coast",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {G} or {U}. This land deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "f4c1500b-1f4c-4d33-810c-25e3bb0a4666",
+  "oracle_id": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+  "set": "soc",
+  "collector_number": "425",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Hinterland Harbor",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped unless you control a Forest or an Island.\n{T}: Add {G} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "892451a1-5527-4857-84f8-62028d147489",
+  "oracle_id": "fb5a3403-7f0b-406c-8c4f-d693be010ca6",
+  "set": "msc",
+  "collector_number": "250",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "a73297d2-580c-4174-a427-265f6916d09f",
+  "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+  "set": "trc",
+  "collector_number": "521",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Exotic Orchard",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "0a4a51a3-fb8b-4611-8f94-fbcab547423c",
+  "oracle_id": "27b047e3-0d41-45e2-98e9-9391d7923a1e",
+  "set": "trc",
+  "collector_number": "528",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Forest",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Forest",
+  "oracle_text": "({T}: Add {G}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "G"
+  ],
+  "id": "2e781bfd-f8cb-4d20-b977-4359f3a21311",
+  "oracle_id": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+  "set": "mdd",
+  "collector_number": "301",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Island",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Island",
+  "oracle_text": "({T}: Add {U}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "1335d293-3dd2-4f13-bd2c-22181f4528ee",
+  "oracle_id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+  "set": "mdd",
+  "collector_number": "294",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Evolution Witness",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Shaman Mutant",
+  "oracle_text": "{1}{G}: Adapt 2. (If this creature has no +1/+1 counters on it, put two +1/+1 counters on it.)\nWhenever one or more +1/+1 counters are put on this creature, return target permanent card from your graveyard to your hand.",
+  "keywords": [
+   "Adapt"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "4d89283e-9783-4006-9294-4ae0473d2ce6",
+  "oracle_id": "0e07f1af-5ff6-4da5-8683-aea4cc390975",
+  "set": "mh3",
+  "collector_number": "151",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "795df2ee-fbfc-4961-852c-e3ec50cc52da",
+  "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+  "set": "trc",
+  "collector_number": "485",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mind Stone",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{1}, {T}, Sacrifice this artifact: Draw a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "b30a8f92-ce42-4b27-a893-bcf97fde228d",
+  "oracle_id": "c97361b5-af16-4a7b-af85-a429dbaf4ad2",
+  "set": "mbc",
+  "collector_number": "76",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Psychic Battle",
+  "mana_cost": "{3}{U}{U}",
+  "cmc": 5.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever a player chooses one or more targets, each player reveals the top card of their library. The player who reveals the card with the greatest mana value may change the target or targets. If two or more cards are tied for greatest, the target or targets remain unchanged. Changing targets this way doesn't trigger abilities of permanents named Psychic Battle.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "8758ca24-e613-43bf-be58-4cf557f82d0c",
+  "oracle_id": "79f0d763-5a71-470a-867f-86fc72e9db6d",
+  "set": "inv",
+  "collector_number": "68",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Gyre Sage",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Elf Druid",
+  "oracle_text": "Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\n{T}: Add {G} for each +1/+1 counter on this creature.",
+  "keywords": [
+   "Evolve"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "2",
+  "id": "be573ae7-967a-4b98-9058-ec3ff82ff63f",
+  "oracle_id": "e3aa16cf-079b-4737-9ffd-7bfdffef0cb2",
+  "set": "moc",
+  "collector_number": "300",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Llanowar Elves",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Creature — Elf Druid",
+  "oracle_text": "{T}: Add {G}.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "6a0b230b-d391-4998-a3f7-7b158a0ec2cd",
+  "oracle_id": "68954295-54e3-4303-a6bc-fc4547a4e3a3",
+  "set": "fdn",
+  "collector_number": "227",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Elvish Visionary",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Elf Shaman",
+  "oracle_text": "When this creature enters, draw a card.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "6d2f4a37-453f-4a2c-bfba-2d1227394c90",
+  "oracle_id": "c6a3a882-a127-4590-93d7-679ef4313efe",
+  "set": "hoc",
+  "collector_number": "206",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Scavenging Ooze",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Ooze",
+  "oracle_text": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on this creature and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "8c504c23-1e9a-411b-9cfe-4180d0c744f6",
+  "oracle_id": "1ff25f67-36a7-4cfa-a2b1-2135b5b6fb67",
+  "set": "fdn",
+  "collector_number": "232",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Biomass Mutation",
+  "mana_cost": "{X}{G/U}{G/U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Creatures you control have base power and toughness X/X until end of turn.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "9894bed2-c5dc-4569-9ed9-1d40df906f58",
+  "oracle_id": "2dbe8aaa-2e34-4552-8da7-cf8ecbbaa7b6",
+  "set": "soc",
+  "collector_number": "297",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Rogue's Passage",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{4}, {T}: Target creature can't be blocked this turn.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "c84f49bb-3780-4f92-8db2-b27605ceefed",
+  "oracle_id": "f29dc596-2121-4421-8463-15f6c2e8b9b3",
+  "set": "trc",
+  "collector_number": "552",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Tatyova, Benthic Druid",
+  "mana_cost": "{3}{G}{U}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Merfolk Druid",
+  "oracle_text": "Landfall — Whenever a land you control enters, you gain 1 life and draw a card.",
+  "keywords": [
+   "Landfall"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "eabc978a-0666-472d-bdc6-d4b29d29eca4",
+  "oracle_id": "0715e860-3b3b-4331-9718-207973e94fee",
+  "set": "fdn",
+  "collector_number": "247",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Lotus Cobra",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Creature — Snake",
+  "oracle_text": "Landfall — Whenever a land you control enters, add one mana of any color.",
+  "keywords": [
+   "Landfall"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "a4b759f0-901f-4be3-93fa-224609b08d48",
+  "oracle_id": "8ad91f64-ccab-4edc-bd54-b2ee9267d614",
+  "set": "znr",
+  "collector_number": "193",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Avenger of Zendikar",
+  "mana_cost": "{5}{G}{G}",
+  "cmc": 7.0,
+  "type_line": "Creature — Elemental",
+  "oracle_text": "When this creature enters, create a 0/1 green Plant creature token for each land you control.\nLandfall — Whenever a land you control enters, you may put a +1/+1 counter on each Plant creature you control.",
+  "keywords": [
+   "Landfall"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "id": "c6f1e60f-a195-4590-80b0-86767de6c423",
+  "oracle_id": "4ba5b3f6-503b-43e6-b66e-4f8c55cffed7",
+  "set": "ecc",
+  "collector_number": "98",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Harmonize",
+  "mana_cost": "{2}{G}{G}",
+  "cmc": 4.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Draw three cards.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "bd7138fb-6aa7-455e-b1f7-ca08d747277d",
+  "oracle_id": "7eff84f1-f772-497a-b350-bbc93d0230f7",
+  "set": "msc",
+  "collector_number": "175",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Explore",
+  "mana_cost": "{1}{G}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "You may play an additional land this turn.\nDraw a card.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "ab9dbf0b-2c1d-463c-b675-ff711c282e56",
+  "oracle_id": "b8f566ea-8283-4afa-9ac8-737e26419283",
+  "set": "tle",
+  "collector_number": "259",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Growth Spiral",
+  "mana_cost": "{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw a card. You may put a land card from your hand onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "1e10e2b4-9639-41ae-8b8e-253224d3d513",
+  "oracle_id": "34bcc217-dd91-45a0-90d7-a94d02f1f317",
+  "set": "dsc",
+  "collector_number": "88",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Uro, Titan of Nature's Wrath",
+  "mana_cost": "{1}{G}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Elder Giant",
+  "oracle_text": "When Uro enters, sacrifice it unless it escaped.\nWhenever Uro enters or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\nEscape—{G}{G}{U}{U}, Exile five other cards from your graveyard. (You may cast this card from your graveyard for its escape cost.)",
+  "keywords": [
+   "Escape"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "6",
+  "toughness": "6",
+  "id": "a0b6a71e-56cb-4d25-8f2b-7a4f1b60900d",
+  "oracle_id": "ee302659-59ed-4eef-babe-451b9ccf7f14",
+  "set": "thb",
+  "collector_number": "229",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Coiling Oracle",
+  "mana_cost": "{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Snake Elf Druid",
+  "oracle_text": "When this creature enters, reveal the top card of your library. If it's a land card, put it onto the battlefield. Otherwise, put that card into your hand.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "559ff1b1-018c-4e08-9531-8af20af47d05",
+  "oracle_id": "69fd4ddf-9ed8-4c56-bef3-9944daf05e4f",
+  "set": "rvr",
+  "collector_number": "172",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Wood Elves",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Scout",
+  "oracle_text": "When this creature enters, search your library for a Forest card, put that card onto the battlefield, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "2476e42b-b209-4207-8ed9-cb668f89b218",
+  "oracle_id": "8973bd99-20f8-4867-90ef-50392147ee1b",
+  "set": "hob",
+  "collector_number": "142",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Farhaven Elf",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Druid",
+  "oracle_text": "When this creature enters, you may search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "320d0a4c-c556-4468-b934-bfdf17961a53",
+  "oracle_id": "4ce2357f-93e6-40ca-beca-8f4e15adc464",
+  "set": "khc",
+  "collector_number": "62",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Steady Progress",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)\nDraw a card.",
+  "keywords": [
+   "Proliferate"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "71106361-b5b9-403c-b3b1-afe3337e9e3d",
+  "oracle_id": "d2145ad3-fe7e-459b-b155-1b3ed089e936",
+  "set": "mm2",
+  "collector_number": "58",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mystic Snake",
+  "mana_cost": "{1}{G}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Snake",
+  "oracle_text": "Flash\nWhen this creature enters, counter target spell.",
+  "keywords": [
+   "Flash"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "2d4bacd1-b602-4bcc-9aea-1229949a7d20",
+  "oracle_id": "161b6d06-e6a7-488e-9f9c-d266c1402a3a",
+  "set": "a25",
+  "collector_number": "208",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Aether Gust",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Choose target spell or permanent that's red or green. Its owner puts it on their choice of the top or bottom of their library.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "783da808-6698-4e55-9fac-430a6effe2b1",
+  "oracle_id": "ecf1e378-d6bc-4ee0-800e-eb8a955d781f",
+  "set": "m20",
+  "collector_number": "42",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fierce Guardianship",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "If you control a commander, you may cast this spell without paying its mana cost.\nCounter target noncreature spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "f7f3dd95-bd14-4e0f-a388-444f9cf1b0dc",
+  "oracle_id": "d09c9cba-fdd2-479b-ad5d-d05181c3e3f9",
+  "set": "cmm",
+  "collector_number": "94",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Tishana's Tidebinder",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Merfolk Wizard",
+  "oracle_text": "Flash\nWhen this creature enters, counter up to one target activated or triggered ability. If an ability of an artifact, creature, or planeswalker is countered this way, that permanent loses all abilities for as long as this creature remains on the battlefield. (Mana abilities can't be targeted.)",
+  "keywords": [
+   "Flash"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "id": "907b3d1d-8c85-4707-80b5-c4d832df9846",
+  "oracle_id": "2993dc7d-723d-4a9b-94bd-4bb02a9f7243",
+  "set": "lci",
+  "collector_number": "81",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Brainstorm",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw three cards, then put two cards from your hand on top of your library in any order.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+  "oracle_id": "36cd2364-d113-47d1-b2c4-b088d9eb88dd",
+  "set": "frc",
+  "collector_number": "39",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Reclamation Sage",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Shaman",
+  "oracle_text": "When this creature enters, you may destroy target artifact or enchantment.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "1918ea65-ab7f-4d40-97fd-a656c892a2a1",
+  "oracle_id": "032ec6e2-6cc3-4a97-9cc7-3233f5e11904",
+  "set": "fdn",
+  "collector_number": "231",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Baloth Null",
+  "mana_cost": "{4}{B}{G}",
+  "cmc": 6.0,
+  "type_line": "Creature — Zombie Beast",
+  "oracle_text": "When this creature enters, return up to two target creature cards from your graveyard to your hand.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "G"
+  ],
+  "color_identity": [
+   "B",
+   "G"
+  ],
+  "power": "4",
+  "toughness": "5",
+  "id": "100855e6-ac3e-481f-a462-afb5fcb5d476",
+  "oracle_id": "55a0a40c-cb40-469d-9bf3-9c33b378f4f7",
+  "set": "a25",
+  "collector_number": "197",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]
