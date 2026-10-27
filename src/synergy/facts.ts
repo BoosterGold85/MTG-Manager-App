@@ -901,3 +901,19 @@ export function hasCreatureType(face: CardFaceFacts, type: string): boolean {
       ))
   );
 }
+// Opponent life loss ("pings"): does this card make opponents lose life or take damage, and can it do so on their turns?
+// "You lose N life" is a cost, never a source. Damage to "any target" can reach a player but is weaker evidence.
+const lifeLossVictim = String.raw`(?:each opponent|each player|each other player|target opponent|target player|that player|defending player|its controller|that creature's controller|the chosen player|that opponent|an opponent)`;
+const directLifeLoss = new RegExp(
+  String.raw`\b${lifeLossVictim} (?:loses?|lose) (?:\d+|x|that much|half|one|two|three|life)|\bdeals?\b[^.\n]{0,70}\bdamage\b[^.\n]{0,50}\bto ${lifeLossVictim}`,
+  "i",
+);
+const theirTurnLifeLoss =
+  /whenever (?:a player|an opponent|each opponent|a creature[^,]{0,40}(?:an opponent|a player))[^.]{0,140}(?:damage|loses? \w+ life)|at the beginning of (?:each opponent's|each player's) (?:upkeep|draw step|end step)[^.]{0,120}(?:damage|loses? \w+ life)|unless (?:that player|they) (?:sacrifices?|pays?|discards?)/i;
+export function opponentLifeLoss(text: string): { direct: boolean; theirTurn: boolean; anyTarget: boolean } {
+  const clean = stripReminderText(text);
+  const direct = directLifeLoss.test(clean);
+  const anyTarget = /\bdeals?\b[^.\n]{0,70}\bdamage\b[^.\n]{0,50}\bto any (?:other )?target/i.test(clean);
+  // A punisher trigger fires on opponents' turns, so even "any target" damage there usually hits that opponent.
+  return { direct, theirTurn: (direct || anyTarget) && theirTurnLifeLoss.test(clean), anyTarget };
+}

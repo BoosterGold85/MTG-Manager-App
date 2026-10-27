@@ -8,7 +8,7 @@ import type {
   StrategyScore,
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
-import { benefitsYou, extractCardFacts, hasCreatureType, reachesOpponents } from "./facts";
+import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
 import type { CardFacts, Scope, TypedRole } from "./facts";
 
 export const RECOMMENDATION_VERSION = "0.6.3";
@@ -476,6 +476,12 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
         /you may play (?:an?|one|two|\d+) additional lands?/i.test(sourceText)
       )
         events.add("land");
+      {
+        const loss = opponentLifeLoss(sourceText);
+        if (loss.direct) events.add("life-loss");
+        if (loss.theirTurn) events.add("life-loss-their-turn");
+        if (loss.anyTarget) events.add("life-loss-weak");
+      }
       if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
       if (/\bVehicle\b/.test(source.card.typeLine) || /create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(sourceText)) events.add("vehicle");
       if (/Aura/.test(source.card.typeLine)) events.add("aura");
@@ -541,6 +547,10 @@ function verifies(
         ),
       );
     return false;
+  }
+  if (receiver.event === "life-loss") {
+    const loss = opponentLifeLoss(text);
+    return loss.direct || loss.anyTarget;
   }
   if (receiver.event === "counterspell")
     return /\bcounter target[^.]*spell/i.test(text);

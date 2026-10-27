@@ -1,0 +1,2581 @@
+[
+ {
+  "id": "9eec5df0-f88f-5a05-b849-9867139a3e43",
+  "oracle_id": "c029f8e1-cc27-5a94-81ba-67a426533004",
+  "name": "Valgavoth, Harrower of Souls",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Elder Demon",
+  "oracle_text": "Flying\nWard—Pay 2 life.\nWhenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth, Harrower of Souls and draw a card.",
+  "keywords": [
+   "Flying",
+   "Ward"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "6",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "4"
+ },
+ {
+  "id": "4268b953-779e-59c8-9f76-5c3b518fe97e",
+  "oracle_id": "e60ae32c-5f1f-5f6a-81d5-be530ee8d13b",
+  "name": "Agate Instigator",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Lizard Warlock",
+  "oracle_text": "Whenever another creature you control enters, Agate Instigator deals 1 damage to each opponent.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "blc",
+  "collector_number": "56",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "2e63d629-4fe1-55d4-9550-b3dc336ea172",
+  "oracle_id": "a66212a6-273f-5e33-acd0-b5b6c7635cff",
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "92",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "906b9911-1af3-52b0-b269-c19773b6a048",
+  "oracle_id": "fb82ee12-c638-5ec1-9a99-e924cd91d179",
+  "name": "Ash Barrens",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\nBasic landcycling {1} ({1}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+  "keywords": [
+   "Basic landcycling"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "260",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "691b0892-979f-564f-9096-bdbcd9e6f258",
+  "oracle_id": "a53e4240-32b2-5c2f-926d-b09ad1cd8c00",
+  "name": "Basilisk Collar",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has deathtouch and lifelink.\nEquip {2}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "241",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "094a6285-e9ed-5078-a128-6424de28d832",
+  "oracle_id": "d4f66cd0-f2fa-5a47-a471-adb52ab452cc",
+  "name": "Bastion of Remembrance",
+  "mana_cost": "{2}{B}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "When Bastion of Remembrance enters, create a 1/1 white Human Soldier creature token.\nWhenever a creature you control dies, each opponent loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "131",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "1af8d6a1-df60-5a5f-bd8b-3e799c489db3",
+  "oracle_id": "12d04a93-f0c9-5df8-9f6c-df3f43ba8f5e",
+  "name": "Bedevil",
+  "mana_cost": "{B}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target artifact, creature, or planeswalker.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "84",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "c894636f-6f51-55cd-8ce0-a2bdc5cc2231",
+  "oracle_id": "7d478002-1398-5c16-adf4-f55a3b5fd628",
+  "name": "Blackcleave Cliffs",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Blackcleave Cliffs enters tapped unless you control two or fewer other lands.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "263",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "0f3064ee-92c4-5f20-9698-c1b08c63af1f",
+  "oracle_id": "79d8ca2a-629e-57c9-a679-137b89d36864",
+  "name": "Blasphemous Act",
+  "mana_cost": "{8}{R}",
+  "cmc": 9.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell costs {1} less to cast for each creature on the battlefield.\nBlasphemous Act deals 13 damage to each creature.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "160",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "38276d87-9105-5320-af8a-fbed1330d47d",
+  "oracle_id": "ce159e5d-2281-517b-b350-83cd21fd9fb4",
+  "name": "Blood Artist",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Vampire",
+  "oracle_text": "Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "132",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "0",
+  "toughness": "1"
+ },
+ {
+  "id": "da8d3c5c-f801-5acc-8b7c-2e1cdf0aacb3",
+  "oracle_id": "38175c6f-4719-5a7e-9555-fd970e805ed4",
+  "name": "Blood Pact",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Target player draws two cards and loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "76",
+  "rarity": "common",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "18e5c437-a680-5742-b6a2-b057c168c90d",
+  "oracle_id": "7736d041-dc67-5fe4-bcb7-34919c4b312a",
+  "name": "Blood Seeker",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Vampire Shaman",
+  "oracle_text": "Whenever a creature enters under an opponent's control, you may have that player lose 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "77",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "1",
+  "toughness": "1"
+ },
+ {
+  "id": "ae8daf20-20ad-5215-9b4e-1dd1af3756d2",
+  "oracle_id": "7ac656fc-ac7c-5232-bf52-086113e6afb5",
+  "name": "Bloodfell Caves",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Bloodfell Caves enters tapped.\nWhen Bloodfell Caves enters, you gain 1 life.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "264",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "12d9d351-5ed0-5a40-800e-8ae616de5cab",
+  "oracle_id": "d6bb5ce2-b9c4-5a22-b8a7-da6f652faaf5",
+  "name": "Braids, Arisen Nightmare",
+  "mana_cost": "{1}{B}{B}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Nightmare",
+  "oracle_text": "At the beginning of your end step, you may sacrifice an artifact, creature, enchantment, land, or planeswalker. If you do, each opponent may sacrifice a permanent that shares a card type with it. For each opponent who doesn't, that player loses 2 life and you draw a card.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "133",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "938f42e1-b4f9-5e95-9583-d008f91f8ba5",
+  "oracle_id": "bc9cbc44-e2e4-5f4e-9420-001dd00a6e7e",
+  "name": "Brash Taunter",
+  "mana_cost": "{4}{R}",
+  "cmc": 5.0,
+  "type_line": "Creature — Goblin",
+  "oracle_text": "Indestructible\nWhenever Brash Taunter is dealt damage, it deals that much damage to target opponent.\n{2}{R}, {T}: Brash Taunter fights another target creature.",
+  "keywords": [
+   "Indestructible"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "161",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "1",
+  "toughness": "1"
+ },
+ {
+  "id": "3b9927eb-33e6-57e0-835b-3f88589ce353",
+  "oracle_id": "f30fe2e5-6920-55ba-b77b-8fb296879e14",
+  "name": "Canyon Slough",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nCanyon Slough enters tapped.\nCycling {2}",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "266",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "c2949820-695e-57a8-934a-3ebfafcac79c",
+  "oracle_id": "b3838dc0-61a6-5fd9-8001-fb6a3a04d887",
+  "name": "Chaos Warp",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "The owner of target permanent shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they may put it onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "162",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d1e7d396-f006-59b9-82bb-ad9707af6eb1",
+  "oracle_id": "9216b489-d3d9-535a-82f1-eea1d08c75fa",
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "96",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "8fe60b02-e107-5e13-9b73-88743713e982",
+  "oracle_id": "ac51138c-28c5-5b31-9c8c-098067d14f0c",
+  "name": "Corpse Explosion",
+  "mana_cost": "{3}{B}{R}",
+  "cmc": 5.0,
+  "type_line": "Instant",
+  "oracle_text": "As an additional cost to cast this spell, sacrifice a creature or exile a creature card from your graveyard.\nCorpse Explosion deals damage equal to the sacrificed creature's or exiled card's power to each creature and each opponent.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "snc",
+  "collector_number": "435",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "faa351a2-299e-522d-b0ca-707acdffea22",
+  "oracle_id": "3f829561-6347-53ae-aa2c-ffac464210d5",
+  "name": "Deadpool, Trading Card",
+  "mana_cost": "{3}{B}{R}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Mutant Mercenary",
+  "oracle_text": "As Deadpool enters, you may exchange your life total with target opponent's life total.\nWhenever Deadpool deals combat damage to a player, that player loses 2 life and you draw a card.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "sld",
+  "collector_number": "1753",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "4"
+ },
+ {
+  "id": "7634f052-34ec-5d49-a663-982f7c393466",
+  "oracle_id": "dbd524ca-52f5-55f0-800d-c6d105b16c16",
+  "name": "Decree of Pain",
+  "mana_cost": "{6}{B}{B}",
+  "cmc": 8.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Destroy all creatures. They can't be regenerated. Draw a card for each creature destroyed this way.\nCycling {3}{B}{B}\nWhen you cycle Decree of Pain, all creatures get -2/-2 until end of turn.",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "136",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "c1ca8120-a1d0-5a1f-971d-0b7a2f41bff0",
+  "oracle_id": "79668da2-6dd0-5cf3-a9f2-f2c5b6d72621",
+  "name": "Dragonskull Summit",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Dragonskull Summit enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "271",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "cd7f1412-5ee9-5076-981a-0eb1f5e5d25a",
+  "oracle_id": "4fc9cdc7-4292-5358-8c74-64dd4bad2d3e",
+  "name": "Evolving Wilds",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}, Sacrifice Evolving Wilds: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "274",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "c6177efd-df49-5e90-b825-f9aceb464d1a",
+  "oracle_id": "c1d5c1a4-ac3b-56cc-ade0-265c952a8219",
+  "name": "Exhume",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player puts a creature card from their graveyard onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "370",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "8f4f1f30-abbb-5c35-9217-ab0ff8b21ae5",
+  "oracle_id": "408d4030-8268-5562-ae34-8f54a04227da",
+  "name": "Exotic Orchard",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "275",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "9d9f91f7-cdb9-5d5b-81eb-607c32284401",
+  "oracle_id": "85f98370-492a-5de8-8f74-e6d348220ea9",
+  "name": "Fate Unraveler",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Enchantment Creature — Hag",
+  "oracle_text": "Whenever an opponent draws a card, Fate Unraveler deals 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "141",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "4"
+ },
+ {
+  "id": "4df180e8-057b-547f-82f9-a6887fe691c1",
+  "oracle_id": "0c7f6741-a02d-5946-bdd6-a99649ff7ef9",
+  "name": "Fear of Burning Alive",
+  "mana_cost": "{4}{R}{R}",
+  "cmc": 6.0,
+  "type_line": "Enchantment Creature — Nightmare",
+  "oracle_text": "When Fear of Burning Alive enters, it deals 4 damage to each opponent.\nDelirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, Fear of Burning Alive deals that amount of damage to target creature that player controls.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "135",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "4"
+ },
+ {
+  "id": "64eab27b-49cf-5019-8376-c4caadc1c70c",
+  "oracle_id": "12ac8983-1e62-5a56-8a26-5413b24b0b91",
+  "name": "Feed the Swarm",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "78",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "1e2cce3b-db6b-5fc6-86f1-c029f1e91302",
+  "oracle_id": "56608efe-5158-5531-ad23-6168b1c5eae4",
+  "name": "Fellwar Stone",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "245",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "ff90d4eb-7b2a-5236-b7e2-fc2dfb1609a0",
+  "oracle_id": "4d8b12de-7b1b-55fc-8e59-9c79c4d0ccf8",
+  "name": "Florian, Voldaren Scion",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Vampire Noble",
+  "oracle_text": "First strike\nAt the beginning of your postcombat main phase, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of them and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+  "keywords": [
+   "First strike"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "217",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "0945c9f9-ff52-5e7f-80bf-8934007f57e8",
+  "oracle_id": "ffcce65c-8f26-51a4-93bd-6795acf32717",
+  "name": "Foreboding Ruins",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "As Foreboding Ruins enters, you may reveal a Swamp or Mountain card from your hand. If you don't, Foreboding Ruins enters tapped.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "277",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d87c2cfd-78c9-5fa8-8123-542c1c041e05",
+  "oracle_id": "0addc60d-8d78-5a1f-860b-14ef5e589ad2",
+  "name": "Geothermal Bog",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nGeothermal Bog enters tapped.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "278",
+  "rarity": "common",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "71e2c37a-154f-5878-978c-20bf7de2a02b",
+  "oracle_id": "9e01ef3a-bf5e-5459-a8f5-09d935bc4570",
+  "name": "Gleeful Arsonist",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Warlock",
+  "oracle_text": "Whenever an opponent casts a noncreature spell, Gleeful Arsonist deals 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "27",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "1"
+ },
+ {
+  "id": "2aec78cf-0e37-523a-a320-806312e601e1",
+  "oracle_id": "e35802c3-004e-5e9f-b31e-034281646bde",
+  "name": "Grab the Prize",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "As an additional cost to cast this spell, discard a card.\nDraw two cards. If the discarded card wasn't a land card, Grab the Prize deals 2 damage to each opponent.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "138",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "9c254436-9135-5d3f-a259-7fb5116796d1",
+  "oracle_id": "920bbf39-1ac3-5f0f-b620-8410538673e8",
+  "name": "Graven Cairns",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{B/R}, {T}: Add {B}{B}, {B}{R}, or {R}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "280",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "2e07f4d4-3fb7-558c-98ae-0b20b669d64b",
+  "oracle_id": "664ea8d1-3c0d-5544-b3fb-89a942223a20",
+  "name": "Gray Merchant of Asphodel",
+  "mana_cost": "{3}{B}{B}",
+  "cmc": 5.0,
+  "type_line": "Creature — Zombie",
+  "oracle_text": "When Gray Merchant of Asphodel enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "142",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "4"
+ },
+ {
+  "id": "cb660f47-327a-59a2-9712-2ce219f7cce5",
+  "oracle_id": "d7118e7f-a4f1-5f00-a722-a8b7405dff35",
+  "name": "Harsh Mentor",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Cleric",
+  "oracle_text": "Whenever an opponent activates an ability of an artifact, creature, or land that isn't a mana ability, Harsh Mentor deals 2 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "165",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "601d6ff4-02d0-5aae-b6f5-dc40e453c057",
+  "oracle_id": "39a12658-a938-59b9-b2d2-c7e87a79369d",
+  "name": "Infernal Grasp",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature. You lose 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "143",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "cac6310f-6871-5349-8146-b826ce9e5680",
+  "oracle_id": "6420fde9-0d76-5de8-84a8-87c8af680a7b",
+  "name": "Kaervek the Merciless",
+  "mana_cost": "{5}{B}{R}",
+  "cmc": 7.0,
+  "type_line": "Legendary Creature — Human Shaman",
+  "oracle_text": "Whenever an opponent casts a spell, Kaervek the Merciless deals damage equal to that spell's mana value to any target.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "222",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "4"
+ },
+ {
+  "id": "f4dcb928-2856-5675-a3de-5ebab183d4f2",
+  "oracle_id": "2eb34787-4c8c-5da4-8336-a68de7fc5c8c",
+  "name": "Kardur, Doomscourge",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Demon Berserker",
+  "oracle_text": "When Kardur, Doomscourge enters, until your next turn, creatures your opponents control attack each combat if able and attack a player other than you if able.\nWhenever an attacking creature dies, each opponent loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "223",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "4",
+  "toughness": "3"
+ },
+ {
+  "id": "13b820ac-6541-5fce-90e7-e76de34e6cd5",
+  "oracle_id": "de141d59-a3d2-5c8b-b163-8be7c461a39f",
+  "name": "Kederekt Parasite",
+  "mana_cost": "{B}",
+  "cmc": 1.0,
+  "type_line": "Creature — Horror",
+  "oracle_text": "Whenever an opponent draws a card, if you control a red permanent, you may have Kederekt Parasite deal 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "144",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "1",
+  "toughness": "1"
+ },
+ {
+  "id": "81073487-5a00-5716-aa76-e4048dfad242",
+  "oracle_id": "07873a36-21ac-5138-816c-fc6f6cdefa98",
+  "name": "Lavaclaw Reaches",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Lavaclaw Reaches enters tapped.\n{T}: Add {B} or {R}.\n{1}{B}{R}: Until end of turn, Lavaclaw Reaches becomes a 2/2 black and red Elemental creature with \"{X}: This creature gets +X/+0 until end of turn.\" It's still a land.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "who",
+  "collector_number": "505",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "fa143066-bf3c-5a2d-b64c-520106e8a803",
+  "oracle_id": "5f4eaeee-7720-5709-b4b7-9033bede457d",
+  "name": "Leechridden Swamp",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp",
+  "oracle_text": "({T}: Add {B}.)\nLeechridden Swamp enters tapped.\n{B}, {T}: Each opponent loses 1 life. Activate only if you control two or more black permanents.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "286",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "ddf58a51-4fde-52fa-ba7f-ba66f65e0602",
+  "oracle_id": "19b280d5-0632-5752-aa12-5f55d60400a7",
+  "name": "Light Up the Stage",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Spectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\nExile the top two cards of your library. Until the end of your next turn, you may play those cards.",
+  "keywords": [
+   "Spectacle"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "166",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "71071b1a-a758-5948-a76b-7baeaa49fadc",
+  "oracle_id": "b8b55e24-fcad-5744-ac84-3281f1908be9",
+  "name": "Lightning Greaves",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.)\nEquip {0}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "93",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "1a4782c6-a3bd-56aa-9147-926b42986467",
+  "oracle_id": "0c2e6af6-7be4-5bb3-99ae-212136263c98",
+  "name": "Mask of Griselbrand",
+  "mana_cost": "{1}{B}{B}",
+  "cmc": 3.0,
+  "type_line": "Legendary Artifact — Equipment",
+  "oracle_text": "Equipped creature has flying and lifelink.\nWhenever equipped creature dies, you may pay X life, where X is its power. If you do, draw X cards.\nEquip {3}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "145",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "921736c7-46b5-5165-b59f-2309982816e6",
+  "oracle_id": "a464f1c3-1ee4-58e7-a787-813a042c3df9",
+  "name": "Massacre Wurm",
+  "mana_cost": "{3}{B}{B}{B}",
+  "cmc": 6.0,
+  "type_line": "Creature — Phyrexian Wurm",
+  "oracle_text": "When Massacre Wurm enters, creatures your opponents control get -2/-2 until end of turn.\nWhenever a creature an opponent controls dies, that player loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "147",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "6",
+  "toughness": "5"
+ },
+ {
+  "id": "8fcf76db-f327-512e-8533-35e6083481f7",
+  "oracle_id": "3bef6fcb-f11c-5178-a487-b8c600bf5412",
+  "name": "Mayhem Devil",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Devil",
+  "oracle_text": "Whenever a player sacrifices a permanent, Mayhem Devil deals 1 damage to any target.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "225",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "2e7a07d8-d4a8-5a00-9106-2429421ddc2e",
+  "oracle_id": "34dfd2a3-5595-5471-abde-2c2ef3d03059",
+  "name": "Mind Stone",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{1}, {T}, Sacrifice Mind Stone: Draw a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "248",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "8d26d976-bebf-5856-9c42-d50f9b0cc607",
+  "oracle_id": "20d06e72-091c-5532-b112-03d602f92b85",
+  "name": "Mogis, God of Slaughter",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment Creature — God",
+  "oracle_text": "Indestructible\nAs long as your devotion to black and red is less than seven, Mogis isn't a creature.\nAt the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature.",
+  "keywords": [
+   "Indestructible"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "89",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "7",
+  "toughness": "5"
+ },
+ {
+  "id": "ffff7c3d-45ab-54d3-9e35-b2bc96d972cf",
+  "oracle_id": "95895bdb-4f01-597a-a007-0a2a43c2c26f",
+  "name": "Morbid Opportunist",
+  "mana_cost": "{2}{B}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Rogue",
+  "oracle_text": "Whenever one or more other creatures die, draw a card. This ability triggers only once each turn.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "148",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "1"
+ },
+ {
+  "id": "7d872bd9-3f96-585a-8c7e-c0d296bf5713",
+  "oracle_id": "28c7231b-0b4a-5248-ac19-01055cf422a0",
+  "name": "Mountain",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Mountain",
+  "oracle_text": "({T}: Add {R}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "283",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "0fa0d5cb-8423-5974-86b5-b633be1f341c",
+  "oracle_id": "ccc26f32-7ff0-595e-b87b-7cdf9f81c031",
+  "name": "Perforating Artist",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Devil",
+  "oracle_text": "Deathtouch\nRaid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent or discards a card.",
+  "keywords": [
+   "Deathtouch",
+   "Raid"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "124",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "2"
+ },
+ {
+  "id": "da1ad2fd-a068-53e8-ad5a-ce4aa69cd527",
+  "oracle_id": "3b368f73-756b-5ee8-a1d5-c605868a281e",
+  "name": "Persistent Constrictor",
+  "mana_cost": "{4}{B}",
+  "cmc": 5.0,
+  "type_line": "Creature — Zombie Snake",
+  "oracle_text": "At the beginning of each opponent's upkeep, Persistent Constrictor deals 1 damage to that player.\nPersist",
+  "keywords": [
+   "Persist"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "22",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "3"
+ },
+ {
+  "id": "9feca17d-6ee9-5361-9eea-39a52334a7bc",
+  "oracle_id": "c40679f2-de45-5176-b6bd-ea12c0fd4c5e",
+  "name": "Rakdos Charm",
+  "mana_cost": "{B}{R}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Choose one —\n• Exile target player's graveyard.\n• Destroy target artifact.\n• Each creature deals 1 damage to its controller.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "229",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "e786f80e-e0a5-58f2-a5dc-548e6874d1f7",
+  "oracle_id": "d6c6efea-ba9d-5750-905a-1122aa9d6703",
+  "name": "Rakdos Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{1}, {T}: Add {B}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "250",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "03fa655e-91ac-5e56-ac8a-00045bf61f1f",
+  "oracle_id": "1a2a6686-1506-5623-bc9b-95ff95c1b141",
+  "name": "Rakdos, Lord of Riots",
+  "mana_cost": "{B}{B}{R}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Demon",
+  "oracle_text": "You can't cast this spell unless an opponent lost life this turn.\nFlying, trample\nCreature spells you cast cost {1} less to cast for each 1 life your opponents have lost this turn.",
+  "keywords": [
+   "Flying",
+   "Trample"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "230",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "6",
+  "toughness": "6"
+ },
+ {
+  "id": "607cce10-4950-5b30-adcc-3777f0169bb8",
+  "oracle_id": "3a76de3d-e9bf-55ff-b1eb-a7ff3f6471dc",
+  "name": "Rampaging Ferocidon",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Dinosaur",
+  "oracle_text": "Menace\nPlayers can't gain life.\nWhenever another creature enters, Rampaging Ferocidon deals 1 damage to that creature's controller.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "167",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "bd742de5-a191-5cfa-bddb-f203d1fa02ef",
+  "oracle_id": "56ee6939-1c9c-5277-bfe2-30de8d0b17ca",
+  "name": "Sadistic Shell Game",
+  "mana_cost": "{4}{B}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Starting with the next opponent in turn order, each player chooses a creature they control. Each player sacrifices the chosen creature. Each opponent who sacrificed a creature this way loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "24",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "a1098197-c2d7-514d-b31c-d4f9885f8818",
+  "oracle_id": "53cfef56-2f99-5462-8a4c-08e0c62b20b7",
+  "name": "Screaming Nemesis",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Spirit",
+  "oracle_text": "Haste\nWhenever Screaming Nemesis is dealt damage, it deals that much damage to any other target. If a player is dealt damage this way, they can't gain life for the rest of the game.",
+  "keywords": [
+   "Haste"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "348",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "3"
+ },
+ {
+  "id": "9e0d884b-a790-52b7-8468-24f8d31128f9",
+  "oracle_id": "011fe0f1-b1d6-5fb9-8fda-c7a1a76a0b01",
+  "name": "Shadowblood Ridge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{1}, {T}: Add {B}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "296",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "9b220c12-5449-554d-b0a2-47366946be66",
+  "oracle_id": "41b022a7-9531-57c0-a2c3-286ab8f53980",
+  "name": "Shivan Gorge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Legendary Land",
+  "oracle_text": "{T}: Add {C}.\n{2}{R}, {T}: Shivan Gorge deals 1 damage to each opponent.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "297",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "fff4a411-b8a8-56f4-a809-7fea3b5d4f79",
+  "oracle_id": "44c88b69-cdd3-55b8-856b-81e0d956b6a3",
+  "name": "Sign in Blood",
+  "mana_cost": "{B}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Target player draws two cards and loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "156",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "ff2ad167-27ff-5bcc-b358-6f6646abc387",
+  "oracle_id": "a5218bd0-6d3b-5e63-a031-0d03e6ca2fe9",
+  "name": "Smoldering Marsh",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nSmoldering Marsh enters tapped unless you control two or more basic lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "299",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "2b8574f3-7bc1-51b0-9932-d913af1057df",
+  "oracle_id": "1ba3351f-02a7-5bb9-b381-71a7c65f4e01",
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "94",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "5c3eafe0-f6c3-5550-8302-ba096e348c48",
+  "oracle_id": "c3fd5397-acfc-52d2-89ae-7b1b1942afec",
+  "name": "Spiked Corridor // Torture Pit",
+  "mana_cost": "{3}{R}",
+  "cmc": 4.0,
+  "type_line": "Enchantment — Room // Enchantment — Room",
+  "oracle_text": "When you unlock this door, create three 1/1 red Devil creature tokens with \"When this creature dies, it deals 1 damage to any target.\"\n//\nIf a source you control would deal noncombat damage to an opponent, it deals that much damage plus 2 instead.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "28",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4a7fb1a5-33bd-5933-99db-7593ef741a91",
+  "oracle_id": "e18bf2e9-73d3-5374-96de-f40253041713",
+  "name": "Spinerock Knoll",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Hideaway 4\nSpinerock Knoll enters tapped.\n{T}: Add {R}.\n{R}, {T}: You may play the exiled card without paying its mana cost if an opponent was dealt 7 or more damage this turn.",
+  "keywords": [
+   "Hideaway"
+  ],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "300",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "e4eac5ef-48ca-53ac-98ac-cddacf37eb7b",
+  "oracle_id": "4401a10d-18e3-549e-a3f7-cdeb1b47dd6e",
+  "name": "Spiteful Visions",
+  "mana_cost": "{2}{B/R}{B/R}",
+  "cmc": 4.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of each player's draw step, that player draws an additional card.\nWhenever a player draws a card, Spiteful Visions deals 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "233",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "6ba57e2a-2887-52d1-924e-6afca2f75a6e",
+  "oracle_id": "df60f8f7-bfbb-577e-9499-3af0b37ba69e",
+  "name": "Star Athlete",
+  "mana_cost": "{1}{R}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Warrior",
+  "oracle_text": "Menace\nWhen Star Athlete enters, choose up to one target nonland permanent. Its controller may sacrifice it. If they don't, Star Athlete deals 5 damage to that player.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "29",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "3",
+  "toughness": "2"
+ },
+ {
+  "id": "63d9ce6b-a61c-5d07-9d4e-07f653587c32",
+  "oracle_id": "5ad7a687-7d9b-5b0d-a6b5-385e0f0476be",
+  "name": "Starstorm",
+  "mana_cost": "{X}{R}{R}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Starstorm deals X damage to each creature.\nCycling {3}",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "40k",
+  "collector_number": "208",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "56eaa94e-90f3-51b1-aa63-06b3a27e64ae",
+  "oracle_id": "7d8b5dda-b896-5128-a1ad-57004cdbc55d",
+  "name": "Stormfist Crusader",
+  "mana_cost": "{B}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Knight",
+  "oracle_text": "Menace\nAt the beginning of your upkeep, each player draws a card and loses 1 life.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "234",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "2"
+ },
+ {
+  "id": "7fa2ed63-cd79-5e29-bf49-6ede02317209",
+  "oracle_id": "18017c75-3ad6-55b5-9c3a-e0e6b2dfb7bb",
+  "name": "Sulfurous Springs",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Sulfurous Springs deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "301",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d95b991e-1ef0-5c32-a750-c3fb3ef4124b",
+  "oracle_id": "078d2d89-36b5-55b8-844b-8405f9a1db78",
+  "name": "Suspended Sentence",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature an opponent controls. That player loses 3 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "25",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "bb372d2e-1928-5565-89f8-c4773d4978a0",
+  "oracle_id": "3c0356e3-c221-5343-a5f2-39ba7bb4faca",
+  "name": "Swamp",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Swamp",
+  "oracle_text": "({T}: Add {B}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "281",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "be7e0b45-27fb-5856-8d80-d2f369087bfd",
+  "oracle_id": "6e3729ed-144f-55c5-b700-7c5fc9c5bade",
+  "name": "Syr Konrad, the Grim",
+  "mana_cost": "{3}{B}{B}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Human Knight",
+  "oracle_text": "Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, Syr Konrad, the Grim deals 1 damage to each opponent.\n{1}{B}: Each player mills a card.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "158",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "4"
+ },
+ {
+  "id": "29c2ff26-1c7c-5c82-b240-78639c81cf2b",
+  "oracle_id": "8a236bdb-404e-5a38-b1ed-7996cf4ccfd7",
+  "name": "Séance Board",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.\nWhenever an opponent loses life during your turn, put a soul counter on Séance Board.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "40",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "dc785af3-344d-5ced-9c62-4638b281f29d",
+  "oracle_id": "f340db98-76bd-509e-b93f-7a3ebf40961f",
+  "name": "Tainted Peak",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Activate only if you control a Swamp.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "304",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "328d5adf-9afc-5339-934d-9c42ff84bcc9",
+  "oracle_id": "f18a4573-dc6f-5884-a15e-f032b3b36e7f",
+  "name": "Talisman of Indulgence",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Talisman of Indulgence deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "254",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "d3636e17-8aaf-5407-8cb0-4c22a0de3397",
+  "oracle_id": "4f491a86-4220-535b-a87f-02395f70c01e",
+  "name": "Temple of Malice",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Temple of Malice enters tapped.\nWhen Temple of Malice enters, scry 1.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "310",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "4aa8cc76-cc82-59b3-98ad-e2caed143dde",
+  "oracle_id": "64f353bf-8b28-5a24-965b-684fbf7174d7",
+  "name": "Temple of the False God",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}{C}. Activate only if you control five or more lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "313",
+  "rarity": "uncommon",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "3e70a87b-421a-5922-87bd-9fcb905257c0",
+  "oracle_id": "e7e8a038-b642-50dd-bca1-467c7d343d7a",
+  "name": "Terramorphic Expanse",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}, Sacrifice Terramorphic Expanse: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "269",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "71059344-9e3a-5fdf-8e35-2dd327eb9a52",
+  "oracle_id": "428123d5-0cd8-5c25-a9ab-a7b6a9eea45b",
+  "name": "The Lord of Pain",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Human Assassin",
+  "oracle_text": "Menace\nYour opponents can't gain life.\nWhenever a player casts their first spell each turn, choose another target player. The Lord of Pain deals damage equal to that spell's mana value to the chosen player.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "3",
+  "rarity": "mythic",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "5",
+  "toughness": "5"
+ },
+ {
+  "id": "27754797-86f8-574f-b743-08c433ba6265",
+  "oracle_id": "fac8b904-d7d0-52e1-95fb-6b3338e3c174",
+  "name": "Theater of Horrors",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of your upkeep, exile the top card of your library.\nDuring your turn, if an opponent lost life this turn, you may play lands and cast spells from among cards exiled with Theater of Horrors.\n{3}{R}: Theater of Horrors deals 1 damage to target opponent or planeswalker.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "236",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "f8ef484b-8ff9-5bb9-bd25-3b959ec75f2d",
+  "oracle_id": "da64373a-33e2-57ba-ae07-83fc106d960e",
+  "name": "Thought Vessel",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "You have no maximum hand size.\n{T}: Add {C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "256",
+  "rarity": "common",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "e4d3699c-ce7f-5691-ae3f-c5c6ca8bb1a3",
+  "oracle_id": "2bbeeea7-c3f8-5019-b2c0-e83662af1b9f",
+  "name": "Vial Smasher the Fierce",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Goblin Berserker",
+  "oracle_text": "Whenever you cast your first spell each turn, choose an opponent at random. Vial Smasher the Fierce deals damage equal to that spell's mana value to that player or a planeswalker that player controls.\nPartner",
+  "keywords": [
+   "Partner"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "239",
+  "rarity": "mythic",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  },
+  "power": "2",
+  "toughness": "3"
+ },
+ {
+  "id": "c29f7484-004d-5065-a7b0-4b9abe557fe0",
+  "oracle_id": "26c8a1df-cced-596e-922e-134b76607031",
+  "name": "Wheel of Misfortune",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player secretly chooses a number 0 or greater, then all players reveal those numbers simultaneously and determine the highest and lowest numbers revealed this way. Wheel of Misfortune deals damage equal to its chosen number to each player who chose the highest number. Each player who didn't choose the lowest number discards their hand, then draws seven cards.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "cmr",
+  "collector_number": "211",
+  "rarity": "rare",
+  "fixture_confidence": "high",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ },
+ {
+  "id": "0413f344-b73f-5d88-b3da-01aefe9927d3",
+  "oracle_id": "1a81748a-6561-5549-9e1f-52bb690c38fa",
+  "name": "Witch's Clinic",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{2}, {T}: Target commander gains lifelink until end of turn.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "325",
+  "rarity": "rare",
+  "fixture_confidence": "low",
+  "image_uris": {
+   "small": "",
+   "normal": "",
+   "large": "",
+   "png": "",
+   "art_crop": "",
+   "border_crop": ""
+  }
+ }
+]

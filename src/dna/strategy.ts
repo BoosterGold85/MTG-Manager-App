@@ -6,8 +6,9 @@ import type { Evidence } from "../intelligence/types";
 import { tagDefinition } from "../intelligence/taxonomy";
 import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
+import { opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.8";
+export const SYNERGY_VERSION = "0.6.9";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -158,6 +159,7 @@ const labels: Record<string, string> = {
   spells: "Spellslinger",
   clones: "Clones / Copies",
   discard: "Discard / Mayhem",
+  pings: "Pings / Punisher",
   tokens: "Tokens",
   sacrifice: "Aristocrats / Sacrifice",
   graveyard: "Graveyard / Reanimator",
@@ -178,6 +180,7 @@ const featureTags: Record<string, string[]> = {
   spells: ["spellslinger", "instants-sorceries", "copy-spells"],
   clones: ["clones", "copy-creature-spells"],
   discard: ["mayhem", "madness", "discard-payoff"],
+  pings: ["opponent-life-loss", "punisher", "symmetric-draw"],
   tokens: ["tokens", "token-payoff", "populate", "go-wide"],
   sacrifice: [
     "aristocrats",
@@ -273,7 +276,9 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
                           ? "damage"
                           : /graveyard/i.test(trigger)
                             ? "graveyard"
-                            : "turn";
+                            : /\b(?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b|\b(?:opponents?|player) (?:is|are) dealt damage\b/i.test(trigger)
+                              ? "life-loss"
+                              : "turn";
     const types = c.analysis.creatureTypes.synergy.filter((type) =>
       creatureTypePatterns
         .find((p) => p.type === type)
@@ -431,6 +436,12 @@ function characteristics(c: DnaInputCard): Characteristics {
     emits.add("token");
     emits.add("artifact");
   }
+  {
+    const loss = opponentLifeLoss(text);
+    if (loss.direct) emits.add("life-loss");
+    if (loss.theirTurn) emits.add("life-loss-their-turn");
+    if (loss.anyTarget) emits.add("life-loss-weak");
+  }
   // A Vehicle token (e.g. "create a 3/2 colorless Vehicle artifact token") satisfies "Whenever a Vehicle enters".
   if (/create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(text)) {
     emits.add("vehicle");
@@ -522,6 +533,14 @@ function interaction(
   source: Characteristics,
 ): number {
   if (receiver.event === "turn" || receiver.selfOnly) return 0;
+  // "Whenever an opponent loses life": any source that makes opponents lose life or take damage. When the reward only
+  // triggers on opponents' own turns, sources that can fire then (punisher, upkeep and draw-step pings) are stronger.
+  if (receiver.event === "life-loss") {
+    const theirTurn = /\btheir turns?\b|\bopponent'?s turn\b/i.test(receiver.evidence.snippet);
+    if (source.emits.has("life-loss-their-turn")) return 1;
+    if (source.emits.has("life-loss")) return theirTurn ? 0.6 : 1;
+    return source.emits.has("life-loss-weak") ? 0.4 : 0;
+  }
   if (
     receiver.event === "damage" &&
     receiver.damageAmount !== undefined &&

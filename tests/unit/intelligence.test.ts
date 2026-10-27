@@ -16,7 +16,7 @@ import { card, curated } from '../fixtures/intelligence';
 import { sol, meren, forest, metadata, exportCsv, fixtureRow } from '../importFixtures';
 describe('central taxonomy',()=>{
  it('has unique definitions, stable IDs, categories and useful descriptions',()=>{
-  expect(taxonomy.length).toBe(83); expect(new Set(taxonomy.map(t=>t.id)).size).toBe(taxonomy.length);
+  expect(taxonomy.length).toBe(86); expect(new Set(taxonomy.map(t=>t.id)).size).toBe(taxonomy.length);
   expect(new Set(taxonomy.map(t=>t.label)).size).toBe(taxonomy.length);
   for(const tag of taxonomy) {expect(['strategy','mechanic','role','resource','payoff','enabler','interaction']).toContain(tag.category);expect(tag.description.length).toBeGreaterThan(10);expect(tag.id).toMatch(/^[a-z-]+$/);}
   expect(tagDefinition('typal:Elf')?.label).toBe('Elves Matter');

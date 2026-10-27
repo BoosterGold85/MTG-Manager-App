@@ -12,6 +12,7 @@ import type { Assignment, AutoAnalysis, Evidence } from "../intelligence/types";
 import { RULESET_VERSION } from "../intelligence/types";
 import { effectiveAssignments, inputFingerprint } from "../intelligence/tagger";
 import { tagDefinition } from "../intelligence/taxonomy";
+import { stripReminderText } from "../utils/rulesText";
 import { pluralCreatureType } from "../intelligence/subtypes";
 import { deckCardAnalysis } from "../intelligence/canonicalAnalysis";
 import { cardKeywords } from "../utils/cardKeywords";
@@ -214,6 +215,21 @@ function cardSignals(
           snippet: d.text.slice(0, 180),
           reason: `You choose to discard (${d.mode}), so cards with Mayhem or Madness can be cast and discard payoffs trigger.`,
         })),
+      });
+  }
+  // A card that rewards opponents losing life (e.g. "Whenever an opponent loses life …") is a pings payoff.
+  {
+    const reward = stripReminderText(card.card.oracleText || card.card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "").match(
+      /[^.\n]*\bwhenever (?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b[^.\n]*|[^.\n]*\bwhenever (?:an? )?(?:opponents?|player) (?:is|are) dealt damage\b[^.\n]*/i,
+    );
+    if (reward)
+      signals.push({
+        themeId: "pings",
+        tagId: "life-loss-payoff",
+        label: "Opponent Life Loss Payoff",
+        strength: 3,
+        kind: "payoff",
+        evidence: [{ field: "oracleText", snippet: reward[0].trim().slice(0, 180), reason: "Rewards opponents losing life, so every ping, drain or punisher effect feeds it." }],
       });
   }
   for (const assignment of card.assignments) {

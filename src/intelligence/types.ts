@@ -15,4 +15,4 @@ export interface Hit { tagId: string; reason: string; snippet: string; source?: 
 export type Rule = (context: RuleContext) => Hit[];
 // Extension boundary only: no remote provider is shipped or called.
 export interface IntelligenceProvider { analyze(card: CardMetadata): AutoAnalysis }
-export const RULESET_VERSION = '0.3.4';
+export const RULESET_VERSION = '0.3.5';

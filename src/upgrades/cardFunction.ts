@@ -163,7 +163,7 @@ export function cardFunction(card: CardMetadata): CardFunction {
   }
   const instantInteraction = answers.some((a) => a.instantSpeed);
   // Protection & resilience
-  if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|protection from|phase out)|equipped creature has[^.]*(?:hexproof|indestructible)|counter target spell that targets/i.test(text)) {
+  if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|shroud|protection from|phase out)|equipped creature has[^.]*(?:hexproof|indestructible|shroud)|enchanted creature has[^.]*(?:hexproof|indestructible|shroud)|counter target spell that targets/i.test(text)) {
     // One protection mode (only hexproof, only indestructible…) is partial; several modes, protection from,
     // phasing or countering the removal spell are full protection.
     const modes = ["hexproof", "indestructible", "shroud", "protection from", "phase out", "counter target spell that targets"].filter((m) => text.toLowerCase().includes(m));
@@ -171,7 +171,8 @@ export function cardFunction(card: CardMetadata): CardFunction {
     add("protection", full ? 1 : 0.7);
     reasons.push({ value: (full ? 0.45 : 0.35) + (front.includes("Instant") ? 0.1 : 0) + (mv <= 2 ? 0.1 : 0), reason: full ? "Protects your permanents." : `Partial protection (${modes[0] || "one mode"} only).` });
   }
-  if (/return[^.\n]*from (?:your|a) graveyard[^.\n]*(?:hand|battlefield)/i.test(text)) {
+  // Recursion: "return … from your graveyard" and reanimation worded "put(s) … from a graveyard onto the battlefield".
+  if (/return[^.\n]*from (?:your|a) graveyard[^.\n]*(?:hand|battlefield)|\bputs? [^.\n]{0,60}\bcards? from (?:your|their|a|an opponent's|each player's|any) graveyards? onto the battlefield/i.test(text)) {
     add("recursion", 1);
     reasons.push({ value: repeatable ? 0.55 : 0.35, reason: "Returns cards from your graveyard." });
   }

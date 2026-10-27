@@ -96,6 +96,12 @@ export const families: ThemeFamily[] = [
     plan: "support an individual threat with Equipment or Auras",
   },
   {
+    id: "pings",
+    label: "Pings / Punisher",
+    tags: ["opponent-life-loss", "punisher", "symmetric-draw"],
+    plan: "ping opponents a little at a time, punishing what every player does",
+  },
+  {
     id: "discard",
     label: "Discard / Mayhem",
     tags: ["mayhem", "madness", "discard-payoff"],
@@ -180,4 +186,4 @@ export const families: ThemeFamily[] = [
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.8";
+export const DNA_VERSION = "0.6.9";

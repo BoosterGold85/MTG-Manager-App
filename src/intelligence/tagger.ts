@@ -18,7 +18,8 @@ import { life } from './rules/life';
 import { misc } from './rules/misc';
 import { copies } from './rules/copies';
 import { discard } from './rules/discard';
-const rules: Rule[] = [counters,lands,tokens,graveyard,sacrifice,cardAdvantage,mana,interaction,permanents,creatures,spells,life,misc,copies,discard];
+import { pings } from './rules/pings';
+const rules: Rule[] = [counters,lands,tokens,graveyard,sacrifice,cardAdvantage,mana,interaction,permanents,creatures,spells,life,misc,copies,discard,pings];
 export const cardIdentity = (card: CardMetadata) => card.oracleId || `name:${card.name.normalize('NFKC').trim().toLowerCase()}`;
 export function inputFingerprint(card:CardMetadata) {
  const input=JSON.stringify([card.name,card.oracleText,card.typeLine,card.keywords,card.cardFaces,card.producedMana,card.power,card.toughness,card.loyalty,card.layout]);

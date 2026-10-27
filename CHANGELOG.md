@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.9 — Pings / punisher decks (Valgavoth)
+
+- New Deck DNA theme **Pings / Punisher**: decks that make opponents lose life a little at a time and punish what every player does. Card Intelligence (ruleset 0.3.5) adds **Opponent Life Loss** (opponents or every player lose life or take damage; your own life payments never count; plain "any target" burn is not a ping), **Punisher** (triggers on what players or opponents do, then damages that player) and **Symmetric Draw** (each player draws or wheels). Cards that reward opponents losing life are explicit payoffs for the theme.
+- "Whenever an opponent loses life" (and "is dealt damage") is now a Commander trigger the engine understands, instead of "acts every turn". Every card that makes opponents lose life is verified against it. When the reward only triggers on opponents' own turns, punisher, upkeep and draw-step pings count fully and your-turn bursts count less. The Commander Blueprint shows "Rewards opponents losing life".
+- Shroud counts as (partial) protection, e.g. Lightning Greaves. Reanimation worded "put(s) … from a graveyard onto the battlefield" counts as recursion, e.g. Exhume.
+- Added the supplied 100-card Valgavoth, Harrower of Souls deck as a permanent regression fixture. It reads as Pings / Punisher + Sacrifice (no longer Spells), the Commander reinforces Pings / Punisher, key cards are punisher engines, and Protection and Recursion are no longer zero. Upgrade scoring architecture and the golden engine fixture are unchanged.
+
 ## 0.6.8 — Evaluator fixes from the Miles "Tails" Prower Vehicles deck
 
 - **Mass removal**: wipes are detected from the removal clause itself, so modal bullets ("Choose one — • Destroy all creatures"), choices and earlier clauses ("Return a creature you control …, then destroy all other creatures") count as board wipes. Cleansing Nova and Time Wipe now count toward Board Wipes in Deck Health.

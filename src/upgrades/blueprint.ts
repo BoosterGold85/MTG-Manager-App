@@ -61,9 +61,11 @@ const mechanicLabel = (event: string, objects: string[], types: string[], nontok
     counters: "counters being placed",
     damage: "damage being dealt",
     graveyard: "graveyard events",
+    "life-loss": "opponents losing life",
     counterspell: "countering spells",
     turn: "each turn",
   };
+  if (event === "life-loss") return "Rewards opponents losing life (pings, drain, punisher effects)";
   return event === "turn" ? "Acts every turn" : `Rewards ${subject} ${verb[event] || event}`;
 };
 export function buildCommanderBlueprint(commanders: DnaInputCard[]): CommanderBlueprint {
