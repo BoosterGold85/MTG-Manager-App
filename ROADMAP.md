@@ -23,7 +23,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.6.3 — Approved | Recommendation Engine vNext: typed canonical facts, verified interactions, role gaps, calibrated scoring/confidence and conservative read-only replacement comparisons. |
 | 0.6.4 — Approved | Basic Land Import Exception: Basic-supertype lands are tracked in decks with their printing but never exclusively allocated or blocking. |
 | 0.6.5 — Approved | Clones & Copies: clone/copy-permanent and copy-creature-spell detection, Deck DNA family and Synergy archetype. |
-| **0.6.6 — Current** | Upgrades I Own rebuilt around two goals: Build Around My Commander (Commander Fit + Build Priority from a Commander Blueprint) and Improve My Current Deck (best one-for-one swap Upgrade Value). Typed Mayhem / discard support. |
+| 0.6.6 — Approved | Upgrades I Own rebuilt around two goals: Build Around My Commander (Commander Fit + Build Priority from a Commander Blueprint) and Improve My Current Deck (best one-for-one swap Upgrade Value). Typed Mayhem / discard support. |
+| **0.6.7 — Current** | Deck Workspace UX & Actionability: Overview / Cards / Upgrades / Settings sections in the URL, Deck Health from the upgrade engine, in-page Upgrades with Saved candidates, Build-mode Add to Deck and atomic Review/Confirm Swap. Scores unchanged. |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
 | 0.8.0               | Uniqueness: separate originality, cohesion and power; lawful comparison-provider abstraction. EDHREC only through a permitted data relationship, never unauthorized scraping. |
 | 0.9.0               | Invite-only Playgroup: authentication, private collections and selective sharing.                                                                                             |

@@ -4,6 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { namedScoringCard, scoringCard } from "../scoringFixtures";
 import { reignOfDragonsFixture } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";
+import { section } from "./workspaceHelpers";
 async function snapshot(page: Page) {
   return page.evaluate(
     async () =>
@@ -101,18 +102,14 @@ async function setup(page: Page) {
     .click();
 }
 async function openGoal(page: Page, goal: RegExp) {
-  await page
-    .getByRole("button", { name: "Upgrades I Own", exact: true })
-    .click();
-  const dialog = page.getByRole("dialog");
+  await section(page, "Upgrades");
+  const dialog = page.getByRole("region", { name: "Upgrades", exact: true });
   await dialog.getByRole("button", { name: goal }).click();
   await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
   return dialog;
 }
 const names = async (dialog: ReturnType<Page["getByRole"]>) =>
-  (await dialog.locator(".synergy-candidates>li h3").allTextContents()).map(
-    (t) => t.split(/ (?:Build Priority|Major|Strong|Moderate|Minor|Sidegrade|Downgrade)/)[0].trim(),
-  );
+  (await dialog.locator(".synergy-candidates>li h3").allTextContents()).map((t) => t.trim());
 test("the two goals answer different questions: real engines lead upgrades, off-plan staples keep priority but not fit", async ({
   page,
 }, info) => {
@@ -130,6 +127,7 @@ test("the two goals answer different questions: real engines lead upgrades, off-
   await expect(
     dialog.locator(".synergy-candidates>li").filter({ hasText: "Dragon Tempest" }),
   ).toContainText("Best swap: cut");
+  await expect(dialog.locator(".synergy-candidates>li").filter({ hasText: "Dragon Tempest" }).getByRole("button", { name: "Review Swap" })).toBeVisible();
   await dialog.getByRole("button", { name: "Change goal", exact: true }).click();
   await dialog.getByRole("button", { name: /Build Around My Commander/ }).click();
   await expect(dialog.getByRole("status")).toHaveText(/\d+ candidates?/);
@@ -141,6 +139,8 @@ test("the two goals answer different questions: real engines lead upgrades, off-
       has: page.getByRole("heading", { name: new RegExp(name) }),
     });
   await expect(row("Utvara Hellkite")).toContainText(/Commander Fit: (Excellent|Exceptional)/);
+  // Build Priority is the main rank; Commander Fit is secondary.
+  await expect(row("Utvara Hellkite").locator(".upgrade-headline")).toContainText("Build Priority");
   await expect(row("Alania.s Pathmaker")).toContainText("Commander Fit: Weak");
   await expect(row("Harnesser of Storms")).toContainText("Commander Fit: Weak");
   await dialog.getByRole("combobox", { name: "Sort" }).selectOption("fit");
@@ -159,7 +159,6 @@ test("the two goals answer different questions: real engines lead upgrades, off-
     ),
   ).toBe(true);
   await page.screenshot({ path: info.outputPath("upgrades-two-goals.png") });
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   expect(await snapshot(page)).toEqual(before);
   expect(calls).toEqual([]);
   dialog = page.getByRole("dialog");
@@ -194,7 +193,8 @@ test("search, availability and reopen reuse cached analysis and keep the same or
       .getByRole("searchbox", { name: "Search owned candidates" })
       .fill("Mongoose");
     await expect(dialog.locator(".synergy-candidates>li")).toHaveCount(1);
-    await page.getByRole("button", { name: "Close dialog", exact: true }).click();
+    // Leave Upgrades and come back: the cached analysis is reused.
+    await section(page, "Overview");
   }
   expect(await computations()).toBe(initial);
   expect(await snapshot(page)).toEqual(before);

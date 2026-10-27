@@ -79,6 +79,7 @@ export function validateState(value: unknown): CollectionState {
           entryIds.add(e.id);
         }
       }
+      if (deck.savedCandidates !== undefined && (!Array.isArray(deck.savedCandidates) || deck.savedCandidates.some(c=>!c?.id || !['improve','build'].includes(c.intent) || typeof c.candidateIdentity!=='string' || !c.candidateIdentity || typeof c.candidateName!=='string' || !Number.isFinite(Date.parse(c.createdAt))))) throw new Error('Saved deck candidates are inconsistent.');
       if (deck.importIssues !== undefined && (!Array.isArray(deck.importIssues) || deck.importIssues.some(i=>!Number.isSafeInteger(i?.line) || typeof i.text!=='string' || typeof i.reason!=='string'))) throw new Error('Saved deck import problems are inconsistent.');
       const linked = new Map<string,number>();
       for (const c of deck.commanders) {

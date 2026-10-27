@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { section } from "./workspaceHelpers";
 import type { Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import {
@@ -65,24 +66,20 @@ async function create(page: Page, name: string) {
     .click();
   await expect(page.getByRole("heading", { name, exact: true })).toBeVisible();
 }
+async function openAdd(page: Page, search = "Sol Ring") {
+  await section(page, "Cards");
+  await page.getByRole("button", { name: "Add Card", exact: true }).click();
+  await page.getByRole("searchbox", { name: "Search owned cards" }).fill(search);
+}
+// Add Card closes after each successful add and confirms it in the deck status.
 async function addSol(page: Page, count = 1) {
-  await page.getByRole("button", { name: "Add Cards", exact: true }).click();
-  await page
-    .getByRole("searchbox", { name: "Search owned cards" })
-    .fill("Sol Ring");
-  await page
-    .getByRole("button", { name: "View Sol Ring", exact: true })
-    .first()
-    .click();
   for (let i = 0; i < count; i++) {
-    await page
-      .getByRole("button", { name: "Add one copy", exact: true })
-      .click();
-    await expect(
-      page.getByRole("button", { name: "Add one copy", exact: true }),
-    ).toBeEnabled();
+    await openAdd(page);
+    await page.getByRole("button", { name: "View Sol Ring", exact: true }).first().click();
+    await page.getByRole("button", { name: "Add one copy", exact: true }).click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await expect(page.getByRole("status").filter({ hasText: "Sol Ring added to" })).toBeVisible();
   }
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
 }
 async function axe(page: Page) {
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
@@ -106,7 +103,8 @@ test("owned commander, color boundary, assignment persistence, Deck Usage and pr
   await expect(page.getByRole("region", { name: "Commander" })).toContainText(
     "Owned 3 · Assigned 1 · Available 2",
   );
-  await page.getByRole("button", { name: "Add Cards", exact: true }).click();
+  await section(page, "Cards");
+  await page.getByRole("button", { name: "Add Card", exact: true }).click();
   await expect(
     page.getByRole("button", {
       name: "View Tatyova, Benthic Druid",
@@ -118,7 +116,7 @@ test("owned commander, color boundary, assignment persistence, Deck Usage and pr
   ).toBeVisible();
   await fits(page);
   await axe(page);
-  await page.getByRole("button", { name: "Filters", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Filters", exact: true }).click();
   await page
     .getByRole("combobox", { name: "Commander Colors" })
     .selectOption("C");
@@ -133,14 +131,11 @@ test("owned commander, color boundary, assignment persistence, Deck Usage and pr
   await expect(page.getByRole("dialog")).toContainText(
     "Owned 3 · Assigned 0 · Available 3",
   );
-  await page.getByRole("button", { name: "Add one copy", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText(
-    "Owned 3 · Assigned 1 · Available 2",
-  );
   await axe(page);
   await page.screenshot({ path: info.outputPath("assign-copy.png") });
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
-  await page.getByRole("button", { name: "Deck", exact: true }).click();
+  await page.getByRole("button", { name: "Add one copy", exact: true }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.getByRole("status").filter({ hasText: "Sol Ring added to Graveyard Stories." })).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Sol Ring ×1", exact: true }),
   ).toBeVisible();
@@ -153,6 +148,7 @@ test("owned commander, color boundary, assignment persistence, Deck Usage and pr
   await page.reload();
   await nav(page, "Decks");
   await page.locator(".deck-card").click();
+  await section(page, "Cards");
   await expect(
     page.getByRole("heading", { name: "Sol Ring ×1", exact: true }),
   ).toBeVisible();
@@ -178,18 +174,21 @@ test("multiple decks, no copy transfer, explicit release, printing distinction a
   await start(page);
   await create(page, "Deck A");
   await addSol(page, 2);
-  await page.getByRole("button", { name: "All decks", exact: true }).click();
+  await page.getByRole("button", { name: "All Decks", exact: true }).click();
   await create(page, "Deck B");
-  await page.getByRole("button", { name: "Add Cards", exact: true }).click();
-  await page
-    .getByRole("searchbox", { name: "Search owned cards" })
-    .fill("Sol Ring");
+  await openAdd(page);
   await expect(page.locator(".card-tile")).toHaveCount(2);
   await page
     .getByRole("button", { name: "View Sol Ring", exact: true })
     .first()
     .click();
   await page.getByRole("button", { name: "Add one copy", exact: true }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await openAdd(page);
+  await page
+    .getByRole("button", { name: "View Sol Ring", exact: true })
+    .first()
+    .click();
   await expect(
     page.getByRole("button", { name: "Add one copy", exact: true }),
   ).toBeDisabled();
@@ -203,7 +202,7 @@ test("multiple decks, no copy transfer, explicit release, printing distinction a
     .getByRole("button", { name: "Remove one copy", exact: true })
     .click();
   await expect(page.getByRole("dialog")).toContainText("Available 1");
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
+  await page.getByRole("button", { name: "Back to results", exact: true }).click();
   await page
     .getByRole("button", { name: "View Sol Ring", exact: true })
     .nth(1)
@@ -213,14 +212,18 @@ test("multiple decks, no copy transfer, explicit release, printing distinction a
     "Owned 1 · Assigned 0 · Available 1",
   );
   await page.getByRole("button", { name: "Add one copy", exact: true }).click();
-  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
-  await page.getByRole("button", { name: "Edit Deck", exact: true }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  // Rename and delete live in Settings, not in the deck header.
+  await expect(page.getByRole("button", { name: /Delete/ })).toHaveCount(0);
+  await section(page, "Settings");
+  await expect(page).toHaveURL(/tab=settings/);
   await page.getByRole("textbox", { name: "Deck name" }).fill("Deck B renamed");
   await page
     .getByRole("button", { name: "Save deck name", exact: true })
     .click();
-  await page.getByRole("button", { name: "Edit Deck", exact: true }).click();
-  await page.getByRole("button", { name: "Delete deck", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Deck B renamed", exact: true })).toBeVisible();
+  await axe(page);
+  await page.getByRole("button", { name: "Delete Deck", exact: true }).click();
   await expect(page.getByRole("dialog")).toContainText(
     "Collection cards and ManaBox are unchanged",
   );
@@ -259,10 +262,12 @@ test("actual ManaBox re-import preserves assignments, exposes shortages and expo
     path: info.outputPath("allocation-conflict.png"),
     fullPage: true,
   });
-  await page.getByRole("button", { name: "Deck", exact: true }).click();
+  await section(page, "Cards");
+  await page.getByRole("button", { name: "Open Sol Ring details", exact: true }).click();
   await page
     .getByRole("button", { name: "Remove one Sol Ring", exact: true })
     .click();
+  await page.getByRole("button", { name: "Close dialog", exact: true }).click();
   await expect(
     page.getByRole("region", { name: "Allocation conflicts" }),
   ).toHaveCount(0);
@@ -279,7 +284,7 @@ test("actual ManaBox re-import preserves assignments, exposes shortages and expo
   const chunks: Buffer[] = [];
   for await (const chunk of stream!) chunks.push(chunk);
   const backup = JSON.parse(Buffer.concat(chunks).toString());
-  expect(backup.applicationVersion).toBe("0.6.6");
+  expect(backup.applicationVersion).toBe("0.6.7");
   expect(backup.collection.decks[0].name).toBe("Persistent Deck");
   expect(backup.collection.decks[0].assignments[0].quantity).toBe(1);
   expect(backup.collection.decks[0].commanders[0].itemId).toBeTruthy();
@@ -287,6 +292,7 @@ test("actual ManaBox re-import preserves assignments, exposes shortages and expo
   await page.reload();
   await nav(page, "Decks");
   await page.locator(".deck-card").click();
+  await section(page, "Cards");
   await expect(
     page.getByRole("heading", { name: "Sol Ring ×1", exact: true }),
   ).toBeVisible();

@@ -36,6 +36,7 @@ export function SwapReview({
   deck,
   candidate,
   busy,
+  error,
   onConfirm,
   onClose,
 }: {
@@ -43,11 +44,13 @@ export function SwapReview({
   deck: Deck;
   candidate: UpgradeCandidate;
   busy: boolean;
+  error: string;
   onConfirm: (swap: { incomingItemId: string; outgoingCardIdentity: string; outgoingName: string }) => void;
   onClose: () => void;
 }) {
   const u = candidate.upgrade;
   const [cut, setCut] = useState(u.best?.cut || "");
+  const [attempted, setAttempted] = useState(false);
   const [choosing, setChoosing] = useState(!u.best);
   const [search, setSearch] = useState("");
   const available = candidate.printings.filter((p) => (p.ownership?.quantityUnassigned || 0) > 0);
@@ -171,7 +174,10 @@ export function SwapReview({
           <button
             className="primary-button"
             disabled={busy || !valid || !copyCard}
-            onClick={() => valid && copyCard && onConfirm({ incomingItemId: copyCard.id, outgoingCardIdentity: valid.cut, outgoingName: valid.cutName })}
+            onClick={() => {
+              setAttempted(true);
+              if (valid && copyCard) onConfirm({ incomingItemId: copyCard.id, outgoingCardIdentity: valid.cut, outgoingName: valid.cutName });
+            }}
           >
             Confirm Swap
           </button>
@@ -186,6 +192,11 @@ export function SwapReview({
         </div>
         <p className="meta-text">Confirming changes this deck only: the outgoing copy returns to Available and one owned copy is assigned.</p>
         {busy && <p role="status">Saving swap…</p>}
+        {attempted && !busy && error && (
+          <p role="alert" className="deck-error">
+            Swap not saved: {error}
+          </p>
+        )}
       </div>
     </Dialog>
   );

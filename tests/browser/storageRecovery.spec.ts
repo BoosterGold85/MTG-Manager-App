@@ -57,7 +57,7 @@ async function setup(page: Page) {
     .getByRole("dialog")
     .getByRole("button", { name: /Meren of Clan Nel Toth/ })
     .click();
-  await page.getByRole("button", { name: "All decks", exact: true }).click();
+  await page.getByRole("button", { name: "All Decks", exact: true }).click();
 }
 async function preview(page: Page) {
   await page.getByRole("button", { name: "Import Deck", exact: true }).click();

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { section } from "./workspaceHelpers";
 import type { Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { exportCsv, fixtureRow, sol, forest, meren, tatyova, apiCard } from "../importFixtures";
@@ -77,7 +78,9 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   await dialog.getByRole("button", { name: "Confirm import", exact: true }).click();
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(page.getByRole("heading", { name: "Imported deck", exact: true })).toBeVisible();
-  await expect(page.locator(".collection-subtitle").first()).toContainText("8 cards · 2 copies assigned · 2 missing · 4 basic lands (not allocated)");
+  await section(page, "Cards");
+  await expect(page.locator(".deck-ownership-line")).toContainText("8 cards · 2 copies assigned · 2 missing · 4 basic lands (not allocated)");
+  await expect(page.locator(".deck-notice")).toContainText("2 cards are missing or unassigned.");
   const missing = page.getByRole("region", { name: "Missing and unassigned cards" });
   await expect(missing).toContainText("Eternal Witness ×1");
   await expect(missing).toContainText("Missing — not owned");
@@ -92,6 +95,7 @@ test("paste import previews ownership, requires commander, keeps missing cards a
   await nav(page, "Decks");
   await expect(page.locator(".deck-card")).toContainText("8 cards · 2 copies assigned · 2 missing · 4 basic lands (not allocated)");
   await page.locator(".deck-card").click();
+  await section(page, "Cards");
   await expect(page.getByRole("heading", { name: "Sol Ring ×1", exact: true })).toBeVisible();
   await nav(page, "Collection");
   await expect(page.locator(".card-tile")).toHaveCount(5);
@@ -129,7 +133,7 @@ test("ManaBox file upload with Commander section, printing choice and duplicate 
     }
     await dialog.getByRole("button", { name: "Confirm import", exact: true }).click();
     await expect(page.getByRole("dialog")).not.toBeVisible();
-    await page.getByRole("button", { name: "All decks", exact: true }).click();
+    await page.getByRole("button", { name: "All Decks", exact: true }).click();
   }
   await expect(page.locator(".deck-card")).toHaveCount(2);
   await expect(page.locator(".deck-card").nth(0)).toContainText("4 cards · 2 copies assigned · 0 missing · 2 basic lands (not allocated)");

@@ -141,11 +141,14 @@ export function DeckUpgrades({
   state,
   deck,
   busy,
+  error,
   change,
 }: {
   state: CollectionState;
   deck: Deck;
   busy: boolean;
+  /** The latest failed write, shown inside Review Swap so it is never hidden behind the dialog. */
+  error: string;
   change: (action: DeckChange, success: string) => Promise<boolean>;
 }) {
   const count = mainDeckCount(deck);
@@ -478,6 +481,7 @@ export function DeckUpgrades({
           deck={deck}
           candidate={review}
           busy={busy}
+          error={error}
           onClose={() => setReviewing(null)}
           onConfirm={async ({ incomingItemId, outgoingCardIdentity, outgoingName }) => {
             const ok = await change(

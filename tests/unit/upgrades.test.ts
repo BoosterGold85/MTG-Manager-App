@@ -289,3 +289,21 @@ describe("real-collection feedback (Reign of Dragons)", () => {
     expect(result.label).not.toMatch(/Major|Strong/);
   });
 });
+
+describe("Deck Health shares the upgrade engine", () => {
+  it("counts and targets are the same numbers Upgrade Value uses, including fractional partial protection", async () => {
+    const { deckHealth, currentDeckModel } = await import("../../src/upgrades");
+    const f = reignOfDragonsFixture();
+    const health = deckHealth(f.state, f.deck), model = currentDeckModel(f.state, f.deck);
+    for (const row of health) {
+      if (row.need === "lands") expect([row.count, row.target]).toEqual([model.totals.land, model.targets.lands]);
+      else expect([row.count, row.target]).toEqual([model.totals.roles[row.need], model.targets[row.need]]);
+    }
+    // Ramp in Health is exactly the sum of each main-deck card's engine ramp role.
+    const ramp = model.cards.filter((c) => !c.commander).reduce((n, c) => n + (c.fn.roles.ramp || 0) * c.quantity, 0);
+    expect(ramp).toBeGreaterThan(0);
+    expect(health.find((h) => h.need === "ramp")!.count).toBeCloseTo(ramp);
+    expect(health.find((h) => h.need === "protection")!.count % 1).not.toBe(0);
+    expect(health.find((h) => h.need === "protection")!.status).toBe("Low");
+  });
+});

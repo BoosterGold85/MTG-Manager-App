@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.7 — Deck Workspace UX & Actionability
+
+- An open deck is now a workspace with four sections: **Overview**, **Cards**, **Upgrades** and **Settings**. The section is part of the URL (`&tab=cards|upgrades|settings`; Overview is the default and older deck links still work), so refresh, Back and Forward keep your place; unknown tabs fall back to Overview.
+- The deck header shows identity and status only (name, Commander, card count, Complete or cards to go, missing count, colors). Upgrades, rename and delete moved to their sections.
+- **Overview** reads top-down: Commander, What This Deck Does, **Deck Health**, Core Plan, Deck DNA, Basic Composition (collapsed) and How this analysis was calculated (collapsed). Deck Health shows each structural role against this Commander's blueprint target (Good / Slightly Low / Low / High), using the same card roles and targets as Upgrade Value; partial protection appears as a fraction. Each DNA theme has an explicit **View Cards** action that opens Cards with a removable theme chip.
+- **Cards**: search, a Sort control, a Filters sheet (DNA theme, card type, ownership) with removable chips, a missing-cards notice with **View Missing**, and **+ Add Card** as a focused dialog. The grid shows artwork, name and quantity, with Missing or the active sort metric only when relevant; printing and allocation details live in Card Detail, which also holds **Remove one {card}**.
+- **Upgrades** is an in-page section instead of a modal. It keeps the v0.6.6 goal chooser, both goals, the delayed "Analyzing owned cards…" status, the Commander Blueprint and every score unchanged. Candidate cards are shorter (name, label and value, best swap, one-line reason, actions) with **Why?** and **Detailed Analysis** disclosures; Card Details keeps Commander Fit, Build Priority and Upgrade Value side by side.
+- **Saved**: Save Upgrade (Improve) and Save Candidate (Build) store only the candidate, intent, preferred copy and suggested cut on the deck (`savedCandidates`). Scores are always recalculated when shown, unavailable copies say so, and nothing is moved automatically.
+- **Build mode actions**: Add to Deck adds an available owned copy to an incomplete deck through the existing add action and stays in Upgrades; full decks offer **Evaluate as Upgrade** instead of adding a 101st card.
+- **Review Swap → Confirm Swap**: review the best cut, an alternative or any other deck card (evaluated with the existing compareSwap, invalid swaps explained and blocked), see the expected impact per deck component and choose the physical copy. Confirm performs one atomic repository transaction (one revision): the outgoing card leaves once (missing and basic copies release nothing), one owned copy joins, the deck count is unchanged, copies are never taken from another deck, and a stale or unavailable copy rejects the swap with no write. A fulfilled saved upgrade is removed automatically.
+- **Settings**: deck name, Commander (changing it is not supported and says so), decklist source and import problems, and a Danger Zone with Delete Deck.
+- Readability: decision text (what the deck does, recommendation reasons, deck health, swap impact) uses primary-color 15–16px prose; set codes, finishes, allocation and methodology use small secondary text.
+- Recommendation scores are unchanged: a golden regression fixture captured from v0.6.6 asserts identical candidates, order, Commander Fit, Build Priority, Upgrade Value, best cuts, alternatives, labels and confidence.
+
 ## 0.6.6 — Upgrades I Own: two separate questions, and Mayhem
 
 - Upgrades I Own now asks **What are you trying to do?** and answers two questions that are never combined: **Build Around My Commander** (Commander Fit + Build Priority) and **Improve My Current Deck** (Upgrade Value). The v0.6.3 factual engine (canonical card → CardFacts → typed effects → mechanical relationships) is shared by both.

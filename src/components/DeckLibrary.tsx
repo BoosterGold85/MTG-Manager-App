@@ -321,7 +321,7 @@ export function DeckLibrary({
               onOpen={(row) => setDetail({ row })}
             />
           )}
-          {tab === "upgrades" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
+          {tab === "upgrades" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} error={error} change={change} />}
           {tab === "settings" && <DeckSettings key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
         </>
       ) : null}

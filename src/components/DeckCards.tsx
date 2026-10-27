@@ -7,7 +7,7 @@ import type { DeckDna } from "../dna/engine";
 import { cardSynergy } from "../dna/engine";
 import { deckSortLabels, deckTypes, emptyDeckFilters, typeGroup } from "../decks/deckBrowse";
 import type { DeckFilters, DeckRow, DeckSort } from "../decks/deckBrowse";
-import { deckPlayable, deckUsage, legalInDeck, missingEntries } from "../decks/decks";
+import { deckOwnership, deckPlayable, deckUsage, legalInDeck, missingEntries } from "../decks/decks";
 import { collectionCards } from "../models/collection";
 import type { DeckChange } from "../storage/deckRepository";
 import { emptyFilters, filterCards } from "../utils/filters";
@@ -81,6 +81,15 @@ export function DeckCards({
           Add Card
         </button>
       </div>
+      {deck.entries &&
+        (() => {
+          const o = deckOwnership(deck, state);
+          return (
+            <p className="meta-text deck-ownership-line">
+              {o.total} cards · {o.assigned} copies assigned · {o.missing} missing{o.basic ? ` · ${o.basic} basic lands (not allocated)` : ""}
+            </p>
+          );
+        })()}
       {missingCount > 0 && (
         <p className="deck-notice">
           {missingCount} {missingCount === 1 ? "card is" : "cards are"} missing or unassigned.{" "}
@@ -292,6 +301,15 @@ function AddCard({
             >
               Add one copy
             </button>
+            {deck.assignments.some((a) => a.itemId === current.id) && (
+              <button
+                className="management-button"
+                disabled={busy}
+                onClick={() => void change({ type: "remove", deckId: deck.id, itemId: current.id }, "Copy returned to Available. Collection ownership is unchanged.")}
+              >
+                Remove one copy
+              </button>
+            )}
             <button className="text-button" disabled={busy} onClick={() => setChosen(null)}>
               Back to results
             </button>

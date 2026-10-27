@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { section } from "./workspaceHelpers";
 import type { Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import data from "../../src/data/sampleCards.json" with { type: "json" };
@@ -67,6 +68,7 @@ async function walk(page: Page, expected: string[]) {
 
 test("deck cards open full Card Detail and Previous/Next browses in place with boundaries", async ({ page }, info) => {
   await setup(page);
+  await section(page, "Cards");
   const tiles = page.getByRole("region", { name: "Deck cards" }).locator(".deck-owned-card h3");
   await expect(tiles).toHaveText(TYPE_ORDER.map((n) => `${n} ×${n === "Forest" ? 2 : 1}`));
   await page.getByRole("button", { name: "Open Birds of Paradise details", exact: true }).click();
@@ -111,7 +113,14 @@ test("deck cards open full Card Detail and Previous/Next browses in place with b
 
 test("sort and filters define the navigation sequence and position", async ({ page }) => {
   await setup(page);
-  const sortBy = (label: string) => page.getByRole("combobox", { name: "Sort deck" }).selectOption({ label });
+  await section(page, "Cards");
+  const sortBy = (label: string) => page.getByRole("combobox", { name: "Sort", exact: true }).selectOption({ label });
+  // Type, theme and ownership filters live in the Filters sheet; the result shows as removable chips.
+  const filter = async (name: string, value: string) => {
+    await page.getByRole("button", { name: /^Filters/ }).click();
+    await page.getByRole("dialog").getByRole("combobox", { name }).selectOption(value);
+    await page.getByRole("button", { name: "Show cards", exact: true }).click();
+  };
   const open = (name: string) => page.getByRole("button", { name: `Open ${name} details`, exact: true }).click();
   const close = () => detail(page).getByRole("button", { name: "Close dialog" }).click();
   await open("Birds of Paradise");
@@ -128,16 +137,19 @@ test("sort and filters define the navigation sequence and position", async ({ pa
   await walk(page, ["Avenger of Zendikar", "Cultivate", "Blood Artist", "Grim Flayer", "Birds of Paradise", "Reanimate", "Skullclamp", "Sol Ring", "Forest"]);
   await close();
   await sortBy("Card Type");
-  await page.getByRole("combobox", { name: "Card type" }).selectOption("Sorcery");
+  await filter("Card type", "Sorcery");
   await expect(page.getByText("2 of 9 deck cards shown")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Remove filter: Sorcery" })).toBeVisible();
   await open("Reanimate");
   await walk(page, ["Reanimate", "Cultivate"]);
   await detail(page).getByRole("button", { name: "Previous card" }).click();
   await expect(position(page)).toHaveText("1 of 2");
   await expect(detail(page).getByRole("button", { name: "Previous card" })).toBeDisabled();
   await close();
-  await page.getByRole("combobox", { name: "Card type" }).selectOption("");
-  await page.getByRole("combobox", { name: "Ownership" }).selectOption("missing");
+  await page.getByRole("button", { name: "Remove filter: Sorcery" }).click();
+  // The missing-cards notice applies the Missing ownership filter directly.
+  await page.getByRole("button", { name: "View Missing", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Remove filter: Missing" })).toBeVisible();
   await open("Grim Flayer");
   await walk(page, ["Grim Flayer", "Avenger of Zendikar"]);
   await expect(detail(page).getByRole("region", { name: "Deck entry" })).toContainText("Physical assignment: None");

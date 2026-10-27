@@ -2559,3 +2559,6 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
   .swap-sides { grid-template-columns:minmax(0,1fr); }
   .dna-core dl div { grid-template-columns:minmax(0,1fr); gap:0; }
 }
+/* Decision prose wins over older compact DNA/summary rules. */
+.deck-library p.prose { color:var(--text-primary); font-size:1rem; line-height:1.6; }
+@media(max-width:600px) { .deck-library p.prose { font-size:15.5px; } }
