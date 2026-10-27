@@ -2562,3 +2562,9 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 /* Decision prose wins over older compact DNA/summary rules. */
 .deck-library p.prose { color:var(--text-primary); font-size:1rem; line-height:1.6; }
 @media(max-width:600px) { .deck-library p.prose { font-size:15.5px; } }
+/* Analysis confidence: the app says where its reading is weakest. */
+.analysis-confidence { border-color:var(--border-accent); background:var(--accent-soft); }
+.analysis-confidence.confidence-low { border-color:color-mix(in srgb, var(--danger) 45%, var(--border-soft)); }
+.analysis-confidence ul { list-style:none; padding:0; margin:var(--space-8) 0; display:grid; gap:var(--space-12); }
+.analysis-confidence li p { margin:var(--space-2) 0; }
+.analysis-confidence q { color:var(--text-primary); }

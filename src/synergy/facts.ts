@@ -132,7 +132,7 @@ export type AnswerTarget =
   | "spell";
 export interface AnswerFact extends FactEvidence {
   targets: AnswerTarget[];
-  mode: "destroy" | "exile" | "damage" | "bounce" | "shuffle" | "sacrifice" | "counter" | "shrink";
+  mode: "destroy" | "exile" | "damage" | "bounce" | "shuffle" | "sacrifice" | "counter" | "shrink" | "tuck";
   mass: boolean;
   instantSpeed: boolean;
   opponentsOnly: boolean;
@@ -388,6 +388,8 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
   const effect = stripAbilityWord(line).replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
   const patterns: [AnswerFact["mode"], RegExp][] = [
     ["counter", /\bcounter (?:target|all|each|up to \w+ target) ([^.]*?)\b(?:spells?|abilit(?:y|ies))\b/i],
+    // "Put target attacking creature on the bottom of its owner's library" (Condemn, Hallowed Burial-style tucks).
+    ["tuck", /\bput (target [^.]*?|all [^.]*?|each [^.]*?) on (?:the )?(?:top|bottom) of (?:its|their) owners?(?:'s|s'|')? librar(?:y|ies)/i],
     ["shuffle", /\b(?:owner of target ([^.]*?)|target ([^.]*?)'s owner) shuffles?\b/i],
     ["destroy", /\bdestroy (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
     ["exile", /\bexile (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
@@ -437,7 +439,7 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
       // earlier clauses ("Return a creature you control …, then destroy all other creatures") still make a wipe.
       mass:
         (mode === "shrink" && !/^target\b/i.test(phrase)) ||
-        /^(?:destroy|exile|return) (?:all|each)\b/i.test(m[0]) ||
+        /^(?:destroy|exile|return|put) (?:all|each)\b/i.test(m[0]) ||
         /\beach (?:other )?(?:creature|opponent|player)\b/i.test(m[0]) ||
         keywords.some((k) => /^overload$/i.test(k)),
       instantSpeed: types.includes("Instant") || keywords.some((k) => /^flash$/i.test(k)) || /^[^:]*:/.test(line),

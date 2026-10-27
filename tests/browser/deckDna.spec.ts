@@ -122,7 +122,7 @@ test("saved deck DNA, deterministic percentages, summary, Core Plan, evidence an
   await expect(core.getByText("Primary", { exact: true })).toBeVisible();
   await expect(core.getByText("Key cards", { exact: true })).toBeVisible();
   // Overview leads with what the deck does and what it needs; methodology stays closed below.
-  const order = await page.locator(".deck-overview > section, .deck-overview > details").evaluateAll((els) => els.map((e) => e.getAttribute("aria-label") || e.querySelector("summary")?.textContent || ""));
+  const order = await page.locator(".deck-overview > section, .deck-overview > details").evaluateAll((els) => els.map((e) => e.getAttribute("aria-label") || e.querySelector("summary")?.textContent || "").filter((l) => l !== "Analysis confidence"));
   expect(order.slice(0, 5)).toEqual(["Commander", "What This Deck Does", "Deck Health", "Core Plan", "Deck DNA"]);
   await expect(page.locator(".dna-method")).not.toHaveAttribute("open", "");
   await expect(page.getByRole("region", { name: "Deck Health" })).toContainText("Ramp");

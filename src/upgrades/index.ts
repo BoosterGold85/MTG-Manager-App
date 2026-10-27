@@ -5,6 +5,7 @@
 import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
 import { candidateScorer, deckDnaCache, deckDnaInput } from "../dna/engine";
+import { isUnclassifiedTrigger } from "../dna/strategy";
 import { ownedCandidateGroups } from "../synergy/explorer";
 import type { OwnedCandidateGroup } from "../synergy/explorer";
 import { buildCommanderBlueprint } from "./blueprint";
@@ -122,4 +123,76 @@ export function buildFor(state: CollectionState, deck: Deck, candidate: OwnedCan
   const cached = cache.get(state)?.get(`build:${deckKey(deck)}`) as BuildCandidate[] | undefined;
   const known = cached?.find((c) => c.canonical.scryfallId === candidate.scryfallId);
   return known ? known.build : evaluateForBuild(commanderBlueprint(state, deck), canonicalInput(state, candidate));
+}
+export type AnalysisNoteKind = "commander-trigger" | "commander-links" | "weak-plan" | "untracked-cards" | "missing-text";
+export interface AnalysisNote {
+  kind: AnalysisNoteKind;
+  message: string;
+  /** Card names or Commander ability text the note is about. */
+  items: string[];
+}
+export interface AnalysisConfidence {
+  level: "High" | "Medium" | "Low";
+  notes: AnalysisNote[];
+}
+const cardText = (card: { oracleText?: string; cardFaces?: { oracleText?: string }[] }) => card.oracleText || card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "";
+/**
+ * When the app should say it isn't sure: it can't classify the Commander's ability, few cards connect to the
+ * Commander, the plan is thinly supported, several cards do things it doesn't track, or card text is missing.
+ * Reads only what the engine already computed; nothing here changes scores.
+ */
+export function analysisConfidence(state: CollectionState, deck: Deck): AnalysisConfidence {
+  return memo(state, `confidence:${deckKey(deck)}`, () => {
+    const dna = deckDnaCache.get(state, deck);
+    const model = currentDeckModel(state, deck);
+    const commanders = model.blueprint.commanders.join(" + ");
+    const inputs = new Map(dna.strategyProfile.cards.map((c) => [c.card.identity, c.card]));
+    const notes: AnalysisNote[] = [];
+    const tags = dna.strategyProfile.commanderSynergyTags.filter((t) => t.controller !== "opponent");
+    const unknown = tags.filter(isUnclassifiedTrigger);
+    if (unknown.length)
+      notes.push({
+        kind: "commander-trigger",
+        message: `The app couldn't tell what ${commanders} rewards in ${unknown.length === 1 ? "this ability" : "these abilities"}, so Deck DNA and Upgrades may miss cards that feed it.`,
+        items: unknown.map((t) => t.evidence.snippet),
+      });
+    const understood = tags.filter((t) => !t.selfOnly && t.event !== "turn");
+    const main = model.cards.filter((c) => !c.commander);
+    const linked = main.filter((c) => c.commanderLink >= 0.5).length;
+    if (understood.length && main.length >= 30 && linked < 3)
+      notes.push({
+        kind: "commander-links",
+        message: `Only ${linked} ${linked === 1 ? "card connects" : "cards connect"} to ${commanders}'s abilities. Either the deck isn't built around them, or the app is misreading how they work.`,
+        items: understood.map((t) => t.evidence.snippet),
+      });
+    const strategic = dna.themes.filter((t) => dna.core.primary.includes(t.label));
+    if (main.length >= 30 && (!strategic.length || strategic[0].percent < 15))
+      notes.push({
+        kind: "weak-plan",
+        message: strategic.length
+          ? `The main plan (${strategic[0].label}, ${strategic[0].percent}%) is thinly supported, so What This Deck Does may be a rough guess.`
+          : "The app couldn't find a clear plan in this deck, so What This Deck Does is a rough guess.",
+        items: [],
+      });
+    const nonland = main.filter((c) => !c.fn.isLand);
+    const untracked = nonland
+      .filter((c) => !Object.keys(c.fn.roles).length && !(dna.cards[c.identity]?.connections.length) && cardText(inputs.get(c.identity)!.card).length > 40)
+      .map((c) => c.name)
+      .sort();
+    if (untracked.length >= Math.max(3, Math.ceil(0.08 * nonland.length)))
+      notes.push({
+        kind: "untracked-cards",
+        message: `${untracked.length} cards do things the app doesn't track yet, so they don't count toward Deck Health, DNA or Upgrades.`,
+        items: untracked,
+      });
+    const missing = main.filter((c) => !c.fn.isLand && !cardText(inputs.get(c.identity)!.card).trim()).map((c) => c.name).sort();
+    if (missing.length)
+      notes.push({
+        kind: "missing-text",
+        message: `${missing.length} ${missing.length === 1 ? "card has" : "cards have"} no rules text saved, so the app can't analyze ${missing.length === 1 ? "it" : "them"}. Re-importing your collection usually fixes this.`,
+        items: missing,
+      });
+    const level = notes.some((n) => n.kind === "commander-trigger" || (n.kind === "weak-plan" && !strategic.length)) ? "Low" : notes.length ? "Medium" : "High";
+    return { level, notes };
+  });
 }

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.11 — "The app isn't sure" warnings
+
+- The Overview now says when the analysis is likely to be wrong, in a callout right before Deck Health. It names exactly what it couldn't read:
+  - **Commander ability it can't classify** (quoted), so Deck DNA and Upgrades may miss cards that feed it. Marks the analysis as low confidence.
+  - **Few cards connect to the Commander** (fewer than 3 in a 30+ card deck whose Commander abilities it does understand): either the deck isn't built around them or the app is misreading them.
+  - **No clear plan**, or a main plan under 15% of the deck.
+  - **Cards it doesn't track** (no role and no DNA connection), listed by name, when they reach 3 cards or 8% of nonlands.
+  - **Cards with no saved rules text**, with a pointer to re-import.
+  Decks the engine fully understands show nothing. The callout reads what the engine already computed and changes no scores.
+- Fixes found by the new warning on the Miles regression deck, both generic:
+  - Library tucks are removal ("Put target attacking creature on the bottom of its owner's library": Condemn); mass tucks are wipes (Hallowed Burial).
+  - Qualified anthems count as team pumps ("Creatures you control with flying get +1/+1", "Other Vehicles you control get +1/+1").
+- The card-pool audit uses the same unclassified-trigger check as the app.
+- DNA and Synergy versions 0.6.11. The Card Intelligence ruleset is unchanged (0.3.6). Golden engine output unchanged.
+
 ## 0.6.10 — Full card-pool audit and real card data
 
 - Card Intelligence ruleset 0.3.6: the blink, "damage to them" and life-loss-doubler tag rules changed, so saved auto-tags refresh once on next load. Manual tag corrections are kept.

@@ -12,6 +12,7 @@ import { commanderEligible, deckPlayable } from "../../src/decks/decks";
 import { emptyCollection } from "../../src/models/collection";
 import { canonicalInput } from "../../src/upgrades/inputs";
 import { stripReminderText } from "../../src/utils/rulesText";
+import { isUnclassifiedTrigger } from "../../src/dna/strategy";
 
 type Raw = Parameters<typeof normalizeCard>[0] & { legalities?: Record<string, string>; layout?: string };
 const text = (c: CardMetadata) => stripReminderText(c.oracleText || c.cardFaces?.map((f) => f.oracleText || "").join("\n") || "");
@@ -62,7 +63,7 @@ it("audits the Commander-legal card pool", () => {
     try {
       state.metadata[c.scryfallId] = c;
       const bp = buildCommanderBlueprint([canonicalInput(state, c, true)]);
-      const unknown = bp.profile.commanderSynergyTags.filter((t) => t.event === "turn" && !t.selfOnly && !/^(?:[^—]{1,40} — )?(?:At the beginning of (?:your|each|combat on your turn|the next|your first|your second|your precombat|your postcombat)|When you do\b|.{0,80}\bat the beginning of the next end step)/i.test(t.evidence.snippet));
+      const unknown = bp.profile.commanderSynergyTags.filter(isUnclassifiedTrigger);
       for (const t of unknown) unclassified.push({ name: c.name, trigger: t.evidence.snippet.slice(0, 200) });
     } catch (e) {
       failures.push({ name: c.name, error: String(e) });

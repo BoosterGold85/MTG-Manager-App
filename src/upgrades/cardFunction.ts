@@ -225,7 +225,8 @@ export function cardFunction(card: CardMetadata): CardFunction {
   }
   if (has("token_doubler")) reasons.push({ value: 0.45, reason: "Doubles every token you create." });
   else if (has("scoped_token_multiplier")) reasons.push({ value: 0.2, reason: `Adds extra ${pieces0(facts).join(" / ")} tokens.` });
-  if (/creatures you control get \+\d+\/\+\d+|creatures you control get \+x/i.test(text)) {
+  // Team pumps, including qualified anthems ("Creatures you control with flying get +1/+1", "Other Vehicles you control get +1/+1").
+  if (/creatures you control(?: with [\w ]{1,20})? get \+(?:\d+|x)\/\+(?:\d+|x)|\bother [\w ]{1,25} you control get \+\d+\/\+\d+/i.test(text)) {
     add("finishers", repeatable ? 0.8 : 0.7);
     reasons.push({ value: 0.45, reason: "Pumps your whole team." });
   }

@@ -8,7 +8,7 @@ import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 import { extractCardFacts, opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.10";
+export const SYNERGY_VERSION = "0.6.11";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -45,6 +45,17 @@ export interface ManaCurveProfile {
   commanderCost: number;
   rampCount: number;
   coloredPips: Record<string, number>;
+}
+/**
+ * A trigger the engine couldn't classify: it fell through to "turn" but isn't a plain phase trigger
+ * ("At the beginning of your upkeep …"), a reflexive "When you do" or a delayed end-step return.
+ */
+export function isUnclassifiedTrigger(tag: CommanderSynergyTag) {
+  return (
+    tag.event === "turn" &&
+    !tag.selfOnly &&
+    !/^(?:[^—]{1,40} — )?(?:At the beginning of (?:your|each|combat on your turn|the next|your first|your second|your precombat|your postcombat)|When you do\b|.{0,80}\bat the beginning of the next end step)/i.test(tag.evidence.snippet)
+  );
 }
 export interface CommanderSynergyTag {
   controller?: "you" | "opponent";
@@ -234,7 +245,7 @@ const label = (id: string) =>
   id.startsWith("typal:") ? `${id.slice(6)} Typal` : labels[id] || id;
 // The card's own names ("Gregor, Shrewd Magistrate", its short form "Gregor", "Ms. Bumbleflower", each face of a
 // double-faced card) contain commas and periods; replace them before splitting so a trigger isn't cut mid-name.
-const SELF = "\u0001";
+const SELF = "§";
 function selfNames(card: CardMetadata) {
   const full = [card.name, ...card.name.split(" // "), ...(card.cardFaces || []).map((f) => f.name)].filter(Boolean);
   return [...new Set([...full, ...full.map((n) => n.split(",")[0].trim())])].filter((n) => n.length > 2).sort((a, b) => b.length - a.length);
@@ -253,7 +264,7 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
     const trigger = stripAbilityWord(raw).split(",")[0];
     // Keep the Commander's own abilities, but never let another card masquerade as their subject.
     const selfOnly =
-      /^(?:when|whenever) (?:this (?:creature|permanent|artifact|enchantment|vehicle|land|planeswalker)\b|\u0001)/i.test(trigger) &&
+      /^(?:when|whenever) (?:this (?:creature|permanent|artifact|enchantment|vehicle|land|planeswalker)\b|§)/i.test(trigger) &&
       !/\bor another\b/i.test(trigger);
     const event = /\bcasts?\b/i.test(trigger)
       ? "cast"

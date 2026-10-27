@@ -186,4 +186,4 @@ export const families: ThemeFamily[] = [
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.10";
+export const DNA_VERSION = "0.6.11";

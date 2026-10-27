@@ -5,7 +5,7 @@ import type { Deck } from "../models/deck";
 import type { SampleCollectionCard } from "../models/card";
 import type { DeckDna } from "../dna/engine";
 import { deckCount, deckStats } from "../decks/decks";
-import { deckHealth } from "../upgrades";
+import { analysisConfidence, deckHealth } from "../upgrades";
 import { CardImage } from "./CardImage";
 import { identityName } from "../decks/workspace";
 
@@ -27,6 +27,7 @@ export function DeckOverview({
   onViewTheme: (themeId: string) => void;
 }) {
   const health = useMemo(() => deckHealth(state, deck), [state, deck]);
+  const confidence = useMemo(() => analysisConfidence(state, deck), [state, deck]);
   const stats = deckStats(state, deck);
   const short = health.filter((h) => h.status === "Low" || h.status === "Slightly Low");
   return (
@@ -64,6 +65,29 @@ export function DeckOverview({
         <section className="overview-block dna-summary" aria-label="What This Deck Does">
           <h2>What This Deck Does</h2>
           <p className="prose">{dna.summary}</p>
+        </section>
+      )}
+      {confidence.notes.length > 0 && (
+        <section className={`overview-block analysis-confidence confidence-${confidence.level.toLowerCase()}`} aria-label="Analysis confidence">
+          <h2>{confidence.level === "Low" ? "The app isn't sure how this deck works" : "The app isn't sure about some of this"}</h2>
+          <ul>
+            {confidence.notes.map((note) => (
+              <li key={note.kind}>
+                <p className="prose">{note.message}</p>
+                {note.items.length > 0 &&
+                  (note.kind === "commander-trigger" || note.kind === "commander-links" ? (
+                    note.items.map((item) => (
+                      <p key={item} className="meta-text">
+                        <q>{item}</q>
+                      </p>
+                    ))
+                  ) : (
+                    <p className="meta-text">{note.items.join(" · ")}</p>
+                  ))}
+              </li>
+            ))}
+          </ul>
+          <p className="meta-text">These are the parts of the analysis most likely to be wrong; the rest is based on rules the app recognizes.</p>
         </section>
       )}
       <section className="overview-block deck-health" aria-label="Deck Health">
