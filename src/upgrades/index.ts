@@ -15,6 +15,8 @@ import type { BuildEvaluation } from "./build";
 import { buildDeckModel, compareUpgrade, evaluateUpgrade, simulateSwap } from "./upgrade";
 import type { DeckModel, UpgradeEvaluation } from "./upgrade";
 import { canonicalInput } from "./inputs";
+import { brewContext, evaluateBrew } from "./brew";
+import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
 
@@ -196,4 +198,27 @@ export function analysisConfidence(state: CollectionState, deck: Deck): Analysis
     const level = notes.some((n) => n.kind === "commander-trigger" || (n.kind === "weak-plan" && !strategic.length)) ? "Low" : notes.length ? "Medium" : "High";
     return { level, notes };
   });
+}
+
+function brewContextFor(state: CollectionState, deck: Deck): BrewContext {
+  return memo(state, `brewContext:${deckKey(deck)}`, () => brewContext(deckDnaCache.get(state, deck), currentDeckModel(state, deck), analysisConfidence(state, deck).level));
+}
+/** Brew Score for every owned candidate, keyed by candidate identity; computed once per deck revision. */
+export function brewCandidates(state: CollectionState, deck: Deck): Map<string, BrewResult> {
+  return memo(state, `brew:${deckKey(deck)}`, () => {
+    const ctx = brewContextFor(state, deck);
+    const score = candidateScorer(state, deck, ctx.dna);
+    return new Map(candidateGroups(state, deck).map((g) => [g.identity, evaluateBrew(ctx, g.canonical, score(g.canonical))]));
+  });
+}
+/** One candidate's Brew Score (Card Detail), reusing the batch when it exists. */
+export function brewFor(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["canonical"], identity: string): BrewResult {
+  const known = (cache.get(state)?.get(`brew:${deckKey(deck)}`) as Map<string, BrewResult> | undefined)?.get(identity);
+  if (known) return known;
+  const ctx = brewContextFor(state, deck);
+  return evaluateBrew(ctx, candidate, candidateScorer(state, deck, ctx.dna)(candidate));
+}
+/** The candidate's deck-relative Synergy ("In This Deck"), measured against the unchanged saved deck. */
+export function synergyFor(state: CollectionState, deck: Deck, candidate: OwnedCandidateGroup["canonical"]) {
+  return candidateScorer(state, deck, deckDnaCache.get(state, deck))(candidate);
 }

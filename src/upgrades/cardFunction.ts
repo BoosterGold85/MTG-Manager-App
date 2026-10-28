@@ -360,7 +360,7 @@ export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): Card
   // A Vehicle's attacks and body need creatures to crew it; its other abilities don't.
   const { supply: amount, suppliers } = supply.supply(crew, card);
   const f = conditionFactor(crew, amount);
-  const credit: ConditionCredit = { needs: crew.needs, line: crew.line, understood: true, supply: amount, suppliers, factor: f };
+  const credit: ConditionCredit = { key: crew.key, adds: ["finishers"], needs: crew.needs, line: crew.line, understood: true, supply: amount, suppliers, factor: f };
   const note =
     f >= 1
       ? `Crewed by the ${amount} creatures here.`
@@ -383,9 +383,16 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
   const full = cardFunction(card);
   const conditions = effectConditions(card);
   if (!conditions.length) return full;
-  const credits: (ConditionCredit & { lineIndex: number })[] = conditions.map((condition, lineIndex) => {
+  const lines = [...new Set(conditions.map((c) => c.line))];
+  const base = cardFunction(withoutLines(card, lines));
+  // What each conditional ability adds on its own: the roles it turns its condition into.
+  const adds = (line: string) => {
+    const withLine = cardFunction(withoutLines(card, lines.filter((l) => l !== line)));
+    return (Object.keys(withLine.roles) as Need[]).filter((n) => (withLine.roles[n] || 0) > (base.roles[n] || 0) + 0.05);
+  };
+  const credits: ConditionCredit[] = conditions.map((condition) => {
     const { supply: amount, suppliers } = supply.supply(condition, card);
-    return { needs: condition.needs, line: condition.line, understood: condition.understood, supply: amount, suppliers, factor: conditionFactor(condition, amount), lineIndex };
+    return { key: condition.key, adds: adds(condition.line), needs: condition.needs, line: condition.line, understood: condition.understood, supply: amount, suppliers, factor: conditionFactor(condition, amount) };
   });
   const confidence = credits.some((c) => !c.understood) ? lowerConfidence(full.confidence, "Medium") : full.confidence;
   const notes = credits.map((c) =>
@@ -397,10 +404,7 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
           ? `Its "${c.needs}" ability is fed by only ${c.suppliers.length} cards here (${listNames(c.suppliers)}), so it gets partial credit.`
           : `Its "${c.needs}" ability has ${c.suppliers.length ? `only ${listNames(c.suppliers)}` : "no cards"} to feed it here, so it gets no credit.`,
   );
-  const strip = (c: ConditionCredit) => ({ needs: c.needs, line: c.line, understood: c.understood, supply: c.supply, suppliers: c.suppliers, factor: c.factor });
-  if (credits.every((c) => c.factor >= 1)) return { ...full, conditions: credits.map(strip), conditionNotes: notes };
-  const lines = [...new Set(conditions.map((c) => c.line))];
-  const base = cardFunction(withoutLines(card, lines));
+  if (credits.every((c) => c.factor >= 1)) return { ...full, conditions: credits, conditionNotes: notes };
   const roles: Partial<Record<Need, number>> = { ...base.roles };
   const engines: EnginePieces = { ...base.engines, tokenSourcesByScope: { ...base.engines.tokenSourcesByScope }, tokenMultipliers: { ...base.engines.tokenMultipliers } };
   let impact = base.impact;
@@ -441,6 +445,6 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
     conditionNotes: notes,
     lowImpactBody: full.isCreature && impact < 0.25,
     confidence,
-    conditions: credits.map(strip),
+    conditions: credits,
   };
 }

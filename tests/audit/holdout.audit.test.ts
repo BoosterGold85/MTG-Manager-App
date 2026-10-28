@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 import { holdoutDecks, holdoutFixture, holdoutPool } from "../holdoutFixture";
 import { synergyFixture } from "../synergyFixtures";
 import { deckDnaCache } from "../../src/dna/engine";
-import { analysisConfidence, deckHealth, improveCurrentDeck, commanderBlueprint } from "../../src/upgrades";
+import { analysisConfidence, brewCandidates, candidateGroups, deckHealth, improveCurrentDeck, commanderBlueprint } from "../../src/upgrades";
 
 it("holdout and adversarial decks", () => {
   const owned = synergyFixture().owned;
@@ -39,6 +39,14 @@ it("holdout and adversarial decks", () => {
       health,
       confidence: analysisConfidence(f.state, f.deck),
       upgrades,
+      brew: (() => {
+        const b = brewCandidates(f.state, f.deck);
+        return candidateGroups(f.state, f.deck)
+          .map((g) => ({ name: g.card.name, ...b.get(g.identity)! }))
+          .sort((x, y) => y.score - x.score || y.synergy - x.synergy || x.name.localeCompare(y.name, "en"))
+          .slice(0, 5)
+          .map((x) => `${x.name} ${x.score} ${x.label} (Synergy ${x.synergy}) | ${x.headline}`);
+      })(),
     };
   });
   if (process.env.AUDIT_OUT) writeFileSync(process.env.AUDIT_OUT, JSON.stringify(report, null, 1));

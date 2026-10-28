@@ -29,8 +29,8 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.6.9 — Approved | Pings / Punisher decks: opponent life loss as a typed Commander trigger and DNA theme, punisher and symmetric-draw tags, shroud protection and "put onto the battlefield" recursion. |
 | 0.6.10 — Approved | Full card-pool audit against Scryfall bulk data: clause-level effect scope, mass removal, protection, ramp and tutor wording, comma-safe Commander triggers and five new trigger events; fixtures moved to real Oracle text. |
 | 0.6.11 — Approved | "The app isn't sure" warnings on the Overview: unclassified Commander abilities, few Commander-linked cards, a weak plan, untracked cards and missing rules text. Library tucks count as removal; qualified anthems count as team pumps. |
-| **0.6.12 — Current** | Deck-relative conditions: an effect earns credit only when cards in this deck feed it, named in every explanation. Engine-agnosticism audit fixes and 11 holdout/adversarial decks. |
-| 0.6.13 — Next | Brew Score v1: a deck-relative "interesting and unusually useful here" lens in Upgrades, built only on data-derived signals. |
+| 0.6.12 — Approved | Deck-relative conditions: an effect earns credit only when cards in this deck feed it, named in every explanation. Engine-agnosticism audit fixes and 11 holdout/adversarial decks. |
+| **0.6.13 — Current** | Brew Score v1: a deck-relative "interesting and unusually useful here" lens in Upgrades, built only on data-derived signals. |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
 | 0.8.0               | Uniqueness: separate originality, cohesion and power; lawful comparison-provider abstraction. EDHREC only through a permitted data relationship, never unauthorized scraping. |
 | 0.9.0               | Invite-only Playgroup: authentication, private collections and selective sharing.                                                                                             |

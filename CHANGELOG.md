@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.6.13 — Brew Score v1
+
+- **Brew Score** asks "how interesting and unusually useful is this card in THIS deck?", separate from Synergy ("how strongly does it support the deck?"). Synergy and Upgrade scores are unchanged, and the golden engine output is identical.
+- Deck-relative only. Every input comes from this deck: Deck DNA packages and their contributing cards, typed links to its actual cards, and the v0.6.12 condition suppliers. No popularity, price, archetype template or named-card table.
+- **Components** (maximum points):
+
+  | Component | Points |
+  |---|---|
+  | Contextual Synergy | 25 |
+  | Interaction quality | 20 |
+  | Bridge strength | 20 |
+  | Novelty | 15 |
+  | Multiplicative potential | 10 |
+  | Commander connection | 5 |
+  | Role value | 5 |
+
+  - **Penalties:** redundancy, setup cost (abilities the deck doesn't feed), anti-synergy (genuine conflicts, such as graveyard hate in a graveyard deck) and speculation (conditions the app can't verify).
+  - The result is clamped to 0–100, with no forced distribution.
+- **Bridges:**
+  - A card that draws on one of the deck's packages, or a condition the deck supplies, and turns it into a different package scores as a bridge, for example Counters → Graveyard or Instant or sorcery spells → Tokens.
+  - Novelty falls as other cards in the deck already make the same bridge.
+- **Copies:** clone and blink credit counts only copies that stay useful: not legendary, unless the clone ignores the legend rule, and halved for "only once each turn".
+- **Bands:** Hidden Gem (85+), Interesting Brew (70+), Some Brew Potential (50+), Conventional / Weak Brew Fit. When the deck's analysis confidence is Low, a would-be Hidden Gem reads "Potential Brew", with a note; Medium is labeled.
+- **Upgrades:**
+  - Sort by Synergy or by Brew Score (High → Low, Low → High; ties by Synergy, then name).
+  - A Brew filter (All, Hidden Gems 85+, Interesting 70+, Some Potential 50+, Low / Conventional) that combines with search and availability.
+  - A Hidden Gems shortcut.
+  - In a Brew view, cards show Brew first, with Synergy beside it, the bridge, a one-line summary and "Why this brew?".
+- **Card Detail** from Upgrades now shows In This Deck (Synergy) and Brew in This Deck beside the Upgrades I Own scores.
+- **Accessibility:** the card-art buttons in Upgrades take their name from their content, so they pass the accessibility check when artwork can't load.
+
 ## 0.6.12 — Deck-relative conditions and engine-agnosticism fixes
 
 - **Acceptance rule:** a card gets credit for an effect only when actual cards in this deck reliably satisfy the condition that effect needs. New `src/upgrades/conditions.ts` reads each ability's condition from Oracle text: spells of a kind ("colorless", "creature with power 4+", "instant or sorcery"), permanents or types entering, dying or attacking, +1/+1 counters being placed, sacrifice, life gain, discard, tokens, scry, cycling, cards leaving the graveyard, intervening "if you control…", type anthems and replacement effects (Hardened Scales, Doubling Season).

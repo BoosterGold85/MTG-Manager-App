@@ -2568,3 +2568,15 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .analysis-confidence ul { list-style:none; padding:0; margin:var(--space-8) 0; display:grid; gap:var(--space-12); }
 .analysis-confidence li p { margin:var(--space-2) 0; }
 .analysis-confidence q { color:var(--text-primary); }
+/* Brew Score: a separate lens in Upgrades and Card Detail; it reuses the Upgrades and In This Deck styles. */
+.brew-quick { display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-12); margin:var(--space-12) 0; }
+.brew-quick .meta-text { flex:1 1 220px; margin:0; }
+.brew-confidence { border-left:3px solid var(--accent); padding-left:var(--space-12); }
+.brew-why { margin:var(--space-8) 0; display:grid; gap:var(--space-8); }
+.brew-why dt { font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; }
+.brew-why dd { margin:var(--space-2) 0 0; color:var(--text-primary); overflow-wrap:anywhere; }
+.brew-in-deck { margin-top:var(--space-24); padding-top:var(--space-20); border-top:1px solid var(--border-soft); font-size:.83rem; color:var(--text-secondary); line-height:1.7; }
+.brew-in-deck h3 { font-family:var(--font-display); font-size:1.45rem; color:var(--text-primary); margin:0 0 var(--space-8); }
+.brew-score { display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--space-12); color:var(--accent); margin:0; }
+.brew-score strong { font-size:1.1rem; font-weight:500; }
+.brew-score span { color:var(--text-secondary); }

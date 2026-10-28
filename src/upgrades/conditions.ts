@@ -29,6 +29,10 @@ export interface EffectCondition {
   selfSupplies: boolean;
 }
 export interface ConditionCredit {
+  /** The condition's predicate key ("cast:colorless", "counters:+1/+1"). */
+  key: string;
+  /** Roles this ability adds to the card when its condition is met (what it turns the condition into). */
+  adds: string[];
   needs: string;
   line: string;
   understood: boolean;

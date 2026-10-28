@@ -2256,5 +2256,378 @@
   "legalities": {
    "commander": "legal"
   }
+ },
+ {
+  "name": "Retreat to Coralhelm",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Landfall — Whenever a land you control enters, choose one —\n• You may tap or untap target creature.\n• Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
+  "keywords": [
+   "Landfall",
+   "Scry"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "cf8246c1-1db2-409f-9440-222d6dc78297",
+  "oracle_id": "c450f6b7-bb2a-4b8c-aec7-d27555137b63",
+  "set": "dsc",
+  "collector_number": "126",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Tireless Provisioner",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Elf Scout",
+  "oracle_text": "Landfall — Whenever a land you control enters, create a Food token or a Treasure token. (Food is an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\" Treasure is an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+  "keywords": [
+   "Treasure",
+   "Food",
+   "Landfall"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "id": "a1e048e0-19d2-4076-892d-f8b3104dee37",
+  "oracle_id": "ab8d5f5c-1976-4f77-8ed2-8d28ee666741",
+  "set": "moc",
+  "collector_number": "313",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Aesi, Tyrant of Gyre Strait",
+  "mana_cost": "{4}{G}{U}",
+  "cmc": 6.0,
+  "type_line": "Legendary Creature — Serpent",
+  "oracle_text": "You may play an additional land on each of your turns.\nLandfall — Whenever a land you control enters, you may draw a card.",
+  "keywords": [
+   "Landfall"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "id": "673c21f8-02b6-4ac4-b2fc-df065b4ac662",
+  "oracle_id": "6511f317-bd38-46d0-b800-7125a3f420da",
+  "set": "dsc",
+  "collector_number": "210",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Roil Elemental",
+  "mana_cost": "{3}{U}{U}{U}",
+  "cmc": 6.0,
+  "type_line": "Creature — Elemental",
+  "oracle_text": "Flying\nLandfall — Whenever a land you control enters, you may gain control of target creature for as long as you control this creature.",
+  "keywords": [
+   "Landfall",
+   "Flying"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "id": "66139c73-8e14-433d-bcb6-ae3e518bcdfb",
+  "oracle_id": "7e0d2965-bbcd-4214-b1b6-c0d2601ce078",
+  "set": "zen",
+  "collector_number": "62",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Hydroid Krasis",
+  "mana_cost": "{X}{G}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Jellyfish Hydra Beast",
+  "oracle_text": "When you cast this spell, you gain half X life and draw half X cards. Round down each time.\nFlying, trample\nThis creature enters with X +1/+1 counters on it.",
+  "keywords": [
+   "Flying",
+   "Trample"
+  ],
+  "colors": [
+   "G",
+   "U"
+  ],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "power": "0",
+  "toughness": "0",
+  "id": "52e5d3fe-46bc-4014-9819-5aa7c7e64838",
+  "oracle_id": "6bd872b2-5c40-4e11-9a7f-0136a51b0642",
+  "set": "soc",
+  "collector_number": "315",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Oracle of Mul Daya",
+  "mana_cost": "{3}{G}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elf Shaman",
+  "oracle_text": "You may play an additional land on each of your turns.\nPlay with the top card of your library revealed.\nYou may play lands from the top of your library.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "ab19808f-a5b8-4dfd-800e-2064cd6538c8",
+  "oracle_id": "6c5b02eb-7829-436a-8555-fea200e4b67f",
+  "set": "eoc",
+  "collector_number": "102",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Azusa, Lost but Seeking",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Human Monk",
+  "oracle_text": "You may play two additional lands on each of your turns.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "1",
+  "toughness": "2",
+  "id": "2fe97fbe-a6d6-4e96-8c26-f81bcdf579a1",
+  "oracle_id": "6c2c8bf3-9bf8-4a86-89d3-3bb36260dc51",
+  "set": "cmm",
+  "collector_number": "274",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Dryad of the Ilysian Grove",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Enchantment Creature — Nymph Dryad",
+  "oracle_text": "You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "43be1363-7e73-4862-b45f-07f490ab46be",
+  "oracle_id": "bdbde5d0-f5e4-44da-b27c-b4ad6f374cc9",
+  "set": "cmm",
+  "collector_number": "891",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Exploration",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Enchantment",
+  "oracle_text": "You may play an additional land on each of your turns.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "5b372045-a4a0-44c8-96ec-1e201d61ed26",
+  "oracle_id": "0c2841bb-038c-4fbf-8360-bc0a1522b58d",
+  "set": "dmr",
+  "collector_number": "159",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Burgeoning",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever an opponent plays a land, you may put a land card from your hand onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "6da045f8-6278-4c84-9d39-025adf0789c1",
+  "oracle_id": "88cf4c1a-5863-45fc-b76d-7ad33b175b2b",
+  "set": "c16",
+  "collector_number": "143",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mystic Remora",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Cumulative upkeep {1} (At the beginning of your upkeep, put an age counter on this permanent, then sacrifice it unless you pay its upkeep cost for each age counter on it.)\nWhenever an opponent casts a noncreature spell, you may draw a card unless that player pays {4}.",
+  "keywords": [
+   "Cumulative upkeep"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "40140991-cffa-4b52-9a25-37e9a8aa9ddd",
+  "oracle_id": "8a52f3c0-2552-4425-b2e3-5496eb2232a7",
+  "set": "dmr",
+  "collector_number": "59",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Simic Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{1}, {T}: Add {G}{U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "G",
+   "U"
+  ],
+  "id": "bf222c78-f12e-4857-93da-fade99c740b8",
+  "oracle_id": "44503105-3e13-408d-a44f-37d503c61d72",
+  "set": "dsc",
+  "collector_number": "252",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Plains",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Plains",
+  "oracle_text": "({T}: Add {W}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W"
+  ],
+  "id": "09ac862f-0a51-44dd-b86f-9412b8218b13",
+  "oracle_id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+  "set": "mdd",
+  "collector_number": "292",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Swamp",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Swamp",
+  "oracle_text": "({T}: Add {B}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B"
+  ],
+  "id": "b233b117-9369-45c1-80c5-cc857386b6be",
+  "oracle_id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+  "set": "mdd",
+  "collector_number": "296",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mountain",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Mountain",
+  "oracle_text": "({T}: Add {R}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "id": "85177bd7-6c50-48da-b692-ae5fe7bd357c",
+  "oracle_id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+  "set": "mdd",
+  "collector_number": "298",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
  }
 ]

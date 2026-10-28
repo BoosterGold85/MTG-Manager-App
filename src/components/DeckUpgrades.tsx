@@ -4,14 +4,21 @@ import type { Deck, SavedDeckCandidate } from "../models/deck";
 import { deckCount } from "../decks/decks";
 import {
   MIN_CURRENT_DECK_CARDS,
+  analysisConfidence,
+  brewCandidates,
+  brewFor,
   buildAroundCommander,
   buildFor,
   candidateGroups,
   commanderBlueprint,
   improveCurrentDeck,
   mainDeckCount,
+  synergyFor,
   upgradeFor,
 } from "../upgrades";
+import type { BrewResult } from "../upgrades/brew";
+import { compareBrew } from "../upgrades/brew";
+import { InThisDeck } from "./InThisDeck";
 import type { BuildCandidate, UpgradeCandidate } from "../upgrades";
 import type { OwnedCandidateGroup } from "../synergy/explorer";
 import type { BuildEvaluation } from "../upgrades/build";
@@ -133,6 +140,59 @@ function ImproveWhy({ u, build }: { u: UpgradeEvaluation; build: BuildEvaluation
     </>
   );
 }
+const BREW_FILTERS: Record<string, { label: string; test: (b: BrewResult) => boolean }> = {
+  all: { label: "All", test: () => true },
+  gems: { label: "Hidden Gems · 85+", test: (b) => b.score >= 85 },
+  interesting: { label: "Interesting Brew · 70+", test: (b) => b.score >= 70 },
+  potential: { label: "Some Brew Potential · 50+", test: (b) => b.score >= 50 },
+  low: { label: "Low Brew / Conventional · below 50", test: (b) => b.score < 50 },
+};
+const LOW_CONFIDENCE_BREW =
+  "MTG Manager is uncertain about part of this deck's strategy. Brew recommendations may change after those cards or abilities are understood.";
+/** The evidence behind a Brew Score: each line names this deck's cards. */
+function BrewWhy({ brew }: { brew: BrewResult }) {
+  return (
+    <>
+      <dl className="brew-why">
+        {brew.why.map((w, i) => (
+          <div key={i}>
+            <dt>{w.title}</dt>
+            <dd>{w.text}</dd>
+          </div>
+        ))}
+      </dl>
+      {brew.negatives.length > 0 && (
+        <>
+          <h4>Negatives</h4>
+          <ul>
+            {brew.negatives.map((n) => (
+              <li key={n}>{n}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      <p className="meta-text">
+        {brew.components.map((c) => `${c.name} ${Math.round(c.points)}`).join(" · ")}
+        {brew.penalties.length ? ` · ${brew.penalties.map((p) => `${p.name} ${Math.round(p.points)}`).join(" · ")}` : ""}
+      </p>
+    </>
+  );
+}
+/** Card Detail: why the card is interesting here, kept apart from Card Intelligence and In This Deck (Synergy). */
+function BrewInThisDeck({ brew }: { brew: BrewResult }) {
+  return (
+    <section className="brew-in-deck" aria-label="Brew in this deck">
+      <p className="eyebrow">INTERESTING HERE, NOT POWER LEVEL</p>
+      <h3>Brew in This Deck</h3>
+      <p className="brew-score">
+        <strong>Brew {brew.score}</strong> <span>{brew.label}</span>
+      </p>
+      <p>{brew.headline}</p>
+      {brew.confidence !== "High" && <p className="meta-text">Analysis confidence: {brew.confidence}</p>}
+      <BrewWhy brew={brew} />
+    </section>
+  );
+}
 /**
  * Upgrades: the two approved goals (Improve My Current Deck / Build Around My Commander) as a deck section, plus saved
  * candidates and the actions they lead to. Scores come unchanged from the v0.6.6 engine.
@@ -159,6 +219,7 @@ export function DeckUpgrades({
   const [query, setQuery] = useState(""),
     [availability, setAvailability] = useState("all"),
     [sort, setSort] = useState("default"),
+    [brewFilter, setBrewFilter] = useState("all"),
     [limit, setLimit] = useState(40),
     [reviewing, setReviewing] = useState<string | null>(null),
     [detail, setDetail] = useState<string | null>(null);
@@ -176,18 +237,27 @@ export function DeckUpgrades({
   const build = useMemo(() => (mode === "build" && !analyzing ? buildAroundCommander(state, deck) : []), [mode, analyzing, state, deck]);
   const improve = useMemo(() => (mode === "improve" && !analyzing ? improveCurrentDeck(state, deck) : []), [mode, analyzing, state, deck]);
   const pool: Candidate[] = mode === "build" ? build : improve;
+  // Brew is computed only when a Brew or Synergy view asks for it, then cached per deck revision.
+  const brewMode = sort.startsWith("brew") || brewFilter !== "all";
+  const needBrew = brewMode || sort === "synergy";
+  const brew = useMemo(() => (needBrew && mode && !analyzing ? brewCandidates(state, deck) : null), [needBrew, mode, analyzing, state, deck]);
+  const confidence = useMemo(() => (brewMode && mode ? analysisConfidence(state, deck).level : "High"), [brewMode, mode, state, deck]);
   const sorted = useMemo(() => {
     const list = [...pool];
     const name = (a: Candidate, b: Candidate) => a.card.name.localeCompare(b.card.name, "en") || a.identity.localeCompare(b.identity, "en");
+    if (brew && sort === "brew-desc") return list.sort((a, b) => compareBrew({ brew: brew.get(a.identity)!, name: a.card.name }, { brew: brew.get(b.identity)!, name: b.card.name }) || name(a, b));
+    if (brew && sort === "brew-asc") return list.sort((a, b) => brew.get(a.identity)!.score - brew.get(b.identity)!.score || brew.get(b.identity)!.synergy - brew.get(a.identity)!.synergy || name(a, b));
+    if (brew && sort === "synergy") return list.sort((a, b) => brew.get(b.identity)!.synergy - brew.get(a.identity)!.synergy || name(a, b));
     if (sort === "fit") return list.sort((a, b) => b.build.commanderFit - a.build.commanderFit || name(a, b));
     if (sort === "priority") return list.sort((a, b) => b.build.buildPriority - a.build.buildPriority || name(a, b));
     if (sort === "mv") return list.sort((a, b) => a.card.manaValue - b.card.manaValue || name(a, b));
     if (sort === "name") return list.sort(name);
     return list;
-  }, [pool, sort]);
+  }, [pool, sort, brew]);
   const results = sorted.filter(
     (c) =>
       (availability === "all" || (availability === "available" ? c.available > 0 : c.available === 0)) &&
+      (!brew || BREW_FILTERS[brewFilter].test(brew.get(c.identity)!)) &&
       c.card.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
   );
   const saved = deck.savedCandidates || [];
@@ -229,6 +299,7 @@ export function DeckUpgrades({
     setQuery(c.card.name);
     setAvailability("all");
     setSort("default");
+    setBrewFilter("all");
   };
   const buildAction = (c: OwnedCandidateGroup) =>
     complete ? (
@@ -247,12 +318,15 @@ export function DeckUpgrades({
   if (detailGroup) {
     const detailBuild = buildFor(state, deck, detailGroup.canonical);
     const upgrade = canImprove ? upgradeFor(state, deck, detailGroup.canonical, detailGroup.identity) : undefined;
+    const detailBrew = brewFor(state, deck, detailGroup.canonical, detailGroup.identity);
     return (
       <CardDetail
         card={detailGroup.card}
         collection={state}
         onClose={() => setDetail(null)}
         extra={
+          <>
+          <InThisDeck synergy={synergyFor(state, deck, detailGroup.canonical)} />
           <section className="upgrade-scores" aria-label="Upgrades I Own scores">
             <h3>Upgrades I Own</h3>
             <dl>
@@ -281,6 +355,8 @@ export function DeckUpgrades({
               </div>
             </dl>
           </section>
+          <BrewInThisDeck brew={detailBrew} />
+          </>
         }
       />
     );
@@ -337,6 +413,7 @@ export function DeckUpgrades({
                 setMode("");
                 setQuery("");
                 setSort("default");
+                setBrewFilter("all");
                 setLimit(40);
               }}
             >
@@ -395,26 +472,72 @@ export function DeckUpgrades({
                 <option value="default">{mode === "improve" ? "Upgrade Value" : "Build Priority, then Commander Fit"}</option>
                 {mode === "improve" && <option value="priority">Build Priority</option>}
                 <option value="fit">Commander Fit</option>
+                <option value="synergy">Synergy</option>
+                <option value="brew-desc">Brew Score · High → Low</option>
+                <option value="brew-asc">Brew Score · Low → High</option>
                 <option value="mv">Mana value</option>
                 <option value="name">Name</option>
               </select>
             </label>
+            <label>
+              Brew
+              <select
+                value={brewFilter}
+                onChange={(e) => {
+                  setBrewFilter(e.target.value);
+                  setLimit(40);
+                }}
+              >
+                {Object.entries(BREW_FILTERS).map(([id, f]) => (
+                  <option key={id} value={id}>
+                    {f.label}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
+          <div className="brew-quick">
+            <button
+              className="management-button"
+              aria-pressed={brewFilter === "gems" && sort === "brew-desc"}
+              onClick={() => {
+                setBrewFilter("gems");
+                setSort("brew-desc");
+                setLimit(40);
+              }}
+            >
+              Hidden Gems
+            </button>
+            <span className="meta-text">Brew Score asks how interesting and unusually useful a card is in this deck. It is not a power rating.</span>
+          </div>
+          {brewMode && confidence === "Low" && <p className="brew-confidence prose">{LOW_CONFIDENCE_BREW}</p>}
+          {brewMode && confidence === "Medium" && <p className="brew-confidence meta-text">Analysis confidence: Medium</p>}
           <p role="status">{analyzing ? "Analyzing owned cards…" : `${results.length} ${results.length === 1 ? "candidate" : "candidates"}`}</p>
           {!analyzing && !results.length && <p className="prose">No owned candidates match. Try another search or import more of your collection.</p>}
           <ul className="synergy-candidates">
             {results.slice(0, limit).map((c) => {
               const u = "upgrade" in c ? (c as UpgradeCandidate).upgrade : null;
               const intent = u ? "improve" : "build";
+              const b = brewMode && brew ? brew.get(c.identity)! : null;
               const isSaved = !!savedFor(c.identity, intent);
               return (
                 <li key={c.identity} data-fit={u ? u.label : c.build.priorityLabel} className="upgrade-card">
-                  <button className="synergy-art deck-art-button" aria-label={`View ${c.card.name} details`} onClick={() => setDetail(c.identity)}>
+                  <button className="synergy-art deck-art-button" onClick={() => setDetail(c.identity)}>
                     <CardImage card={c.card} />
+                    <span className="sr-only">View {c.card.name} details</span>
                   </button>
                   <div>
                     <h3>{c.card.name}</h3>
-                    {u ? (
+                    {b ? (
+                      <>
+                        <p className="upgrade-headline brew-headline">
+                          <span className="metric-name">Brew</span> <span className="upgrade-number">{b.score}</span> <strong>{b.label}</strong>
+                        </p>
+                        <p className="upgrade-secondary">Synergy {b.synergy}</p>
+                        <p className="upgrade-cut">{b.headline}</p>
+                        <p className="prose">{b.summary}</p>
+                      </>
+                    ) : u ? (
                       <>
                         <p className="upgrade-headline">
                           <strong>{u.label}</strong> <span className="upgrade-number">{signed(u.upgradeValue)}</span>
@@ -449,8 +572,14 @@ export function DeckUpgrades({
                         {isSaved ? "Saved" : u ? "Save Upgrade" : "Save Candidate"}
                       </button>
                     </div>
+                    {b && (
+                      <details className="upgrade-why brew-details">
+                        <summary>Why this brew?</summary>
+                        <BrewWhy brew={b} />
+                      </details>
+                    )}
                     <details className="upgrade-why">
-                      <summary>Why?</summary>
+                      <summary>{b ? (u ? "Why this upgrade?" : "Why it fits?") : "Why?"}</summary>
                       {u ? <ImproveWhy u={u} build={c.build} /> : <BuildWhy build={c.build} />}
                       <Printings c={c} />
                     </details>
@@ -552,8 +681,9 @@ function SavedList({
           const build = buildFor(state, deck, group.canonical);
           return (
             <li key={s.id} className="upgrade-card" data-intent={s.intent}>
-              <button className="synergy-art deck-art-button" aria-label={`View ${group.card.name} details`} onClick={() => onDetail(group.identity)}>
+              <button className="synergy-art deck-art-button" onClick={() => onDetail(group.identity)}>
                 <CardImage card={group.card} />
+                <span className="sr-only">View {group.card.name} details</span>
               </button>
               <div>
                 <h3>{group.card.name}</h3>
