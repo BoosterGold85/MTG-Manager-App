@@ -50,7 +50,7 @@ export const componentLabels: Record<Component, string> = {
 };
 type Vector = Record<Component, number>;
 const COVERAGE: [AnswerTarget, number][] = [["creature", 0.32], ["artifact", 0.2], ["enchantment", 0.2], ["planeswalker", 0.06], ["graveyard", 0.1], ["spell", 0.12]];
-const ROLE_NEEDS: Need[] = ["ramp", "cardAdvantage", "interaction", "wipes", "protection", "recursion", "tutors", "finishers", "tokens", "sacrificeOutlets", "controlledDiscard"];
+const ROLE_NEEDS: Need[] = ["ramp", "cardAdvantage", "interaction", "wipes", "protection", "recursion", "tutors", "finishers", "tokens", "sacrificeOutlets", "controlledDiscard", "defense"];
 interface Contribution {
   quantity: number;
   land: number;
@@ -291,6 +291,18 @@ function deckTargets(dna: DeckDna, blueprint: CommanderBlueprint, cards: DeckCar
       targets.ramp = Math.max(4, targets.ramp + shift);
       reasons.ramp.push(`The 99's average mana value is ${average.toFixed(1)}, so this deck needs ${shift < 0 ? "less" : "more"} acceleration (target ${targets.ramp}).`);
     }
+  }
+  // Card velocity: a deck that draws far more than the baseline finds its land drops with fewer lands.
+  const draw = main.reduce((n, c) => n + (c.fn.roles.cardAdvantage || 0) * c.quantity, 0) + cards.filter((c) => c.commander).reduce((n, c) => n + (c.fn.roles.cardAdvantage || 0), 0);
+  if (draw >= 2 * targets.cardAdvantage && targets.lands > 33) {
+    targets.lands -= 2;
+    reasons.lands.push(`This deck draws heavily (${draw.toFixed(1)} card-advantage pieces), so it needs fewer lands (target ${targets.lands}).`);
+  }
+  // Defense is optional; a deck that already runs several pillowfort / restriction cards gets a row to track it.
+  const defense = main.filter((c) => c.fn.roles.defense).length;
+  if (defense >= 3 && !targets.defense) {
+    targets.defense = 3;
+    reasons.defense.push(`This deck runs ${defense} pillowfort or restriction cards, so Defense is tracked.`);
   }
   const theme = (id: string) => dna.themes.find((t) => t.id === id);
   for (const [need, family, planTarget] of PLAN_NEEDS) {

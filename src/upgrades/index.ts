@@ -99,11 +99,10 @@ export interface DeckHealthRow {
   reasons: string[];
 }
 // Deck Health reads the same card functions, totals and Commander Blueprint targets as Upgrade Value: one source of truth.
-const HEALTH_NEEDS: Need[] = ["ramp", "cardAdvantage", "interaction", "wipes", "protection", "recursion", "tutors", "finishers", "tokens", "sacrificeOutlets", "controlledDiscard"];
+const HEALTH_NEEDS: Need[] = ["ramp", "cardAdvantage", "interaction", "wipes", "protection", "recursion", "tutors", "finishers", "tokens", "sacrificeOutlets", "controlledDiscard", "defense"];
 export function deckHealth(state: CollectionState, deck: Deck): DeckHealthRow[] {
   return memo(state, `health:${deckKey(deck)}`, () => {
     const model = currentDeckModel(state, deck);
-    const needs = model.blueprint.needs;
     const rows: DeckHealthRow[] = HEALTH_NEEDS.filter((need) => model.targets[need] > 0).map((need) => {
       const count = model.totals.roles[need], target = model.targets[need];
       const ratio = count / target;
@@ -116,7 +115,7 @@ export function deckHealth(state: CollectionState, deck: Deck): DeckHealthRow[] 
       count: lands,
       target: landTarget,
       status: lands >= landTarget - 1 && lands <= landTarget + 3 ? "Good" : lands > landTarget + 3 ? "High" : lands >= landTarget - 3 ? "Slightly Low" : "Low",
-      reasons: needs.lands.reasons,
+      reasons: model.targetReasons.lands,
     });
     return rows;
   });

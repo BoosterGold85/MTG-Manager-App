@@ -300,7 +300,7 @@ export default function App() {
           </a>
           {nav()}
           <span className="header-note">
-            <span /> THE DIGITAL BINDER <span className="version">v0.6.13</span>
+            <span /> THE DIGITAL BINDER <span className="version">v0.6.14</span>
           </span>
         </div>
       </header>
@@ -571,7 +571,7 @@ export default function App() {
         )}
         <footer className="app-footer">
           <span>
-            MTG Manager <span className="muted">· v0.6.13</span>
+            MTG Manager <span className="muted">· v0.6.14</span>
           </span>
           <span>Card data & artwork: Scryfall · © Wizards of the Coast</span>
         </footer>

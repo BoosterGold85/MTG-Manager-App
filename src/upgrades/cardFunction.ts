@@ -22,7 +22,8 @@ export type Need =
   | "finishers"
   | "tokens"
   | "sacrificeOutlets"
-  | "controlledDiscard";
+  | "controlledDiscard"
+  | "defense";
 export const needLabels: Record<Need, string> = {
   lands: "Lands",
   ramp: "Ramp",
@@ -36,6 +37,7 @@ export const needLabels: Record<Need, string> = {
   tokens: "Token generation",
   sacrificeOutlets: "Sacrifice outlets",
   controlledDiscard: "Controlled discard",
+  defense: "Defense",
 };
 /** Scoped engine pieces: a multiplier is only as good as the matching sources it amplifies. */
 export interface EnginePieces {
@@ -224,6 +226,29 @@ export function cardFunction(original: CardMetadata): CardFunction {
   }
   if (/sacrifice (?:another |a |an? |any number of )?(?:creature|artifact|permanent)[^:]*:/i.test(text)) add("sacrificeOutlets", 1);
   if (has("controlled_discard")) add("controlledDiscard", 1);
+  // Alternate wins and repeatable mill end the game without combat.
+  if (/\byou win the game\b/i.test(text)) {
+    add("finishers", 1);
+    reasons.push({ value: 0.6, reason: "Wins the game on its own condition." });
+  }
+  if (repeatable && /\b(?:each opponent|target opponent|target player|that player) mills? (?:\w+|x|\d+) cards?\b/i.test(text)) {
+    add("finishers", 0.7);
+    reasons.push({ value: 0.5, reason: "Mills opponents repeatedly." });
+  }
+  // Defense: pillowfort (attacks against you cost or can't happen) and restrictions on what opponents can do.
+  if (/\bcan't attack you\b|\bcreatures can't attack (?:you|planeswalkers you control)\b|\bprevent all (?:combat )?damage that would be dealt to you\b/i.test(text)) {
+    add("defense", 1);
+    reasons.push({ value: 0.4, reason: "Discourages attacks against you (pillowfort)." });
+  }
+  if (/\b(?:your opponents|each opponent|opponents) can't (?:cast|activate|draw|search|untap)\b|\bplayers can't cast more than one spell\b|\beach player can't cast more than\b/i.test(text)) {
+    add("defense", 0.8);
+    reasons.push({ value: 0.4, reason: "Restricts what opponents can do." });
+  }
+  // Creatures neutralized rather than removed ("loses all abilities", "becomes a 1/1"), even when their controller chooses.
+  if (!roles.interaction && /\btarget creatures? (?:you don't control|an opponent controls|your opponents control)\b[^\n]*\b(?:loses all abilities|becomes? a (?:\d\/\d|1\/1)[^.]*creature)/i.test(text)) {
+    add("interaction", /\bup to (?:two|three|four|five|x)\b/i.test(text) ? 0.8 : 0.6);
+    reasons.push({ value: 0.45, reason: `Neutralizes opposing creatures${/villainous choice|chooses/i.test(text) ? " (their controller chooses how)" : ""}.` });
+  }
   // Finishing and engines
   const evasive = keywords.some((k) => ["flying", "trample", "menace", "shadow", "fear", "intimidate", "unblockable"].includes(k));
   const power = Number(card.power), toughness = Number(card.toughness);

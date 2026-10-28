@@ -98,8 +98,15 @@ export const families: ThemeFamily[] = [
   {
     id: "pings",
     label: "Pings / Punisher",
-    tags: ["opponent-life-loss", "punisher", "symmetric-draw"],
+    tags: ["opponent-life-loss", "punisher"],
     plan: "ping opponents a little at a time, punishing what every player does",
+  },
+  {
+    // Symmetric draw is its own plan (group hug, draw-to-win); punisher cards still read it through Synergy.
+    id: "group-draw",
+    label: "Group Draw",
+    tags: ["symmetric-draw"],
+    plan: "give every player extra cards and turn the shared draws to your advantage",
   },
   {
     id: "discard",
@@ -186,4 +193,4 @@ export const families: ThemeFamily[] = [
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.12";
+export const DNA_VERSION = "0.6.14";

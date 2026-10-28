@@ -46,6 +46,7 @@ export const baseline: Record<Need, [number, number, string]> = {
   tokens: [0, 0.3, "Token generation is optional unless the plan wants bodies."],
   sacrificeOutlets: [0, 0.2, "Sacrifice outlets are optional unless the plan uses them."],
   controlledDiscard: [0, 0.2, "Controlled discard is optional unless cards want to be discarded."],
+  defense: [0, 0.2, "Pillowfort and restriction effects are optional; they protect you rather than win."],
 };
 const mechanicLabel = (event: string, objects: string[], types: string[], nontoken: boolean) => {
   const subject = [nontoken ? "nontoken" : "", ...types, ...objects.filter((o) => !types.length || o !== "Creature")].filter(Boolean).join(" ") || "permanents";

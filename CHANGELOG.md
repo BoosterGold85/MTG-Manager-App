@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.6.14 — Group draw, alternate wins and defense
+
+From the user's Kwain, Itinerant Meddler deck, now a regression fixture (`tests/kwainFixture.ts`, real Scryfall data). Every fix is generic, with no card names in rules.
+
+- **Group Draw** is its own Deck DNA theme. Symmetric draw (Howling Mine, Prosperity, Windfall) is no longer filed under Pings / Punisher, so a group-draw deck no longer reads as "ping opponents". Synergy still credits symmetric draw for punisher cards that feed on it.
+- **Alternate wins and mill are finishers:**
+  - "You win the game" cards count fully (Approach of the Second Sun, Laboratory Maniac, Triskaidekaphile).
+  - Repeatable opponent mill counts 0.7 (Psychic Corrosion).
+- **New Defense role:**
+  - Pillowfort cards: attacks against you cost extra or can't happen (Ghostly Prison, Propaganda, Windborn Muse).
+  - Restriction cards: opponents can't cast spells, activate abilities and the like (Tidal Barracuda).
+  - Defense is optional. Deck Health shows a Defense row once the deck runs three or more such cards.
+- **Neutralized creatures count as removal:** "loses all abilities" and "becomes a 1/1" on opposing creatures, including when their controller chooses how (Hunted by The Family).
+- **Card velocity:** a deck whose card advantage is at least twice its target gets a land target 2 lower, with the reason shown. Deck Health's land row now shows the deck-derived reasons.
+- In the Kwain deck:
+  - **Summary:** "give every player extra cards and turn the shared draws to your advantage".
+  - **Finishers:** 5.5 / 4.
+  - **Defense:** 4.8 / 3.
+  - **Lands:** 32 / 34.
+  - **"App isn't sure" warning:** no untracked cards left.
+- DNA version 0.6.14. Golden engine output unchanged; holdout checks still pass 13 of 14.
+
 ## 0.6.13 — Brew Score v1
 
 - **Brew Score** asks "how interesting and unusually useful is this card in THIS deck?", separate from Synergy ("how strongly does it support the deck?"). Synergy and Upgrade scores are unchanged, and the golden engine output is identical.
