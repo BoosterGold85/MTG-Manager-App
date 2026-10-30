@@ -1,0 +1,3660 @@
+[
+  {
+    "id": "counters",
+    "theme": "+1/+1 Counters / Clone",
+    "commander": "Atraxa, Praetors' Voice",
+    "core": [
+      "Hardened Scales",
+      "Conclave Mentor",
+      "Rishkar, Peema Renegade",
+      "Forgotten Ancient",
+      "Good-Fortune Unicorn",
+      "Master Biomancer",
+      "Renata, Called to the Hunt",
+      "Deepglow Skate",
+      "Thrummingbird",
+      "Sakura-Tribe Elder",
+      "Satyr Wayfinder",
+      "Eternal Witness",
+      "Fact or Fiction",
+      "Clone",
+      "Spark Double",
+      "Clever Impersonator",
+      "Solemn Simulacrum",
+      "Mulldrifter"
+    ],
+    "obvious": [
+      "Winding Constrictor",
+      "Inspiring Call"
+    ],
+    "hidden": [
+      "Evolution Witness",
+      "Fathom Mage"
+    ],
+    "traps": [
+      "Solemnity",
+      "Root Maze"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Atraxa, Praetors' Voice",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Hardened Scales",
+        "quantity": 1
+      },
+      {
+        "name": "Conclave Mentor",
+        "quantity": 1
+      },
+      {
+        "name": "Rishkar, Peema Renegade",
+        "quantity": 1
+      },
+      {
+        "name": "Forgotten Ancient",
+        "quantity": 1
+      },
+      {
+        "name": "Good-Fortune Unicorn",
+        "quantity": 1
+      },
+      {
+        "name": "Master Biomancer",
+        "quantity": 1
+      },
+      {
+        "name": "Renata, Called to the Hunt",
+        "quantity": 1
+      },
+      {
+        "name": "Deepglow Skate",
+        "quantity": 1
+      },
+      {
+        "name": "Thrummingbird",
+        "quantity": 1
+      },
+      {
+        "name": "Sakura-Tribe Elder",
+        "quantity": 1
+      },
+      {
+        "name": "Satyr Wayfinder",
+        "quantity": 1
+      },
+      {
+        "name": "Eternal Witness",
+        "quantity": 1
+      },
+      {
+        "name": "Fact or Fiction",
+        "quantity": 1
+      },
+      {
+        "name": "Clone",
+        "quantity": 1
+      },
+      {
+        "name": "Spark Double",
+        "quantity": 1
+      },
+      {
+        "name": "Clever Impersonator",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mulldrifter",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Swamp",
+        "quantity": 9
+      },
+      {
+        "name": "Forest",
+        "quantity": 9
+      },
+      {
+        "name": "Island",
+        "quantity": 9
+      },
+      {
+        "name": "Plains",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "id": "graveyard",
+    "theme": "Graveyard / Reanimator",
+    "commander": "Meren of Clan Nel Toth",
+    "core": [
+      "Satyr Wayfinder",
+      "Stitcher's Supplier",
+      "Sakura-Tribe Elder",
+      "Viscera Seer",
+      "Carrion Feeder",
+      "Blood Artist",
+      "Zulaport Cutthroat",
+      "Eternal Witness",
+      "Solemn Simulacrum",
+      "Victimize",
+      "Reanimate",
+      "Grisly Salvage",
+      "Buried Alive",
+      "Skullclamp",
+      "Plaguecrafter"
+    ],
+    "obvious": [
+      "Living Death",
+      "Animate Dead"
+    ],
+    "hidden": [
+      "Tortured Existence",
+      "Pitiless Plunderer"
+    ],
+    "traps": [
+      "Grafdigger's Cage",
+      "Ground Seal"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Meren of Clan Nel Toth",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Satyr Wayfinder",
+        "quantity": 1
+      },
+      {
+        "name": "Stitcher's Supplier",
+        "quantity": 1
+      },
+      {
+        "name": "Sakura-Tribe Elder",
+        "quantity": 1
+      },
+      {
+        "name": "Viscera Seer",
+        "quantity": 1
+      },
+      {
+        "name": "Carrion Feeder",
+        "quantity": 1
+      },
+      {
+        "name": "Blood Artist",
+        "quantity": 1
+      },
+      {
+        "name": "Zulaport Cutthroat",
+        "quantity": 1
+      },
+      {
+        "name": "Eternal Witness",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Victimize",
+        "quantity": 1
+      },
+      {
+        "name": "Reanimate",
+        "quantity": 1
+      },
+      {
+        "name": "Grisly Salvage",
+        "quantity": 1
+      },
+      {
+        "name": "Buried Alive",
+        "quantity": 1
+      },
+      {
+        "name": "Skullclamp",
+        "quantity": 1
+      },
+      {
+        "name": "Plaguecrafter",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Swamp",
+        "quantity": 18
+      },
+      {
+        "name": "Forest",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "id": "aristocrats",
+    "theme": "Tokens / Aristocrats",
+    "commander": "Teysa Karlov",
+    "core": [
+      "Blood Artist",
+      "Zulaport Cutthroat",
+      "Cruel Celebrant",
+      "Viscera Seer",
+      "Carrion Feeder",
+      "Reassembling Skeleton",
+      "Ophiomancer",
+      "Bastion of Remembrance",
+      "Skullclamp",
+      "Midnight Reaper",
+      "Woe Strider",
+      "Doomed Traveler",
+      "Lingering Souls",
+      "Raise the Alarm",
+      "Solemn Simulacrum"
+    ],
+    "obvious": [
+      "Ashnod's Altar",
+      "Elenda, the Dusk Rose"
+    ],
+    "hidden": [
+      "Pawn of Ulamog",
+      "Sifter of Skulls"
+    ],
+    "traps": [
+      "Rest in Peace",
+      "Hushbringer"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Teysa Karlov",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Blood Artist",
+        "quantity": 1
+      },
+      {
+        "name": "Zulaport Cutthroat",
+        "quantity": 1
+      },
+      {
+        "name": "Cruel Celebrant",
+        "quantity": 1
+      },
+      {
+        "name": "Viscera Seer",
+        "quantity": 1
+      },
+      {
+        "name": "Carrion Feeder",
+        "quantity": 1
+      },
+      {
+        "name": "Reassembling Skeleton",
+        "quantity": 1
+      },
+      {
+        "name": "Ophiomancer",
+        "quantity": 1
+      },
+      {
+        "name": "Bastion of Remembrance",
+        "quantity": 1
+      },
+      {
+        "name": "Skullclamp",
+        "quantity": 1
+      },
+      {
+        "name": "Midnight Reaper",
+        "quantity": 1
+      },
+      {
+        "name": "Woe Strider",
+        "quantity": 1
+      },
+      {
+        "name": "Doomed Traveler",
+        "quantity": 1
+      },
+      {
+        "name": "Lingering Souls",
+        "quantity": 1
+      },
+      {
+        "name": "Raise the Alarm",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Swamp",
+        "quantity": 18
+      },
+      {
+        "name": "Plains",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "id": "blink",
+    "theme": "Blink / ETB",
+    "commander": "Roon of the Hidden Realm",
+    "core": [
+      "Momentary Blink",
+      "Ephemerate",
+      "Ghostly Flicker",
+      "Mulldrifter",
+      "Eternal Witness",
+      "Solemn Simulacrum",
+      "Wall of Omens",
+      "Coiling Oracle",
+      "Reclamation Sage",
+      "Cloudblazer",
+      "Restoration Angel",
+      "Soulherder",
+      "Panharmonicon",
+      "Sun Titan",
+      "Acidic Slime"
+    ],
+    "obvious": [
+      "Teleportation Circle",
+      "Thassa, Deep-Dwelling"
+    ],
+    "hidden": [
+      "Peregrine Drake",
+      "Archaeomancer"
+    ],
+    "traps": [
+      "Torpor Orb",
+      "Hushwing Gryff"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Roon of the Hidden Realm",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Momentary Blink",
+        "quantity": 1
+      },
+      {
+        "name": "Ephemerate",
+        "quantity": 1
+      },
+      {
+        "name": "Ghostly Flicker",
+        "quantity": 1
+      },
+      {
+        "name": "Mulldrifter",
+        "quantity": 1
+      },
+      {
+        "name": "Eternal Witness",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Wall of Omens",
+        "quantity": 1
+      },
+      {
+        "name": "Coiling Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Reclamation Sage",
+        "quantity": 1
+      },
+      {
+        "name": "Cloudblazer",
+        "quantity": 1
+      },
+      {
+        "name": "Restoration Angel",
+        "quantity": 1
+      },
+      {
+        "name": "Soulherder",
+        "quantity": 1
+      },
+      {
+        "name": "Panharmonicon",
+        "quantity": 1
+      },
+      {
+        "name": "Sun Titan",
+        "quantity": 1
+      },
+      {
+        "name": "Acidic Slime",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Forest",
+        "quantity": 12
+      },
+      {
+        "name": "Island",
+        "quantity": 12
+      },
+      {
+        "name": "Plains",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "id": "artifacts",
+    "theme": "Artifacts",
+    "commander": "Breya, Etherium Shaper",
+    "core": [
+      "Myr Battlesphere",
+      "Sai, Master Thopterist",
+      "Ichor Wellspring",
+      "Mycosynth Wellspring",
+      "Goblin Welder",
+      "Goblin Engineer",
+      "Mishra's Bauble",
+      "Skullclamp",
+      "Solemn Simulacrum",
+      "Foundry Inspector",
+      "Etherium Sculptor",
+      "Thoughtcast",
+      "Thopter Spy Network",
+      "Executioner's Capsule",
+      "Nihil Spellbomb"
+    ],
+    "obvious": [
+      "Jhoira, Weatherlight Captain",
+      "Shimmer Dragon"
+    ],
+    "hidden": [
+      "Marionette Master",
+      "Scrap Trawler"
+    ],
+    "traps": [
+      "Stony Silence",
+      "Null Rod"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Breya, Etherium Shaper",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Myr Battlesphere",
+        "quantity": 1
+      },
+      {
+        "name": "Sai, Master Thopterist",
+        "quantity": 1
+      },
+      {
+        "name": "Ichor Wellspring",
+        "quantity": 1
+      },
+      {
+        "name": "Mycosynth Wellspring",
+        "quantity": 1
+      },
+      {
+        "name": "Goblin Welder",
+        "quantity": 1
+      },
+      {
+        "name": "Goblin Engineer",
+        "quantity": 1
+      },
+      {
+        "name": "Mishra's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Skullclamp",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Etherium Sculptor",
+        "quantity": 1
+      },
+      {
+        "name": "Thoughtcast",
+        "quantity": 1
+      },
+      {
+        "name": "Thopter Spy Network",
+        "quantity": 1
+      },
+      {
+        "name": "Executioner's Capsule",
+        "quantity": 1
+      },
+      {
+        "name": "Nihil Spellbomb",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Bane of Bala Ged",
+        "quantity": 1
+      },
+      {
+        "name": "Desolation Twin",
+        "quantity": 1
+      },
+      {
+        "name": "Swamp",
+        "quantity": 9
+      },
+      {
+        "name": "Mountain",
+        "quantity": 9
+      },
+      {
+        "name": "Island",
+        "quantity": 9
+      },
+      {
+        "name": "Plains",
+        "quantity": 9
+      }
+    ]
+  },
+  {
+    "id": "typal",
+    "theme": "Dragon Typal",
+    "commander": "Lathliss, Dragon Queen",
+    "core": [
+      "Dragon Tempest",
+      "Scourge of Valkas",
+      "Utvara Hellkite",
+      "Dragonlord's Servant",
+      "Dragonspeaker Shaman",
+      "Dragon's Hoard",
+      "Rapacious Dragon",
+      "Thunderbreak Regent",
+      "Hellkite Charger",
+      "Crucible of Fire",
+      "Terror of Mount Velus",
+      "Drakuseth, Maw of Flames",
+      "Goldlust Triad",
+      "Warstorm Surge",
+      "Atsushi, the Blazing Sky"
+    ],
+    "obvious": [
+      "Herald's Horn",
+      "Orb of Dragonkind"
+    ],
+    "hidden": [
+      "Cursed Mirror",
+      "Flameshadow Conjuring"
+    ],
+    "traps": [
+      "Dragon's Claw",
+      "Dragon's Approach"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Lathliss, Dragon Queen",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Dragon Tempest",
+        "quantity": 1
+      },
+      {
+        "name": "Scourge of Valkas",
+        "quantity": 1
+      },
+      {
+        "name": "Utvara Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Dragonlord's Servant",
+        "quantity": 1
+      },
+      {
+        "name": "Dragonspeaker Shaman",
+        "quantity": 1
+      },
+      {
+        "name": "Dragon's Hoard",
+        "quantity": 1
+      },
+      {
+        "name": "Rapacious Dragon",
+        "quantity": 1
+      },
+      {
+        "name": "Thunderbreak Regent",
+        "quantity": 1
+      },
+      {
+        "name": "Hellkite Charger",
+        "quantity": 1
+      },
+      {
+        "name": "Crucible of Fire",
+        "quantity": 1
+      },
+      {
+        "name": "Terror of Mount Velus",
+        "quantity": 1
+      },
+      {
+        "name": "Drakuseth, Maw of Flames",
+        "quantity": 1
+      },
+      {
+        "name": "Goldlust Triad",
+        "quantity": 1
+      },
+      {
+        "name": "Warstorm Surge",
+        "quantity": 1
+      },
+      {
+        "name": "Atsushi, the Blazing Sky",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Mountain",
+        "quantity": 36
+      }
+    ]
+  },
+  {
+    "id": "lands",
+    "theme": "Lands",
+    "commander": "Tatyova, Benthic Druid",
+    "core": [
+      "Cultivate",
+      "Kodama's Reach",
+      "Sakura-Tribe Elder",
+      "Rampant Growth",
+      "Harrow",
+      "Roiling Regrowth",
+      "Exploration",
+      "Azusa, Lost but Seeking",
+      "Scute Swarm",
+      "Avenger of Zendikar",
+      "Rampaging Baloths",
+      "Evolving Wilds",
+      "Terramorphic Expanse",
+      "Coiling Oracle",
+      "Growth Spiral"
+    ],
+    "obvious": [
+      "Lotus Cobra",
+      "Ramunap Excavator"
+    ],
+    "hidden": [
+      "Retreat to Coralhelm",
+      "Tireless Provisioner"
+    ],
+    "traps": [
+      "Shimmer",
+      "Mana Breach"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Tatyova, Benthic Druid",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Cultivate",
+        "quantity": 1
+      },
+      {
+        "name": "Kodama's Reach",
+        "quantity": 1
+      },
+      {
+        "name": "Sakura-Tribe Elder",
+        "quantity": 1
+      },
+      {
+        "name": "Rampant Growth",
+        "quantity": 1
+      },
+      {
+        "name": "Harrow",
+        "quantity": 1
+      },
+      {
+        "name": "Roiling Regrowth",
+        "quantity": 1
+      },
+      {
+        "name": "Exploration",
+        "quantity": 1
+      },
+      {
+        "name": "Azusa, Lost but Seeking",
+        "quantity": 1
+      },
+      {
+        "name": "Scute Swarm",
+        "quantity": 1
+      },
+      {
+        "name": "Avenger of Zendikar",
+        "quantity": 1
+      },
+      {
+        "name": "Rampaging Baloths",
+        "quantity": 1
+      },
+      {
+        "name": "Evolving Wilds",
+        "quantity": 1
+      },
+      {
+        "name": "Terramorphic Expanse",
+        "quantity": 1
+      },
+      {
+        "name": "Coiling Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Growth Spiral",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Forest",
+        "quantity": 18
+      },
+      {
+        "name": "Island",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "id": "spells",
+    "theme": "Spellslinger (Witness negative control)",
+    "commander": "Veyran, Voice of Duality",
+    "core": [
+      "Ponder",
+      "Preordain",
+      "Opt",
+      "Consider",
+      "Brainstorm",
+      "Lightning Bolt",
+      "Abrade",
+      "Counterspell",
+      "Negate",
+      "Young Pyromancer",
+      "Talrand, Sky Summoner",
+      "Guttersnipe",
+      "Storm-Kiln Artist",
+      "Frantic Search",
+      "Treasure Cruise",
+      "Dig Through Time",
+      "Faithless Looting",
+      "Thrill of Possibility"
+    ],
+    "obvious": [
+      "Archmage Emeritus",
+      "Third Path Iconoclast"
+    ],
+    "hidden": [
+      "Balmor, Battlemage Captain",
+      "Primal Amulet"
+    ],
+    "traps": [
+      "Possibility Storm",
+      "Knowledge Pool"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Veyran, Voice of Duality",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Ponder",
+        "quantity": 1
+      },
+      {
+        "name": "Preordain",
+        "quantity": 1
+      },
+      {
+        "name": "Opt",
+        "quantity": 1
+      },
+      {
+        "name": "Consider",
+        "quantity": 1
+      },
+      {
+        "name": "Brainstorm",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Bolt",
+        "quantity": 1
+      },
+      {
+        "name": "Abrade",
+        "quantity": 1
+      },
+      {
+        "name": "Counterspell",
+        "quantity": 1
+      },
+      {
+        "name": "Negate",
+        "quantity": 1
+      },
+      {
+        "name": "Young Pyromancer",
+        "quantity": 1
+      },
+      {
+        "name": "Talrand, Sky Summoner",
+        "quantity": 1
+      },
+      {
+        "name": "Guttersnipe",
+        "quantity": 1
+      },
+      {
+        "name": "Storm-Kiln Artist",
+        "quantity": 1
+      },
+      {
+        "name": "Frantic Search",
+        "quantity": 1
+      },
+      {
+        "name": "Treasure Cruise",
+        "quantity": 1
+      },
+      {
+        "name": "Dig Through Time",
+        "quantity": 1
+      },
+      {
+        "name": "Faithless Looting",
+        "quantity": 1
+      },
+      {
+        "name": "Thrill of Possibility",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Mountain",
+        "quantity": 18
+      },
+      {
+        "name": "Island",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "id": "copy",
+    "theme": "Copy / Clone",
+    "commander": "Riku of Two Reflections",
+    "core": [
+      "Clone",
+      "Spark Double",
+      "Clever Impersonator",
+      "Double Major",
+      "Quasiduplicate",
+      "Rite of Replication",
+      "Progenitor Mimic",
+      "Eternal Witness",
+      "Mulldrifter",
+      "Peregrine Drake",
+      "Avenger of Zendikar",
+      "Solemn Simulacrum",
+      "Reclamation Sage",
+      "Coiling Oracle",
+      "Acidic Slime"
+    ],
+    "obvious": [
+      "Sakashima of a Thousand Faces",
+      "Temur Sabertooth"
+    ],
+    "hidden": [
+      "Mirror March",
+      "Biovisionary"
+    ],
+    "traps": [
+      "Mirror Gallery",
+      "Leveler"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Riku of Two Reflections",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Clone",
+        "quantity": 1
+      },
+      {
+        "name": "Spark Double",
+        "quantity": 1
+      },
+      {
+        "name": "Clever Impersonator",
+        "quantity": 1
+      },
+      {
+        "name": "Double Major",
+        "quantity": 1
+      },
+      {
+        "name": "Quasiduplicate",
+        "quantity": 1
+      },
+      {
+        "name": "Rite of Replication",
+        "quantity": 1
+      },
+      {
+        "name": "Progenitor Mimic",
+        "quantity": 1
+      },
+      {
+        "name": "Eternal Witness",
+        "quantity": 1
+      },
+      {
+        "name": "Mulldrifter",
+        "quantity": 1
+      },
+      {
+        "name": "Peregrine Drake",
+        "quantity": 1
+      },
+      {
+        "name": "Avenger of Zendikar",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Reclamation Sage",
+        "quantity": 1
+      },
+      {
+        "name": "Coiling Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Acidic Slime",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Forest",
+        "quantity": 12
+      },
+      {
+        "name": "Mountain",
+        "quantity": 12
+      },
+      {
+        "name": "Island",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "id": "voltron",
+    "theme": "Voltron",
+    "commander": "Shu Yun, the Silent Tempest",
+    "core": [
+      "Swiftfoot Boots",
+      "Lightning Greaves",
+      "Basilisk Collar",
+      "Mask of Memory",
+      "Blackblade Reforged",
+      "Steelshaper's Gift",
+      "Open the Armory",
+      "All That Glitters",
+      "Ethereal Armor",
+      "Gods Willing",
+      "Defiant Strike",
+      "Slip Through Space",
+      "Ponder",
+      "Sram, Senior Edificer",
+      "Puresteel Paladin"
+    ],
+    "obvious": [
+      "Sigarda's Aid",
+      "Hammer of Nazahn"
+    ],
+    "hidden": [
+      "Brass Squire",
+      "Ardenn, Intrepid Archaeologist"
+    ],
+    "traps": [
+      "Grafted Skullcap",
+      "Colossus Hammer"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Shu Yun, the Silent Tempest",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Basilisk Collar",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Blackblade Reforged",
+        "quantity": 1
+      },
+      {
+        "name": "Steelshaper's Gift",
+        "quantity": 1
+      },
+      {
+        "name": "Open the Armory",
+        "quantity": 1
+      },
+      {
+        "name": "All That Glitters",
+        "quantity": 1
+      },
+      {
+        "name": "Ethereal Armor",
+        "quantity": 1
+      },
+      {
+        "name": "Gods Willing",
+        "quantity": 1
+      },
+      {
+        "name": "Defiant Strike",
+        "quantity": 1
+      },
+      {
+        "name": "Slip Through Space",
+        "quantity": 1
+      },
+      {
+        "name": "Ponder",
+        "quantity": 1
+      },
+      {
+        "name": "Sram, Senior Edificer",
+        "quantity": 1
+      },
+      {
+        "name": "Puresteel Paladin",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Bane of Bala Ged",
+        "quantity": 1
+      },
+      {
+        "name": "Desolation Twin",
+        "quantity": 1
+      },
+      {
+        "name": "Mountain",
+        "quantity": 12
+      },
+      {
+        "name": "Island",
+        "quantity": 12
+      },
+      {
+        "name": "Plains",
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "id": "vehicles",
+    "theme": "Vehicles",
+    "commander": "Shorikai, Genesis Engine",
+    "core": [
+      "Smuggler's Copter",
+      "Skysovereign, Consul Flagship",
+      "Parhelion II",
+      "Hotshot Mechanic",
+      "Sram, Senior Edificer",
+      "Sanwell, Avenger Ace",
+      "Foundry Inspector",
+      "Thopter Spy Network",
+      "Ichor Wellspring",
+      "Brute Suit",
+      "Subterranean Schooner",
+      "Gearshift Ace",
+      "Deluxe Dragster",
+      "Sai, Master Thopterist",
+      "Aeronaut Admiral"
+    ],
+    "obvious": [
+      "Kotori, Pilot Prodigy",
+      "Mech Hangar"
+    ],
+    "hidden": [
+      "Peacewalker Colossus",
+      "Mobilizer Mech"
+    ],
+    "traps": [
+      "Cursed Totem",
+      "Damping Matrix"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Shorikai, Genesis Engine",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Smuggler's Copter",
+        "quantity": 1
+      },
+      {
+        "name": "Skysovereign, Consul Flagship",
+        "quantity": 1
+      },
+      {
+        "name": "Parhelion II",
+        "quantity": 1
+      },
+      {
+        "name": "Hotshot Mechanic",
+        "quantity": 1
+      },
+      {
+        "name": "Sram, Senior Edificer",
+        "quantity": 1
+      },
+      {
+        "name": "Sanwell, Avenger Ace",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Thopter Spy Network",
+        "quantity": 1
+      },
+      {
+        "name": "Ichor Wellspring",
+        "quantity": 1
+      },
+      {
+        "name": "Brute Suit",
+        "quantity": 1
+      },
+      {
+        "name": "Subterranean Schooner",
+        "quantity": 1
+      },
+      {
+        "name": "Gearshift Ace",
+        "quantity": 1
+      },
+      {
+        "name": "Deluxe Dragster",
+        "quantity": 1
+      },
+      {
+        "name": "Sai, Master Thopterist",
+        "quantity": 1
+      },
+      {
+        "name": "Aeronaut Admiral",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Artisan of Kozilek",
+        "quantity": 1
+      },
+      {
+        "name": "Island",
+        "quantity": 18
+      },
+      {
+        "name": "Plains",
+        "quantity": 18
+      }
+    ]
+  },
+  {
+    "id": "hybrid",
+    "theme": "Counters / Tokens / Sacrifice hybrid",
+    "commander": "Ghave, Guru of Spores",
+    "core": [
+      "Hardened Scales",
+      "Conclave Mentor",
+      "Good-Fortune Unicorn",
+      "Renata, Called to the Hunt",
+      "Blood Artist",
+      "Zulaport Cutthroat",
+      "Viscera Seer",
+      "Ashnod's Altar",
+      "Reassembling Skeleton",
+      "Ophiomancer",
+      "Avenger of Zendikar",
+      "Sakura-Tribe Elder",
+      "Eternal Witness",
+      "Skullclamp",
+      "Bastion of Remembrance"
+    ],
+    "obvious": [
+      "Doubling Season",
+      "Corpsejack Menace"
+    ],
+    "hidden": [
+      "Evolution Witness",
+      "Mazirek, Kraul Death Priest"
+    ],
+    "traps": [
+      "Solemnity",
+      "Torpor Orb"
+    ],
+    "provenance": "Research-authored, real-card singleton Commander test list; not a player submission or optimized precon",
+    "cards": [
+      {
+        "name": "Ghave, Guru of Spores",
+        "quantity": 1,
+        "commander": true
+      },
+      {
+        "name": "Hardened Scales",
+        "quantity": 1
+      },
+      {
+        "name": "Conclave Mentor",
+        "quantity": 1
+      },
+      {
+        "name": "Good-Fortune Unicorn",
+        "quantity": 1
+      },
+      {
+        "name": "Renata, Called to the Hunt",
+        "quantity": 1
+      },
+      {
+        "name": "Blood Artist",
+        "quantity": 1
+      },
+      {
+        "name": "Zulaport Cutthroat",
+        "quantity": 1
+      },
+      {
+        "name": "Viscera Seer",
+        "quantity": 1
+      },
+      {
+        "name": "Ashnod's Altar",
+        "quantity": 1
+      },
+      {
+        "name": "Reassembling Skeleton",
+        "quantity": 1
+      },
+      {
+        "name": "Ophiomancer",
+        "quantity": 1
+      },
+      {
+        "name": "Avenger of Zendikar",
+        "quantity": 1
+      },
+      {
+        "name": "Sakura-Tribe Elder",
+        "quantity": 1
+      },
+      {
+        "name": "Eternal Witness",
+        "quantity": 1
+      },
+      {
+        "name": "Skullclamp",
+        "quantity": 1
+      },
+      {
+        "name": "Bastion of Remembrance",
+        "quantity": 1
+      },
+      {
+        "name": "Sol Ring",
+        "quantity": 1
+      },
+      {
+        "name": "Arcane Signet",
+        "quantity": 1
+      },
+      {
+        "name": "Solemn Simulacrum",
+        "quantity": 1
+      },
+      {
+        "name": "Mind Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Worn Powerstone",
+        "quantity": 1
+      },
+      {
+        "name": "Hedron Archive",
+        "quantity": 1
+      },
+      {
+        "name": "Wayfarer's Bauble",
+        "quantity": 1
+      },
+      {
+        "name": "Burnished Hart",
+        "quantity": 1
+      },
+      {
+        "name": "Prismatic Lens",
+        "quantity": 1
+      },
+      {
+        "name": "Fellwar Stone",
+        "quantity": 1
+      },
+      {
+        "name": "Thought Vessel",
+        "quantity": 1
+      },
+      {
+        "name": "Commander's Sphere",
+        "quantity": 1
+      },
+      {
+        "name": "Everflowing Chalice",
+        "quantity": 1
+      },
+      {
+        "name": "Guardian Idol",
+        "quantity": 1
+      },
+      {
+        "name": "Unstable Obelisk",
+        "quantity": 1
+      },
+      {
+        "name": "Meteor Golem",
+        "quantity": 1
+      },
+      {
+        "name": "Scour from Existence",
+        "quantity": 1
+      },
+      {
+        "name": "Introduction to Annihilation",
+        "quantity": 1
+      },
+      {
+        "name": "Universal Solvent",
+        "quantity": 1
+      },
+      {
+        "name": "Spine of Ish Sah",
+        "quantity": 1
+      },
+      {
+        "name": "Nevinyrral's Disk",
+        "quantity": 1
+      },
+      {
+        "name": "Trading Post",
+        "quantity": 1
+      },
+      {
+        "name": "Endless Atlas",
+        "quantity": 1
+      },
+      {
+        "name": "Crystal Ball",
+        "quantity": 1
+      },
+      {
+        "name": "Mazemind Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Seer's Lantern",
+        "quantity": 1
+      },
+      {
+        "name": "Jalum Tome",
+        "quantity": 1
+      },
+      {
+        "name": "Rogue's Gloves",
+        "quantity": 1
+      },
+      {
+        "name": "Mask of Memory",
+        "quantity": 1
+      },
+      {
+        "name": "Swiftfoot Boots",
+        "quantity": 1
+      },
+      {
+        "name": "Lightning Greaves",
+        "quantity": 1
+      },
+      {
+        "name": "Whispersilk Cloak",
+        "quantity": 1
+      },
+      {
+        "name": "Darksteel Ingot",
+        "quantity": 1
+      },
+      {
+        "name": "Manalith",
+        "quantity": 1
+      },
+      {
+        "name": "Magnifying Glass",
+        "quantity": 1
+      },
+      {
+        "name": "Dreamstone Hedron",
+        "quantity": 1
+      },
+      {
+        "name": "Skyscanner",
+        "quantity": 1
+      },
+      {
+        "name": "Pilgrim's Eye",
+        "quantity": 1
+      },
+      {
+        "name": "Filigree Familiar",
+        "quantity": 1
+      },
+      {
+        "name": "Workshop Assistant",
+        "quantity": 1
+      },
+      {
+        "name": "Junk Diver",
+        "quantity": 1
+      },
+      {
+        "name": "Myr Retriever",
+        "quantity": 1
+      },
+      {
+        "name": "Scrap Trawler",
+        "quantity": 1
+      },
+      {
+        "name": "Foundry Inspector",
+        "quantity": 1
+      },
+      {
+        "name": "Steel Hellkite",
+        "quantity": 1
+      },
+      {
+        "name": "Duplicant",
+        "quantity": 1
+      },
+      {
+        "name": "Sandstone Oracle",
+        "quantity": 1
+      },
+      {
+        "name": "Ulamog's Crusher",
+        "quantity": 1
+      },
+      {
+        "name": "Swamp",
+        "quantity": 12
+      },
+      {
+        "name": "Forest",
+        "quantity": 12
+      },
+      {
+        "name": "Plains",
+        "quantity": 12
+      }
+    ]
+  }
+]

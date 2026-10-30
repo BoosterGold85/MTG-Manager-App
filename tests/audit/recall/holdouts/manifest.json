@@ -1,0 +1,81 @@
+{
+  "baseline": "0f90fffdac551fbc7d91e9dfc6722db43a5412b1",
+  "expectationsRecordedAt": "2026-10-30T14:58:11.969060+00:00",
+  "authorship": "H05\u2013H11 expectation sentences supplied by the user before evaluator execution; do not tune from these decks",
+  "frozenResearchInputs": {
+    "fixed-expectations.json": "5809feeb72a37c8983926e4660bb0d8056bd9225065abce6c3c4070e0db6d55e",
+    "fixed-decks.json": "8dc13e1ee1ea4b7eb14db7e533dc06f4f3734330e82319866b9dd1cd9aecda3d"
+  },
+  "decks": [
+    {
+      "id": "H05",
+      "commander": "Isshin, Two Heavens as One",
+      "source": "https://archidekt.com/api/decks/4339357/?format=json",
+      "expectation": "Mardu aggro deck that builds a threatening combat board and exploits Isshin to double attack-trigger value, especially token generation and combat payoffs.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H06",
+      "commander": "Prosper, Tome-Bound",
+      "source": "https://archidekt.com/api/decks/27613908/?format=json",
+      "expectation": "Rakdos value deck that repeatedly plays cards from exile to generate Treasures, then converts those extra resources and non-hand casts into damage and card advantage.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H07",
+      "commander": "Henzie \u201cToolbox\u201d Torre",
+      "source": "https://archidekt.com/api/decks/27404794/?format=json",
+      "expectation": "Jund creature deck that blitzes expensive creatures for immediate ETB/combat/death value, draws from their deaths, and recycles threats through the graveyard.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H08",
+      "commander": "Muldrotha, the Gravetide",
+      "source": "https://archidekt.com/api/decks/3540872/?format=json",
+      "expectation": "Sultai graveyard deck that self-mills permanents and uses Muldrotha to repeatedly replay them, generating resilient recursive value with reanimation/combo upside.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H09",
+      "commander": "Sythis, Harvest\u2019s Hand",
+      "source": "https://archidekt.com/api/decks/23510964/?format=json",
+      "expectation": "Selesnya enchantress deck that chains enchantments through Sythis for cards and life, using enchantment-based ramp and scaling payoffs to build toward a dominant board.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H10",
+      "commander": "Giada, Font of Hope",
+      "source": "https://archidekt.com/api/decks/8833388/?format=json",
+      "expectation": "Mono-white Angel tribal deck that uses Giada as early acceleration and counter scaling, then curves into increasingly large evasive Angels backed by lifegain and protection.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    },
+    {
+      "id": "H11",
+      "commander": "Wilhelt, the Rotcleaver",
+      "source": "https://archidekt.com/api/decks/22624319/?format=json",
+      "expectation": "Dimir Zombie deck that generates and recycles Zombie bodies, sacrifices them for value, and leverages Wilhelt\u2019s replacement tokens alongside recursion and tribal payoffs.",
+      "status": "awaiting-network-access",
+      "retrievedAt": null,
+      "rawFile": null,
+      "sha256": null
+    }
+  ]
+}
