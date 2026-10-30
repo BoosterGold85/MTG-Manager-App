@@ -1,0 +1,2808 @@
+[
+ {
+  "id": "8d7c1f6c-af45-4449-8cf8-e13830b3df8a",
+  "oracle_id": "5401439c-4068-4490-8d53-8ffd0026dd7d",
+  "name": "Valgavoth, Harrower of Souls",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Elder Demon",
+  "oracle_text": "Flying\nWard—Pay 2 life.\nWhenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth and draw a card.",
+  "keywords": [
+   "Flying",
+   "Ward"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "4",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "6",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.jpg?1783909662",
+   "normal": "https://cards.scryfall.io/normal/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.jpg?1783909662",
+   "large": "https://cards.scryfall.io/large/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.jpg?1783909662",
+   "png": "https://cards.scryfall.io/png/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.png?1783909662",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.jpg?1783909662",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/d/8d7c1f6c-af45-4449-8cf8-e13830b3df8a.jpg?1783909662"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "72de7010-3449-4fe1-bf2a-f4bd8feb74e9",
+  "oracle_id": "e1a2bd31-b800-47cd-8866-1b849a601b09",
+  "name": "Agate Instigator",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Lizard Rogue",
+  "oracle_text": "Offspring {1}{R} (You may pay an additional {1}{R} as you cast this spell. If you do, when this creature enters, create a 1/1 token copy of it.)\nWhenever another creature you control enters, this creature deals 1 damage to each opponent.",
+  "keywords": [
+   "Offspring"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "plst",
+  "collector_number": "BLC-21",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.jpg?1787677381",
+   "normal": "https://cards.scryfall.io/normal/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.jpg?1787677381",
+   "large": "https://cards.scryfall.io/large/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.jpg?1787677381",
+   "png": "https://cards.scryfall.io/png/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.png?1787677381",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.jpg?1787677381",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/2/72de7010-3449-4fe1-bf2a-f4bd8feb74e9.jpg?1787677381"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "795df2ee-fbfc-4961-852c-e3ec50cc52da",
+  "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "485",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "normal": "https://cards.scryfall.io/normal/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "large": "https://cards.scryfall.io/large/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "png": "https://cards.scryfall.io/png/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.png?1793021117",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "e8510205-4baa-4f1c-bf64-5d931e2ddf48",
+  "oracle_id": "58257464-278e-45fa-8e0b-bcd9a7500bc1",
+  "name": "Ash Barrens",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\nBasic landcycling {1} ({1}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)",
+  "keywords": [
+   "Landcycling",
+   "Basic landcycling",
+   "Typecycling",
+   "Cycling"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "tmc",
+  "collector_number": "60",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.jpg?1783904155",
+   "normal": "https://cards.scryfall.io/normal/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.jpg?1783904155",
+   "large": "https://cards.scryfall.io/large/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.jpg?1783904155",
+   "png": "https://cards.scryfall.io/png/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.png?1783904155",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.jpg?1783904155",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/e/8/e8510205-4baa-4f1c-bf64-5d931e2ddf48.jpg?1783904155"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7b36fba7-71f7-4b7f-bde5-b3a9752ad21c",
+  "oracle_id": "f5f4dd28-f4ae-4d39-b9b8-6ebfd63c93fe",
+  "name": "Basilisk Collar",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has deathtouch and lifelink. (Any amount of damage it deals to a creature is enough to destroy it. Damage dealt by this creature also causes you to gain that much life.)\nEquip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "669",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.jpg?1783908907",
+   "normal": "https://cards.scryfall.io/normal/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.jpg?1783908907",
+   "large": "https://cards.scryfall.io/large/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.jpg?1783908907",
+   "png": "https://cards.scryfall.io/png/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.png?1783908907",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.jpg?1783908907",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/b/7b36fba7-71f7-4b7f-bde5-b3a9752ad21c.jpg?1783908907"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "6fe6ccad-e303-48f9-9dfa-0db7c1878031",
+  "oracle_id": "c7f33cea-2ec8-4081-9208-a5b1d86721b3",
+  "name": "Bastion of Remembrance",
+  "mana_cost": "{2}{B}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "When this enchantment enters, create a 1/1 white Human Soldier creature token.\nWhenever a creature you control dies, each opponent loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "tle",
+  "collector_number": "160",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "normal": "https://cards.scryfall.io/normal/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "large": "https://cards.scryfall.io/large/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "png": "https://cards.scryfall.io/png/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.png?1783904806",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/f/6fe6ccad-e303-48f9-9dfa-0db7c1878031.jpg?1783904806"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "985b9779-b8f6-4d7e-9490-5d2b91ee8db2",
+  "oracle_id": "bceecc64-96f1-4e7b-8904-0aef90377764",
+  "name": "Bedevil",
+  "mana_cost": "{B}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target artifact, creature, or planeswalker.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "182",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.jpg?1783903227",
+   "normal": "https://cards.scryfall.io/normal/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.jpg?1783903227",
+   "large": "https://cards.scryfall.io/large/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.jpg?1783903227",
+   "png": "https://cards.scryfall.io/png/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.png?1783903227",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.jpg?1783903227",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/8/985b9779-b8f6-4d7e-9490-5d2b91ee8db2.jpg?1783903227"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f75715ce-744f-409c-aeb1-e66eb9186a74",
+  "oracle_id": "5ad94412-6f79-4c5d-bbd4-4ef5779a7b6d",
+  "name": "Blackcleave Cliffs",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped unless you control two or fewer other lands.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "263",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.jpg?1783909578",
+   "normal": "https://cards.scryfall.io/normal/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.jpg?1783909578",
+   "large": "https://cards.scryfall.io/large/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.jpg?1783909578",
+   "png": "https://cards.scryfall.io/png/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.png?1783909578",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.jpg?1783909578",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/7/f75715ce-744f-409c-aeb1-e66eb9186a74.jpg?1783909578"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7d4b1d44-126e-4987-9a9f-f0f9627a09cb",
+  "oracle_id": "7a2484a9-04fd-41a0-8224-610c1c07ed10",
+  "name": "Blasphemous Act",
+  "mana_cost": "{8}{R}",
+  "cmc": 9.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell costs {1} less to cast for each creature on the battlefield.\nBlasphemous Act deals 13 damage to each creature.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "163",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.jpg?1783903234",
+   "normal": "https://cards.scryfall.io/normal/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.jpg?1783903234",
+   "large": "https://cards.scryfall.io/large/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.jpg?1783903234",
+   "png": "https://cards.scryfall.io/png/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.png?1783903234",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.jpg?1783903234",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/d/7d4b1d44-126e-4987-9a9f-f0f9627a09cb.jpg?1783903234"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b5275d76-2947-4219-be21-614c7421614a",
+  "oracle_id": "310f141c-7f37-4729-aed6-dd9c09db448d",
+  "name": "Blood Artist",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Vampire",
+  "oracle_text": "Whenever this creature or another creature dies, target player loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "0",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "soc",
+  "collector_number": "209",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/5/b5275d76-2947-4219-be21-614c7421614a.jpg?1783903786",
+   "normal": "https://cards.scryfall.io/normal/front/b/5/b5275d76-2947-4219-be21-614c7421614a.jpg?1783903786",
+   "large": "https://cards.scryfall.io/large/front/b/5/b5275d76-2947-4219-be21-614c7421614a.jpg?1783903786",
+   "png": "https://cards.scryfall.io/png/front/b/5/b5275d76-2947-4219-be21-614c7421614a.png?1783903786",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/5/b5275d76-2947-4219-be21-614c7421614a.jpg?1783903786",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/5/b5275d76-2947-4219-be21-614c7421614a.jpg?1783903786"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ee769671-655b-40d6-a6d8-bf8c901df17f",
+  "oracle_id": "cfc5a284-7238-4c98-9d2f-7e5c3329be7b",
+  "name": "Blood Pact",
+  "mana_cost": "{2}{B}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Target player draws two cards and loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "76",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.jpg?1783909642",
+   "normal": "https://cards.scryfall.io/normal/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.jpg?1783909642",
+   "large": "https://cards.scryfall.io/large/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.jpg?1783909642",
+   "png": "https://cards.scryfall.io/png/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.png?1783909642",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.jpg?1783909642",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/e/e/ee769671-655b-40d6-a6d8-bf8c901df17f.jpg?1783909642"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "fe88cbee-5f6c-47e0-8a84-192c4c2ca984",
+  "oracle_id": "41087db6-34c4-4e2b-9f54-5e4488ca9c0b",
+  "name": "Blood Seeker",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Vampire Shaman",
+  "oracle_text": "Whenever a creature an opponent controls enters, you may have that player lose 1 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "77",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1783909642",
+   "normal": "https://cards.scryfall.io/normal/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1783909642",
+   "large": "https://cards.scryfall.io/large/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1783909642",
+   "png": "https://cards.scryfall.io/png/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.png?1783909642",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1783909642",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/e/fe88cbee-5f6c-47e0-8a84-192c4c2ca984.jpg?1783909642"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "1dde3c68-6f29-4c00-b668-c25ac9e3e13b",
+  "oracle_id": "64e29bfc-9313-4e8c-808c-bc27f6b018a6",
+  "name": "Bloodfell Caves",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "tdm",
+  "collector_number": "250",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.jpg?1783907281",
+   "normal": "https://cards.scryfall.io/normal/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.jpg?1783907281",
+   "large": "https://cards.scryfall.io/large/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.jpg?1783907281",
+   "png": "https://cards.scryfall.io/png/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.png?1783907281",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.jpg?1783907281",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/d/1dde3c68-6f29-4c00-b668-c25ac9e3e13b.jpg?1783907281"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f96223d0-04c4-40c2-87a9-0c6bc74adddb",
+  "oracle_id": "e0445c80-fa53-4c3e-881e-940e9fce7f57",
+  "name": "Braids, Arisen Nightmare",
+  "mana_cost": "{1}{B}{B}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Nightmare",
+  "oracle_text": "At the beginning of your end step, you may sacrifice an artifact, creature, enchantment, land, or planeswalker. If you do, each opponent may sacrifice a permanent of their choice that shares a card type with it. For each opponent who doesn't, that player loses 2 life and you draw a card.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "eoc",
+  "collector_number": "82",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1783906041",
+   "normal": "https://cards.scryfall.io/normal/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1783906041",
+   "large": "https://cards.scryfall.io/large/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1783906041",
+   "png": "https://cards.scryfall.io/png/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.png?1783906041",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1783906041",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1783906041"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "275f8721-a6e5-489b-851f-1676aad5ec39",
+  "oracle_id": "3e41648f-c5a9-4b26-b97e-8176fe5e9c85",
+  "name": "Brash Taunter",
+  "mana_cost": "{4}{R}",
+  "cmc": 5.0,
+  "type_line": "Creature — Goblin",
+  "oracle_text": "Indestructible\nWhenever this creature is dealt damage, it deals that much damage to target opponent.\n{2}{R}, {T}: This creature fights another target creature.",
+  "keywords": [
+   "Indestructible",
+   "Fight"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "161",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.jpg?1783909612",
+   "normal": "https://cards.scryfall.io/normal/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.jpg?1783909612",
+   "large": "https://cards.scryfall.io/large/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.jpg?1783909612",
+   "png": "https://cards.scryfall.io/png/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.png?1783909612",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.jpg?1783909612",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/7/275f8721-a6e5-489b-851f-1676aad5ec39.jpg?1783909612"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "587cc3ba-75c2-46a0-bd44-6f953fe1eb01",
+  "oracle_id": "2031b17c-0536-446f-a9aa-b46fe79b7ea7",
+  "name": "Canyon Slough",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nThis land enters tapped.\nCycling {2} ({2}, Discard this card: Draw a card.)",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "228",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.jpg?1783903208",
+   "normal": "https://cards.scryfall.io/normal/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.jpg?1783903208",
+   "large": "https://cards.scryfall.io/large/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.jpg?1783903208",
+   "png": "https://cards.scryfall.io/png/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.png?1783903208",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.jpg?1783903208",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/8/587cc3ba-75c2-46a0-bd44-6f953fe1eb01.jpg?1783903208"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "fb8d8106-b9bd-405c-886e-72fc301c65e1",
+  "oracle_id": "07a0cba9-8768-4fd9-a3d5-b0f83b4bf8e8",
+  "name": "Chaos Warp",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "The owner of target permanent shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "mbc",
+  "collector_number": "72",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.jpg?1787743253",
+   "normal": "https://cards.scryfall.io/normal/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.jpg?1787743253",
+   "large": "https://cards.scryfall.io/large/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.jpg?1787743253",
+   "png": "https://cards.scryfall.io/png/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.png?1787743253",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.jpg?1787743253",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/b/fb8d8106-b9bd-405c-886e-72fc301c65e1.jpg?1787743253"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a73297d2-580c-4174-a427-265f6916d09f",
+  "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "521",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "normal": "https://cards.scryfall.io/normal/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "large": "https://cards.scryfall.io/large/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "png": "https://cards.scryfall.io/png/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.png?1793021256",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "c700eff3-138b-4d4c-ba36-58b98986168c",
+  "oracle_id": "ab715312-0103-4681-b559-520026abd350",
+  "name": "Corpse Explosion",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "As an additional cost to cast this spell, exile a creature card from your graveyard.\nCorpse Explosion deals damage equal to the exiled card's power to each creature and each planeswalker.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "snc",
+  "collector_number": "179",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.jpg?1783923088",
+   "normal": "https://cards.scryfall.io/normal/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.jpg?1783923088",
+   "large": "https://cards.scryfall.io/large/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.jpg?1783923088",
+   "png": "https://cards.scryfall.io/png/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.png?1783923088",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.jpg?1783923088",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/c/7/c700eff3-138b-4d4c-ba36-58b98986168c.jpg?1783923088"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3a14d6c5-cfd1-4860-834a-5a0dc9df0320",
+  "oracle_id": "4b96c22a-0d5b-44fd-b326-5f3ffcc3917b",
+  "name": "Deadpool, Trading Card",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Mutant Mercenary Hero",
+  "oracle_text": "As Deadpool enters, you may exchange his text box and another creature's.\nAt the beginning of your upkeep, you lose 3 life.\n{3}, Sacrifice this creature: Each other player draws a card.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "5",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "sld",
+  "collector_number": "1753",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?1783907438",
+   "normal": "https://cards.scryfall.io/normal/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?1783907438",
+   "large": "https://cards.scryfall.io/large/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?1783907438",
+   "png": "https://cards.scryfall.io/png/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.png?1783907438",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?1783907438",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/a/3a14d6c5-cfd1-4860-834a-5a0dc9df0320.jpg?1783907438"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "bd594aeb-f5cc-4435-8ea8-c35c5824b58c",
+  "oracle_id": "932668fa-d6e3-41c0-ad0c-8e0a00e68d11",
+  "name": "Decree of Pain",
+  "mana_cost": "{6}{B}{B}",
+  "cmc": 8.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Destroy all creatures. They can't be regenerated. Draw a card for each creature destroyed this way.\nCycling {3}{B}{B} ({3}{B}{B}, Discard this card: Draw a card.)\nWhen you cycle this card, all creatures get -2/-2 until end of turn.",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "136",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.jpg?1783909622",
+   "normal": "https://cards.scryfall.io/normal/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.jpg?1783909622",
+   "large": "https://cards.scryfall.io/large/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.jpg?1783909622",
+   "png": "https://cards.scryfall.io/png/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.png?1783909622",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.jpg?1783909622",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/d/bd594aeb-f5cc-4435-8ea8-c35c5824b58c.jpg?1783909622"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d20e433a-eb62-4301-bc20-bfe27468b033",
+  "oracle_id": "63398c02-6fb1-481d-9d9f-81063532fbc0",
+  "name": "Dragonskull Summit",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "238",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.jpg?1783903203",
+   "normal": "https://cards.scryfall.io/normal/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.jpg?1783903203",
+   "large": "https://cards.scryfall.io/large/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.jpg?1783903203",
+   "png": "https://cards.scryfall.io/png/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.png?1783903203",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.jpg?1783903203",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/2/d20e433a-eb62-4301-bc20-bfe27468b033.jpg?1783903203"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "6e01ec28-d815-47a8-ab0f-d383a4736ebe",
+  "oracle_id": "a75445d3-1303-4bb5-89ad-26ea93fecd48",
+  "name": "Evolving Wilds",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "527",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.jpg?1793021295",
+   "normal": "https://cards.scryfall.io/normal/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.jpg?1793021295",
+   "large": "https://cards.scryfall.io/large/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.jpg?1793021295",
+   "png": "https://cards.scryfall.io/png/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.png?1793021295",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.jpg?1793021295",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/e/6e01ec28-d815-47a8-ab0f-d383a4736ebe.jpg?1793021295"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d",
+  "oracle_id": "fbe61f74-1b3c-4e12-8758-7029872c9ff1",
+  "name": "Exhume",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player puts a creature card from their graveyard onto the battlefield.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "jmp",
+  "collector_number": "230",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.jpg?1783930426",
+   "normal": "https://cards.scryfall.io/normal/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.jpg?1783930426",
+   "large": "https://cards.scryfall.io/large/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.jpg?1783930426",
+   "png": "https://cards.scryfall.io/png/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.png?1783930426",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.jpg?1783930426",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/f/5f1cdcba-a04a-4a2f-8bc1-0dd7fa03754d.jpg?1783930426"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "0a4a51a3-fb8b-4611-8f94-fbcab547423c",
+  "oracle_id": "27b047e3-0d41-45e2-98e9-9391d7923a1e",
+  "name": "Exotic Orchard",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "528",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.jpg?1793021293",
+   "normal": "https://cards.scryfall.io/normal/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.jpg?1793021293",
+   "large": "https://cards.scryfall.io/large/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.jpg?1793021293",
+   "png": "https://cards.scryfall.io/png/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.png?1793021293",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.jpg?1793021293",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/a/0a4a51a3-fb8b-4611-8f94-fbcab547423c.jpg?1793021293"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "30250c4d-2c16-4d03-874e-aec39d8e72a9",
+  "oracle_id": "7d66f67d-3148-4636-ac5a-2cf8a51d5e50",
+  "name": "Fate Unraveler",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Enchantment Creature — Hag",
+  "oracle_text": "Whenever an opponent draws a card, this creature deals 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "3",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "141",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.jpg?1783909619",
+   "normal": "https://cards.scryfall.io/normal/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.jpg?1783909619",
+   "large": "https://cards.scryfall.io/large/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.jpg?1783909619",
+   "png": "https://cards.scryfall.io/png/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.png?1783909619",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.jpg?1783909619",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/0/30250c4d-2c16-4d03-874e-aec39d8e72a9.jpg?1783909619"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b282f8e3-8b79-47e9-8c18-62284211442b",
+  "oracle_id": "0ae74149-60fc-407a-8782-8865458606b5",
+  "name": "Fear of Burning Alive",
+  "mana_cost": "{4}{R}{R}",
+  "cmc": 6.0,
+  "type_line": "Enchantment Creature — Nightmare",
+  "oracle_text": "When this creature enters, it deals 4 damage to each opponent.\nDelirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls.",
+  "keywords": [
+   "Delirium"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "4",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "135",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.jpg?1783909470",
+   "normal": "https://cards.scryfall.io/normal/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.jpg?1783909470",
+   "large": "https://cards.scryfall.io/large/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.jpg?1783909470",
+   "png": "https://cards.scryfall.io/png/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.png?1783909470",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.jpg?1783909470",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/2/b282f8e3-8b79-47e9-8c18-62284211442b.jpg?1783909470"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "2246c098-1071-4cc3-a60a-802406e2827b",
+  "oracle_id": "5825997b-10d7-4a36-972c-a80ddd90b8ed",
+  "name": "Feed the Swarm",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "tle",
+  "collector_number": "257",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.jpg?1783904770",
+   "normal": "https://cards.scryfall.io/normal/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.jpg?1783904770",
+   "large": "https://cards.scryfall.io/large/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.jpg?1783904770",
+   "png": "https://cards.scryfall.io/png/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.png?1783904770",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.jpg?1783904770",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/2/2246c098-1071-4cc3-a60a-802406e2827b.jpg?1783904770"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3ef87948-0ad9-4757-a692-2262c8e24367",
+  "oracle_id": "95560508-7ac9-4be9-8a3f-3c7d5b52807b",
+  "name": "Fellwar Stone",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "mbc",
+  "collector_number": "74",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.jpg?1785759354",
+   "normal": "https://cards.scryfall.io/normal/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.jpg?1785759354",
+   "large": "https://cards.scryfall.io/large/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.jpg?1785759354",
+   "png": "https://cards.scryfall.io/png/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.png?1785759354",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.jpg?1785759354",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/e/3ef87948-0ad9-4757-a692-2262c8e24367.jpg?1785759354"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3377d600-e43f-4cce-ae3f-541e519ee4ad",
+  "oracle_id": "d74a2cbf-4d13-401d-9b3f-bfbde4942afd",
+  "name": "Florian, Voldaren Scion",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Vampire Noble",
+  "oracle_text": "First strike\nAt the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+  "keywords": [
+   "First strike"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "217",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.jpg?1783909594",
+   "normal": "https://cards.scryfall.io/normal/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.jpg?1783909594",
+   "large": "https://cards.scryfall.io/large/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.jpg?1783909594",
+   "png": "https://cards.scryfall.io/png/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.png?1783909594",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.jpg?1783909594",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/3/3377d600-e43f-4cce-ae3f-541e519ee4ad.jpg?1783909594"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "76fdf6be-e13b-49ee-9d50-8625edb49951",
+  "oracle_id": "5c87e2fa-77f1-4978-b25f-f14d227301d1",
+  "name": "Foreboding Ruins",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "As this land enters, you may reveal a Swamp or Mountain card from your hand. If you don't, this land enters tapped.\n{T}: Add {B} or {R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "244",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.jpg?1783903200",
+   "normal": "https://cards.scryfall.io/normal/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.jpg?1783903200",
+   "large": "https://cards.scryfall.io/large/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.jpg?1783903200",
+   "png": "https://cards.scryfall.io/png/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.png?1783903200",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.jpg?1783903200",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/6/76fdf6be-e13b-49ee-9d50-8625edb49951.jpg?1783903200"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "6da04570-5d3c-4e9f-a9c1-20589a4bcc24",
+  "oracle_id": "e3b67368-1dd6-419b-a95d-7131b1dba23f",
+  "name": "Geothermal Bog",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nThis land enters tapped.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "278",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.jpg?1783909575",
+   "normal": "https://cards.scryfall.io/normal/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.jpg?1783909575",
+   "large": "https://cards.scryfall.io/large/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.jpg?1783909575",
+   "png": "https://cards.scryfall.io/png/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.png?1783909575",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.jpg?1783909575",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/d/6da04570-5d3c-4e9f-a9c1-20589a4bcc24.jpg?1783909575"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "bbb2956c-ef76-4e80-81d4-7f1ce6841d37",
+  "oracle_id": "9025b3ce-f6ae-431d-9eb5-02d713b8c9b8",
+  "name": "Gleeful Arsonist",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "Whenever an opponent casts a noncreature spell, this creature deals damage equal to its power to that player.\nUndying (When this creature dies, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.)",
+  "keywords": [
+   "Undying"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "1",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "27",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.jpg?1783909657",
+   "normal": "https://cards.scryfall.io/normal/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.jpg?1783909657",
+   "large": "https://cards.scryfall.io/large/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.jpg?1783909657",
+   "png": "https://cards.scryfall.io/png/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.png?1783909657",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.jpg?1783909657",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/b/bbb2956c-ef76-4e80-81d4-7f1ce6841d37.jpg?1783909657"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "50895202-f1a1-4840-a11a-55b78b8b5929",
+  "oracle_id": "a37387f0-9d57-49ff-aa38-2c6b359e8916",
+  "name": "Grab the Prize",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Sorcery",
+  "oracle_text": "As an additional cost to cast this spell, discard a card.\nDraw two cards. If the discarded card wasn't a land card, Grab the Prize deals 2 damage to each opponent.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "138",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.jpg?1783909469",
+   "normal": "https://cards.scryfall.io/normal/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.jpg?1783909469",
+   "large": "https://cards.scryfall.io/large/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.jpg?1783909469",
+   "png": "https://cards.scryfall.io/png/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.png?1783909469",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.jpg?1783909469",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/0/50895202-f1a1-4840-a11a-55b78b8b5929.jpg?1783909469"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "74a13fea-4f48-428b-b42b-4ba63d4752ed",
+  "oracle_id": "5004b84a-33b7-4f6f-b2c2-7086b9087535",
+  "name": "Graven Cairns",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{B/R}, {T}: Add {B}{B}, {B}{R}, or {R}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "280",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.jpg?1783909574",
+   "normal": "https://cards.scryfall.io/normal/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.jpg?1783909574",
+   "large": "https://cards.scryfall.io/large/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.jpg?1783909574",
+   "png": "https://cards.scryfall.io/png/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.png?1783909574",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.jpg?1783909574",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/4/74a13fea-4f48-428b-b42b-4ba63d4752ed.jpg?1783909574"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "00d001d0-fd29-4b7c-9d0e-9131b995f910",
+  "oracle_id": "38f3b157-0df4-409b-89cc-086e1531cd5b",
+  "name": "Gray Merchant of Asphodel",
+  "mana_cost": "{3}{B}{B}",
+  "cmc": 5.0,
+  "type_line": "Creature — Zombie",
+  "oracle_text": "When this creature enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "142",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.jpg?1783909617",
+   "normal": "https://cards.scryfall.io/normal/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.jpg?1783909617",
+   "large": "https://cards.scryfall.io/large/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.jpg?1783909617",
+   "png": "https://cards.scryfall.io/png/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.png?1783909617",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.jpg?1783909617",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/0/00d001d0-fd29-4b7c-9d0e-9131b995f910.jpg?1783909617"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3d440fb1-3e19-4615-a988-558b9d3db179",
+  "oracle_id": "168336e2-d795-4b75-bf21-ce128b0dd7b0",
+  "name": "Harsh Mentor",
+  "mana_cost": "{1}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Cleric",
+  "oracle_text": "Whenever an opponent activates an ability of an artifact, creature, or land on the battlefield, if it isn't a mana ability, this creature deals 2 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "165",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.jpg?1783909612",
+   "normal": "https://cards.scryfall.io/normal/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.jpg?1783909612",
+   "large": "https://cards.scryfall.io/large/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.jpg?1783909612",
+   "png": "https://cards.scryfall.io/png/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.png?1783909612",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.jpg?1783909612",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/d/3d440fb1-3e19-4615-a988-558b9d3db179.jpg?1783909612"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f67b323d-0dda-45f8-84b7-d883ce5045a8",
+  "oracle_id": "94f0a572-e91c-4b56-a5d1-6cbbeabd210d",
+  "name": "Infernal Grasp",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature. You lose 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "soc",
+  "collector_number": "216",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.jpg?1783903785",
+   "normal": "https://cards.scryfall.io/normal/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.jpg?1783903785",
+   "large": "https://cards.scryfall.io/large/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.jpg?1783903785",
+   "png": "https://cards.scryfall.io/png/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.png?1783903785",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.jpg?1783903785",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/6/f67b323d-0dda-45f8-84b7-d883ce5045a8.jpg?1783903785"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "95c5bd95-b483-4dfb-9010-cfee47d22468",
+  "oracle_id": "c7b72d38-0aa0-4e17-9dd5-9276d7cb21ec",
+  "name": "Kaervek the Merciless",
+  "mana_cost": "{5}{B}{R}",
+  "cmc": 7.0,
+  "type_line": "Legendary Creature — Human Shaman",
+  "oracle_text": "Whenever an opponent casts a spell, Kaervek deals damage equal to that spell's mana value to any target.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "5",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "222",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.jpg?1783909593",
+   "normal": "https://cards.scryfall.io/normal/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.jpg?1783909593",
+   "large": "https://cards.scryfall.io/large/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.jpg?1783909593",
+   "png": "https://cards.scryfall.io/png/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.png?1783909593",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.jpg?1783909593",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/5/95c5bd95-b483-4dfb-9010-cfee47d22468.jpg?1783909593"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7c0f7712-7bbf-471b-8107-3a49cf922ad9",
+  "oracle_id": "bc14356c-3a1a-47af-9a6e-2b449de0331f",
+  "name": "Kardur, Doomscourge",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Demon Berserker",
+  "oracle_text": "When Kardur enters, until your next turn, creatures your opponents control attack each combat if able and attack a player other than you if able.\nWhenever an attacking creature dies, each opponent loses 1 life and you gain 1 life.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "4",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "223",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1783909592",
+   "normal": "https://cards.scryfall.io/normal/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1783909592",
+   "large": "https://cards.scryfall.io/large/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1783909592",
+   "png": "https://cards.scryfall.io/png/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.png?1783909592",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1783909592",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1783909592"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "bc5da9e8-c070-4cf4-a21b-24ff2178d751",
+  "oracle_id": "fc7b46af-6c07-455a-99c7-f1bccaa2a5f4",
+  "name": "Kederekt Parasite",
+  "mana_cost": "{B}",
+  "cmc": 1.0,
+  "type_line": "Creature — Horror",
+  "oracle_text": "Whenever an opponent draws a card, if you control a red permanent, you may have this creature deal 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "144",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.jpg?1783909618",
+   "normal": "https://cards.scryfall.io/normal/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.jpg?1783909618",
+   "large": "https://cards.scryfall.io/large/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.jpg?1783909618",
+   "png": "https://cards.scryfall.io/png/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.png?1783909618",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.jpg?1783909618",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/c/bc5da9e8-c070-4cf4-a21b-24ff2178d751.jpg?1783909618"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "409fcd0c-8449-4623-8bf0-cd7ca0937a4a",
+  "oracle_id": "340de307-982a-4b26-9dc0-99113dc766cd",
+  "name": "Lavaclaw Reaches",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\n{T}: Add {B} or {R}.\n{1}{B}{R}: Until end of turn, this land becomes a 2/2 black and red Elemental creature with \"{X}: This creature gets +X/+0 until end of turn.\" It's still a land.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "uma",
+  "collector_number": "245",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.jpg?1783933755",
+   "normal": "https://cards.scryfall.io/normal/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.jpg?1783933755",
+   "large": "https://cards.scryfall.io/large/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.jpg?1783933755",
+   "png": "https://cards.scryfall.io/png/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.png?1783933755",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.jpg?1783933755",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/0/409fcd0c-8449-4623-8bf0-cd7ca0937a4a.jpg?1783933755"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a07a0e31-ace6-40ad-8700-2d58135b5320",
+  "oracle_id": "d83c86c1-126d-49e9-9b13-9e55784c49c5",
+  "name": "Leechridden Swamp",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp",
+  "oracle_text": "({T}: Add {B}.)\nThis land enters tapped.\n{B}, {T}: Each opponent loses 1 life. Activate only if you control two or more black permanents.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "286",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.jpg?1783909573",
+   "normal": "https://cards.scryfall.io/normal/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.jpg?1783909573",
+   "large": "https://cards.scryfall.io/large/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.jpg?1783909573",
+   "png": "https://cards.scryfall.io/png/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.png?1783909573",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.jpg?1783909573",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/0/a07a0e31-ace6-40ad-8700-2d58135b5320.jpg?1783909573"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "912b94c9-7200-452d-940f-df0a7cceb377",
+  "oracle_id": "8d286376-f386-43ab-a9bd-8478fb9e2497",
+  "name": "Light Up the Stage",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Spectacle {R} (You may cast this spell for its spectacle cost rather than its mana cost if an opponent lost life this turn.)\nExile the top two cards of your library. Until the end of your next turn, you may play those cards.",
+  "keywords": [
+   "Spectacle"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "166",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.jpg?1783909612",
+   "normal": "https://cards.scryfall.io/normal/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.jpg?1783909612",
+   "large": "https://cards.scryfall.io/large/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.jpg?1783909612",
+   "png": "https://cards.scryfall.io/png/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.png?1783909612",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.jpg?1783909612",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/1/912b94c9-7200-452d-940f-df0a7cceb377.jpg?1783909612"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b61634ae-05be-4b56-8ebb-9d4ade902e42",
+  "oracle_id": "ca204b66-8d0c-431a-8d34-282f7c2d17da",
+  "name": "Lightning Greaves",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.)\nEquip {0}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "202",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.jpg?1783903217",
+   "normal": "https://cards.scryfall.io/normal/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.jpg?1783903217",
+   "large": "https://cards.scryfall.io/large/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.jpg?1783903217",
+   "png": "https://cards.scryfall.io/png/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.png?1783903217",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.jpg?1783903217",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/6/b61634ae-05be-4b56-8ebb-9d4ade902e42.jpg?1783903217"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a8c36e65-395c-4800-bd0a-c444940a9b36",
+  "oracle_id": "b46da6bd-578c-4040-97c3-0005b78e31be",
+  "name": "Mask of Griselbrand",
+  "mana_cost": "{1}{B}{B}",
+  "cmc": 3.0,
+  "type_line": "Legendary Artifact — Equipment",
+  "oracle_text": "Equipped creature has flying and lifelink.\nWhenever equipped creature dies, you may pay X life, where X is its power. If you do, draw X cards.\nEquip {3}",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "145",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.jpg?1783909617",
+   "normal": "https://cards.scryfall.io/normal/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.jpg?1783909617",
+   "large": "https://cards.scryfall.io/large/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.jpg?1783909617",
+   "png": "https://cards.scryfall.io/png/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.png?1783909617",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.jpg?1783909617",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/8/a8c36e65-395c-4800-bd0a-c444940a9b36.jpg?1783909617"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "670a36cc-34e1-4d11-808e-1b6bc88eb5d8",
+  "oracle_id": "93cf50cf-0ecc-4d3e-abea-778c1ebacec4",
+  "name": "Massacre Wurm",
+  "mana_cost": "{3}{B}{B}{B}",
+  "cmc": 6.0,
+  "type_line": "Creature — Phyrexian Wurm",
+  "oracle_text": "When this creature enters, creatures your opponents control get -2/-2 until end of turn.\nWhenever a creature an opponent controls dies, that player loses 2 life.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "6",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "754",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.jpg?1787562900",
+   "normal": "https://cards.scryfall.io/normal/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.jpg?1787562900",
+   "large": "https://cards.scryfall.io/large/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.jpg?1787562900",
+   "png": "https://cards.scryfall.io/png/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.png?1787562900",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.jpg?1787562900",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/7/670a36cc-34e1-4d11-808e-1b6bc88eb5d8.jpg?1787562900"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "674f3a8a-4552-4289-b92a-06ce158f115c",
+  "oracle_id": "4709f11c-aef8-45ac-b2bf-e640c568dfac",
+  "name": "Mayhem Devil",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Devil",
+  "oracle_text": "Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "eoc",
+  "collector_number": "121",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.jpg?1783906026",
+   "normal": "https://cards.scryfall.io/normal/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.jpg?1783906026",
+   "large": "https://cards.scryfall.io/large/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.jpg?1783906026",
+   "png": "https://cards.scryfall.io/png/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.png?1783906026",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.jpg?1783906026",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/7/674f3a8a-4552-4289-b92a-06ce158f115c.jpg?1783906026"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b30a8f92-ce42-4b27-a893-bcf97fde228d",
+  "oracle_id": "c97361b5-af16-4a7b-af85-a429dbaf4ad2",
+  "name": "Mind Stone",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{1}, {T}, Sacrifice this artifact: Draw a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "mbc",
+  "collector_number": "76",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.jpg?1785759375",
+   "normal": "https://cards.scryfall.io/normal/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.jpg?1785759375",
+   "large": "https://cards.scryfall.io/large/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.jpg?1785759375",
+   "png": "https://cards.scryfall.io/png/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.png?1785759375",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.jpg?1785759375",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/3/b30a8f92-ce42-4b27-a893-bcf97fde228d.jpg?1785759375"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "521911e5-9ce5-4d55-bfc4-fbfeba4047fe",
+  "oracle_id": "e5912d21-e188-4b9e-8e92-a6e8196353c6",
+  "name": "Mogis, God of Slaughter",
+  "mana_cost": "{2}{B}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment Creature — God",
+  "oracle_text": "Indestructible\nAs long as your devotion to black and red is less than seven, Mogis isn't a creature.\nAt the beginning of each opponent's upkeep, Mogis deals 2 damage to that player unless they sacrifice a creature of their choice.",
+  "keywords": [
+   "Indestructible"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "7",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "89",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.jpg?1783909637",
+   "normal": "https://cards.scryfall.io/normal/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.jpg?1783909637",
+   "large": "https://cards.scryfall.io/large/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.jpg?1783909637",
+   "png": "https://cards.scryfall.io/png/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.png?1783909637",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.jpg?1783909637",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/2/521911e5-9ce5-4d55-bfc4-fbfeba4047fe.jpg?1783909637"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "08838865-a9b6-4323-96a2-0d3a7aba9d3d",
+  "oracle_id": "322f44f0-e6da-4ee0-b474-e7d5e9a461c5",
+  "name": "Morbid Opportunist",
+  "mana_cost": "{2}{B}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Rogue",
+  "oracle_text": "Whenever one or more other creatures die, draw a card. This ability triggers only once each turn.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "soc",
+  "collector_number": "219",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.jpg?1783903784",
+   "normal": "https://cards.scryfall.io/normal/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.jpg?1783903784",
+   "large": "https://cards.scryfall.io/large/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.jpg?1783903784",
+   "png": "https://cards.scryfall.io/png/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.png?1783903784",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.jpg?1783903784",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/8/08838865-a9b6-4323-96a2-0d3a7aba9d3d.jpg?1783903784"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "85177bd7-6c50-48da-b692-ae5fe7bd357c",
+  "oracle_id": "a3fb7228-e76b-4e96-a40e-20b5fed75685",
+  "name": "Mountain",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Mountain",
+  "oracle_text": "({T}: Add {R}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "mdd",
+  "collector_number": "298",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.jpg?1791578439",
+   "normal": "https://cards.scryfall.io/normal/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.jpg?1791578439",
+   "large": "https://cards.scryfall.io/large/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.jpg?1791578439",
+   "png": "https://cards.scryfall.io/png/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.png?1791578439",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.jpg?1791578439",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/5/85177bd7-6c50-48da-b692-ae5fe7bd357c.jpg?1791578439"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "72980409-53f0-43c1-965e-06f22e7bb608",
+  "oracle_id": "a3643f66-dfa2-4275-a093-23e162496354",
+  "name": "Perforating Artist",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Devil",
+  "oracle_text": "Deathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nRaid — At the beginning of your end step, if you attacked this turn, each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.",
+  "keywords": [
+   "Raid",
+   "Deathtouch"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "124",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.jpg?1783909091",
+   "normal": "https://cards.scryfall.io/normal/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.jpg?1783909091",
+   "large": "https://cards.scryfall.io/large/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.jpg?1783909091",
+   "png": "https://cards.scryfall.io/png/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.png?1783909091",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.jpg?1783909091",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/2/72980409-53f0-43c1-965e-06f22e7bb608.jpg?1783909091"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "0a25d478-84fd-4e4b-abb7-f5f6becf6eb0",
+  "oracle_id": "bf0ee9da-6071-440c-9149-d441f730fcfb",
+  "name": "Persistent Constrictor",
+  "mana_cost": "{4}{B}",
+  "cmc": 5.0,
+  "type_line": "Creature — Zombie Snake",
+  "oracle_text": "At the beginning of each opponent's upkeep, they lose 1 life and you put a -1/-1 counter on up to one target creature they control.\nPersist (When this creature dies, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.)",
+  "keywords": [
+   "Persist"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "5",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "22",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.jpg?1783909658",
+   "normal": "https://cards.scryfall.io/normal/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.jpg?1783909658",
+   "large": "https://cards.scryfall.io/large/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.jpg?1783909658",
+   "png": "https://cards.scryfall.io/png/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.png?1783909658",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.jpg?1783909658",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/a/0a25d478-84fd-4e4b-abb7-f5f6becf6eb0.jpg?1783909658"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "64b67170-1602-4050-80c0-ade2a6cac211",
+  "oracle_id": "5e62b51d-faec-4aa0-9504-cf2c282d08ea",
+  "name": "Rakdos Charm",
+  "mana_cost": "{B}{R}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Choose one —\n• Exile target player's graveyard.\n• Destroy target artifact.\n• Each creature deals 1 damage to its controller.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "eoc",
+  "collector_number": "125",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.jpg?1783906024",
+   "normal": "https://cards.scryfall.io/normal/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.jpg?1783906024",
+   "large": "https://cards.scryfall.io/large/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.jpg?1783906024",
+   "png": "https://cards.scryfall.io/png/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.png?1783906024",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.jpg?1783906024",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/4/64b67170-1602-4050-80c0-ade2a6cac211.jpg?1783906024"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a263e71d-953f-4648-b326-33133cfa7e00",
+  "oracle_id": "3adb7681-977f-4a32-9ec8-51481b958268",
+  "name": "Rakdos Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{1}, {T}: Add {B}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "frc",
+  "collector_number": "60",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.jpg?1789599847",
+   "normal": "https://cards.scryfall.io/normal/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.jpg?1789599847",
+   "large": "https://cards.scryfall.io/large/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.jpg?1789599847",
+   "png": "https://cards.scryfall.io/png/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.png?1789599847",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.jpg?1789599847",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/2/a263e71d-953f-4648-b326-33133cfa7e00.jpg?1789599847"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3d0d5a41-8251-437c-a4a0-3b712281ebb0",
+  "oracle_id": "143a269a-b9ee-48ba-bd7b-4aa46eb36778",
+  "name": "Rakdos, Lord of Riots",
+  "mana_cost": "{B}{B}{R}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Demon",
+  "oracle_text": "You can't cast Rakdos unless an opponent lost life this turn.\nFlying, trample\nCreature spells you cast cost {1} less to cast for each 1 life your opponents have lost this turn.",
+  "keywords": [
+   "Flying",
+   "Trample"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "6",
+  "toughness": "6",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "230",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1783909592",
+   "normal": "https://cards.scryfall.io/normal/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1783909592",
+   "large": "https://cards.scryfall.io/large/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1783909592",
+   "png": "https://cards.scryfall.io/png/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.png?1783909592",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1783909592",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1783909592"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "53c38f4e-81ec-45b3-a6cf-06a65b674978",
+  "oracle_id": "3e5ca524-8dd1-4f7f-a467-5210d768b8a1",
+  "name": "Rampaging Ferocidon",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Dinosaur",
+  "oracle_text": "Menace\nPlayers can't gain life.\nWhenever another creature enters, this creature deals 1 damage to that creature's controller.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "167",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.jpg?1783909611",
+   "normal": "https://cards.scryfall.io/normal/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.jpg?1783909611",
+   "large": "https://cards.scryfall.io/large/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.jpg?1783909611",
+   "png": "https://cards.scryfall.io/png/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.png?1783909611",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.jpg?1783909611",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/3/53c38f4e-81ec-45b3-a6cf-06a65b674978.jpg?1783909611"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "4c5c8eb3-c866-4974-90eb-be99c07af1a1",
+  "oracle_id": "88c3fc46-f2f5-440c-80a6-fed5b42cd340",
+  "name": "Sadistic Shell Game",
+  "mana_cost": "{4}{B}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Starting with the next opponent in turn order, each player chooses a creature you don't control. Destroy the chosen creatures.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "24",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.jpg?1783909657",
+   "normal": "https://cards.scryfall.io/normal/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.jpg?1783909657",
+   "large": "https://cards.scryfall.io/large/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.jpg?1783909657",
+   "png": "https://cards.scryfall.io/png/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.png?1783909657",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.jpg?1783909657",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/c/4c5c8eb3-c866-4974-90eb-be99c07af1a1.jpg?1783909657"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ce35e6fb-ff54-44c4-a216-7ddd37f46882",
+  "oracle_id": "fcb7c93c-46ab-49b5-a6e0-35d73f3be8f0",
+  "name": "Screaming Nemesis",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Spirit",
+  "oracle_text": "Haste\nWhenever this creature is dealt damage, it deals that much damage to any other target. If a player is dealt damage this way, they can't gain life for the rest of the game.",
+  "keywords": [
+   "Haste"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsk",
+  "collector_number": "157",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.jpg?1783909465",
+   "normal": "https://cards.scryfall.io/normal/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.jpg?1783909465",
+   "large": "https://cards.scryfall.io/large/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.jpg?1783909465",
+   "png": "https://cards.scryfall.io/png/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.png?1783909465",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.jpg?1783909465",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/c/e/ce35e6fb-ff54-44c4-a216-7ddd37f46882.jpg?1783909465"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d7af1d6b-ff13-4886-a212-4a6e09153475",
+  "oracle_id": "15687ee3-3cdb-4a8f-a726-46b73bceb792",
+  "name": "Shadowblood Ridge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{1}, {T}: Add {B}{R}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "296",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.jpg?1783909568",
+   "normal": "https://cards.scryfall.io/normal/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.jpg?1783909568",
+   "large": "https://cards.scryfall.io/large/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.jpg?1783909568",
+   "png": "https://cards.scryfall.io/png/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.png?1783909568",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.jpg?1783909568",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/7/d7af1d6b-ff13-4886-a212-4a6e09153475.jpg?1783909568"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "c1752b65-dace-4c87-b102-23df276b2e41",
+  "oracle_id": "e90a1381-c9c1-4f57-928c-5d19dc065274",
+  "name": "Shivan Gorge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Legendary Land",
+  "oracle_text": "{T}: Add {C}.\n{2}{R}, {T}: Shivan Gorge deals 1 damage to each opponent.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "297",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.jpg?1783909568",
+   "normal": "https://cards.scryfall.io/normal/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.jpg?1783909568",
+   "large": "https://cards.scryfall.io/large/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.jpg?1783909568",
+   "png": "https://cards.scryfall.io/png/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.png?1783909568",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.jpg?1783909568",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/c/1/c1752b65-dace-4c87-b102-23df276b2e41.jpg?1783909568"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "fe85a124-0d8b-4a29-8df1-65888a39147f",
+  "oracle_id": "44443716-8356-40cd-a879-35264b29108c",
+  "name": "Scheming Silvertongue // Sign in Blood",
+  "mana_cost": "{1}{B} // {B}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Vampire Warlock // Sorcery",
+  "keywords": [
+   "Flying",
+   "Lifelink",
+   "Prepared"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "layout": "prepare",
+  "set": "sos",
+  "collector_number": "99",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.jpg?1783903675",
+   "normal": "https://cards.scryfall.io/normal/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.jpg?1783903675",
+   "large": "https://cards.scryfall.io/large/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.jpg?1783903675",
+   "png": "https://cards.scryfall.io/png/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.png?1783903675",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.jpg?1783903675",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/e/fe85a124-0d8b-4a29-8df1-65888a39147f.jpg?1783903675"
+  },
+  "card_faces": [
+   {
+    "name": "Scheming Silvertongue",
+    "mana_cost": "{1}{B}",
+    "type_line": "Creature — Vampire Warlock",
+    "oracle_text": "Flying, lifelink\nAt the beginning of your second main phase, if you gained 2 or more life this turn, this creature becomes prepared. (While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)",
+    "power": "1",
+    "toughness": "3"
+   },
+   {
+    "name": "Sign in Blood",
+    "mana_cost": "{B}{B}",
+    "type_line": "Sorcery",
+    "oracle_text": "Target player draws two cards and loses 2 life."
+   }
+  ],
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d707c477-440f-417c-970a-0e7426a58045",
+  "oracle_id": "390f1b56-264e-4336-83be-dc1fe79bfdcf",
+  "name": "Smoldering Marsh",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Swamp Mountain",
+  "oracle_text": "({T}: Add {B} or {R}.)\nThis land enters tapped unless you control two or more basic lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "266",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/7/d707c477-440f-417c-970a-0e7426a58045.jpg?1783903193",
+   "normal": "https://cards.scryfall.io/normal/front/d/7/d707c477-440f-417c-970a-0e7426a58045.jpg?1783903193",
+   "large": "https://cards.scryfall.io/large/front/d/7/d707c477-440f-417c-970a-0e7426a58045.jpg?1783903193",
+   "png": "https://cards.scryfall.io/png/front/d/7/d707c477-440f-417c-970a-0e7426a58045.png?1783903193",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/7/d707c477-440f-417c-970a-0e7426a58045.jpg?1783903193",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/7/d707c477-440f-417c-970a-0e7426a58045.jpg?1783903193"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "fc817e07-c1f3-469f-9cf7-0945dea7400f",
+  "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "499",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "normal": "https://cards.scryfall.io/normal/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "large": "https://cards.scryfall.io/large/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "png": "https://cards.scryfall.io/png/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.png?1793021181",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b90164a1-8b0a-4445-a0ad-43e4c3324925",
+  "oracle_id": "e49b902f-a556-4dab-8928-93caf0a3f609",
+  "name": "Spiked Corridor // Torture Pit",
+  "mana_cost": "{3}{R} // {3}{R}",
+  "cmc": 8.0,
+  "type_line": "Enchantment — Room // Enchantment — Room",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "split",
+  "set": "dsc",
+  "collector_number": "28",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.jpg?1783909656",
+   "normal": "https://cards.scryfall.io/normal/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.jpg?1783909656",
+   "large": "https://cards.scryfall.io/large/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.jpg?1783909656",
+   "png": "https://cards.scryfall.io/png/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.png?1783909656",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.jpg?1783909656",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/9/b90164a1-8b0a-4445-a0ad-43e4c3324925.jpg?1783909656"
+  },
+  "card_faces": [
+   {
+    "name": "Spiked Corridor",
+    "mana_cost": "{3}{R}",
+    "type_line": "Enchantment — Room",
+    "oracle_text": "When you unlock this door, create three 1/1 red Devil creature tokens with \"When this token dies, it deals 1 damage to any target.\"\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)"
+   },
+   {
+    "name": "Torture Pit",
+    "mana_cost": "{3}{R}",
+    "type_line": "Enchantment — Room",
+    "oracle_text": "If a source you control would deal noncombat damage to an opponent, it deals that much damage plus 2 instead.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)"
+   }
+  ],
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "11e4ba4b-62d1-43ed-82e8-cd45d7a62c65",
+  "oracle_id": "690c7f8e-fea2-4920-afa7-02ff120701a1",
+  "name": "Spinerock Knoll",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "Hideaway 4 (When this land enters, look at the top four cards of your library, exile one face down, then put the rest on the bottom in a random order.)\nThis land enters tapped.\n{T}: Add {R}.\n{R}, {T}: You may play the exiled card without paying its mana cost if an opponent was dealt 7 or more damage this turn.",
+  "keywords": [
+   "Hideaway"
+  ],
+  "colors": [],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "300",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.jpg?1783909567",
+   "normal": "https://cards.scryfall.io/normal/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.jpg?1783909567",
+   "large": "https://cards.scryfall.io/large/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.jpg?1783909567",
+   "png": "https://cards.scryfall.io/png/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.png?1783909567",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.jpg?1783909567",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/1/11e4ba4b-62d1-43ed-82e8-cd45d7a62c65.jpg?1783909567"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3be610eb-790f-4f47-a92a-34fe704cc8e0",
+  "oracle_id": "922cf963-2b1b-43ad-819e-6e49133e6aae",
+  "name": "Spiteful Visions",
+  "mana_cost": "{2}{B/R}{B/R}",
+  "cmc": 4.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of each player's draw step, that player draws an additional card.\nWhenever a player draws a card, this enchantment deals 1 damage to that player.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "233",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.jpg?1783909589",
+   "normal": "https://cards.scryfall.io/normal/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.jpg?1783909589",
+   "large": "https://cards.scryfall.io/large/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.jpg?1783909589",
+   "png": "https://cards.scryfall.io/png/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.png?1783909589",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.jpg?1783909589",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/b/3be610eb-790f-4f47-a92a-34fe704cc8e0.jpg?1783909589"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "5c7c23a6-53ff-4588-838c-7936cb9eb86b",
+  "oracle_id": "fb03befb-b4e4-4ae9-908d-a16d5b03b054",
+  "name": "Star Athlete",
+  "mana_cost": "{1}{R}{R}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Warrior",
+  "oracle_text": "Menace\nWhenever this creature attacks, choose up to one target nonland permanent. Its controller may sacrifice it. If they don't, this creature deals 5 damage to that player.\nBlitz {3}{R} (If you cast this spell for its blitz cost, it gains haste and \"When this creature dies, draw a card.\" Sacrifice it at the beginning of the next end step.)",
+  "keywords": [
+   "Blitz",
+   "Menace"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "29",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.jpg?1783909656",
+   "normal": "https://cards.scryfall.io/normal/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.jpg?1783909656",
+   "large": "https://cards.scryfall.io/large/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.jpg?1783909656",
+   "png": "https://cards.scryfall.io/png/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.png?1783909656",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.jpg?1783909656",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/c/5c7c23a6-53ff-4588-838c-7936cb9eb86b.jpg?1783909656"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "728b356a-e2ec-4c44-bd0a-bb9a5427a1ad",
+  "oracle_id": "34d112c3-cc2d-4428-bd7f-568bda61bd30",
+  "name": "Starstorm",
+  "mana_cost": "{X}{R}{R}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Starstorm deals X damage to each creature.\nCycling {3} ({3}, Discard this card: Draw a card.)",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "110",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.jpg?1783923956",
+   "normal": "https://cards.scryfall.io/normal/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.jpg?1783923956",
+   "large": "https://cards.scryfall.io/large/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.jpg?1783923956",
+   "png": "https://cards.scryfall.io/png/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.png?1783923956",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.jpg?1783923956",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/2/728b356a-e2ec-4c44-bd0a-bb9a5427a1ad.jpg?1783923956"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9",
+  "oracle_id": "0d3bebc6-662a-4cd4-ad1e-aeed0c5e04f6",
+  "name": "Stormfist Crusader",
+  "mana_cost": "{B}{R}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Knight",
+  "oracle_text": "Menace\nAt the beginning of your upkeep, each player draws a card and loses 1 life.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "234",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.jpg?1783909588",
+   "normal": "https://cards.scryfall.io/normal/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.jpg?1783909588",
+   "large": "https://cards.scryfall.io/large/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.jpg?1783909588",
+   "png": "https://cards.scryfall.io/png/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.png?1783909588",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.jpg?1783909588",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/b/0b420ce8-3dd1-430b-a090-4b4e8dcb6aa9.jpg?1783909588"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "be340a1c-f1e7-446e-ae91-86ecb884479c",
+  "oracle_id": "f5c38c01-4a40-469f-91a0-7479daf4e8e7",
+  "name": "Sulfurous Springs",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. This land deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "frc",
+  "collector_number": "85",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.jpg?1789599923",
+   "normal": "https://cards.scryfall.io/normal/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.jpg?1789599923",
+   "large": "https://cards.scryfall.io/large/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.jpg?1789599923",
+   "png": "https://cards.scryfall.io/png/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.png?1789599923",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.jpg?1789599923",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/e/be340a1c-f1e7-446e-ae91-86ecb884479c.jpg?1789599923"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "38c98aa0-bfa1-42f4-b035-a48dac86f0ce",
+  "oracle_id": "98641070-93bd-4088-90cb-956c2b21979e",
+  "name": "Suspended Sentence",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target creature an opponent controls. That player loses 3 life. Exile Suspended Sentence with three time counters on it.\nSuspend 3—{1}{B} (Rather than cast this card from your hand, you may pay {1}{B} and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)",
+  "keywords": [
+   "Suspend"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "25",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.jpg?1783909657",
+   "normal": "https://cards.scryfall.io/normal/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.jpg?1783909657",
+   "large": "https://cards.scryfall.io/large/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.jpg?1783909657",
+   "png": "https://cards.scryfall.io/png/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.png?1783909657",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.jpg?1783909657",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/8/38c98aa0-bfa1-42f4-b035-a48dac86f0ce.jpg?1783909657"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b233b117-9369-45c1-80c5-cc857386b6be",
+  "oracle_id": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+  "name": "Swamp",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Swamp",
+  "oracle_text": "({T}: Add {B}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B"
+  ],
+  "layout": "normal",
+  "set": "mdd",
+  "collector_number": "296",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.jpg?1791578437",
+   "normal": "https://cards.scryfall.io/normal/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.jpg?1791578437",
+   "large": "https://cards.scryfall.io/large/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.jpg?1791578437",
+   "png": "https://cards.scryfall.io/png/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.png?1791578437",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.jpg?1791578437",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/2/b233b117-9369-45c1-80c5-cc857386b6be.jpg?1791578437"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "443a4eac-f972-4027-aed4-552d4edc2ce1",
+  "oracle_id": "14c3ff84-1e82-4606-a433-869fc52cc382",
+  "name": "Syr Konrad, the Grim",
+  "mana_cost": "{3}{B}{B}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Human Knight",
+  "oracle_text": "Whenever another creature dies, or a creature card is put into a graveyard from anywhere other than the battlefield, or a creature card leaves your graveyard, Syr Konrad deals 1 damage to each opponent.\n{1}{B}: Each player mills a card. (They each put the top card of their library into their graveyard.)",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "5",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "158",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.jpg?1783909613",
+   "normal": "https://cards.scryfall.io/normal/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.jpg?1783909613",
+   "large": "https://cards.scryfall.io/large/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.jpg?1783909613",
+   "png": "https://cards.scryfall.io/png/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.png?1783909613",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.jpg?1783909613",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/4/443a4eac-f972-4027-aed4-552d4edc2ce1.jpg?1783909613"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "65a6c25f-860e-401f-ac01-d16e4327248d",
+  "oracle_id": "8331d2ff-3729-4014-8dcb-278644d2632a",
+  "name": "Séance Board",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "Morbid — At the beginning of each end step, if a creature died this turn, put a soul counter on this artifact.\n{T}: Add X mana of any one color, where X is the number of soul counters on this artifact. Spend this mana only to cast instant, sorcery, Demon, and Spirit spells.",
+  "keywords": [
+   "Morbid"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "40",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.jpg?1783909652",
+   "normal": "https://cards.scryfall.io/normal/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.jpg?1783909652",
+   "large": "https://cards.scryfall.io/large/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.jpg?1783909652",
+   "png": "https://cards.scryfall.io/png/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.png?1783909652",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.jpg?1783909652",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/5/65a6c25f-860e-401f-ac01-d16e4327248d.jpg?1783909652"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7e6f1a55-0fec-4b94-9640-9110ca8d0212",
+  "oracle_id": "b2bae7fc-0668-4b34-9cd6-0d80aea52275",
+  "name": "Tainted Peak",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. Activate only if you control a Swamp.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "304",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1783909566",
+   "normal": "https://cards.scryfall.io/normal/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1783909566",
+   "large": "https://cards.scryfall.io/large/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1783909566",
+   "png": "https://cards.scryfall.io/png/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.png?1783909566",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1783909566",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/e/7e6f1a55-0fec-4b94-9640-9110ca8d0212.jpg?1783909566"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32",
+  "oracle_id": "1d9aeaaa-66f6-41cb-9bac-162d6fd8662c",
+  "name": "Talisman of Indulgence",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {B} or {R}. This artifact deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "frc",
+  "collector_number": "63",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.jpg?1789599847",
+   "normal": "https://cards.scryfall.io/normal/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.jpg?1789599847",
+   "large": "https://cards.scryfall.io/large/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.jpg?1789599847",
+   "png": "https://cards.scryfall.io/png/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.png?1789599847",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.jpg?1789599847",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/6/36bd614f-ab3b-4ad1-ab5c-a7ca0a641f32.jpg?1789599847"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d78eccc4-1500-43f1-94f5-b39c160b6381",
+  "oracle_id": "7c439c18-31dc-41fe-b03d-3fca06e6fc0b",
+  "name": "Temple of Malice",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n{T}: Add {B} or {R}.",
+  "keywords": [
+   "Scry"
+  ],
+  "colors": [],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "701",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.jpg?1783908896",
+   "normal": "https://cards.scryfall.io/normal/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.jpg?1783908896",
+   "large": "https://cards.scryfall.io/large/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.jpg?1783908896",
+   "png": "https://cards.scryfall.io/png/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.png?1783908896",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.jpg?1783908896",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/7/d78eccc4-1500-43f1-94f5-b39c160b6381.jpg?1783908896"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "1024f555-e0d7-48ac-b86e-c87290eac832",
+  "oracle_id": "cfdd5dc6-593e-495a-8cfe-3a56b3c4c7df",
+  "name": "Temple of the False God",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}{C}. Activate only if you control five or more lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "soc",
+  "collector_number": "416",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.jpg?1783903715",
+   "normal": "https://cards.scryfall.io/normal/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.jpg?1783903715",
+   "large": "https://cards.scryfall.io/large/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.jpg?1783903715",
+   "png": "https://cards.scryfall.io/png/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.png?1783903715",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.jpg?1783903715",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/0/1024f555-e0d7-48ac-b86e-c87290eac832.jpg?1783903715"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "58ebd718-982d-4370-b4af-ef49b978d97d",
+  "oracle_id": "1bd3e453-aa21-4ee6-95c2-d6d920ee8e7a",
+  "name": "Terramorphic Expanse",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "571",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.jpg?1793021389",
+   "normal": "https://cards.scryfall.io/normal/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.jpg?1793021389",
+   "large": "https://cards.scryfall.io/large/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.jpg?1793021389",
+   "png": "https://cards.scryfall.io/png/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.png?1793021389",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.jpg?1793021389",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/8/58ebd718-982d-4370-b4af-ef49b978d97d.jpg?1793021389"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "494c244e-dcdc-4169-9743-8a61f58e8763",
+  "oracle_id": "b194f277-5045-4391-8b48-d555a6d657a7",
+  "name": "The Lord of Pain",
+  "mana_cost": "{3}{B}{R}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Human Assassin",
+  "oracle_text": "Menace\nYour opponents can't gain life.\nWhenever a player casts their first spell each turn, choose another target player. The Lord of Pain deals damage equal to that spell's mana value to the chosen player.",
+  "keywords": [
+   "Menace"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "3",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.jpg?1783909663",
+   "normal": "https://cards.scryfall.io/normal/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.jpg?1783909663",
+   "large": "https://cards.scryfall.io/large/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.jpg?1783909663",
+   "png": "https://cards.scryfall.io/png/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.png?1783909663",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.jpg?1783909663",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/9/494c244e-dcdc-4169-9743-8a61f58e8763.jpg?1783909663"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b",
+  "oracle_id": "b391a4ce-52ce-4a8c-bbe5-6053951ee1d4",
+  "name": "Theater of Horrors",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of your upkeep, exile the top card of your library.\nDuring your turn, if an opponent lost life this turn, you may play lands and cast spells from among cards exiled with this enchantment.\n{3}{R}: This enchantment deals 1 damage to target opponent or planeswalker.",
+  "keywords": [],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "236",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.jpg?1783909588",
+   "normal": "https://cards.scryfall.io/normal/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.jpg?1783909588",
+   "large": "https://cards.scryfall.io/large/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.jpg?1783909588",
+   "png": "https://cards.scryfall.io/png/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.png?1783909588",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.jpg?1783909588",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/0/f0b88e4f-070f-48d1-a5f9-c22dfc7ab31b.jpg?1783909588"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ad077996-6b5e-4eb8-bb6e-93d43c5efa8f",
+  "oracle_id": "9965d9c5-2ebf-4a6c-930e-55c5890979be",
+  "name": "Thought Vessel",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "You have no maximum hand size.\n{T}: Add {C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "mbc",
+  "collector_number": "78",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.jpg?1785759392",
+   "normal": "https://cards.scryfall.io/normal/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.jpg?1785759392",
+   "large": "https://cards.scryfall.io/large/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.jpg?1785759392",
+   "png": "https://cards.scryfall.io/png/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.png?1785759392",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.jpg?1785759392",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/d/ad077996-6b5e-4eb8-bb6e-93d43c5efa8f.jpg?1785759392"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "cc7be939-2202-40fe-8899-a05682d76190",
+  "oracle_id": "1b355139-4891-436c-9079-0ce17ecc2d65",
+  "name": "Vial Smasher the Fierce",
+  "mana_cost": "{1}{B}{R}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Goblin Berserker",
+  "oracle_text": "Whenever you cast your first spell each turn, choose an opponent at random. Vial Smasher deals damage equal to that spell's mana value to that player or a planeswalker that player controls.\nPartner (You can have two commanders if both have partner.)",
+  "keywords": [
+   "Partner"
+  ],
+  "colors": [
+   "B",
+   "R"
+  ],
+  "color_identity": [
+   "B",
+   "R"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "239",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.jpg?1783909586",
+   "normal": "https://cards.scryfall.io/normal/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.jpg?1783909586",
+   "large": "https://cards.scryfall.io/large/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.jpg?1783909586",
+   "png": "https://cards.scryfall.io/png/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.png?1783909586",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.jpg?1783909586",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/c/c/cc7be939-2202-40fe-8899-a05682d76190.jpg?1783909586"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "74177b51-a300-49d9-8ea7-557b19cf80c7",
+  "oracle_id": "10aff3f6-8347-4e1b-b8e7-c204c9e46657",
+  "name": "Wheel of Misfortune",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player secretly chooses a number 0 or greater, then all players reveal those numbers simultaneously and determine the highest and lowest numbers revealed this way. Wheel of Misfortune deals damage equal to the highest number to each player who chose that number. Each player who didn't choose the lowest number discards their hand, then draws seven cards.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "layout": "normal",
+  "set": "cmr",
+  "collector_number": "211",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.jpg?1783928800",
+   "normal": "https://cards.scryfall.io/normal/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.jpg?1783928800",
+   "large": "https://cards.scryfall.io/large/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.jpg?1783928800",
+   "png": "https://cards.scryfall.io/png/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.png?1783928800",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.jpg?1783928800",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/4/74177b51-a300-49d9-8ea7-557b19cf80c7.jpg?1783928800"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d2422e3e-a923-4516-b87c-cac748354dca",
+  "oracle_id": "05899372-9784-4bdb-9c28-504c71fed906",
+  "name": "Witch's Clinic",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{2}, {T}: Target commander gains lifelink until end of turn.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "dsc",
+  "collector_number": "325",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.jpg?1783909551",
+   "normal": "https://cards.scryfall.io/normal/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.jpg?1783909551",
+   "large": "https://cards.scryfall.io/large/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.jpg?1783909551",
+   "png": "https://cards.scryfall.io/png/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.png?1783909551",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.jpg?1783909551",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/2/d2422e3e-a923-4516-b87c-cac748354dca.jpg?1783909551"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]

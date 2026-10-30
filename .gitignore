@@ -6,3 +6,6 @@ test-results/
 .env
 .env.*
 !.env.example
+
+# Developer-only Python fixture capture tools
+__pycache__/

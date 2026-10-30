@@ -1,0 +1,2386 @@
+[
+ {
+  "id": "7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928",
+  "oracle_id": "98dd8231-5679-404a-b976-0bbfa6a8493c",
+  "name": "Miles \"Tails\" Prower",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Fox Artificer",
+  "oracle_text": "Flash\nFlying\nWhenever a Vehicle you control enters, draw a card if it has flying. Otherwise, put a flying counter on it.",
+  "keywords": [
+   "Flying",
+   "Flash"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "3",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "sld",
+  "collector_number": "2085",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.jpg?1783906091",
+   "normal": "https://cards.scryfall.io/normal/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.jpg?1783906091",
+   "large": "https://cards.scryfall.io/large/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.jpg?1783906091",
+   "png": "https://cards.scryfall.io/png/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.png?1783906091",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.jpg?1783906091",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/d/7d4bd7e1-9861-4f8a-9ad5-a41aeaee1928.jpg?1783906091"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "21892cbc-1af2-4ea1-8907-cec514b53004",
+  "oracle_id": "132ca99a-a3c7-4ed6-b4d0-0edcd7140ca2",
+  "name": "Absorb",
+  "mana_cost": "{W}{U}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target spell. You gain 3 life.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "dmr",
+  "collector_number": "186",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.jpg?1783918431",
+   "normal": "https://cards.scryfall.io/normal/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.jpg?1783918431",
+   "large": "https://cards.scryfall.io/large/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.jpg?1783918431",
+   "png": "https://cards.scryfall.io/png/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.png?1783918431",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.jpg?1783918431",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/1/21892cbc-1af2-4ea1-8907-cec514b53004.jpg?1783918431"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "943f7244-aa62-423f-aaaa-680bdfb4f47e",
+  "oracle_id": "dcde1a62-33a5-4454-a389-9bf7a3521a4c",
+  "name": "Aeronaut Admiral",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Creature — Human Pilot",
+  "oracle_text": "Flying\nVehicles you control have flying.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "3",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "79",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.jpg?1783923969",
+   "normal": "https://cards.scryfall.io/normal/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.jpg?1783923969",
+   "large": "https://cards.scryfall.io/large/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.jpg?1783923969",
+   "png": "https://cards.scryfall.io/png/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.png?1783923969",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.jpg?1783923969",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/4/943f7244-aa62-423f-aaaa-680bdfb4f47e.jpg?1783923969"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "795df2ee-fbfc-4961-852c-e3ec50cc52da",
+  "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "485",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "normal": "https://cards.scryfall.io/normal/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "large": "https://cards.scryfall.io/large/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "png": "https://cards.scryfall.io/png/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.png?1793021117",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/9/795df2ee-fbfc-4961-852c-e3ec50cc52da.jpg?1793021117"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "af690536-b0bc-4d85-8bb8-f6856b9f927b",
+  "oracle_id": "e018773f-95b3-49a3-9674-6f04ddef2092",
+  "name": "Azorius Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{1}, {T}: Add {W}{U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "frc",
+  "collector_number": "53",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.jpg?1789599829",
+   "normal": "https://cards.scryfall.io/normal/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.jpg?1789599829",
+   "large": "https://cards.scryfall.io/large/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.jpg?1789599829",
+   "png": "https://cards.scryfall.io/png/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.png?1789599829",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.jpg?1789599829",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/f/af690536-b0bc-4d85-8bb8-f6856b9f927b.jpg?1789599829"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d53c7e49-745d-48ba-bc50-240472a4f039",
+  "oracle_id": "f28b21a6-f7ce-437a-8c5b-0423cb55cefb",
+  "name": "Banishing Light",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "When this enchantment enters, exile target nonland permanent an opponent controls until this enchantment leaves the battlefield.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "hoc",
+  "collector_number": "161",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.jpg?1785497352",
+   "normal": "https://cards.scryfall.io/normal/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.jpg?1785497352",
+   "large": "https://cards.scryfall.io/large/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.jpg?1785497352",
+   "png": "https://cards.scryfall.io/png/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.png?1785497352",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.jpg?1785497352",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/5/d53c7e49-745d-48ba-bc50-240472a4f039.jpg?1785497352"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "94751d5e-7693-44af-b1b5-e440677dc7a2",
+  "oracle_id": "e1afaef7-9fa3-4662-a95f-adfb0da9fd11",
+  "name": "Bident of Thassa",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment Artifact",
+  "oracle_text": "Whenever a creature you control deals combat damage to a player, you may draw a card.\n{1}{U}, {T}: Creatures your opponents control attack this turn if able.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "lcc",
+  "collector_number": "146",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.jpg?1783913890",
+   "normal": "https://cards.scryfall.io/normal/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.jpg?1783913890",
+   "large": "https://cards.scryfall.io/large/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.jpg?1783913890",
+   "png": "https://cards.scryfall.io/png/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.png?1783913890",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.jpg?1783913890",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/4/94751d5e-7693-44af-b1b5-e440677dc7a2.jpg?1783913890"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "363cb43a-e358-4380-a42f-9b095ca522c6",
+  "oracle_id": "bc64e396-7fa1-4a4e-a528-352737714a9c",
+  "name": "Brute Suit",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Vigilance\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "4",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "241",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.jpg?1783923827",
+   "normal": "https://cards.scryfall.io/normal/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.jpg?1783923827",
+   "large": "https://cards.scryfall.io/large/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.jpg?1783923827",
+   "png": "https://cards.scryfall.io/png/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.png?1783923827",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.jpg?1783923827",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/6/363cb43a-e358-4380-a42f-9b095ca522c6.jpg?1783923827"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "932b865c-bfe7-4bb7-82e9-2403cf0e0522",
+  "oracle_id": "93e336e3-2be7-4581-8ab3-9bea422d81c3",
+  "name": "Cargo Ship",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying, vigilance\n{T}: Add {C}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Flying",
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "fin",
+  "collector_number": "47",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.jpg?1783906640",
+   "normal": "https://cards.scryfall.io/normal/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.jpg?1783906640",
+   "large": "https://cards.scryfall.io/large/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.jpg?1783906640",
+   "png": "https://cards.scryfall.io/png/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.png?1783906640",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.jpg?1783906640",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/3/932b865c-bfe7-4bb7-82e9-2403cf0e0522.jpg?1783906640"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "04e02176-16ee-4676-8b33-cedebdb18cbc",
+  "oracle_id": "837c5d0e-0a33-4f9d-ae25-68a687bdf640",
+  "name": "Chrome Host Seedshark",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Phyrexian Shark",
+  "oracle_text": "Flying\nWhenever you cast a noncreature spell, incubate X, where X is that spell's mana value. (Create an Incubator token with X +1/+1 counters on it and \"{2}: Transform this token.\" It transforms into a 0/0 Phyrexian artifact creature.)",
+  "keywords": [
+   "Flying",
+   "Incubate",
+   "Transform"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "eoc",
+  "collector_number": "68",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.jpg?1783906045",
+   "normal": "https://cards.scryfall.io/normal/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.jpg?1783906045",
+   "large": "https://cards.scryfall.io/large/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.jpg?1783906045",
+   "png": "https://cards.scryfall.io/png/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.png?1783906045",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.jpg?1783906045",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/4/04e02176-16ee-4676-8b33-cedebdb18cbc.jpg?1783906045"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "afa9e3e6-a633-46ad-b52a-48574b2f3d07",
+  "oracle_id": "d3bdfb25-dfb2-4df4-b502-ef0909a39f86",
+  "name": "Cid, Freeflier Pilot",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Human Warrior Pilot",
+  "oracle_text": "Equipment and Vehicle spells you cast cost {1} less to cast.\nJump — During your turn, Cid has flying.\n{2}, {T}: Return target Equipment or Vehicle card from your graveyard to your hand.",
+  "keywords": [
+   "Jump"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "fic",
+  "collector_number": "13",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.jpg?1783906369",
+   "normal": "https://cards.scryfall.io/normal/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.jpg?1783906369",
+   "large": "https://cards.scryfall.io/large/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.jpg?1783906369",
+   "png": "https://cards.scryfall.io/png/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.png?1783906369",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.jpg?1783906369",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/f/afa9e3e6-a633-46ad-b52a-48574b2f3d07.jpg?1783906369"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "670e4457-927e-42ed-a36f-28b60c2f7566",
+  "oracle_id": "aff34f28-f707-4458-8af3-1bd5b13a6b10",
+  "name": "Cleansing Nova",
+  "mana_cost": "{3}{W}{W}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Choose one —\n• Destroy all creatures.\n• Destroy all artifacts and enchantments.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "msc",
+  "collector_number": "124",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.jpg?1783903251",
+   "normal": "https://cards.scryfall.io/normal/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.jpg?1783903251",
+   "large": "https://cards.scryfall.io/large/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.jpg?1783903251",
+   "png": "https://cards.scryfall.io/png/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.png?1783903251",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.jpg?1783903251",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/7/670e4457-927e-42ed-a36f-28b60c2f7566.jpg?1783903251"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3380d87a-c460-409c-8d47-9b2fc5ddd2ea",
+  "oracle_id": "c86bac69-96d6-4b9f-87e4-2d7faecaa112",
+  "name": "Cloudspire Captain",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Pilot",
+  "oracle_text": "Mounts and Vehicles you control get +1/+1.\nThis creature saddles Mounts and crews Vehicles as though its power were 2 greater.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "9",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.jpg?1783907920",
+   "normal": "https://cards.scryfall.io/normal/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.jpg?1783907920",
+   "large": "https://cards.scryfall.io/large/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.jpg?1783907920",
+   "png": "https://cards.scryfall.io/png/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.png?1783907920",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.jpg?1783907920",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/3/3380d87a-c460-409c-8d47-9b2fc5ddd2ea.jpg?1783907920"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "4febfcf0-6537-4e30-a963-9859314d0657",
+  "oracle_id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+  "name": "Coastal Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "td2",
+  "collector_number": "38",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.jpg?1783941275",
+   "normal": "https://cards.scryfall.io/normal/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.jpg?1783941275",
+   "large": "https://cards.scryfall.io/large/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.jpg?1783941275",
+   "png": "https://cards.scryfall.io/png/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.png?1783941275",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.jpg?1783941275",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/f/4febfcf0-6537-4e30-a963-9859314d0657.jpg?1783941275"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a73297d2-580c-4174-a427-265f6916d09f",
+  "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "521",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "normal": "https://cards.scryfall.io/normal/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "large": "https://cards.scryfall.io/large/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "png": "https://cards.scryfall.io/png/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.png?1793021256",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/7/a73297d2-580c-4174-a427-265f6916d09f.jpg?1793021256"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13",
+  "oracle_id": "0b67c4e2-f88b-4e01-85a1-9d5f5b8db13b",
+  "name": "Commander's Sphere",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.\nSacrifice this artifact: Draw a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "487",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.jpg?1793021131",
+   "normal": "https://cards.scryfall.io/normal/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.jpg?1793021131",
+   "large": "https://cards.scryfall.io/large/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.jpg?1793021131",
+   "png": "https://cards.scryfall.io/png/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.png?1793021131",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.jpg?1793021131",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/1/a145fe99-1cca-45c6-aa7e-ec5d8a7bcd13.jpg?1793021131"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "0c93201b-7664-4bfd-a462-f1c684ebedf6",
+  "oracle_id": "377d31b5-0a48-4d5b-91bd-b5a62d4f7899",
+  "name": "Condemn",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Put target attacking creature on the bottom of its owner's library. Its controller gains life equal to its toughness.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "rvr",
+  "collector_number": "14",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.jpg?1783913348",
+   "normal": "https://cards.scryfall.io/normal/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.jpg?1783913348",
+   "large": "https://cards.scryfall.io/large/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.jpg?1783913348",
+   "png": "https://cards.scryfall.io/png/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.png?1783913348",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.jpg?1783913348",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/c/0c93201b-7664-4bfd-a462-f1c684ebedf6.jpg?1783913348"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "4b90313d-9f61-4788-a55e-1f8189bf1ef5",
+  "oracle_id": "56ba8fe5-8693-4783-8406-9ced99de0b2a",
+  "name": "Deluxe Dragster",
+  "mana_cost": "{4}{U}",
+  "cmc": 5.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "This Vehicle can't be blocked except by Vehicles.\nWhenever this Vehicle deals combat damage to a player, you may cast target instant or sorcery card from that player's graveyard without paying its mana cost. If that spell would be put into a graveyard, exile it instead.\nCrew 2",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "4",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "moc",
+  "collector_number": "21",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.jpg?1783917287",
+   "normal": "https://cards.scryfall.io/normal/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.jpg?1783917287",
+   "large": "https://cards.scryfall.io/large/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.jpg?1783917287",
+   "png": "https://cards.scryfall.io/png/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.png?1783917287",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.jpg?1783917287",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/b/4b90313d-9f61-4788-a55e-1f8189bf1ef5.jpg?1783917287"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "577e99a7-4a55-4314-8f08-2ae0c33b85c7",
+  "oracle_id": "270d14b2-07bc-46bc-918f-658102265ccf",
+  "name": "Empyrean Eagle",
+  "mana_cost": "{1}{W}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Bird Spirit",
+  "oracle_text": "Flying\nOther creatures you control with flying get +1/+1.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "fdn",
+  "collector_number": "239",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.jpg?1783909053",
+   "normal": "https://cards.scryfall.io/normal/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.jpg?1783909053",
+   "large": "https://cards.scryfall.io/large/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.jpg?1783909053",
+   "png": "https://cards.scryfall.io/png/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.png?1783909053",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.jpg?1783909053",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/7/577e99a7-4a55-4314-8f08-2ae0c33b85c7.jpg?1783909053"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "1de89026-13a6-4ae3-9059-460bdd657285",
+  "oracle_id": "2361ca87-6352-4ba3-8d91-b3d71242914d",
+  "name": "Favorable Winds",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Creatures you control with flying get +1/+1.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "gnt",
+  "collector_number": "21",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.jpg?1783933985",
+   "normal": "https://cards.scryfall.io/normal/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.jpg?1783933985",
+   "large": "https://cards.scryfall.io/large/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.jpg?1783933985",
+   "png": "https://cards.scryfall.io/png/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.png?1783933985",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.jpg?1783933985",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/d/1de89026-13a6-4ae3-9059-460bdd657285.jpg?1783933985"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "3dca0007-42d3-4ee2-8e88-361d80a7103c",
+  "oracle_id": "fdbd8a95-1dc8-4df2-bab0-a93d1941a405",
+  "name": "Gearseeker Serpent",
+  "mana_cost": "{5}{U}{U}",
+  "cmc": 7.0,
+  "type_line": "Creature — Serpent",
+  "oracle_text": "Affinity for artifacts (This spell costs {1} less to cast for each artifact you control.)\n{5}{U}: This creature can't be blocked this turn.",
+  "keywords": [
+   "Affinity"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "5",
+  "toughness": "6",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "43",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.jpg?1783907909",
+   "normal": "https://cards.scryfall.io/normal/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.jpg?1783907909",
+   "large": "https://cards.scryfall.io/large/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.jpg?1783907909",
+   "png": "https://cards.scryfall.io/png/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.png?1783907909",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.jpg?1783907909",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/d/3dca0007-42d3-4ee2-8e88-361d80a7103c.jpg?1783907909"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "2e8c6a9d-6169-40f8-8b3e-53ebf75be663",
+  "oracle_id": "dde61c4c-1815-45b3-9e68-3097c28c363c",
+  "name": "Gearshift Ace",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Dwarf Pilot",
+  "oracle_text": "First strike\nWhenever this creature crews a Vehicle, that Vehicle gains first strike until end of turn.",
+  "keywords": [
+   "First strike"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "kld",
+  "collector_number": "16",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.jpg?1783937232",
+   "normal": "https://cards.scryfall.io/normal/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.jpg?1783937232",
+   "large": "https://cards.scryfall.io/large/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.jpg?1783937232",
+   "png": "https://cards.scryfall.io/png/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.png?1783937232",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.jpg?1783937232",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/e/2e8c6a9d-6169-40f8-8b3e-53ebf75be663.jpg?1783937232"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9",
+  "oracle_id": "d1960749-c11e-4ac4-97cb-f37d7875d479",
+  "name": "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
+  "cmc": 3.0,
+  "type_line": "Legendary Artifact Creature — Robot // Legendary Artifact — Vehicle",
+  "keywords": [
+   "Living metal",
+   "Convert",
+   "More Than Meets the Eye"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "transform",
+  "set": "bot",
+  "collector_number": "11",
+  "rarity": "mythic",
+  "card_faces": [
+   {
+    "name": "Goldbug, Humanity's Ally",
+    "mana_cost": "{1}{W}{U}",
+    "type_line": "Legendary Artifact Creature — Robot",
+    "oracle_text": "More Than Meets the Eye {W}{U} (You may cast this card converted for {W}{U}.)\nPrevent all combat damage that would be dealt to attacking Humans you control.\nWhenever you cast your second spell each turn, convert Goldbug.",
+    "colors": [
+     "U",
+     "W"
+    ],
+    "power": "3",
+    "toughness": "3",
+    "image_uris": {
+     "small": "https://cards.scryfall.io/small/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "normal": "https://cards.scryfall.io/normal/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "large": "https://cards.scryfall.io/large/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "png": "https://cards.scryfall.io/png/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.png?1783919904",
+     "art_crop": "https://cards.scryfall.io/art_crop/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "border_crop": "https://cards.scryfall.io/border_crop/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "thumb": "https://cards.scryfall.io/thumb/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "grid": "https://cards.scryfall.io/grid/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "display": "https://cards.scryfall.io/display/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "art": "https://cards.scryfall.io/art/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "crop": "https://cards.scryfall.io/crop/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "jpeg": "https://cards.scryfall.io/normal/front/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904"
+    }
+   },
+   {
+    "name": "Goldbug, Scrappy Scout",
+    "mana_cost": "",
+    "type_line": "Legendary Artifact — Vehicle",
+    "oracle_text": "Living metal (During your turn, this Vehicle is also a creature.)\nHuman spells you control can't be countered.\nWhenever Goldbug and at least one Human attack, draw a card and convert Goldbug.",
+    "colors": [
+     "U",
+     "W"
+    ],
+    "power": "1",
+    "toughness": "3",
+    "image_uris": {
+     "small": "https://cards.scryfall.io/small/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "normal": "https://cards.scryfall.io/normal/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "large": "https://cards.scryfall.io/large/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "png": "https://cards.scryfall.io/png/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.png?1783919904",
+     "art_crop": "https://cards.scryfall.io/art_crop/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "border_crop": "https://cards.scryfall.io/border_crop/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904",
+     "thumb": "https://cards.scryfall.io/thumb/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "grid": "https://cards.scryfall.io/grid/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "display": "https://cards.scryfall.io/display/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "art": "https://cards.scryfall.io/art/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "crop": "https://cards.scryfall.io/crop/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.webp?1783919904",
+     "jpeg": "https://cards.scryfall.io/normal/back/8/e/8e4a8db9-ef57-4ea0-952c-1e5d343fb5d9.jpg?1783919904"
+    }
+   }
+  ],
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b2e00cd7-925e-4bab-b064-c96aa2935f8c",
+  "oracle_id": "f8103865-5086-4f16-a35a-a56acdab1547",
+  "name": "Guidelight Pathmaker",
+  "mana_cost": "{4}{W}{U}",
+  "cmc": 6.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Vigilance\nWhen this Vehicle enters, you may search your library for an artifact card and reveal it. Put it onto the battlefield if its mana value is 2 or less. Otherwise, put it into your hand. If you search your library this way, shuffle.\nCrew 2",
+  "keywords": [
+   "Vigilance",
+   "Crew"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "6",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "206",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.jpg?1783907857",
+   "normal": "https://cards.scryfall.io/normal/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.jpg?1783907857",
+   "large": "https://cards.scryfall.io/large/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.jpg?1783907857",
+   "png": "https://cards.scryfall.io/png/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.png?1783907857",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.jpg?1783907857",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/2/b2e00cd7-925e-4bab-b064-c96aa2935f8c.jpg?1783907857"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "5a70e8fa-b71d-441e-b049-dacb09a9a7af",
+  "oracle_id": "8576201b-186d-4e28-97d4-deb344f14436",
+  "name": "Hotshot Mechanic",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Artifact Creature — Fox Pilot",
+  "oracle_text": "This creature crews Vehicles as though its power were 2 greater.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "16",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.jpg?1783923922",
+   "normal": "https://cards.scryfall.io/normal/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.jpg?1783923922",
+   "large": "https://cards.scryfall.io/large/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.jpg?1783923922",
+   "png": "https://cards.scryfall.io/png/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.png?1783923922",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.jpg?1783923922",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/a/5a70e8fa-b71d-441e-b049-dacb09a9a7af.jpg?1783923922"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "81873223-29c7-466b-b922-6717ec84afff",
+  "oracle_id": "c951fca7-f333-4ca3-b5d6-83967d1d093d",
+  "name": "Irontread Crusher",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Crew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "6",
+  "toughness": "6",
+  "layout": "normal",
+  "set": "aer",
+  "collector_number": "161",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/1/81873223-29c7-466b-b922-6717ec84afff.jpg?1783936726",
+   "normal": "https://cards.scryfall.io/normal/front/8/1/81873223-29c7-466b-b922-6717ec84afff.jpg?1783936726",
+   "large": "https://cards.scryfall.io/large/front/8/1/81873223-29c7-466b-b922-6717ec84afff.jpg?1783936726",
+   "png": "https://cards.scryfall.io/png/front/8/1/81873223-29c7-466b-b922-6717ec84afff.png?1783936726",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/1/81873223-29c7-466b-b922-6717ec84afff.jpg?1783936726",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/1/81873223-29c7-466b-b922-6717ec84afff.jpg?1783936726"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "1335d293-3dd2-4f13-bd2c-22181f4528ee",
+  "oracle_id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+  "name": "Island",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Island",
+  "oracle_text": "({T}: Add {U}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "mdd",
+  "collector_number": "294",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.jpg?1791578424",
+   "normal": "https://cards.scryfall.io/normal/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.jpg?1791578424",
+   "large": "https://cards.scryfall.io/large/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.jpg?1791578424",
+   "png": "https://cards.scryfall.io/png/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.png?1791578424",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.jpg?1791578424",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/3/1335d293-3dd2-4f13-bd2c-22181f4528ee.jpg?1791578424"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7f8f2d69-fba9-40e5-8ef7-75e14ef4070a",
+  "oracle_id": "aab55af7-8084-47b6-910f-75a75a6313a4",
+  "name": "Jubilant Skybonder",
+  "mana_cost": "{1}{W/U}{W/U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "Flying\nCreatures you control with flying have \"Spells your opponents cast that target this creature cost {2} more to cast.\"",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "iko",
+  "collector_number": "223",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.jpg?1783931012",
+   "normal": "https://cards.scryfall.io/normal/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.jpg?1783931012",
+   "large": "https://cards.scryfall.io/large/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.jpg?1783931012",
+   "png": "https://cards.scryfall.io/png/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.png?1783931012",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.jpg?1783931012",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/f/7f8f2d69-fba9-40e5-8ef7-75e14ef4070a.jpg?1783931012"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ef1d446a-8607-45b8-a01f-dad17bab76e7",
+  "oracle_id": "1dbadf75-28cd-4525-8f51-9c53049b9b54",
+  "name": "Kitsune Ace",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Fox Pilot",
+  "oracle_text": "Whenever a Vehicle you control attacks, choose one —\n• That Vehicle gains first strike until end of turn.\n• Untap this creature.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "neo",
+  "collector_number": "22",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.jpg?1783923919",
+   "normal": "https://cards.scryfall.io/normal/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.jpg?1783923919",
+   "large": "https://cards.scryfall.io/large/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.jpg?1783923919",
+   "png": "https://cards.scryfall.io/png/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.png?1783923919",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.jpg?1783923919",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/e/f/ef1d446a-8607-45b8-a01f-dad17bab76e7.jpg?1783923919"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ba275c02-8581-46a0-9c7c-8baa0fdb4982",
+  "oracle_id": "d6b2c998-a226-426c-a40d-6e6007041bfe",
+  "name": "Mask of Memory",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Whenever equipped creature deals combat damage to a player, you may draw two cards. If you do, discard a card.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "cmr",
+  "collector_number": "324",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.jpg?1783928754",
+   "normal": "https://cards.scryfall.io/normal/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.jpg?1783928754",
+   "large": "https://cards.scryfall.io/large/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.jpg?1783928754",
+   "png": "https://cards.scryfall.io/png/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.png?1783928754",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.jpg?1783928754",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/a/ba275c02-8581-46a0-9c7c-8baa0fdb4982.jpg?1783928754"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "e283db9e-6a51-4b28-9f6c-0c040a9d6d8c",
+  "oracle_id": "2d9663be-c466-4191-85e2-a69ce0965432",
+  "name": "Meandering River",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "114",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.jpg?1783928292",
+   "normal": "https://cards.scryfall.io/normal/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.jpg?1783928292",
+   "large": "https://cards.scryfall.io/large/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.jpg?1783928292",
+   "png": "https://cards.scryfall.io/png/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.png?1783928292",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.jpg?1783928292",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/e/2/e283db9e-6a51-4b28-9f6c-0c040a9d6d8c.jpg?1783928292"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "45bbbf9b-8fee-4c32-a513-02dac6ac8a39",
+  "oracle_id": "63afc3d1-7653-476e-838f-fc18d4a62a21",
+  "name": "Mishra's Bauble",
+  "mana_cost": "{0}",
+  "cmc": 0.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}, Sacrifice this artifact: Look at the top card of target player's library. Draw a card at the beginning of the next turn's upkeep.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "2xm",
+  "collector_number": "274",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.jpg?1783930102",
+   "normal": "https://cards.scryfall.io/normal/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.jpg?1783930102",
+   "large": "https://cards.scryfall.io/large/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.jpg?1783930102",
+   "png": "https://cards.scryfall.io/png/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.png?1783930102",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.jpg?1783930102",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/5/45bbbf9b-8fee-4c32-a513-02dac6ac8a39.jpg?1783930102"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "619c620d-1920-40d1-98d4-df5607f84d26",
+  "oracle_id": "a3ec6b5d-08ec-4ae0-b1db-c4b87a1849c7",
+  "name": "Momentary Blink",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature you control, then return it to the battlefield under its owner's control.\nFlashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+  "keywords": [
+   "Flashback"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "dmr",
+  "collector_number": "15",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.jpg?1783918511",
+   "normal": "https://cards.scryfall.io/normal/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.jpg?1783918511",
+   "large": "https://cards.scryfall.io/large/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.jpg?1783918511",
+   "png": "https://cards.scryfall.io/png/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.png?1783918511",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.jpg?1783918511",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/1/619c620d-1920-40d1-98d4-df5607f84d26.jpg?1783918511"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "74deeeaa-95e9-42c9-89e3-e317ea63e216",
+  "oracle_id": "5324192b-6687-41e4-8e56-326b21a5dbf3",
+  "name": "Moorland Haunt",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{W}{U}, {T}, Exile a creature card from your graveyard: Create a 1/1 white Spirit creature token with flying.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "voc",
+  "collector_number": "175",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.jpg?1783924935",
+   "normal": "https://cards.scryfall.io/normal/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.jpg?1783924935",
+   "large": "https://cards.scryfall.io/large/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.jpg?1783924935",
+   "png": "https://cards.scryfall.io/png/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.png?1783924935",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.jpg?1783924935",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/4/74deeeaa-95e9-42c9-89e3-e317ea63e216.jpg?1783924935"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "76423446-d62f-4cc5-a23a-3175be88bd73",
+  "oracle_id": "aaafcd69-6295-4d79-8e67-98df0c9bae88",
+  "name": "Mu Yanling, Wind Rider",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Human Wizard Pilot",
+  "oracle_text": "When Mu Yanling enters, create a 3/2 colorless Vehicle artifact token with crew 1.\nVehicles you control have flying.\nWhenever one or more creatures you control with flying deal combat damage to a player, draw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "52",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.jpg?1783907905",
+   "normal": "https://cards.scryfall.io/normal/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.jpg?1783907905",
+   "large": "https://cards.scryfall.io/large/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.jpg?1783907905",
+   "png": "https://cards.scryfall.io/png/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.png?1783907905",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.jpg?1783907905",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/6/76423446-d62f-4cc5-a23a-3175be88bd73.jpg?1783907905"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "52d58fe4-6070-4022-9cd7-c35a11b44525",
+  "oracle_id": "3407fe41-fdd3-4119-8f70-4bc4590a379f",
+  "name": "Negate",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target noncreature spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "tmt",
+  "collector_number": "47",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.jpg?1783904112",
+   "normal": "https://cards.scryfall.io/normal/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.jpg?1783904112",
+   "large": "https://cards.scryfall.io/large/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.jpg?1783904112",
+   "png": "https://cards.scryfall.io/png/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.png?1783904112",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.jpg?1783904112",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/2/52d58fe4-6070-4022-9cd7-c35a11b44525.jpg?1783904112"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "871279e6-9a59-470e-8acc-fd5fe4fda5b3",
+  "oracle_id": "24d22bcb-8a77-4c47-a508-6f4bc093c1d0",
+  "name": "Parhelion II",
+  "mana_cost": "{6}{W}{W}",
+  "cmc": 8.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying, first strike, vigilance\nWhenever Parhelion II attacks, create two 4/4 white Angel creature tokens with flying and vigilance that are attacking.\nCrew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Flying",
+   "Vigilance",
+   "First strike",
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "87",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.jpg?1783923965",
+   "normal": "https://cards.scryfall.io/normal/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.jpg?1783923965",
+   "large": "https://cards.scryfall.io/large/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.jpg?1783923965",
+   "png": "https://cards.scryfall.io/png/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.png?1783923965",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.jpg?1783923965",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/7/871279e6-9a59-470e-8acc-fd5fe4fda5b3.jpg?1783923965"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "09ac862f-0a51-44dd-b86f-9412b8218b13",
+  "oracle_id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+  "name": "Plains",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Plains",
+  "oracle_text": "({T}: Add {W}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "mdd",
+  "collector_number": "292",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.jpg?1791578423",
+   "normal": "https://cards.scryfall.io/normal/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.jpg?1791578423",
+   "large": "https://cards.scryfall.io/large/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.jpg?1791578423",
+   "png": "https://cards.scryfall.io/png/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.png?1791578423",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.jpg?1791578423",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/9/09ac862f-0a51-44dd-b86f-9412b8218b13.jpg?1791578423"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "33cdd576-d115-48c0-a903-dcd0ed8ee5ab",
+  "oracle_id": "458d2b12-f578-4392-98d3-c3bc83f316c4",
+  "name": "Port Town",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "As this land enters, you may reveal a Plains or Island card from your hand. If you don't, this land enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "547",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.jpg?1793021344",
+   "normal": "https://cards.scryfall.io/normal/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.jpg?1793021344",
+   "large": "https://cards.scryfall.io/large/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.jpg?1793021344",
+   "png": "https://cards.scryfall.io/png/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.png?1793021344",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.jpg?1793021344",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/3/3/33cdd576-d115-48c0-a903-dcd0ed8ee5ab.jpg?1793021344"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "dd3d841f-9bac-4b4d-bf21-2dfadd1397fc",
+  "oracle_id": "5330e24a-8568-446e-840a-594cd08bd1bc",
+  "name": "Prairie Stream",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Plains Island",
+  "oracle_text": "({T}: Add {W} or {U}.)\nThis land enters tapped unless you control two or more basic lands.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "548",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.jpg?1793021358",
+   "normal": "https://cards.scryfall.io/normal/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.jpg?1793021358",
+   "large": "https://cards.scryfall.io/large/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.jpg?1793021358",
+   "png": "https://cards.scryfall.io/png/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.png?1793021358",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.jpg?1793021358",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/d/dd3d841f-9bac-4b4d-bf21-2dfadd1397fc.jpg?1793021358"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f043642d-35fe-4ea9-a1d3-78ddfdddeaf4",
+  "oracle_id": "984336a7-85bd-4549-9771-03a0c2367db0",
+  "name": "Rally of Wings",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Untap all creatures you control. Creatures you control with flying get +2/+2 until end of turn.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "war",
+  "collector_number": "27",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.jpg?1783933475",
+   "normal": "https://cards.scryfall.io/normal/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.jpg?1783933475",
+   "large": "https://cards.scryfall.io/large/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.jpg?1783933475",
+   "png": "https://cards.scryfall.io/png/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.png?1783933475",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.jpg?1783933475",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/0/f043642d-35fe-4ea9-a1d3-78ddfdddeaf4.jpg?1783933475"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "04d6e7f2-fb69-477c-b4f1-8a97485dbf32",
+  "oracle_id": "a6c3aa17-8338-4daa-889e-d36dc715e546",
+  "name": "Rolling Hamsphere",
+  "mana_cost": "{7}",
+  "cmc": 7.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "This Vehicle gets +1/+1 for each Hamster you control.\nWhenever this Vehicle attacks, create three 1/1 red Hamster creature tokens, then it deals X damage to any target, where X is the number of Hamsters you control.\nCrew 3",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "4",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "blc",
+  "collector_number": "39",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.jpg?1783910726",
+   "normal": "https://cards.scryfall.io/normal/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.jpg?1783910726",
+   "large": "https://cards.scryfall.io/large/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.jpg?1783910726",
+   "png": "https://cards.scryfall.io/png/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.png?1783910726",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.jpg?1783910726",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/0/4/04d6e7f2-fb69-477c-b4f1-8a97485dbf32.jpg?1783910726"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "9fc65c3f-ad29-4368-bf45-8345a7ec6f31",
+  "oracle_id": "dfa459a1-b065-4488-88d3-4da388261b52",
+  "name": "Safe Passage",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Prevent all damage that would be dealt to you and creatures you control this turn.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "m13",
+  "collector_number": "30",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.jpg?1783940514",
+   "normal": "https://cards.scryfall.io/normal/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.jpg?1783940514",
+   "large": "https://cards.scryfall.io/large/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.jpg?1783940514",
+   "png": "https://cards.scryfall.io/png/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.png?1783940514",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.jpg?1783940514",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/f/9fc65c3f-ad29-4368-bf45-8345a7ec6f31.jpg?1783940514"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "d48af662-25a3-46a0-a48c-ba8cc417490c",
+  "oracle_id": "d47fc902-51f7-4ad1-8ee4-c973e32192b8",
+  "name": "Sage Owl",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Bird",
+  "oracle_text": "Flying\nWhen this creature enters, look at the top four cards of your library, then put them back in any order.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "m10",
+  "collector_number": "69",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.jpg?1783942390",
+   "normal": "https://cards.scryfall.io/normal/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.jpg?1783942390",
+   "large": "https://cards.scryfall.io/large/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.jpg?1783942390",
+   "png": "https://cards.scryfall.io/png/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.png?1783942390",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.jpg?1783942390",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/4/d48af662-25a3-46a0-a48c-ba8cc417490c.jpg?1783942390"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "70cb4359-8e57-4d1a-bf1f-c188555376ce",
+  "oracle_id": "4884ad6c-2290-44fc-ab9e-6e6b75b2d69a",
+  "name": "Sanwell, Avenger Ace",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Human Pilot",
+  "oracle_text": "As long as an artifact creature you control is attacking, prevent all damage that would be dealt to Sanwell.\nWhenever Sanwell becomes tapped, exile the top six cards of your library. You may cast a Vehicle or artifact creature spell from among them. Then put the rest on the bottom of your library in a random order.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "3",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "brc",
+  "collector_number": "5",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.jpg?1783919724",
+   "normal": "https://cards.scryfall.io/normal/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.jpg?1783919724",
+   "large": "https://cards.scryfall.io/large/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.jpg?1783919724",
+   "png": "https://cards.scryfall.io/png/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.png?1783919724",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.jpg?1783919724",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/0/70cb4359-8e57-4d1a-bf1f-c188555376ce.jpg?1783919724"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06",
+  "oracle_id": "73b3e242-075d-4c4d-9b09-6fef1633c348",
+  "name": "Sejiri Refuge",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "118",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.jpg?1783928291",
+   "normal": "https://cards.scryfall.io/normal/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.jpg?1783928291",
+   "large": "https://cards.scryfall.io/large/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.jpg?1783928291",
+   "png": "https://cards.scryfall.io/png/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.png?1783928291",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.jpg?1783928291",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/b/4/b474bfdd-e0b2-4b96-b8eb-84ced9ac5a06.jpg?1783928291"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "729ee848-6c27-4202-b2bc-605f45209468",
+  "oracle_id": "ac8952c9-bd30-48cd-b964-7e6271f9cbc8",
+  "name": "Sephara, Sky's Blade",
+  "mana_cost": "{4}{W}{W}{W}",
+  "cmc": 7.0,
+  "type_line": "Legendary Creature — Angel",
+  "oracle_text": "You may pay {W} and tap four untapped creatures you control with flying rather than pay this spell's mana cost.\nFlying, lifelink\nOther creatures you control with flying have indestructible. (Damage and effects that say \"destroy\" don't destroy them.)",
+  "keywords": [
+   "Flying",
+   "Lifelink"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "7",
+  "toughness": "7",
+  "layout": "normal",
+  "set": "cmm",
+  "collector_number": "54",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.jpg?1783915714",
+   "normal": "https://cards.scryfall.io/normal/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.jpg?1783915714",
+   "large": "https://cards.scryfall.io/large/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.jpg?1783915714",
+   "png": "https://cards.scryfall.io/png/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.png?1783915714",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.jpg?1783915714",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/2/729ee848-6c27-4202-b2bc-605f45209468.jpg?1783915714"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "8359c3a8-d826-4326-a899-9f60ca774308",
+  "oracle_id": "0f052d9f-5a40-4eb9-9d8a-e01dec1db191",
+  "name": "Serra Disciple",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Bird Cleric",
+  "oracle_text": "Flying, first strike\nWhenever you cast a historic spell, this creature gets +1/+1 until end of turn. (Artifacts, legendaries, and Sagas are historic.)",
+  "keywords": [
+   "Flying",
+   "First strike"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "layout": "normal",
+  "set": "dom",
+  "collector_number": "34",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.jpg?1783935036",
+   "normal": "https://cards.scryfall.io/normal/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.jpg?1783935036",
+   "large": "https://cards.scryfall.io/large/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.jpg?1783935036",
+   "png": "https://cards.scryfall.io/png/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.png?1783935036",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.jpg?1783935036",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/3/8359c3a8-d826-4326-a899-9f60ca774308.jpg?1783935036"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9",
+  "oracle_id": "e2962883-6daf-4a84-af73-917afc73092c",
+  "name": "Shorikai, Genesis Engine",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "{1}, {T}: Draw two cards, then discard a card. Create a 1/1 colorless Pilot creature token with \"This token crews Vehicles as though its power were 2 greater.\"\nCrew 8 (Tap any number of creatures you control with total power 8 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Crew"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "8",
+  "toughness": "8",
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "4",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.jpg?1783923999",
+   "normal": "https://cards.scryfall.io/normal/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.jpg?1783923999",
+   "large": "https://cards.scryfall.io/large/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.jpg?1783923999",
+   "png": "https://cards.scryfall.io/png/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.png?1783923999",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.jpg?1783923999",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/6/969ac7dd-f3aa-4888-9ff0-d16a31b5e7a9.jpg?1783923999"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "75d9ef34-ae95-4465-a30c-372e231bd733",
+  "oracle_id": "09726c3d-f700-4bf4-a9e7-326fe41b0a4a",
+  "name": "Skybox Ferry",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nCrew 2 (Tap any number of creatures you control with total power 2 or more: This Vehicle becomes an artifact creature until end of turn.)\nCycling {2} ({2}, Discard this card: Draw a card.)",
+  "keywords": [
+   "Flying",
+   "Crew",
+   "Cycling"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "4",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "243",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.jpg?1783907846",
+   "normal": "https://cards.scryfall.io/normal/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.jpg?1783907846",
+   "large": "https://cards.scryfall.io/large/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.jpg?1783907846",
+   "png": "https://cards.scryfall.io/png/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.png?1783907846",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.jpg?1783907846",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/5/75d9ef34-ae95-4465-a30c-372e231bd733.jpg?1783907846"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "4f8075be-8932-49b3-990b-4b365fa27e94",
+  "oracle_id": "50b14338-9318-4327-a1dd-c0ef38903cc4",
+  "name": "Skysovereign, Consul Flagship",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever Skysovereign enters or attacks, it deals 3 damage to target creature or planeswalker an opponent controls.\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "6",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "159",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.jpg?1783923937",
+   "normal": "https://cards.scryfall.io/normal/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.jpg?1783923937",
+   "large": "https://cards.scryfall.io/large/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.jpg?1783923937",
+   "png": "https://cards.scryfall.io/png/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.png?1783923937",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.jpg?1783923937",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/4/f/4f8075be-8932-49b3-990b-4b365fa27e94.jpg?1783923937"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "2680ed41-da35-475a-9d80-ae2f4686feed",
+  "oracle_id": "49136bdc-bc50-49a2-999a-1ef9c16ea130",
+  "name": "Smuggler's Copter",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever this Vehicle attacks or blocks, you may draw a card. If you do, discard a card.\nCrew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "3",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "nec",
+  "collector_number": "160",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.jpg?1783923937",
+   "normal": "https://cards.scryfall.io/normal/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.jpg?1783923937",
+   "large": "https://cards.scryfall.io/large/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.jpg?1783923937",
+   "png": "https://cards.scryfall.io/png/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.png?1783923937",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.jpg?1783923937",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/6/2680ed41-da35-475a-9d80-ae2f4686feed.jpg?1783923937"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "fc817e07-c1f3-469f-9cf7-0945dea7400f",
+  "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "499",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "normal": "https://cards.scryfall.io/normal/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "large": "https://cards.scryfall.io/large/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "png": "https://cards.scryfall.io/png/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.png?1793021181",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/c/fc817e07-c1f3-469f-9cf7-0945dea7400f.jpg?1793021181"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "8fbd18ce-0ac3-4b52-9cd0-0af7e0244207",
+  "oracle_id": "7e00b0cd-d212-4604-ba07-da21f4fe00b0",
+  "name": "Sram, Senior Edificer",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Dwarf Advisor",
+  "oracle_text": "Whenever you cast an Aura, Equipment, or Vehicle spell, draw a card.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "soc",
+  "collector_number": "176",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.jpg?1783903797",
+   "normal": "https://cards.scryfall.io/normal/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.jpg?1783903797",
+   "large": "https://cards.scryfall.io/large/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.jpg?1783903797",
+   "png": "https://cards.scryfall.io/png/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.png?1783903797",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.jpg?1783903797",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/f/8fbd18ce-0ac3-4b52-9cd0-0af7e0244207.jpg?1783903797"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "125b8be1-76b9-434e-a505-5099d950767c",
+  "oracle_id": "09071f5f-c9cb-43a9-b41d-faf6caf3beff",
+  "name": "Staggering Insight",
+  "mana_cost": "{W}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment — Aura",
+  "oracle_text": "Enchant creature\nEnchanted creature gets +1/+1 and has lifelink and \"Whenever this creature deals combat damage to a player, draw a card.\"",
+  "keywords": [
+   "Enchant"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "thb",
+  "collector_number": "228",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.jpg?1783931517",
+   "normal": "https://cards.scryfall.io/normal/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.jpg?1783931517",
+   "large": "https://cards.scryfall.io/large/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.jpg?1783931517",
+   "png": "https://cards.scryfall.io/png/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.png?1783931517",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.jpg?1783931517",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/2/125b8be1-76b9-434e-a505-5099d950767c.jpg?1783931517"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "94b6881a-b00e-4e90-92e6-602ed8e0e090",
+  "oracle_id": "7f82bae3-feaa-4967-a843-32a4f72806d5",
+  "name": "Subterranean Schooner",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Whenever this Vehicle attacks, target creature that crewed it this turn explores. (Reveal the top card of your library. Put that card into your hand if it's a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)\nCrew 1",
+  "keywords": [
+   "Crew",
+   "Explore"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "lci",
+  "collector_number": "80",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1783913787",
+   "normal": "https://cards.scryfall.io/normal/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1783913787",
+   "large": "https://cards.scryfall.io/large/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1783913787",
+   "png": "https://cards.scryfall.io/png/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.png?1783913787",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1783913787",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1783913787"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "f7e12477-d59f-442b-a678-1be746d0b7be",
+  "oracle_id": "b1544f21-7e98-461b-aed5-e748b0168c52",
+  "name": "Swords to Plowshares",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature. Its controller gains life equal to its power.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "layout": "normal",
+  "set": "frc",
+  "collector_number": "37",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810",
+   "normal": "https://cards.scryfall.io/normal/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810",
+   "large": "https://cards.scryfall.io/large/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810",
+   "png": "https://cards.scryfall.io/png/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.png?1789599810",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/f/7/f7e12477-d59f-442b-a678-1be746d0b7be.jpg?1789599810"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "5fd601c4-44a9-45d0-a2a4-03a2eca700c7",
+  "oracle_id": "00e35322-1a9a-41e3-9ce1-359c8eaa3bc7",
+  "name": "Talisman of Progress",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {U}. This artifact deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "trc",
+  "collector_number": "508",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.jpg?1793021219",
+   "normal": "https://cards.scryfall.io/normal/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.jpg?1793021219",
+   "large": "https://cards.scryfall.io/large/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.jpg?1793021219",
+   "png": "https://cards.scryfall.io/png/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.png?1793021219",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.jpg?1793021219",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/5/f/5fd601c4-44a9-45d0-a2a4-03a2eca700c7.jpg?1793021219"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "258ef349-5042-4992-bae9-9f8f54b55db0",
+  "oracle_id": "0d81ea20-5e7d-4eea-b0ba-fe688f27df94",
+  "name": "Tangle Tumbler",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Vigilance\n{3}, {T}: Put a +1/+1 counter on target creature.\nTap two untapped tokens you control: This Vehicle becomes an artifact creature until end of turn.",
+  "keywords": [
+   "Vigilance"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "6",
+  "toughness": "6",
+  "layout": "normal",
+  "set": "blb",
+  "collector_number": "250",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.jpg?1783910785",
+   "normal": "https://cards.scryfall.io/normal/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.jpg?1783910785",
+   "large": "https://cards.scryfall.io/large/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.jpg?1783910785",
+   "png": "https://cards.scryfall.io/png/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.png?1783910785",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.jpg?1783910785",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/2/5/258ef349-5042-4992-bae9-9f8f54b55db0.jpg?1783910785"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "dd139d4d-3a40-4015-93de-c838c64156c6",
+  "oracle_id": "89f43e27-790b-4ca1-8ba7-0882b31e0783",
+  "name": "Temple of Enlightenment",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n{T}: Add {W} or {U}.",
+  "keywords": [
+   "Scry"
+  ],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "eoc",
+  "collector_number": "186",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.jpg?1783906003",
+   "normal": "https://cards.scryfall.io/normal/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.jpg?1783906003",
+   "large": "https://cards.scryfall.io/large/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.jpg?1783906003",
+   "png": "https://cards.scryfall.io/png/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.png?1783906003",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.jpg?1783906003",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/d/d/dd139d4d-3a40-4015-93de-c838c64156c6.jpg?1783906003"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ae875471-346c-4a76-b26f-b7205dad5b80",
+  "oracle_id": "13b4aeac-4530-4e09-a547-548b4884bb2f",
+  "name": "The Lunar Whale",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nYou may look at the top card of your library any time.\nAs long as The Lunar Whale attacked this turn, you may play the top card of your library.\nCrew 1",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "5",
+  "layout": "normal",
+  "set": "fin",
+  "collector_number": "60",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.jpg?1783906634",
+   "normal": "https://cards.scryfall.io/normal/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.jpg?1783906634",
+   "large": "https://cards.scryfall.io/large/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.jpg?1783906634",
+   "png": "https://cards.scryfall.io/png/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.png?1783906634",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.jpg?1783906634",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/e/ae875471-346c-4a76-b26f-b7205dad5b80.jpg?1783906634"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "9c0a8eda-bfeb-4fd9-9e41-12fce02883d8",
+  "oracle_id": "f6ea8085-5ba9-43b6-994d-04be35c5793b",
+  "name": "The Prydwen, Steel Flagship",
+  "mana_cost": "{4}{W}{W}",
+  "cmc": 6.0,
+  "type_line": "Legendary Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever another nontoken artifact you control enters, create a 2/2 white Human Knight creature token with \"This token gets +2/+2 as long as an artifact entered the battlefield under your control this turn.\"\nCrew 2",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "6",
+  "toughness": "6",
+  "layout": "normal",
+  "set": "pip",
+  "collector_number": "22",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.jpg?1783912416",
+   "normal": "https://cards.scryfall.io/normal/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.jpg?1783912416",
+   "large": "https://cards.scryfall.io/large/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.jpg?1783912416",
+   "png": "https://cards.scryfall.io/png/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.png?1783912416",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.jpg?1783912416",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/c/9c0a8eda-bfeb-4fd9-9e41-12fce02883d8.jpg?1783912416"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "8924b785-b140-4212-a1eb-a10340e09fea",
+  "oracle_id": "8aab9181-c306-471a-8061-9a7a7654dab5",
+  "name": "Thopter Fabricator",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhenever you draw your second card each turn, create a 1/1 colorless Thopter artifact creature token with flying.\nCrew 2",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "4",
+  "toughness": "4",
+  "layout": "normal",
+  "set": "dft",
+  "collector_number": "68",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.jpg?1783907901",
+   "normal": "https://cards.scryfall.io/normal/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.jpg?1783907901",
+   "large": "https://cards.scryfall.io/large/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.jpg?1783907901",
+   "png": "https://cards.scryfall.io/png/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.png?1783907901",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.jpg?1783907901",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/9/8924b785-b140-4212-a1eb-a10340e09fea.jpg?1783907901"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "7fc3c21f-99d5-48dc-b36e-8db597da44bf",
+  "oracle_id": "15276d3b-a117-44bf-87c3-c17e032e4a26",
+  "name": "Thunderclap Wyvern",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Drake",
+  "oracle_text": "Flash (You may cast this spell any time you could cast an instant.)\nFlying\nOther creatures you control with flying get +1/+1.",
+  "keywords": [
+   "Flying",
+   "Flash"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "khc",
+  "collector_number": "94",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.jpg?1783928302",
+   "normal": "https://cards.scryfall.io/normal/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.jpg?1783928302",
+   "large": "https://cards.scryfall.io/large/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.jpg?1783928302",
+   "png": "https://cards.scryfall.io/png/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.png?1783928302",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.jpg?1783928302",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/7/f/7fc3c21f-99d5-48dc-b36e-8db597da44bf.jpg?1783928302"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "eb4b75e6-3080-412b-bf40-b6029ea8bbfe",
+  "oracle_id": "36c78a5f-0148-4596-a346-f8e35037b694",
+  "name": "Time Wipe",
+  "mana_cost": "{2}{W}{W}{U}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Return a creature you control to its owner's hand, then destroy all creatures.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "tdc",
+  "collector_number": "308",
+  "rarity": "rare",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.jpg?1783907017",
+   "normal": "https://cards.scryfall.io/normal/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.jpg?1783907017",
+   "large": "https://cards.scryfall.io/large/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.jpg?1783907017",
+   "png": "https://cards.scryfall.io/png/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.png?1783907017",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.jpg?1783907017",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/e/b/eb4b75e6-3080-412b-bf40-b6029ea8bbfe.jpg?1783907017"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "1c4efa6c-4f29-41cd-a728-bf0e479ace05",
+  "oracle_id": "5d641bf6-0f93-4189-8dc1-ec7ea446dade",
+  "name": "Tranquil Cove",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, you gain 1 life.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "tdm",
+  "collector_number": "270",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.jpg?1783907271",
+   "normal": "https://cards.scryfall.io/normal/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.jpg?1783907271",
+   "large": "https://cards.scryfall.io/large/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.jpg?1783907271",
+   "png": "https://cards.scryfall.io/png/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.png?1783907271",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.jpg?1783907271",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/1/c/1c4efa6c-4f29-41cd-a728-bf0e479ace05.jpg?1783907271"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "8be0076c-3f9c-4120-b768-4e8985ee6a7c",
+  "oracle_id": "631f04d6-5693-4414-a378-fd839c3b6f6d",
+  "name": "Turn to Mist",
+  "mana_cost": "{1}{W/U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Exile target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "layout": "normal",
+  "set": "clu",
+  "collector_number": "214",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.jpg?1783912514",
+   "normal": "https://cards.scryfall.io/normal/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.jpg?1783912514",
+   "large": "https://cards.scryfall.io/large/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.jpg?1783912514",
+   "png": "https://cards.scryfall.io/png/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.png?1783912514",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.jpg?1783912514",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/8/b/8be0076c-3f9c-4120-b768-4e8985ee6a7c.jpg?1783912514"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "64a5d494-efa1-446b-bebe-2ad36e154376",
+  "oracle_id": "5c58353a-fd60-4528-bf0d-669626cda0b2",
+  "name": "Ugin, Eye of the Storms",
+  "mana_cost": "{7}",
+  "cmc": 7.0,
+  "type_line": "Legendary Planeswalker — Ugin",
+  "oracle_text": "When you cast this spell, exile up to one target permanent that's one or more colors.\nWhenever you cast a colorless spell, exile up to one target permanent that's one or more colors.\n+2: You gain 3 life and draw a card.\n0: Add {C}{C}{C}.\n−11: Search your library for any number of colorless nonland cards, exile them, then shuffle. Until end of turn, you may cast those cards without paying their mana costs.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "tdm",
+  "collector_number": "1",
+  "rarity": "mythic",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.jpg?1783907421",
+   "normal": "https://cards.scryfall.io/normal/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.jpg?1783907421",
+   "large": "https://cards.scryfall.io/large/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.jpg?1783907421",
+   "png": "https://cards.scryfall.io/png/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.png?1783907421",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.jpg?1783907421",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/4/64a5d494-efa1-446b-bebe-2ad36e154376.jpg?1783907421"
+  },
+  "loyalty": "7",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193",
+  "oracle_id": "f424b5e9-8f02-4491-a7d8-c7e088611c6a",
+  "name": "Warden of Evos Isle",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Bird Wizard",
+  "oracle_text": "Flying\nCreature spells with flying you cast cost {1} less to cast.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "layout": "normal",
+  "set": "cmr",
+  "collector_number": "106",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.jpg?1783928845",
+   "normal": "https://cards.scryfall.io/normal/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.jpg?1783928845",
+   "large": "https://cards.scryfall.io/large/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.jpg?1783928845",
+   "png": "https://cards.scryfall.io/png/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.png?1783928845",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.jpg?1783928845",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/6/b/6bfc5cef-aa9b-45d4-a9c3-4b157e4ed193.jpg?1783928845"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "a48ebd79-95d7-4860-9785-45e34a94755d",
+  "oracle_id": "c623aeb1-e6d4-48fe-bd2a-a7a6729aa4df",
+  "name": "Winged Words",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell costs {1} less to cast if you control a creature with flying.\nDraw two cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "layout": "normal",
+  "set": "jmp",
+  "collector_number": "196",
+  "rarity": "common",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.jpg?1783930438",
+   "normal": "https://cards.scryfall.io/normal/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.jpg?1783930438",
+   "large": "https://cards.scryfall.io/large/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.jpg?1783930438",
+   "png": "https://cards.scryfall.io/png/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.png?1783930438",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.jpg?1783930438",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/4/a48ebd79-95d7-4860-9785-45e34a94755d.jpg?1783930438"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1",
+  "oracle_id": "b166b670-febc-4821-855e-f8d465644c03",
+  "name": "Worn Powerstone",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "This artifact enters tapped.\n{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "layout": "normal",
+  "set": "mh3",
+  "collector_number": "298",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.jpg?1783911207",
+   "normal": "https://cards.scryfall.io/normal/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.jpg?1783911207",
+   "large": "https://cards.scryfall.io/large/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.jpg?1783911207",
+   "png": "https://cards.scryfall.io/png/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.png?1783911207",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.jpg?1783911207",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/a/c/ace686ad-9e3f-41b3-b8eb-d1b6d45eb4e1.jpg?1783911207"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "id": "97957307-f8ec-412f-a720-9b03b93fac56",
+  "oracle_id": "1009f979-b1fa-4427-bf9e-2a533a4ca19b",
+  "name": "_____ _____ Rocketship",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact — Vehicle",
+  "oracle_text": "Flying\nWhen this Vehicle enters, you may put up to two name stickers on it.\nWhenever this Vehicle attacks, choose a letter. This Vehicle gets +1/+1 until end of turn for each name sticker on it that begins with the chosen letter.\nCrew 2",
+  "keywords": [
+   "Flying",
+   "Crew"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "power": "2",
+  "toughness": "3",
+  "layout": "normal",
+  "set": "unf",
+  "collector_number": "191",
+  "rarity": "uncommon",
+  "image_uris": {
+   "small": "https://cards.scryfall.io/small/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.jpg?1783920530",
+   "normal": "https://cards.scryfall.io/normal/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.jpg?1783920530",
+   "large": "https://cards.scryfall.io/large/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.jpg?1783920530",
+   "png": "https://cards.scryfall.io/png/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.png?1783920530",
+   "art_crop": "https://cards.scryfall.io/art_crop/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.jpg?1783920530",
+   "border_crop": "https://cards.scryfall.io/border_crop/front/9/7/97957307-f8ec-412f-a720-9b03b93fac56.jpg?1783920530"
+  },
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]

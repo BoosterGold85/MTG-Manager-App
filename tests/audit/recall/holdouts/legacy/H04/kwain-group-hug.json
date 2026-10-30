@@ -1,0 +1,1926 @@
+[
+ {
+  "name": "Kwain, Itinerant Meddler",
+  "mana_cost": "{W}{U}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Rabbit Wizard",
+  "oracle_text": "{T}: Each player may draw a card, then each player who drew a card this way gains 1 life.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "f571fef1-1fd2-4355-b803-5edccb6f4b94",
+  "oracle_id": "ce6a85b5-e249-4582-a6be-ce200da5fd53",
+  "set": "cmr",
+  "collector_number": "284",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Adarkar Wastes",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {U}. This land deals 1 damage to you.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "42e0aa15-639a-4e88-9bd8-ce5e7c7d7649",
+  "oracle_id": "d5ad26cc-2bdb-46b7-b8bf-dd099d5fa09b",
+  "set": "eoc",
+  "collector_number": "147",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Aetherize",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Instant",
+  "oracle_text": "Return all attacking creatures to their owner's hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "1e5530fc-0291-4a17-b048-c5d24e6f51d8",
+  "oracle_id": "7c779721-cd1b-4696-9ae9-68ccc284ed2a",
+  "set": "fdn",
+  "collector_number": "151",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Alandra, Sky Dreamer",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Merfolk Wizard",
+  "oracle_text": "Whenever you draw your second card each turn, create a 2/2 blue Drake creature token with flying.\nWhenever you draw your fifth card each turn, Alandra and Drakes you control each get +X/+X until end of turn, where X is the number of cards in your hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "54bf48d4-e350-4ca7-87da-ce04fefd4610",
+  "oracle_id": "97bb1589-2941-4a75-a5f6-916871e51e9e",
+  "set": "mkc",
+  "collector_number": "94",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "An Offer You Can't Refuse",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target noncreature spell. Its controller creates two Treasure tokens. (They're artifacts with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+  "keywords": [
+   "Treasure"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "a829747f-cf9b-4d81-ba66-9f0630ed4565",
+  "oracle_id": "234a734b-ba28-4f1b-9d01-3c3e7d516590",
+  "set": "fdn",
+  "collector_number": "160",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Approach of the Second Sun",
+  "mana_cost": "{6}{W}",
+  "cmc": 7.0,
+  "type_line": "Sorcery",
+  "oracle_text": "If this spell was cast from your hand and you've cast another spell named Approach of the Second Sun this game, you win the game. Otherwise, put Approach of the Second Sun into its owner's library seventh from the top and you gain 7 life.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "fdf59a6e-7708-45a1-884d-d12e9f7b9ed9",
+  "oracle_id": "e4125377-34c0-4b54-bdf8-4e88f5d24565",
+  "set": "akh",
+  "collector_number": "4",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Arcane Denial",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target spell. Its controller may draw up to two cards at the beginning of the next turn's upkeep.\nYou draw a card at the beginning of the next turn's upkeep.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "5eb843ef-b223-40d0-a461-54b16d188d0e",
+  "oracle_id": "ab1cc360-b9de-48d9-9983-4dfe4a7d2a37",
+  "set": "msc",
+  "collector_number": "147",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Arcane Signet",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "795df2ee-fbfc-4961-852c-e3ec50cc52da",
+  "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+  "set": "trc",
+  "collector_number": "485",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Archaeomancer",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "When this creature enters, return target instant or sorcery card from your graveyard to your hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "1",
+  "toughness": "2",
+  "id": "cc258713-6ce3-44e0-9b4b-8fa7d1d093a1",
+  "oracle_id": "a91a3266-cadd-47a0-9b20-160307f14c07",
+  "set": "uma",
+  "collector_number": "45",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Aura Blast",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Destroy target enchantment.\nDraw a card.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "090f5ad6-e10e-49b3-8643-51a4e792517c",
+  "oracle_id": "4e3c3bdc-667d-42ec-b960-159a39c53cb3",
+  "set": "pls",
+  "collector_number": "1",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Azorius Chancery",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\nWhen this land enters, return a land you control to its owner's hand.\n{T}: Add {W}{U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "50ef0ac3-e911-4d67-a751-8d86160ae843",
+  "oracle_id": "189fc8f4-17ac-4f1d-82c8-8401445bdaf4",
+  "set": "dsc",
+  "collector_number": "261",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Body of Knowledge",
+  "mana_cost": "{3}{U}{U}",
+  "cmc": 5.0,
+  "type_line": "Creature — Avatar",
+  "oracle_text": "Body of Knowledge's power and toughness are each equal to the number of cards in your hand.\nYou have no maximum hand size.\nWhenever this creature is dealt damage, draw that many cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "*",
+  "toughness": "*",
+  "id": "185b2e8f-ab37-42e4-b3a1-f38b19a2e05a",
+  "oracle_id": "7fc6a5c1-f0da-42f6-93d0-6d94467e2ac0",
+  "set": "dsc",
+  "collector_number": "112",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Borne Upon a Wind",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "You may cast spells this turn as though they had flash.\nDraw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "a9379675-1a32-4e2b-8aaf-5f908c595f31",
+  "oracle_id": "ce19962d-94f9-4b2b-b668-963c0acce308",
+  "set": "ltr",
+  "collector_number": "44",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Chasm Skulker",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Squid Horror",
+  "oracle_text": "Whenever you draw a card, put a +1/+1 counter on this creature.\nWhen this creature dies, create X 1/1 blue Squid creature tokens with islandwalk, where X is the number of +1/+1 counters on this creature. (They can't be blocked as long as defending player controls an Island.)",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "1",
+  "toughness": "1",
+  "id": "794e01e7-430c-43cf-ba2b-1028cd088148",
+  "oracle_id": "69facbc7-3859-4716-b627-5199571fb3cf",
+  "set": "moc",
+  "collector_number": "218",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Coastal Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "4febfcf0-6537-4e30-a963-9859314d0657",
+  "oracle_id": "f0367926-4380-4d22-8cb8-46c2076f102a",
+  "set": "td2",
+  "collector_number": "38",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Command Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "a73297d2-580c-4174-a427-265f6916d09f",
+  "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+  "set": "trc",
+  "collector_number": "521",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Consider",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\nDraw a card.",
+  "keywords": [
+   "Surveil"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4f28e706-c488-4525-ad8a-977a5fa77f80",
+  "oracle_id": "4c9bcba6-87b5-4fb3-97ee-6fe5b739337d",
+  "set": "tle",
+  "collector_number": "157",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Council's Deliberation",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw a card.\nWhenever you scry, if you control an Island, you may exile this card from your graveyard. If you do, draw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "651503a2-5d1e-408a-9cdc-0cee05ab3ef0",
+  "oracle_id": "3280488d-e94b-4d53-b279-c32ed711d4bc",
+  "set": "ltr",
+  "collector_number": "46",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Counterspell",
+  "mana_cost": "{U}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4f616706-ec97-4923-bb1e-11a69fbaa1f8",
+  "oracle_id": "cc187110-1148-4090-bbb8-e205694a39f5",
+  "set": "dsc",
+  "collector_number": "114",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Cut a Deal",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each opponent draws a card, then you draw a card for each opponent who drew a card this way.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "088388a6-1cc3-4782-91af-504e70f40a97",
+  "oracle_id": "8b5cffd5-5db3-4151-9275-d91387554412",
+  "set": "msc",
+  "collector_number": "127",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Decanter of Endless Water",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "You have no maximum hand size.\n{T}: Add one mana of any color.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "518bbc36-58ea-44c4-a857-75a3aff058f5",
+  "oracle_id": "8ae98ef8-8f52-4877-a08c-1fae5514184e",
+  "set": "clb",
+  "collector_number": "309",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Deserted Beach",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped unless you control two or more other lands.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "56dae4c4-3e71-4a32-979b-4e26d9c9e96c",
+  "oracle_id": "f0ec8681-da50-466b-8cdd-1dc710deccd9",
+  "set": "fra",
+  "collector_number": "176",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Dictate of Kruphix",
+  "mana_cost": "{1}{U}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Flash (You may cast this spell any time you could cast an instant.)\nAt the beginning of each player's draw step, that player draws an additional card.",
+  "keywords": [
+   "Flash"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "b5e4087b-e692-4eb2-bb59-ff2a001d6dd4",
+  "oracle_id": "be74a4c1-d569-4203-b28a-3e2ac6a82990",
+  "set": "fdn",
+  "collector_number": "587",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Essence Scatter",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target creature spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "32840097-0531-4c43-b6a8-e76c17420b04",
+  "oracle_id": "46665089-aa3d-44c3-964d-6638dfbb5782",
+  "set": "sos",
+  "collector_number": "47",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Faramir, Prince of Ithilien",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Human Noble",
+  "oracle_text": "At the beginning of your end step, choose an opponent. At the beginning of that player's next end step, you draw a card if they didn't attack you that turn. Otherwise, create three 1/1 white Human Soldier creature tokens.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "8700923a-e9ff-4ced-87fe-1ab26554623a",
+  "oracle_id": "8a8c7c20-beb7-4352-99ea-7f64a30b9f52",
+  "set": "ltr",
+  "collector_number": "202",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fear of Failed Tests",
+  "mana_cost": "{4}{U}",
+  "cmc": 5.0,
+  "type_line": "Enchantment Creature — Nightmare",
+  "oracle_text": "Whenever this creature deals combat damage to a player, draw that many cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "7",
+  "id": "a87c39df-7636-454b-8485-a1cc9362fd84",
+  "oracle_id": "34fd461b-a913-4a60-9477-ce2bd5c6fc5a",
+  "set": "dsk",
+  "collector_number": "55",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Flumph",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Jellyfish",
+  "oracle_text": "Defender, flying\nWhenever this creature is dealt damage, you and target opponent each draw a card.",
+  "keywords": [
+   "Flying",
+   "Defender"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "0",
+  "toughness": "4",
+  "id": "cdc86e78-8911-4a0d-ba3a-7802f8d991ef",
+  "oracle_id": "bc328acc-8521-4581-88c3-99a7cb2c1cdb",
+  "set": "afr",
+  "collector_number": "15",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Folio of Fancies",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Book",
+  "oracle_text": "Players have no maximum hand size.\n{X}{X}, {T}: Each player draws X cards.\n{2}{U}, {T}: Each opponent mills cards equal to the number of cards in their hand.",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "6afc67d1-1018-4a15-ab5f-377fd11dcd3d",
+  "oracle_id": "9030d508-5cfe-46ed-954b-21d970bc3b5a",
+  "set": "eld",
+  "collector_number": "46",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Forced Fruition",
+  "mana_cost": "{4}{U}{U}",
+  "cmc": 6.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever an opponent casts a spell, that player draws seven cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "f7ea1c6e-c0af-40b0-b492-8d71f496903e",
+  "oracle_id": "448b27a5-7c0c-4ab6-bddf-bd62b920aacc",
+  "set": "lrw",
+  "collector_number": "66",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ghostly Prison",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "e1f723a8-0be9-4270-b451-a52d6b2fda4e",
+  "oracle_id": "e828b189-0e8f-43b8-b909-4c23e742e028",
+  "set": "soc",
+  "collector_number": "146",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Glacial Fortress",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped unless you control a Plains or an Island.\n{T}: Add {W} or {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "d306154a-7adb-4b35-b0cf-9c8d2fc1f72f",
+  "oracle_id": "027dd013-baa7-4111-b3c9-f4d1414e9c45",
+  "set": "trc",
+  "collector_number": "535",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Heliod, the Radiant Dawn // Heliod, the Warped Eclipse",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment Creature — God // Legendary Enchantment Creature — Phyrexian God",
+  "keywords": [
+   "Transform"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "card_faces": [
+   {
+    "name": "Heliod, the Radiant Dawn",
+    "mana_cost": "{2}{W}{W}",
+    "type_line": "Legendary Enchantment Creature — God",
+    "oracle_text": "When Heliod enters, return target enchantment card that isn't a God from your graveyard to your hand.\n{3}{U/P}: Transform Heliod. Activate only as a sorcery. ({U/P} can be paid with either {U} or 2 life.)",
+    "power": "4",
+    "toughness": "4"
+   },
+   {
+    "name": "Heliod, the Warped Eclipse",
+    "mana_cost": "",
+    "type_line": "Legendary Enchantment Creature — Phyrexian God",
+    "oracle_text": "You may cast spells as though they had flash.\nSpells you cast cost {1} less to cast for each card your opponents have drawn this turn.",
+    "power": "4",
+    "toughness": "6"
+   }
+  ],
+  "id": "a7113c93-6c6d-410f-aeec-abc5ee121cdf",
+  "oracle_id": "c27c6ba9-8d72-4101-b3a5-1e8d81755568",
+  "set": "mom",
+  "collector_number": "17",
+  "rarity": "rare",
+  "layout": "transform",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Hidden Grotto",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "When this land enters, surveil 1. (Look at the top card of your library. You may put it into your graveyard.)\n{T}: Add {C}.\n{1}, {T}: Add one mana of any color.",
+  "keywords": [
+   "Surveil"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "id": "4ba8f2e7-8357-4862-97dc-1942d066023a",
+  "oracle_id": "382d18a2-438e-4ae7-a83f-1658ef1f9b07",
+  "set": "blb",
+  "collector_number": "254",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Howling Golem",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact Creature — Golem",
+  "oracle_text": "Whenever this creature attacks or blocks, each player draws a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "power": "2",
+  "toughness": "3",
+  "id": "05b54aaa-93e2-4f8b-8d06-2a848498d1fd",
+  "oracle_id": "75269a31-3819-4410-8bb7-10de16810a5e",
+  "set": "cmr",
+  "collector_number": "316",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Howling Mine",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "At the beginning of each player's draw step, if this artifact is untapped, that player draws an additional card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "cdae9939-03a4-4561-92cd-01f498d29a7a",
+  "oracle_id": "d26b27db-a567-4631-b4b6-7294222fbdd1",
+  "set": "c16",
+  "collector_number": "257",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Hunted by The Family",
+  "mana_cost": "{5}{U}{U}",
+  "cmc": 7.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Choose up to four target creatures you don't control. For each of them, that creature's controller faces a villainous choice — That creature becomes a 1/1 white Human creature and loses all abilities, or you create a token that's a copy of it.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "04b0a2a9-ba95-4330-a8ab-9cb530eb4257",
+  "oracle_id": "7d178f1c-faf7-4efd-87a6-201a40c55ec8",
+  "set": "who",
+  "collector_number": "46",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Index",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Look at the top five cards of your library, then put them back in any order.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "785fd0b8-7e98-44f5-8012-b9dadb31f9b0",
+  "oracle_id": "613b824e-39d1-4c6e-a19c-c915abdc860b",
+  "set": "m13",
+  "collector_number": "55",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Island",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Island",
+  "oracle_text": "({T}: Add {U}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "1335d293-3dd2-4f13-bd2c-22181f4528ee",
+  "oracle_id": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+  "set": "mdd",
+  "collector_number": "294",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Jace Beleren",
+  "mana_cost": "{1}{U}{U}",
+  "cmc": 3.0,
+  "type_line": "Legendary Planeswalker — Jace",
+  "oracle_text": "+2: Each player draws a card.\n−1: Target player draws a card.\n−10: Target player mills twenty cards.",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "loyalty": "3",
+  "id": "806d4e61-004f-4e52-b2e8-ba11b922cc7d",
+  "oracle_id": "cc2b6e58-2d6f-495e-95f3-9496105c4cba",
+  "set": "cmm",
+  "collector_number": "850",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Kami of the Crescent Moon",
+  "mana_cost": "{U}{U}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Spirit",
+  "oracle_text": "At the beginning of each player's draw step, that player draws an additional card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "dd420010-6eaf-4853-8b7b-11de1157416b",
+  "oracle_id": "38cfe4a0-6ead-435b-9f86-928205c0a52c",
+  "set": "voc",
+  "collector_number": "107",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Keep Watch",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw a card for each attacking creature.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "e98489bc-b5fd-43f2-9afb-198e34e70723",
+  "oracle_id": "847b5be5-cb0c-4857-bcd9-c5cfe55fdaeb",
+  "set": "hop",
+  "collector_number": "10",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Laboratory Maniac",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "If you would draw a card while your library has no cards in it, you win the game instead.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "7a5be94c-08b8-4964-a79d-e22ea6e94be8",
+  "oracle_id": "aa286dd5-aa19-446d-9003-684d81eb57ca",
+  "set": "inr",
+  "collector_number": "71",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Loran of the Third Path",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Legendary Creature — Human Artificer",
+  "oracle_text": "Vigilance\nWhen Loran enters, destroy up to one target artifact or enchantment.\n{T}: You and target opponent each draw a card.",
+  "keywords": [
+   "Vigilance"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "9e83a0ef-4fea-45ba-86c0-130d6687f7fe",
+  "oracle_id": "b3d81980-76f2-44e2-b1c9-01e30c726312",
+  "set": "mkc",
+  "collector_number": "71",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mask of Memory",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact — Equipment",
+  "oracle_text": "Whenever equipped creature deals combat damage to a player, you may draw two cards. If you do, discard a card.\nEquip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",
+  "keywords": [
+   "Equip"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "id": "ba275c02-8581-46a0-9c7c-8baa0fdb4982",
+  "oracle_id": "d6b2c998-a226-426c-a40d-6e6007041bfe",
+  "set": "cmr",
+  "collector_number": "324",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mind Unbound",
+  "mana_cost": "{4}{U}{U}",
+  "cmc": 6.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of your upkeep, put a lore counter on this enchantment, then draw a card for each lore counter on this enchantment.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "fd90cf36-9841-4adf-b5cb-0a7bf103eb93",
+  "oracle_id": "0f12aec9-5898-4261-bebd-1b545e0aea68",
+  "set": "m12",
+  "collector_number": "68",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Minds Aglow",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Join forces — Starting with you, each player may pay any amount of mana. Each player draws X cards, where X is the total amount of mana paid this way.",
+  "keywords": [
+   "Join forces"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "ccacc197-7c22-444d-8e6e-950dca63eb2c",
+  "oracle_id": "b259f4e4-04a9-40e0-85e9-34b4b74ee388",
+  "set": "cmm",
+  "collector_number": "105",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Monologue Tax",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever an opponent casts their second spell each turn, you create a Treasure token.",
+  "keywords": [
+   "Treasure"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "ee68d390-11cb-4617-a9ee-6e8cf7ff0e55",
+  "oracle_id": "ace8e88e-ca6a-4bdf-8c6d-1b914fc00259",
+  "set": "msc",
+  "collector_number": "139",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mystic Sanctuary",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Island",
+  "oracle_text": "({T}: Add {U}.)\nThis land enters tapped unless you control three or more other Islands.\nWhen this land enters untapped, you may put target instant or sorcery card from your graveyard on top of your library.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "4cd86997-d7b9-4b5b-9488-11f5c679e4d3",
+  "oracle_id": "17b60106-a4c7-410a-8ac3-ec8e74e29a7c",
+  "set": "soc",
+  "collector_number": "388",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Negate",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Counter target noncreature spell.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "52d58fe4-6070-4022-9cd7-c35a11b44525",
+  "oracle_id": "3407fe41-fdd3-4119-8f70-4bc4590a379f",
+  "set": "tmt",
+  "collector_number": "47",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Ominous Seas",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever you draw a card, put a foreshadow counter on this enchantment.\nRemove eight foreshadow counters from this enchantment: Create an 8/8 blue Kraken creature token.\nCycling {2} ({2}, Discard this card: Draw a card.)",
+  "keywords": [
+   "Cycling"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "ce8965f2-756a-4461-a643-db024a11c2de",
+  "oracle_id": "58ea9b0a-1bef-4ccb-acb7-f03c8daf3df3",
+  "set": "iko",
+  "collector_number": "61",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Omniscience",
+  "mana_cost": "{7}{U}{U}{U}",
+  "cmc": 10.0,
+  "type_line": "Enchantment",
+  "oracle_text": "You may cast spells from your hand without paying their mana costs.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "d33d91d0-1506-45e4-9def-975bf901815e",
+  "oracle_id": "730e39e6-c61d-48b5-8827-bfd952bf1be7",
+  "set": "fdn",
+  "collector_number": "161",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Plains",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Basic Land — Plains",
+  "oracle_text": "({T}: Add {W}.)",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "W"
+  ],
+  "id": "09ac862f-0a51-44dd-b86f-9412b8218b13",
+  "oracle_id": "bc71ebf6-2056-41f7-be35-b2e5c34afa99",
+  "set": "mdd",
+  "collector_number": "292",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Prince Imrahil the Fair",
+  "mana_cost": "{W}{U}",
+  "cmc": 2.0,
+  "type_line": "Legendary Creature — Human Noble",
+  "oracle_text": "Whenever you draw your second card each turn, create a 1/1 white Human Soldier creature token.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "7d486def-7c3f-41e9-bb28-4582450a7b9e",
+  "oracle_id": "4c66e0ca-2d8a-4f68-ad15-55d75959d6e8",
+  "set": "ltr",
+  "collector_number": "219",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Propaganda",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "ac943e31-26bc-4b54-b73f-460e6e402d86",
+  "oracle_id": "ea9709b6-4c37-4d5a-b04d-cd4c42e4f9dd",
+  "set": "msc",
+  "collector_number": "151",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Prosperity",
+  "mana_cost": "{X}{U}",
+  "cmc": 1.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player draws X cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "69ebc3a4-94b8-45aa-a3bf-21cd435ff5cf",
+  "oracle_id": "c586312d-d04a-4bfb-bbb2-b41186ca178e",
+  "set": "c13",
+  "collector_number": "54",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Psychic Corrosion",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever you draw a card, each opponent mills two cards.",
+  "keywords": [
+   "Mill"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "285d22fa-1623-463a-83c0-a9aa7c969ce2",
+  "oracle_id": "328b42f1-d679-4f9c-80e3-38fe3b965d10",
+  "set": "m19",
+  "collector_number": "68",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Psychosis Crawler",
+  "mana_cost": "{5}",
+  "cmc": 5.0,
+  "type_line": "Artifact Creature — Phyrexian Horror",
+  "oracle_text": "Psychosis Crawler's power and toughness are each equal to the number of cards in your hand.\nWhenever you draw a card, each opponent loses 1 life.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "power": "*",
+  "toughness": "*",
+  "id": "d0f42a19-c180-45b1-9f4c-787cf3a4a649",
+  "oracle_id": "2876e74f-a242-4995-9702-0b737a1ab67a",
+  "set": "mkc",
+  "collector_number": "234",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Public Enemy",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Enchantment — Aura",
+  "oracle_text": "Enchant creature\nAll creatures attack enchanted creature's controller each combat if able.\nWhen enchanted creature dies, draw a card.",
+  "keywords": [
+   "Enchant"
+  ],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "0e69ba61-8c16-4112-9601-fac978b88667",
+  "oracle_id": "c5f360dc-fe4e-4796-b5c1-468cbd0f6d24",
+  "set": "snc",
+  "collector_number": "55",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Reliquary Tower",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "You have no maximum hand size.\n{T}: Add {C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "e2a27742-08c1-4153-af7f-25a7a98f585e",
+  "oracle_id": "c23e5b80-08d2-4e24-9908-fe2aa4f30f6f",
+  "set": "soc",
+  "collector_number": "398",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Scrawling Crawler",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact Creature — Phyrexian Construct",
+  "oracle_text": "At the beginning of your upkeep, each player draws a card.\nWhenever an opponent draws a card, that player loses 1 life.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "power": "3",
+  "toughness": "2",
+  "id": "a1176dcf-40ee-4342-aa74-791b8352e99a",
+  "oracle_id": "1d60c80d-9a95-4051-bbf7-02ca51ee1be2",
+  "set": "fdn",
+  "collector_number": "132",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sea Gate",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land — Gate",
+  "oracle_text": "This land enters tapped.\nAs this land enters, choose a color other than blue.\n{T}: Add {U} or one mana of the chosen color.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "d97f31e1-bcaf-4316-a2de-49e2cf7566ec",
+  "oracle_id": "b574c540-9f8a-4fd4-8809-d02c9b099ddc",
+  "set": "clb",
+  "collector_number": "359",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Secret Rendezvous",
+  "mana_cost": "{1}{W}{W}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "You and target opponent each draw three cards.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "9be712b3-14ed-4a73-b3d3-5b76b2c5db64",
+  "oracle_id": "34b90d3e-f48c-41ff-b3e4-5cab7a9cd597",
+  "set": "soc",
+  "collector_number": "166",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sky Diamond",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "This artifact enters tapped.\n{T}: Add {U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U"
+  ],
+  "id": "d47abfb2-9bcf-485c-9bd4-2c09b714eb32",
+  "oracle_id": "2224b6e0-c5ff-45d0-84e3-83758c5fc99f",
+  "set": "clb",
+  "collector_number": "337",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Skycloud Expanse",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "{1}, {T}: Add {W}{U}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "d4985fcd-d9d4-418c-a7ca-20233fcfa2b5",
+  "oracle_id": "76f335d0-7f71-4b1a-b60d-73de954cbe2c",
+  "set": "trc",
+  "collector_number": "559",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Smothering Tithe",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")",
+  "keywords": [
+   "Treasure"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "861b5889-0183-4bee-afeb-a4b2aa700a8e",
+  "oracle_id": "153376c9-dffd-458c-8ce3-a4c8269bc4e9",
+  "set": "cmm",
+  "collector_number": "57",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Sol Ring",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Add {C}{C}.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "fc817e07-c1f3-469f-9cf7-0945dea7400f",
+  "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+  "set": "trc",
+  "collector_number": "499",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Supreme Verdict",
+  "mana_cost": "{1}{W}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Sorcery",
+  "oracle_text": "This spell can't be countered.\nDestroy all creatures.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "id": "3892f1c5-937e-4ef4-b6f9-e0c0ded070d0",
+  "oracle_id": "0230de18-8d15-4cfa-9d42-7ccddd9f9570",
+  "set": "clu",
+  "collector_number": "211",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Teferi's Ageless Insight",
+  "mana_cost": "{2}{U}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Enchantment",
+  "oracle_text": "If you would draw a card except the first one you draw in each of your draw steps, draw two cards instead.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "b1a32b7c-9f26-4504-9f8d-379164d69346",
+  "oracle_id": "1c9e1f75-73f0-4846-b53f-458a0984b1bb",
+  "set": "mkc",
+  "collector_number": "119",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Temple Bell",
+  "mana_cost": "{3}",
+  "cmc": 3.0,
+  "type_line": "Artifact",
+  "oracle_text": "{T}: Each player draws a card.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "6bb63a40-2cce-439f-bd97-d25340ead6ca",
+  "oracle_id": "fc8032e9-c83a-4cf9-92e1-b1d2d9642695",
+  "set": "c16",
+  "collector_number": "277",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "The Council of Four",
+  "mana_cost": "{3}{W}{U}",
+  "cmc": 5.0,
+  "type_line": "Legendary Creature — Human Noble",
+  "oracle_text": "Whenever a player draws their second card during their turn, you draw a card.\nWhenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token.",
+  "keywords": [],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "0",
+  "toughness": "8",
+  "id": "0873cfa8-046c-4b14-ae22-3fd6a691f763",
+  "oracle_id": "3dfb006f-6620-4602-ac3c-d40a5a15a981",
+  "set": "clb",
+  "collector_number": "271",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "The Second Doctor",
+  "mana_cost": "{2}{W}{U}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Time Lord Doctor",
+  "oracle_text": "Players have no maximum hand size.\nHow Civil of You — At the beginning of your end step, each player may draw a card. Each opponent who does can't attack you or permanents you control during their next turn.",
+  "keywords": [
+   "How Civil of You"
+  ],
+  "colors": [
+   "U",
+   "W"
+  ],
+  "color_identity": [
+   "U",
+   "W"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "568c2687-4381-4954-9cab-f669d1fe6306",
+  "oracle_id": "8a6eda31-2791-4def-b9e7-3adde155a4f0",
+  "set": "who",
+  "collector_number": "156",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Thought Reflection",
+  "mana_cost": "{4}{U}{U}{U}",
+  "cmc": 7.0,
+  "type_line": "Enchantment",
+  "oracle_text": "If you would draw a card, draw two cards instead.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "e169e197-5ef4-454d-a31f-fcadedb74cfc",
+  "oracle_id": "692a6833-3014-42f6-b1ad-333bb3292c65",
+  "set": "2xm",
+  "collector_number": "72",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Tidal Barracuda",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Fish",
+  "oracle_text": "Any player may cast spells as though they had flash.\nYour opponents can't cast spells during your turn.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "4",
+  "id": "aacdf4c2-9bc8-400a-8ffc-d6597d8d7da9",
+  "oracle_id": "edfc0a46-414e-467d-9f27-e42d08ec127a",
+  "set": "c20",
+  "collector_number": "39",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Triskaidekaphile",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Creature — Human Wizard",
+  "oracle_text": "You have no maximum hand size.\nAt the beginning of your upkeep, if you have exactly thirteen cards in your hand, you win the game.\n{3}{U}: Draw a card.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "1",
+  "toughness": "3",
+  "id": "6750e203-1215-4203-b5b8-3f1b18940839",
+  "oracle_id": "ef238ba8-acf0-4e62-9abd-5291886a32e8",
+  "set": "mid",
+  "collector_number": "81",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Twenty-Toed Toad",
+  "mana_cost": "{3}{U}",
+  "cmc": 4.0,
+  "type_line": "Creature — Frog Wizard",
+  "oracle_text": "Your maximum hand size is twenty.\nWhenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card.\nWhenever this creature attacks, you win the game if there are twenty or more counters on it or you have twenty or more cards in hand.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "1b3de0d8-5911-4743-8623-010f12c2055b",
+  "oracle_id": "cce643fb-cd88-457c-8f13-c203554df675",
+  "set": "plst",
+  "collector_number": "BLC-16",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Uncharted Haven",
+  "mana_cost": "",
+  "cmc": 0.0,
+  "type_line": "Land",
+  "oracle_text": "This land enters tapped. As it enters, choose a color.\n{T}: Add one mana of the chosen color.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "68b90f54-d629-4126-82cc-13b51d6c1c3e",
+  "oracle_id": "d23c3613-bc5e-4fc5-939c-62a090c53a79",
+  "set": "blb",
+  "collector_number": "261",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Vision Skeins",
+  "mana_cost": "{1}{U}",
+  "cmc": 2.0,
+  "type_line": "Instant",
+  "oracle_text": "Each player draws two cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "76999d96-f3fe-421e-9190-e682259e3cdb",
+  "oracle_id": "6d42dff5-97ec-4768-b112-84a3584d0b87",
+  "set": "e01",
+  "collector_number": "29",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Visions of Beyond",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Draw a card. If a graveyard has twenty or more cards in it, draw three cards instead.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "f0b97772-9490-4db3-b4dd-a87d973680a5",
+  "oracle_id": "c68964df-51ae-43b0-abea-74735016c13f",
+  "set": "uma",
+  "collector_number": "81",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Well of Ideas",
+  "mana_cost": "{5}{U}",
+  "cmc": 6.0,
+  "type_line": "Enchantment",
+  "oracle_text": "When this enchantment enters, draw two cards.\nAt the beginning of each other player's draw step, that player draws an additional card.\nAt the beginning of your draw step, draw two additional cards.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "e7796b82-5a7c-406e-be71-1f37abdbc44f",
+  "oracle_id": "1ed24fc6-b1d5-47f8-a1d1-3243372e0c9f",
+  "set": "2xm",
+  "collector_number": "75",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Windborn Muse",
+  "mana_cost": "{3}{W}",
+  "cmc": 4.0,
+  "type_line": "Creature — Spirit",
+  "oracle_text": "Flying\nCreatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.",
+  "keywords": [
+   "Flying"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "2",
+  "toughness": "3",
+  "id": "3ce8b722-7bc0-4053-8627-7846f9d17eda",
+  "oracle_id": "75e09ac6-d789-4c4d-9aca-845d68f3899f",
+  "set": "mkc",
+  "collector_number": "92",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Windfall",
+  "mana_cost": "{2}{U}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player discards their hand, then draws cards equal to the greatest number of cards a player discarded this way.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "9ce7113b-08f7-4584-b65f-a7b5caa90c2f",
+  "oracle_id": "08becc07-28bc-4a2f-a6b0-28a2998d2f50",
+  "set": "otc",
+  "collector_number": "123",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Wizard Class",
+  "mana_cost": "{U}",
+  "cmc": 1.0,
+  "type_line": "Enchantment — Class",
+  "oracle_text": "(Gain the next level as a sorcery to add its ability.)\nYou have no maximum hand size.\n{2}{U}: Level 2\nWhen this Class becomes level 2, draw two cards.\n{4}{U}: Level 3\nWhenever you draw a card, put a +1/+1 counter on target creature you control.",
+  "keywords": [],
+  "colors": [
+   "U"
+  ],
+  "color_identity": [
+   "U"
+  ],
+  "id": "d1f629fb-b097-4240-8560-ef47f5678f48",
+  "oracle_id": "36f68aa3-9955-46f1-bc87-497f16ef5222",
+  "set": "afr",
+  "collector_number": "81",
+  "rarity": "uncommon",
+  "layout": "class",
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]
