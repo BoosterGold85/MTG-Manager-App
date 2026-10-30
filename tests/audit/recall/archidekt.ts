@@ -35,6 +35,9 @@ export function parsePublicDeck(raw: unknown, expectedCommander: string) {
       .map((c) => [nameKey(c.name), c.includedInDeck!]),
   );
   const excluded = /^(?:sideboard|maybeboard|considering|tokens)$/;
+  const isExcluded = (category: string) =>
+    included.get(category) === false ||
+    (!included.has(category) && excluded.test(category));
   const rows: CapturedDeckRow[] = [];
   for (const row of deck.cards) {
     if (!Number.isInteger(row.quantity) || row.quantity <= 0)
@@ -43,13 +46,12 @@ export function parsePublicDeck(raw: unknown, expectedCommander: string) {
     const markedCommander = categories.includes("commander");
     const yes =
       markedCommander || categories.some((c) => included.get(c) === true);
-    const no =
-      categories.length > 0 &&
-      categories.every((c) => included.get(c) === false || excluded.test(c));
+    const no = categories.length > 0 && categories.every((c) => isExcluded(c));
     if (!yes && !no)
       throw new Error(
         "Unknown board/category; verify this export before evaluation",
       );
+    if (categories.some((c) => isExcluded(c))) continue;
     if (no && !yes) continue;
     const name = row.card?.oracleCard?.name;
     if (typeof name !== "string" || !name.trim())

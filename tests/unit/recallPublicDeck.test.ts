@@ -66,3 +66,14 @@ it("does not silently drop a second commander or select a commander from an unma
     "explicit commander",
   );
 });
+
+it("explicit exclusion wins over included type categories, while an explicitly included Tokens category is a strategy label", () => {
+  const f = fixture();
+  f.categories.push(
+    { name: "Creature", includedInDeck: true },
+    { name: "Tokens", includedInDeck: true },
+  );
+  f.cards[2].categories = ["Maybeboard", "Creature"];
+  f.cards[1].categories = ["Tokens"];
+  expect(parsePublicDeck(f, 'Henzie "Toolbox" Torre').total).toBe(100);
+});

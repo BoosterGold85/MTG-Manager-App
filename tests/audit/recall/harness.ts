@@ -16,6 +16,7 @@ import { deckDnaCache } from "../../../src/dna/engine";
 import { deckCardFunction } from "../../../src/upgrades/cardFunction";
 import { extractCardFacts } from "../../../src/synergy/facts";
 import { analyze, cardIdentity } from "../../../src/intelligence/tagger";
+import { exploreSynergy } from "../../../src/synergy/explorer";
 import { legalInDeck, deckPlayable } from "../../../src/decks/decks";
 
 const base = new URL("./", import.meta.url);
@@ -36,9 +37,15 @@ export const cards = raw.flatMap((c) => {
 const key = (name: string) =>
   name.replaceAll("’", "'").trim().toLocaleLowerCase("en");
 const aliases = new Map<string, CardMetadata>();
+// Exact canonical names outrank front-face aliases, which outrank back-face aliases.
+// Prepared spell faces can share a name with an independent spell (e.g. Reanimate).
+for (const c of cards) aliases.set(key(c.name), c);
 for (const c of cards)
-  for (const name of [c.name, ...(c.cardFaces || []).map((f) => f.name)])
-    aliases.set(key(name), c);
+  if (c.cardFaces?.[0] && !aliases.has(key(c.cardFaces[0].name)))
+    aliases.set(key(c.cardFaces[0].name), c);
+for (const c of cards)
+  for (const f of c.cardFaces || [])
+    if (!aliases.has(key(f.name))) aliases.set(key(f.name), c);
 export const findCard = (name: string) => aliases.get(key(name));
 export function coverage(deck: FixedDeck) {
   const required = [
@@ -98,14 +105,20 @@ export function runDeck(deck: FixedDeck) {
         b.brew.synergy - a.brew.synergy ||
         a.name.localeCompare(b.name, "en"),
     );
+  const synergyRanking = exploreSynergy(f.state, f.deck);
+  const synergyPositions = new Map(
+    synergyRanking.map((r, i) => [key(r.card.name), i + 1]),
+  );
   const positions = new Map(ranking.map((r, i) => [key(r.name), i + 1]));
   const top20 = ranking.slice(0, 20).map((r) => ({
     ...r,
-    provisionalLabel: deck.hidden.some((n) => key(n) === key(r.name))
+    provisionalLabel: deck.hidden.some(
+      (n) => findCard(n)?.oracleId === r.identity,
+    )
       ? ("Excellent contextual fit" as const)
-      : deck.obvious.some((n) => key(n) === key(r.name))
+      : deck.obvious.some((n) => findCard(n)?.oracleId === r.identity)
         ? ("Good obvious fit" as const)
-        : deck.traps.some((n) => key(n) === key(r.name))
+        : deck.traps.some((n) => findCard(n)?.oracleId === r.identity)
           ? ("False positive" as const)
           : null,
   }));
@@ -173,6 +186,10 @@ export function runDeck(deck: FixedDeck) {
       generated,
       exclusionReason: reason,
       rank: positions.get(key(c.name)) || null,
+      synergyRank: synergyPositions.get(key(c.name)) || null,
+      brew: results.get(cardIdentity(c)),
+      synergy: synergyRanking.find((r) => r.identity === cardIdentity(c))
+        ?.synergy,
       hit: (positions.get(key(c.name)) || Infinity) <= 20,
       oracle: c.oracleText || c.cardFaces?.map((f) => f.oracleText).join("\n"),
       typeLine: c.typeLine,
@@ -208,6 +225,25 @@ export function runDeck(deck: FixedDeck) {
     missed: expected.filter((r) => r.kind !== "trap" && !r.hit),
     expected,
     candidates: top20,
+    synergyTop20: synergyRanking
+      .slice(0, 20)
+      .map((r) => ({ name: r.card.name, synergy: r.synergy })),
+    secondarySynergyMetrics: {
+      obviousRecall:
+        expected.filter(
+          (e) => e.kind === "obvious" && (e.synergyRank || Infinity) <= 20,
+        ).length / deck.obvious.length,
+      hiddenRecall:
+        expected.filter(
+          (e) => e.kind === "hidden" && (e.synergyRank || Infinity) <= 20,
+        ).length / deck.hidden.length,
+      trapRejection:
+        1 -
+        expected.filter(
+          (e) => e.kind === "trap" && (e.synergyRank || Infinity) <= 20,
+        ).length /
+          deck.traps.length,
+    },
     uncertainty: analysisConfidence(f.state, f.deck),
     themes: deckDnaCache.get(f.state, f.deck).themes.map((t) => ({
       id: t.id,

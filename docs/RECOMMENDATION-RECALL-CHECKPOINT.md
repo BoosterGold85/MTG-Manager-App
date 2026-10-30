@@ -1,4 +1,6 @@
-# Recommendation recall & interaction coverage — draft checkpoint
+# Recommendation recall & interaction coverage — historical blocked checkpoint
+
+> Historical state at b4a17ab. Network access and canonical capture are now complete. See [the measured frozen baseline](RECOMMENDATION-RECALL-BASELINE.md) for current metrics and failure classification. The provisional B verdict below is historical, not a final decision for this pass.
 
 **Canonical baseline: `0f90fff`**, production package v0.6.14. Intended completed-pass version: **v0.6.15**, not assigned or released yet. This checkpoint changes developer audit infrastructure only; no production thresholds, weights, recommendation functions, tags or UI were modified.
 

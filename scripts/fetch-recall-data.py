@@ -2,7 +2,7 @@
 """Developer-only, resumable public fixture capture. No usage/popularity data or app writes.
 Run only after Scryfall/Archidekt destinations are enabled in environment settings.
 """
-import argparse, datetime, hashlib, json, pathlib, time, urllib.error, urllib.request
+import argparse, datetime, hashlib, json, pathlib, time, math, urllib.error, urllib.request
 from email.utils import parsedate_to_datetime
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -79,7 +79,8 @@ def key(name):
 def capture_cards():
     path=DATA/'cards.scryfall.json'
     cards=json.loads(path.read_text())
-    known={key(alias) for card in cards for alias in card_aliases(card)}
+    usable=lambda c: bool(c.get('id') and c.get('oracle_id') and c.get('set') and c.get('collector_number') and (c.get('type_line') or c.get('card_faces')) and isinstance(c.get('cmc'),(int,float)) and math.isfinite(c['cmc']) and isinstance(c.get('color_identity'),list))
+    known={key(alias) for card in cards if usable(card) for alias in [card['name']]+([card['card_faces'][0]['name']] if card.get('card_faces') else [])}
     wanted=set(json.loads((DATA/'fixed-candidates.json').read_text()))
     wanted.update(row['name'] for row in json.loads((DATA/'coverage-cases.json').read_text()))
     for deck in json.loads((DATA/'fixed-decks.json').read_text()):
@@ -90,7 +91,12 @@ def capture_cards():
         if not deck['rawFile']:
             continue
         raw=json.loads((DATA/deck['rawFile']).read_text())
+        categories={c['name']:c.get('includedInDeck') for c in raw.get('categories',[])}
         for row in raw['cards']:
+            if any(categories.get(c) is False for c in row.get('categories',[])):
+                continue
+            if not any(categories.get(c) is True or c=='Commander' for c in row.get('categories',[])):
+                raise RuntimeError('Unknown board in captured holdout; do not guess inclusion')
             oracle=row.get('card',{}).get('oracleCard',{})
             if oracle.get('name'):
                 wanted.add(oracle['name'])
@@ -99,7 +105,8 @@ def capture_cards():
     provenance=json.loads(provenance_path.read_text())
     for offset in range(0,len(remaining),75):
         names=remaining[offset:offset+75]
-        raw=request('https://api.scryfall.com/cards/collection',{'identifiers':[{'name':name} for name in names]})
+        queries=sorted(set(name.split(' // ')[0] for name in names))
+        raw=request('https://api.scryfall.com/cards/collection',{'identifiers':[{'name':name} for name in queries]})
         result=json.loads(raw)
         if result.get('object')!='list' or not isinstance(result.get('data'),list):
             raise RuntimeError('Unexpected Scryfall batch; previous successful snapshots retained')
@@ -110,9 +117,12 @@ def capture_cards():
         for card in result['data']:
             if not card.get('oracle_id') or not card.get('id'):
                 raise RuntimeError('Incomplete canonical card; batch was saved for diagnostics')
-            cards=[old for old in cards if old.get('oracle_id')!=card['oracle_id']]+[card]
+            aliases={key(n) for n in card_aliases(card)}
+            if not any(key(n) in aliases for n in names):
+                raise RuntimeError('Scryfall identity does not match requested exact card/face name; no guessing')
+            cards=[old for old in cards if old.get('oracle_id')!=card['oracle_id'] and key(old['name'])!=key(card['name'])]+[card]
             provenance.setdefault('canonicalRequests',{})[card['oracle_id']]={'url':'https://api.scryfall.com/cards/collection','retrievedAt':now(),'rawFile':str(snapshot.relative_to(DATA)),'sha256':digest}
-        provenance.setdefault('confirmedNotFound',[]).extend(result.get('not_found',[]))
+        provenance.setdefault('lookupNotFoundHistory',[]).extend(result.get('not_found',[]))
         save(path,cards)
         save(provenance_path,provenance)
         print('Scryfall batch',offset//75+1,'resolved',len(result['data']),'confirmed not_found',len(result.get('not_found',[])))

@@ -1,0 +1,385 @@
+{
+  "baseline": "0f90fff",
+  "author": "Assistant-authored evidence-based primary-failure triage; not independent human adjudication",
+  "candidatePoolHash": "4fa3eafd28c4ef6b0c1983dcebdc816179d1253c37b1493284a91bcca230f5a6",
+  "canonicalSnapshotHash": "8e332eac914015d6b649d29ecc3f08081ac118a05106dba240137aae0eaf0fa3",
+  "reviews": [
+    {
+      "deck": "counters",
+      "candidate": "Winding Constrictor",
+      "primary": "B",
+      "rationale": "The counter-payoff tag exists, but no typed counter-replacement capability or functional role is resolved from its artifact/creature and player replacement clauses.",
+      "evidence": [
+        "generated=True; Brew rank=67; Synergy rank=74; card confidence=High",
+        "Oracle: If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.\nIf you would get one or more counters, you get that many plus one of each of those kinds of counters instead.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "counters",
+      "candidate": "Inspiring Call",
+      "primary": "B",
+      "rationale": "Card draw is detected, but the anaphoric protection effect (Those creatures gain indestructible) is missing from functional roles; the counter-scaled effect is consequently incomplete.",
+      "evidence": [
+        "generated=True; Brew rank=55; Synergy rank=224; card confidence=High",
+        "Oracle: Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy them.)",
+        "Functional roles: {\"cardAdvantage\": 0.6}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Living Death",
+      "primary": "B",
+      "rationale": "The linked exile / sacrifice / put-exiled-cards-onto-battlefield sequence is misread as graveyard hate without its reanimation and board-reset effects.",
+      "evidence": [
+        "generated=True; Brew rank=84; Synergy rank=95; card confidence=High",
+        "Oracle: Each player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards they exiled this way onto the battlefield.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Animate Dead",
+      "primary": "B",
+      "rationale": "Aura-linked reanimation of the enchanted graveyard card is not extracted as recursion; the role vector is empty despite graveyard/Aura tags.",
+      "evidence": [
+        "generated=True; Brew rank=32; Synergy rank=41; card confidence=High",
+        "Oracle: Enchant creature card in a graveyard\nWhen this Aura enters, if it's on the battlefield, it loses \"enchant creature card in a graveyard\" and gains \"enchant creature put onto the battlefield with this Aura.\" Return enchanted creature card to the battlefield under your control and attach this Aura to it. When this Aura leaves the battlefield, that creature's controller sacrifices it.\nEnchanted creature gets -1/-0.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Tortured Existence",
+      "primary": "G",
+      "rationale": "Recursion and controlled discard are recognized, with genuine named graveyard links; it is Synergy rank 19 but existing-Brew rank 26 behind generic engines.",
+      "evidence": [
+        "generated=True; Brew rank=26; Synergy rank=22; card confidence=High",
+        "Oracle: {B}, Discard a creature card: Return target creature card from your graveyard to your hand.",
+        "Functional roles: {\"controlledDiscard\": 1, \"recursion\": 1}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Ashnod's Altar",
+      "primary": "G",
+      "rationale": "Sacrifice and mana conversion plus seven named death-payoff relationships are present; it narrowly misses at Brew rank 21 after generic ramp/curve penalties.",
+      "evidence": [
+        "generated=True; Brew rank=21; Synergy rank=36; card confidence=High",
+        "Oracle: Sacrifice a creature: Add {C}{C}.",
+        "Functional roles: {\"ramp\": 1, \"sacrificeOutlets\": 1}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "blink",
+      "candidate": "Teleportation Circle",
+      "primary": "C",
+      "rationale": "Blink is correctly tagged, but the repeatable artifact-or-creature exile/return does not receive useful ETB edges to the many main-deck ETB cards.",
+      "evidence": [
+        "generated=True; Brew rank=132; Synergy rank=125; card confidence=High",
+        "Oracle: At the beginning of your end step, exile up to one target artifact or creature you control, then return that card to the battlefield under its owner's control.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "blink",
+      "candidate": "Thassa, Deep-Dwelling",
+      "primary": "C",
+      "rationale": "Blink is recognized, but repeatable end-step reuse of other creatures is poorly connected to the deck ETB package; no useful functional role/bridge emerges.",
+      "evidence": [
+        "generated=True; Brew rank=47; Synergy rank=36; card confidence=High",
+        "Oracle: Indestructible\nAs long as your devotion to blue is less than five, Thassa isn't a creature.\nAt the beginning of your end step, exile up to one other target creature you control, then return that card to the battlefield under your control.\n{3}{U}: Tap another target creature.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "blink",
+      "candidate": "Peregrine Drake",
+      "primary": "B",
+      "rationale": "ETB and untap tags exist, but untapping up to five lands is not represented as mana conversion/ramp; functional roles are empty.",
+      "evidence": [
+        "generated=True; Brew rank=96; Synergy rank=107; card confidence=High",
+        "Oracle: Flying\nWhen this creature enters, untap up to five lands.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "blink",
+      "candidate": "Archaeomancer",
+      "primary": "E",
+      "rationale": "ETB, recursion and five blink reuse sources are already recognized. A saturated generic recursion total and low-impact estimate fail to value the specific repeatable spell-recursion role.",
+      "evidence": [
+        "generated=True; Brew rank=73; Synergy rank=110; card confidence=High",
+        "Oracle: When this creature enters, return target instant or sorcery card from your graveyard to your hand.",
+        "Functional roles: {\"recursion\": 1}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Jhoira, Weatherlight Captain",
+      "primary": "C",
+      "rationale": "Historic-cast supply is fully fed and draw is recognized, but the condition adds no output role (adds=[]), so the supported artifact/historic-to-draw bridge is lost.",
+      "evidence": [
+        "generated=True; Brew rank=41; Synergy rank=54; card confidence=High",
+        "Oracle: Whenever you cast a historic spell, draw a card. (Artifacts, legendaries, and Sagas are historic.)",
+        "Functional roles: {\"cardAdvantage\": 1.2}",
+        "Conditions: [{\"key\": \"cast:historic\", \"factor\": 1, \"adds\": [], \"suppliers\": [\"Solemn Simulacrum\", \"Spine of Ish Sah\", \"Unstable Obelisk\", \"Junk Diver\", \"Everflowing Chalice\", \"Commander's Sphere\", \"Arcane Signet\", \"Dreamstone Hedron\", \"Foundry Inspector\", \"Rogue's Gloves\", \"Workshop Assistant\", \"Wayfarer's Bauble\", \"Hedron Archive\", \"Jalum Tome\", \"Seer's Lantern\", \"Sai, Master Thopterist\", \"Ichor Wellspring\", \"Trading Post\", \"Mishra's Bauble\", \"Skullclamp\", \"Pilgrim's Eye\", \"Sol Ring\", \"Steel Hellkite\", \"Mazemind Tome\", \"Guardian Idol\", \"Sandstone Oracle\", \"Burnished Hart\", \"Fellwar Stone\", \"Nevinyrral's Disk\", \"Etherium Sculptor\", \"Skyscanner\", \"Thought Vessel\", \"Whispersilk Cloak\", \"Mycosynth Wellspring\", \"Darksteel Ingot\", \"Worn Powerstone\", \"Filigree Familiar\", \"Nihil Spellbomb\", \"Crystal Ball\", \"Manalith\", \"Myr Battlesphere\", \"Swiftfoot Boots\", \"Mind Stone\", \"Executioner's Capsule\", \"Lightning Greaves\", \"Endless Atlas\", \"Myr Retriever\", \"Breya, Etherium Shaper\", \"Mask of Memory\", \"Meteor Golem\", \"Prismatic Lens\", \"Duplicant\", \"Magnifying Glass\", \"Universal Solvent\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Shimmer Dragon",
+      "primary": "C",
+      "rationale": "Draw/protection/threat roles are known, but tapping spare artifacts as the draw activation cost is not connected to artifact supply; the result is treated as mostly redundant generic draw.",
+      "evidence": [
+        "generated=True; Brew rank=75; Synergy rank=40; card confidence=High",
+        "Oracle: Flying\nAs long as you control four or more artifacts, this creature has hexproof. (It can't be the target of spells or abilities your opponents control.)\nTap two untapped artifacts you control: Draw a card.",
+        "Functional roles: {\"cardAdvantage\": 1.2, \"finishers\": 0.8, \"protection\": 0.7}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Marionette Master",
+      "primary": "B",
+      "rationale": "Fabricate and the variable artifact-death life-loss payoff produce tags but no resolved functional output roles; the fed death condition has adds=[].",
+      "evidence": [
+        "generated=True; Brew rank=49; Synergy rank=122; card confidence=High",
+        "Oracle: Fabricate 3 (When this creature enters, put three +1/+1 counters on it or create three 1/1 colorless Servo artifact creature tokens.)\nWhenever an artifact you control is put into a graveyard from the battlefield, target opponent loses life equal to this creature's power.",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"dies:artifact\", \"factor\": 1, \"adds\": [], \"suppliers\": [\"Solemn Simulacrum\", \"Spine of Ish Sah\", \"Unstable Obelisk\", \"Junk Diver\", \"Everflowing Chalice\", \"Commander's Sphere\", \"Arcane Signet\", \"Dreamstone Hedron\", \"Foundry Inspector\", \"Rogue's Gloves\", \"Workshop Assistant\", \"Wayfarer's Bauble\", \"Hedron Archive\", \"Jalum Tome\", \"Seer's Lantern\", \"Ichor Wellspring\", \"Trading Post\", \"Mishra's Bauble\", \"Skullclamp\", \"Pilgrim's Eye\", \"Sol Ring\", \"Steel Hellkite\", \"Mazemind Tome\", \"Guardian Idol\", \"Sandstone Oracle\", \"Burnished Hart\", \"Fellwar Stone\", \"Nevinyrral's Disk\", \"Etherium Sculptor\", \"Skyscanner\", \"Thought Vessel\", \"Whispersilk Cloak\", \"Mycosynth Wellspring\", \"Darksteel Ingot\", \"Worn Powerstone\", \"Filigree Familiar\", \"Nihil Spellbomb\", \"Crystal Ball\", \"Manalith\", \"Myr Battlesphere\", \"Swiftfoot Boots\", \"Mind Stone\", \"Executioner's Capsule\", \"Lightning Greaves\", \"Endless Atlas\", \"Myr Retriever\", \"Breya, Etherium Shaper\", \"Mask of Memory\", \"Meteor Golem\", \"Prismatic Lens\", \"Duplicant\", \"Magnifying Glass\", \"Universal Solvent\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Scrap Trawler",
+      "primary": "B",
+      "rationale": "Return-to-hand wording before the target/graveyard phrase is not extracted as recursion; artifact/death tags survive but the role vector is empty.",
+      "evidence": [
+        "generated=True; Brew rank=26; Synergy rank=19; card confidence=High",
+        "Oracle: Whenever this creature dies or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser mana value.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "typal",
+      "candidate": "Herald's Horn",
+      "primary": "C",
+      "rationale": "The cost reduction is extracted, but chosen creature type is not bound to the dense Dragon package; no verified Dragon links are created.",
+      "evidence": [
+        "generated=True; Brew rank=107; Synergy rank=90; card confidence=High",
+        "Oracle: As this artifact enters, choose a creature type.\nCreature spells you cast of the chosen type cost {1} less to cast.\nAt the beginning of your upkeep, look at the top card of your library. If it's a creature card of the chosen type, you may reveal it and put it into your hand.",
+        "Functional roles: {\"ramp\": 0.8}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "typal",
+      "candidate": "Cursed Mirror",
+      "primary": "C",
+      "rationale": "Mana and clone tags exist, but an artifact entering as a temporary creature copy is not connected to Dragon identity/entry payoffs. It is evaluated as redundant ramp.",
+      "evidence": [
+        "generated=True; Brew rank=106; Synergy rank=88; card confidence=High",
+        "Oracle: {T}: Add {R}.\nAs this artifact enters, you may have it become a copy of any creature on the battlefield until end of turn, except it has haste.",
+        "Functional roles: {\"ramp\": 1}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "lands",
+      "candidate": "Ramunap Excavator",
+      "primary": "B",
+      "rationale": "The land-play permission from graveyard is tagged as land recursion but not represented as a functional recursion/land-engine capability; roles are empty.",
+      "evidence": [
+        "generated=True; Brew rank=58; Synergy rank=63; card confidence=High",
+        "Oracle: You may play lands from your graveyard.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "spells",
+      "candidate": "Primal Amulet",
+      "primary": "C",
+      "rationale": "Both faces and spell-copy/cost-reduction tags are present, but the four-spell transform setup and the resulting conditional spell-copy mana are not linked as a causal engine.",
+      "evidence": [
+        "generated=True; Brew rank=31; Synergy rank=44; card confidence=High",
+        "Oracle: Primal Amulet\nInstant and sorcery spells you cast cost {1} less to cast.\nWhenever you cast an instant or sorcery spell, put a charge counter on this artifact. Then if there are four or more charge counters on it, you may remove those counters and transform it.\n\nPrimal Wellspring\n(Transforms from Primal Amulet.)\n{T}: Add one mana of any color. When that mana is spent to cast an instant or sorcery spell, copy that spell and you may choose new targets for the copy.",
+        "Functional roles: {\"ramp\": 1}",
+        "Conditions: [{\"key\": \"cast:instant or sorcery\", \"factor\": 1, \"adds\": [], \"suppliers\": [\"Ponder\", \"Frantic Search\", \"Thrill of Possibility\", \"Scour from Existence\", \"Negate\", \"Brainstorm\", \"Faithless Looting\", \"Lightning Bolt\", \"Consider\", \"Treasure Cruise\", \"Introduction to Annihilation\", \"Opt\", \"Preordain\", \"Counterspell\", \"Dig Through Time\", \"Abrade\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "copy",
+      "candidate": "Sakashima of a Thousand Faces",
+      "primary": "C",
+      "rationale": "The clone tag is present, but legend-rule removal and useful copied-engine targets are not represented by the matching vocabulary; it receives no functional role.",
+      "evidence": [
+        "generated=True; Brew rank=89; Synergy rank=100; card confidence=Medium",
+        "Oracle: You may have Sakashima enter as a copy of another creature you control, except it has Sakashima's other abilities.\nThe \"legend rule\" doesn't apply to permanents you control.\nPartner (You can have two commanders if both have partner.)",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "copy",
+      "candidate": "Temur Sabertooth",
+      "primary": "B",
+      "rationale": "Repeatable friendly bounce enabling recasts/ETBs is not extracted as a reusable engine action; it is only tagged as protection.",
+      "evidence": [
+        "generated=True; Brew rank=62; Synergy rank=66; card confidence=High",
+        "Oracle: {1}{G}: You may return another creature you control to its owner's hand. If you do, this creature gains indestructible until end of turn.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "copy",
+      "candidate": "Biovisionary",
+      "primary": "D",
+      "rationale": "The named-four-creatures condition is treated as unrecognized with no named feeders, rather than conditionally mapping legal creature-copy effects to additional copies of this candidate.",
+      "evidence": [
+        "generated=True; Brew rank=53; Synergy rank=42; card confidence=Medium",
+        "Oracle: At the beginning of the end step, if you control four or more creatures named Biovisionary, you win the game.",
+        "Functional roles: {\"finishers\": 0.5}",
+        "Conditions: [{\"key\": \"control:creature?named ~\", \"factor\": 0.5, \"adds\": [\"finishers\"], \"suppliers\": []}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Brass Squire",
+      "primary": "B",
+      "rationale": "The attach-Equipment activation is only tagged Equipment, with no free-equip action or useful functional role.",
+      "evidence": [
+        "generated=True; Brew rank=186; Synergy rank=191; card confidence=High",
+        "Oracle: {T}: Attach target Equipment you control to target creature you control.",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Ardenn, Intrepid Archaeologist",
+      "primary": "B",
+      "rationale": "Mass attaching Auras/Equipment at combat is tagged but not extracted as a free-attachment engine; roles remain empty.",
+      "evidence": [
+        "generated=True; Brew rank=151; Synergy rank=166; card confidence=Medium",
+        "Oracle: At the beginning of combat on your turn, you may attach any number of Auras and Equipment you control to target permanent or player.\nPartner (You can have two commanders if both have partner.)",
+        "Functional roles: {}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Kotori, Pilot Prodigy",
+      "primary": "B",
+      "rationale": "Vehicles-have-crew-2 is tagged and Vehicle supply is full, but the crew requirement rewrite is not represented as an output capability.",
+      "evidence": [
+        "generated=True; Brew rank=28; Synergy rank=86; card confidence=High",
+        "Oracle: Vehicles you control have crew 2.\nAt the beginning of combat on your turn, target artifact creature you control gains lifelink and vigilance until end of turn.",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"type:vehicle\", \"factor\": 1, \"adds\": [], \"suppliers\": [\"Parhelion II\", \"Smuggler's Copter\", \"Skysovereign, Consul Flagship\", \"Deluxe Dragster\", \"Subterranean Schooner\", \"Brute Suit\", \"Shorikai, Genesis Engine\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mech Hangar",
+      "primary": "B",
+      "rationale": "The card is reduced to a land role; restricted Pilot/Vehicle mana and animating a Vehicle without crewing are not modeled as fleet-enabling capabilities.",
+      "evidence": [
+        "generated=True; Brew rank=118; Synergy rank=119; card confidence=High",
+        "Oracle: {T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a Pilot or Vehicle spell.\n{3}, {T}: Target Vehicle becomes an artifact creature until end of turn.",
+        "Functional roles: {\"lands\": 1}",
+        "Conditions: []"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Peacewalker Colossus",
+      "primary": "B",
+      "rationale": "Animating another Vehicle is not extracted as a crew-bypass action; the engine only recognizes its own crew condition/body.",
+      "evidence": [
+        "generated=True; Brew rank=38; Synergy rank=41; card confidence=High",
+        "Oracle: {1}{W}: Another target Vehicle you control becomes an artifact creature until end of turn.\nCrew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"crew\", \"factor\": 1, \"adds\": [\"finishers\"], \"suppliers\": [\"Solemn Simulacrum\", \"Junk Diver\", \"Scrap Trawler\", \"Foundry Inspector\", \"Artisan of Kozilek\", \"Parhelion II\", \"Workshop Assistant\", \"Sanwell, Avenger Ace\", \"Thopter Spy Network\", \"Sai, Master Thopterist\", \"Ulamog's Crusher\", \"Trading Post\", \"Pilgrim's Eye\", \"Steel Hellkite\", \"Sram, Senior Edificer\", \"Sandstone Oracle\", \"Hotshot Mechanic\", \"Burnished Hart\", \"Skyscanner\", \"Filigree Familiar\", \"Myr Retriever\", \"Meteor Golem\", \"Aeronaut Admiral\", \"Gearshift Ace\", \"Shorikai, Genesis Engine\", \"Duplicant\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mobilizer Mech",
+      "primary": "B",
+      "rationale": "The becomes-crewed trigger animating a second Vehicle is not extracted as a second Vehicle enabler; only its own crew condition is modeled.",
+      "evidence": [
+        "generated=True; Brew rank=39; Synergy rank=64; card confidence=High",
+        "Oracle: Flying\nWhenever this Vehicle becomes crewed, up to one other target Vehicle you control becomes an artifact creature until end of turn.\nCrew 3 (Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.)",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"crew\", \"factor\": 1, \"adds\": [\"finishers\"], \"suppliers\": [\"Solemn Simulacrum\", \"Junk Diver\", \"Scrap Trawler\", \"Foundry Inspector\", \"Artisan of Kozilek\", \"Parhelion II\", \"Workshop Assistant\", \"Sanwell, Avenger Ace\", \"Thopter Spy Network\", \"Sai, Master Thopterist\", \"Ulamog's Crusher\", \"Trading Post\", \"Pilgrim's Eye\", \"Steel Hellkite\", \"Sram, Senior Edificer\", \"Sandstone Oracle\", \"Hotshot Mechanic\", \"Burnished Hart\", \"Skyscanner\", \"Filigree Familiar\", \"Myr Retriever\", \"Meteor Golem\", \"Aeronaut Admiral\", \"Gearshift Ace\", \"Shorikai, Genesis Engine\", \"Duplicant\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Doubling Season",
+      "primary": "D",
+      "rationale": "Condition supply names five token makers at full credit, yet Synergy also applies a requires-missing-enabler token-source penalty. The two supply definitions disagree; counter amplification is also incomplete.",
+      "evidence": [
+        "generated=True; Brew rank=101; Synergy rank=142; card confidence=High",
+        "Oracle: If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\nIf an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"token\", \"factor\": 1, \"adds\": [], \"suppliers\": [\"Avenger of Zendikar\", \"Ophiomancer\", \"Trading Post\", \"Bastion of Remembrance\", \"Ghave, Guru of Spores\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Corpsejack Menace",
+      "primary": "B",
+      "rationale": "The replacement clause is tagged and fed at factor 0.8, but counter doubling is absent from typed roles/functional capabilities, leaving no output role.",
+      "evidence": [
+        "generated=True; Brew rank=33; Synergy rank=37; card confidence=High",
+        "Oracle: If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on it instead.",
+        "Functional roles: {}",
+        "Conditions: [{\"key\": \"counters:+1/+1:Creature:board\", \"factor\": 0.8, \"adds\": [], \"suppliers\": [\"Good-Fortune Unicorn\", \"Renata, Called to the Hunt\", \"Ghave, Guru of Spores\"]}]"
+      ],
+      "secondaryIssuesAreNotDoubleCounted": true
+    }
+  ]
+}

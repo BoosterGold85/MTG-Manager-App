@@ -55,4 +55,28 @@ class CaptureTests(unittest.TestCase):
             (data/saved['rawFile']).write_bytes(b'changed')
             with self.assertRaisesRegex(RuntimeError,'Frozen holdout changed'):capture.capture_holdouts()
 
+    def test_prepared_back_face_does_not_satisfy_or_replace_standalone_spell(self):
+        prepared={'id':'prepared-print','oracle_id':'prepared-oracle','name':'Grave Researcher // Reanimate','set':'test','collector_number':'1','type_line':'Creature // Sorcery','cmc':3,'color_identity':['B'],'card_faces':[{'name':'Grave Researcher'},{'name':'Reanimate'}]}
+        standalone={'id':'spell-print','oracle_id':'spell-oracle','name':'Reanimate','set':'test','collector_number':'2','type_line':'Sorcery','cmc':1,'color_identity':['B']}
+        with tempfile.TemporaryDirectory() as folder,patch.object(capture,'DATA',pathlib.Path(folder)),patch.object(capture.time,'sleep'):
+            data=pathlib.Path(folder)
+            for name,value in [('cards.scryfall.json',[prepared]),('fixed-candidates.json',['Reanimate']),('coverage-cases.json',[]),('fixed-decks.json',[]),('holdouts/manifest.json',{'decks':[]}),('card-provenance.json',{})]:capture.save(data/name,value)
+            raw=json.dumps({'object':'list','data':[standalone],'not_found':[]}).encode()
+            with patch.object(capture,'request',return_value=raw) as request:
+                capture.capture_cards();capture.capture_cards()
+                self.assertEqual(request.call_count,1)
+                self.assertEqual(request.call_args.args[1]['identifiers'],[{'name':'Reanimate'}])
+            saved=json.loads((data/'cards.scryfall.json').read_text())
+            self.assertEqual({c['oracle_id'] for c in saved},{'prepared-oracle','spell-oracle'})
+
+    def test_incomplete_cached_metadata_is_refreshed(self):
+        card={'id':'print','oracle_id':'oracle','name':'Sol Ring','set':'test','collector_number':'1','type_line':'Artifact','cmc':1,'color_identity':[]}
+        with tempfile.TemporaryDirectory() as folder,patch.object(capture,'DATA',pathlib.Path(folder)),patch.object(capture.time,'sleep'):
+            data=pathlib.Path(folder)
+            for name,value in [('cards.scryfall.json',[{'id':'print','name':'Sol Ring'}]),('fixed-candidates.json',['Sol Ring']),('coverage-cases.json',[]),('fixed-decks.json',[]),('holdouts/manifest.json',{'decks':[]}),('card-provenance.json',{})]:capture.save(data/name,value)
+            with patch.object(capture,'request',return_value=json.dumps({'object':'list','data':[card]}).encode()) as request:
+                capture.capture_cards()
+                request.assert_called_once()
+            self.assertEqual(json.loads((data/'cards.scryfall.json').read_text()),[card])
+
 if __name__=='__main__':unittest.main()

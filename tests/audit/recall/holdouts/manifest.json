@@ -14,70 +14,70 @@
       "commander": "Isshin, Two Heavens as One",
       "source": "https://archidekt.com/api/decks/4339357/?format=json",
       "expectation": "Mardu aggro deck that builds a threatening combat board and exploits Isshin to double attack-trigger value, especially token generation and combat payoffs.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:08.389283+00:00",
+      "rawFile": "holdouts/H05.archidekt.json",
+      "sha256": "afe12a5de1f119a45061cfb8866cda44b2e9ff2990baef94cb72cac47b8aec71"
     },
     {
       "id": "H06",
       "commander": "Prosper, Tome-Bound",
       "source": "https://archidekt.com/api/decks/27613908/?format=json",
       "expectation": "Rakdos value deck that repeatedly plays cards from exile to generate Treasures, then converts those extra resources and non-hand casts into damage and card advantage.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:09.023958+00:00",
+      "rawFile": "holdouts/H06.archidekt.json",
+      "sha256": "ca8643a1c60ff3af59ad776379dace4a1fe5d1c350e1b62815404317ccb6ac7a"
     },
     {
       "id": "H07",
       "commander": "Henzie \u201cToolbox\u201d Torre",
       "source": "https://archidekt.com/api/decks/27404794/?format=json",
       "expectation": "Jund creature deck that blitzes expensive creatures for immediate ETB/combat/death value, draws from their deaths, and recycles threats through the graveyard.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:09.619207+00:00",
+      "rawFile": "holdouts/H07.archidekt.json",
+      "sha256": "a1b7d6fc6732e07d9025b469223e8caf2f40baadf03f017b5971efc5827bb3b0"
     },
     {
       "id": "H08",
       "commander": "Muldrotha, the Gravetide",
       "source": "https://archidekt.com/api/decks/3540872/?format=json",
       "expectation": "Sultai graveyard deck that self-mills permanents and uses Muldrotha to repeatedly replay them, generating resilient recursive value with reanimation/combo upside.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:10.328297+00:00",
+      "rawFile": "holdouts/H08.archidekt.json",
+      "sha256": "3804851657250d06facf69489a02666d29aa4f7a80d4d9ec76c03581d8a8bb8b"
     },
     {
       "id": "H09",
       "commander": "Sythis, Harvest\u2019s Hand",
       "source": "https://archidekt.com/api/decks/23510964/?format=json",
       "expectation": "Selesnya enchantress deck that chains enchantments through Sythis for cards and life, using enchantment-based ramp and scaling payoffs to build toward a dominant board.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:10.796247+00:00",
+      "rawFile": "holdouts/H09.archidekt.json",
+      "sha256": "9972f987e63fe3fb0f9f3ae3adc02459607c7185878f1e296fdefc7db1bde314"
     },
     {
       "id": "H10",
       "commander": "Giada, Font of Hope",
       "source": "https://archidekt.com/api/decks/8833388/?format=json",
       "expectation": "Mono-white Angel tribal deck that uses Giada as early acceleration and counter scaling, then curves into increasingly large evasive Angels backed by lifegain and protection.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:11.625012+00:00",
+      "rawFile": "holdouts/H10.archidekt.json",
+      "sha256": "87737ecb51cd1fad3b62e4b08330c340a99cf992d4db428ecd5aa010a4b985df"
     },
     {
       "id": "H11",
       "commander": "Wilhelt, the Rotcleaver",
       "source": "https://archidekt.com/api/decks/22624319/?format=json",
       "expectation": "Dimir Zombie deck that generates and recycles Zombie bodies, sacrifices them for value, and leverages Wilhelt\u2019s replacement tokens alongside recursion and tribal payoffs.",
-      "status": "awaiting-network-access",
-      "retrievedAt": null,
-      "rawFile": null,
-      "sha256": null
+      "status": "frozen-baseline-evaluated",
+      "retrievedAt": "2026-10-30T15:50:12.181244+00:00",
+      "rawFile": "holdouts/H11.archidekt.json",
+      "sha256": "b6bc724ff30d745b4ffa2151c7de39e9b20ea210defd823970b1e5d1040d424e"
     }
   ],
   "legacyDecks": [
@@ -157,5 +157,12 @@
         }
       ]
     }
-  ]
+  ],
+  "baselineEvaluation": {
+    "baseline": "0f90fff",
+    "status": "complete-offline",
+    "report": "docs/recall/frozen-real-decks.json",
+    "networkDuringEvaluation": false,
+    "note": "Four legacy decks are previously evaluated regressions; seven public lists are the newly captured holdout component."
+  }
 }
