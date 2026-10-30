@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — Recommendation causality fixes
+
+- Counter-triggered abilities require suppliers that can actually place counters on their recipient; self-only counters, amplifiers and incompatible targets no longer inflate support. Supplier caches distinguish recipient types.
+- Blink value requires the card's own entry trigger, rather than another creature entering or a reverse-face-only ability.
+- Low-confidence candidates cannot receive a Hidden Gem label merely because deck analysis is confident.
+- Added scope, cache, confidence and browser data-preservation regressions. No scoring weights, inventory or saved deck data changed. See [validation](docs/VALIDATION-causal-accuracy.md).
+
+
 ## 0.6.14 — Group draw, alternate wins and defense
 
 From the user's Kwain, Itinerant Meddler deck, now a regression fixture (`tests/kwainFixture.ts`, real Scryfall data). Every fix is generic, with no card names in rules.

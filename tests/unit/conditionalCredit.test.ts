@@ -96,7 +96,7 @@ describe("acceptance: no credit for an effect without cards in this deck that sa
   it("explanations point at the deck's cards", () => {
     const f = fixture("A3");
     const u = upgradeFor(f.state, f.deck, asCandidate(holdoutCard("Evolution Witness")), "witness");
-    expect(u.reasons.join(" ")).toMatch(/cards that put \+1\/\+1 counters" ability has \d+ cards here to feed it: .*(?:Hardened Scales|Branching Evolution|Experiment One)/);
+    expect(u.reasons.join(" ")).toMatch(/cards that put \+1\/\+1 counters" ability has \d+ cards here to feed it: .*(?:Simic Ascendancy|Zameck Guildmage|Ivy Lane Denizen)/);
   });
 });
 

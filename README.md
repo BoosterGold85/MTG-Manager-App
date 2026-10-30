@@ -6,6 +6,8 @@ A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV 
 
 An open deck has four sections, remembered in the URL: **Overview** (what the deck does, a note on anything the app isn't sure about, Deck Health against this Commander's targets, Core Plan, Deck DNA with View Cards), **Cards** (search, sort, filters with removable chips, missing cards, + Add Card), **Upgrades** (the two goals below, plus Saved) and **Settings** (rename, Commander, decklist, Delete Deck). From Upgrades you can save a candidate, add an available copy to a deck you are still building, or **Review Swap** and **Confirm Swap** a one-for-one upgrade. **Brew Score** is a separate lens in Upgrades: how interesting and unusually useful a card is in *this* deck (bridges between its packages, novel interactions, copy support), not its power. Sort by Brew Score, filter by Brew band, or tap **Hidden Gems**; **Why this brew?** names the cards in your deck behind every claim, and Card Detail adds **Brew in This Deck** beside In This Deck (Synergy). A confirmed swap is one atomic save: one card out, one owned copy in, the deck count unchanged, and copies are never taken from another deck.
 
+Recommendation evidence distinguishes self-only counters from counters that can reach the candidate. Blink credit requires the candidate's own entry trigger, and Hidden Gem labels respect both card and deck confidence. See the [causality patch validation](docs/VALIDATION-causal-accuracy.md) for scope and remaining limits.
+
 ## Upgrades I Own: two separate questions (v0.6.6)
 
 Open a deck and choose **Upgrades**. The app first asks **What are you trying to do?**

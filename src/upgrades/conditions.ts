@@ -5,9 +5,10 @@
 import type { CardMetadata } from "../models/collection";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import { cardKeywords } from "../utils/cardKeywords";
+import { counterRecipient, placesCountersOn, countersTargetSelf, suppliesCounterEvent } from "./counterSupply";
 import { benefitsYou, extractCardFacts } from "../synergy/facts";
 
-export const CONDITIONS_VERSION = "1.0.0";
+export const CONDITIONS_VERSION = "1.0.1";
 export interface DeckSupplier {
   card: CardMetadata;
   quantity: number;
@@ -27,6 +28,8 @@ export interface EffectCondition {
   supplies: (card: CardMetadata) => boolean;
   /** The card itself can satisfy it ("Adapt 2" for "+1/+1 counters are put on this creature"). */
   selfSupplies: boolean;
+  /** Self-only placement is not an external supplier for another permanent. */
+  selfProvides?: (card: CardMetadata) => boolean;
 }
 export interface ConditionCredit {
   /** The condition's predicate key ("cast:colorless", "counters:+1/+1"). */
@@ -54,8 +57,7 @@ const colorless = (c: CardMetadata) => !isLand(c) && !/\{[^}]*[WUBRG][^}]*\}/.te
 const power = (c: CardMetadata) => Number(c.power ?? c.cardFaces?.[0]?.power);
 const ownTokens = (c: CardMetadata) => extractCardFacts(c).faces.flatMap((f) => f.createsTokens).filter((t) => benefitsYou(t.controller) && t.controller !== "each_player");
 const NOT_TYPES = new Set(["Creatures", "Creature", "Spells", "Artifacts", "Artifact", "Enchantments", "Enchantment", "Lands", "Land", "Permanents", "Tokens", "Nontoken", "Noncreature", "Legendary", "Instant", "Sorcery", "Each", "Other", "All", "Target", "Players", "Opponents", "You", "Your", "Equipped", "Enchanted", "Colorless", "Multicolored", "White", "Blue", "Black", "Red", "Green"]);
-const COUNTER_SOURCE =
-  /\bput[^.\n]*\+1\/\+1 counters?\b|\bproliferate\b|\b(?:adapt|evolve|outlast|bolster|support|modular|riot|training|backup|mentor|graft|monstrosity|fabricate|reinforce|amass)\b|enters? with [^.\n]*\+1\/\+1 counters?|double the number of [^.\n]*counters/i;
+
 
 /** The spell or permanent a trigger is about: "colorless", "creature with power 4 or greater", "Dragon", "artifact"… */
 interface Qualifier {
@@ -119,7 +121,7 @@ function qualifier(phrase: string): Qualifier {
   if (!labels.length && !rest) return { key: "any", needs: "", test: () => true, understood };
   return { key: `${labels.join(" ")}${understood ? "" : `?${rest}`}`, needs: labels.join(" ") || rest, test: (c) => parts.every((t) => t(c)), understood };
 }
-const counterSource = (c: CardMetadata) => COUNTER_SOURCE.test(textOf(c)) || cardKeywords(c).some((k) => /^(?:adapt|evolve|outlast|bolster|riot|training|modular|mentor)$/i.test(k));
+
 /** A token as a card, so the same qualifier can test it ("Dragon", "artifact", "creature"). */
 const tokenCard = (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean }) =>
   ({ name: "token", typeLine: `Token ${t.tokenTypes.length ? "Artifact " : ""}${t.isCreature ? "Creature " : ""}— ${[...t.creatureTypes, ...t.tokenTypes].join(" ")}`, manaCost: "", manaValue: 0 }) as unknown as CardMetadata;
@@ -139,7 +141,8 @@ export function effectConditions(card: CardMetadata): EffectCondition[] {
       out.push({ key, line: raw.trim(), needs, reliableAt, supplies, selfSupplies, understood });
     // Replacement effects that only do something when the deck produces the event (Hardened Scales, Doubling Season).
     if (/^If (?:one or more )?\+1\/\+1 counters? would be put on/i.test(line)) {
-      cond("counters:+1/+1", "cards that put +1/+1 counters", 5, counterSource);
+      const recipient=counterRecipient(card,line), selfTarget=countersTargetSelf(card,line);
+      cond(`counters:+1/+1:${types(recipient).trim()}:${selfTarget ? "self" : "board"}`, "cards that put +1/+1 counters", 5, (source)=>suppliesCounterEvent(source,recipient,selfTarget));
       continue;
     }
     if (/^If (?:you|an effect) would create (?:one or more |a )?tokens?/i.test(line)) {
@@ -196,7 +199,9 @@ export function effectConditions(card: CardMetadata): EffectCondition[] {
       const q = qualifier(`${m[1] || ""}${m[2]}`);
       cond(`dies:${q.key}`, `${q.needs || "creature"}s that can die`, 8, (c) => (!isLand(c) && q.test(c)) || (!m![1] && tokenMakes(c, (t) => q.test(tokenCard(t)))), false, q.understood);
     } else if (/counters? (?:are|is) put on|you put one or more [^,]*counters?/i.test(trigger)) {
-      cond("counters:+1/+1", "cards that put +1/+1 counters", 5, counterSource, true);
+      const recipient=counterRecipient(card,trigger), selfTarget=countersTargetSelf(card,trigger);
+      cond(`counters:+1/+1:${types(recipient).trim()}:${selfTarget ? "self" : "board"}`, "cards that put +1/+1 counters", 5, (source)=>suppliesCounterEvent(source,recipient,selfTarget), true);
+      out[out.length-1].selfProvides=(source)=>placesCountersOn(source,recipient,true);
     } else if (/^you sacrifice /i.test(trigger)) {
       cond("sacrifice", "sacrifice outlets and effects", 5, (c) => /\bsacrifice (?:a|an|another|one or more|any number of|x|two)\b[^.\n]*(?:creature|artifact|permanent|token|food|clue|treasure)|:\s*[^.\n]*\bsacrifice\b/i.test(textOf(c)) || /\bTreasure\b|\bFood\b|\bClue\b/.test(textOf(c)), true);
     } else if (/^you gain life\b|^you gain \w+ or more life/i.test(trigger)) {
@@ -245,7 +250,7 @@ export class SupplyIndex {
       }
       this.cache.set(condition.key, (known = { supply, suppliers }));
     }
-    if (self && condition.selfSupplies && condition.supplies(self) && !known.suppliers.includes(self.name)) return { supply: known.supply + 1, suppliers: [...known.suppliers, self.name] };
+    if (self && condition.selfSupplies && (condition.selfProvides || condition.supplies)(self) && !known.suppliers.includes(self.name)) return { supply: known.supply + 1, suppliers: [...known.suppliers, self.name] };
     return known;
   }
 }

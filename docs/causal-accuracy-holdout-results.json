@@ -1,0 +1,956 @@
+{
+  "baseline": "339b7e2",
+  "purpose": "Additional fixed-expectation holdout audit; no expectations changed by this patch",
+  "knownBaselineException": "H3 primary includes artifacts; documented in docs/VALIDATION-v0.6.12.md",
+  "decks": [
+    {
+      "id": "H1",
+      "name": "Ur-Dragon lands (typal Commander, non-typal build)",
+      "checks": [
+        "PASS primary includes lands",
+        "PASS top theme is not typal:Dragon"
+      ],
+      "primary": [
+        "Lands",
+        "Tokens"
+      ],
+      "summary": "This deck is built to gain value from lands and land entries and create and support creature tokens. The Ur-Dragon reinforces Card Advantage and Ramp through its recorded abilities.",
+      "payoff": "Token Payoff via Tireless Provisioner",
+      "themes": [
+        {
+          "id": "lands",
+          "percent": 39,
+          "cards": 27
+        },
+        {
+          "id": "advantage",
+          "percent": 19,
+          "cards": 19
+        },
+        {
+          "id": "ramp",
+          "percent": 16,
+          "cards": 14
+        },
+        {
+          "id": "tokens",
+          "percent": 9,
+          "cards": 10
+        },
+        {
+          "id": "graveyard",
+          "percent": 8,
+          "cards": 5
+        },
+        {
+          "id": "sacrifice",
+          "percent": 5,
+          "cards": 5
+        },
+        {
+          "id": "typal:Dragon",
+          "percent": 4,
+          "cards": 3
+        }
+      ],
+      "keyCards": [
+        "Felidar Retreat",
+        "Field of the Dead",
+        "Omnath, Locus of Rage"
+      ],
+      "blueprintPlan": [
+        "Rewards Dragon attacking",
+        "Ramp: The Commander costs 9: acceleration and reliable mana matter more.",
+        "Protection: The Commander's abilities work only while it stays on the battlefield.",
+        "Finishers: Dragon creatures carry the plan; type matters, quality still decides inclusion."
+      ],
+      "health": [
+        "ramp 17.4/13 Good",
+        "cardAdvantage 5.5/10 Low",
+        "interaction 3.4/8 Low",
+        "wipes 0.0/2 Low",
+        "protection 0.0/4 Low",
+        "recursion 3.0/2 Good",
+        "tutors 1.0/2 Low",
+        "finishers 3.3/4 Slightly Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Doubling Season 2.60 Major Upgrade | Improves existing engines. Its \"token makers\" ability has 11 cards here to feed it: Utvara Hellkite, Felidar Retreat, Omnath, Locus of Rage\u2026.",
+        "Ugin, Eye of the Storms 2.08 Major Upgrade | Improves interaction (permanent answers). Improves card advantage.",
+        "Sarkhan's Unsealing 1.78 Strong Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creature spells with power 4, 5, or 6\" ability has 7 cards here to feed it: Utvara Hellkite, Omnath, Locus of Rage, Rampaging Baloths\u2026.",
+        "Scourge of Valkas 1.52 Strong Upgrade | Strengthens the The Ur-Dragon plan. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"Dragons entering\" ability has 4 cards here to feed it: Utvara Hellkite, The Ur-Dragon, Scion of the Ur-Dragon\u2026.",
+        "Skysovereign, Consul Flagship 1.50 Strong Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creatures to crew it\" ability has 23 cards here to feed it: Utvara Hellkite, Tatyova, Benthic Druid, Felidar Retreat\u2026.",
+        "Wrath of God 1.28 Strong Upgrade | Improves interaction (creature answers). Smooths the curve.",
+        "Skullclamp 1.27 Strong Upgrade | Improves card advantage. Smooths the curve.",
+        "Smuggler's Copter 1.11 Strong Upgrade | Improves card advantage. Smooths the curve. Its \"creatures to crew it\" ability has 23 cards here to feed it: Utvara Hellkite, Tatyova, Benthic Druid, Felidar Retreat\u2026."
+      ],
+      "brew": [
+        "Scourge of Valkas 55 Some Brew Potential (Synergy 76) | Connects Dragons entering \u2192 Interaction",
+        "Young Pyromancer 53 Some Brew Potential (Synergy 13) | Connects Instant or sorcery spells \u2192 Tokens",
+        "Sarkhan's Unsealing 50 Some Brew Potential (Synergy 59) | Connects Creature spells with power 4, 5, or 6 \u2192 Interaction",
+        "Dragon Tempest 49 Conventional / Weak Brew Fit (Synergy 63) | Connects Dragons entering \u2192 Interaction",
+        "Talrand, Sky Summoner 48 Conventional / Weak Brew Fit (Synergy 14) | Connects Instant or sorcery spells \u2192 Tokens"
+      ]
+    },
+    {
+      "id": "H2",
+      "name": "Kaalia reanimator (combat Commander built around graveyard)",
+      "checks": [
+        "PASS primary includes graveyard"
+      ],
+      "primary": [
+        "Graveyard",
+        "Combat"
+      ],
+      "summary": "This deck is built to fill the graveyard and return creatures from graveyards to the battlefield and support attacks and combat effects. Kaalia of the Vast reinforces Combat through its recorded abilities.",
+      "payoff": "Reanimator via Exhume",
+      "themes": [
+        {
+          "id": "graveyard",
+          "percent": 41,
+          "cards": 12
+        },
+        {
+          "id": "advantage",
+          "percent": 18,
+          "cards": 11
+        },
+        {
+          "id": "combat",
+          "percent": 12,
+          "cards": 8
+        },
+        {
+          "id": "discard",
+          "percent": 10,
+          "cards": 5
+        },
+        {
+          "id": "ramp",
+          "percent": 8,
+          "cards": 5
+        },
+        {
+          "id": "interaction",
+          "percent": 6,
+          "cards": 5
+        },
+        {
+          "id": "voltron",
+          "percent": 5,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Necromancy",
+        "Persist",
+        "Stitch Together"
+      ],
+      "blueprintPlan": [
+        "Rewards permanents attacking",
+        "Protection: The Commander's abilities work only while it stays on the battlefield.",
+        "Finishers: Demon / Dragon creatures carry the plan; type matters, quality still decides inclusion."
+      ],
+      "health": [
+        "ramp 4.0/10 Low",
+        "cardAdvantage 5.4/10 Low",
+        "interaction 4.4/8 Low",
+        "wipes 1.0/2 Low",
+        "protection 0.7/4 Low",
+        "recursion 10.0/5 Good",
+        "tutors 4.0/2 Good",
+        "finishers 3.3/4 Slightly Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "notes": [
+          {
+            "kind": "commander-links",
+            "message": "Only 0 cards connect to Kaalia of the Vast's abilities. Either the deck isn't built around them, or the app is misreading how they work.",
+            "items": [
+              "Whenever Kaalia attacks an opponent, you may put an Angel, Demon, or Dragon creature card from your hand onto the battlefield tapped and attacking that opponent"
+            ]
+          }
+        ]
+      },
+      "upgrades": [
+        "Guttersnipe 1.93 Strong Upgrade | Improves existing engines: Chaos Warp, Gisa's Bidding, Cathartic Reunion. Improves finishing power. Smooths the curve. Its \"instant or sorcery spells\" ability has 18 cards here to feed it: Chaos Warp, Gisa's Bidding, Cathartic Reunion\u2026.",
+        "Smuggler's Copter 1.66 Strong Upgrade | Improves existing engines: Gisa's Bidding, Reveillark, Persist. Improves card advantage. Smooths the curve. Its \"creatures to crew it\" ability has 11 cards here to feed it: Gisa's Bidding, Inferno Titan, Reveillark\u2026.",
+        "Skullclamp 1.41 Strong Upgrade | Improves card advantage. Smooths the curve.",
+        "Young Pyromancer 1.39 Strong Upgrade | Improves existing engines: Chaos Warp, Gisa's Bidding, Cathartic Reunion. Smooths the curve. Its \"instant or sorcery spells\" ability has 18 cards here to feed it: Chaos Warp, Gisa's Bidding, Cathartic Reunion\u2026.",
+        "Sarkhan's Unsealing 1.36 Strong Upgrade | Improves existing engines: Reveillark, Grave Researcher // Reanimate, Karmic Guide. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creature spells with power 4, 5, or 6\" ability has 6 cards here to feed it: Inferno Titan, Reveillark, Archon of Cruelty\u2026.",
+        "Skysovereign, Consul Flagship 1.27 Strong Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creatures to crew it\" ability has 11 cards here to feed it: Gisa's Bidding, Inferno Titan, Reveillark\u2026.",
+        "Mind Stone 1.24 Strong Upgrade | Improves card advantage. Improves mana. Smooths the curve.",
+        "Zulaport Cutthroat 1.11 Strong Upgrade | Improves finishing power. Smooths the curve. Its \"creatures that can die\" ability has 11 cards here to feed it: Gisa's Bidding, Inferno Titan, Reveillark\u2026."
+      ],
+      "brew": [
+        "Sarkhan's Unsealing 48 Conventional / Weak Brew Fit (Synergy 64) | Connects Creature spells with power 4, 5, or 6 \u2192 Interaction",
+        "Guttersnipe 42 Conventional / Weak Brew Fit (Synergy 50) | Works with Anguished Unmaking, Buried Alive and 16 more",
+        "Young Pyromancer 41 Conventional / Weak Brew Fit (Synergy 48) | Works with Anguished Unmaking, Buried Alive and 16 more",
+        "Smuggler's Copter 40 Conventional / Weak Brew Fit (Synergy 50) | Works with Karmic Guide, Persist and 5 more",
+        "Dragon Tempest 30 Conventional / Weak Brew Fit (Synergy 51) | Works with Teneb, the Harvester, Archon of Cruelty and 3 more"
+      ]
+    },
+    {
+      "id": "H3",
+      "name": "Breya homebrew artifact sacrifice (few staples)",
+      "checks": [
+        "FAIL primary includes artifacts"
+      ],
+      "primary": [
+        "Sacrifice / Death Payoffs",
+        "Tokens"
+      ],
+      "summary": "This deck is built to use sacrifice and creature-death effects and create and support creature tokens. Breya, Etherium Shaper reinforces Sacrifice / Death Payoffs and Pings / Punisher through its recorded abilities.",
+      "payoff": "Sacrifice / Death Payoffs payoff via Sai, Master Thopterist: connects 23 cards in this deck",
+      "themes": [
+        {
+          "id": "sacrifice",
+          "percent": 27,
+          "cards": 14
+        },
+        {
+          "id": "tokens",
+          "percent": 17,
+          "cards": 11
+        },
+        {
+          "id": "artifacts",
+          "percent": 16,
+          "cards": 9
+        },
+        {
+          "id": "ramp",
+          "percent": 12,
+          "cards": 8
+        },
+        {
+          "id": "graveyard",
+          "percent": 10,
+          "cards": 5
+        },
+        {
+          "id": "pings",
+          "percent": 9,
+          "cards": 4
+        },
+        {
+          "id": "typal:Thopter",
+          "percent": 9,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Sai, Master Thopterist",
+        "Breya's Apprentice",
+        "Efficient Construction"
+      ],
+      "blueprintPlan": [
+        "Breya, Etherium Shaper itself entering",
+        "Creates Thopter tokens",
+        "Token generation: The Commander's plan wants many bodies or tokens.",
+        "Sacrifice outlets: Death and sacrifice payoffs need reliable sacrifice outlets."
+      ],
+      "health": [
+        "ramp 6.0/9 Low",
+        "cardAdvantage 4.6/10 Low",
+        "interaction 6.0/8 Slightly Low",
+        "wipes 0.0/2 Low",
+        "protection 0.0/3 Low",
+        "recursion 4.0/2 Good",
+        "tutors 0.0/2 Low",
+        "finishers 2.4/4 Low",
+        "tokens 12.4/8 Good",
+        "sacrificeOutlets 7.0/3 Good",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Ugin, Eye of the Storms 2.32 Major Upgrade | Improves interaction (permanent answers). Improves card advantage. Improves mana. Its \"colorless spells\" ability has 16 cards here to feed it: Thopter Assembly, Talisman of Progress, Spine of Ish Sah\u2026.",
+        "Skullclamp 1.83 Strong Upgrade | Strengthens the Breya, Etherium Shaper plan. Improves existing engines: Thopter Assembly, Reckless Fireweaver, Thopter Spy Network. Improves card advantage.",
+        "Mikaeus, the Unhallowed 1.71 Strong Upgrade | Strengthens the Breya, Etherium Shaper plan. Improves finishing power.",
+        "Zulaport Cutthroat 1.62 Strong Upgrade | Strengthens the Breya, Etherium Shaper plan. Improves existing engines: Thopter Assembly, Thopter Spy Network, Ashnod's Altar. Improves finishing power. Its \"creatures that can die\" ability has 20 cards here to feed it: Thopter Assembly, Junk Diver, Scrap Trawler\u2026.",
+        "Skysovereign, Consul Flagship 1.38 Strong Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Its \"creatures to crew it\" ability has 20 cards here to feed it: Thopter Assembly, Junk Diver, Scrap Trawler\u2026.",
+        "Smuggler's Copter 1.15 Strong Upgrade | Improves finishing power. Improves card advantage. Its \"creatures to crew it\" ability has 20 cards here to feed it: Thopter Assembly, Junk Diver, Scrap Trawler\u2026.",
+        "Sarkhan's Unsealing 1.10 Strong Upgrade | Strengthens the Breya, Etherium Shaper plan. Improves existing engines: Thopter Assembly, Junk Diver, Scrap Trawler. Improves interaction.",
+        "Lightning Greaves 1.09 Strong Upgrade | Adds protection."
+      ],
+      "brew": [
+        "Blood Artist 63 Some Brew Potential (Synergy 61) | Connects Sacrifice / Death Payoffs \u2192 Pings / Punisher",
+        "Zulaport Cutthroat 49 Conventional / Weak Brew Fit (Synergy 61) | Works with Arcbound Ravager, Ashnod's Altar and 12 more",
+        "Talrand, Sky Summoner 48 Conventional / Weak Brew Fit (Synergy 47) | Connects Instant or sorcery spells \u2192 Tokens",
+        "Young Pyromancer 47 Conventional / Weak Brew Fit (Synergy 43) | Connects Instant or sorcery spells \u2192 Tokens",
+        "Skullclamp 46 Conventional / Weak Brew Fit (Synergy 82) | Works with Arcbound Ravager, Ashnod's Altar and 13 more"
+      ]
+    },
+    {
+      "id": "H4",
+      "name": "Niv-Mizzet spells (creature Commander, spells-heavy)",
+      "checks": [
+        "PASS primary includes spells",
+        "PASS cardAdvantage not Low"
+      ],
+      "primary": [
+        "Spells",
+        "Graveyard"
+      ],
+      "summary": "This deck is built to enable and reward casting spells and fill the graveyard. Niv-Mizzet, Parun reinforces Card Advantage and Spells through its recorded abilities.",
+      "payoff": "Spells payoff via Niv-Mizzet, Parun: Whenever a player casts an instant or sorcery spell, you draw a card.",
+      "themes": [
+        {
+          "id": "advantage",
+          "percent": 37,
+          "cards": 19
+        },
+        {
+          "id": "spells",
+          "percent": 22,
+          "cards": 7
+        },
+        {
+          "id": "ramp",
+          "percent": 17,
+          "cards": 9
+        },
+        {
+          "id": "interaction",
+          "percent": 11,
+          "cards": 8
+        },
+        {
+          "id": "graveyard",
+          "percent": 9,
+          "cards": 4
+        },
+        {
+          "id": "tokens",
+          "percent": 4,
+          "cards": 3
+        }
+      ],
+      "keyCards": [
+        "Consider",
+        "Baral, Chief of Compliance",
+        "Faithless Looting"
+      ],
+      "blueprintPlan": [
+        "Rewards permanents card draw",
+        "Rewards Instant Sorcery being cast",
+        "Ramp: The Commander costs 6: acceleration and reliable mana matter more.",
+        "Card advantage: A spell-casting plan needs extra card flow.",
+        "Interaction: Cheap instant-speed interaction doubles as spell fuel.",
+        "Protection: The Commander's abilities work only while it stays on the battlefield."
+      ],
+      "health": [
+        "ramp 6.4/10 Low",
+        "cardAdvantage 17.4/12 Good",
+        "interaction 11.0/8 Good",
+        "wipes 2.0/2 Good",
+        "protection 0.0/4 Low",
+        "recursion 0.0/2 Low",
+        "tutors 0.0/2 Low",
+        "finishers 1.6/4 Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Skysovereign, Consul Flagship 0.83 Moderate Upgrade | Improves finishing power. Its \"creatures to crew it\" ability has 8 cards here to feed it: Melek, Izzet Paragon, Niv-Mizzet, Parun, Young Pyromancer\u2026.",
+        "Lightning Greaves 0.52 Moderate Upgrade | Adds protection.",
+        "Ugin, Eye of the Storms 0.83 Moderate Upgrade | Improves interaction (permanent answers). Improves mana.",
+        "Mind Stone 0.40 Minor Upgrade | Improves mana.",
+        "Smuggler's Copter 0.19 Minor Upgrade | Improves finishing power. Its \"creatures to crew it\" ability has 8 cards here to feed it: Melek, Izzet Paragon, Niv-Mizzet, Parun, Young Pyromancer\u2026.",
+        "Ashnod's Altar 0.15 Minor Upgrade | Improves mana.",
+        "Phyrexian Altar 0.15 Minor Upgrade | Improves mana.",
+        "Skullclamp 0.13 Sidegrade | "
+      ],
+      "brew": [
+        "Thopter Spy Network 36 Conventional / Weak Brew Fit (Synergy 75) | Works with Arcane Denial, Baral, Chief of Compliance and 6 more",
+        "Smuggler's Copter 35 Conventional / Weak Brew Fit (Synergy 69) | Works with Arcane Denial",
+        "Skullclamp 34 Conventional / Weak Brew Fit (Synergy 76) | Works with Arcane Denial, Swan Song and 2 more",
+        "Rhystic Study 27 Conventional / Weak Brew Fit (Synergy 73) | Works with Arcane Denial",
+        "Ugin, Eye of the Storms 26 Conventional / Weak Brew Fit (Synergy 69) | Works with Arcane Denial"
+      ]
+    },
+    {
+      "id": "H5",
+      "name": "Kenrith enchantress (Commander mostly for colors)",
+      "checks": [
+        "PASS primary includes enchantments"
+      ],
+      "primary": [
+        "Enchantments",
+        "Equipment / Auras"
+      ],
+      "summary": "This deck is built to enable and reward enchantment interactions and support an individual threat with Equipment or Auras. Kenrith, the Returned King reinforces Card Advantage and Graveyard through its recorded abilities.",
+      "payoff": "Enchantments payoff via Ethereal Armor: connects 10 cards in this deck",
+      "themes": [
+        {
+          "id": "enchantments",
+          "percent": 40,
+          "cards": 16
+        },
+        {
+          "id": "advantage",
+          "percent": 22,
+          "cards": 11
+        },
+        {
+          "id": "voltron",
+          "percent": 15,
+          "cards": 8
+        },
+        {
+          "id": "graveyard",
+          "percent": 9,
+          "cards": 3
+        },
+        {
+          "id": "ramp",
+          "percent": 8,
+          "cards": 4
+        },
+        {
+          "id": "interaction",
+          "percent": 6,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Ethereal Armor",
+        "Eidolon of Blossoms",
+        "Doomwake Giant"
+      ],
+      "blueprintPlan": [
+        "Ramp: A five-mana Commander benefits from extra acceleration.",
+        "Recursion: Graveyard mechanics make recursion and self-mill important."
+      ],
+      "health": [
+        "ramp 3.0/9 Low",
+        "cardAdvantage 11.4/10 Good",
+        "interaction 3.0/8 Low",
+        "wipes 1.0/2 Low",
+        "protection 0.7/3 Low",
+        "recursion 2.0/2 Good",
+        "tutors 1.0/2 Low",
+        "finishers 0.7/4 Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "notes": [
+          {
+            "kind": "missing-text",
+            "message": "1 card has no rules text saved, so the app can't analyze it. Re-importing your collection usually fixes this.",
+            "items": [
+              "Savannah Lions"
+            ]
+          }
+        ]
+      },
+      "upgrades": [
+        "Skysovereign, Consul Flagship 2.14 Major Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Its \"creatures to crew it\" ability has 15 cards here to feed it: Sythis, Harvest's Hand, Argothian Enchantress, Setessan Champion\u2026.",
+        "Smothering Tithe 1.59 Strong Upgrade | Strengthens the Kenrith, the Returned King plan. Improves mana.",
+        "Zulaport Cutthroat 1.50 Strong Upgrade | Improves finishing power. Its \"creatures that can die\" ability has 15 cards here to feed it: Sythis, Harvest's Hand, Argothian Enchantress, Setessan Champion\u2026.",
+        "Mikaeus, the Unhallowed 1.49 Strong Upgrade | Improves finishing power.",
+        "Evolution Witness 1.26 Strong Upgrade | Strengthens the Kenrith, the Returned King plan. Its \"cards that put +1/+1 counters\" ability has 2 cards here to feed it: Kenrith, the Returned King, Evolution Witness.",
+        "Beast Within 1.01 Strong Upgrade | Improves interaction (permanent answers).",
+        "Ugin, Eye of the Storms 1.82 Strong Upgrade | Improves interaction (permanent answers). Improves card advantage. Improves mana.",
+        "Counterspell 0.94 Moderate Upgrade | Improves interaction (spell answers)."
+      ],
+      "brew": [
+        "Evolution Witness 53 Some Brew Potential (Synergy 85) | Connects Cards that put +1/+1 counters \u2192 Graveyard",
+        "Smothering Tithe 44 Conventional / Weak Brew Fit (Synergy 77) | Works with Argothian Enchantress, Enchantress's Presence and 8 more",
+        "Lotus Cobra 41 Conventional / Weak Brew Fit (Synergy 56) | Works with Command Tower, Doomwake Giant and 8 more",
+        "Ivy Lane Denizen 40 Conventional / Weak Brew Fit (Synergy 49) | Works with Argothian Enchantress, Destiny Spinner and 12 more",
+        "Avenger of Zendikar 40 Conventional / Weak Brew Fit (Synergy 43) | Works with Command Tower, Doomwake Giant and 8 more"
+      ]
+    },
+    {
+      "id": "H6",
+      "name": "Atraxa hybrid (no dominant archetype)",
+      "checks": [
+        "PASS top theme \u2264 45%"
+      ],
+      "primary": [
+        "Counters",
+        "Tokens"
+      ],
+      "summary": "This deck is built to build and amplify counters and create and support creature tokens. Atraxa, Praetors' Voice reinforces Counters through its recorded abilities.",
+      "payoff": "Counter Payoff via Avenger of Zendikar",
+      "themes": [
+        {
+          "id": "ramp",
+          "percent": 21,
+          "cards": 8
+        },
+        {
+          "id": "counters",
+          "percent": 20,
+          "cards": 5
+        },
+        {
+          "id": "tokens",
+          "percent": 17,
+          "cards": 6
+        },
+        {
+          "id": "advantage",
+          "percent": 14,
+          "cards": 6
+        },
+        {
+          "id": "interaction",
+          "percent": 10,
+          "cards": 5
+        },
+        {
+          "id": "voltron",
+          "percent": 10,
+          "cards": 4
+        },
+        {
+          "id": "blink",
+          "percent": 8,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Avenger of Zendikar",
+        "Hardened Scales",
+        "Rishkar, Peema Renegade"
+      ],
+      "blueprintPlan": [
+        "Acts every turn",
+        "Protection: The Commander's abilities work only while it stays on the battlefield."
+      ],
+      "health": [
+        "ramp 4.8/9 Low",
+        "cardAdvantage 4.8/10 Low",
+        "interaction 3.0/8 Low",
+        "wipes 1.0/2 Low",
+        "protection 1.7/4 Low",
+        "recursion 2.0/2 Good",
+        "tutors 0.0/2 Low",
+        "finishers 0.0/4 Low",
+        "tokens 3.6/8 Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Skysovereign, Consul Flagship 2.31 Major Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Its \"creatures to crew it\" ability has 14 cards here to feed it: Eternal Witness, Felidar Guardian, Avenger of Zendikar\u2026.",
+        "Setessan Champion 2.30 Major Upgrade | Strengthens the Atraxa, Praetors' Voice plan. Improves existing engines: Smothering Tithe, Rhystic Study, Anointed Procession. Improves card advantage. Its \"enchantments entering\" ability has 7 cards here to feed it: Smothering Tithe, Rhystic Study, Anointed Procession\u2026.",
+        "Doubling Season 2.00 Major Upgrade | Strengthens the Atraxa, Praetors' Voice plan. Improves existing engines: Evolution Sage, Thrummingbird. Its \"token makers\" ability has 5 cards here to feed it: Smothering Tithe, Avenger of Zendikar, Raise the Alarm\u2026.",
+        "Ugin, Eye of the Storms 2.76 Major Upgrade | Improves interaction (permanent answers). Improves card advantage. Improves mana. Its \"colorless spells\" ability has 4 cards here to feed it: Arcane Signet, Skullclamp, Sol Ring\u2026.",
+        "Zulaport Cutthroat 1.84 Strong Upgrade | Improves existing engines: Avenger of Zendikar, Raise the Alarm, Beast Within. Improves finishing power. Its \"creatures that can die\" ability has 14 cards here to feed it: Eternal Witness, Felidar Guardian, Avenger of Zendikar\u2026.",
+        "Ivy Lane Denizen 1.80 Strong Upgrade | Strengthens the Atraxa, Praetors' Voice plan. Improves existing engines: Eternal Witness, Felidar Guardian, Avenger of Zendikar. Its \"green creatures entering\" ability has 6 cards here to feed it: Eternal Witness, Avenger of Zendikar, Rishkar, Peema Renegade\u2026.",
+        "Mikaeus, the Unhallowed 1.80 Strong Upgrade | Improves finishing power.",
+        "Enchantress's Presence 1.49 Strong Upgrade | Improves existing engines: Smothering Tithe, Rhystic Study, Anointed Procession. Improves card advantage. Its \"enchantment spells\" ability has 7 cards here to feed it: Smothering Tithe, Rhystic Study, Anointed Procession\u2026."
+      ],
+      "brew": [
+        "Setessan Champion 64 Some Brew Potential (Synergy 73) | Connects Enchantments entering \u2192 Card Advantage",
+        "Talrand, Sky Summoner 60 Some Brew Potential (Synergy 48) | Connects Instant or sorcery spells \u2192 Tokens",
+        "Enchantress's Presence 54 Some Brew Potential (Synergy 53) | Connects Enchantment spells \u2192 Card Advantage",
+        "Ivy Lane Denizen 48 Conventional / Weak Brew Fit (Synergy 65) | Works with Avenger of Zendikar, Beast Within and 11 more",
+        "Thopter Spy Network 48 Conventional / Weak Brew Fit (Synergy 52) | Connects Artifacts to control \u2192 Tokens"
+      ]
+    },
+    {
+      "id": "H7",
+      "name": "Tolsimir wolves (low-power thematic)",
+      "checks": [
+        "PASS primary includes typal:Wolf"
+      ],
+      "primary": [
+        "Wolves Matter",
+        "Tokens"
+      ],
+      "summary": "This deck is built to support Wolf creatures and their type-based interactions and create and support creature tokens. Tolsimir, Friend to Wolves reinforces Wolves Matter through its recorded abilities.",
+      "payoff": "Wolves Matter via Feed the Pack",
+      "themes": [
+        {
+          "id": "typal:Wolf",
+          "percent": 31,
+          "cards": 10
+        },
+        {
+          "id": "tokens",
+          "percent": 31,
+          "cards": 12
+        },
+        {
+          "id": "ramp",
+          "percent": 11,
+          "cards": 6
+        },
+        {
+          "id": "typal:Werewolf",
+          "percent": 10,
+          "cards": 4
+        },
+        {
+          "id": "interaction",
+          "percent": 7,
+          "cards": 5
+        },
+        {
+          "id": "advantage",
+          "percent": 6,
+          "cards": 4
+        },
+        {
+          "id": "typal:Human",
+          "percent": 4,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Garruk, Cursed Huntsman",
+        "Silverfur Partisan",
+        "Pack Guardian"
+      ],
+      "blueprintPlan": [
+        "Tolsimir, Friend to Wolves itself entering",
+        "Rewards Wolf entering",
+        "Creates Elf tokens",
+        "Creates Wolf tokens",
+        "Ramp: A five-mana Commander benefits from extra acceleration.",
+        "Protection: The Commander's abilities work only while it stays on the battlefield.",
+        "Finishers: Wolf creatures carry the plan; type matters, quality still decides inclusion.",
+        "Token generation: The Commander's plan wants many bodies or tokens."
+      ],
+      "health": [
+        "ramp 4.8/12 Low",
+        "cardAdvantage 1.2/10 Low",
+        "interaction 3.0/8 Low",
+        "wipes 0.0/2 Low",
+        "protection 0.0/4 Low",
+        "recursion 0.0/2 Low",
+        "tutors 0.0/2 Low",
+        "finishers 1.2/4 Low",
+        "tokens 8.2/8 Good",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "Medium",
+        "notes": [
+          {
+            "kind": "missing-text",
+            "message": "1 card has no rules text saved, so the app can't analyze it. Re-importing your collection usually fixes this.",
+            "items": [
+              "Grizzled Outrider"
+            ]
+          }
+        ]
+      },
+      "upgrades": [
+        "Skullclamp 3.51 Major Upgrade | Strengthens the Tolsimir, Friend to Wolves plan. Improves existing engines: Tolsimir Wolfblood, Feed the Pack, Pack Guardian. Improves card advantage. Smooths the curve.",
+        "Ivy Lane Denizen 3.16 Major Upgrade | Strengthens the Tolsimir, Friend to Wolves plan. Improves existing engines: Grizzled Outrider, Tolsimir Wolfblood, Spirit of the Hunt. Smooths the curve. Its \"green creatures entering\" ability has 15 cards here to feed it: Grizzled Outrider, Tolsimir Wolfblood, Spirit of the Hunt\u2026.",
+        "Doubling Season 2.74 Major Upgrade | Improves existing engines. Smooths the curve. Its \"token makers\" ability has 8 cards here to feed it: Tolsimir Wolfblood, Tolsimir, Friend to Wolves, Feed the Pack\u2026.",
+        "Beast Within 2.52 Major Upgrade | Improves interaction (permanent answers). Smooths the curve.",
+        "Skysovereign, Consul Flagship 2.45 Major Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creatures to crew it\" ability has 19 cards here to feed it: Grizzled Outrider, Tolsimir Wolfblood, Spirit of the Hunt\u2026.",
+        "Smuggler's Copter 2.41 Major Upgrade | Improves finishing power. Improves card advantage. Smooths the curve. Its \"creatures to crew it\" ability has 19 cards here to feed it: Grizzled Outrider, Tolsimir Wolfblood, Spirit of the Hunt\u2026.",
+        "Eternal Witness 2.25 Major Upgrade | Smooths the curve.",
+        "Mind Stone 2.01 Major Upgrade | Improves card advantage. Improves mana. Smooths the curve."
+      ],
+      "brew": [
+        "Avenger of Zendikar 53 Some Brew Potential (Synergy 36) | Connects Lands entering \u2192 Tokens",
+        "Ivy Lane Denizen 50 Some Brew Potential (Synergy 69) | Works with Arlinn, the Pack's Hope // Arlinn, the Moon's Fury, Duskwatch Recruiter // Krallenhorde Howler and 16 more",
+        "Skullclamp 44 Conventional / Weak Brew Fit (Synergy 88) | Works with Arlinn, the Pack's Hope // Arlinn, the Moon's Fury, Feed the Pack and 5 more",
+        "Lotus Cobra 32 Conventional / Weak Brew Fit (Synergy 43) | Works with Command Tower, Cultivate and 4 more",
+        "Smuggler's Copter 27 Conventional / Weak Brew Fit (Synergy 47) | Fed by Grizzled Outrider, Tolsimir Wolfblood and 17 more"
+      ]
+    },
+    {
+      "id": "A1",
+      "name": "Dragon reanimator (adversarial)",
+      "checks": [
+        "PASS primary includes graveyard",
+        "PASS top theme is not typal:Dragon"
+      ],
+      "primary": [
+        "Graveyard",
+        "Combat"
+      ],
+      "summary": "This deck is built to fill the graveyard and return creatures from graveyards to the battlefield and support attacks and combat effects.",
+      "payoff": "Reanimator via Dread Return",
+      "themes": [
+        {
+          "id": "graveyard",
+          "percent": 35,
+          "cards": 9
+        },
+        {
+          "id": "combat",
+          "percent": 18,
+          "cards": 14
+        },
+        {
+          "id": "advantage",
+          "percent": 13,
+          "cards": 7
+        },
+        {
+          "id": "typal:Dragon",
+          "percent": 12,
+          "cards": 14
+        },
+        {
+          "id": "interaction",
+          "percent": 9,
+          "cards": 6
+        },
+        {
+          "id": "voltron",
+          "percent": 7,
+          "cards": 4
+        },
+        {
+          "id": "ramp",
+          "percent": 6,
+          "cards": 3
+        }
+      ],
+      "keyCards": [
+        "Necromancy",
+        "Persist",
+        "Dread Return"
+      ],
+      "blueprintPlan": [
+        "Acts every turn",
+        "Acts every turn",
+        "Creates Treasure tokens",
+        "Ramp: The Commander costs 6: acceleration and reliable mana matter more.",
+        "Protection: The Commander's abilities work only while it stays on the battlefield.",
+        "Sacrifice outlets: Death and sacrifice payoffs need reliable sacrifice outlets."
+      ],
+      "health": [
+        "ramp 4.4/13 Low",
+        "cardAdvantage 3.6/10 Low",
+        "interaction 4.4/8 Low",
+        "wipes 3.0/2 Good",
+        "protection 0.0/4 Low",
+        "recursion 6.0/5 Good",
+        "tutors 3.0/2 Good",
+        "finishers 9.8/4 Good",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Skullclamp 1.66 Strong Upgrade | Improves card advantage. Smooths the curve.",
+        "Sarkhan's Unsealing 1.54 Strong Upgrade | Improves existing engines: Eternal Witness, Balefire Dragon, Ancient Copper Dragon. Improves interaction (creature / planeswalker answers). Its \"creature spells with power 4, 5, or 6\" ability has 12 cards here to feed it: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite\u2026.",
+        "Dragon Tempest 1.44 Strong Upgrade | Improves existing engines: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite. Improves interaction (creature / planeswalker answers). Smooths the curve. Its \"creature with flyings entering\" ability has 15 cards here to feed it: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite\u2026. Its \"Dragons entering\" ability has 15 cards here to feed it: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite\u2026.",
+        "Smuggler's Copter 1.37 Strong Upgrade | Improves card advantage. Smooths the curve. Its \"creatures to crew it\" ability has 20 cards here to feed it: Eternal Witness, Balefire Dragon, Ancient Copper Dragon\u2026.",
+        "Scourge of Valkas 1.36 Strong Upgrade | Improves existing engines: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite. Improves interaction (creature / planeswalker answers). Its \"Dragons entering\" ability has 15 cards here to feed it: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite\u2026.",
+        "Mind Stone 1.24 Strong Upgrade | Improves card advantage. Improves mana. Smooths the curve.",
+        "Mikaeus, the Unhallowed 1.17 Strong Upgrade | Strengthens the Ziatora, the Incinerator plan. Improves existing engines: Balefire Dragon, Ancient Copper Dragon, Steel Hellkite. Improves finishing power.",
+        "Harmonize 1.04 Strong Upgrade | Improves card advantage."
+      ],
+      "brew": [
+        "Sarkhan's Unsealing 55 Some Brew Potential (Synergy 68) | Connects Creature spells with power 4, 5, or 6 \u2192 Interaction",
+        "Dragon Tempest 52 Some Brew Potential (Synergy 69) | Connects Dragons Matter \u2192 Interaction",
+        "Scourge of Valkas 50 Some Brew Potential (Synergy 64) | Connects Dragons Matter \u2192 Interaction",
+        "Young Pyromancer 44 Conventional / Weak Brew Fit (Synergy 61) | Works with Beast Within, Buried Alive and 15 more",
+        "Ivy Lane Denizen 41 Conventional / Weak Brew Fit (Synergy 49) | Works with Ancient Copper Dragon, Atarka, World Render and 17 more"
+      ]
+    },
+    {
+      "id": "A2",
+      "name": "Vehicle sacrifice (adversarial)",
+      "checks": [
+        "PASS primary includes sacrifice"
+      ],
+      "primary": [
+        "Sacrifice / Death Payoffs",
+        "Graveyard"
+      ],
+      "summary": "This deck is built to use sacrifice and creature-death effects and fill the graveyard and return creatures from graveyards to the battlefield. Greasefang, Okiba Boss reinforces Graveyard through its recorded abilities.",
+      "payoff": "Aristocrats via Bastion of Remembrance",
+      "themes": [
+        {
+          "id": "sacrifice",
+          "percent": 26,
+          "cards": 11
+        },
+        {
+          "id": "graveyard",
+          "percent": 19,
+          "cards": 6
+        },
+        {
+          "id": "advantage",
+          "percent": 15,
+          "cards": 10
+        },
+        {
+          "id": "pings",
+          "percent": 12,
+          "cards": 6
+        },
+        {
+          "id": "ramp",
+          "percent": 11,
+          "cards": 7
+        },
+        {
+          "id": "tokens",
+          "percent": 9,
+          "cards": 5
+        },
+        {
+          "id": "combat",
+          "percent": 8,
+          "cards": 6
+        }
+      ],
+      "keyCards": [
+        "Bastion of Remembrance",
+        "Blood Artist",
+        "Cruel Celebrant"
+      ],
+      "blueprintPlan": [
+        "Acts every turn",
+        "Acts every turn",
+        "Ramp: A three-mana Commander needs slightly less acceleration.",
+        "Protection: The Commander's abilities work only while it stays on the battlefield.",
+        "Recursion: Graveyard mechanics make recursion and self-mill important."
+      ],
+      "health": [
+        "ramp 5.0/8 Low",
+        "cardAdvantage 4.8/10 Low",
+        "interaction 4.0/8 Low",
+        "wipes 0.0/2 Low",
+        "protection 0.0/4 Low",
+        "recursion 5.0/5 Good",
+        "tutors 2.0/2 Good",
+        "finishers 4.1/4 Good",
+        "sacrificeOutlets 5.0/3 Good",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Ugin, Eye of the Storms 2.08 Major Upgrade | Improves interaction (permanent answers). Improves card advantage. Improves mana. Its \"colorless spells\" ability has 11 cards here to feed it: Spine of Ish Sah, Arcane Signet, Smuggler's Copter\u2026.",
+        "Skullclamp 1.57 Strong Upgrade | Improves existing engines: Parhelion II, Ashnod's Altar, Sram's Expertise. Improves card advantage.",
+        "Wrath of God 1.01 Strong Upgrade | Improves interaction (creature answers).",
+        "Mind Stone 0.96 Moderate Upgrade | Improves card advantage. Improves mana.",
+        "Mikaeus, the Unhallowed 0.77 Moderate Upgrade | Improves existing engines: Aradesh, the Founder, Caves of Koilos, Skysovereign, Consul Flagship. Improves finishing power.",
+        "Lightning Greaves 0.73 Moderate Upgrade | Adds protection.",
+        "Smothering Tithe 0.68 Moderate Upgrade | Improves existing engines. Improves mana.",
+        "Phyrexian Altar 0.66 Moderate Upgrade | Improves existing engines: Blood Artist, Cruel Celebrant, Zulaport Cutthroat. Improves mana."
+      ],
+      "brew": [
+        "Skullclamp 35 Conventional / Weak Brew Fit (Synergy 63) | Works with Ashnod's Altar, Carrion Feeder and 7 more",
+        "Phyrexian Altar 30 Conventional / Weak Brew Fit (Synergy 63) | Works with Bastion of Remembrance, Blood Artist and 3 more",
+        "Ugin, Eye of the Storms 23 Conventional / Weak Brew Fit (Synergy 40) | Fed by Spine of Ish Sah, Arcane Signet and 9 more",
+        "Mikaeus, the Unhallowed 20 Conventional / Weak Brew Fit (Synergy 36) | Works with Caves of Koilos, Skysovereign, Consul Flagship and 2 more",
+        "Stitcher's Supplier 17 Conventional / Weak Brew Fit (Synergy 43) | Works with Aradesh, the Founder, Unearth"
+      ]
+    },
+    {
+      "id": "A3",
+      "name": "Counters recursion (adversarial)",
+      "checks": [
+        "PASS primary includes counters",
+        "PASS primary includes graveyard"
+      ],
+      "primary": [
+        "Counters",
+        "Graveyard"
+      ],
+      "summary": "This deck is built to build and amplify counters and fill the graveyard and recover graveyard cards.",
+      "payoff": "Counter Payoff via Biogenic Upgrade",
+      "themes": [
+        {
+          "id": "counters",
+          "percent": 37,
+          "cards": 13
+        },
+        {
+          "id": "graveyard",
+          "percent": 22,
+          "cards": 8
+        },
+        {
+          "id": "ramp",
+          "percent": 12,
+          "cards": 7
+        },
+        {
+          "id": "lands",
+          "percent": 11,
+          "cards": 5
+        },
+        {
+          "id": "advantage",
+          "percent": 10,
+          "cards": 7
+        },
+        {
+          "id": "clones",
+          "percent": 8,
+          "cards": 4
+        }
+      ],
+      "keyCards": [
+        "Simic Ascendancy",
+        "Ivy Lane Denizen",
+        "Spark Double"
+      ],
+      "blueprintPlan": [
+        "Ramp: A three-mana Commander needs slightly less acceleration."
+      ],
+      "health": [
+        "ramp 6.0/8 Slightly Low",
+        "cardAdvantage 3.6/10 Low",
+        "interaction 2.0/8 Low",
+        "wipes 0.0/2 Low",
+        "protection 0.0/3 Low",
+        "recursion 4.0/5 Slightly Low",
+        "tutors 0.0/2 Low",
+        "finishers 1.0/4 Low",
+        "lands 36.0/36 Good"
+      ],
+      "confidence": {
+        "level": "High",
+        "notes": []
+      },
+      "upgrades": [
+        "Skysovereign, Consul Flagship 2.68 Major Upgrade | Improves finishing power. Improves interaction (creature / planeswalker answers). Its \"creatures to crew it\" ability has 19 cards here to feed it: Gyre Engineer, Vorel of the Hull Clade, Eternal Witness\u2026.",
+        "Ugin, Eye of the Storms 3.14 Major Upgrade | Improves interaction (permanent answers). Improves card advantage. Improves mana.",
+        "Evolution Witness 1.71 Strong Upgrade | Strengthens the Vorel of the Hull Clade plan. Improves existing engines: Branching Evolution, Biogenic Upgrade, Simic Ascendancy. Its \"cards that put +1/+1 counters\" ability has 6 cards here to feed it: Biogenic Upgrade, Simic Ascendancy, Rishkar, Peema Renegade\u2026.",
+        "Skullclamp 1.51 Strong Upgrade | Improves card advantage.",
+        "Smuggler's Copter 1.36 Strong Upgrade | Improves finishing power. Improves card advantage. Its \"creatures to crew it\" ability has 19 cards here to feed it: Gyre Engineer, Vorel of the Hull Clade, Eternal Witness\u2026.",
+        "Mind Stone 1.10 Strong Upgrade | Improves card advantage. Improves mana.",
+        "Lightning Greaves 1.06 Strong Upgrade | Adds protection.",
+        "Setessan Champion 1.03 Strong Upgrade | Improves existing engines: Branching Evolution, Rhystic Study, Simic Ascendancy. Improves card advantage. Its \"enchantments entering\" ability has 4 cards here to feed it: Branching Evolution, Rhystic Study, Simic Ascendancy\u2026."
+      ],
+      "brew": [
+        "Evolution Witness 81 Interesting Brew (Synergy 77) | Connects Counters \u2192 Graveyard",
+        "Setessan Champion 58 Some Brew Potential (Synergy 60) | Connects Enchantments entering \u2192 Card Advantage",
+        "Enchantress's Presence 49 Conventional / Weak Brew Fit (Synergy 60) | Connects Enchantment spells \u2192 Card Advantage",
+        "Lotus Cobra 47 Conventional / Weak Brew Fit (Synergy 64) | Works with Breeding Pool, Command Tower and 6 more",
+        "Avenger of Zendikar 47 Conventional / Weak Brew Fit (Synergy 61) | Works with Simic Ascendancy, Breeding Pool and 8 more"
+      ]
+    }
+  ]
+}

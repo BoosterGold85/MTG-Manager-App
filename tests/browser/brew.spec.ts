@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import type { Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { vorelCountersFixture } from "../brewFixture";
-import { section, writeState } from "./workspaceHelpers";
+import { section, writeState, readState } from "./workspaceHelpers";
 
 async function setup(page: Page) {
   const f = vorelCountersFixture();
@@ -25,6 +25,7 @@ const fits = (page: Page) => page.evaluate(() => document.documentElement.scroll
 
 test("Brew Score sorts, filters and explains candidates without replacing Synergy", async ({ page }) => {
   const upgrades = await setup(page);
+  const before = await readState(page);
   const rows = upgrades.locator(".synergy-candidates>li");
   // The default Upgrade Value view stays as it was: no Brew headline.
   await expect(upgrades.locator(".brew-headline")).toHaveCount(0);
@@ -41,6 +42,11 @@ test("Brew Score sorts, filters and explains candidates without replacing Synerg
   await expect(why).toContainText("Bridge");
   await expect(why).toContainText("Copy support");
   await expect(why).toContainText("Clone");
+  const supplied = why.locator("div").filter({ has: page.getByText("Interaction", { exact: true }) }).locator("dd");
+  await expect(supplied).toContainText("cards that put +1/+1 counters");
+  await expect(supplied).not.toContainText("Experiment One");
+  await expect(supplied).not.toContainText("Hardened Scales");
+  await expect(supplied).not.toContainText("Branching Evolution");
   expect(await fits(page)).toBe(true);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   // Filters combine with search and availability.
@@ -60,6 +66,9 @@ test("Brew Score sorts, filters and explains candidates without replacing Synerg
   await expect(upgrades.getByLabel("Sort")).toHaveValue("brew-desc");
   await expect(upgrades.getByRole("status")).toHaveText("0 candidates");
   expect(await fits(page)).toBe(true);
+  const after = await readState(page);
+  expect(after.items).toEqual(before.items);
+  expect(after.decks).toEqual(before.decks);
 });
 
 test("Card Detail keeps Card Intelligence, In This Deck and Brew in This Deck distinct", async ({ page }) => {

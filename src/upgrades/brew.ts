@@ -8,9 +8,10 @@ import type { DeckModel } from "./upgrade";
 import type { CardFunction, Need } from "./cardFunction";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import { stripReminderText } from "../utils/rulesText";
+import { hasSelfEntryAbility } from "./abilityScope";
 import { families } from "../dna/families";
 
-export const BREW_VERSION = "1.0.0";
+export const BREW_VERSION = "1.0.1";
 /** Maximum positive points per component (total 100). Penalties are signed and the result is clamped to 0–100. */
 export const BREW_WEIGHTS = Object.freeze({ contextualSynergy: 25, interaction: 20, bridge: 20, novelty: 15, multiplicative: 10, commander: 5, role: 5 });
 export type BrewBand = "Hidden Gem" | "Interesting Brew" | "Some Brew Potential" | "Conventional / Weak Brew Fit";
@@ -204,7 +205,7 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   const creature = /\bCreature\b/.test((card.cardFaces?.[0]?.typeLine || card.typeLine).split("—")[0]);
   const legendary = /\bLegendary\b/.test(card.typeLine);
   const oncePerTurn = /\bonly once each turn\b|\bonce per turn\b/i.test(text);
-  const ownEtb = /^(?:When|Whenever) (?:this creature|this permanent|~|[^,]{0,40}) enters\b/im.test(text) && fn.impact > 0.3;
+  const ownEtb = hasSelfEntryAbility(card) && fn.impact > 0.3;
   const usefulCopies = creature && fn.repeatable ? ctx.copiers.filter((c) => !legendary || c.ignoresLegend) : [];
   const reuse = usefulCopies.length * (oncePerTurn ? 0.5 : 1) + (ownEtb ? ctx.blinkers.length : 0);
   const multiplicative = BREW_WEIGHTS.multiplicative * sat(reuse, 3) * relevance;
@@ -276,7 +277,7 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   return {
     score,
     band,
-    label: brewLabel(score, ctx.confidence),
+    label: brewLabel(score, confidence),
     synergy: synergy.score,
     components,
     penalties,
