@@ -1,3 +1,4 @@
+import { recursionOverlaps } from "../synergy/capabilities";
 // Mode 2 — Improve My Current Deck. A one-for-one replacement optimizer, not a 99-card solver.
 // For each owned candidate: simulate replacing every reasonable cut, recompute an explainable utility
 // vector, keep the best valid swap. Upgrade Value = utility after best swap − current utility.
@@ -139,7 +140,7 @@ const emptyRoles = () => Object.fromEntries(ROLE_NEEDS.map((r) => [r, 0])) as Re
 const emptyCoverage = () => Object.fromEntries([...COVERAGE.map(([t]) => t), "permanent", "nonland_permanent", "land", "battle"].map((t) => [t, 0])) as Record<AnswerTarget, number>;
 function contributionOf(fn: CardFunction, quantity: number, commanderLink: number): Contribution {
   const roles = emptyRoles();
-  for (const need of ROLE_NEEDS) roles[need] = (fn.roles[need] || 0) * quantity;
+  for (const need of ROLE_NEEDS) roles[need] = ((fn.intrinsicRoles || fn.roles)[need] || 0) * quantity;
   const coverage = emptyCoverage();
   for (const answer of fn.answers) for (const t of answer.targets) coverage[t] += quantity;
   const engines = emptyEngines();
@@ -250,7 +251,7 @@ export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): Dec
   // Commanders are always available as engine sources (e.g. Lathliss makes Dragon tokens), never as cuts, and the roles
   // they fill themselves (Niv-Mizzet's card draw, Kenrith's reanimation) count toward the deck's totals.
   for (const card of cards.filter((c) => c.commander)) {
-    for (const need of ROLE_NEEDS) totals.roles[need] += card.fn.roles[need] || 0;
+    for (const need of ROLE_NEEDS) totals.roles[need] += (card.fn.intrinsicRoles || card.fn.roles)[need] || 0;
     const e = card.fn.engines;
     for (const [scope, n] of Object.entries(e.tokenSourcesByScope)) totals.engines.tokenSourcesByScope[scope] = (totals.engines.tokenSourcesByScope[scope] || 0) + n;
     totals.engines.noncombatDamageSources += e.noncombatDamageSources;
@@ -293,7 +294,7 @@ function deckTargets(dna: DeckDna, blueprint: CommanderBlueprint, cards: DeckCar
     }
   }
   // Card velocity: a deck that draws far more than the baseline finds its land drops with fewer lands.
-  const draw = main.reduce((n, c) => n + (c.fn.roles.cardAdvantage || 0) * c.quantity, 0) + cards.filter((c) => c.commander).reduce((n, c) => n + (c.fn.roles.cardAdvantage || 0), 0);
+  const draw = main.reduce((n, c) => n + ((c.fn.intrinsicRoles || c.fn.roles).cardAdvantage || 0) * c.quantity, 0) + cards.filter((c) => c.commander).reduce((n, c) => n + ((c.fn.intrinsicRoles || c.fn.roles).cardAdvantage || 0), 0);
   if (draw >= 2 * targets.cardAdvantage && targets.lands > 33) {
     targets.lands -= 2;
     reasons.lands.push(`This deck draws heavily (${draw.toFixed(1)} card-advantage pieces), so it needs fewer lands (target ${targets.lands}).`);
@@ -325,7 +326,7 @@ function invalidReason(model: DeckModel, before: Totals, after: Totals, cut: Dec
   if (cut.fn.isLand !== fn.isLand) return fn.isLand ? "A land only replaces a land." : "Lands are never cut for a spell; land count is preserved.";
   for (const need of ESSENTIAL) {
     const floor = need === "protection" || need === "wipes" || need === "finishers" ? 0.5 : Math.max(1, 0.5 * model.targets[need]);
-    if (before.roles[need] >= floor && after.roles[need] < floor && !(fn.roles[need] || 0))
+    if (before.roles[need] >= floor && after.roles[need] < floor && !((fn.intrinsicRoles || fn.roles)[need] || 0))
       return `Would drop ${needLabels[need].toLowerCase()} below a working minimum (${after.roles[need].toFixed(1)}), and the candidate does not replace it.`;
   }
   for (const [target] of COVERAGE) {
@@ -479,3 +480,9 @@ export const compareUpgrade = (a: UpgradeEvaluation, b: UpgradeEvaluation) =>
   bandIndex(a.label) - bandIndex(b.label) ||
   confidenceRank[b.confidence] - confidenceRank[a.confidence] ||
   b.upgradeValue - a.upgradeValue || confidenceRank[b.confidence] - confidenceRank[a.confidence] || a.name.localeCompare(b.name, "en") || a.identity.localeCompare(b.identity, "en");
+
+/** Count only supplies covering the candidate's functional recursion domain. */
+export function matchingRoleCount(model: DeckModel, need: Need, fn: CardFunction): number {
+  if (need !== "recursion" || !fn.recursionTargets.length) return model.totals.roles[need];
+  return model.cards.reduce((n, c) => n + (recursionOverlaps(fn.recursionTargets,c.fn.recursionTargets) ? ((c.fn.intrinsicRoles || c.fn.roles).recursion || 0) * (c.commander ? 1 : c.quantity) : 0), 0);
+}

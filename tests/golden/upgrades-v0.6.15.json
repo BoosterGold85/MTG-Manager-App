@@ -1,0 +1,694 @@
+{
+ "Reign of Dragons": {
+  "build": [
+   {
+    "identity": "candidate:Combat Celebrant",
+    "name": "Combat Celebrant",
+    "commanderFit": 58,
+    "fitLabel": "Good",
+    "buildPriority": 70,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Hoarding Dragon",
+    "name": "Hoarding Dragon",
+    "commanderFit": 78,
+    "fitLabel": "Strong",
+    "buildPriority": 69,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "Medium"
+   },
+   {
+    "identity": "candidate:Fiery Emancipation",
+    "name": "Fiery Emancipation",
+    "commanderFit": 60,
+    "fitLabel": "Good",
+    "buildPriority": 64,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Vandalblast",
+    "name": "Vandalblast",
+    "commanderFit": 25,
+    "fitLabel": "Weak",
+    "buildPriority": 60,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Savage Beating",
+    "name": "Savage Beating",
+    "commanderFit": 58,
+    "fitLabel": "Good",
+    "buildPriority": 58,
+    "priorityLabel": "Consider",
+    "confidence": "Medium"
+   },
+   {
+    "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
+    "name": "Fire Nation Attacks",
+    "commanderFit": 52,
+    "fitLabel": "Situational",
+    "buildPriority": 48,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Xorn",
+    "name": "Xorn",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 40,
+    "priorityLabel": "Situational",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Dragon Hatchling",
+    "name": "Dragon Hatchling",
+    "commanderFit": 78,
+    "fitLabel": "Strong",
+    "buildPriority": 36,
+    "priorityLabel": "Situational",
+    "confidence": "High"
+   },
+   {
+    "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+    "name": "Changeling Wayfinder",
+    "commanderFit": 75,
+    "fitLabel": "Strong",
+    "buildPriority": 20,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Death by Dragons",
+    "name": "Death by Dragons",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 7,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "candidate:Combat Celebrant",
+    "upgradeValue": 0.73,
+    "label": "Moderate Upgrade",
+    "best": "Chandra's Ignition",
+    "alternatives": [
+     "Hit the Mother Lode",
+     "Chain Reaction"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Fiery Emancipation",
+    "upgradeValue": 0.68,
+    "label": "Moderate Upgrade",
+    "best": "Chandra's Ignition",
+    "alternatives": [
+     "Hit the Mother Lode",
+     "Chain Reaction"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Hoarding Dragon",
+    "upgradeValue": 0.76,
+    "label": "Moderate Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "Medium"
+   },
+   {
+    "identity": "candidate:Savage Beating",
+    "upgradeValue": 0.65,
+    "label": "Moderate Upgrade",
+    "best": "Chandra's Ignition",
+    "alternatives": [
+     "Hit the Mother Lode",
+     "Chain Reaction"
+    ],
+    "confidence": "Medium"
+   },
+   {
+    "identity": "candidate:Xorn",
+    "upgradeValue": 0.3,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Dragon Hatchling",
+    "upgradeValue": 0.21,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+    "upgradeValue": 0.19,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Vandalblast",
+    "upgradeValue": 0.17,
+    "label": "Minor Upgrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
+    "upgradeValue": 0.02,
+    "label": "Sidegrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "candidate:Death by Dragons",
+    "upgradeValue": -0.13,
+    "label": "Sidegrade",
+    "best": "Hit the Mother Lode",
+    "alternatives": [
+     "Chain Reaction",
+     "Chandra's Ignition"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Dragon typal": {
+  "build": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 56,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 1.09,
+    "label": "Strong Upgrade",
+    "best": "Sky Dragon 2",
+    "alternatives": [
+     "Dragon Fodder",
+     "Dragon Broodmother"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Spellslinger": {
+  "build": [
+   {
+    "identity": "scoring:Focused Study",
+    "name": "Focused Study",
+    "commanderFit": 72,
+    "fitLabel": "Strong",
+    "buildPriority": 75,
+    "priorityLabel": "High Priority",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Off-plan Fighter",
+    "name": "Off-plan Fighter",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 0,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Focused Study",
+    "upgradeValue": 0.45,
+    "label": "Moderate Upgrade",
+    "best": "Study 4",
+    "alternatives": [
+     "Study 3",
+     "Study 8"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Off-plan Fighter",
+    "upgradeValue": -1.19,
+    "label": "Downgrade",
+    "best": "Study 4",
+    "alternatives": [
+     "Study 3",
+     "Study 8"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Aristocrats": {
+  "build": [
+   {
+    "identity": "scoring:Free Sacrifice Outlet",
+    "name": "Free Sacrifice Outlet",
+    "commanderFit": 77,
+    "fitLabel": "Strong",
+    "buildPriority": 87,
+    "priorityLabel": "Core",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Unrelated Giant",
+    "name": "Unrelated Giant",
+    "commanderFit": 50,
+    "fitLabel": "Situational",
+    "buildPriority": 11,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Free Sacrifice Outlet",
+    "upgradeValue": 2.88,
+    "label": "Major Upgrade",
+    "best": "Outlet 0",
+    "alternatives": [
+     "Outlet 1",
+     "Outlet 2"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Unrelated Giant",
+    "upgradeValue": -0.3,
+    "label": "Downgrade",
+    "best": "Outlet 0",
+    "alternatives": [
+     "Outlet 1",
+     "Outlet 2"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Landfall": {
+  "build": [
+   {
+    "identity": "scoring:Additional Land Engine",
+    "name": "Additional Land Engine",
+    "commanderFit": 72,
+    "fitLabel": "Strong",
+    "buildPriority": 83,
+    "priorityLabel": "High Priority",
+    "confidence": "High"
+   },
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 56,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Additional Land Engine",
+    "upgradeValue": 0.97,
+    "label": "Moderate Upgrade",
+    "best": "Landfall Value 4",
+    "alternatives": [
+     "Landfall Value 3",
+     "Landfall Value 0"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 0.12,
+    "label": "Sidegrade",
+    "best": "Landfall Value 4",
+    "alternatives": [
+     "Landfall Value 3",
+     "Landfall Value 0"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Voltron": {
+  "build": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 56,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Haste Equipment",
+    "name": "Haste Equipment",
+    "commanderFit": 77,
+    "fitLabel": "Strong",
+    "buildPriority": 29,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 1.44,
+    "label": "Strong Upgrade",
+    "best": "Equipment 0",
+    "alternatives": [
+     "Equipment 1",
+     "Equipment 2"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Haste Equipment",
+    "upgradeValue": 0,
+    "label": "Sidegrade",
+    "best": "Equipment 0",
+    "alternatives": [
+     "Equipment 1",
+     "Equipment 2"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Artifact": {
+  "build": [
+   {
+    "identity": "scoring:Artifact Mana Engine",
+    "name": "Artifact Mana Engine",
+    "commanderFit": 72,
+    "fitLabel": "Strong",
+    "buildPriority": 90,
+    "priorityLabel": "Core",
+    "confidence": "High"
+   },
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 56,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 0.49,
+    "label": "Moderate Upgrade",
+    "best": "Artifact 4",
+    "alternatives": [
+     "Artifact 3",
+     "Artifact 8"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Artifact Mana Engine",
+    "upgradeValue": 0.26,
+    "label": "Minor Upgrade",
+    "best": "Artifact 4",
+    "alternatives": [
+     "Artifact 3",
+     "Artifact 8"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Tokens": {
+  "build": [
+   {
+    "identity": "scoring:Efficient Token Maker",
+    "name": "Efficient Token Maker",
+    "commanderFit": 77,
+    "fitLabel": "Strong",
+    "buildPriority": 60,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Plain Bear",
+    "name": "Plain Bear",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 0,
+    "priorityLabel": "Low Priority",
+    "confidence": "Low"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Efficient Token Maker",
+    "upgradeValue": 0.08,
+    "label": "Sidegrade",
+    "best": "Token Maker 4",
+    "alternatives": [
+     "Token Maker 3",
+     "Token Maker 8"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Plain Bear",
+    "upgradeValue": -0.81,
+    "label": "Downgrade",
+    "best": "Token Maker 4",
+    "alternatives": [
+     "Token Maker 3",
+     "Token Maker 8"
+    ],
+    "confidence": "Low"
+   }
+  ]
+ },
+ "Graveyard / Reanimator": {
+  "build": [
+   {
+    "identity": "scoring:Cheap Reanimation",
+    "name": "Cheap Reanimation",
+    "commanderFit": 52,
+    "fitLabel": "Situational",
+    "buildPriority": 48,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Graveyard Reset",
+    "name": "Graveyard Reset",
+    "commanderFit": 5,
+    "fitLabel": "Weak",
+    "buildPriority": 47,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Graveyard Reset",
+    "upgradeValue": 0.91,
+    "label": "Moderate Upgrade",
+    "best": "Self Mill 0",
+    "alternatives": [
+     "Self Mill 1",
+     "Self Mill 2"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Cheap Reanimation",
+    "upgradeValue": 0.86,
+    "label": "Moderate Upgrade",
+    "best": "Self Mill 0",
+    "alternatives": [
+     "Self Mill 1",
+     "Self Mill 2"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "+1/+1 Counters": {
+  "build": [
+   {
+    "identity": "scoring:Counter Doubler",
+    "name": "Counter Doubler",
+    "commanderFit": 74,
+    "fitLabel": "Strong",
+    "buildPriority": 63,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 56,
+    "priorityLabel": "Consider",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Counter Doubler",
+    "upgradeValue": 3.41,
+    "label": "Major Upgrade",
+    "best": "Counter Creature 0",
+    "alternatives": [
+     "Counter Creature 1",
+     "Counter Creature 2"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 1.5,
+    "label": "Strong Upgrade",
+    "best": "Counter Creature 0",
+    "alternatives": [
+     "Counter Creature 1",
+     "Counter Creature 2"
+    ],
+    "confidence": "High"
+   }
+  ]
+ },
+ "Generic Goodstuff": {
+  "build": [
+   {
+    "identity": "scoring:Flexible Protection",
+    "name": "Flexible Protection",
+    "commanderFit": 26,
+    "fitLabel": "Weak",
+    "buildPriority": 91,
+    "priorityLabel": "Core",
+    "confidence": "Medium"
+   },
+   {
+    "identity": "scoring:Overpriced Body",
+    "name": "Overpriced Body",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 0,
+    "priorityLabel": "Low Priority",
+    "confidence": "Low"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "scoring:Flexible Protection",
+    "upgradeValue": 3.36,
+    "label": "Major Upgrade",
+    "best": "Simple Body 0",
+    "alternatives": [
+     "Simple Body 1",
+     "Simple Body 2"
+    ],
+    "confidence": "Medium"
+   },
+   {
+    "identity": "scoring:Overpriced Body",
+    "upgradeValue": 0,
+    "label": "Sidegrade",
+    "best": "Simple Body 0",
+    "alternatives": [
+     "Simple Body 1",
+     "Simple Body 2"
+    ],
+    "confidence": "Low"
+   }
+  ]
+ },
+ "Creature ETB / Blink": {
+  "build": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "name": "Alania's Pathmaker",
+    "commanderFit": 72,
+    "fitLabel": "Strong",
+    "buildPriority": 65,
+    "priorityLabel": "Strong Consideration",
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Generic Fight",
+    "name": "Generic Fight",
+    "commanderFit": 15,
+    "fitLabel": "Weak",
+    "buildPriority": 7,
+    "priorityLabel": "Low Priority",
+    "confidence": "High"
+   }
+  ],
+  "improve": [
+   {
+    "identity": "ce36a450-68a6-4519-a9f0-0e3b772054eb",
+    "upgradeValue": 0.32,
+    "label": "Minor Upgrade",
+    "best": "ETB Value 4",
+    "alternatives": [
+     "ETB Value 3",
+     "ETB Value 8"
+    ],
+    "confidence": "High"
+   },
+   {
+    "identity": "scoring:Generic Fight",
+    "upgradeValue": -1.2,
+    "label": "Downgrade",
+    "best": "ETB Value 4",
+    "alternatives": [
+     "ETB Value 3",
+     "ETB Value 8"
+    ],
+    "confidence": "High"
+   }
+  ]
+ }
+}

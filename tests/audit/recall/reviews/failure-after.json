@@ -1,0 +1,215 @@
+{
+  "baseline": "00c6be9",
+  "author": "Assistant post-fix triage, not ablation-proven or independently adjudicated. Original diagnostic failures resolved does not mean zero unknown abilities globally.",
+  "reviews": [
+    {
+      "deck": "counters",
+      "candidate": "Winding Constrictor",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 45; score 38; secondary Synergy rank 88",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"counters:+1/+1:Creature:board\", \"adds\": [], \"needs\": \"cards that put +1/+1 counters\", \"line\": \"If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.\", \"understood\": true, \"supply\": 5, \"suppliers\": [\"Good-Fortune Unicorn\", \"Forgotten Ancient\", \"Renata, Called to the Hunt\", \"Rishkar, Peema Renegade\", \"Master Biomancer\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 5, \"eligibleMainDeckCopies\": 5, \"mainDeckCopies\": 99, \"commanderFeeders\": [], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"5 cards here feed its \\\"cards that put +1/+1 counters\\\" ability: Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt, Rishkar, Peema Renegade and 1 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Good-Fortune Unicorn, Forgotten Ancient, Mask of Memory, Master Biomancer and 3 more.\"}, {\"title\": \"Copy support\", \"text\": \"3 cards here can copy it, and each copy works independently: Clone, Spark Double, Clever Impersonator.\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "counters",
+      "candidate": "Inspiring Call",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 25; score 44; secondary Synergy rank 149",
+        "{\"roles\": {\"cardAdvantage\": 0.6, \"protection\": 0.7}, \"conditions\": [{\"key\": \"counters:+1/+1:Creature:board\", \"adds\": [\"cardAdvantage\", \"protection\"], \"needs\": \"cards that put +1/+1 counters\", \"line\": \"Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn.\", \"understood\": true, \"supply\": 5, \"suppliers\": [\"Good-Fortune Unicorn\", \"Forgotten Ancient\", \"Renata, Called to the Hunt\", \"Rishkar, Peema Renegade\", \"Master Biomancer\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 5, \"eligibleMainDeckCopies\": 5, \"mainDeckCopies\": 99, \"commanderFeeders\": [], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Bridge\", \"text\": \"Counters \u2192 Card Advantage. 5 cards here supply it (Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt and 2 more); Inspiring Call turns it into Card Advantage value.\"}, {\"title\": \"Interaction\", \"text\": \"5 cards here feed its \\\"cards that put +1/+1 counters\\\" ability: Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt, Rishkar, Peema Renegade and 1 more.\"}, {\"title\": \"Novelty\", \"text\": \"Nothing else here connects Counters and Card Advantage.\"}, {\"title\": \"Role\", \"text\": \"Also adds protection, which this deck is short of (1.4 / 4).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Living Death",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 34; score 25; secondary Synergy rank 38",
+        "{\"roles\": {\"wipes\": 1, \"recursion\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post.\"}, {\"title\": \"Role\", \"text\": \"Also adds recursion, which this deck is short of (2.0 / 5).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Animate Dead",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 24; score 32; secondary Synergy rank 19",
+        "{\"roles\": {\"recursion\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post and 2 more.\"}, {\"title\": \"Role\", \"text\": \"Also adds recursion, which this deck is short of (2.0 / 5).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Tortured Existence",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 29; score 30; secondary Synergy rank 17",
+        "{\"roles\": {\"recursion\": 1, \"controlledDiscard\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post.\"}, {\"title\": \"Role\", \"text\": \"Also adds recursion, which this deck is short of (2.0 / 5).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Ashnod's Altar",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 29; score 20; secondary Synergy rank 43",
+        "{\"roles\": {\"ramp\": 1, \"sacrificeOutlets\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Bastion of Remembrance, Blood Artist, Cruel Celebrant, Midnight Reaper and 3 more.\"}], \"negatives\": [\"This deck already has plenty of ramp (20.2 / 10).\"]}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "blink",
+      "candidate": "Peregrine Drake",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 70; score 19; secondary Synergy rank 116",
+        "{\"roles\": {\"ramp\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Ephemerate, Mask of Memory, Momentary Blink, Rogue's Gloves and 1 more.\"}, {\"title\": \"Repeat support\", \"text\": \"5 blink effects here can reuse its entry ability: Ephemerate, Soulherder, Momentary Blink and 2 more.\"}], \"negatives\": [\"This deck already has plenty of ramp (20.2 / 12).\"]}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "blink",
+      "candidate": "Archaeomancer",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 25; score 39; secondary Synergy rank 36",
+        "{\"roles\": {\"recursion\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Jalum Tome, Mask of Memory, Trading Post, Ephemerate and 3 more.\"}, {\"title\": \"Repeat support\", \"text\": \"5 blink effects here can reuse its entry ability: Ephemerate, Soulherder, Momentary Blink and 2 more.\"}, {\"title\": \"Role\", \"text\": \"Also adds recursion, which this deck is short of (1.0 / 5).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Scrap Trawler",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 42; score 36; secondary Synergy rank 22",
+        "{\"roles\": {\"recursion\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Goblin Engineer, Sai, Master Thopterist, Trading Post, Jalum Tome and 15 more.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Breya, Etherium Shaper: Whenever this creature dies or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser\u2026\"}], \"negatives\": [\"This deck already has plenty of recursion (5.0 / 2).\"]}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "typal",
+      "candidate": "Cursed Mirror",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 25; score 32; secondary Synergy rank 25",
+        "{\"roles\": {\"ramp\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Dragon Tempest, Dragon's Hoard, Duplicant, Filigree Familiar and 12 more.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Lathliss, Dragon Queen: Can enter as a non-token copy of Utvara Hellkite to supply Lathliss, Dragon Queen's actual entry condition; copy is not a cast: Whenever another nontoken Dragon you control\u2026\"}], \"negatives\": [\"This deck already has plenty of ramp (24.6 / 13).\"]}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "lands",
+      "candidate": "Ramunap Excavator",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 25; score 35; secondary Synergy rank 19",
+        "{\"roles\": {\"recursion\": 1}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Evolving Wilds, Harrow, Jalum Tome, Mask of Memory and 4 more.\"}, {\"title\": \"Role\", \"text\": \"Also adds recursion, which this deck is short of (0.0 / 2).\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "lands",
+      "candidate": "Retreat to Coralhelm",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 27; score 35; secondary Synergy rank 38",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"enters:land\", \"adds\": [], \"needs\": \"lands entering\", \"line\": \"Landfall \u2014 Whenever a land you control enters, choose one \u2014\", \"understood\": true, \"supply\": 49, \"suppliers\": [\"Solemn Simulacrum\", \"Exploration\", \"Kodama's Reach\", \"Terramorphic Expanse\", \"Wayfarer's Bauble\", \"Roiling Regrowth\", \"Azusa, Lost but Seeking\", \"Harrow\", \"Rampant Growth\", \"Burnished Hart\", \"Cultivate\", \"Evolving Wilds\", \"Island\", \"Forest\", \"Sakura-Tribe Elder\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 49, \"eligibleMainDeckCopies\": 49, \"mainDeckCopies\": 99, \"commanderFeeders\": [], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"15 cards here feed its \\\"lands entering\\\" ability: Solemn Simulacrum, Exploration, Kodama's Reach, Terramorphic Expanse and 11 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Azusa, Lost but Seeking, Burnished Hart, Cultivate, Evolving Wilds and 11 more.\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": true
+    },
+    {
+      "deck": "copy",
+      "candidate": "Sakashima of a Thousand Faces",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 51; score 38; secondary Synergy rank 106",
+        "{\"roles\": {}, \"conditions\": [], \"why\": [{\"title\": \"Strongest interactions\", \"text\": \"Works directly with Avenger of Zendikar, Coiling Oracle, Duplicant, Eternal Witness and 10 more.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "copy",
+      "candidate": "Mirror March",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 21; score 54; secondary Synergy rank 15",
+        "{\"roles\": {\"tokens\": 1.2}, \"conditions\": [{\"key\": \"enters:nontoken creature\", \"adds\": [\"tokens\"], \"needs\": \"nontoken creatures entering\", \"line\": \"Whenever a nontoken creature you control enters, flip a coin until you lose a flip. For each flip you won, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.\", \"understood\": true, \"supply\": 29, \"suppliers\": [\"Solemn Simulacrum\", \"Reclamation Sage\", \"Junk Diver\", \"Peregrine Drake\", \"Scrap Trawler\", \"Foundry Inspector\", \"Artisan of Kozilek\", \"Acidic Slime\", \"Mulldrifter\", \"Eternal Witness\", \"Workshop Assistant\", \"Clone\", \"Avenger of Zendikar\", \"Ulamog's Crusher\", \"Pilgrim's Eye\", \"Coiling Oracle\", \"Steel Hellkite\", \"Sandstone Oracle\", \"Progenitor Mimic\", \"Burnished Hart\", \"Spark Double\", \"Skyscanner\", \"Filigree Familiar\", \"Myr Retriever\", \"Clever Impersonator\", \"Meteor Golem\", \"Duplicant\", \"Riku of Two Reflections\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 29, \"eligibleMainDeckCopies\": 27, \"mainDeckCopies\": 99, \"commanderFeeders\": [\"Riku of Two Reflections\"], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"28 cards here feed its \\\"nontoken creatures entering\\\" ability: Solemn Simulacrum, Reclamation Sage, Junk Diver, Peregrine Drake and 24 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Acidic Slime, Artisan of Kozilek, Avenger of Zendikar, Burnished Hart and 22 more.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": true
+    },
+    {
+      "deck": "copy",
+      "candidate": "Biovisionary",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 28; score 51; secondary Synergy rank 46",
+        "{\"roles\": {\"finishers\": 1}, \"conditions\": [{\"key\": \"named-copies:e99fde0d-ca28-4a49-abe0-d01cf4e322b6\", \"adds\": [\"finishers\"], \"needs\": \"4 simultaneous creatures with this name\", \"line\": \"At the beginning of the end step, if you control four or more creatures named Biovisionary, you win the game.\", \"understood\": true, \"supply\": 9, \"suppliers\": [\"Clone\", \"Quasiduplicate\", \"Progenitor Mimic\", \"Spark Double\", \"Clever Impersonator\", \"Riku of Two Reflections\", \"Rite of Replication\", \"Biovisionary\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 9, \"eligibleMainDeckCopies\": 6, \"mainDeckCopies\": 99, \"commanderFeeders\": [\"Riku of Two Reflections\"], \"candidateSelfSetup\": [\"Biovisionary\"]}], \"why\": [{\"title\": \"Interaction\", \"text\": \"8 cards here feed its \\\"4 simultaneous creatures with this name\\\" ability: Clone, Quasiduplicate, Progenitor Mimic, Spark Double and 4 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Mask of Memory, Rogue's Gloves.\"}, {\"title\": \"Copy support\", \"text\": \"7 cards here can copy it, and each copy works independently: Clone, Quasiduplicate, Progenitor Mimic and 4 more.\"}, {\"title\": \"Role\", \"text\": \"Also adds finishers, which this deck is short of (0.8 / 4).\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Brass Squire",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 42; score 37; secondary Synergy rank 191",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"attach:equipment-aura\", \"adds\": [], \"needs\": \"Equipment and compatible Auras\", \"line\": \"{T}: Attach target Equipment you control to target creature you control.\", \"understood\": true, \"supply\": 9, \"suppliers\": [\"Rogue's Gloves\", \"Whispersilk Cloak\", \"All That Glitters\", \"Swiftfoot Boots\", \"Lightning Greaves\", \"Mask of Memory\", \"Ethereal Armor\", \"Blackblade Reforged\", \"Basilisk Collar\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 9, \"eligibleMainDeckCopies\": 9, \"mainDeckCopies\": 99, \"commanderFeeders\": [], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"9 cards here feed its \\\"Equipment and compatible Auras\\\" ability: Rogue's Gloves, Whispersilk Cloak, All That Glitters, Swiftfoot Boots and 5 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with All That Glitters, Basilisk Collar, Blackblade Reforged, Ethereal Armor and 5 more.\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Ardenn, Intrepid Archaeologist",
+      "primary": "F",
+      "rationale": "The original missing capability/relationship is now represented with explicit evidence, but the unchanged component model still assigns little value to this direct engine or payoff. No weight adjustment was made.",
+      "evidence": [
+        "Generated; rank 38; score 39; secondary Synergy rank 168",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"attach:equipment-aura\", \"adds\": [], \"needs\": \"Equipment and compatible Auras\", \"line\": \"At the beginning of combat on your turn, you may attach any number of Auras and Equipment you control to target permanent or player.\", \"understood\": true, \"supply\": 9, \"suppliers\": [\"Rogue's Gloves\", \"Whispersilk Cloak\", \"All That Glitters\", \"Swiftfoot Boots\", \"Lightning Greaves\", \"Mask of Memory\", \"Ethereal Armor\", \"Blackblade Reforged\", \"Basilisk Collar\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 9, \"eligibleMainDeckCopies\": 9, \"mainDeckCopies\": 99, \"commanderFeeders\": [], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"9 cards here feed its \\\"Equipment and compatible Auras\\\" ability: Rogue's Gloves, Whispersilk Cloak, All That Glitters, Swiftfoot Boots and 5 more.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with All That Glitters, Basilisk Collar, Blackblade Reforged, Ethereal Armor and 5 more.\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Doubling Season",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 23; score 38; secondary Synergy rank 11",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"token\", \"adds\": [], \"needs\": \"token makers\", \"line\": \"If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\", \"understood\": true, \"supply\": 6, \"suppliers\": [\"Avenger of Zendikar\", \"Ophiomancer\", \"Trading Post\", \"Bastion of Remembrance\", \"Ghave, Guru of Spores\"], \"factor\": 1, \"support\": \"High\", \"engineWeightedSupply\": 6, \"eligibleMainDeckCopies\": 4, \"mainDeckCopies\": 99, \"commanderFeeders\": [\"Ghave, Guru of Spores\"], \"candidateSelfSetup\": []}, {\"key\": \"counters:+1/+1:Permanent:board\", \"adds\": [], \"needs\": \"cards that put +1/+1 counters\", \"line\": \"If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.\", \"understood\": true, \"supply\": 4, \"suppliers\": [\"Good-Fortune Unicorn\", \"Renata, Called to the Hunt\", \"Ghave, Guru of Spores\"], \"factor\": 0.8, \"support\": \"Medium\", \"engineWeightedSupply\": 4, \"eligibleMainDeckCopies\": 2, \"mainDeckCopies\": 99, \"commanderFeeders\": [\"Ghave, Guru of Spores\"], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"5 cards here feed its \\\"token makers\\\" ability: Avenger of Zendikar, Ophiomancer, Trading Post, Bastion of Remembrance and 1 more.\"}, {\"title\": \"Interaction\", \"text\": \"3 cards here feed its \\\"cards that put +1/+1 counters\\\" ability: Good-Fortune Unicorn, Renata, Called to the Hunt, Ghave, Guru of Spores.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Good-Fortune Unicorn, Renata, Called to the Hunt.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Ghave, Guru of Spores: Amplifies the actual counter placements from Ghave, Guru of Spores; replacement effects alone do not originate counters: If an effect would create one or more tokens under your\u2026\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Corpsejack Menace",
+      "primary": "G",
+      "rationale": "Valid roles, conditions or relationships are present, but other candidates precede it at the fixed top-20 boundary. The fixed ordering was retained rather than restoring a golden card by name.",
+      "evidence": [
+        "Generated; rank 22; score 38; secondary Synergy rank 10",
+        "{\"roles\": {}, \"conditions\": [{\"key\": \"counters:+1/+1:Creature:board\", \"adds\": [], \"needs\": \"cards that put +1/+1 counters\", \"line\": \"If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on it instead.\", \"understood\": true, \"supply\": 4, \"suppliers\": [\"Good-Fortune Unicorn\", \"Renata, Called to the Hunt\", \"Ghave, Guru of Spores\"], \"factor\": 0.8, \"support\": \"Medium\", \"engineWeightedSupply\": 4, \"eligibleMainDeckCopies\": 2, \"mainDeckCopies\": 99, \"commanderFeeders\": [\"Ghave, Guru of Spores\"], \"candidateSelfSetup\": []}], \"why\": [{\"title\": \"Interaction\", \"text\": \"3 cards here feed its \\\"cards that put +1/+1 counters\\\" ability: Good-Fortune Unicorn, Renata, Called to the Hunt, Ghave, Guru of Spores.\"}, {\"title\": \"Strongest interactions\", \"text\": \"Works directly with Good-Fortune Unicorn, Mask of Memory, Renata, Called to the Hunt, Rogue's Gloves.\"}, {\"title\": \"Commander\", \"text\": \"Interacts with Ghave, Guru of Spores: Amplifies the actual counter placements from Ghave, Guru of Spores; replacement effects alone do not originate counters: If one or more +1/+1 counters would be put on a creature\u2026\"}], \"negatives\": []}"
+      ],
+      "previouslyTop20": false
+    }
+  ]
+}

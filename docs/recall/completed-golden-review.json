@@ -1,0 +1,157 @@
+{
+  "note": "Derived output snapshot refreshed for intentional semantic changes. Original v0.6.6 snapshot and all frozen human recall expectations retained. No score weights changed.",
+  "changes": [
+    {
+      "case": "Reign of Dragons",
+      "mode": "improve",
+      "before": {
+        "identity": "candidate:Combat Celebrant",
+        "upgradeValue": 0.74,
+        "label": "Moderate Upgrade",
+        "best": "Chandra's Ignition",
+        "alternatives": [
+          "Hit the Mother Lode",
+          "Chain Reaction"
+        ],
+        "confidence": "High"
+      },
+      "after": {
+        "identity": "candidate:Combat Celebrant",
+        "upgradeValue": 0.73,
+        "label": "Moderate Upgrade",
+        "best": "Chandra's Ignition",
+        "alternatives": [
+          "Hit the Mother Lode",
+          "Chain Reaction"
+        ],
+        "confidence": "High"
+      }
+    },
+    {
+      "case": "Reign of Dragons",
+      "mode": "improve",
+      "before": {
+        "identity": "candidate:Hoarding Dragon",
+        "upgradeValue": 0.77,
+        "label": "Moderate Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "Medium"
+      },
+      "after": {
+        "identity": "candidate:Hoarding Dragon",
+        "upgradeValue": 0.76,
+        "label": "Moderate Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "Medium"
+      }
+    },
+    {
+      "case": "Reign of Dragons",
+      "mode": "improve",
+      "before": {
+        "identity": "candidate:Dragon Hatchling",
+        "upgradeValue": 0.23,
+        "label": "Minor Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "High"
+      },
+      "after": {
+        "identity": "candidate:Dragon Hatchling",
+        "upgradeValue": 0.21,
+        "label": "Minor Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "High"
+      }
+    },
+    {
+      "case": "Reign of Dragons",
+      "mode": "improve",
+      "before": {
+        "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+        "upgradeValue": 0.2,
+        "label": "Minor Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "High"
+      },
+      "after": {
+        "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+        "upgradeValue": 0.19,
+        "label": "Minor Upgrade",
+        "best": "Hit the Mother Lode",
+        "alternatives": [
+          "Chain Reaction",
+          "Chandra's Ignition"
+        ],
+        "confidence": "High"
+      }
+    },
+    {
+      "case": "+1/+1 Counters",
+      "mode": "build",
+      "before": {
+        "identity": "scoring:Counter Doubler",
+        "name": "Counter Doubler",
+        "commanderFit": 74,
+        "fitLabel": "Strong",
+        "buildPriority": 28,
+        "priorityLabel": "Low Priority",
+        "confidence": "High"
+      },
+      "after": {
+        "identity": "scoring:Counter Doubler",
+        "name": "Counter Doubler",
+        "commanderFit": 74,
+        "fitLabel": "Strong",
+        "buildPriority": 63,
+        "priorityLabel": "Strong Consideration",
+        "confidence": "High"
+      }
+    },
+    {
+      "case": "+1/+1 Counters",
+      "mode": "improve",
+      "before": {
+        "identity": "scoring:Counter Doubler",
+        "upgradeValue": 0,
+        "label": "Sidegrade",
+        "best": "Counter Creature 0",
+        "alternatives": [
+          "Counter Creature 1",
+          "Counter Creature 2"
+        ],
+        "confidence": "High"
+      },
+      "after": {
+        "identity": "scoring:Counter Doubler",
+        "upgradeValue": 3.41,
+        "label": "Major Upgrade",
+        "best": "Counter Creature 0",
+        "alternatives": [
+          "Counter Creature 1",
+          "Counter Creature 2"
+        ],
+        "confidence": "High"
+      }
+    }
+  ]
+}

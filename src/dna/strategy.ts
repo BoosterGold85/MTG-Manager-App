@@ -1,3 +1,4 @@
+import { capabilities, capabilityRelationship } from "../synergy/capabilities";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import type { RecommendationData } from "../synergy/recommendation";
 import type { CardMetadata } from "../models/collection";
@@ -1072,6 +1073,20 @@ function producesRepeatedly(source: DnaInputCard, receiver: CommanderSynergyTag)
     ),
   );
 }
+const readinessCache = new WeakMap<DeckStrategyProfile, { crewPower: number; castSpellCount: number }>();
+function profileReadiness(profile: DeckStrategyProfile) {
+  let ready = readinessCache.get(profile);
+  if (!ready) {
+    ready = { crewPower: 0, castSpellCount: 0 };
+    for (const c of profile.cards) {
+      const type = c.card.card.typeLine.split("—")[0];
+      if (/\bCreature\b/.test(type)) ready.crewPower += Math.max(0, Number(c.card.card.power) || 0) * c.card.quantity;
+      if (/\b(?:Instant|Sorcery)\b/.test(type)) ready.castSpellCount += c.card.quantity;
+    }
+    readinessCache.set(profile, ready);
+  }
+  return ready;
+}
 export function mechanicalRelationships(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
@@ -1099,6 +1114,7 @@ export function mechanicalRelationships(
     };
   };
   const candidate = canonical(characteristics(input));
+  const { crewPower, castSpellCount } = profileReadiness(profile);
   const relationships: {
     identity: string;
     name: string;
@@ -1127,6 +1143,22 @@ export function mechanicalRelationships(
             `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}`,
           );
         }
+      }
+    }
+    for (const [giver, recipient] of [[candidate, other], [other, candidate]] as const) {
+      const ability = capabilities(giver.card.card);
+      const crew = ability.text.match(/^Crew (\d+)/m);
+      const ready = (!ability.transformCastThreshold || castSpellCount >= ability.transformCastThreshold) && (!crew || !/becomes crewed/i.test(ability.text) || crewPower >= Number(crew[1]));
+      const links = ready ? capabilityRelationship(giver.card.card, recipient.card.card) : [];
+      if (ability.permanentCopy) {
+        for (const receiver of recipient.receivers.filter(r => r.event === "enters" && !r.selfOnly && (!r.nontoken || !ability.copyToken))) {
+          const target = profile.cards.find(c => /\bCreature\b/.test(c.card.card.typeLine.split("—")[0]) && (!/\bLegendary\b/.test(c.card.card.typeLine) || ability.ignoresLegend) && validate(receiver, c.card));
+          if (target) links.push(`Can ${ability.copyToken ? "create a token copy of" : "enter as a non-token copy of"} ${target.card.card.name} to supply ${recipient.card.card.name}'s actual entry condition; copy is not a cast: ${receiver.evidence.snippet}`);
+        }
+      }
+      if (links.length) {
+        strength = Math.max(strength, 0.8);
+        evidence.push(...links);
       }
     }
     if (other.card.commander) {

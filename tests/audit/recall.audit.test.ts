@@ -25,6 +25,13 @@ it("records the fixed recall corpus without treating unavailable canonical text 
   expect(report.evaluated).toBe(12);
   expect(report.metricsValid).toBe(true);
   expect(report.rejectedSnapshots).toEqual([]);
+  const expected = report.results.flatMap(r => r.status === "evaluated" ? r.expected : []);
+  expect(expected.filter(r => r.kind !== "trap").every(r => r.generated)).toBe(true);
+  expect(expected.filter(r => r.kind === "obvious" && r.hit).length).toBeGreaterThanOrEqual(15);
+  expect(expected.filter(r => r.kind === "hidden" && r.hit).length).toBeGreaterThanOrEqual(13);
+  expect(expected).toHaveLength(72);
+  const traps = expected.filter(r => r.kind === "trap");
+  expect(traps.filter(r => !r.hit).length / traps.length).toBeGreaterThanOrEqual(0.9);
   console.log(
     JSON.stringify(
       {

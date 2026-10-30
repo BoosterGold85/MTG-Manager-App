@@ -6,9 +6,10 @@ import type { CardMetadata } from "../models/collection";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import { cardKeywords } from "../utils/cardKeywords";
 import { counterRecipient, placesCountersOn, countersTargetSelf, suppliesCounterEvent } from "./counterSupply";
+import { capabilities } from "../synergy/capabilities";
 import { benefitsYou, extractCardFacts } from "../synergy/facts";
 
-export const CONDITIONS_VERSION = "1.0.1";
+export const CONDITIONS_VERSION = "1.1.0";
 export interface DeckSupplier {
   card: CardMetadata;
   quantity: number;
@@ -30,6 +31,8 @@ export interface EffectCondition {
   selfSupplies: boolean;
   /** Self-only placement is not an external supplier for another permanent. */
   selfProvides?: (card: CardMetadata) => boolean;
+  chooseCreatureType?: boolean;
+  minimumSupply?: number;
 }
 export interface ConditionCredit {
   /** The condition's predicate key ("cast:colorless", "counters:+1/+1"). */
@@ -70,7 +73,7 @@ function qualifier(phrase: string): Qualifier {
   const parts: ((c: CardMetadata) => boolean)[] = [];
   const labels: string[] = [];
   let understood = true;
-  let rest = phrase.trim().replace(/^(?:a|an|another|other|one or more(?: other)?|two or more)(?:\s+|$)/i, "");
+  let rest = phrase.replace(/instant and sorcery/gi, "instant or sorcery").trim().replace(/^(?:a|an|another|other|one or more(?: other)?|two or more)(?:\s+|$)/i, "");
   // "a creature or planeswalker", "an artifact or enchantment spell": either one satisfies it.
   const alternatives = rest.split(/\s+or\s+(?:an?\s+)?(?!sorcery\b|\d)/i);
   if (alternatives.length > 1 && !/\bpower \d+, /i.test(rest)) {
@@ -123,13 +126,13 @@ function qualifier(phrase: string): Qualifier {
 }
 
 /** A token as a card, so the same qualifier can test it ("Dragon", "artifact", "creature"). */
-const tokenCard = (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean }) =>
-  ({ name: "token", typeLine: `Token ${t.tokenTypes.length ? "Artifact " : ""}${t.isCreature ? "Creature " : ""}— ${[...t.creatureTypes, ...t.tokenTypes].join(" ")}`, manaCost: "", manaValue: 0 }) as unknown as CardMetadata;
-const tokenMakes = (c: CardMetadata, q: (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean }) => boolean) => ownTokens(c).some(q);
+const tokenCard = (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean; isArtifact?: boolean }) =>
+  ({ name: "token", typeLine: `Token ${t.isArtifact || t.tokenTypes.length ? "Artifact " : ""}${t.isCreature ? "Creature " : ""}— ${[...t.creatureTypes, ...t.tokenTypes].join(" ")}`, manaCost: "", manaValue: 0 }) as unknown as CardMetadata;
+const tokenMakes = (c: CardMetadata, q: (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean; isArtifact?: boolean }) => boolean) => ownTokens(c).some(q);
 
 /** Conditions gating this card's abilities. Self triggers ("When this creature enters"), phase triggers and triggers
  * every table supplies (opponents' actions, "a creature dies") are not conditions on the deck. */
-export function effectConditions(card: CardMetadata): EffectCondition[] {
+function computeConditions(card: CardMetadata): EffectCondition[] {
   const text = textOf(card);
   const short = /\bLegendary\b/.test(types(card)) ? card.name.split(/[ ,]/)[0] : "";
   const names = [card.name, ...card.name.split(" // "), card.name.split(",")[0], short].filter((n) => n.length > 3).sort((a, b) => b.length - a.length);
@@ -139,6 +142,46 @@ export function effectConditions(card: CardMetadata): EffectCondition[] {
     for (const n of names) line = line.split(n).join("~");
     const cond = (key: string, needs: string, reliableAt: number, supplies: (c: CardMetadata) => boolean, selfSupplies = false, understood = true) =>
       out.push({ key, line: raw.trim(), needs, reliableAt, supplies, selfSupplies, understood });
+    if (/of the chosen type/i.test(line) && /choose a creature type/i.test(text)) {
+      cond("chosen:creature-type", "one chosen creature type", 8, c => isCreature(c));
+      out[out.length - 1].chooseCreatureType = true;
+      continue;
+    }
+    const named = line.match(/if you control (\w+) or more creatures named ~,/i);
+    if (named) {
+      const n = ({ two: 2, three: 3, four: 4, five: 5 } as Record<string, number>)[named[1]] || Number(named[1]);
+      if (Number.isFinite(n)) {
+        cond(`named-copies:${card.oracleId || card.name}`, `${n} simultaneous creatures with this name`, n, c => capabilities(c).permanentCopy && (!/Legendary/.test(types(card)) || capabilities(c).ignoresLegend), true);
+        out[out.length - 1].selfProvides = c => c.oracleId === card.oracleId || c.name === card.name;
+        out[out.length - 1].minimumSupply = n;
+        continue;
+      }
+    }
+    const costs = line.match(/^(.+?) spells you cast cost /i);
+    if (costs) {
+      const q = qualifier(costs[1]);
+      if (q.key !== "any") {
+        cond(`cast:${q.key}`, `${q.needs} spells`, 8, (c) => !isLand(c) && q.test(c), false, q.understood);
+        continue;
+      }
+    }
+    const transformation = capabilities(card).transformCastThreshold;
+    if (transformation && /When that mana is spent to cast an instant or sorcery spell, copy that spell/i.test(line)) {
+      cond("transform-cast:instant-or-sorcery", "instant or sorcery casts to transform before copying", 8, c => /\b(?:Instant|Sorcery)\b/.test(types(c)));
+      out[out.length - 1].minimumSupply = transformation;
+      continue;
+    }
+    if (/draw[^\n]*for each creature you control with a \+1\/\+1 counter/i.test(line)) {
+      const recipient = { ...card, typeLine: "Creature", cardFaces: undefined };
+      cond("counters:+1/+1:Creature:board", "cards that put +1/+1 counters", 5, c => suppliesCounterEvent(c, recipient, false));
+      continue;
+    }
+    // General counter replacement wording includes “put counters” and “counters would be put”.
+    if (/^If[^\n]*counters?[^\n]*on (?:an? |one or more )?(?:artifact or creature|creature|permanent)[^\n]*you control/i.test(line) && /instead/.test(line)) {
+      const recipient = counterRecipient(card, line);
+      cond(`counters:+1/+1:${types(recipient).trim()}:board`, "cards that put +1/+1 counters", 5, (source) => suppliesCounterEvent(source, recipient, false));
+      continue;
+    }
     // Replacement effects that only do something when the deck produces the event (Hardened Scales, Doubling Season).
     if (/^If (?:one or more )?\+1\/\+1 counters? would be put on/i.test(line)) {
       const recipient=counterRecipient(card,line), selfTarget=countersTargetSelf(card,line);
@@ -147,6 +190,19 @@ export function effectConditions(card: CardMetadata): EffectCondition[] {
     }
     if (/^If (?:you|an effect) would create (?:one or more |a )?tokens?/i.test(line)) {
       cond("token", "token makers", 5, (c) => ownTokens(c).length > 0);
+      continue;
+    }
+    const ability = /attach|Vehicle|Tap[^\n]*artifacts[^\n]*Draw/i.test(raw) ? capabilities({ ...card, oracleText: raw, cardFaces: undefined }) : undefined;
+    if (ability?.attach) {
+      cond("attach:equipment-aura", "Equipment and compatible Auras", 8, c => /Equipment/.test(c.typeLine) || /Aura/.test(c.typeLine) && /Enchant (?:creature|permanent)\b/i.test(textOf(c)));
+      continue;
+    }
+    if (ability?.animateVehicle || ability?.crewReduction) {
+      cond("animate:vehicle", "Vehicles to animate or crew", 8, c => /Vehicle/.test(c.typeLine));
+      continue;
+    }
+    if (ability?.artifactTapDraw) {
+      cond("tap:artifact", "artifacts to pay the draw activation cost", 8, c => /Artifact/.test(types(c)) || ownTokens(c).some(t => t.isArtifact || t.tokenTypes.length > 0));
       continue;
     }
     // Static effects scoped to a creature type: "Dragon creatures you control get +3/+3", "Elf spells you cast cost {1} less".
@@ -243,8 +299,16 @@ export class SupplyIndex {
     if (!known) {
       let supply = 0;
       const suppliers: string[] = [];
+      let chosenType: string | undefined;
+      if (condition.chooseCreatureType) {
+        const candidates = [...new Set(this.cards.filter(c => isCreature(c.card)).flatMap(c => subtypes(c.card)))];
+        chosenType = candidates.sort((a, b) => {
+          const count = (type: string) => this.cards.reduce((n, c) => n + (isCreature(c.card) && hasType(c.card, type) ? c.commander ? 2 : c.quantity : 0), 0);
+          return count(b) - count(a) || a.localeCompare(b);
+        })[0];
+      }
       for (const c of this.cards) {
-        if (!condition.understood || !condition.supplies(c.card)) continue;
+        if (!condition.understood || !condition.supplies(c.card) || condition.chooseCreatureType && (!chosenType || !hasType(c.card, chosenType))) continue;
         supply += c.commander ? 2 : c.quantity;
         if (!suppliers.includes(c.card.name)) suppliers.push(c.card.name);
       }
@@ -257,7 +321,7 @@ export class SupplyIndex {
 /** Credit share for one condition: nothing below two suppliers, full credit once the deck supplies it reliably. */
 export function conditionFactor(condition: EffectCondition, supply: number) {
   if (!condition.understood) return 0.5;
-  if (supply < 2) return 0;
+  if (supply < (condition.minimumSupply || 2)) return 0;
   return Math.min(1, supply / condition.reliableAt);
 }
 /** Vehicles attack only when crewed: their body and attack abilities need creatures in the deck. */
@@ -268,6 +332,13 @@ export function crewCondition(card: CardMetadata): EffectCondition | null {
 }
 export function withoutLines(card: CardMetadata, lines: string[]): CardMetadata {
   if (!lines.length) return card;
-  const drop = (text?: string) => (text === undefined ? text : text.split("\n").filter((l) => !lines.includes(l.trim())).join("\n"));
+  const drop = (text?: string) => (text === undefined ? text : text.split("\n").filter((l) => !lines.includes(stripReminderText(l).replace(/[’‘]/g, "'").trim())).join("\n"));
   return { ...card, oracleText: drop(card.oracleText), cardFaces: card.cardFaces?.map((f) => ({ ...f, oracleText: drop(f.oracleText) })) };
+}
+
+const conditionCache = new WeakMap<CardMetadata, EffectCondition[]>();
+export function effectConditions(card: CardMetadata): EffectCondition[] {
+  let known = conditionCache.get(card);
+  if (!known) conditionCache.set(card, known = computeConditions(card));
+  return known;
 }

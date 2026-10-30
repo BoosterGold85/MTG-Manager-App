@@ -20,7 +20,7 @@ import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
 
-export const UPGRADES_VERSION = "0.6.6";
+export const UPGRADES_VERSION = "0.6.15";
 /** A deck needs most of its 99 before "Improve My Current Deck" can simulate meaningful swaps. */
 export const MIN_CURRENT_DECK_CARDS = 60;
 export interface BuildCandidate extends OwnedCandidateGroup {

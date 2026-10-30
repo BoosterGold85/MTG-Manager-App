@@ -5,11 +5,13 @@ import { stripReminderText } from "../utils/rulesText";
 import { cardKeywords } from "../utils/cardKeywords";
 import { extractCardFacts, benefitsYou } from "../synergy/facts";
 import type { AnswerFact, AnswerTarget, CardFacts } from "../synergy/facts";
+import { selfEntryEffect } from "./abilityScope";
+import { capabilities, capabilityRelationship, netCardDraw } from "../synergy/capabilities";
 import { isBasicLand } from "../decks/decks";
 import { conditionFactor, crewCondition, effectConditions, withoutLines } from "./conditions";
 import type { ConditionCredit, SupplyIndex } from "./conditions";
 
-export const CARD_FUNCTION_VERSION = "1.0.0";
+export const CARD_FUNCTION_VERSION = "1.1.0";
 export type Need =
   | "lands"
   | "ramp"
@@ -65,6 +67,9 @@ export interface CardFunction {
   changeling: boolean;
   facts: CardFacts;
   roles: Partial<Record<Need, number>>;
+  /** Dependent reuse outputs must not be counted again as independent deck inventory. */
+  recursionTargets: string[];
+  intrinsicRoles?: Partial<Record<Need, number>>;
   answers: AnswerFact[];
   coverage: AnswerTarget[];
   instantInteraction: boolean;
@@ -119,6 +124,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
   const cached = cache.get(key);
   if (cached) return cached;
   const { card, dropped: ultimateIgnored } = withoutUltimates(original);
+  const semantic = capabilities(card);
   const facts = extractCardFacts(card),
     text = textOf(card),
     keywords = cardKeywords(card).map((k) => k.toLowerCase()),
@@ -147,6 +153,17 @@ export function cardFunction(original: CardMetadata): CardFunction {
     add("ramp", mv <= 4 ? 1 : mv === 5 ? 0.7 : 0.4);
     reasons.push({ value: mv >= 6 ? 0.3 : fast, reason: mv >= 6 ? "Makes mana, but costs too much to count as ramp." : isCreature ? "Repeatable mana from a creature." : "Repeatable mana source." });
   }
+  if (semantic.landUntap) {
+    add("ramp", 1);
+    reasons.push({ value: repeatable ? 0.55 : 0.35, reason: "Untaps lands to reuse their mana abilities." });
+  }
+  if (semantic.graveyardLandPlay) {
+    add("recursion", 1);
+    reasons.push({ value: 0.55, reason: "Lets you play lands from your graveyard; it does not grant extra land drops." });
+  }
+  if (semantic.counterReplacement) reasons.push({ value: 0.45, reason: "Amplifies counters actually placed on compatible permanents." });
+  if (semantic.attach || semantic.animateVehicle || semantic.crewReduction) reasons.push({ value: 0.35, reason: semantic.attach ? "Attaches owned Equipment or Auras to a legal recipient." : "Enables Vehicles to become creatures or reduces their crew requirement." });
+  if (semantic.friendlyBounce) reasons.push({ value: 0.35, reason: "Returns your creature to hand to reuse it; recasting still costs mana." });
   if (landRamp) {
     add("ramp", 1);
     reasons.push({ value: mv <= 3 ? 0.65 : 0.5, reason: "Puts extra lands onto the battlefield." });
@@ -172,7 +189,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
   const draw = drawAmount(text);
   // Impulse draw, and card selection that puts cards from the top of your library into your hand (Fact or Fiction).
   const impulse =
-    /exile the top[^\n]*?\b(?:you may )?(?:play|cast)\b|(?:play|cast)[^.\n]*exiled card/i.test(text) ||
+    /look at the top card of your library\.[^\n]*of the chosen type[^\n]*put it into your hand|exile the top[^\n]*?\b(?:you may )?(?:play|cast)\b|(?:play|cast)[^.\n]*exiled card/i.test(text) ||
     /\b(?:reveal|look at) the top (?:two|three|four|five|six|seven|x|\d+) cards of your library\b[^\n]*\b(?:put|puts) (?:one pile|those cards|that pile|them|\w+ of (?:them|those cards)|any number of [^.]{0,40}|up to \w+ of them|all [^.]{0,30}) into your hand/i.test(text);
   // Free spells (discover, cascade, "cast it without paying its mana cost") are card and tempo advantage.
   const freeSpell = /\b(?:discover|cascade)\b|cast (?:it|that card|that spell|the exiled card)[^.\n]*without paying/i.test(text);
@@ -181,7 +198,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
     reasons.push({ value: 0.55, reason: "Casts a spell for free from the library." });
   }
   // "Target player draws" is your choice of player, so it is card advantage you control.
-  if (faces.some((f) => f.cardDrawEffects.some((d) => benefitsYou(d.controller) || d.controller === "target_player")) || impulse) {
+  if (faces.some((f) => f.cardDrawEffects.some((d) => (benefitsYou(d.controller) || d.controller === "target_player") && netCardDraw(d.text))) || impulse) {
     const value = repeatable ? 0.8 : draw >= 3 ? 0.7 : draw === 2 ? 0.55 : 0.35;
     add("cardAdvantage", repeatable ? 1.2 : draw >= 2 ? 1 : 0.6);
     reasons.push({ value, reason: repeatable ? "Repeatable card advantage." : `Draws ${draw || "extra"} card${draw === 1 ? "" : "s"}.` });
@@ -199,7 +216,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
   }
   const instantInteraction = answers.some((a) => a.instantSpeed);
   // Protection & resilience
-  if (/\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|shroud|protection from|phase out)|(?:equipped|enchanted) (?:creature|permanent) (?:has|have|gains?)[^.]*(?:hexproof|indestructible|shroud|protection from)|counter target spell that targets/i.test(text)) {
+  if (semantic.ownAnaphoricProtection || /\b(?:target|you control|creatures you control|each creature you control)[^.\n]*\b(?:hexproof|indestructible|shroud|protection from|phase out)|(?:equipped|enchanted) (?:creature|permanent) (?:has|have|gains?)[^.]*(?:hexproof|indestructible|shroud|protection from)|counter target spell that targets/i.test(text)) {
     // One protection mode (only hexproof, only indestructible…) is partial; several modes, protection from,
     // phasing or countering the removal spell are full protection.
     const modes = ["hexproof", "indestructible", "shroud", "protection from", "phase out", "counter target spell that targets"].filter((m) => text.toLowerCase().includes(m));
@@ -208,7 +225,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
     reasons.push({ value: (full ? 0.45 : 0.35) + (front.includes("Instant") ? 0.1 : 0) + (mv <= 2 ? 0.1 : 0), reason: full ? "Protects your permanents." : `Partial protection (${modes[0] || "one mode"} only).` });
   }
   // Recursion: "return … from your graveyard" and reanimation worded "put(s) … from a graveyard onto the battlefield".
-  if (/return[^.\n]*from (?:your|a) graveyard[^.\n]*(?:hand|battlefield)|\bputs? [^.\n]{0,60}\bcards? from (?:your|their|a|an opponent's|each player's|any) graveyards? onto the battlefield/i.test(text)) {
+  if (semantic.recursion || /\bputs? [^.\n]{0,60}\bcards? from (?:your|their|a|an opponent's|each player's|any) graveyards? onto the battlefield/i.test(text)) {
     add("recursion", 1);
     reasons.push({ value: repeatable ? 0.55 : 0.35, reason: "Returns cards from your graveyard." });
   }
@@ -293,7 +310,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
     add("finishers", 0.7);
     reasons.push({ value: 0.5, reason: "Scales with the mana spent (X)." });
   }
-  if (/\b(?:each opponent loses|deals? \d+ damage to each opponent)/i.test(text) && repeatable) {
+  if (/\b(?:(?:each|target|that) opponent loses|deals? \d+ damage to each opponent)/i.test(text) && repeatable) {
     add("finishers", 0.8);
     reasons.push({ value: 0.5, reason: "Repeatedly damages or drains each opponent." });
   }
@@ -312,7 +329,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
   if (bodyScore) reasons.push({ value: bodyScore, reason: `Body ${card.power}/${card.toughness}${evasive ? " with evasion" : ""}.` });
   // Repeatable engine value from triggered/static abilities not already explained above.
   const engineTriggers = faces.flatMap((f) => f.triggers).filter((t) => !/^When (?:this|~)\b/i.test(t) && /whenever|at the beginning/i.test(t));
-  if (engineTriggers.length && reasons.every((r) => r.value < 0.4))
+  if (engineTriggers.length && !semantic.attach && !semantic.animateVehicle && !semantic.crewReduction && !semantic.friendlyBounce && reasons.every((r) => r.value < 0.4))
     reasons.push({ value: 0.35, reason: "Repeatable triggered ability." });
   // Standalone impact: probabilistic union of distinct functions, then a mana-cost efficiency curve.
   const functional = reasons.filter((r) => !r.reason.startsWith("Body "));
@@ -352,6 +369,7 @@ export function cardFunction(original: CardMetadata): CardFunction {
     changeling: faces.some((f) => f.hasChangeling),
     facts,
     roles,
+    recursionTargets: semantic.recursionTargets,
     answers,
     coverage,
     instantInteraction,
@@ -379,7 +397,29 @@ const listNames = (names: string[]) => (names.length > 3 ? `${names.slice(0, 3).
  */
 export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): CardFunction {
   if (!supply) return cardFunction(card);
-  const fn = conditionedFunction(card, supply);
+  const base = conditionedFunction(card, supply);
+  const semantic = capabilities(card);
+  let fn = base;
+  // A reuse engine produces only the actual reusable ETB outputs present here.
+  // Do not inherit a creature's death/cast/activated abilities or its body.
+  if (base.repeatable && !/\b(?:Instant|Sorcery)\b/.test(card.typeLine.split("—")[0]) && (semantic.blink || semantic.friendlyBounce)) {
+    const targets = supply.cards.flatMap(source => {
+      if (!capabilityRelationship(card, source.card).some(e => /entry effect|independent ability/.test(e))) return [];
+      const entry = selfEntryEffect(source.card);
+      return entry ? [{ source, effects: cardFunction(entry) }] : [];
+    });
+    const count = targets.reduce((n, t) => n + (t.source.commander ? 2 : t.source.quantity), 0);
+    if (count >= 2) {
+      const factor = Math.min(1, count / 5), roles = { ...base.roles };
+      for (const { effects } of targets)
+        for (const need of ["ramp", "cardAdvantage", "interaction", "recursion", "tokens"] as Need[])
+          if (effects.roles[need]) roles[need] = Math.max(roles[need] || 0, effects.roles[need]! * factor);
+      const adds = (Object.keys(roles) as Need[]).filter(n => (roles[n] || 0) > (base.roles[n] || 0));
+      const names = targets.map(t => t.source.card.name);
+      const credit: ConditionCredit = { key: "reuse:entry", adds, needs: "compatible own entry abilities", line: semantic.text, understood: true, supply: count, suppliers: names, factor };
+      fn = { ...base, intrinsicRoles: base.roles, roles, conditions: [...(base.conditions || []), credit], conditionNotes: [...(base.conditionNotes || []), `Entry outputs are supplied by ${listNames(names)}; recasting and activation costs still apply.`], impactReasons: [...base.impactReasons, `Reuses only own-entry outputs of ${names.join(", ")}; recasting and activation costs still apply.`] };
+    }
+  }
   const crew = crewCondition(card);
   if (!crew) return fn;
   // A Vehicle's attacks and body need creatures to crew it; its other abilities don't.

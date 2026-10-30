@@ -1,5 +1,7 @@
 # Recommendation Recall & Interaction Coverage — frozen baseline
 
+> Historical before-state at 00c6be9. See [the completed same pass](RECOMMENDATION-RECALL-COMPLETE.md) for measured corrections, remaining losses and the final recommendation.
+
 Resumed from **b4a17ab**, on `research-recall-0.6.15`. Production baseline remains **0f90fff / v0.6.14**. This is the baseline evidence stage of the same pass, not a release or a new intelligence pass. No production engine, score, weight, threshold, UI or Brew feature changed. Main has not been updated. The previous checkpoint's provisional B recommendation is superseded by measured evidence below; a final A/B/C decision remains pending targeted corrections and review within this pass.
 
 ## Data blocker resolved

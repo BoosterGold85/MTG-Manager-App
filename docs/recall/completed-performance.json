@@ -1,0 +1,94 @@
+{
+  "beforeRevision": "00c6be9",
+  "afterVersion": "0.6.15",
+  "sameTemplates": true,
+  "before": {
+    "baseline": "0f90fff",
+    "method": "Sequential isolated Node test; synthetic 100-card Kenrith benchmark deck, filled with basics. Each size uses fresh candidate identities and names; the deck profile may reuse global fact caches. Distinct candidate identities cycle stored real Oracle templates; names/IDs changed only to exercise unique cache entries. No claim of 6,000 different real Oracle cards or phone performance.",
+    "oracleTemplates": 1401,
+    "node": "v24.19.0",
+    "results": [
+      {
+        "candidates": 1000,
+        "deckCards": 100,
+        "profileBuildMs": 306.13876500000003,
+        "coldAnalysisMs": 2386.725116,
+        "warmAnalysisMs": 0.015746999999919353,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 41699968,
+        "heapAfter": 95479344,
+        "rssBefore": 86757376,
+        "rssAfter": 201150464
+      },
+      {
+        "candidates": 4000,
+        "deckCards": 100,
+        "profileBuildMs": 14.226227000000108,
+        "coldAnalysisMs": 7408.358738999999,
+        "warmAnalysisMs": 0.011693000000377651,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 99645032,
+        "heapAfter": 147687064,
+        "rssBefore": 201543680,
+        "rssAfter": 378753024
+      },
+      {
+        "candidates": 6000,
+        "deckCards": 100,
+        "profileBuildMs": 14.166735999999219,
+        "coldAnalysisMs": 10618.71334,
+        "warmAnalysisMs": 0.012595000000146683,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 153846224,
+        "heapAfter": 318962696,
+        "rssBefore": 379670528,
+        "rssAfter": 522412032
+      }
+    ]
+  },
+  "after": {
+    "baseline": "0f90fff",
+    "method": "Sequential isolated Node test; synthetic 100-card Kenrith benchmark deck, filled with basics. Each size uses fresh candidate identities and names; the deck profile may reuse global fact caches. Distinct candidate identities cycle stored real Oracle templates; names/IDs changed only to exercise unique cache entries. No claim of 6,000 different real Oracle cards or phone performance.",
+    "oracleTemplates": 1401,
+    "node": "v24.19.0",
+    "results": [
+      {
+        "candidates": 1000,
+        "deckCards": 100,
+        "profileBuildMs": 305.68022500000006,
+        "coldAnalysisMs": 2908.2939990000004,
+        "warmAnalysisMs": 0.017202999999881285,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 41915760,
+        "heapAfter": 77559096,
+        "rssBefore": 86880256,
+        "rssAfter": 209248256
+      },
+      {
+        "candidates": 4000,
+        "deckCards": 100,
+        "profileBuildMs": 13.99922800000013,
+        "coldAnalysisMs": 9109.349022,
+        "warmAnalysisMs": 0.04276899999968009,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 81742168,
+        "heapAfter": 165390264,
+        "rssBefore": 209772544,
+        "rssAfter": 392224768
+      },
+      {
+        "candidates": 6000,
+        "deckCards": 100,
+        "profileBuildMs": 15.773032999999486,
+        "coldAnalysisMs": 13190.67614,
+        "warmAnalysisMs": 0.026648999999451917,
+        "cacheHit": "same result map instance; no reanalysis",
+        "heapBefore": 171555232,
+        "heapAfter": 351401312,
+        "rssBefore": 393142272,
+        "rssAfter": 547934208
+      }
+    ]
+  },
+  "limitation": "Synthetic identities cycling the same frozen canonical templates, not 6000 distinct real cards or a physical phone. Sequential sizes reuse deck/JIT caches; heap/RSS snapshots are not isolated retained size."
+}

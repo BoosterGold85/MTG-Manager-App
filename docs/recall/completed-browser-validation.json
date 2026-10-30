@@ -1,0 +1,36 @@
+{
+  "uniqueCasesValidated": 390,
+  "viewports": [
+    "360x800",
+    "390x844",
+    "430x932",
+    "768x1024",
+    "1440x1000"
+  ],
+  "finalGuardFullRun": {
+    "workers": 4,
+    "passed": 387,
+    "timeouts": 3,
+    "durationMinutes": 14.8,
+    "failedCheck": "workspace.spec.ts:55 \u2014 accessibility and horizontal overflow",
+    "failedProjects": [
+      "mobile-390",
+      "mobile-430",
+      "tablet"
+    ],
+    "error": "Test timeout of 30000ms exceeded"
+  },
+  "normalWorkerRecheck": {
+    "workers": 2,
+    "passed": 3,
+    "failed": 0,
+    "durationSeconds": 26.4
+  },
+  "earlierFullNormalWorkerRun": {
+    "workers": 2,
+    "passed": 390,
+    "beforeFinalAnaphoricScopeGuard": true
+  },
+  "testTimeoutsOrAssertionsChanged": false,
+  "interpretation": "All 390 unique cases passed on the final code across full run and rechecks. Four-worker resource contention caused three timeouts; the same checks passed at configured parallelism without source/assertion/timeout changes. Chromium viewport emulation, not hardware Safari/Android testing."
+}

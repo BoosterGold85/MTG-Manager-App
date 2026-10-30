@@ -1,6 +1,12 @@
-# MTG Manager · v0.6.14
+# MTG Manager · v0.6.15
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Recommendation recall & interaction coverage (v0.6.15)
+
+Scoped Oracle extraction and verified relationships now cover counter replacements, linked reanimation, ETB reuse, artifact-tap costs, chosen creature types, attachment, Vehicle animation and transform-to-copy setup. Looting remains a draw event but does not count as net card advantage. Recursion needs distinguish target domains. Score weights and global thresholds are unchanged.
+
+The frozen offline corpus improved from **29.2% → 62.5% obvious recall**, **50.0% → 58.3% hidden-gem recall**, and **95.8% → 100% trap rejection**. Assistant desk-review precision is **68.3% at 10 / 65.0% at 20**, not independent human validation. Nineteen expected candidates remain below the top 20. The completed pass recommends **B: further intelligence work is required** before new Brew Score work. Existing UI and the inherited lens remain intact; this release adds no Brew feature. See [the complete evidence and limitations](docs/RECOMMENDATION-RECALL-COMPLETE.md).
 
 ## Deck workspace (v0.6.7)
 

@@ -10,10 +10,11 @@ import type {
 import { mechanicalRelationships } from "../dna/strategy";
 import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
 import { conditionFactor, effectConditions, SupplyIndex, withoutLines } from "../upgrades/conditions";
+import { capabilities, netCardDraw, linkedGraveyardReturn, recursionOverlaps } from "./capabilities";
 import { withoutUltimates } from "../upgrades/cardFunction";
 import type { CardFacts, Scope, TypedRole } from "./facts";
 
-export const RECOMMENDATION_VERSION = "0.6.3";
+export const RECOMMENDATION_VERSION = "0.6.15";
 // Calibrated from the proposed starting weights: needed, efficient interaction
 // must be able to reach Worth Considering without invented tribal synergy.
 export const SCORE_WEIGHTS = Object.freeze({
@@ -61,6 +62,7 @@ interface TypedDeckProfile {
   supportedTypes: string[];
   tokenTypePriorities: Record<string, number>;
   meaningfulTokenSources: number;
+  allTokenSources: number;
   genericTokenEngine: boolean;
   effects: Map<string, number>;
   weakAreas: string[];
@@ -150,6 +152,7 @@ function computeRoles(
   input: DnaInputCard,
   facts: CardFacts,
 ): Partial<Record<Role, number>> {
+  const semantic = capabilities(input.card);
   const roles: Partial<Record<Role, number>> = {},
     text = textOf(input);
   if (ownFace(facts, "Land")) roles.lands = 1;
@@ -171,6 +174,7 @@ function computeRoles(
     ),
   );
   if (
+    semantic.landUntap ||
     landRamp ||
     activatedMana ||
     facts.faces.some((face) => face.costReductions.some(own))
@@ -199,7 +203,7 @@ function computeRoles(
   )
     roles.ramp = 0.15;
   if (
-    facts.faces.some((face) => face.cardDrawEffects.some(own)) ||
+    facts.faces.some((face) => face.cardDrawEffects.some(d => own(d) && netCardDraw(d.text))) ||
     /exile the top[^.\n]*\b(?:play|cast)|(?:play|cast)[^.\n]*exiled card/i.test(
       text,
     )
@@ -223,15 +227,13 @@ function computeRoles(
     delete roles.removal;
   }
   if (
-    /\b(?:target|you control)[^.\n]*\b(?:hexproof|indestructible|protection from)|equipped creature has[^.]*hexproof|counter target spell that targets/i.test(
+    semantic.ownAnaphoricProtection || /\b(?:target|you control)[^.\n]*\b(?:hexproof|indestructible|protection from)|equipped creature has[^.]*hexproof|counter target spell that targets/i.test(
       text,
     )
   )
     roles.protection = 1;
   if (
-    /exile[^.\n]*\b(?:cards? from|target player's) (?:a |an opponent's |your |)graveyard/i.test(
-      text,
-    )
+    text.split("\n").some(line => !linkedGraveyardReturn(line) && /exile[^.\n]*\b(?:cards? from|target player's) (?:a |an opponent's |your |)graveyard/i.test(line))
   )
     roles.graveyardHate = 1;
   if (
@@ -245,9 +247,7 @@ function computeRoles(
   )
     roles.tutors = 1;
   if (
-    /return[^.\n]*from (?:your|a) graveyard[^.\n]*(?:hand|battlefield)/i.test(
-      text,
-    )
+    semantic.recursion || semantic.graveyardLandPlay
   )
     roles.recursion = 1;
   if (
@@ -352,6 +352,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
       ? 0.1
       : 0.4;
   let meaningfulTokenSources = 0;
+  let allTokenSources = 0;
   const effects = new Map<string, number>();
   const roleNeeds = Object.fromEntries(
     Object.entries(profile.roleNeeds).map(([role, need]) => [
@@ -376,6 +377,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
     if (!c.card.commander)
       for (const [role, amount] of Object.entries(rs))
         roleNeeds[role as Role].count += amount * c.card.quantity;
+    if (f.faces.some(face => face.createsTokens.some(token => benefitsYou(token.controller)))) allTokenSources += c.card.quantity;
     const tokenMatch = f.faces.some((face) =>
       face.createsTokens.some(
         (token) =>
@@ -419,6 +421,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
     supportedTypes,
     tokenTypePriorities,
     meaningfulTokenSources,
+    allTokenSources,
     genericTokenEngine,
     effects,
     weakAreas: Object.entries(roleNeeds)
@@ -462,7 +465,7 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
         for (const token of face.createsTokens.filter((t) => benefitsYou(t.controller))) {
           events.add("token");
           if (token.isCreature) events.add("creature");
-          if (token.tokenTypes.length) events.add("artifact");
+          if (token.isArtifact || token.tokenTypes.length) events.add("artifact");
           for (const type of token.creatureTypes) events.add(`typal:${type}`);
         }
         if (
@@ -764,14 +767,12 @@ export function scoreRecommendation(
         other.card.commander ? 1 : 0.8,
         `Discard enabler: ${input.card.name} lets you discard ${other.card.card.name} on purpose (${discardLabel(otherFacts)}): ${f.faces.flatMap((face) => face.discards).find((d) => d.who === "you" || d.who === "each_player")?.text || text}`,
       );
-    const returnsCreature =
-      /return[^.\n]*(?:creature|permanent) card[^.\n]*from (?:your|a) graveyard[^.\n]*(?:battlefield|hand)/i;
     if (
-      (returnsCreature.test(text) &&
+      (capabilities(input.card).recursion &&
         /\bmill (?:\w+|\d+) cards|discard (?:a|one|two) cards?/i.test(
           otherText,
         )) ||
-      (returnsCreature.test(otherText) &&
+      (capabilities(other.card.card).recursion &&
         /\bmill (?:\w+|\d+) cards|discard (?:a|one|two) cards?/i.test(text))
     )
       addRelationship(
@@ -916,10 +917,10 @@ export function scoreRecommendation(
       matchedThemes.push(tag.tag);
   }
   if (has(f, "token_doubler")) {
-    if (typed.meaningfulTokenSources >= 2) {
+    if (typed.allTokenSources >= 2) {
       themeStrength = Math.max(themeStrength, 0.9);
       positives.push(
-        `Token replacement effect supports ${typed.meaningfulTokenSources} meaningful token sources in the saved deck.`,
+        `Token replacement effect supports ${typed.allTokenSources} actual token sources in the saved deck.`,
       );
       matchedThemes.push("tokens");
     }
@@ -930,6 +931,13 @@ export function scoreRecommendation(
   if (typed.genericTokenEngine && ownTokens.length) {
     themeStrength = Math.max(themeStrength, 0.8);
     matchedThemes.push("tokens");
+  }
+  const candidateNeeds = { ...typed.roleNeeds };
+  const wantedRecursion = capabilities(input.card).recursionTargets;
+  if (rs.recursion && wantedRecursion.length) {
+    const target = typed.roleNeeds.recursion.target;
+    const count = profile.cards.reduce((n, c) => n + (recursionOverlaps(wantedRecursion, capabilities(c.card.card).recursionTargets) ? (typed.roles.get(c.card.identity)?.recursion || 0) * c.card.quantity : 0), 0);
+    candidateNeeds.recursion = { ...typed.roleNeeds.recursion, count, deficit: target > 0 ? Math.max(0, 1-count/target) : 0 };
   }
   const needed = Object.entries(rs)
     .map(([role, contribution]) => {
@@ -946,7 +954,7 @@ export function scoreRecommendation(
       if (role === "payoff" && themeStrength === 0) strength *= 0.2;
       return {
         role: role as Role,
-        severity: typed.roleNeeds[role as Role].deficit * strength,
+        severity: candidateNeeds[role as Role].deficit * strength,
       };
     })
     .sort((a, b) => b.severity - a.severity);
@@ -955,7 +963,7 @@ export function scoreRecommendation(
     .filter((n) => n.severity > 0)
     .map(
       (n) =>
-        `${roleLabels[n.role]} ${typed.roleNeeds[n.role].count.toFixed(1)} / target ${typed.roleNeeds[n.role].target}; ${Math.round(n.severity * 100)}% unmet effective need.`,
+        `${roleLabels[n.role]} ${candidateNeeds[n.role].count.toFixed(1)} / target ${typed.roleNeeds[n.role].target}; ${Math.round(n.severity * 100)}% unmet effective need.`,
     );
   const ownSmoothing =
     has(f, "land_smoothing") &&
@@ -1075,13 +1083,13 @@ export function scoreRecommendation(
     );
   const redundant = Object.keys(rs).filter(
     (r) =>
-      typed.saturatedAreas.includes(r) && !["lands", "enabler"].includes(r),
+      (r === "recursion" ? candidateNeeds.recursion.count > candidateNeeds.recursion.target * 1.25 : typed.saturatedAreas.includes(r)) && !["lands", "enabler"].includes(r),
   );
   if (redundant.length)
     penalize(
       "role_redundancy",
       Math.min(8, (commanderScore >= 20 ? 1 : 3) + redundant.length * 2),
-      `${redundant.map((r) => `${roleLabels[r as Role]} ${typed.roleNeeds[r as Role].count}/${typed.roleNeeds[r as Role].target}`).join(", ")} already exceeds the role target.`,
+      `${redundant.map((r) => `${roleLabels[r as Role]} ${candidateNeeds[r as Role].count}/${candidateNeeds[r as Role].target}`).join(", ")} already exceeds the role target.`,
     );
   if (density > 0.25 && !rs.lands)
     penalize(
@@ -1117,7 +1125,7 @@ export function scoreRecommendation(
       8,
       "The payoff has no verified support from the deck’s main engines.",
     );
-  if (has(f, "token_doubler") && typed.meaningfulTokenSources < 2)
+  if (has(f, "token_doubler") && typed.allTokenSources < 2)
     penalize(
       "requires_missing_enabler",
       8,

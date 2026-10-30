@@ -31,7 +31,7 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 | 0.6.11 — Approved | "The app isn't sure" warnings on the Overview: unclassified Commander abilities, few Commander-linked cards, a weak plan, untracked cards and missing rules text. Library tucks count as removal; qualified anthems count as team pumps. |
 | 0.6.12 — Approved | Deck-relative conditions: an effect earns credit only when cards in this deck feed it, named in every explanation. Engine-agnosticism audit fixes and 11 holdout/adversarial decks. |
 | 0.6.13 — Approved | Brew Score v1: a deck-relative "interesting and unusually useful here" lens in Upgrades, built only on data-derived signals. |
-| **0.6.14 — Current** | Group Draw theme, alternate wins and mill as finishers, a Defense role for pillowfort and restriction cards, neutralized creatures as removal, and card velocity in the land target (from the Kwain deck). |
+| **0.6.14 — Approved** | Group Draw theme, alternate wins and mill as finishers, a Defense role for pillowfort and restriction cards, neutralized creatures as removal, and card velocity in the land target (from the Kwain deck). |
 | 0.7.0               | New Set Watcher: evaluate new releases against existing deck identity.                                                                                                        |
 | 0.8.0               | Uniqueness: separate originality, cohesion and power; lawful comparison-provider abstraction. EDHREC only through a permitted data relationship, never unauthorized scraping. |
 | 0.9.0               | Invite-only Playgroup: authentication, private collections and selective sharing.                                                                                             |
@@ -42,3 +42,7 @@ Summarized from the supplied master whitepaper. Future entries are planning only
 Build the manager first; add intelligence in layers. Artwork and one-handed browsing come first. Physical copies must never silently move between decks. Preserve a deck's identity before considering raw power. Future intelligence should combine deterministic card data, inspectable tags, relationships, scoring and evidence-backed explanations.
 
 The v0.1.x exit condition is a coherent collection → detail → back experience that people want to browse on a phone. Collect visual/touch feedback and freeze the binder before beginning import work. Minor releases add a capability layer; patches polish the existing layer. No future-roadmap feature may be slipped into a patch.
+
+### 0.6.15 — Current: Recommendation Recall & Interaction Coverage
+
+The frozen pass is complete with targeted semantic, interaction and condition/profile fixes. Score weights and thresholds are preserved. Final evidence recommends B: accuracy/ordering and cold analysis still need work before new Brew Score implementation. Existing v0.6.13 lens is preserved; this pass adds no Brew functionality. See [the completed pass](docs/RECOMMENDATION-RECALL-COMPLETE.md). No later phase has begun.

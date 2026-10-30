@@ -1,6 +1,14 @@
 # Changelog
 
-## Unreleased — Recommendation causality fixes
+## 0.6.15 — 2026-10-30 — Recommendation Recall & Interaction Coverage
+
+- Completed the same frozen recall pass from 00c6be9: scoped semantic capabilities and verified ETB, copy, counter, artifact-tap, attachment and Vehicle relationships. No named-card lookup rules.
+- Corrected reminder-text line identity, colored discounts, chosen-type supply, named-copy requirements, transform prerequisites, net draw and linked exile/reanimation. Recursion redundancy compares covered target types; dependent ETB outputs are not counted as independent inventory.
+- Original 379 candidates, twelve decks, 72 expectation occurrences and seven public holdout plans are unchanged. Obvious Recall@20 62.5%, Hidden Gem Recall@20 58.3%, Trap Rejection 100%; desk Precision@10 68.3%, @20 65.0%.
+- Preserved score weights, global bands/limits, collection/deck persistence and the existing UI. No new Brew Score or Brew UI. Final recommendation B; remaining ranking/scoring losses and cold performance are documented.
+- Validation and all per-card evidence: docs/RECOMMENDATION-RECALL-COMPLETE.md.
+
+### Included baseline — Recommendation causality fixes
 
 - Counter-triggered abilities require suppliers that can actually place counters on their recipient; self-only counters, amplifiers and incompatible targets no longer inflate support. Supplier caches distinguish recipient types.
 - Blink value requires the card's own entry trigger, rather than another creature entering or a reverse-face-only ability.

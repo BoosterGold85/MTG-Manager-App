@@ -16,6 +16,7 @@ import { deckDnaCache } from "../../../src/dna/engine";
 import { deckCardFunction } from "../../../src/upgrades/cardFunction";
 import { extractCardFacts } from "../../../src/synergy/facts";
 import { analyze, cardIdentity } from "../../../src/intelligence/tagger";
+import { capabilities } from "../../../src/synergy/capabilities";
 import { exploreSynergy } from "../../../src/synergy/explorer";
 import { legalInDeck, deckPlayable } from "../../../src/decks/decks";
 
@@ -198,6 +199,7 @@ export function runDeck(deck: FixedDeck) {
       conditions: conditionReport,
       intelligence: analyze(c).assignments,
       facts,
+      capabilities: capabilities(c),
       uncertainties: fn.uncertainties,
       confidence: fn.confidence,
     };
@@ -257,8 +259,9 @@ export function runCorpus(reviews: FailureReview[] = []) {
     missed = results.flatMap((r) => r.missed);
   return {
     baseline: "0f90fff",
+    evaluatedRevision: process.env.RECALL_REVISION || "working tree from 00c6be9",
     engine:
-      "production v0.6.14; original prototype metrics are not substituted",
+      "production v0.6.15 semantic/interaction corrections; original score weights and fixed expectations unchanged",
     snapshotHashes: Object.fromEntries(
       ["fixed-candidates.json", "fixed-decks.json", "cards.scryfall.json"].map(
         (file) => [

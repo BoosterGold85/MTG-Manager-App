@@ -1,3 +1,4 @@
+import { linkedGraveyardReturn } from "./capabilities";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import type { CardMetadata } from "../models/collection";
 import type { Color } from "../models/card";
@@ -6,7 +7,7 @@ import {
   canonicalCreatureType,
 } from "../intelligence/subtypes";
 
-export const CARD_FACTS_VERSION = "1.2.0";
+export const CARD_FACTS_VERSION = "1.3.0";
 export type TutorRole =
   | "unrestricted_tutor"
   | "typed_tutor"
@@ -142,6 +143,7 @@ export interface TokenFact extends FactEvidence {
   tokenTypes: string[];
   creatureTypes: string[];
   isCreature: boolean;
+  isArtifact?: boolean;
   isCopy: boolean;
   grantedAbilities: string[];
 }
@@ -385,7 +387,9 @@ const answerWords: [RegExp, AnswerTarget][] = [
 ];
 // Specific answer coverage, not one broad "removal" count.
 export function answerOf(face: string, line: string, types: string[], keywords: string[]): AnswerFact | null {
-  const effect = stripAbilityWord(line).replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
+  let effect = stripAbilityWord(line).replace(/^\s*(?:When(?:ever)?|At the beginning)\b[^,]*,\s*/i, "");
+  const subject = effect.match(/^(Each player|Each opponent)\b/i)?.[1];
+  if (subject) effect = effect.replace(/\bthen sacrifices (all creatures they control)/i, `${subject} sacrifices $1`);
   const patterns: [AnswerFact["mode"], RegExp][] = [
     ["counter", /\bcounter (?:target|all|each|up to \w+ target) ([^.]*?)\b(?:spells?|abilit(?:y|ies))\b/i],
     // "Put target attacking creature on the bottom of its owner's library" (Condemn, Hallowed Burial-style tucks).
@@ -407,6 +411,7 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
     const m = effect.match(pattern);
     if (!m) continue;
     const phrase = (m[1] || m[2] || "").trim();
+    if (mode === "exile" && linkedGraveyardReturn(line)) continue;
     if (mode === "exile" && /\bcards? (?:from|in) (?:your|a|target player's|all|an opponent's|each)?\s*graveyards?|\bgraveyards?\b/i.test(phrase)) {
       found.push({ ...evidence(face, line), targets: ["graveyard"], mode, mass: /\ball|each\b/i.test(effect), instantSpeed: true, opponentsOnly: !/your graveyard/i.test(phrase) });
       // "Exile all creatures and graveyards" also sweeps creatures; keep looking at the same clause.
@@ -496,7 +501,7 @@ function faceFacts(face: {
   keywords?: string[];
 }): CardFaceFacts {
   const original = (face.oracleText || "").replace(/[’‘]/g, "'");
-  const text = stripReminderText(original);
+  const text = stripReminderText(original).replace(/^Fabricate (\d+).*$/gm, (_, n) => `Fabricate ${n}\nWhen this creature enters, you may create ${n} 1/1 colorless Servo artifact creature tokens.`);
   const lines = text
     .split(/\n+/)
     .map((line) => line.trim())
@@ -601,6 +606,7 @@ function faceFacts(face: {
           tokenTypes,
           creatureTypes,
           isCreature,
+          isArtifact: /\bartifact\b/i.test(description) || tokenTypes.length > 0,
           isCopy,
           grantedAbilities: granted ? [granted] : [],
         });

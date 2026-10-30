@@ -4,6 +4,7 @@
 // v0.6.12. No popularity, price, archetype template or named-card table. Reading it never changes Synergy or Upgrades.
 import type { CardMetadata } from "../models/collection";
 import type { CardSynergy, DeckDna } from "../dna/engine";
+import { matchingRoleCount } from "./upgrade";
 import type { DeckModel } from "./upgrade";
 import type { CardFunction, Need } from "./cardFunction";
 import { deckCardFunction, needLabels } from "./cardFunction";
@@ -218,11 +219,11 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   for (const [need, amount] of Object.entries(fn.roles) as [Need, number][]) {
     const target = ctx.model.targets[need] || 0;
     if (!target || need === "lands") continue;
-    const gap = Math.max(0, 1 - ctx.model.totals.roles[need] / target) * Math.min(1, amount);
+    const gap = Math.max(0, 1 - matchingRoleCount(ctx.model, need, fn) / target) * Math.min(1, amount);
     if (gap > role) [role, roleNeed] = [gap, need];
   }
   const rolePoints = BREW_WEIGHTS.role * role;
-  if (roleNeed && role >= 0.2) why.push({ title: "Role", text: `Also adds ${needLabels[roleNeed].toLowerCase()}, which this deck is short of (${ctx.model.totals.roles[roleNeed].toFixed(1)} / ${ctx.model.targets[roleNeed]}).` });
+  if (roleNeed && role >= 0.2) why.push({ title: "Role", text: `Also adds ${needLabels[roleNeed].toLowerCase()}, which this deck is short of (${matchingRoleCount(ctx.model, roleNeed, fn).toFixed(1)} / ${ctx.model.targets[roleNeed]}).` });
   // G. Commander connection: a real, verified link (not mere color or type compatibility).
   const commanderLink = Math.max(0, ...(rec?.links || []).filter((l) => l.commander).map((l) => l.strength));
   const commanderPoints = commanderLink >= 0.5 ? BREW_WEIGHTS.commander * Math.min(1, commanderLink) : 0;
@@ -233,9 +234,9 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   // H–K. Penalties.
   if (bridge && bridge.existing.length >= 3) penalties.push({ name: "Redundancy", points: -Math.min(8, (bridge.existing.length - 2) * 2) });
   const main = Object.entries(fn.roles).sort((a, b) => (b[1] || 0) - (a[1] || 0))[0]?.[0] as Need | undefined;
-  if (main && main !== "lands" && ctx.model.targets[main] > 0 && ctx.model.totals.roles[main] > 1.5 * ctx.model.targets[main]) {
+  if (main && main !== "lands" && ctx.model.targets[main] > 0 && matchingRoleCount(ctx.model, main, fn) > 1.5 * ctx.model.targets[main]) {
     penalties.push({ name: "Redundancy", points: -5 });
-    negatives.push(`This deck already has plenty of ${needLabels[main].toLowerCase()} (${ctx.model.totals.roles[main].toFixed(1)} / ${ctx.model.targets[main]}).`);
+    negatives.push(`This deck already has plenty of ${needLabels[main].toLowerCase()} (${matchingRoleCount(ctx.model, main, fn).toFixed(1)} / ${ctx.model.targets[main]}).`);
   }
   const unfed = (fn.conditions || []).filter((c) => c.understood && c.factor < 0.5);
   if (unfed.length) {

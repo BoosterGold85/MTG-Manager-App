@@ -1,0 +1,2344 @@
+{
+  "baseline": "00c6be9",
+  "author": "Assistant semantic desk review against frozen Oracle data and full deck composition, not independent human validation. Original pairwise labels and rationales are preserved wherever a candidate remains in the top 20. Debatable is not precision success. No review is a scoring input.",
+  "canonicalSnapshotHash": "8e332eac914015d6b649d29ecc3f08081ac118a05106dba240137aae0eaf0fa3",
+  "reviews": [
+    {
+      "deck": "counters",
+      "candidate": "Fathom Mage",
+      "baselineRank": 1,
+      "label": "Excellent contextual fit",
+      "rationale": "Counter placement directly turns this creature into draw.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Carrion Feeder",
+      "baselineRank": 2,
+      "label": "Interesting / debatable",
+      "rationale": "Sacrifice-to-self-counter is useful, but this is not a reliable external counter placer.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Evolution Witness",
+      "baselineRank": 3,
+      "label": "Excellent contextual fit",
+      "rationale": "Counter sources turn this creature into permanent recursion; legal copies can be independent engines.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Elenda, the Dusk Rose",
+      "baselineRank": 4,
+      "label": "Interesting / debatable",
+      "rationale": "Death-to-counter/token conversion is possible but needs death/setup beyond the core counter plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Ghave, Guru of Spores",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "Moves between +1/+1 counters and expendable creatures with explicit mana costs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Soulherder",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Reusable creature entries support existing counter-entry sources and the real artifact-creature ETB package; this is not credit for blinking grown counters.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 7,
+      "label": "Good obvious fit",
+      "rationale": "The actual artifact-heavy deck can pay its artifact-tap cost for repeated net draw, despite it not being a counter payoff.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 8,
+      "label": "Good obvious fit",
+      "rationale": "The many actual artifact support cards enable Thopters and artifact-combat draw.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Avenger of Zendikar",
+      "baselineRank": 9,
+      "label": "Good obvious fit",
+      "rationale": "Plants and landfall counter placement use the deck counter-placement and board-growth tools.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Tatyova, Benthic Druid",
+      "baselineRank": 10,
+      "label": "Interesting / debatable",
+      "rationale": "Landfall draw is usable, but largely generic without an extra-land plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 11,
+      "label": "Interesting / debatable",
+      "rationale": "Recasting ETB creatures can help, but bouncing a grown creature also removes its accumulated counters and costs mana.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 12,
+      "label": "Interesting / debatable",
+      "rationale": "Repeated creature ETBs offer value, but resetting a grown creature is a real counter-plan tradeoff and this is not protection on demand.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "Normal land drops produce resources and tokens that the deck can use alongside its counter-growing creature plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 14,
+      "label": "Interesting / debatable",
+      "rationale": "Metalcraft is easy but the Equipment package is small.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Rampaging Baloths",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "Produces bodies that receive the real counter-entry enhancements.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Marionette Master",
+      "baselineRank": 16,
+      "label": "Excellent contextual fit",
+      "rationale": "Fabricate offers counters or artifact creature bodies; the actual artifact deaths and counter amplification make its power-based loss relevant.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 17,
+      "label": "Good obvious fit",
+      "rationale": "Repeated artifact or creature entries reuse actual ETB effects in the complete list; it need not reset a grown creature.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Corpsejack Menace",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "Directly amplifies this established +1/+1 counter package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 20,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Scute Swarm",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "Repeatable bodies/copies can receive the deck entry-counter effects.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "counters",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 20,
+      "label": "Excellent contextual fit",
+      "rationale": "Noncreature casts create counter-bearing Incubators; counter/proliferation support has concrete targets.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "Landfall Treasure supports repeated graveyard plays and sacrifice costs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 2,
+      "label": "Good obvious fit",
+      "rationale": "Friendly bounce can reuse actual self-entry creatures and protect a resource for recasting; it does not itself reanimate.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Rampaging Baloths",
+      "baselineRank": 3,
+      "label": "Good obvious fit",
+      "rationale": "Land drops produce expendable bodies for the actual death/sacrifice package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Marionette Master",
+      "baselineRank": 4,
+      "label": "Good obvious fit",
+      "rationale": "Fabricate can provide bodies, and artifact-creature deaths can use the payoff.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 20,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Avenger of Zendikar",
+      "baselineRank": 5,
+      "label": "Good obvious fit",
+      "rationale": "ETB creates many bodies; both recurring the creature and sacrificing bodies have real use.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Scute Swarm",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Landfall bodies feed sacrifice/death payoffs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Rolling Hamsphere",
+      "baselineRank": 7,
+      "label": "Interesting / debatable",
+      "rationale": "Attack and crew setup make this a conditional token source.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Bastion of Remembrance",
+      "baselineRank": 8,
+      "label": "Excellent contextual fit",
+      "rationale": "Direct payoff for the established creature-death events.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Sifter of Skulls",
+      "baselineRank": 9,
+      "label": "Excellent contextual fit",
+      "rationale": "Recurring nontoken creatures dying produce further sacrifice/mana resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 10,
+      "label": "Weak",
+      "rationale": "Low instant/sorcery density limits the transform/copy plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 17,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Pawn of Ulamog",
+      "baselineRank": 11,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken deaths become further sacrifice/mana resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Pitiless Plunderer",
+      "baselineRank": 12,
+      "label": "Excellent contextual fit",
+      "rationale": "Creature deaths become mana resources, directly feeding the engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Woe Strider",
+      "baselineRank": 13,
+      "label": "Excellent contextual fit",
+      "rationale": "Provides both an outlet and a reusable graveyard body.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Lotus Cobra",
+      "baselineRank": 14,
+      "label": "Interesting / debatable",
+      "rationale": "Landfall mana is useful but not specific graveyard conversion.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "Creature-cast looting can stock the graveyard, although the red discount is unusable.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Smuggler's Copter",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Controlled looting puts recursion targets into the graveyard while providing a cheap evasive body; this is selection rather than net draw.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Myr Battlesphere",
+      "baselineRank": 17,
+      "label": "Good obvious fit",
+      "rationale": "ETB provides artifact bodies, and recursion can repeat the useful ETB.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Ophiomancer",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "Each-upkeep expendable creatures feed real outlets; the no-Snake condition remains.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Hammer of Nazahn",
+      "baselineRank": 19,
+      "label": "Interesting / debatable",
+      "rationale": "Protection/attachment may help but Equipment is not a main package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 15,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Desolation Twin",
+      "baselineRank": 20,
+      "label": "Weak",
+      "rationale": "The cast-only extra body is not produced by reanimating it; ten-mana setup is excessive.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 16,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "Artifact casts provide expendable creature bodies for death triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Rolling Hamsphere",
+      "baselineRank": 2,
+      "label": "Interesting / debatable",
+      "rationale": "Requires an attack and crew before delivering its token resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 3,
+      "label": "Interesting / debatable",
+      "rationale": "Real artifact ETBs offer incidental value, but blink is not a sacrifice or death event and exiling tokens does not feed the plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Sifter of Skulls",
+      "baselineRank": 4,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken death events create more sacrifice resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Pawn of Ulamog",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "Direct nontoken death-to-body/mana conversion.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Marionette Master",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Fabricate bodies and artifact-creature death conversion are usable.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 19,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 7,
+      "label": "Interesting / debatable",
+      "rationale": "Metalcraft/free Clamp equips are possible, but this is largely a single-Equipment dependency.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 8,
+      "label": "Weak",
+      "rationale": "There are too few instant/sorcery casts for its main transform engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 16,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Parhelion II",
+      "baselineRank": 9,
+      "label": "Interesting / debatable",
+      "rationale": "Eight-mana attack setup is much heavier than the core sacrifice engines.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Elenda, the Dusk Rose",
+      "baselineRank": 10,
+      "label": "Excellent contextual fit",
+      "rationale": "Counters and the death-to-token payoff interact with the established death package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 11,
+      "label": "Interesting / debatable",
+      "rationale": "Looting has some use, but the color discount is dead and casting differs from death triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Sigarda's Aid",
+      "baselineRank": 12,
+      "label": "Weak",
+      "rationale": "The sparse Equipment/Aura package does not justify a major engine ranking.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Smuggler's Copter",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "Bodies can crew it and controlled discard can set up recursive fodder; its selection is useful without claiming card gain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Hammer of Nazahn",
+      "baselineRank": 14,
+      "label": "Interesting / debatable",
+      "rationale": "Some protection/attachment use exists but Equipment is not the central engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Pitiless Plunderer",
+      "baselineRank": 15,
+      "label": "Excellent contextual fit",
+      "rationale": "Death-to-Treasure directly enables repeated sacrifice actions.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Ardenn, Intrepid Archaeologist",
+      "baselineRank": 16,
+      "label": "Interesting / debatable",
+      "rationale": "It can move Skullclamp and other real Equipment, but only at combat and to one chosen recipient; this is not a repeated sacrifice outlet.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Brass Squire",
+      "baselineRank": 17,
+      "label": "Interesting / debatable",
+      "rationale": "Free attachment can support Skullclamp, but the tap cost, summoning sickness and limited attachment package constrain it.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Herald's Horn",
+      "baselineRank": 18,
+      "label": "Weak",
+      "rationale": "The creature mix does not provide a sufficiently dense single tribe for its top-card choice to be a reliable aristocrats engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Grafted Skullcap",
+      "baselineRank": 19,
+      "label": "False positive",
+      "rationale": "Compulsory hand loss has no sufficiently broad recovery plan here.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 17,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Mishra's Bauble",
+      "baselineRank": 20,
+      "label": "Interesting / debatable",
+      "rationale": "Cheap artifact cantrip/recovery interactions exist but are modest.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 18,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "The complete deck has abundant untapped artifacts for its repeatable draw cost; usefulness comes from inventory, not a fabricated blink trigger.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 2,
+      "label": "Good obvious fit",
+      "rationale": "Actual artifact density enables a working secondary draw/token engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Tatyova, Benthic Druid",
+      "baselineRank": 3,
+      "label": "Interesting / debatable",
+      "rationale": "Generic landfall draw is usable but not an ETB engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 4,
+      "label": "Excellent contextual fit",
+      "rationale": "A repeatable friendly-creature blink directly reuses the deck\u2019s real ETB package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "It repeatedly reuses both artifact and creature entries, which are the stated plan and present in the list.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Avenger of Zendikar",
+      "baselineRank": 6,
+      "label": "Excellent contextual fit",
+      "rationale": "The substantial token ETB can actually be repeated by the blink sources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Archmage Emeritus",
+      "baselineRank": 7,
+      "label": "Interesting / debatable",
+      "rationale": "Some blink spells feed Magecraft, but activated blink does not.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 8,
+      "label": "Interesting / debatable",
+      "rationale": "Land-drop resources are useful, but it does not have a reusable self-entry payoff and does not directly feed the blink engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 9,
+      "label": "Good obvious fit",
+      "rationale": "Returning actual ETB creatures gives reusable value and protection, with recasting and activation costs still required.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 10,
+      "label": "Good obvious fit",
+      "rationale": "Blinking nontoken artifact creatures can produce additional bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 11,
+      "label": "Weak",
+      "rationale": "The list has a small instant/sorcery package, so repeated cast setup and transformed spell copying are secondary to its creature-entry plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 12,
+      "label": "Weak",
+      "rationale": "Equipment density is too low for this to be a key engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Retreat to Coralhelm",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "Landfall can conditionally untap a legal creature such as Roon; costs and land timing remain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Rampaging Baloths",
+      "baselineRank": 14,
+      "label": "Interesting / debatable",
+      "rationale": "Landfall bodies are usable but not a useful ETB to repeat.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Good-Fortune Unicorn",
+      "baselineRank": 15,
+      "label": "Interesting / debatable",
+      "rationale": "Entry counters are modest value; blinking resets those counters rather than accumulating them.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Repeated draw ETBs can produce the second-card event for Thopters.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Scute Swarm",
+      "baselineRank": 17,
+      "label": "Interesting / debatable",
+      "rationale": "Landfall bodies are useful but not the requested repeatable ETB relationship.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 18,
+      "label": "Interesting / debatable",
+      "rationale": "Incubator bodies are usable, but token blinking does not retrigger durable bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Talrand, Sky Summoner",
+      "baselineRank": 19,
+      "label": "Interesting / debatable",
+      "rationale": "Only the cast blink spells feed it; the Commander activation does not.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "blink",
+      "candidate": "Mu Yanling, Wind Rider",
+      "baselineRank": 20,
+      "label": "Good obvious fit",
+      "rationale": "The entry Vehicle and subsequent evasion/draw can provide actual value.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 20,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Excellent contextual fit",
+      "rationale": "The large artifact inventory pays its repeatable draw activation directly, without sacrificing those artifacts.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Warstorm Surge",
+      "baselineRank": 2,
+      "label": "Good obvious fit",
+      "rationale": "Artifact creature/token ETBs can turn into useful noncombat damage.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 3,
+      "label": "Interesting / debatable",
+      "rationale": "Cast looting has use, but only a few creatures receive the red discount.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 4,
+      "label": "Good obvious fit",
+      "rationale": "Many actual artifact creatures have useful self-entry effects; noncreature artifacts remain outside its blink target scope.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "Repeated artifact entries reuse the actual Wellspring, Spine and creature ETB package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Soulherder",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Repeated creature entries reuse many artifact-creature effects; it does not blink noncreature artifacts.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 7,
+      "label": "Excellent contextual fit",
+      "rationale": "Actual nontoken artifact entries become additional bodies for the artifact/sacrifice plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Flameshadow Conjuring",
+      "baselineRank": 8,
+      "label": "Good obvious fit",
+      "rationale": "Copies of useful artifact creatures can provide ETBs and sacrifice resources; tokens expire.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Mirror March",
+      "baselineRank": 9,
+      "label": "Interesting / debatable",
+      "rationale": "Coin-flip and six-mana setup make the copy value conditional.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Bastion of Remembrance",
+      "baselineRank": 10,
+      "label": "Good obvious fit",
+      "rationale": "Creature tokens sacrificed by the deck feed the death payoff.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Cruel Celebrant",
+      "baselineRank": 11,
+      "label": "Good obvious fit",
+      "rationale": "Artifact creature deaths can feed the payoff; noncreature artifact deaths cannot.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Zulaport Cutthroat",
+      "baselineRank": 12,
+      "label": "Good obvious fit",
+      "rationale": "Artifact creature deaths can feed the payoff; noncreature artifact deaths cannot.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Sifter of Skulls",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "Actual nontoken artifact creatures and sacrifice outlets support the death resource.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Marionette Master",
+      "baselineRank": 14,
+      "label": "Excellent contextual fit",
+      "rationale": "The actual deck has many artifact-sacrifice costs and recursive artifacts; Fabricate supplies artifacts or counters and its power-based life loss has real death feeders.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Jhoira, Weatherlight Captain",
+      "baselineRank": 15,
+      "label": "Excellent contextual fit",
+      "rationale": "The deck\u2019s large historic-spell package repeatedly produces genuine card gain through an explicit cast condition.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Metalcraft and the actual Equipment subset make its functional abilities usable.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Pawn of Ulamog",
+      "baselineRank": 17,
+      "label": "Good obvious fit",
+      "rationale": "Nontoken creature deaths create further expendable mana bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Third Path Iconoclast",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "Noncreature artifact casts create artifact creature tokens for Breya.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "Actual draw sources can supply the second-card event; each-turn limits remain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Harnesser of Storms",
+      "baselineRank": 20,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature casts can provide bounded impulse access; not every exiled card is playable.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 15,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Parapet Thrasher",
+      "baselineRank": 1,
+      "label": "Excellent contextual fit",
+      "rationale": "Dragon combat damage feeds repeated choice value, with the once-per-turn choices retained.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 2,
+      "label": "Good obvious fit",
+      "rationale": "Red Dragon spell casts use the discount and creature-cast looting.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Firespitter Whelp",
+      "baselineRank": 3,
+      "label": "Good obvious fit",
+      "rationale": "Dragon/noncreature casts feed damage and its Dragon body supports the entry package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Sarkhan, Dragon Ascendant",
+      "baselineRank": 4,
+      "label": "Excellent contextual fit",
+      "rationale": "Dragon entry gives actual counter growth and an additional Dragon threat.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Flameshadow Conjuring",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "Temporary Dragon copies can retrigger Dragon-entry payoffs, but do not satisfy nontoken-only triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Mirror March",
+      "baselineRank": 6,
+      "label": "Interesting / debatable",
+      "rationale": "Useful Dragon copies are possible but six-mana coin-flip setup is not guaranteed.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Skyline Despot",
+      "baselineRank": 7,
+      "label": "Good obvious fit",
+      "rationale": "The Dragon body and conditional Dragon tokens support the actual entry/combat payoffs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Dragonmaster Outcast",
+      "baselineRank": 8,
+      "label": "Good obvious fit",
+      "rationale": "Conditional Dragon tokens feed Dragon entry payoffs; six lands and upkeep timing remain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Spit Flame",
+      "baselineRank": 9,
+      "label": "Excellent contextual fit",
+      "rationale": "Dragon entries can repeatedly recover this real creature-removal spell.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Orb of Dragonkind",
+      "baselineRank": 10,
+      "label": "Good obvious fit",
+      "rationale": "The actual Dragon density makes restricted mana and Dragon selection usable.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Breaching Dragonstorm",
+      "baselineRank": 11,
+      "label": "Excellent contextual fit",
+      "rationale": "Dragon entries return the enchantment to hand, enabling another bounded free-cast entry effect.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Herald's Horn",
+      "baselineRank": 12,
+      "label": "Excellent contextual fit",
+      "rationale": "Choosing Dragon binds the reduction and top-card selection to the deck\u2019s real shared type, rather than combining unrelated tribes.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Harnesser of Storms",
+      "baselineRank": 13,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature casts can supply impulse access, but ordinary Dragon casts do not.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Nogi, Draco-Zealot",
+      "baselineRank": 14,
+      "label": "Good obvious fit",
+      "rationale": "Dragon discount and a conditional Dragon attacker use the actual typal package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Taurean Mauler",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "Changeling is a real Dragon body and independent counter growth is useful.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Changeling Wayfinder",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Changeling is a Dragon body with an actual land-to-hand ETB; it is not land-to-battlefield ramp.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 15,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Dragonhawk, Fate's Tempest",
+      "baselineRank": 17,
+      "label": "Good obvious fit",
+      "rationale": "The real large-body Dragon board supplies bounded card access/damage pressure.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 16,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Scourge of the Throne",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "A supported Dragon attack board can exploit the additional combat, subject to the dethrone condition.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 17,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Shivan Devastator",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "A scalable evasive Dragon threat fits the actual Dragon entry and combat package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 18,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "typal",
+      "candidate": "Thundermane Dragon",
+      "baselineRank": 20,
+      "label": "Good obvious fit",
+      "rationale": "The top-of-library large-creature permission matches the actual large Dragon threats.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 19,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "Its draw cost has ample real artifact suppliers in the complete deck, even though it is not itself a land payoff.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 2,
+      "label": "Interesting / debatable",
+      "rationale": "The transform needs four actual instant/sorcery casts, not merely land drops.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 3,
+      "label": "Good obvious fit",
+      "rationale": "Actual incidental artifact density supports this engine, although it is not land-specific.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Archmage Emeritus",
+      "baselineRank": 4,
+      "label": "Interesting / debatable",
+      "rationale": "Ramp spells may feed it; not all land events are spell casts.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "The Commander landfall draws can reliably supply the second-card event.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "It can reuse actual land-search and value-creature entries while leaving land drops and noncreature artifacts outside its scope.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 7,
+      "label": "Good obvious fit",
+      "rationale": "Recasting the deck\u2019s entry-value creatures can recycle land-search effects; mana costs and normal land-drop limits still apply.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 8,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature casts can generate bodies but do not directly reward lands.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Grafted Skullcap",
+      "baselineRank": 9,
+      "label": "False positive",
+      "rationale": "Mandatory end-step hand loss undermines stored lands/cards without broad recovery.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Haven of the Spirit Dragon",
+      "baselineRank": 10,
+      "label": "Weak",
+      "rationale": "Mostly colorless mana here; Dragon-restricted abilities lack a meaningful package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 19,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Progenitor Mimic",
+      "baselineRank": 11,
+      "label": "Excellent contextual fit",
+      "rationale": "Useful nonlegendary ETB/landfall bodies can become independent copied engines.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Talrand, Sky Summoner",
+      "baselineRank": 12,
+      "label": "Interesting / debatable",
+      "rationale": "Only ramp spells feed it, not extra land plays themselves.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Mishra's Bauble",
+      "baselineRank": 13,
+      "label": "Interesting / debatable",
+      "rationale": "Cheap delayed cantrip value is modest and not a land engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 14,
+      "label": "Excellent contextual fit",
+      "rationale": "Land entries become spendable artifact resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 18,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Sai, Master Thopterist",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "The substantial actual artifact support package can feed its real abilities.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Lotus Cobra",
+      "baselineRank": 16,
+      "label": "Excellent contextual fit",
+      "rationale": "Landfall mana directly uses extra land drops and ramp.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 17,
+      "label": "Weak",
+      "rationale": "The red discount is unusable and extra creature-cast looting is not the land engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Smuggler's Copter",
+      "baselineRank": 18,
+      "label": "Good obvious fit",
+      "rationale": "Controlled looting can put lands into the graveyard for the existing land-recursion package; its selection is not net draw.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Rite of Replication",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "It can copy actual land-payoff or value creatures; the kicked mode costs nine and is not assumed available immediately.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "lands",
+      "candidate": "Clever Impersonator",
+      "baselineRank": 20,
+      "label": "Good obvious fit",
+      "rationale": "Flexible copying of real nonland payoff permanents and artifacts is useful here; it does not copy lands.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "The real artifact-heavy filler can pay its repeated draw activation, providing resources for the spell plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 2,
+      "label": "Good obvious fit",
+      "rationale": "The incidental artifact package is large enough for a working independent engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Warstorm Surge",
+      "baselineRank": 3,
+      "label": "Interesting / debatable",
+      "rationale": "Token-producing spell payoffs could feed ETB damage, but six-mana setup is substantial.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Archmage Emeritus",
+      "baselineRank": 4,
+      "label": "Excellent contextual fit",
+      "rationale": "Actual instant/sorcery casting and copying drive direct card draw.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 5,
+      "label": "Weak",
+      "rationale": "The red discount barely covers the relevant bodies; Vehicles/artifacts are not creature spells.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 6,
+      "label": "Excellent contextual fit",
+      "rationale": "The actual instant/sorcery density supplies charge-counter setup, the discount and later copying; a copy is not another cast.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Jhoira, Weatherlight Captain",
+      "baselineRank": 7,
+      "label": "Good obvious fit",
+      "rationale": "The real historic filler supplies repeated draw even though instant/sorcery spells alone do not trigger it.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Harnesser of Storms",
+      "baselineRank": 8,
+      "label": "Good obvious fit",
+      "rationale": "Many noncreature spells feed impulse access; the once-per-turn clause is not doubled away.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Flameshadow Conjuring",
+      "baselineRank": 9,
+      "label": "Interesting / debatable",
+      "rationale": "Some bodies have useful ETBs, but creature copying is secondary to the spell plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Mirror March",
+      "baselineRank": 10,
+      "label": "Interesting / debatable",
+      "rationale": "Expensive coin-flip creature copies are conditional, not a reliable spell engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Third Path Iconoclast",
+      "baselineRank": 11,
+      "label": "Excellent contextual fit",
+      "rationale": "Noncreature casts create artifact bodies while the Commander supplies relevant cast triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 12,
+      "label": "Good obvious fit",
+      "rationale": "Cantrips/draw can trigger a bounded second-card token payoff.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "Noncreature casts and the Commander can supply useful token-generation triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Dragon's Approach",
+      "baselineRank": 14,
+      "label": "False positive",
+      "rationale": "One copy cannot supply the named five-card graveyard tutor condition; spell copies are not extra graveyard cards.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Spit Flame",
+      "baselineRank": 15,
+      "label": "Interesting / debatable",
+      "rationale": "Creature removal works, but Dragon-entry recursion is thinly supported.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 17,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 16,
+      "label": "Interesting / debatable",
+      "rationale": "Artifact-creature ETBs offer incidental value, but its end-step blink does not directly produce spell casts or cast triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Sai, Master Thopterist",
+      "baselineRank": 17,
+      "label": "Good obvious fit",
+      "rationale": "The incidental artifact density can support its real abilities.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Rite of Replication",
+      "baselineRank": 18,
+      "label": "Good obvious fit",
+      "rationale": "Legal nonlegendary spell-payoff creatures can become additional independent engines.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 16,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Unexpected Windfall",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "Instant-speed discard plus two cards and Treasures provides net card gain, setup and mana while feeding actual spell triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "spells",
+      "candidate": "Balmor, Battlemage Captain",
+      "baselineRank": 20,
+      "label": "Excellent contextual fit",
+      "rationale": "Instant/sorcery casts convert the actual token board into combat pressure.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "The complete deck has ample artifacts for repeated draw and a nonlegendary draw body can be copied.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 2,
+      "label": "Excellent contextual fit",
+      "rationale": "Repeated blink can reset actual copy creatures and reuse real entry effects; it is not credit for copying spells.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 3,
+      "label": "Excellent contextual fit",
+      "rationale": "Reusable friendly bounce resets real clone choices and ETB effects, with full recasting costs preserved.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 4,
+      "label": "Good obvious fit",
+      "rationale": "The actual artifact support package enables a working secondary engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Tatyova, Benthic Druid",
+      "baselineRank": 5,
+      "label": "Interesting / debatable",
+      "rationale": "Legendary Tatyova is not freely multiplied by ordinary copies; landfall draw is mostly generic.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Warstorm Surge",
+      "baselineRank": 6,
+      "label": "Excellent contextual fit",
+      "rationale": "Creature-copy ETBs can convert directly into damage.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 7,
+      "label": "Interesting / debatable",
+      "rationale": "Resources and additional copyable bodies are useful, but the landfall trigger is not the deck\u2019s main copy event.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Archmage Emeritus",
+      "baselineRank": 8,
+      "label": "Interesting / debatable",
+      "rationale": "Only actual instant/sorcery casts/copies feed it; creature ETBs are not spells.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Harnesser of Storms",
+      "baselineRank": 9,
+      "label": "Good obvious fit",
+      "rationale": "The actual noncreature cast density supports bounded impulse access.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Jhoira, Weatherlight Captain",
+      "baselineRank": 10,
+      "label": "Good obvious fit",
+      "rationale": "Actual historic spells provide card gain; copied permanents entering without being cast do not trigger it.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Third Path Iconoclast",
+      "baselineRank": 11,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature casts create bodies, but token bodies do not trigger nontoken-copy engines.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Storm-Kiln Artist",
+      "baselineRank": 12,
+      "label": "Interesting / debatable",
+      "rationale": "Only actual instant/sorcery casts or copies feed it; creature clone spells and copied permanents do not.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 13,
+      "label": "Interesting / debatable",
+      "rationale": "Incubator tokens provide pressure but are not useful nontoken ETBs to copy.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Rampaging Baloths",
+      "baselineRank": 14,
+      "label": "Good obvious fit",
+      "rationale": "Nonlegendary landfall engines can remain independently useful in multiples.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Scute Swarm",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "Nonlegendary landfall copy engines can remain independently useful.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Lotus Cobra",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Additional landfall mana can pay repeatable copy/ETB costs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Young Pyromancer",
+      "baselineRank": 17,
+      "label": "Interesting / debatable",
+      "rationale": "Spell volume is limited, and copying a spell is not casting it again.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Sai, Master Thopterist",
+      "baselineRank": 18,
+      "label": "Good obvious fit",
+      "rationale": "The actual artifact density enables a secondary token/draw engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Flameshadow Conjuring",
+      "baselineRank": 19,
+      "label": "Excellent contextual fit",
+      "rationale": "Many useful nontoken ETBs make the additional temporary copies contextually useful.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "copy",
+      "candidate": "Firespitter Whelp",
+      "baselineRank": 20,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature cast damage is usable but not a copy/ETB engine itself.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 15,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Thopter Spy Network",
+      "baselineRank": 1,
+      "label": "Good obvious fit",
+      "rationale": "The actual artifact density supplies an independent working draw/token engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Warstorm Surge",
+      "baselineRank": 2,
+      "label": "Interesting / debatable",
+      "rationale": "Some creature ETBs deal damage, but it does not exploit Equipment power added after entry.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Primal Amulet // Primal Wellspring",
+      "baselineRank": 3,
+      "label": "Weak",
+      "rationale": "Most cheap spells have little reducible generic cost; four casts are needed to transform.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 16,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 4,
+      "label": "Good obvious fit",
+      "rationale": "Actual Equipment and artifact filler can pay its repeated draw cost; it is a resource engine rather than Commander-damage synergy.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 5,
+      "label": "Interesting / debatable",
+      "rationale": "Noncreature artifact ETBs can be reused, but blinking the geared-up attacker would discard Auras and detach Equipment.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Artifact entries provide backup bodies that can carry Equipment.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Archmage Emeritus",
+      "baselineRank": 7,
+      "label": "Interesting / debatable",
+      "rationale": "Only a small instant/sorcery subset supplies Magecraft; Equipment casts do not.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Flameshadow Conjuring",
+      "baselineRank": 8,
+      "label": "Weak",
+      "rationale": "Most relevant creatures lack the useful repeated ETBs needed to justify this engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Mirror March",
+      "baselineRank": 9,
+      "label": "Weak",
+      "rationale": "Expensive coin-flip creature copies are not a Voltron support engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 10,
+      "label": "Interesting / debatable",
+      "rationale": "Draw sources may enable backup flying bodies, but it is secondary.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Veyran, Voice of Duality",
+      "baselineRank": 11,
+      "label": "Interesting / debatable",
+      "rationale": "The instant/sorcery subset can amplify triggers, but most Equipment casts do not qualify.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Storm-Kiln Artist",
+      "baselineRank": 12,
+      "label": "Interesting / debatable",
+      "rationale": "Protection and combat spells can make Treasure, but the deck\u2019s attachment and attack events are not spell-copy triggers.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Smuggler's Copter",
+      "baselineRank": 13,
+      "label": "Good obvious fit",
+      "rationale": "An inexpensive evasive carrier and controlled looting are useful with actual Equipment; it does not count toward Commander damage.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Retreat to Coralhelm",
+      "baselineRank": 14,
+      "label": "Weak",
+      "rationale": "No established land/untap engine justifies this slot.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Jhoira, Weatherlight Captain",
+      "baselineRank": 15,
+      "label": "Good obvious fit",
+      "rationale": "The actual Equipment and historic filler feed repeatable card gain independently of combat.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Rolling Hamsphere",
+      "baselineRank": 16,
+      "label": "Weak",
+      "rationale": "Crew/attack tokens are off the single-threat plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 17,
+      "label": "Weak",
+      "rationale": "No meaningful red creature-spell package supplies the discount; looting is secondary.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Parhelion II",
+      "baselineRank": 18,
+      "label": "Weak",
+      "rationale": "Eight-mana crew setup is off the low-curve single-threat plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Hammer of Nazahn",
+      "baselineRank": 19,
+      "label": "Excellent contextual fit",
+      "rationale": "Free attachments and protection directly support the actual Equipment package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Sigarda's Aid",
+      "baselineRank": 20,
+      "label": "Excellent contextual fit",
+      "rationale": "Flash/free attachments directly support the actual Equipment package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Shimmer Dragon",
+      "baselineRank": 1,
+      "label": "Excellent contextual fit",
+      "rationale": "Vehicles and other real artifacts can pay its repeated draw cost when untapped; tapping them competes with other uses.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Miles \"Tails\" Prower",
+      "baselineRank": 2,
+      "label": "Excellent contextual fit",
+      "rationale": "Vehicle entries receive flying counters or draw; actual fleet density supports both.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Chrome Host Seedshark",
+      "baselineRank": 3,
+      "label": "Good obvious fit",
+      "rationale": "Noncreature Vehicle casts make artifacts that can later become crew bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 4,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken artifact/Vehicle entries supply actual additional crew bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Thopter Fabricator",
+      "baselineRank": 5,
+      "label": "Excellent contextual fit",
+      "rationale": "Shorikai draw-two activations can supply the second-card event and crew bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Kitsune Ace",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Vehicle attacks supply its first-strike/untap choice; it is also a cheap crew body.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mech Hangar",
+      "baselineRank": 7,
+      "label": "Excellent contextual fit",
+      "rationale": "Restricted fixing casts actual Vehicles/Pilots and its separate activation animates an owned Vehicle without stealing assignments.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Kotori, Pilot Prodigy",
+      "baselineRank": 8,
+      "label": "Excellent contextual fit",
+      "rationale": "Crew reduction directly enables the deck\u2019s Vehicles and the combat ability can support an animated artifact creature.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Archaeomancer",
+      "baselineRank": 9,
+      "label": "Interesting / debatable",
+      "rationale": "It can recover actual utility instants and sorceries, but that narrow package and incidental entry reuse are secondary to Vehicle deployment and crew support.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Soulherder",
+      "baselineRank": 10,
+      "label": "Good obvious fit",
+      "rationale": "Actual artifact-creature ETBs can be reused and its growing body can crew; ordinary unanimated Vehicles are not legal blink targets.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Thassa, Deep-Dwelling",
+      "baselineRank": 11,
+      "label": "Good obvious fit",
+      "rationale": "It reuses actual creature ETBs; it cannot assume that every Vehicle remains a creature at end step.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 12,
+      "label": "Excellent contextual fit",
+      "rationale": "Artifact-targeting blink can reuse real entry effects and replay Vehicles for entry triggers without requiring them to be creatures.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Retreat to Coralhelm",
+      "baselineRank": 13,
+      "label": "Interesting / debatable",
+      "rationale": "Untapping Shorikai requires it to be crewed first; land timing and mana/setup remain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mu Yanling, Wind Rider",
+      "baselineRank": 14,
+      "label": "Excellent contextual fit",
+      "rationale": "Flying Vehicles and actual flying combat damage support the fleet plan.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 15,
+      "label": "Interesting / debatable",
+      "rationale": "Metalcraft is easy but Equipment density is small compared with Vehicle density.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Peacewalker Colossus",
+      "baselineRank": 16,
+      "label": "Excellent contextual fit",
+      "rationale": "Its paid activation animates another Vehicle and does not require that Vehicle to find crew.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mobilizer Mech",
+      "baselineRank": 17,
+      "label": "Excellent contextual fit",
+      "rationale": "After being crewed it can animate another actual Vehicle; the initial crew requirement remains necessary.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Etherium Sculptor",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "The actual high artifact/Vehicle density supplies a broad, directly applicable casting discount.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Mishra's Bauble",
+      "baselineRank": 19,
+      "label": "Interesting / debatable",
+      "rationale": "A cheap delayed cantrip is usable, but not a major fleet engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "vehicles",
+      "candidate": "Grafted Skullcap",
+      "baselineRank": 20,
+      "label": "False positive",
+      "rationale": "Compulsory hand loss opposes the draw/selection plan without broad recovery.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Elenda, the Dusk Rose",
+      "baselineRank": 1,
+      "label": "Excellent contextual fit",
+      "rationale": "Death/counter growth converts into more tokens for the established engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 1,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Evolution Witness",
+      "baselineRank": 2,
+      "label": "Excellent contextual fit",
+      "rationale": "Counters can produce recurring permanent value in the actual package.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 3,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Carrion Feeder",
+      "baselineRank": 3,
+      "label": "Excellent contextual fit",
+      "rationale": "Sacrificing bodies produces counters usable by the engine, with real costs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 5,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Temur Sabertooth",
+      "baselineRank": 4,
+      "label": "Interesting / debatable",
+      "rationale": "Recasting entry-value bodies is possible, but bouncing a grown creature resets counters and is not a sacrifice event.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Tireless Provisioner",
+      "baselineRank": 5,
+      "label": "Good obvious fit",
+      "rationale": "Real land drops supply resource tokens that can participate in the deck\u2019s token and sacrifice packages.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Teleportation Circle",
+      "baselineRank": 6,
+      "label": "Good obvious fit",
+      "rationale": "Actual artifact and creature entry effects provide repeatable value; blink is not credited as a death or token-preserving action.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Sifter of Skulls",
+      "baselineRank": 7,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken deaths produce additional sacrifice/mana bodies.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 4,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Cruel Celebrant",
+      "baselineRank": 8,
+      "label": "Excellent contextual fit",
+      "rationale": "The actual death events yield drain and life gain.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 6,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Pawn of Ulamog",
+      "baselineRank": 9,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken deaths yield more sacrifice/mana resources.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 7,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Puresteel Paladin",
+      "baselineRank": 10,
+      "label": "Interesting / debatable",
+      "rationale": "A free-Clamp equip interaction is possible but depends on a specific Equipment.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 8,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "The Prydwen, Steel Flagship",
+      "baselineRank": 11,
+      "label": "Good obvious fit",
+      "rationale": "Actual artifact entries generate bodies that Ghave can sacrifice.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 9,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Marionette Master",
+      "baselineRank": 12,
+      "label": "Excellent contextual fit",
+      "rationale": "Fabricate interacts with both counter and token packages, and real artifact deaths feed its power-based life loss.",
+      "engineExplanationIsNotGroundTruth": true,
+      "reviewOrigin": "new post-fix top-20 semantic desk review"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Pitiless Plunderer",
+      "baselineRank": 13,
+      "label": "Excellent contextual fit",
+      "rationale": "Creature deaths turn into mana that pays further engine actions.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 10,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Meren of Clan Nel Toth",
+      "baselineRank": 14,
+      "label": "Excellent contextual fit",
+      "rationale": "Actual sacrifice/death events enable creature recovery.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 11,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Hazoret's Monument",
+      "baselineRank": 15,
+      "label": "Weak",
+      "rationale": "The red discount is dead and cast looting is not the important counter/death conversion.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 2,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Rolling Hamsphere",
+      "baselineRank": 16,
+      "label": "Good obvious fit",
+      "rationale": "Crew is supported and attacks create bodies for sacrifice; setup still matters.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 12,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Parhelion II",
+      "baselineRank": 17,
+      "label": "Interesting / debatable",
+      "rationale": "It is an expensive delayed body source rather than an immediate core engine.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 13,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Midnight Reaper",
+      "baselineRank": 18,
+      "label": "Excellent contextual fit",
+      "rationale": "Nontoken creature deaths directly generate cards.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 14,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Rampaging Baloths",
+      "baselineRank": 19,
+      "label": "Good obvious fit",
+      "rationale": "Landfall bodies can feed real sacrifice/counter payoffs.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 15,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Mazirek, Kraul Death Priest",
+      "baselineRank": 20,
+      "label": "Excellent contextual fit",
+      "rationale": "Sacrifice events directly scale the established counter-bearing board.",
+      "engineExplanationIsNotGroundTruth": true,
+      "originalBaselineRank": 17,
+      "reviewOrigin": "unchanged 00c6be9 judgment"
+    }
+  ]
+}
