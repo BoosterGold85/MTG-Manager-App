@@ -1,3 +1,4 @@
+import type { DeckStrategyProfile } from "../dna/strategy";
 // Deck-relative conditions. A card only gets credit for an effect when actual cards in this deck reliably satisfy the
 // condition that effect needs ("Whenever you cast a colorless spell", "creature spell with power 4 or greater",
 // "+1/+1 counters are put on …"). The effect's share of the card's roles is scaled by that supply, and the cards that
@@ -340,5 +341,12 @@ const conditionCache = new WeakMap<CardMetadata, EffectCondition[]>();
 export function effectConditions(card: CardMetadata): EffectCondition[] {
   let known = conditionCache.get(card);
   if (!known) conditionCache.set(card, known = computeConditions(card));
+  return known;
+}
+
+const supplyIndexes = new WeakMap<DeckStrategyProfile, SupplyIndex>();
+export function sharedSupplyIndex(profile: DeckStrategyProfile): SupplyIndex {
+  let known=supplyIndexes.get(profile);
+  if(!known)supplyIndexes.set(profile,known=new SupplyIndex(profile.cards.map(c=>({card:c.card.card,quantity:c.card.quantity,commander:c.card.commander}))));
   return known;
 }

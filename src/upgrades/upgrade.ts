@@ -9,7 +9,7 @@ import type { DeckDna, DnaInputCard } from "../dna/engine";
 import type { RecommendationData } from "../synergy/recommendation";
 import type { AnswerTarget } from "../synergy/facts";
 import { deckCardFunction, needLabels } from "./cardFunction";
-import { SupplyIndex } from "./conditions";
+import { sharedSupplyIndex } from "./conditions";
 import type { CardFunction, EnginePieces, Need } from "./cardFunction";
 import type { CommanderBlueprint } from "./blueprint";
 import { baseline } from "./blueprint";
@@ -94,7 +94,7 @@ export interface DeckModel {
   utility: number;
   blueprint: CommanderBlueprint;
   /** The deck's cards as suppliers of conditions ("creature spells with power 4+"), shared by every evaluation. */
-  supply: SupplyIndex;
+  supply: ReturnType<typeof sharedSupplyIndex>;
 }
 export interface SwapResult {
   cut: string;
@@ -225,7 +225,7 @@ const linkOf = (rec: RecommendationData | undefined) => ({
 });
 /** The saved deck as a utility model; built once per deck revision. */
 export function buildDeckModel(dna: DeckDna, blueprint: CommanderBlueprint): DeckModel {
-  const supply = new SupplyIndex(dna.strategyProfile.cards.map((c) => ({ card: c.card.card, quantity: c.card.quantity, commander: c.card.commander })));
+  const supply = sharedSupplyIndex(dna.strategyProfile);
   const cards: DeckCardModel[] = dna.strategyProfile.cards.map((c) => {
     const input: DnaInputCard = c.card;
     const fn = deckCardFunction(input.card, supply);

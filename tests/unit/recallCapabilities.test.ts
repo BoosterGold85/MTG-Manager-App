@@ -186,11 +186,11 @@ it("recursion role redundancy compares covered target domains instead of unrelat
   expect(model.totals.roles.recursion).toBeGreaterThanOrEqual(5);
   expect(matchingRoleCount(model,"recursion",fn)).toBe(2);
 });
-it("retains all score weights and global limits from the approved baseline", async () => {
+it("uses documented v0.6.16 budgets while retaining global limits", async () => {
   const { SCORE_WEIGHTS, RECOMMENDATION_LIMITS } = await import("../../src/synergy/recommendation");
   const { BREW_WEIGHTS, BREW_BANDS } = await import("../../src/upgrades/brew");
-  expect(SCORE_WEIGHTS).toEqual({commander:0.2,theme:0.2,roleNeed:0.25,efficiency:0.2,curve:0.1,deckInteractions:0.05});
-  expect(BREW_WEIGHTS).toEqual({contextualSynergy:25,interaction:20,bridge:20,novelty:15,multiplicative:10,commander:5,role:5});
+  expect(SCORE_WEIGHTS).toEqual({commander:0.15,theme:0.15,roleNeed:0.25,efficiency:0.15,curve:0.05,deckInteractions:0.05});
+  expect(BREW_WEIGHTS).toEqual({contextualSynergy:20,interaction:20,bridge:10,novelty:5,deckSpecific:25,multiplicative:10,commander:5,role:5});
   expect(RECOMMENDATION_LIMITS).toEqual({profiles:4,cards:10000,excellent:80,excellentCap:79,materialSwapDelta:8});
   expect(BREW_BANDS.map(x=>x[0])).toEqual([85,70,50,0]);
 });

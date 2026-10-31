@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.16 — 2026-10-31 — Recommendation Ranking & Performance
+
+- Added bounded causal deck/package value, a deficit-aware generic utility ceiling and strategic engine redundancy protection. Documented weight changes and offline ablations; global bands/thresholds remain unchanged.
+- Constrained inaccessible same-name optional tutors and mandatory hand-loss utility without named-card exclusions or rewriting approved facts.
+- Reused canonical facts, profile/recipient views, supply indexes, conditioned functions and subtype scans; versioned caches distinguish scoring, semantics and deck contents.
+- Frozen recall: obvious 75%, hidden 83.3%, trap rejection 100%; assistant desk precision 79.2% at 10 and 71.7% at 20. Real holdout limitations remain; recommendation B, no new Brew work.
+- Preserved binder/import/ownership behavior. Added release metadata at `/version.json`. See docs/RECOMMENDATION-RANKING-v0.6.16.md and docs/VALIDATION-v0.6.16.md.
+
 ## 0.6.15 — 2026-10-30 — Recommendation Recall & Interaction Coverage
 
 - Completed the same frozen recall pass from 00c6be9: scoped semantic capabilities and verified ETB, copy, counter, artifact-tap, attachment and Vehicle relationships. No named-card lookup rules.

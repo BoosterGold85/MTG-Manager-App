@@ -28,6 +28,7 @@ export function inputFingerprint(card:CardMetadata) {
 }
 export function needsAnalysis(card:CardMetadata,existing:AutoAnalysis|undefined) {return !existing || existing.rulesetVersion!==RULESET_VERSION || existing.inputFingerprint!==inputFingerprint(card);}
 export function analyze(card:CardMetadata): AutoAnalysis {
+ const creatureTypes=creatureTypeSignals(card);
  const identity=cardIdentity(card); const assignments=new Map<string,Assignment>();
  const faces=card.cardFaces?.length ? card.cardFaces : [{name:card.name,oracleText:card.oracleText,typeLine:card.typeLine,keywords:card.keywords}];
  for (const [index,face] of faces.entries()) {
@@ -36,7 +37,7 @@ export function analyze(card:CardMetadata): AutoAnalysis {
   // Keywords are canonical semantic input even when omitted from face text.
   const keywordText=c.keywords.filter(k=>!c.text.toLowerCase().includes(k.toLowerCase())).join('. ');
   const contexts=[c,...(keywordText?[{...c,text:keywordText,field:'keywords'}]:[])];
-  for(const context of contexts) for(const hit of [...rules.flatMap(rule=>rule(context)), ...typalHits({...card,oracleText:context.text,cardFaces:undefined,typeLine:c.type})]) {
+  for(const context of contexts) for(const hit of [...rules.flatMap(rule=>rule(context)), ...typalHits({...card,oracleText:context.text,cardFaces:undefined,typeLine:c.type},context===c&&!card.cardFaces?.length?creatureTypes:undefined)]) {
    if(!tagDefinition(hit.tagId)) continue;
    const evidence={field:hit.field || context.field,snippet:hit.snippet,reason:hit.reason,...(context.face?{face:context.face}:{})};
    const existing=assignments.get(hit.tagId);
@@ -46,7 +47,7 @@ export function analyze(card:CardMetadata): AutoAnalysis {
    } else assignments.set(hit.tagId,{cardIdentity:identity,tagId:hit.tagId,source:hit.source||'rule',confidence:hit.confidence??1,evidence:[evidence],rulesetVersion:RULESET_VERSION});
   }
  }
- return {inputFingerprint:inputFingerprint(card),cardIdentity:identity,rulesetVersion:RULESET_VERSION,assignments:[...assignments.values()].sort((a,b)=>a.tagId.localeCompare(b.tagId)),creatureTypes:creatureTypeSignals(card)};
+ return {inputFingerprint:inputFingerprint(card),cardIdentity:identity,rulesetVersion:RULESET_VERSION,assignments:[...assignments.values()].sort((a,b)=>a.tagId.localeCompare(b.tagId)),creatureTypes};
 }
 export function effectiveAssignments(auto:AutoAnalysis|undefined, override:Override|undefined): Assignment[] {
  const hidden=new Set(override?.suppressed || []);

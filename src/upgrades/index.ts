@@ -2,6 +2,7 @@
 //   Mode 1 (Build Around My Commander): Commander Fit + Build Priority from a Commander Blueprint.
 //   Mode 2 (Improve My Current Deck):   Upgrade Value from the best one-for-one swap.
 // Derived, read-only and cached per saved revision; nothing here writes a deck or moves a copy.
+import { RANKING_VERSION } from "../synergy/deckSpecific";
 import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
 import { candidateScorer, deckDnaCache, deckDnaInput } from "../dna/engine";
@@ -20,7 +21,7 @@ import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
 
-export const UPGRADES_VERSION = "0.6.15";
+export const UPGRADES_VERSION = "0.6.16";
 /** A deck needs most of its 99 before "Improve My Current Deck" can simulate meaningful swaps. */
 export const MIN_CURRENT_DECK_CARDS = 60;
 export interface BuildCandidate extends OwnedCandidateGroup {
@@ -37,7 +38,7 @@ function memo<T>(state: CollectionState, key: string, compute: () => T): T {
   if (!entries.has(key)) entries.set(key, compute());
   return entries.get(key) as T;
 }
-const deckKey = (deck: Deck) => `${deck.id}:${deck.modifiedAt}:${JSON.stringify(deck.commanders.map((c) => c.scryfallId))}`;
+const deckKey = (deck: Deck) => `${RANKING_VERSION}:${deck.id}:${deck.modifiedAt}:${JSON.stringify([deck.commanders,deck.entries,deck.assignments])}`;
 export function commanderBlueprint(state: CollectionState, deck: Deck): CommanderBlueprint {
   return memo(state, `blueprint:${deckKey(deck)}`, () =>
     buildCommanderBlueprint(deckDnaInput(state, deck).cards.filter((c) => c.commander)),

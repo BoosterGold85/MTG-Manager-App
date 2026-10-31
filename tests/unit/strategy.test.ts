@@ -380,7 +380,7 @@ it("explicit additional trigger and nonlegendary copy support are recognized wit
     ),
   );
   expect(double.debug.commanderSynergy).toBeGreaterThanOrEqual(20);
-  expect(double.debug.archetypeFit).toBeGreaterThanOrEqual(20);
+  expect(double.debug.archetypeFit).toBeGreaterThanOrEqual(15);
   const copy = score(
     scoringCard(
       "Nonlegendary Copy",

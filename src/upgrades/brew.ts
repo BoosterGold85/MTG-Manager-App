@@ -1,3 +1,5 @@
+import { rankingConstraints } from "../synergy/rankingConstraints";
+import { RANKING_POLICY, strategicRedundancy } from "../synergy/deckSpecific";
 // Brew Score v1: "How interesting and unusually useful is this card in THIS deck?" A separate lens from Synergy
 // ("how strongly does it support the deck?"). Deck-relative only: every component reads this deck's own packages
 // (Deck DNA themes and their contributing cards), typed links to its actual cards and the condition suppliers from
@@ -14,7 +16,7 @@ import { families } from "../dna/families";
 
 export const BREW_VERSION = "1.0.1";
 /** Maximum positive points per component (total 100). Penalties are signed and the result is clamped to 0–100. */
-export const BREW_WEIGHTS = Object.freeze({ contextualSynergy: 25, interaction: 20, bridge: 20, novelty: 15, multiplicative: 10, commander: 5, role: 5 });
+export const BREW_WEIGHTS = Object.freeze({ contextualSynergy: 20, interaction: 20, bridge: 10, novelty: 5, deckSpecific: 25, multiplicative: 10, commander: 5, role: 5 });
 export type BrewBand = "Hidden Gem" | "Interesting Brew" | "Some Brew Potential" | "Conventional / Weak Brew Fit";
 export const BREW_BANDS: [number, BrewBand][] = [[85, "Hidden Gem"], [70, "Interesting Brew"], [50, "Some Brew Potential"], [0, "Conventional / Weak Brew Fit"]];
 export const brewBand = (score: number) => BREW_BANDS.find(([min]) => score >= min)![1];
@@ -149,6 +151,8 @@ function relations(ctx: BrewContext, synergy: CardSynergy, fn: CardFunction) {
 export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: CardSynergy): BrewResult {
   const fn = deckCardFunction(card, ctx.model.supply);
   const rec = synergy.recommendation;
+  const specific = rec?.deckSpecific;
+  const specificPoints = RANKING_POLICY.specific ? BREW_WEIGHTS.deckSpecific * (specific?.points || 0) / 30 : 0;
   const text = textOf(card);
   const why: BrewLine[] = [];
   const negatives: string[] = [];
@@ -234,7 +238,7 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   // H–K. Penalties.
   if (bridge && bridge.existing.length >= 3) penalties.push({ name: "Redundancy", points: -Math.min(8, (bridge.existing.length - 2) * 2) });
   const main = Object.entries(fn.roles).sort((a, b) => (b[1] || 0) - (a[1] || 0))[0]?.[0] as Need | undefined;
-  if (main && main !== "lands" && ctx.model.targets[main] > 0 && matchingRoleCount(ctx.model, main, fn) > 1.5 * ctx.model.targets[main]) {
+  if (main && main !== "lands" && ctx.model.targets[main] > 0 && !(RANKING_POLICY.strategicRedundancy && specific && strategicRedundancy(fn,specific)) && matchingRoleCount(ctx.model, main, fn) > 1.5 * ctx.model.targets[main]) {
     penalties.push({ name: "Redundancy", points: -5 });
     negatives.push(`This deck already has plenty of ${needLabels[main].toLowerCase()} (${matchingRoleCount(ctx.model, main, fn).toFixed(1)} / ${ctx.model.targets[main]}).`);
   }
@@ -261,6 +265,7 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   }
   const components = [
     { name: "Contextual synergy", points: contextual },
+    { name: "Deck-specific value", points: specificPoints },
     { name: "Interaction quality", points: interaction },
     { name: "Bridge strength", points: bridgePoints },
     { name: "Novelty", points: novelty },
@@ -269,8 +274,16 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
     { name: "Role value", points: rolePoints },
   ].map((c) => ({ name: c.name, points: Math.round(c.points * 10) / 10 }));
   const raw = components.reduce((n, c) => n + c.points, 0) + penalties.reduce((n, p) => n + p.points, 0);
-  const score = Math.max(0, Math.min(100, Math.round(raw)));
+  const risks=rankingConstraints(card,fn.facts,ctx.dna.strategyProfile);
+  for(const risk of risks.penalties)negatives.push(risk.reason);
+  const genericCap = RANKING_POLICY.utilityCap && specific && specific.quality < 0.7 && (rec?.commander.score || 0)<20 ? 45 + 15*specific.neededRole : 100;
+  if(raw>genericCap) negatives.push("General utility is capped: no strong causal package relationship was verified.");
+  const ceiling=Math.min(genericCap,risks.penalties.length ? 55-risks.penalties.reduce((n,p)=>n+p.points,0) : 100,100);
+  const adjustment=Math.min(0,ceiling-raw);
+  if(adjustment<0)penalties.push({name:risks.penalties.length?"Conditional utility ceiling":"Generic utility cap",points:Math.round(adjustment*10)/10});
+  const score = Math.round(Math.max(0,Math.min(ceiling,raw)));
   const band = brewBand(score);
+  if(specific && specificPoints>0)why.push({title:"Deck-specific value",text:specific.evidence.slice(0,3).join(" ")});
   const confidence = ctx.confidence === "Low" || fn.confidence === "Low" ? "Low" : ctx.confidence === "Medium" || fn.confidence === "Medium" ? "Medium" : "High";
   const headline = bridge ? `Connects ${bridge.from} → ${bridge.to}` : links.length ? `Works with ${list(links.map((l) => l.name), 2)}` : fed.length ? `Fed by ${list(fed[0].suppliers, 2)}` : "No unusual interaction in this deck";
   // The headline already names the bridge, so the summary starts with its evidence.

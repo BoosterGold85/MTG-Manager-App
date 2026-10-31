@@ -395,7 +395,7 @@ const listNames = (names: string[]) => (names.length > 3 ? `${names.slice(0, 3).
  * credit only in proportion to the deck cards that reliably satisfy it; with fewer than two suppliers it earns none.
  * Unconditional abilities are unaffected. Without a supply index this is the context-free card function.
  */
-export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): CardFunction {
+function computeDeckCardFunction(card: CardMetadata, supply?: SupplyIndex): CardFunction {
   if (!supply) return cardFunction(card);
   const base = conditionedFunction(card, supply);
   const semantic = capabilities(card);
@@ -512,4 +512,14 @@ function conditionedFunction(card: CardMetadata, supply: SupplyIndex): CardFunct
     confidence,
     conditions: credits,
   };
+}
+
+const conditionedCache = new WeakMap<SupplyIndex, WeakMap<CardMetadata, CardFunction>>();
+export function deckCardFunction(card: CardMetadata, supply?: SupplyIndex): CardFunction {
+  if(!supply)return cardFunction(card);
+  let cards=conditionedCache.get(supply);
+  if(!cards)conditionedCache.set(supply,cards=new WeakMap());
+  let known=cards.get(card);
+  if(!known)cards.set(card,known=computeDeckCardFunction(card,supply));
+  return known;
 }

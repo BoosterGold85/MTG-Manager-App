@@ -1,3 +1,4 @@
+import { RANKING_VERSION } from "../../../src/synergy/deckSpecific";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { normalizeCard } from "../../../src/import/scryfall";
@@ -259,9 +260,9 @@ export function runCorpus(reviews: FailureReview[] = []) {
     missed = results.flatMap((r) => r.missed);
   return {
     baseline: "0f90fff",
-    evaluatedRevision: process.env.RECALL_REVISION || "working tree from 00c6be9",
+    evaluatedRevision: process.env.RECALL_REVISION || `working tree v${RANKING_VERSION}`,
     engine:
-      "production v0.6.15 semantic/interaction corrections; original score weights and fixed expectations unchanged",
+      `production v${RANKING_VERSION}; frozen expectations unchanged`,
     snapshotHashes: Object.fromEntries(
       ["fixed-candidates.json", "fixed-decks.json", "cards.scryfall.json"].map(
         (file) => [

@@ -43,6 +43,11 @@ Build the manager first; add intelligence in layers. Artwork and one-handed brow
 
 The v0.1.x exit condition is a coherent collection → detail → back experience that people want to browse on a phone. Collect visual/touch feedback and freeze the binder before beginning import work. Minor releases add a capability layer; patches polish the existing layer. No future-roadmap feature may be slipped into a patch.
 
-### 0.6.15 — Current: Recommendation Recall & Interaction Coverage
+### 0.6.15 — Completed: Recommendation Recall & Interaction Coverage
 
 The frozen pass is complete with targeted semantic, interaction and condition/profile fixes. Score weights and thresholds are preserved. Final evidence recommends B: accuracy/ordering and cold analysis still need work before new Brew Score implementation. Existing v0.6.13 lens is preserved; this pass adds no Brew functionality. See [the completed pass](docs/RECOMMENDATION-RECALL-COMPLETE.md). No later phase has begun.
+
+
+### 0.6.16 — Current: Recommendation Ranking & Performance
+
+Bounded causal value, strategic redundancy protection and cold-analysis reuse meet the constructed ranking targets. Preserve the frozen corpus and inspect the full [report](docs/RECOMMENDATION-RANKING-v0.6.16.md). Broader holdout false positives and synchronous mobile work remain. Final recommendation B: validate this release manually before a separately authorized accuracy/responsiveness pass. No Brew Score implementation has begun.

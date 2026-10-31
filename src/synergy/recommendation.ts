@@ -1,3 +1,6 @@
+import { rankingConstraints } from "./rankingConstraints";
+import { deckSpecificValue, RANKING_POLICY, RANKING_VERSION } from "./deckSpecific";
+import type { DeckSpecificValue } from "./deckSpecific";
 import { stripReminderText } from "../utils/rulesText";
 import type { DnaInputCard } from "../dna/engine";
 import type {
@@ -9,7 +12,7 @@ import type {
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
 import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
-import { conditionFactor, effectConditions, SupplyIndex, withoutLines } from "../upgrades/conditions";
+import { conditionFactor, effectConditions, sharedSupplyIndex, withoutLines } from "../upgrades/conditions";
 import { capabilities, netCardDraw, linkedGraveyardReturn, recursionOverlaps } from "./capabilities";
 import { withoutUltimates } from "../upgrades/cardFunction";
 import type { CardFacts, Scope, TypedRole } from "./facts";
@@ -18,11 +21,11 @@ export const RECOMMENDATION_VERSION = "0.6.15";
 // Calibrated from the proposed starting weights: needed, efficient interaction
 // must be able to reach Worth Considering without invented tribal synergy.
 export const SCORE_WEIGHTS = Object.freeze({
-  commander: 0.2,
-  theme: 0.2,
+  commander: 0.15,
+  theme: 0.15,
   roleNeed: 0.25,
-  efficiency: 0.2,
-  curve: 0.1,
+  efficiency: 0.15,
+  curve: 0.05,
   deckInteractions: 0.05,
 });
 export const RECOMMENDATION_LIMITS = Object.freeze({
@@ -41,6 +44,7 @@ export interface RecommendationEvidence {
   penalties: string[];
 }
 export interface RecommendationData {
+  deckSpecific: DeckSpecificValue;
   facts: CardFacts;
   confidence: Confidence;
   confidenceReasons: string[];
@@ -525,6 +529,21 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
         sacrificeOutlet,
       };
     }
+const descriptorCache = new WeakMap<DnaInputCard,ReturnType<typeof describeRelationships>>();
+function describeRelationships(input:DnaInputCard) {
+ const facts=factsOf(input),text=textOf(input);
+ return {facts,text,wantsDiscard:wantsDiscard(facts),enablesDiscard:enablesDiscard(facts),recursion:capabilities(input.card).recursion,
+ graveyardSetup:/\bmill (?:\w+|\d+) cards|discard (?:a|one|two) cards?/i.test(text),
+ blink:/exile[^.\n]*(?:creature|permanent)[^.\n]*(?:return|then)[^.\n]*battlefield/i.test(text),
+ ownEtb:facts.faces.some(face=>face.cardTypes.includes("Creature")&&face.triggers.some(t=>/^When (?:this creature|this permanent)/i.test(t)||t.startsWith(`When ${face.name} enters`))),
+ counterSource:/(?:put|enters?)[^.\n]*\+1\/\+1 counter|twice[^.\n]*counters?|counters?[^.\n]*twice/i.test(text),proliferate:/proliferate/i.test(text)};
+}
+function relationshipDescriptor(input:DnaInputCard){let known=descriptorCache.get(input);if(!known)descriptorCache.set(input,known=describeRelationships(input));return known;}
+function cachedSourceEvents(source: DnaInputCard): SourceEvents {
+  let events=inputEvents.get(source);
+  if(!events)inputEvents.set(source,events=sourceEvents(source));
+  return events;
+}
 function verifies(
   receiver: CommanderSynergyTag,
   source: DnaInputCard,
@@ -690,10 +709,8 @@ export function recommendationBand(score: number) {
               ? "Weak Fit"
               : "Poor Fit";
 }
-const supplies = new WeakMap<DeckStrategyProfile, SupplyIndex>();
 function deckRelativeInput(profile: DeckStrategyProfile, input: DnaInputCard): { input: DnaInputCard; notes: string[] } {
-  let supply = supplies.get(profile);
-  if (!supply) supplies.set(profile, (supply = new SupplyIndex(profile.cards.map((c) => ({ card: c.card.card, quantity: c.card.quantity, commander: c.card.commander })))));
+  const supply=sharedSupplyIndex(profile);
   const notes: string[] = [];
   const dropped: string[] = [];
   for (const condition of effectConditions(input.card)) {
@@ -711,7 +728,7 @@ export function scoreRecommendation(
   input: DnaInputCard,
 ): StrategyScore {
   const state = stateFor(profile),
-    key = keyOf(input),
+    key = RANKING_VERSION + ":" + keyOf(input),
     cached = state.scores.get(key);
   if (cached) return cached;
   const f = factsOf(input),
@@ -720,16 +737,14 @@ export function scoreRecommendation(
   // Role credit follows the same rule as Upgrades: an ability whose condition this deck can't feed (or an ultimate
   // beyond starting loyalty) fills no role here.
   const gated = deckRelativeInput(profile, input);
-  const rs = gated.input === input ? actualRoles(input, f) : computeRoles(gated.input, extractCardFacts(gated.input.card));
+  const constraints = rankingConstraints(input.card,f,profile);
+  const rs = { ...(gated.input === input ? actualRoles(input, f) : computeRoles(gated.input, extractCardFacts(gated.input.card))) };
+  if(constraints.unavailableTutor)delete rs.tutors;
   const relationships = mechanicalRelationships(
     profile,
     input,
     verifies,
-    (source) => {
-      let events = inputEvents.get(source);
-      if (!events) inputEvents.set(source, (events = sourceEvents(source)));
-      return events;
-    },
+    cachedSourceEvents,
   );
   const addRelationship = (
     other: (typeof profile.cards)[number],
@@ -751,57 +766,37 @@ export function scoreRecommendation(
         evidence: [detail],
       });
   };
+  const ownDescriptor=relationshipDescriptor(input);
   for (const other of profile.cards) {
     if (other.card.identity === input.identity) continue;
-    const otherText = textOf(other.card),
-      otherFacts = factsOf(other.card);
-    if (wantsDiscard(f) && enablesDiscard(otherFacts))
+    const otherDescriptor=relationshipDescriptor(other.card);
+    const otherText=otherDescriptor.text,otherFacts=otherDescriptor.facts;
+    if (ownDescriptor.wantsDiscard && otherDescriptor.enablesDiscard)
       addRelationship(
         other,
         other.card.commander ? 1 : 0.8,
         `Discard enabler: ${other.card.card.name} lets you discard ${input.card.name} on purpose (${discardLabel(f)}): ${otherFacts.faces.flatMap((face) => face.discards).find((d) => d.who === "you" || d.who === "each_player")?.text || otherText}`,
       );
-    if (enablesDiscard(f) && wantsDiscard(otherFacts))
+    if (ownDescriptor.enablesDiscard && otherDescriptor.wantsDiscard)
       addRelationship(
         other,
         other.card.commander ? 1 : 0.8,
         `Discard enabler: ${input.card.name} lets you discard ${other.card.card.name} on purpose (${discardLabel(otherFacts)}): ${f.faces.flatMap((face) => face.discards).find((d) => d.who === "you" || d.who === "each_player")?.text || text}`,
       );
-    if (
-      (capabilities(input.card).recursion &&
-        /\bmill (?:\w+|\d+) cards|discard (?:a|one|two) cards?/i.test(
-          otherText,
-        )) ||
-      (capabilities(other.card.card).recursion &&
-        /\bmill (?:\w+|\d+) cards|discard (?:a|one|two) cards?/i.test(text))
+    if ((ownDescriptor.recursion && otherDescriptor.graveyardSetup) || (otherDescriptor.recursion && ownDescriptor.graveyardSetup)
     )
       addRelationship(
         other,
         0.85,
         `Graveyard setup / return relationship: ${input.card.name} ↔ ${other.card.card.name}; ${text}; ${otherText}`,
       );
-    const blink =
-      /exile[^.\n]*(?:creature|permanent)[^.\n]*(?:return|then)[^.\n]*battlefield/i;
-    const ownEtb = f.faces.some(
-      (face) =>
-        face.cardTypes.includes("Creature") &&
-        face.triggers.some(
-          (t) =>
-            /^When (?:this creature|this permanent)/i.test(t) ||
-            t.startsWith(`When ${face.name} enters`),
-        ),
-    );
-    if (other.card.commander && blink.test(otherText) && ownEtb)
+    if (other.card.commander && otherDescriptor.blink && ownDescriptor.ownEtb)
       addRelationship(
         other,
         1,
         `Reusable creature ETB: ${other.card.card.name} can reuse ${input.card.name}'s entry ability: ${text}; ${otherText}`,
       );
-    const counterSource =
-      /(?:put|enters?)[^.\n]*\+1\/\+1 counter|twice[^.\n]*counters?|counters?[^.\n]*twice/i;
-    if (
-      (/proliferate/i.test(otherText) && counterSource.test(text)) ||
-      (/proliferate/i.test(text) && counterSource.test(otherText))
+    if ((otherDescriptor.proliferate && ownDescriptor.counterSource) || (ownDescriptor.proliferate && otherDescriptor.counterSource)
     )
       addRelationship(
         other,
@@ -1253,6 +1248,9 @@ export function scoreRecommendation(
     eligibleReasons.push(
       "Extremely high role need, excellent efficiency and no resolved conflict.",
     );
+  for(const risk of constraints.penalties)penalize(risk.name,risk.points,risk.reason);
+  const deckSpecific = deckSpecificValue(profile,input,relationships);
+  if (RANKING_POLICY.specific) components.push({label:"Deck-specific value",points:Math.round(20*deckSpecific.points/30)});
   let raw =
     components.reduce((n, c) => n + c.points, 0) +
     penalties.reduce((n, p) => n + p.value, 0);
@@ -1384,6 +1382,7 @@ export function scoreRecommendation(
     conflicts: negatives,
     explanation,
     recommendation: {
+      deckSpecific,
       facts: f,
       confidence,
       confidenceReasons,
@@ -1395,7 +1394,7 @@ export function scoreRecommendation(
         excellentEligible: eligibleReasons.length > 0,
         reasons: eligibleReasons,
       },
-      componentCaps: Object.values(SCORE_WEIGHTS).map((w) => w * 100),
+      componentCaps: [...Object.values(SCORE_WEIGHTS).map((w) => w * 100),20],
       roleNeedSeverity: roleSeverity,
       efficiency,
       links: relationships.map((r) => ({

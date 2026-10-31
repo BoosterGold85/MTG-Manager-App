@@ -1,0 +1,2870 @@
+{
+  "baseline": "919407a",
+  "author": "Pre-change assistant evidence triage; no expectation changes",
+  "counts": {
+    "SCORING UNDERWEIGHT": 4,
+    "GENERIC CARD OVERWEIGHT": 3,
+    "ROLE VALUE ERROR": 3,
+    "PACKAGE VALUE ERROR": 6,
+    "REDUNDANCY PENALTY ERROR": 2,
+    "BRIDGE / MULTI-PACKAGE VALUE MISSING": 1
+  },
+  "rows": [
+    {
+      "deck": "counters",
+      "candidate": "Winding Constrictor",
+      "classification": "SCORING UNDERWEIGHT",
+      "rank": 45,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 11.5
+        },
+        {
+          "name": "Interaction quality",
+          "points": 15.7
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 4.6
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 6.3
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "counters:+1/+1:Creature:board",
+          "adds": [],
+          "needs": "cards that put +1/+1 counters",
+          "line": "If one or more counters would be put on an artifact or creature you control, that many plus one of each of those kinds of counters are put on that permanent instead.",
+          "understood": true,
+          "supply": 5,
+          "suppliers": [
+            "Good-Fortune Unicorn",
+            "Forgotten Ancient",
+            "Renata, Called to the Hunt",
+            "Rishkar, Peema Renegade",
+            "Master Biomancer"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 5,
+          "eligibleMainDeckCopies": 5,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "5 cards here feed its \"cards that put +1/+1 counters\" ability: Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt, Rishkar, Peema Renegade and 1 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Good-Fortune Unicorn, Forgotten Ancient, Mask of Memory, Master Biomancer and 3 more."
+        },
+        {
+          "title": "Copy support",
+          "text": "3 cards here can copy it, and each copy works independently: Clone, Spark Double, Clever Impersonator."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Fathom Mage",
+          76
+        ],
+        [
+          "Carrion Feeder",
+          76
+        ],
+        [
+          "Evolution Witness",
+          74
+        ],
+        [
+          "Elenda, the Dusk Rose",
+          73
+        ],
+        [
+          "Ghave, Guru of Spores",
+          72
+        ],
+        [
+          "Soulherder",
+          70
+        ],
+        [
+          "Shimmer Dragon",
+          69
+        ],
+        [
+          "Thopter Spy Network",
+          61
+        ],
+        [
+          "Avenger of Zendikar",
+          58
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          58
+        ],
+        [
+          "Temur Sabertooth",
+          58
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          57
+        ],
+        [
+          "Tireless Provisioner",
+          56
+        ],
+        [
+          "Puresteel Paladin",
+          55
+        ],
+        [
+          "Rampaging Baloths",
+          53
+        ],
+        [
+          "Marionette Master",
+          52
+        ],
+        [
+          "Teleportation Circle",
+          52
+        ],
+        [
+          "Corpsejack Menace",
+          49
+        ],
+        [
+          "Scute Swarm",
+          49
+        ],
+        [
+          "Chrome Host Seedshark",
+          49
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "counters",
+      "candidate": "Inspiring Call",
+      "classification": "GENERIC CARD OVERWEIGHT",
+      "rank": 25,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 6.6
+        },
+        {
+          "name": "Bridge strength",
+          "points": 12
+        },
+        {
+          "name": "Novelty",
+          "points": 15
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 2.3
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "counters:+1/+1:Creature:board",
+          "adds": [
+            "cardAdvantage",
+            "protection"
+          ],
+          "needs": "cards that put +1/+1 counters",
+          "line": "Draw a card for each creature you control with a +1/+1 counter on it. Those creatures gain indestructible until end of turn.",
+          "understood": true,
+          "supply": 5,
+          "suppliers": [
+            "Good-Fortune Unicorn",
+            "Forgotten Ancient",
+            "Renata, Called to the Hunt",
+            "Rishkar, Peema Renegade",
+            "Master Biomancer"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 5,
+          "eligibleMainDeckCopies": 5,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Bridge",
+          "text": "Counters \u2192 Card Advantage. 5 cards here supply it (Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt and 2 more); Inspiring Call turns it into Card Advantage value."
+        },
+        {
+          "title": "Interaction",
+          "text": "5 cards here feed its \"cards that put +1/+1 counters\" ability: Good-Fortune Unicorn, Forgotten Ancient, Renata, Called to the Hunt, Rishkar, Peema Renegade and 1 more."
+        },
+        {
+          "title": "Novelty",
+          "text": "Nothing else here connects Counters and Card Advantage."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds protection, which this deck is short of (1.4 / 4)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Fathom Mage",
+          76
+        ],
+        [
+          "Carrion Feeder",
+          76
+        ],
+        [
+          "Evolution Witness",
+          74
+        ],
+        [
+          "Elenda, the Dusk Rose",
+          73
+        ],
+        [
+          "Ghave, Guru of Spores",
+          72
+        ],
+        [
+          "Soulherder",
+          70
+        ],
+        [
+          "Shimmer Dragon",
+          69
+        ],
+        [
+          "Thopter Spy Network",
+          61
+        ],
+        [
+          "Avenger of Zendikar",
+          58
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          58
+        ],
+        [
+          "Temur Sabertooth",
+          58
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          57
+        ],
+        [
+          "Tireless Provisioner",
+          56
+        ],
+        [
+          "Puresteel Paladin",
+          55
+        ],
+        [
+          "Rampaging Baloths",
+          53
+        ],
+        [
+          "Marionette Master",
+          52
+        ],
+        [
+          "Teleportation Circle",
+          52
+        ],
+        [
+          "Corpsejack Menace",
+          49
+        ],
+        [
+          "Scute Swarm",
+          49
+        ],
+        [
+          "Chrome Host Seedshark",
+          49
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Living Death",
+      "classification": "ROLE VALUE ERROR",
+      "rank": 34,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 12
+        },
+        {
+          "name": "Interaction quality",
+          "points": 9.9
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 3
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds recursion, which this deck is short of (2.0 / 5)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Tireless Provisioner",
+          62
+        ],
+        [
+          "Temur Sabertooth",
+          57
+        ],
+        [
+          "Rampaging Baloths",
+          56
+        ],
+        [
+          "Marionette Master",
+          56
+        ],
+        [
+          "Avenger of Zendikar",
+          54
+        ],
+        [
+          "Scute Swarm",
+          54
+        ],
+        [
+          "Rolling Hamsphere",
+          53
+        ],
+        [
+          "Bastion of Remembrance",
+          52
+        ],
+        [
+          "Sifter of Skulls",
+          49
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          49
+        ],
+        [
+          "Pawn of Ulamog",
+          47
+        ],
+        [
+          "Pitiless Plunderer",
+          43
+        ],
+        [
+          "Woe Strider",
+          42
+        ],
+        [
+          "Lotus Cobra",
+          41
+        ],
+        [
+          "Hazoret's Monument",
+          39
+        ],
+        [
+          "Smuggler's Copter",
+          39
+        ],
+        [
+          "Myr Battlesphere",
+          38
+        ],
+        [
+          "Ophiomancer",
+          38
+        ],
+        [
+          "Hammer of Nazahn",
+          37
+        ],
+        [
+          "Desolation Twin",
+          34
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Animate Dead",
+      "classification": "ROLE VALUE ERROR",
+      "rank": 24,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 16.3
+        },
+        {
+          "name": "Interaction quality",
+          "points": 12.6
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 3
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post and 2 more."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds recursion, which this deck is short of (2.0 / 5)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Tireless Provisioner",
+          62
+        ],
+        [
+          "Temur Sabertooth",
+          57
+        ],
+        [
+          "Rampaging Baloths",
+          56
+        ],
+        [
+          "Marionette Master",
+          56
+        ],
+        [
+          "Avenger of Zendikar",
+          54
+        ],
+        [
+          "Scute Swarm",
+          54
+        ],
+        [
+          "Rolling Hamsphere",
+          53
+        ],
+        [
+          "Bastion of Remembrance",
+          52
+        ],
+        [
+          "Sifter of Skulls",
+          49
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          49
+        ],
+        [
+          "Pawn of Ulamog",
+          47
+        ],
+        [
+          "Pitiless Plunderer",
+          43
+        ],
+        [
+          "Woe Strider",
+          42
+        ],
+        [
+          "Lotus Cobra",
+          41
+        ],
+        [
+          "Hazoret's Monument",
+          39
+        ],
+        [
+          "Smuggler's Copter",
+          39
+        ],
+        [
+          "Myr Battlesphere",
+          38
+        ],
+        [
+          "Ophiomancer",
+          38
+        ],
+        [
+          "Hammer of Nazahn",
+          37
+        ],
+        [
+          "Desolation Twin",
+          34
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "graveyard",
+      "candidate": "Tortured Existence",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 29,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 16.8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 9.9
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 3
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Jalum Tome, Mask of Memory, Stitcher's Supplier, Trading Post."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds recursion, which this deck is short of (2.0 / 5)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Tireless Provisioner",
+          62
+        ],
+        [
+          "Temur Sabertooth",
+          57
+        ],
+        [
+          "Rampaging Baloths",
+          56
+        ],
+        [
+          "Marionette Master",
+          56
+        ],
+        [
+          "Avenger of Zendikar",
+          54
+        ],
+        [
+          "Scute Swarm",
+          54
+        ],
+        [
+          "Rolling Hamsphere",
+          53
+        ],
+        [
+          "Bastion of Remembrance",
+          52
+        ],
+        [
+          "Sifter of Skulls",
+          49
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          49
+        ],
+        [
+          "Pawn of Ulamog",
+          47
+        ],
+        [
+          "Pitiless Plunderer",
+          43
+        ],
+        [
+          "Woe Strider",
+          42
+        ],
+        [
+          "Lotus Cobra",
+          41
+        ],
+        [
+          "Hazoret's Monument",
+          39
+        ],
+        [
+          "Smuggler's Copter",
+          39
+        ],
+        [
+          "Myr Battlesphere",
+          38
+        ],
+        [
+          "Ophiomancer",
+          38
+        ],
+        [
+          "Hammer of Nazahn",
+          37
+        ],
+        [
+          "Desolation Twin",
+          34
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "aristocrats",
+      "candidate": "Ashnod's Altar",
+      "classification": "REDUNDANCY PENALTY ERROR",
+      "rank": 29,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 10
+        },
+        {
+          "name": "Interaction quality",
+          "points": 15.1
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [
+        {
+          "name": "Redundancy",
+          "points": -5
+        }
+      ],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Bastion of Remembrance, Blood Artist, Cruel Celebrant, Midnight Reaper and 3 more."
+        }
+      ],
+      "competingTop20": [
+        [
+          "The Prydwen, Steel Flagship",
+          67
+        ],
+        [
+          "Rolling Hamsphere",
+          59
+        ],
+        [
+          "Teleportation Circle",
+          53
+        ],
+        [
+          "Sifter of Skulls",
+          52
+        ],
+        [
+          "Pawn of Ulamog",
+          51
+        ],
+        [
+          "Marionette Master",
+          51
+        ],
+        [
+          "Puresteel Paladin",
+          47
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          42
+        ],
+        [
+          "Parhelion II",
+          41
+        ],
+        [
+          "Elenda, the Dusk Rose",
+          36
+        ],
+        [
+          "Hazoret's Monument",
+          36
+        ],
+        [
+          "Sigarda's Aid",
+          36
+        ],
+        [
+          "Smuggler's Copter",
+          36
+        ],
+        [
+          "Hammer of Nazahn",
+          35
+        ],
+        [
+          "Pitiless Plunderer",
+          34
+        ],
+        [
+          "Ardenn, Intrepid Archaeologist",
+          33
+        ],
+        [
+          "Brass Squire",
+          33
+        ],
+        [
+          "Herald's Horn",
+          32
+        ],
+        [
+          "Grafted Skullcap",
+          31
+        ],
+        [
+          "Mishra's Bauble",
+          31
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "blink",
+      "candidate": "Peregrine Drake",
+      "classification": "SCORING UNDERWEIGHT",
+      "rank": 70,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 7
+        },
+        {
+          "name": "Interaction quality",
+          "points": 11
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 6
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [
+        {
+          "name": "Redundancy",
+          "points": -5
+        }
+      ],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Ephemerate, Mask of Memory, Momentary Blink, Rogue's Gloves and 1 more."
+        },
+        {
+          "title": "Repeat support",
+          "text": "5 blink effects here can reuse its entry ability: Ephemerate, Soulherder, Momentary Blink and 2 more."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          62
+        ],
+        [
+          "Thopter Spy Network",
+          61
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          55
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          54
+        ],
+        [
+          "Teleportation Circle",
+          53
+        ],
+        [
+          "Avenger of Zendikar",
+          51
+        ],
+        [
+          "Archmage Emeritus",
+          51
+        ],
+        [
+          "Tireless Provisioner",
+          50
+        ],
+        [
+          "Temur Sabertooth",
+          50
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          48
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          48
+        ],
+        [
+          "Puresteel Paladin",
+          48
+        ],
+        [
+          "Retreat to Coralhelm",
+          47
+        ],
+        [
+          "Rampaging Baloths",
+          45
+        ],
+        [
+          "Good-Fortune Unicorn",
+          44
+        ],
+        [
+          "Thopter Fabricator",
+          44
+        ],
+        [
+          "Scute Swarm",
+          44
+        ],
+        [
+          "Chrome Host Seedshark",
+          44
+        ],
+        [
+          "Talrand, Sky Summoner",
+          42
+        ],
+        [
+          "Mu Yanling, Wind Rider",
+          42
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "blink",
+      "candidate": "Archaeomancer",
+      "classification": "ROLE VALUE ERROR",
+      "rank": 25,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 13.5
+        },
+        {
+          "name": "Interaction quality",
+          "points": 13.7
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 7.4
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 4
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Jalum Tome, Mask of Memory, Trading Post, Ephemerate and 3 more."
+        },
+        {
+          "title": "Repeat support",
+          "text": "5 blink effects here can reuse its entry ability: Ephemerate, Soulherder, Momentary Blink and 2 more."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds recursion, which this deck is short of (1.0 / 5)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          62
+        ],
+        [
+          "Thopter Spy Network",
+          61
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          55
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          54
+        ],
+        [
+          "Teleportation Circle",
+          53
+        ],
+        [
+          "Avenger of Zendikar",
+          51
+        ],
+        [
+          "Archmage Emeritus",
+          51
+        ],
+        [
+          "Tireless Provisioner",
+          50
+        ],
+        [
+          "Temur Sabertooth",
+          50
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          48
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          48
+        ],
+        [
+          "Puresteel Paladin",
+          48
+        ],
+        [
+          "Retreat to Coralhelm",
+          47
+        ],
+        [
+          "Rampaging Baloths",
+          45
+        ],
+        [
+          "Good-Fortune Unicorn",
+          44
+        ],
+        [
+          "Thopter Fabricator",
+          44
+        ],
+        [
+          "Scute Swarm",
+          44
+        ],
+        [
+          "Chrome Host Seedshark",
+          44
+        ],
+        [
+          "Talrand, Sky Summoner",
+          42
+        ],
+        [
+          "Mu Yanling, Wind Rider",
+          42
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "artifacts",
+      "candidate": "Scrap Trawler",
+      "classification": "REDUNDANCY PENALTY ERROR",
+      "rank": 42,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 17.8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 19.2
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [
+        {
+          "name": "Redundancy",
+          "points": -5
+        }
+      ],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Goblin Engineer, Sai, Master Thopterist, Trading Post, Jalum Tome and 15 more."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Breya, Etherium Shaper: Whenever this creature dies or another artifact you control is put into a graveyard from the battlefield, return to your hand target artifact card in your graveyard with lesser\u2026"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          68
+        ],
+        [
+          "Warstorm Surge",
+          67
+        ],
+        [
+          "Hazoret's Monument",
+          64
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          61
+        ],
+        [
+          "Teleportation Circle",
+          60
+        ],
+        [
+          "Soulherder",
+          60
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          59
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Mirror March",
+          54
+        ],
+        [
+          "Bastion of Remembrance",
+          54
+        ],
+        [
+          "Cruel Celebrant",
+          52
+        ],
+        [
+          "Zulaport Cutthroat",
+          52
+        ],
+        [
+          "Sifter of Skulls",
+          47
+        ],
+        [
+          "Marionette Master",
+          47
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          47
+        ],
+        [
+          "Puresteel Paladin",
+          47
+        ],
+        [
+          "Pawn of Ulamog",
+          46
+        ],
+        [
+          "Third Path Iconoclast",
+          46
+        ],
+        [
+          "Thopter Fabricator",
+          45
+        ],
+        [
+          "Harnesser of Storms",
+          44
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "typal",
+      "candidate": "Cursed Mirror",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 25,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 14.5
+        },
+        {
+          "name": "Interaction quality",
+          "points": 18.5
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [
+        {
+          "name": "Redundancy",
+          "points": -5
+        }
+      ],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Dragon Tempest, Dragon's Hoard, Duplicant, Filigree Familiar and 12 more."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Lathliss, Dragon Queen: Can enter as a non-token copy of Utvara Hellkite to supply Lathliss, Dragon Queen's actual entry condition; copy is not a cast: Whenever another nontoken Dragon you control\u2026"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Parapet Thrasher",
+          67
+        ],
+        [
+          "Hazoret's Monument",
+          67
+        ],
+        [
+          "Firespitter Whelp",
+          51
+        ],
+        [
+          "Sarkhan, Dragon Ascendant",
+          49
+        ],
+        [
+          "Flameshadow Conjuring",
+          47
+        ],
+        [
+          "Mirror March",
+          46
+        ],
+        [
+          "Skyline Despot",
+          44
+        ],
+        [
+          "Dragonmaster Outcast",
+          44
+        ],
+        [
+          "Spit Flame",
+          44
+        ],
+        [
+          "Orb of Dragonkind",
+          43
+        ],
+        [
+          "Breaching Dragonstorm",
+          41
+        ],
+        [
+          "Herald's Horn",
+          40
+        ],
+        [
+          "Harnesser of Storms",
+          39
+        ],
+        [
+          "Nogi, Draco-Zealot",
+          38
+        ],
+        [
+          "Taurean Mauler",
+          37
+        ],
+        [
+          "Changeling Wayfinder",
+          37
+        ],
+        [
+          "Dragonhawk, Fate's Tempest",
+          37
+        ],
+        [
+          "Scourge of the Throne",
+          37
+        ],
+        [
+          "Shivan Devastator",
+          36
+        ],
+        [
+          "Thundermane Dragon",
+          36
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "lands",
+      "candidate": "Ramunap Excavator",
+      "classification": "BRIDGE / MULTI-PACKAGE VALUE MISSING",
+      "rank": 25,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 15.3
+        },
+        {
+          "name": "Interaction quality",
+          "points": 14.4
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 5
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Evolving Wilds, Harrow, Jalum Tome, Mask of Memory and 4 more."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds recursion, which this deck is short of (0.0 / 2)."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          64
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          63
+        ],
+        [
+          "Thopter Spy Network",
+          60
+        ],
+        [
+          "Archmage Emeritus",
+          59
+        ],
+        [
+          "Thopter Fabricator",
+          53
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          50
+        ],
+        [
+          "Temur Sabertooth",
+          50
+        ],
+        [
+          "Chrome Host Seedshark",
+          46
+        ],
+        [
+          "Grafted Skullcap",
+          44
+        ],
+        [
+          "Haven of the Spirit Dragon",
+          43
+        ],
+        [
+          "Progenitor Mimic",
+          43
+        ],
+        [
+          "Talrand, Sky Summoner",
+          43
+        ],
+        [
+          "Mishra's Bauble",
+          42
+        ],
+        [
+          "Tireless Provisioner",
+          41
+        ],
+        [
+          "Sai, Master Thopterist",
+          40
+        ],
+        [
+          "Lotus Cobra",
+          39
+        ],
+        [
+          "Hazoret's Monument",
+          38
+        ],
+        [
+          "Smuggler's Copter",
+          37
+        ],
+        [
+          "Rite of Replication",
+          36
+        ],
+        [
+          "Clever Impersonator",
+          36
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "lands",
+      "candidate": "Retreat to Coralhelm",
+      "classification": "GENERIC CARD OVERWEIGHT",
+      "rank": 27,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 13
+        },
+        {
+          "name": "Interaction quality",
+          "points": 19.1
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 3.3
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "enters:land",
+          "adds": [],
+          "needs": "lands entering",
+          "line": "Landfall \u2014 Whenever a land you control enters, choose one \u2014",
+          "understood": true,
+          "supply": 49,
+          "suppliers": [
+            "Solemn Simulacrum",
+            "Exploration",
+            "Kodama's Reach",
+            "Terramorphic Expanse",
+            "Wayfarer's Bauble",
+            "Roiling Regrowth",
+            "Azusa, Lost but Seeking",
+            "Harrow",
+            "Rampant Growth",
+            "Burnished Hart",
+            "Cultivate",
+            "Evolving Wilds",
+            "Island",
+            "Forest",
+            "Sakura-Tribe Elder"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 49,
+          "eligibleMainDeckCopies": 49,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "15 cards here feed its \"lands entering\" ability: Solemn Simulacrum, Exploration, Kodama's Reach, Terramorphic Expanse and 11 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Azusa, Lost but Seeking, Burnished Hart, Cultivate, Evolving Wilds and 11 more."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          64
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          63
+        ],
+        [
+          "Thopter Spy Network",
+          60
+        ],
+        [
+          "Archmage Emeritus",
+          59
+        ],
+        [
+          "Thopter Fabricator",
+          53
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          50
+        ],
+        [
+          "Temur Sabertooth",
+          50
+        ],
+        [
+          "Chrome Host Seedshark",
+          46
+        ],
+        [
+          "Grafted Skullcap",
+          44
+        ],
+        [
+          "Haven of the Spirit Dragon",
+          43
+        ],
+        [
+          "Progenitor Mimic",
+          43
+        ],
+        [
+          "Talrand, Sky Summoner",
+          43
+        ],
+        [
+          "Mishra's Bauble",
+          42
+        ],
+        [
+          "Tireless Provisioner",
+          41
+        ],
+        [
+          "Sai, Master Thopterist",
+          40
+        ],
+        [
+          "Lotus Cobra",
+          39
+        ],
+        [
+          "Hazoret's Monument",
+          38
+        ],
+        [
+          "Smuggler's Copter",
+          37
+        ],
+        [
+          "Rite of Replication",
+          36
+        ],
+        [
+          "Clever Impersonator",
+          36
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "copy",
+      "candidate": "Sakashima of a Thousand Faces",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 51,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 15.5
+        },
+        {
+          "name": "Interaction quality",
+          "points": 17.9
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 0
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4.5
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [],
+      "strongestInteractions": [
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Avenger of Zendikar, Coiling Oracle, Duplicant, Eternal Witness and 10 more."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          82
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          75
+        ],
+        [
+          "Temur Sabertooth",
+          75
+        ],
+        [
+          "Thopter Spy Network",
+          70
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          70
+        ],
+        [
+          "Warstorm Surge",
+          69
+        ],
+        [
+          "Tireless Provisioner",
+          69
+        ],
+        [
+          "Archmage Emeritus",
+          68
+        ],
+        [
+          "Harnesser of Storms",
+          66
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          65
+        ],
+        [
+          "Third Path Iconoclast",
+          64
+        ],
+        [
+          "Storm-Kiln Artist",
+          64
+        ],
+        [
+          "Chrome Host Seedshark",
+          63
+        ],
+        [
+          "Rampaging Baloths",
+          61
+        ],
+        [
+          "Scute Swarm",
+          60
+        ],
+        [
+          "Lotus Cobra",
+          57
+        ],
+        [
+          "Young Pyromancer",
+          56
+        ],
+        [
+          "Sai, Master Thopterist",
+          56
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Firespitter Whelp",
+          55
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "copy",
+      "candidate": "Mirror March",
+      "classification": "GENERIC CARD OVERWEIGHT",
+      "rank": 21,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 21
+        },
+        {
+          "name": "Interaction quality",
+          "points": 19.9
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 9
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4.5
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "enters:nontoken creature",
+          "adds": [
+            "tokens"
+          ],
+          "needs": "nontoken creatures entering",
+          "line": "Whenever a nontoken creature you control enters, flip a coin until you lose a flip. For each flip you won, create a token that's a copy of that creature. Those tokens gain haste. Exile them at the beginning of the next end step.",
+          "understood": true,
+          "supply": 29,
+          "suppliers": [
+            "Solemn Simulacrum",
+            "Reclamation Sage",
+            "Junk Diver",
+            "Peregrine Drake",
+            "Scrap Trawler",
+            "Foundry Inspector",
+            "Artisan of Kozilek",
+            "Acidic Slime",
+            "Mulldrifter",
+            "Eternal Witness",
+            "Workshop Assistant",
+            "Clone",
+            "Avenger of Zendikar",
+            "Ulamog's Crusher",
+            "Pilgrim's Eye",
+            "Coiling Oracle",
+            "Steel Hellkite",
+            "Sandstone Oracle",
+            "Progenitor Mimic",
+            "Burnished Hart",
+            "Spark Double",
+            "Skyscanner",
+            "Filigree Familiar",
+            "Myr Retriever",
+            "Clever Impersonator",
+            "Meteor Golem",
+            "Duplicant",
+            "Riku of Two Reflections"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 29,
+          "eligibleMainDeckCopies": 27,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [
+            "Riku of Two Reflections"
+          ],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "28 cards here feed its \"nontoken creatures entering\" ability: Solemn Simulacrum, Reclamation Sage, Junk Diver, Peregrine Drake and 24 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Acidic Slime, Artisan of Kozilek, Avenger of Zendikar, Burnished Hart and 22 more."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          82
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          75
+        ],
+        [
+          "Temur Sabertooth",
+          75
+        ],
+        [
+          "Thopter Spy Network",
+          70
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          70
+        ],
+        [
+          "Warstorm Surge",
+          69
+        ],
+        [
+          "Tireless Provisioner",
+          69
+        ],
+        [
+          "Archmage Emeritus",
+          68
+        ],
+        [
+          "Harnesser of Storms",
+          66
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          65
+        ],
+        [
+          "Third Path Iconoclast",
+          64
+        ],
+        [
+          "Storm-Kiln Artist",
+          64
+        ],
+        [
+          "Chrome Host Seedshark",
+          63
+        ],
+        [
+          "Rampaging Baloths",
+          61
+        ],
+        [
+          "Scute Swarm",
+          60
+        ],
+        [
+          "Lotus Cobra",
+          57
+        ],
+        [
+          "Young Pyromancer",
+          56
+        ],
+        [
+          "Sai, Master Thopterist",
+          56
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Firespitter Whelp",
+          55
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "copy",
+      "candidate": "Biovisionary",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 28,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 19.8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 10.3
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 6.2
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 6.2
+        },
+        {
+          "name": "Commander connection",
+          "points": 4.5
+        },
+        {
+          "name": "Role value",
+          "points": 4
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "named-copies:e99fde0d-ca28-4a49-abe0-d01cf4e322b6",
+          "adds": [
+            "finishers"
+          ],
+          "needs": "4 simultaneous creatures with this name",
+          "line": "At the beginning of the end step, if you control four or more creatures named Biovisionary, you win the game.",
+          "understood": true,
+          "supply": 9,
+          "suppliers": [
+            "Clone",
+            "Quasiduplicate",
+            "Progenitor Mimic",
+            "Spark Double",
+            "Clever Impersonator",
+            "Riku of Two Reflections",
+            "Rite of Replication",
+            "Biovisionary"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 9,
+          "eligibleMainDeckCopies": 6,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [
+            "Riku of Two Reflections"
+          ],
+          "candidateSelfSetup": [
+            "Biovisionary"
+          ]
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "8 cards here feed its \"4 simultaneous creatures with this name\" ability: Clone, Quasiduplicate, Progenitor Mimic, Spark Double and 4 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Mask of Memory, Rogue's Gloves."
+        },
+        {
+          "title": "Copy support",
+          "text": "7 cards here can copy it, and each copy works independently: Clone, Quasiduplicate, Progenitor Mimic and 4 more."
+        },
+        {
+          "title": "Role",
+          "text": "Also adds finishers, which this deck is short of (0.8 / 4)."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Riku of Two Reflections: Whenever another nontoken creature you control enters, you may pay {G}{U}"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Shimmer Dragon",
+          82
+        ],
+        [
+          "Thassa, Deep-Dwelling",
+          75
+        ],
+        [
+          "Temur Sabertooth",
+          75
+        ],
+        [
+          "Thopter Spy Network",
+          70
+        ],
+        [
+          "Tatyova, Benthic Druid",
+          70
+        ],
+        [
+          "Warstorm Surge",
+          69
+        ],
+        [
+          "Tireless Provisioner",
+          69
+        ],
+        [
+          "Archmage Emeritus",
+          68
+        ],
+        [
+          "Harnesser of Storms",
+          66
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          65
+        ],
+        [
+          "Third Path Iconoclast",
+          64
+        ],
+        [
+          "Storm-Kiln Artist",
+          64
+        ],
+        [
+          "Chrome Host Seedshark",
+          63
+        ],
+        [
+          "Rampaging Baloths",
+          61
+        ],
+        [
+          "Scute Swarm",
+          60
+        ],
+        [
+          "Lotus Cobra",
+          57
+        ],
+        [
+          "Young Pyromancer",
+          56
+        ],
+        [
+          "Sai, Master Thopterist",
+          56
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Firespitter Whelp",
+          55
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Brass Squire",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 42,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 10.8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 16.8
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 9
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "attach:equipment-aura",
+          "adds": [],
+          "needs": "Equipment and compatible Auras",
+          "line": "{T}: Attach target Equipment you control to target creature you control.",
+          "understood": true,
+          "supply": 9,
+          "suppliers": [
+            "Rogue's Gloves",
+            "Whispersilk Cloak",
+            "All That Glitters",
+            "Swiftfoot Boots",
+            "Lightning Greaves",
+            "Mask of Memory",
+            "Ethereal Armor",
+            "Blackblade Reforged",
+            "Basilisk Collar"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 9,
+          "eligibleMainDeckCopies": 9,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "9 cards here feed its \"Equipment and compatible Auras\" ability: Rogue's Gloves, Whispersilk Cloak, All That Glitters, Swiftfoot Boots and 5 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with All That Glitters, Basilisk Collar, Blackblade Reforged, Ethereal Armor and 5 more."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Thopter Spy Network",
+          70
+        ],
+        [
+          "Warstorm Surge",
+          70
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          63
+        ],
+        [
+          "Shimmer Dragon",
+          61
+        ],
+        [
+          "Teleportation Circle",
+          60
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          58
+        ],
+        [
+          "Archmage Emeritus",
+          56
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Mirror March",
+          55
+        ],
+        [
+          "Thopter Fabricator",
+          54
+        ],
+        [
+          "Veyran, Voice of Duality",
+          53
+        ],
+        [
+          "Storm-Kiln Artist",
+          52
+        ],
+        [
+          "Smuggler's Copter",
+          49
+        ],
+        [
+          "Retreat to Coralhelm",
+          49
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          49
+        ],
+        [
+          "Rolling Hamsphere",
+          48
+        ],
+        [
+          "Hazoret's Monument",
+          48
+        ],
+        [
+          "Parhelion II",
+          48
+        ],
+        [
+          "Hammer of Nazahn",
+          48
+        ],
+        [
+          "Sigarda's Aid",
+          48
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "voltron",
+      "candidate": "Ardenn, Intrepid Archaeologist",
+      "classification": "PACKAGE VALUE ERROR",
+      "rank": 38,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 13.3
+        },
+        {
+          "name": "Interaction quality",
+          "points": 16.8
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 9
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 0
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "attach:equipment-aura",
+          "adds": [],
+          "needs": "Equipment and compatible Auras",
+          "line": "At the beginning of combat on your turn, you may attach any number of Auras and Equipment you control to target permanent or player.",
+          "understood": true,
+          "supply": 9,
+          "suppliers": [
+            "Rogue's Gloves",
+            "Whispersilk Cloak",
+            "All That Glitters",
+            "Swiftfoot Boots",
+            "Lightning Greaves",
+            "Mask of Memory",
+            "Ethereal Armor",
+            "Blackblade Reforged",
+            "Basilisk Collar"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 9,
+          "eligibleMainDeckCopies": 9,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "9 cards here feed its \"Equipment and compatible Auras\" ability: Rogue's Gloves, Whispersilk Cloak, All That Glitters, Swiftfoot Boots and 5 more."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with All That Glitters, Basilisk Collar, Blackblade Reforged, Ethereal Armor and 5 more."
+        }
+      ],
+      "competingTop20": [
+        [
+          "Thopter Spy Network",
+          70
+        ],
+        [
+          "Warstorm Surge",
+          70
+        ],
+        [
+          "Primal Amulet // Primal Wellspring",
+          63
+        ],
+        [
+          "Shimmer Dragon",
+          61
+        ],
+        [
+          "Teleportation Circle",
+          60
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          58
+        ],
+        [
+          "Archmage Emeritus",
+          56
+        ],
+        [
+          "Flameshadow Conjuring",
+          55
+        ],
+        [
+          "Mirror March",
+          55
+        ],
+        [
+          "Thopter Fabricator",
+          54
+        ],
+        [
+          "Veyran, Voice of Duality",
+          53
+        ],
+        [
+          "Storm-Kiln Artist",
+          52
+        ],
+        [
+          "Smuggler's Copter",
+          49
+        ],
+        [
+          "Retreat to Coralhelm",
+          49
+        ],
+        [
+          "Jhoira, Weatherlight Captain",
+          49
+        ],
+        [
+          "Rolling Hamsphere",
+          48
+        ],
+        [
+          "Hazoret's Monument",
+          48
+        ],
+        [
+          "Parhelion II",
+          48
+        ],
+        [
+          "Hammer of Nazahn",
+          48
+        ],
+        [
+          "Sigarda's Aid",
+          48
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Doubling Season",
+      "classification": "SCORING UNDERWEIGHT",
+      "rank": 23,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 16.8
+        },
+        {
+          "name": "Interaction quality",
+          "points": 12.9
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 4
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "token",
+          "adds": [],
+          "needs": "token makers",
+          "line": "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
+          "understood": true,
+          "supply": 6,
+          "suppliers": [
+            "Avenger of Zendikar",
+            "Ophiomancer",
+            "Trading Post",
+            "Bastion of Remembrance",
+            "Ghave, Guru of Spores"
+          ],
+          "factor": 1,
+          "support": "High",
+          "engineWeightedSupply": 6,
+          "eligibleMainDeckCopies": 4,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [
+            "Ghave, Guru of Spores"
+          ],
+          "candidateSelfSetup": []
+        },
+        {
+          "key": "counters:+1/+1:Permanent:board",
+          "adds": [],
+          "needs": "cards that put +1/+1 counters",
+          "line": "If an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",
+          "understood": true,
+          "supply": 4,
+          "suppliers": [
+            "Good-Fortune Unicorn",
+            "Renata, Called to the Hunt",
+            "Ghave, Guru of Spores"
+          ],
+          "factor": 0.8,
+          "support": "Medium",
+          "engineWeightedSupply": 4,
+          "eligibleMainDeckCopies": 2,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [
+            "Ghave, Guru of Spores"
+          ],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "5 cards here feed its \"token makers\" ability: Avenger of Zendikar, Ophiomancer, Trading Post, Bastion of Remembrance and 1 more."
+        },
+        {
+          "title": "Interaction",
+          "text": "3 cards here feed its \"cards that put +1/+1 counters\" ability: Good-Fortune Unicorn, Renata, Called to the Hunt, Ghave, Guru of Spores."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Good-Fortune Unicorn, Renata, Called to the Hunt."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Ghave, Guru of Spores: Amplifies the actual counter placements from Ghave, Guru of Spores; replacement effects alone do not originate counters: If an effect would create one or more tokens under your\u2026"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Elenda, the Dusk Rose",
+          70
+        ],
+        [
+          "Evolution Witness",
+          60
+        ],
+        [
+          "Carrion Feeder",
+          56
+        ],
+        [
+          "Temur Sabertooth",
+          53
+        ],
+        [
+          "Tireless Provisioner",
+          52
+        ],
+        [
+          "Teleportation Circle",
+          51
+        ],
+        [
+          "Sifter of Skulls",
+          50
+        ],
+        [
+          "Cruel Celebrant",
+          50
+        ],
+        [
+          "Pawn of Ulamog",
+          49
+        ],
+        [
+          "Puresteel Paladin",
+          48
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          47
+        ],
+        [
+          "Marionette Master",
+          46
+        ],
+        [
+          "Pitiless Plunderer",
+          45
+        ],
+        [
+          "Meren of Clan Nel Toth",
+          45
+        ],
+        [
+          "Hazoret's Monument",
+          45
+        ],
+        [
+          "Rolling Hamsphere",
+          44
+        ],
+        [
+          "Parhelion II",
+          44
+        ],
+        [
+          "Midnight Reaper",
+          43
+        ],
+        [
+          "Rampaging Baloths",
+          43
+        ],
+        [
+          "Mazirek, Kraul Death Priest",
+          42
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    },
+    {
+      "deck": "hybrid",
+      "candidate": "Corpsejack Menace",
+      "classification": "SCORING UNDERWEIGHT",
+      "rank": 22,
+      "factsVerified": "Approved v0.6.15 capability/relationship checks preserved; see canonical facts and regression tests.",
+      "components": [
+        {
+          "name": "Contextual synergy",
+          "points": 17.3
+        },
+        {
+          "name": "Interaction quality",
+          "points": 12.5
+        },
+        {
+          "name": "Bridge strength",
+          "points": 0
+        },
+        {
+          "name": "Novelty",
+          "points": 3.8
+        },
+        {
+          "name": "Multiplicative potential",
+          "points": 0
+        },
+        {
+          "name": "Commander connection",
+          "points": 4
+        },
+        {
+          "name": "Role value",
+          "points": 0
+        }
+      ],
+      "penalties": [],
+      "conditions": [
+        {
+          "key": "counters:+1/+1:Creature:board",
+          "adds": [],
+          "needs": "cards that put +1/+1 counters",
+          "line": "If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on it instead.",
+          "understood": true,
+          "supply": 4,
+          "suppliers": [
+            "Good-Fortune Unicorn",
+            "Renata, Called to the Hunt",
+            "Ghave, Guru of Spores"
+          ],
+          "factor": 0.8,
+          "support": "Medium",
+          "engineWeightedSupply": 4,
+          "eligibleMainDeckCopies": 2,
+          "mainDeckCopies": 99,
+          "commanderFeeders": [
+            "Ghave, Guru of Spores"
+          ],
+          "candidateSelfSetup": []
+        }
+      ],
+      "strongestInteractions": [
+        {
+          "title": "Interaction",
+          "text": "3 cards here feed its \"cards that put +1/+1 counters\" ability: Good-Fortune Unicorn, Renata, Called to the Hunt, Ghave, Guru of Spores."
+        },
+        {
+          "title": "Strongest interactions",
+          "text": "Works directly with Good-Fortune Unicorn, Mask of Memory, Renata, Called to the Hunt, Rogue's Gloves."
+        },
+        {
+          "title": "Commander",
+          "text": "Interacts with Ghave, Guru of Spores: Amplifies the actual counter placements from Ghave, Guru of Spores; replacement effects alone do not originate counters: If one or more +1/+1 counters would be put on a creature\u2026"
+        }
+      ],
+      "competingTop20": [
+        [
+          "Elenda, the Dusk Rose",
+          70
+        ],
+        [
+          "Evolution Witness",
+          60
+        ],
+        [
+          "Carrion Feeder",
+          56
+        ],
+        [
+          "Temur Sabertooth",
+          53
+        ],
+        [
+          "Tireless Provisioner",
+          52
+        ],
+        [
+          "Teleportation Circle",
+          51
+        ],
+        [
+          "Sifter of Skulls",
+          50
+        ],
+        [
+          "Cruel Celebrant",
+          50
+        ],
+        [
+          "Pawn of Ulamog",
+          49
+        ],
+        [
+          "Puresteel Paladin",
+          48
+        ],
+        [
+          "The Prydwen, Steel Flagship",
+          47
+        ],
+        [
+          "Marionette Master",
+          46
+        ],
+        [
+          "Pitiless Plunderer",
+          45
+        ],
+        [
+          "Meren of Clan Nel Toth",
+          45
+        ],
+        [
+          "Hazoret's Monument",
+          45
+        ],
+        [
+          "Rolling Hamsphere",
+          44
+        ],
+        [
+          "Parhelion II",
+          44
+        ],
+        [
+          "Midnight Reaper",
+          43
+        ],
+        [
+          "Rampaging Baloths",
+          43
+        ],
+        [
+          "Mazirek, Kraul Death Priest",
+          42
+        ]
+      ],
+      "rationale": "The approved evidence is present, but the fixed lens favors generic support bridges/novelty; this category identifies the primary scoring-input or valuation gap, not a new semantic defect."
+    }
+  ]
+}

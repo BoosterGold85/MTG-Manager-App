@@ -1,3 +1,4 @@
+import { RANKING_VERSION } from "../synergy/deckSpecific";
 import { buildDeckStrategyProfile } from "./strategy";
 import { scoreRecommendation } from "../synergy/recommendation";
 import type { RecommendationData } from "../synergy/recommendation";
@@ -221,8 +222,8 @@ function cardSignals(
   }
   // A card that rewards opponents losing life (e.g. "Whenever an opponent loses life …") is a pings payoff.
   {
-    const reward = stripReminderText(card.card.oracleText || card.card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "").match(
-      /[^.\n]*\bwhenever (?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b[^.\n]*|[^.\n]*\bwhenever (?:an? )?(?:opponents?|player) (?:is|are) dealt damage\b[^.\n]*|[^.\n]*\bif an? opponent would lose life\b[^.\n]*\b(?:twice|double)\b[^.\n]*/i,
+    const reward = stripReminderText(card.card.oracleText || card.card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "").split(/[.\n]/).find(clause =>
+      /\bwhenever (?:an? |each )?(?:opponents?|player) (?:loses?|lost) life\b|\bwhenever (?:an? )?(?:opponents?|player) (?:is|are) dealt damage\b|\bif an? opponent would lose life\b[^.\n]*\b(?:twice|double)\b/i.test(clause),
     );
     if (reward)
       signals.push({
@@ -231,7 +232,7 @@ function cardSignals(
         label: "Opponent Life Loss Payoff",
         strength: 3,
         kind: "payoff",
-        evidence: [{ field: "oracleText", snippet: reward[0].trim().slice(0, 180), reason: "Rewards opponents losing life, so every ping, drain or punisher effect feeds it." }],
+        evidence: [{ field: "oracleText", snippet: reward.trim().slice(0, 180), reason: "Rewards opponents losing life, so every ping, drain or punisher effect feeds it." }],
       });
   }
   for (const assignment of card.assignments) {
@@ -724,7 +725,7 @@ export const cardSynergy = (
 export class DeckDnaCache {
   private entries = new Map<string, DeckDna>();
   constructor(private compute = analyzeDeckDna) {}
-  get(state: CollectionState, deck: Deck, version = RULESET_VERSION) {
+  get(state: CollectionState, deck: Deck, version = RULESET_VERSION, scoringVersion = RANKING_VERSION) {
     const start = performance.now();
     const input = deckDnaInput(state, deck);
     const key = JSON.stringify([
@@ -732,6 +733,7 @@ export class DeckDnaCache {
       input.revision,
       DNA_VERSION,
       version,
+      scoringVersion,
     ]);
     const cached = this.entries.get(key);
     if (cached) return cached;

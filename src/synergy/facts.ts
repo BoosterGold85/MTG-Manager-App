@@ -267,7 +267,7 @@ const words: Record<string, number> = {
 const count = (text: string) =>
   words[text.toLowerCase()] ?? (/^\d+$/.test(text) ? Number(text) : undefined);
 const typesIn = (text: string) =>
-  creatureTypePatterns.filter((p) => p.reference.test(text)).map((p) => p.type);
+  text ? creatureTypePatterns.filter((p) => p.reference.test(text)).map((p) => p.type) : [];
 const cardTypesIn = (text: string) =>
   cardTypes.filter((type) => new RegExp(`\\b${type}s?\\b`, "i").test(text));
 // "draw two cards", "draw X cards", "draw cards equal to …", "draw two additional cards", "draws that many cards".
@@ -945,7 +945,7 @@ function faceFacts(face: {
   result.typedRoles = [...roles].sort();
   return result;
 }
-export function extractCardFacts(
+function computeCardFacts(
   card: CardMetadata & { colors?: Color[] },
 ): CardFacts {
   const faces = card.cardFaces?.length
@@ -988,4 +988,12 @@ export function opponentLifeLoss(text: string): { direct: boolean; theirTurn: bo
   const anyTarget = /\bdeals?\b[^.\n]{0,70}\bdamage\b[^.\n]{0,50}\bto any (?:other )?target/i.test(clean);
   // A punisher trigger fires on opponents' turns, so even "any target" damage there usually hits that opponent.
   return { direct, theirTurn: (direct || anyTarget) && theirTurnLifeLoss.test(clean), anyTarget };
+}
+
+// Metadata snapshots are immutable; keep shared canonical facts per snapshot.
+const canonicalFactsCache = new WeakMap<CardMetadata, CardFacts>();
+export function extractCardFacts(card: CardMetadata & { colors?: Color[] }): CardFacts {
+  let known = canonicalFactsCache.get(card);
+  if (!known) canonicalFactsCache.set(card, known = computeCardFacts(card));
+  return known;
 }

@@ -18,8 +18,7 @@ export function creatureTypeSignals(card:CardMetadata): CreatureTypeSignals {
  }
  return {own:[...own].sort(),referenced:[...referenced].sort(),synergy:[...synergy].sort()};
 }
-export function typalHits(card:CardMetadata): Hit[] {
- const signals=creatureTypeSignals(card);
+export function typalHits(card:CardMetadata, signals=creatureTypeSignals(card)): Hit[] {
  return signals.synergy.flatMap(type=>[
   {tagId:`typal:${type}`,snippet:card.oracleText?.slice(0,180)||card.name,reason:`An ability explicitly rewards or enables ${type} creatures.`,source:'derived' as const,confidence:0.95},
   {tagId:'typal',snippet:type,reason:'Explicit creature-type payoff/enabler, not merely a creature subtype.',source:'derived' as const,confidence:0.95},

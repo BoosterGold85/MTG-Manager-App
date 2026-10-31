@@ -61,5 +61,5 @@ export function goldenOutputs() {
   return result;
 }
 it("Upgrades I Own engine output matches the reviewed golden fixture", async () => {
-  await expect(JSON.stringify(goldenOutputs(), null, 1)).toMatchFileSnapshot("../golden/upgrades-v0.6.15.json");
+  await expect(JSON.stringify(goldenOutputs(), null, 1)).toMatchFileSnapshot("../golden/upgrades-v0.6.16.json");
 });

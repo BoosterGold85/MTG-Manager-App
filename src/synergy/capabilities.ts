@@ -75,24 +75,31 @@ export function capabilities(card: CardMetadata): Capabilities {
 
 /** A verified two-card rules relationship. Evidence is bidirectional at the caller;
  * no shared tags or color/rarity/popularity predicates are accepted here. */
+const recipientViews=new WeakMap<CardMetadata,{type:string;creature:boolean;artifact:boolean;effect:boolean;etb:boolean;repeat:boolean;equipment:boolean;aura:boolean;vehicle:boolean;crew:boolean;graveSetup:boolean}>();
+const counterRecipients=new WeakMap<CardMetadata,CardMetadata>();
+function recipientView(card:CardMetadata){
+  let known=recipientViews.get(card);if(known)return known;
+  const b=capabilities(card),type=(card.cardFaces?.[0]?.typeLine || card.typeLine).split("—")[0];
+  const effect=/\b(?:draw|create|return|untap|put|exile|deals?|loses|sacrifice|search)\b/i.test(b.text);
+  known={type,creature:/\bCreature\b/.test(type),artifact:/\bArtifact\b/.test(type),effect,etb:hasSelfEntryAbility(card)&&effect,repeat:/\bWhenever\b/i.test(b.text),equipment:/\bEquipment\b/.test(card.typeLine),aura:/\bAura\b/.test(card.typeLine)&&/Enchant (?:creature|permanent)\b/i.test(b.text),vehicle:/\bVehicle\b/.test(card.typeLine),crew:/^Crew \d+/m.test(b.text),graveSetup:/\b(?:sacrifice (?:a|an|this|that|another) land|mill|surveil|discard)\b/i.test(b.text)};
+  recipientViews.set(card,known);return known;
+}
 export function capabilityRelationship(source: CardMetadata, recipient: CardMetadata): string[] {
   const a = capabilities(source);
   if (!(a.blink || a.friendlyBounce || a.permanentCopy || a.attach || a.animateVehicle || a.crewReduction || a.artifactTapDraw || a.artifactDeathPayoff || a.counterReplacement || a.graveyardLandPlay || a.transformCastThreshold)) return [];
   const b = capabilities(recipient);
-  const type = (recipient.cardFaces?.[0]?.typeLine || recipient.typeLine).split("—")[0];
-  const creature = /\bCreature\b/.test(type), artifact = /\bArtifact\b/.test(type);
-  const effect = /\b(?:draw|create|return|untap|put|exile|deals?|loses|sacrifice|search)\b/i.test(b.text);
-  const etb = hasSelfEntryAbility(recipient) && effect;
+  const view=recipientView(recipient);
+  const {type,creature,artifact,effect,etb}=view;
   const out: string[] = [];
   if (a.blink && (creature || a.blinkArtifacts && artifact) && etb)
     out.push(`Exile and return reuses ${recipient.name}'s own entry effect: ${a.text}`);
   if (a.friendlyBounce && creature && etb)
     out.push(`Friendly bounce can reuse ${recipient.name}'s entry effect after paying to recast it: ${a.text}`);
-  if (a.permanentCopy && creature && (!/\bLegendary\b/.test(type) || a.ignoresLegend) && (etb || /\bWhenever\b/i.test(b.text) && effect))
+  if (a.permanentCopy && creature && (!/\bLegendary\b/.test(type) || a.ignoresLegend) && (etb || view.repeat && effect))
     out.push(`Copies ${recipient.name}'s independent ability${a.ignoresLegend ? "; its explicit legend exception preserves extra legendary copies" : ""}: ${a.text}`);
-  if (a.attach && (/\bEquipment\b/.test(recipient.typeLine) || /\bAura\b/.test(recipient.typeLine) && /Enchant (?:creature|permanent)\b/i.test(b.text)))
+  if (a.attach && (view.equipment || view.aura))
     out.push(`Attaches ${recipient.name} to a legal recipient without paying its equip cost; Aura restrictions still apply: ${a.text}`);
-  if ((a.animateVehicle || a.crewReduction) && /\bVehicle\b/.test(recipient.typeLine) && /^Crew \d+/m.test(b.text))
+  if ((a.animateVehicle || a.crewReduction) && view.vehicle && view.crew)
     out.push(`Enables ${recipient.name}'s creature/combat use${/becomes crewed/i.test(a.text) ? " after this source is crewed" : ""}: ${a.text}`);
   if (a.transformCastThreshold && /\b(?:Instant|Sorcery)\b/.test(type))
     out.push(`After ${a.transformCastThreshold} spell casts transform it, its mana can copy ${recipient.name}; copying does not cast the spell again: ${a.text}`);
@@ -100,9 +107,11 @@ export function capabilityRelationship(source: CardMetadata, recipient: CardMeta
     out.push(`Actual artifact sacrifices from ${recipient.name} feed its artifact-to-graveyard trigger; merely being an artifact is not enough: ${a.text}`);
   if (a.artifactTapDraw && artifact)
     out.push(`An untapped ${recipient.name} can help pay the artifact-tap draw cost (not a sacrifice): ${a.text}`);
-  if (a.counterReplacement && suppliesCounterEvent(recipient, counterRecipient(source, a.text), false))
+  let counterRecipientCard=counterRecipients.get(source);
+  if(a.counterReplacement&&!counterRecipientCard)counterRecipients.set(source,counterRecipientCard=counterRecipient(source,a.text));
+  if (counterRecipientCard && suppliesCounterEvent(recipient, counterRecipientCard, false))
     out.push(`Amplifies the actual counter placements from ${recipient.name}; replacement effects alone do not originate counters: ${a.text}`);
-  if (a.graveyardLandPlay && /\b(?:sacrifice (?:a|an|this|that|another) land|mill|surveil|discard)\b/i.test(b.text))
+  if (a.graveyardLandPlay && view.graveSetup)
     out.push(`Can replay lands put into your graveyard by ${recipient.name}, within normal land-drop limits: ${a.text}`);
   return out;
 }

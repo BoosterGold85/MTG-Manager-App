@@ -342,7 +342,7 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
   }
   return result;
 }
-function characteristics(c: DnaInputCard): Characteristics {
+function computeCharacteristics(c: DnaInputCard): Characteristics {
   const fields = [
     "name",
     "scryfallId",
@@ -1087,6 +1087,7 @@ function profileReadiness(profile: DeckStrategyProfile) {
   }
   return ready;
 }
+const canonicalProfiles = new WeakMap<DeckStrategyProfile, WeakMap<NonNullable<Parameters<typeof mechanicalRelationships>[3]>, Characteristics[]>>();
 export function mechanicalRelationships(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
@@ -1122,8 +1123,15 @@ export function mechanicalRelationships(
     strength: number;
     evidence: string[];
   }[] = [];
-  for (const original of profile.cards) {
-    const other = canonical(original);
+  let others = profile.cards;
+  if (canonicalize) {
+    let byFunction = canonicalProfiles.get(profile);
+    if (!byFunction) canonicalProfiles.set(profile, byFunction = new WeakMap());
+    let known = byFunction.get(canonicalize);
+    if (!known) byFunction.set(canonicalize,known=profile.cards.map(canonical));
+    others=known;
+  }
+  for (const other of others) {
     if (other.card.identity === input.identity) continue;
     let strength = 0;
     const evidence: string[] = [];
@@ -1132,6 +1140,7 @@ export function mechanicalRelationships(
       [candidate, other],
     ] as const) {
       for (const receiver of receiverCard.receivers) {
+        if(receiver.selfOnly || receiver.event === "turn")continue;
         if (!validate(receiver, source.card)) continue;
         let value = interaction(receiver, source);
         // The Commander feeding a candidate's trigger only by being such a card (Kenrith is a 5-power creature
@@ -1147,7 +1156,7 @@ export function mechanicalRelationships(
     }
     for (const [giver, recipient] of [[candidate, other], [other, candidate]] as const) {
       const ability = capabilities(giver.card.card);
-      const crew = ability.text.match(/^Crew (\d+)/m);
+      const crew = /becomes crewed/i.test(ability.text) ? ability.text.match(/^Crew (\d+)/m) : null;
       const ready = (!ability.transformCastThreshold || castSpellCount >= ability.transformCastThreshold) && (!crew || !/becomes crewed/i.test(ability.text) || crewPower >= Number(crew[1]));
       const links = ready ? capabilityRelationship(giver.card.card, recipient.card.card) : [];
       if (ability.permanentCopy) {
@@ -1249,4 +1258,11 @@ export function mechanicalRelationships(
       });
   }
   return relationships;
+}
+
+const characteristicsCache = new WeakMap<DnaInputCard, Characteristics>();
+function characteristics(input: DnaInputCard): Characteristics {
+  let known = characteristicsCache.get(input);
+  if (!known) characteristicsCache.set(input, known = computeCharacteristics(input));
+  return known;
 }
