@@ -1,0 +1,3 @@
+Freeze each current public deck export, source URL, capture timestamp, content hash, plan, expected upgrades, and misleading suggestions BEFORE the first evaluation.
+If an expected upgrade is already in the captured deck, replace it before evaluation and record why.
+Do not change expectations after seeing rankings.

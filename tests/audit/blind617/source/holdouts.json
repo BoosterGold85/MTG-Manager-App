@@ -1,0 +1,185 @@
+{
+  "version": "v0.6.17",
+  "freeze_before_evaluation": true,
+  "holdouts": [
+    {
+      "id": 1,
+      "commander": "Anikthea, Hand of Erebos",
+      "archetype": "Enchantments / graveyard recursion",
+      "url": "https://archidekt.com/decks/25801366/anikthea_hand_of_erebos",
+      "plan": "Use enchantments as the primary engine, stock the graveyard, then reuse valuable non-Aura enchantments through Anikthea while building an enchantment-creature/token board. Enchantress value and recursion matter more than Aura Voltron.",
+      "expected": [
+        "Starfield of Nyx",
+        "Weaver of Harmony",
+        "Doomwake Giant",
+        "Nyx Weaver",
+        "Composer of Spring"
+      ],
+      "misleading": [
+        "Ethereal Armor",
+        "Kor Spiritdancer"
+      ],
+      "reason": "They look enchantment-synergistic but push Aura Voltron, while Anikthea specifically wants non-Aura enchantments to recur."
+    },
+    {
+      "id": 2,
+      "commander": "Krenko, Mob Boss",
+      "archetype": "Goblin swarm / repeated Commander activation",
+      "url": "https://archidekt.com/decks/26105955/krenko_mob_boss",
+      "plan": "Resolve and protect Krenko, give him haste or repeated untaps, exponentially grow the Goblin count, then turn the swarm into combat damage, sacrifice value, or burst mana.",
+      "expected": [
+        "Thousand-Year Elixir",
+        "Magewright's Stone",
+        "Skirk Prospector",
+        "Goblin Chirurgeon",
+        "Brightstone Ritual"
+      ],
+      "misleading": [
+        "Brass's Bounty",
+        "Etali, Primal Storm"
+      ],
+      "reason": "Expensive generic red value should not outrank cards that directly increase Krenko activations or exploit the Goblin mass."
+    },
+    {
+      "id": 3,
+      "commander": "Teysa Karlov",
+      "archetype": "Aristocrats / death triggers",
+      "url": "https://archidekt.com/decks/20407587/1_teysa_karlov_is_my_wife",
+      "plan": "Sacrifice creatures and tokens for value, double death-triggered abilities with Teysa, and win through drain, recursive fodder, and death payoffs.",
+      "expected": [
+        "Requiem Angel",
+        "Blasting Station",
+        "Sifter of Skulls"
+      ],
+      "misleading": [
+        "Soul Warden",
+        "Cathars' Crusade"
+      ],
+      "reason": "Token quantity alone should not turn the deck into generic lifegain or +1/+1-counter go-wide."
+    },
+    {
+      "id": 4,
+      "commander": "Feather, the Redeemed",
+      "archetype": "Targeted spells / reusable cantrips",
+      "url": "https://archidekt.com/decks/4071438/feather_the_redeemed",
+      "plan": "Cast cheap spells targeting your own creatures, recycle them through Feather, protect Feather, trigger spellslinger effects, and convert repeated spell value into combat pressure.",
+      "expected": [
+        "Mavinda, Students' Advocate",
+        "Psychotic Fury",
+        "Homestead Courage"
+      ],
+      "misleading": [
+        "Aurelia, the Warleader",
+        "Heroic Reinforcements"
+      ],
+      "reason": "Generic Boros combat cards should not outrank repeatable targeted spells that actually participate in Feather's engine."
+    },
+    {
+      "id": 5,
+      "commander": "Sram, Senior Edificer",
+      "archetype": "Equipment Voltron",
+      "url": "https://archidekt.com/decks/27229313/sram_senior_edificer",
+      "plan": "Cast cheap Equipment and Auras to keep Sram drawing, efficiently attach them to a threat, and turn equip/attachment synergy into a compact Voltron engine.",
+      "expected": [
+        "Ardenn, Intrepid Archaeologist",
+        "Armored Skyhunter",
+        "Halvar, God of Battle"
+      ],
+      "misleading": [
+        "Parhelion II",
+        "Skysovereign, Consul Flagship"
+      ],
+      "reason": "Vehicles technically trigger Sram, but that alone should not make a Vehicle package strategically important in an Equipment-focused list."
+    },
+    {
+      "id": 6,
+      "commander": "Chulane, Teller of Tales",
+      "archetype": "Creature casting / bounce-recast engine",
+      "url": "https://archidekt.com/decks/1337204/chulane_teller_of_tales",
+      "plan": "Chain creatures to turn Chulane into card and land velocity, then repeatedly bounce and recast creatures to reuse cast and ETB effects.",
+      "expected": [
+        "Aluren",
+        "Intruder Alarm",
+        "Equilibrium",
+        "Stonecloaker"
+      ],
+      "misleading": [
+        "Scute Swarm",
+        "Avenger of Zendikar"
+      ],
+      "reason": "Chulane puts lands onto the battlefield, but that should not cause pure landfall-token cards to displace creature-cast/bounce engines."
+    },
+    {
+      "id": 7,
+      "commander": "Meren of Clan Nel Toth",
+      "archetype": "Creature recursion / sacrifice",
+      "url": "https://archidekt.com/decks/21327000/meren_of_clan_nel_toth",
+      "plan": "Sacrifice creatures for value, build experience, and repeatedly recur creature-based removal, ramp, tutors, and value pieces through Meren.",
+      "expected": [
+        "Foundation Breaker",
+        "Journey to Eternity",
+        "Haywire Mite",
+        "Birthing Pod",
+        "Vile Entomber"
+      ],
+      "misleading": [
+        "Doubling Season",
+        "Hardened Scales"
+      ],
+      "reason": "Meren's experience counters are on the player. Generic permanent/+1/+1 counter amplification should not be mistaken for direct support."
+    },
+    {
+      "id": 8,
+      "commander": "Brago, King Eternal",
+      "archetype": "Blink / ETB control",
+      "url": "https://archidekt.com/decks/24576453/brago_king_eternal",
+      "plan": "Connect with Brago and repeatedly blink useful nonland permanents to reuse ETBs, removal, draw and control pieces until repeated value or a loop takes over.",
+      "expected": [
+        "Preston, the Vanisher",
+        "Virtue of Knowledge",
+        "Eerie Interlude",
+        "Momentary Blink"
+      ],
+      "misleading": [
+        "Sai, Master Thopterist",
+        "Thought Monitor"
+      ],
+      "reason": "Brago uses plenty of artifacts as infrastructure, but artifact density should not incorrectly turn it into an artifact-token deck."
+    },
+    {
+      "id": 9,
+      "commander": "Chatterfang, Squirrel General",
+      "archetype": "Tokens / sacrifice",
+      "url": "https://archidekt.com/decks/9494289/chatterfang_squirrel_general",
+      "plan": "Convert every token source into additional Squirrels, then spend those bodies as sacrifice resources for removal, drain, mana and combo value.",
+      "expected": [
+        "Nested Shambler",
+        "Cloakwood Hermit",
+        "Creakwood Liege",
+        "Squirrel Sovereign"
+      ],
+      "misleading": [
+        "Dina, Soul Steeper",
+        "Bloodchief Ascension"
+      ],
+      "reason": "Incidental lifegain/life-loss overlap should not outrank the much stronger token-generation and sacrifice relationships."
+    },
+    {
+      "id": 10,
+      "commander": "Gishath, Sun's Avatar",
+      "archetype": "Dinosaur ramp / combat-cheat",
+      "url": "https://archidekt.com/decks/12410149/gishath_suns_avatar",
+      "plan": "Ramp aggressively into Gishath, connect in combat, and maximize Dinosaur hit density and top-deck quality so Gishath's damage turns into a large board of Dinosaurs.",
+      "expected": [
+        "Scroll Rack",
+        "Sensei's Divining Top",
+        "Temple Altisaur"
+      ],
+      "misleading": [
+        "Beast Whisperer",
+        "Hardened Scales"
+      ],
+      "reason": "Beast Whisperer rewards casting creatures while Gishath cheats many directly into play; Hardened Scales has no reason to score highly without a real counter package."
+    }
+  ]
+}
