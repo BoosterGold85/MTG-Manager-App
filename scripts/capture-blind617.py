@@ -7,6 +7,10 @@ root=pathlib.Path(__file__).resolve().parents[1]/'tests/audit/blind617'
 manifest_path=root/'capture.json'
 manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else {'status':'not-evaluated','decks':[]}
 pack=json.loads((root/'source/holdouts.json').read_text())
+replacement=root/'source/replacement-zada.json'
+if replacement.exists():
+ selected=json.loads(replacement.read_text())
+ pack['holdouts']=[selected if d['id']==selected['id'] else d for d in pack['holdouts']]
 for deck in pack['holdouts']:
  if any(d['id']==deck['id'] for d in manifest['decks']):continue
  deck_id=re.search(r'/decks/(\d+)',deck['url'])[1]

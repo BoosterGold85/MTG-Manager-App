@@ -1,0 +1,21 @@
+{
+  "id": 4,
+  "commander": "Zada, Hedron Grinder",
+  "archetype": "Targeted spell copying / wide creature board",
+  "url": "https://archidekt.com/decks/27540337/zada_hedron_grinder",
+  "plan": "Build a creature board, then target Zada with cheap instants and sorceries so those spells are copied across the entire team. Repeated cantrips generate explosive card advantage, while pump, token production and mana-generating effects convert the copied spells into a large combat or storm-style turn.",
+  "expected": [
+    "Mirrorwing Dragon",
+    "Unleash Fury",
+    "Balduvian Rage",
+    "Reckless Charge",
+    "Heat Shimmer"
+  ],
+  "misleading": [
+    "Etali, Primal Storm",
+    "Brass's Bounty"
+  ],
+  "reason": "Both are broadly useful mono-red value cards, but neither meaningfully participates in Zada's target-and-copy engine. Generic red value should not outrank spells or backup engines that exploit a wide creature board through targeted spell copying.",
+  "replaces": "Feather, the Redeemed",
+  "provenance": "User supplied before first ranking evaluation"
+}

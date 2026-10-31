@@ -1,8 +1,8 @@
 {
-  "retrievedAt": "2026-10-31T20:33:32.806727+00:00",
-  "sha256": "1939b1f1ad2883f0b6db7220ac40c30b7ed86609697b9340ffd3189de816e493",
-  "records": 459,
-  "purpose": "Offline canonical metadata only; raw popularity fields are not engine inputs.",
+  "retrievedAt": "2026-10-31T21:53:03.708862+00:00",
+  "sha256": "f3dfaef13a0fe1082e7248e56a3461b5b62f21672c3014ec779b5a911c8c7ea2",
+  "records": 514,
   "baselineFile": "../recall/cards.scryfall.json",
-  "baselineSha256": "8e332eac914015d6b649d29ecc3f08081ac118a05106dba240137aae0eaf0fa3"
+  "baselineSha256": "8e332eac914015d6b649d29ecc3f08081ac118a05106dba240137aae0eaf0fa3",
+  "purpose": "Offline canonical metadata only; raw popularity fields are not engine inputs."
 }

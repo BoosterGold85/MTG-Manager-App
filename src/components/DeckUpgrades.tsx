@@ -1,17 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useRecommendationAnalysis } from "../hooks/useRecommendationAnalysis";
+import { useMemo, useState } from "react";
 import type { CollectionState } from "../models/collection";
 import type { Deck, SavedDeckCandidate } from "../models/deck";
 import { deckCount } from "../decks/decks";
 import {
   MIN_CURRENT_DECK_CARDS,
-  analysisConfidence,
-  brewCandidates,
   brewFor,
-  buildAroundCommander,
   buildFor,
   candidateGroups,
-  commanderBlueprint,
-  improveCurrentDeck,
   mainDeckCount,
   synergyFor,
   upgradeFor,
@@ -30,6 +26,7 @@ import { SwapDeltas, SwapReview } from "./SwapReview";
 
 type Mode = "" | "improve" | "build";
 type Candidate = BuildCandidate | UpgradeCandidate;
+const EMPTY_CANDIDATES: Candidate[]=[];
 const developerTrace = () => {
   try {
     return new URLSearchParams(location.search).has("trace");
@@ -200,7 +197,7 @@ function BrewInThisDeck({ brew }: { brew: BrewResult }) {
 export function DeckUpgrades({
   state,
   deck,
-  busy,
+  busy: writeBusy,
   error,
   change,
 }: {
@@ -223,25 +220,17 @@ export function DeckUpgrades({
     [limit, setLimit] = useState(40),
     [reviewing, setReviewing] = useState<string | null>(null),
     [detail, setDetail] = useState<string | null>(null);
-  // Analysis runs after the goal (or a saved change) renders, so large collections never freeze without feedback.
-  const analysisKey = `${mode}:${state.revision}:${deck.modifiedAt}`;
-  const [ready, setReady] = useState("");
-  useEffect(() => {
-    if (!mode) return;
-    const id = setTimeout(() => setReady(analysisKey), 0);
-    return () => clearTimeout(id);
-  }, [mode, analysisKey]);
-  const analyzing = !!mode && ready !== analysisKey;
-  const trace = developerTrace();
-  const blueprint = useMemo(() => commanderBlueprint(state, deck), [state, deck]);
-  const build = useMemo(() => (mode === "build" && !analyzing ? buildAroundCommander(state, deck) : []), [mode, analyzing, state, deck]);
-  const improve = useMemo(() => (mode === "improve" && !analyzing ? improveCurrentDeck(state, deck) : []), [mode, analyzing, state, deck]);
-  const pool: Candidate[] = mode === "build" ? build : improve;
-  // Brew is computed only when a Brew or Synergy view asks for it, then cached per deck revision.
-  const brewMode = sort.startsWith("brew") || brewFilter !== "all";
-  const needBrew = brewMode || sort === "synergy";
-  const brew = useMemo(() => (needBrew && mode && !analyzing ? brewCandidates(state, deck) : null), [needBrew, mode, analyzing, state, deck]);
-  const confidence = useMemo(() => (brewMode && mode ? analysisConfidence(state, deck).level : "High"), [brewMode, mode, state, deck]);
+  const analysis=useRecommendationAnalysis(state,deck,mode);
+  const analyzing=analysis.pending;
+  const busy=writeBusy || analyzing;
+  const trace=developerTrace();
+  const blueprint=analysis.result?.blueprint || {commanders:deck.commanders.map(c=>c.name),plan:[]};
+  const improve=(mode==="improve"?analysis.result?.candidates:undefined) as UpgradeCandidate[] | undefined;
+  const pool:Candidate[]=analysis.result?.candidates || EMPTY_CANDIDATES;
+  const brewMode=sort.startsWith("brew") || brewFilter!=="all";
+  const needBrew=brewMode || sort==="synergy";
+  const brew=needBrew?analysis.result?.relationships:null;
+  const confidence=analysis.result?.confidence || "High";
   const sorted = useMemo(() => {
     const list = [...pool];
     const name = (a: Candidate, b: Candidate) => a.card.name.localeCompare(b.card.name, "en") || a.identity.localeCompare(b.identity, "en");
@@ -265,7 +254,7 @@ export function DeckUpgrades({
   const groups = () => candidateGroups(state, deck);
   // Candidate objects for actions are rebuilt from current state so a saved card or detail always shows current scores.
   const upgradeCandidate = (identity: string): UpgradeCandidate | null => {
-    const known = improve.find((c) => c.identity === identity);
+    const known = improve?.find((c) => c.identity === identity);
     if (known) return known;
     const group = groups().find((g) => g.identity === identity);
     if (!group || !canImprove) return null;
@@ -512,8 +501,9 @@ export function DeckUpgrades({
           </div>
           {brewMode && confidence === "Low" && <p className="brew-confidence prose">{LOW_CONFIDENCE_BREW}</p>}
           {brewMode && confidence === "Medium" && <p className="brew-confidence meta-text">Analysis confidence: Medium</p>}
-          <p role="status">{analyzing ? "Analyzing owned cards…" : `${results.length} ${results.length === 1 ? "candidate" : "candidates"}`}</p>
-          {!analyzing && !results.length && <p className="prose">No owned candidates match. Try another search or import more of your collection.</p>}
+          <p role="status">{analyzing ? (analysis.result ? "Updating analysis… Previous results are read-only." : "Analyzing owned cards…") : `${results.length} ${results.length === 1 ? "candidate" : "candidates"}`}</p>
+          {analysis.error && <p role="alert">{analysis.error} <button className="management-button" onClick={analysis.retry}>Retry analysis</button></p>}
+          {!analyzing && !analysis.error && !results.length && <p className="prose">No owned candidates match. Try another search or import more of your collection.</p>}
           <ul className="synergy-candidates">
             {results.slice(0, limit).map((c) => {
               const u = "upgrade" in c ? (c as UpgradeCandidate).upgrade : null;

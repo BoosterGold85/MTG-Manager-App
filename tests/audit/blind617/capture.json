@@ -1,5 +1,5 @@
 {
-  "status": "not-evaluated",
+  "status": "frozen-not-evaluated",
   "decks": [
     {
       "id": 1,
@@ -1358,86 +1358,35 @@
     },
     {
       "id": 4,
-      "commander": "Feather, the Redeemed",
-      "archetype": "Targeted spells / reusable cantrips",
-      "url": "https://archidekt.com/decks/4071438/feather_the_redeemed",
-      "plan": "Cast cheap spells targeting your own creatures, recycle them through Feather, protect Feather, trigger spellslinger effects, and convert repeated spell value into combat pressure.",
+      "commander": "Zada, Hedron Grinder",
+      "archetype": "Targeted spell copying / wide creature board",
+      "url": "https://archidekt.com/decks/27540337/zada_hedron_grinder",
+      "plan": "Build a creature board, then target Zada with cheap instants and sorceries so those spells are copied across the entire team. Repeated cantrips generate explosive card advantage, while pump, token production and mana-generating effects convert the copied spells into a large combat or storm-style turn.",
       "expected": [
-        "Mavinda, Students' Advocate",
-        "Psychotic Fury",
-        "Homestead Courage"
+        "Mirrorwing Dragon",
+        "Unleash Fury",
+        "Balduvian Rage",
+        "Reckless Charge",
+        "Heat Shimmer"
       ],
       "misleading": [
-        "Aurelia, the Warleader",
-        "Heroic Reinforcements"
+        "Etali, Primal Storm",
+        "Brass's Bounty"
       ],
-      "reason": "Generic Boros combat cards should not outrank repeatable targeted spells that actually participate in Feather's engine.",
-      "exportUrl": "https://archidekt.com/api/decks/4071438/?format=json",
-      "retrievedAt": "2026-10-31T20:32:08.767483+00:00",
-      "sha256": "1914b96ba3eab19d2dde2f01f7c8968bea0f0be543e92b5d24c7ed525cabfa29",
+      "reason": "Both are broadly useful mono-red value cards, but neither meaningfully participates in Zada's target-and-copy engine. Generic red value should not outrank spells or backup engines that exploit a wide creature board through targeted spell copying.",
+      "replaces": "Feather, the Redeemed",
+      "provenance": "User supplied before first ranking evaluation",
+      "exportUrl": "https://archidekt.com/api/decks/27540337/?format=json",
+      "retrievedAt": "2026-10-31T21:53:01.862128+00:00",
+      "sha256": "ed86c0589f1dd787af39cf50ac27d6cf438f05cf8c9b5992f6229fd729d51374",
       "cards": [
         {
-          "name": "Valorous Stance",
+          "name": "Zada, Hedron Grinder",
           "quantity": 1,
-          "commander": false
+          "commander": true
         },
         {
-          "name": "Reliquary Tower",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Blacksmith's Skill",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Sheltering Light",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Akroan Conscriptor",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Goldspan Dragon",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Reckless Rage",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Balduvian Rage",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Field of Ruin",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Fire Diamond",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Sol Ring",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Cloudshift",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Command Tower",
+          "name": "Fists of Flame",
           "quantity": 1,
           "commander": false
         },
@@ -1447,7 +1396,12 @@
           "commander": false
         },
         {
-          "name": "Fight as One",
+          "name": "Ancestors' Aid",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Dragon Fodder",
           "quantity": 1,
           "commander": false
         },
@@ -1457,107 +1411,12 @@
           "commander": false
         },
         {
-          "name": "Akroan Crusader",
+          "name": "Krenko's Command",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Sacred Foundry",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Path to Exile",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Defiant Strike",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Niveous Wisps",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Phalanx Leader",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Coldsteel Heart",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Gods Willing",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Ghost Quarter",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Boros Signet",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Marble Diamond",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Arcane Signet",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Talisman of Conviction",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Sejiri Shelter // Sejiri Glacier",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Mirrorwing Dragon",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Shelter",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Spectator Seating",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Crimson Wisps",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Clifftop Retreat",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Mox Amber",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Fellwar Stone",
+          "name": "Sudden Breakthrough",
           "quantity": 1,
           "commander": false
         },
@@ -1567,112 +1426,122 @@
           "commander": false
         },
         {
+          "name": "Crimson Wisps",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Spawning Breath",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Boiling Blood",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Kick in the Door",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Ral's Reinforcements",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Chaotic Strike",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Dreadhorde Arcanist",
+          "quantity": 1,
+          "commander": false
+        },
+        {
           "name": "Young Pyromancer",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Heal",
+          "name": "Skirk Prospector",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Ancestral Anger",
+          "name": "Runaway Steam-Kin",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Generous Gift",
+          "name": "Goblin Instigator",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Monastery Mentor",
+          "name": "Sol Ring",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Zada, Hedron Grinder",
+          "name": "Iron Myr",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Emerge Unscathed",
+          "name": "Goblin Warchief",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Mountain",
-          "quantity": 7,
-          "commander": false
-        },
-        {
-          "name": "Rugged Prairie",
+          "name": "Ornithopter of Paradise",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Wind-Scarred Crag",
+          "name": "Howlsquad Heavy",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Fists of Flame",
+          "name": "Goblin Chirurgeon",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Temple of Triumph",
+          "name": "Birgi, God of Storytelling // Harnfel, Horn of Bounty",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Plaza of Heroes",
+          "name": "Rograkh, Son of Rohgahh",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Bandage",
+          "name": "Impulsive Pilferer",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Plains",
-          "quantity": 14,
-          "commander": false
-        },
-        {
-          "name": "Loran's Escape",
+          "name": "Conspicuous Snoop",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Decanter of Endless Water",
+          "name": "Hedron Crawler",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Witch's Mark",
+          "name": "Goblin Lackey",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Urabrask // The Great Work",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Feather, the Redeemed",
-          "quantity": 1,
-          "commander": true
-        },
-        {
-          "name": "Thought Vessel",
-          "quantity": 1,
-          "commander": false
-        },
-        {
-          "name": "Stroke of Midnight",
+          "name": "Simian Spirit Guide",
           "quantity": 1,
           "commander": false
         },
@@ -1682,25 +1551,215 @@
           "commander": false
         },
         {
-          "name": "Guided Strike",
+          "name": "Krark, the Thumbless",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Angelfire Ignition",
+          "name": "Bothersome Noisemaker",
           "quantity": 1,
           "commander": false
         },
         {
-          "name": "Chandra's Ignition",
+          "name": "Battle Hymn",
           "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Accelerate",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Might of the Meek",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Brightstone Ritual",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Temur Battle Rage",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Flick a Coin",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Titan's Strength",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Haste Magic",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Seething Song",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Siege Smash",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Run Amok",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Brute Strength",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Ancestral Anger",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Impolite Entrance",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Hordeling Outburst",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Witch's Mark",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Twinflame",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Traitorous Greed",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Rile",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Inner Fire",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Crash Through",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Molten Duplication",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Dwarven Mine",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Reliquary Tower",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Kher Keep",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Sokenzan, Crucible of Defiance",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Mishra's Factory",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Shinka, the Bloodsoaked Keep",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Nykthos, Shrine to Nyx",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Blinkmoth Nexus",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Pinnacle Monk // Mystic Peak",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Goblin Matron",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Ornithopter",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Felonious Rage",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Reckless Ransacking",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Phyrexian Walker",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Shield Sphere",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Memnite",
+          "quantity": 1,
+          "commander": false
+        },
+        {
+          "name": "Mountain",
+          "quantity": 26,
           "commander": false
         }
       ],
-      "total": 83,
+      "total": 100,
       "alreadyPresentExpected": [],
       "alreadyPresentMisleading": [],
-      "status": "incomplete-source-not-evaluated",
+      "status": "captured-not-evaluated",
       "excludedSideboardCopies": 0
     },
     {

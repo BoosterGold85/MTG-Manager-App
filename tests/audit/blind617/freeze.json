@@ -1,0 +1,22 @@
+{
+  "status": "frozen-before-first-ranking",
+  "excluded": "Feather is excluded; raw/4.feather.excluded.archidekt.json must never enter the evaluation.",
+  "ownershipAssumption": "Frozen candidate pool treated as one owned unassigned copy per canonical card, filtered through production legality and already-in-deck exclusion. This is a test inventory, not the deck authors actual collections.",
+  "hashes": {
+    "capture.json": "4f486e46cfcc1367ecedeae7c426f2aede77a5dd7e21e7f5054baa9b105c169b",
+    "candidate-pool.json": "e752bcb8d5c9536369b022ef97a3654440de1e82d8863d66a4b3732b94e88c9f",
+    "canonical.json": "f3dfaef13a0fe1082e7248e56a3461b5b62f21672c3014ec779b5a911c8c7ea2",
+    "source/holdouts.json": "0feeed0349f6e472bbaaa7419577ae6c7b5ab8ab11b064d71321fd49e19b0901",
+    "source/replacement-zada.json": "30d51e4b2171550acc978939d6c117d0513667346c6990de260379dc1e52d16f",
+    "raw/1.archidekt.json": "4887d1f58bf4dc623ca278a48183aae211932a94bdf5919abbdaeabc10625ebf",
+    "raw/2.archidekt.json": "1c84747dcd796c74e3d8b891ec9763a6252459caeb514543abdb01e5a334d76a",
+    "raw/3.archidekt.json": "f1233dfbf7f8c6d7d6f8207607502429677db5e2f030545d3891e31d019d52bb",
+    "raw/4.archidekt.json": "ed86c0589f1dd787af39cf50ac27d6cf438f05cf8c9b5992f6229fd729d51374",
+    "raw/5.archidekt.json": "a82617e2b7f83292ed6db9f53a369bdfe77f9a3eec8b5343bb3f8663a743a560",
+    "raw/6.archidekt.json": "89db7791a85b5fa50c5e51aad74a182f5b6be3678f3bab1d078e54ef131a63f7",
+    "raw/7.archidekt.json": "e957b2876ae8fb6a349ccd0502af80ba577c312fdb856b49df13a8946a160b1b",
+    "raw/8.archidekt.json": "b520aad8c5bbeb47e3734ff8e8eb4f811cf839fe29cfa4939a2c42bc88307a00",
+    "raw/9.archidekt.json": "e10def4c8bac43aeb0f359f0444528c91636593f8964eade09759096b28d06f0",
+    "raw/10.archidekt.json": "37da307a3234a0aba78780dcb1287e86f8ea372b47dc05412db39d87149e3fc0"
+  }
+}
