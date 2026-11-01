@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.17-preview.1 — 2026-11-01 — Responsive analysis testing preview
+
+- Move recommended Build/Improve and relationship analysis into a read-only cancellable module worker. Keep complete results for local sorting/filtering; reject stale replies and disable stale actions, including after refresh errors.
+- Preserve v0.6.16 scoring; freeze ten blind holdouts with Zada replacing incomplete Feather. Generalization/downside work and blind evaluation remain unfinished.
+- Publish current validated work for user testing by request. See docs/VALIDATION-v0.6.17-preview.1.md. This is not the final v0.6.17 release.
+
 ## 0.6.16 — 2026-10-31 — Recommendation Ranking & Performance
 
 - Added bounded causal deck/package value, a deficit-aware generic utility ceiling and strategic engine redundancy protection. Documented weight changes and offline ablations; global bands/thresholds remain unchanged.

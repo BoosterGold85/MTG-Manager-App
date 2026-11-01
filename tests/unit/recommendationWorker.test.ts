@@ -48,3 +48,15 @@ it("leaving a workspace cancels pending analysis; errors are recoverable",async(
  const failed=client.run(request());const failure=expect(failed).rejects.toThrow("Retry or reload");workers[1].onerror?.({} as ErrorEvent);await failure;
  const retry=client.run(request()),result=computeRecommendations({...request(),id:0});workers[2].respond(result);expect(await retry).toBe(result);
 });
+
+it("Improve payloads for a full imported deck clone safely without changing ownership or assignments",async()=>{
+ const {reignOfDragonsFixture,canonicalFactsCards}=await import("../recommendationFixtures");
+ const f=reignOfDragonsFixture(),owned=synergyFixture().owned;
+ for(const card of canonicalFactsCards){f.state.metadata[card.scryfallId]=card;f.state.items.push(owned(card,card.scryfallId,1));}
+ const before=JSON.stringify(f.state);
+ const result=computeRecommendations({...request(),id:9,state:f.state,deck:f.deck,mode:"improve"});
+ expect(result.candidates.length).toBeGreaterThan(0);
+ expect(result.candidates.every(c=>"upgrade"in c)).toBe(true);
+ expect(structuredClone(result)).toEqual(result);
+ expect(JSON.stringify(f.state)).toBe(before);
+});

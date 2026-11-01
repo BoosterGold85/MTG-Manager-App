@@ -262,3 +262,60 @@ test("low confidence stays capped and below confident results; the detail view s
   await expect(upgrades.locator(".synergy-candidates>li")).toContainText("Best swap: cut");
   expect(await read(page)).toEqual(before);
 });
+
+test("cold recommendation worker keeps input and controls responsive and cancels when changing goal",async({page},testInfo)=>{
+ test.setTimeout(60000);
+ const owned=synergyFixture().owned;
+ await setup(page,f=>{
+  for(let i=0;i<3000;i++){
+   const card={...canonicalFactsCards[0],name:`Responsiveness candidate ${i}`,scryfallId:`responsive-print-${i}`,oracleId:`responsive-oracle-${i}`};
+   f.state.metadata[card.scryfallId]=card;f.state.items.push(owned(card,card.scryfallId,1));
+  }
+ });
+ await section(page,"Upgrades");
+ const upgrades=page.getByRole("region",{name:"Upgrades",exact:true});
+ let workers=0;page.on("worker",()=>workers++);
+ await upgrades.getByRole("button",{name:/Build Around My Commander/}).click();
+ await expect(upgrades.getByRole("status")).toHaveText(/Analyzing/);
+ const start=Date.now();
+ const input=upgrades.getByRole("searchbox",{name:"Search owned candidates"});
+ await input.fill("Responsiveness candidate",{timeout:2000});
+ await expect(input).toHaveValue("Responsiveness candidate",{timeout:2000});
+ await upgrades.getByRole("combobox",{name:"Copy availability"}).selectOption("available",{timeout:2000});
+ await upgrades.getByText("Commander Blueprint ·",{exact:false}).first().click({timeout:2000});
+ await expect(upgrades.getByRole("status")).toHaveText(/Analyzing/);
+ const elapsed=Date.now()-start;
+ await upgrades.getByRole("button",{name:"Change goal"}).click({timeout:2000});
+ await expect(upgrades.getByRole("button",{name:/Build Around My Commander/})).toBeVisible();
+ await expect(upgrades.locator(".upgrade-card")).toHaveCount(0);
+ expect(workers).toBe(1);
+ await testInfo.attach("cold-analysis-interaction.json",{body:JSON.stringify({candidates:3000,interactionMs:elapsed,workers,viewport:page.viewportSize(),physicalDevice:false}),contentType:"application/json"});
+});
+
+test("failed refresh keeps prior recommendations read-only until worker retry succeeds",async({page})=>{
+ await setup(page);
+ const upgrades=await openImprove(page);
+ const wayfinder=upgrades.locator(".synergy-candidates>li").filter({hasText:"Changeling Wayfinder"});
+ await page.evaluate(()=>{
+  const Native=window.Worker;
+  window.Worker=new Proxy(Native,{construct(target,args){
+   const worker=Reflect.construct(target,args) as Worker;
+   if(String(args[0]).includes("recommendation.worker")){
+    worker.postMessage=()=>{
+     window.Worker=Native;
+     queueMicrotask(()=>worker.dispatchEvent(new ErrorEvent("error",{message:"Simulated refresh failure"})));
+    };
+   }
+   return worker;
+  }});
+ });
+ await wayfinder.getByRole("button",{name:"Save Upgrade",exact:true}).click();
+ await expect(upgrades.getByRole("alert")).toContainText("could not finish");
+ await expect(wayfinder.getByRole("button",{name:"Saved",exact:true})).toBeDisabled();
+ await expect(wayfinder.getByRole("button",{name:"Review Swap",exact:true})).toBeDisabled();
+ const before=await read(page);
+ await upgrades.getByRole("button",{name:"Retry analysis",exact:true}).click();
+ await expect(upgrades.getByRole("status")).toHaveText(/\d+ candidates?/);
+ await expect(wayfinder.getByRole("button",{name:"Saved",exact:true})).toBeEnabled();
+ expect(await read(page)).toEqual(before);
+});

@@ -51,3 +51,8 @@ The frozen pass is complete with targeted semantic, interaction and condition/pr
 ### 0.6.16 — Current: Recommendation Ranking & Performance
 
 Bounded causal value, strategic redundancy protection and cold-analysis reuse meet the constructed ranking targets. Preserve the frozen corpus and inspect the full [report](docs/RECOMMENDATION-RANKING-v0.6.16.md). Broader holdout false positives and synchronous mobile work remain. Final recommendation B: validate this release manually before a separately authorized accuracy/responsiveness pass. No Brew Score implementation has begun.
+
+
+### 0.6.17 — In progress; worker testing preview available
+
+`0.6.17-preview.1` exposes read-only background recommendation analysis for manual testing. Ten blind decks are frozen, including the Zada replacement. Real-deck evaluation, downside/package-priority fixes and the final readiness decision remain pending. Scoring remains v0.6.16; do not begin Brew Score. See [preview validation](docs/VALIDATION-v0.6.17-preview.1.md).

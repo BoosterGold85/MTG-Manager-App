@@ -1,6 +1,10 @@
-# MTG Manager · v0.6.16
+# MTG Manager · v0.6.17-preview.1
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Manual-testing preview
+
+This preview moves recommended Build/Improve analysis into a cancellable module worker with stale-result protection and retry. The binder, ownership and existing v0.6.16 scoring remain unchanged. The new ten-deck blind corpus is frozen but not evaluated; generalization/downside improvements are still in progress. [Validation and limitations](docs/VALIDATION-v0.6.17-preview.1.md).
 
 ## Recommendation Ranking & Performance (v0.6.16)
 

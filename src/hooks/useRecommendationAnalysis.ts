@@ -28,5 +28,5 @@ export function useRecommendationAnalysis(state:CollectionState,deck:Deck,mode:"
  const error=settled?.revision===revision&&settled.attempt===attempt?settled.error:undefined;
  // A previous result is only visible within the same deck and goal, explicitly updating and non-actionable.
  const result=cached || (settled?.context===context?settled.result:undefined);
- return {result,error,pending:!!mode&&!cached&&!error,retry:()=>setAttempt(n=>n+1)};
+ return {result,error,stale:!!mode&&!cached,pending:!!mode&&!cached&&!error,retry:()=>setAttempt(n=>n+1)};
 }

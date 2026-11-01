@@ -222,7 +222,7 @@ export function DeckUpgrades({
     [detail, setDetail] = useState<string | null>(null);
   const analysis=useRecommendationAnalysis(state,deck,mode);
   const analyzing=analysis.pending;
-  const busy=writeBusy || analyzing;
+  const busy=writeBusy || analysis.stale;
   const trace=developerTrace();
   const blueprint=analysis.result?.blueprint || {commanders:deck.commanders.map(c=>c.name),plan:[]};
   const improve=(mode==="improve"?analysis.result?.candidates:undefined) as UpgradeCandidate[] | undefined;
@@ -302,8 +302,8 @@ export function DeckUpgrades({
         Add to Deck
       </button>
     );
-  const review = reviewing ? upgradeCandidate(reviewing) : null;
-  const detailGroup = detail ? groups().find((g) => g.identity === detail) : null;
+  const review = reviewing && !analysis.stale ? upgradeCandidate(reviewing) : null;
+  const detailGroup = detail && !analysis.stale ? groups().find((g) => g.identity === detail) : null;
   if (detailGroup) {
     const detailBuild = buildFor(state, deck, detailGroup.canonical);
     const upgrade = canImprove ? upgradeFor(state, deck, detailGroup.canonical, detailGroup.identity) : undefined;
@@ -512,7 +512,7 @@ export function DeckUpgrades({
               const isSaved = !!savedFor(c.identity, intent);
               return (
                 <li key={c.identity} data-fit={u ? u.label : c.build.priorityLabel} className="upgrade-card">
-                  <button className="synergy-art deck-art-button" onClick={() => setDetail(c.identity)}>
+                  <button className="synergy-art deck-art-button" disabled={analysis.stale} onClick={() => setDetail(c.identity)}>
                     <CardImage card={c.card} />
                     <span className="sr-only">View {c.card.name} details</span>
                   </button>
