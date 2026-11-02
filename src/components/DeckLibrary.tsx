@@ -1,3 +1,4 @@
+import { StandardUpgrades } from "./StandardUpgrades";
 import { FormatOverview } from "./FormatOverview";
 import { formatOf, formatLabel } from "../decks/formats";
 import type { DeckFormat } from "../models/deck";
@@ -327,7 +328,8 @@ export function DeckLibrary({
               onOpen={(row) => setDetail({ row })}
             />
           )}
-          {tab === "upgrades" && formatOf(deck)!=="commander" && <p>Commander recommendations are available for Commander decks. Use Cards to build this deck.</p>}
+          {tab === "upgrades" && formatOf(deck)==="standard" && <StandardUpgrades key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
+          {tab === "upgrades" && formatOf(deck)==="legacy" && <p>Commander recommendations are available for Commander decks. Use Cards to build this deck.</p>}
           {tab === "upgrades" && formatOf(deck)==="commander" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} error={error} change={change} />}
           {tab === "settings" && <DeckSettings key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
         </>

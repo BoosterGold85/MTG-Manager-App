@@ -48,7 +48,7 @@ The v0.1.x exit condition is a coherent collection → detail → back experienc
 The frozen pass is complete with targeted semantic, interaction and condition/profile fixes. Score weights and thresholds are preserved. Final evidence recommends B: accuracy/ordering and cold analysis still need work before new Brew Score implementation. Existing v0.6.13 lens is preserved; this pass adds no Brew functionality. See [the completed pass](docs/RECOMMENDATION-RECALL-COMPLETE.md). No later phase has begun.
 
 
-### 0.6.16 — Current: Recommendation Ranking & Performance
+### 0.6.16 — Completed: Recommendation Ranking & Performance
 
 Bounded causal value, strategic redundancy protection and cold-analysis reuse meet the constructed ranking targets. Preserve the frozen corpus and inspect the full [report](docs/RECOMMENDATION-RANKING-v0.6.16.md). Broader holdout false positives and synchronous mobile work remain. Final recommendation B: validate this release manually before a separately authorized accuracy/responsiveness pass. No Brew Score implementation has begun.
 
@@ -61,3 +61,8 @@ Bounded causal value, strategic redundancy protection and cold-analysis reuse me
 ### 0.6.18 — Multi-Format Deck Support
 
 Separately authorized by the user: Commander, Standard and Legacy creation/import; constructed main/sideboards; copy/size and fresh Scryfall legality warnings. Preserve ownership and old Commander decks. No new recommendation model: v0.6.17 real-deck generalization remains in progress. See [validation and limitations](docs/MULTI-FORMAT-DECKS-v0.6.18.md).
+
+
+### 0.6.19 — Current: Experimental Standard Upgrades
+
+Separately authorized Standard-first phase: owned nonland candidates, additional copies, main-deck quantity comparisons and explicit atomic swaps using a separate Standard model. Commander source and ranking remain unchanged. Real Standard-list recommendation quality is not yet calibrated. Legacy, sideboard recommendations and mana-base changes remain future work. The unfinished Commander generalization pass is not resumed or represented as complete. See [model and validation](docs/STANDARD-UPGRADES-v0.6.19.md).

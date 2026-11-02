@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.19 — 2026-11-02 — Experimental Standard Upgrades
+
+- Add a separate Standard-only owned-card upgrade tab with quantity-aware interaction/condition evidence, Plan Fit and an experimental Brew lens. Existing Commander scorer, tool, weights and thresholds are unchanged.
+- Include additional copies already in the deck while respecting main-plus-sideboard copy limits; show exact owned variants, availability and use in other decks.
+- Explicitly select a cut and compare one to four equal-count copies. Preview modeled change, lost coverage, opening-seven probability and outgoing physical variants before a revision-checked atomic confirmation. Never steal copies or change owned quantities.
+- Use cancellable background analysis and bounded versioned caches; require fresh legality, explicit catalog refresh and a live selected-printing check at confirmation. No network requests during normal browsing.
+- Standard main deck only: Legacy, sideboard matchup advice and mana-base changes remain deferred. This is heuristic testing functionality, not validated competitive advice. See docs/STANDARD-UPGRADES-v0.6.19.md.
+
 ## 0.6.18 — 2026-11-01 — Multi-Format Deck Support
 
 - Add Standard/Legacy creation and preview-first text import without Commander requirements; old decks default to Commander. Preserve sideboards, missing entries, printings and safe physical-copy assignments.

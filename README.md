@@ -1,6 +1,12 @@
-# MTG Manager · v0.6.18
+# MTG Manager · v0.6.19
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Standard upgrades · experimental
+
+Open a **Standard** deck → **Upgrades** → **Check owned-card legality**. Compare owned nonland printings against an explicitly chosen main-deck entry, including adding a third/fourth copy. Review one to four copies, modeled Plan Fit/Brew change, opening-hand consistency, lost coverage and physical copies released before confirming. Confirmation checks current selected-card legality and saves one atomic equal-count change; owned quantities, sideboards and other decks stay unchanged. Assigned copies cannot be taken from another deck.
+
+This is a separate experimental Standard model, not competitive or win-rate validation. Commander recommendations are unchanged. Legacy upgrades, sideboard matchup recommendations and mana-base swaps remain deferred. [Model, validation and limitations](docs/STANDARD-UPGRADES-v0.6.19.md).
 
 ## Standard and Legacy decks
 
