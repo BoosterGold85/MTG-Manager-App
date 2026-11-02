@@ -65,7 +65,7 @@ test("creates Standard/Legacy drafts without Commander selection",async({page})=
   await page.getByRole("textbox",{name:"Deck name",exact:true}).fill(`${format} draft`);
   await page.getByRole("button",{name:"Create deck",exact:true}).click();
   await expect(page.getByRole("heading",{name:`${format} draft`,exact:true})).toBeVisible();
-  await expect(page.getByRole("navigation",{name:"Deck sections"}).getByRole("button",{name:"Upgrades",exact:true})).toHaveCount(format==="standard"?1:0);
+  await expect(page.getByRole("navigation",{name:"Deck sections"}).getByRole("button",{name:"Upgrades",exact:true})).toHaveCount(1);
   await expect(page.getByRole("region",{name:"Format legality"})).toContainText("at least 60");
   await page.getByRole("button",{name:"All Decks",exact:true}).click();
  }

@@ -1,5 +1,7 @@
-// Standard-only experimental heuristics. Shared Oracle facts are read-only;
+// Constructed-only experimental heuristics. Standard and Legacy have separate Brew lenses. Shared Oracle facts are read-only;
 // no Commander profile, recommendation scorer or weight is called or changed.
+import {legacyBrew} from "../legacy/brew";
+import type {LegacyBrew} from "../legacy/brew";
 import type { CardMetadata, CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
 import { deckCardFunction } from "../upgrades/cardFunction";
@@ -12,10 +14,13 @@ import { normalizedName } from "../import/csv";
 import { deckPlayable,deckUsage } from "../decks/decks";
 export const STANDARD_VERSION="0.1.0";
 export const key=(c:CardMetadata)=>normalizedName(c.name);
-export function freshStandard(card:CardMetadata,now=Date.now()){
+export type ConstructedFormat="standard"|"legacy";
+export function freshLegal(card:CardMetadata,format:ConstructedFormat,now=Date.now()){
  const age=now-Date.parse(card.legalityCheckedAt || "");
- return card.legalities?.standard==="legal" && Number.isFinite(age) && age>=0 && age<=7*86400000;
+ return card.legalities?.[format]==="legal" && Number.isFinite(age) && age>=0 && age<=7*86400000;
 }
+export const freshStandard=(card:CardMetadata,now=Date.now())=>freshLegal(card,"standard",now);
+export const freshLegacy=(card:CardMetadata,now=Date.now())=>freshLegal(card,"legacy",now);
 export const isLand=(c:CardMetadata)=>/\bLand\b/.test(c.typeLine) || !!c.cardFaces?.some(f=>/\bLand\b/.test(f.typeLine || ""));
 type Row={card:CardMetadata;quantity:number};
 function main(state:CollectionState,deck:Deck):Row[]{return (deck.entries || []).filter(e=>e.board==="main").map(e=>({card:state.metadata[e.scryfallId],quantity:e.quantity}));}
@@ -66,35 +71,40 @@ function utility(rows:Row[]){
  const coverage=Object.entries(roles).reduce((n,[role,count])=>n+Math.sqrt(count || 0)*(["interaction","cardAdvantage","protection"].includes(role)?4:2),0);
  return {value:value/Math.max(1,total)+coverage,roles};
 }
-export interface StandardCandidate {itemId:string;card:CardMetadata;available:number;owned:number;inDeck:number;room:number;usedIn:string[];score:number;brew:number;reasons:string[];risks:string[];}
-export function standardCandidates(state:CollectionState,deck:Deck){
- if(formatOf(deck)!=="standard")throw new Error("Standard analysis cannot analyze another format.");
+export interface StandardCandidate {itemId:string;card:CardMetadata;available:number;owned:number;inDeck:number;room:number;usedIn:string[];score:number;brew:number;reasons:string[];risks:string[];legacyBrew?:LegacyBrew;}
+function candidatesFor(state:CollectionState,deck:Deck,format:ConstructedFormat){
+ const label=format==="legacy"?"Legacy":"Standard";
+ if(formatOf(deck)!==format)throw new Error(`${label} analysis cannot analyze another format.`);
  const rows=main(state,deck),ctx=context(rows),candidates:StandardCandidate[]=[];
  let unknown=0,illegal=0,riskExcluded=0,manaExcluded=0;
  for(const item of state.items){
   const card=state.metadata[item.scryfallId];if(!card || item.quantityOwned<1 || isLand(card) || !deckPlayable(card))continue;
-  if(!freshStandard(card)){if(card.legalities?.standard && card.legalities.standard!=="legal")illegal++;else unknown++;continue;}
-  const inDeck=countCard(state,deck,card),room=copyLimit(card,"standard")-inDeck;
+  if(!freshLegal(card,format)){if(card.legalities?.[format] && card.legalities[format]!=="legal")illegal++;else unknown++;continue;}
+  const inDeck=countCard(state,deck,card),room=copyLimit(card,format)-inDeck;
   if(room<=0)continue;
   const value=fit(card,rows,ctx);
   if(value.severe){riskExcluded++;continue;}
   if(value.missingMana){manaExcluded++;continue;}
-  candidates.push({itemId:item.id,card,available:item.quantityUnassigned,owned:item.quantityOwned,inDeck,room,usedIn:deckUsage(state,item.id).map(u=>`${u.deck.name} (${u.quantity})`),...value});
+  const brew=format==="legacy"?legacyBrew(card,rows,ctx.supply):undefined;
+  candidates.push({itemId:item.id,card,available:item.quantityUnassigned,owned:item.quantityOwned,inDeck,room,usedIn:deckUsage(state,item.id).map(u=>`${u.deck.name} (${u.quantity})`),...value,...(brew?{brew:brew.score,legacyBrew:brew}:{})});
  }
  candidates.sort((a,b)=>Number(b.available>0)-Number(a.available>0)||b.score-a.score||b.brew-a.brew||a.card.name.localeCompare(b.card.name)||a.itemId.localeCompare(b.itemId));
  return {candidates,unknown,illegal,riskExcluded,manaExcluded,mainCount:rows.reduce((n,r)=>n+r.quantity,0)};
 }
+export const standardCandidates=(state:CollectionState,deck:Deck)=>candidatesFor(state,deck,"standard");
+export const legacyCandidates=(state:CollectionState,deck:Deck)=>candidatesFor(state,deck,"legacy");
+export function constructedCandidates(state:CollectionState,deck:Deck){return formatOf(deck)==="legacy"?legacyCandidates(state,deck):standardCandidates(state,deck);}
 export function openingChance(total:number,copies:number){
  let none=1;for(let i=0;i<Math.min(7,total);i++)none*=Math.max(0,total-copies-i)/(total-i);
  return Math.round((1-none)*1000)/10;
 }
-export function compareStandard(state:CollectionState,deck:Deck,itemId:string,cutId:string,quantity:number){
- if(formatOf(deck)!=="standard")throw new Error("Standard comparison only.");
+function compareFor(state:CollectionState,deck:Deck,itemId:string,cutId:string,quantity:number,format:ConstructedFormat){
+ if(formatOf(deck)!==format)throw new Error(`${format==="legacy"?"Legacy":"Standard"} comparison only.`);
  const item=state.items.find(i=>i.id===itemId),cut=deck.entries?.find(e=>e.id===cutId&&e.board==="main");
  if(!item||!cut||!Number.isSafeInteger(quantity)||quantity<1||quantity>4||cut.quantity<quantity)throw new Error("Choose one to four copies within the selected main-deck entry.");
  const card=state.metadata[item.scryfallId],out=state.metadata[cut.scryfallId];
- if(!freshStandard(card)||isLand(card)||isLand(out)||key(card)===key(out))throw new Error("Choose a different, freshly verified legal nonland card.");
- if(countCard(state,deck,card)+quantity>copyLimit(card,"standard"))throw new Error("This change exceeds the copy limit across main deck and sideboard.");
+ if(!freshLegal(card,format)||isLand(card)||isLand(out)||key(card)===key(out))throw new Error("Choose a different, freshly verified legal nonland card.");
+ if(countCard(state,deck,card)+quantity>copyLimit(card,format))throw new Error("This change exceeds the copy limit across main deck and sideboard.");
  if(fit(card,main(state,deck)).missingMana)throw new Error("Saved lands do not show this cast cost. Adjust mana through the regular deck editor first.");
  if(fit(card,main(state,deck)).severe)throw new Error("Severe downside cannot be validated by this model. Use the regular deck editor instead.");
  const before=main(state,deck),after=before.map(r=>({...r}));
@@ -114,3 +124,7 @@ export function compareStandard(state:CollectionState,deck:Deck,itemId:string,cu
  const total=before.reduce((n,r)=>n+r.quantity,0),copies=before.filter(r=>key(r.card)===key(card)).reduce((n,r)=>n+r.quantity,0);
  return {releases,mainCopiesBefore:copies,mainCopiesAfter:copies+quantity,openingBefore:openingChance(total,copies),openingAfter:openingChance(total,copies+quantity),delta:Math.round((b.value-a.value)*10)/10,lost,quantity,incoming:card.name,outgoing:out.name,available:item.quantityUnassigned,canAssign:item.quantityUnassigned>=quantity,caution:"Heuristic contextual change, not predicted win rate. Mana-base changes, sideboard matchups and combos are not validated."};
 }
+
+export const compareStandard=(state:CollectionState,deck:Deck,itemId:string,cutId:string,quantity:number)=>compareFor(state,deck,itemId,cutId,quantity,"standard");
+export const compareLegacy=(state:CollectionState,deck:Deck,itemId:string,cutId:string,quantity:number)=>compareFor(state,deck,itemId,cutId,quantity,"legacy");
+export function compareConstructed(state:CollectionState,deck:Deck,itemId:string,cutId:string,quantity:number){return formatOf(deck)==="legacy"?compareLegacy(state,deck,itemId,cutId,quantity):compareStandard(state,deck,itemId,cutId,quantity);}

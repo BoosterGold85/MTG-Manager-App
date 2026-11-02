@@ -1,12 +1,16 @@
-# MTG Manager · v0.6.19
+# MTG Manager · v0.6.20
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Legacy upgrades · Interesting Brews
+
+Open any **Legacy** deck → **Upgrades** → **Check owned-card legality**. Rank your owned cards by **Brew Score** or Plan Fit. **Interesting Brews** narrows the list to supported, locally novel interactions; expand **Why this brew?** to see actual main-deck partners, effect reuse and bridges between mechanisms. Scores are exploratory, not tournament power or proven combos. Compare explicit one-to-four-copy changes and confirm only when you choose; owned quantities, sideboards and other decks remain authoritative. Commander recommendations and Standard scores are preserved. [Model and validation](docs/LEGACY-UPGRADES-v0.6.20.md).
 
 ## Standard upgrades · experimental
 
 Open a **Standard** deck → **Upgrades** → **Check owned-card legality**. Compare owned nonland printings against an explicitly chosen main-deck entry, including adding a third/fourth copy. Review one to four copies, modeled Plan Fit/Brew change, opening-hand consistency, lost coverage and physical copies released before confirming. Confirmation checks current selected-card legality and saves one atomic equal-count change; owned quantities, sideboards and other decks stay unchanged. Assigned copies cannot be taken from another deck.
 
-This is a separate experimental Standard model, not competitive or win-rate validation. Commander recommendations are unchanged. Legacy upgrades, sideboard matchup recommendations and mana-base swaps remain deferred. [Model, validation and limitations](docs/STANDARD-UPGRADES-v0.6.19.md).
+This is a separate experimental Standard model, not competitive or win-rate validation. Commander recommendations are unchanged. Legacy upgrades are also available; sideboard matchup recommendations and mana-base swaps remain deferred. [Model, validation and limitations](docs/STANDARD-UPGRADES-v0.6.19.md).
 
 ## Standard and Legacy decks
 

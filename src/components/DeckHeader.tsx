@@ -39,7 +39,7 @@ export function DeckHeader({
         <span>{formatOf(deck)==="commander"?identityName(deck):formatLabel(deck)}</span>
       </p>
       <nav className="deck-sections" aria-label="Deck sections">
-        {deckTabs.filter(t=>formatOf(deck)!=="legacy" || t.id!=="upgrades").map((t) => (
+        {deckTabs.map((t) => (
           <button key={t.id} className={tab === t.id ? "active" : ""} aria-current={tab === t.id ? "page" : undefined} onClick={() => onTab(t.id)}>
             {t.label}
           </button>

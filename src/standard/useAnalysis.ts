@@ -1,13 +1,14 @@
 import {useEffect,useState} from "react";
 import type {CardMetadata,CollectionState} from "../models/collection";
 import type {Deck} from "../models/deck";
+import {LEGACY_VERSION} from "../legacy/brew";
 import {STANDARD_VERSION} from "./engine";
 import type {StandardRequest} from "./worker";
 type Cached={result:unknown;expires:number};
 const cache=new WeakMap<CollectionState,Map<string,Cached>>();
 export function useStandardAnalysis<T>(state:CollectionState,deck:Deck,comparison?:StandardRequest["comparison"],enabled=true){
  const [attempt,setAttempt]=useState(0),[clock,setClock]=useState(0);
- const revision=JSON.stringify([state.revision,deck,STANDARD_VERSION,comparison,attempt,clock]);
+ const revision=JSON.stringify([state.revision,deck,STANDARD_VERSION,LEGACY_VERSION,comparison,attempt,clock]);
  const [settled,setSettled]=useState<{revision:string;result?:T;error?:string;expires:number}>();
  const entry=!comparison?cache.get(state)?.get(revision):undefined;
  const cached=entry&&entry.expires>Date.now()?entry:undefined;
@@ -36,7 +37,7 @@ export function useStandardAnalysis<T>(state:CollectionState,deck:Deck,compariso
     };
     worker.onerror=()=>{if(active)setSettled({revision,error:"Could not analyze this deck. Reopen Upgrades to retry.",expires:Infinity});worker?.terminate();};
     worker.postMessage({id:1,revision,state,deck,comparison} satisfies StandardRequest);
-   }catch{if(active)setSettled({revision,error:"Could not start Standard analysis. Reopen Upgrades or reload to retry.",expires:Infinity});worker?.terminate();}
+   }catch{if(active)setSettled({revision,error:"Could not start deck analysis. Reopen Upgrades or reload to retry.",expires:Infinity});worker?.terminate();}
   });
   return()=>{active=false;worker?.terminate();};
  },[state,deck,revision,comparison,enabled]);

@@ -1,4 +1,4 @@
-import { compareStandard, countCard, freshStandard } from "../standard/engine";
+import { compareStandard, compareLegacy, countCard, freshLegal } from "../standard/engine";
 import { copyLimit } from "../decks/formats";
 import { formatOf } from "../decks/formats";
 import type {
@@ -12,7 +12,9 @@ import { normalizedName } from "../import/csv";
 import { deckPlayable, entryAssigned, isBasicLand, legalInDeck, newDeck, reconcileAllocations, sameCard } from "../decks/decks";
 export type DeckChange =
   | {type:"standard-swap";deckId:string;incomingItemId:string;outgoingEntryId:string;quantity:number;verifiedCard?:CardMetadata}
+  | {type:"legacy-swap";deckId:string;incomingItemId:string;outgoingEntryId:string;quantity:number;verifiedCard?:CardMetadata}
   | {type:"standard-legality";deckId:string;metadata:Record<string,CardMetadata>}
+  | {type:"legacy-legality";deckId:string;metadata:Record<string,CardMetadata>}
   | {type:"check-legality";deckId:string;metadata:Record<string,CardMetadata>}
   | { type: "create"; name: string; itemId?: string; format?: DeckFormat }
   | { type: "rename"; deckId: string; name: string }
@@ -168,15 +170,16 @@ export class LocalDeckRepository implements DeckRepository {
       const deck = decks.find((d) => d.id === action.deckId);
       if (!deck)
         throw new Error("This deck no longer exists. Reload and retry.");
-      if(action.type==="standard-swap"){
-        if(formatOf(deck)!=="standard")throw new Error("This action is only for Standard decks.");
+      if(action.type==="standard-swap" || action.type==="legacy-swap"){
+        const format=action.type==="legacy-swap"?"legacy":"standard",label=format==="legacy"?"Legacy":"Standard";
+        if(formatOf(deck)!==format)throw new Error(`This action is only for ${label} decks.`);
         const item=base.items.find(i=>i.id===action.incomingItemId);
         if(!item)throw new Error("The selected printing is no longer owned.");
         const card=base.metadata[item.scryfallId],q=action.quantity;
         const verified=action.verifiedCard,age=Date.now()-Date.parse(verified?.legalityCheckedAt || "");
-        if(!verified || verified.scryfallId!==card.scryfallId || normalizedName(verified.name)!==normalizedName(card.name) || !freshStandard(verified) || !Number.isFinite(age) || age<0 || age>5*60000)throw new Error("A fresh selected-card Standard legality check is required before confirming.");
+        if(!verified || verified.scryfallId!==card.scryfallId || normalizedName(verified.name)!==normalizedName(card.name) || !freshLegal(verified,format) || !Number.isFinite(age) || age<0 || age>5*60000)throw new Error(`A fresh selected-card ${label} legality check is required before confirming.`);
         metadata={...base.metadata,[card.scryfallId]:{...card,legalities:verified.legalities,legalityCheckedAt:verified.legalityCheckedAt}};
-        compareStandard({...base,metadata},deck,item.id,action.outgoingEntryId,q);
+        (format==="legacy"?compareLegacy:compareStandard)({...base,metadata},deck,item.id,action.outgoingEntryId,q);
         if(item.quantityUnassigned<q)throw new Error("Not enough available copies. No copies are taken from other decks.");
         const cut=deck.entries!.find(e=>e.id===action.outgoingEntryId&&e.board==="main")!;
         const beforeCount=deck.entries!.filter(e=>e.board==="main").reduce((n,e)=>n+e.quantity,0);
@@ -187,10 +190,11 @@ export class LocalDeckRepository implements DeckRepository {
         else {target={id:`${deck.id}:${crypto.randomUUID()}`,board:"main",quantity:q,name:card.name,cardIdentity:cardIdentity(card),scryfallId:card.scryfallId};deck.entries!.push(target);}
         const assignment=deck.assignments.find(a=>a.itemId===item.id&&a.entryId===target.id);
         if(assignment)assignment.quantity+=q;else deck.assignments.push({itemId:item.id,entryId:target.id,quantity:q});
-        if(countCard({...base,metadata},deck,card)>copyLimit(card,"standard"))throw new Error("Copy limit exceeded.");
+        if(countCard({...base,metadata},deck,card)>copyLimit(card,format))throw new Error("Copy limit exceeded.");
         deck.modifiedAt=now;
-      }else if(action.type==="standard-legality"){
-        if(formatOf(deck)!=="standard")throw new Error("Standard legality checks only.");
+      }else if(action.type==="standard-legality" || action.type==="legacy-legality"){
+        const format=action.type==="legacy-legality"?"legacy":"standard";
+        if(formatOf(deck)!==format)throw new Error(`${format==="legacy"?"Legacy":"Standard"} legality checks only.`);
         metadata={...base.metadata};const ids=new Set([...base.items.map(i=>i.scryfallId),...(deck.entries || []).map(e=>e.scryfallId)]);
         for(const [id,card]of Object.entries(action.metadata)){
           if(!ids.has(id)||!metadata[id]||!card.legalities)throw new Error("Collection changed. Retry the legality check.");

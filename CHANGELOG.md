@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.20 — 2026-11-02 — Legacy Upgrades & Interesting Brews
+
+- Enable Upgrades on Legacy decks using Legacy legality, combined-board copy limits and existing safe owned-copy comparisons/atomic confirmation.
+- Add a separate Legacy Brew lens: recipient-verified reuse/copy/amplification, sufficiently supplied conditions, bridges between distinct main-deck partners and locally novel mechanism combinations. Generic utility or a new name alone earns no Brew credit.
+- Default Legacy ranking to Brew Score; add Interesting Brews and named Why this brew? evidence. Preserve manual cut selection, fresh selected-printing verification, cancellation, no copy stealing and unchanged owned quantities/sideboards.
+- Share the constructed worker/UI transport while preserving Standard scoring. All protected Commander recommendation sources remain unchanged. Scores are experimental; metagame/sideboard optimization and combo verification remain out of scope.
+- See docs/LEGACY-UPGRADES-v0.6.20.md for validation and limitations.
+
 ## 0.6.19 — 2026-11-02 — Experimental Standard Upgrades
 
 - Add a separate Standard-only owned-card upgrade tab with quantity-aware interaction/condition evidence, Plan Fit and an experimental Brew lens. Existing Commander scorer, tool, weights and thresholds are unchanged.

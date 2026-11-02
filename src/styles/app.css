@@ -2580,3 +2580,6 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 .brew-score { display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--space-12); color:var(--accent); margin:0; }
 .brew-score strong { font-size:1.1rem; font-weight:500; }
 .brew-score span { color:var(--text-secondary); }
+
+/* Legacy exploration keeps the existing restrained gold selected state. */
+.deck-upgrades .legacy-brew-filter[aria-pressed="true"] { background:var(--selected-surface); border-color:var(--selected-border); color:var(--selected-text); }
