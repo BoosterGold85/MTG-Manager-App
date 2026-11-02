@@ -1,7 +1,7 @@
 import type { DeckImportIssue } from "../models/deck";
 export const MAX_DECK_TEXT_BYTES = 1024 * 1024;
 export const MAX_DECK_LINES = 5000;
-export type DeckSection = "commander" | "main";
+export type DeckSection = "commander" | "main" | "sideboard";
 export interface DeckTextLine {
   line: number;
   text: string;
@@ -55,7 +55,7 @@ export const normalizeDeckName = (name: string) =>
     .replace(/\s*\/{1,3}\s*/g, " // ")
     .replace(/\s+/g, " ")
     .trim();
-export function parseDeckText(text: string): ParsedDeckText {
+export function parseDeckText(text: string, includeSideboard = false): ParsedDeckText {
   if (new Blob([text]).size > MAX_DECK_TEXT_BYTES)
     throw new Error("This deck file is too large. Choose a ManaBox deck export.");
   const raw = text.replace(/^\uFEFF/, "").split(/\r\n|\r|\n/);
@@ -110,7 +110,7 @@ export function parseDeckText(text: string): ParsedDeckText {
       });
       return;
     }
-    if (lineSection === "sideboard" || lineSection === "maybeboard" || lineSection === "companion" || lineSection === "tokens") {
+    if ((lineSection === "sideboard" && !includeSideboard) || lineSection === "maybeboard" || lineSection === "companion" || lineSection === "tokens") {
       result.issues.push({
         line,
         text,
@@ -152,7 +152,7 @@ export function parseDeckText(text: string): ParsedDeckText {
             ...(printing[3] ? { collectorNumber: printing[3].toLowerCase() } : {}),
           }
         : {}),
-      section: marker ? "commander" : lineSection === "commander" ? "commander" : "main",
+      section: marker ? "commander" : lineSection === "commander" ? "commander" : lineSection === "sideboard" ? "sideboard" : "main",
       explicitCommander: marker || lineSection === "commander",
     });
   });

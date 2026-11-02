@@ -37,6 +37,7 @@ export const deckSortLabels: Record<DeckSort, string> = {
 };
 export const deckTypes = ["Creature", "Instant", "Sorcery", "Artifact", "Enchantment", "Planeswalker", "Battle", "Land"] as const;
 export interface DeckFilters {
+  board?: "" | "main" | "sideboard";
   theme?: string;
   query: string;
   type: "" | (typeof deckTypes)[number] | "Other";
@@ -89,7 +90,7 @@ export function deckRows(state: CollectionState, deck: Deck): DeckRow[] {
     });
   }
   for (const entry of deck.entries || []) {
-    if (entry.board !== "main") continue;
+    if (entry.board === "commander") continue;
     const missing = entry.quantity - entryAssigned(deck, entry);
     if (missing < 1 || !state.metadata[entry.scryfallId]) continue;
     const card = canonicalCard(state, entry.scryfallId, `entry:${entry.id}`);
@@ -166,6 +167,7 @@ export function filterDeckRows(rows: DeckRow[], filters: DeckFilters, dna?:DeckD
   const query = filters.query.trim().toLowerCase();
   return rows.filter(
     (row) =>
+      (!filters.board || (row.entry?.board || "main")===filters.board) &&
       (!filters.theme || !!(dna&&cardSynergy(dna,row.card)?.connections.some(c=>c.themeId===filters.theme))) &&
       (!query || row.name.toLowerCase().includes(query)) &&
       (!filters.type || typeGroup(row.card) === filters.type) &&

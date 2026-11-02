@@ -374,7 +374,7 @@ function computeCharacteristics(c: DnaInputCard): Characteristics {
     ...c,
     card: Object.fromEntries(
       fields.filter((k) => c.card[k] !== undefined).map((k) => [k, c.card[k]]),
-    ) as CardMetadata,
+    ) as unknown as CardMetadata,
   };
 
   const tags = new Set(c.assignments.map((a) => a.tagId)),

@@ -56,3 +56,8 @@ Bounded causal value, strategic redundancy protection and cold-analysis reuse me
 ### 0.6.17 — In progress; worker testing preview available
 
 `0.6.17-preview.1` exposes read-only background recommendation analysis for manual testing. Ten blind decks are frozen, including the Zada replacement. Real-deck evaluation, downside/package-priority fixes and the final readiness decision remain pending. Scoring remains v0.6.16; do not begin Brew Score. See [preview validation](docs/VALIDATION-v0.6.17-preview.1.md).
+
+
+### 0.6.18 — Multi-Format Deck Support
+
+Separately authorized by the user: Commander, Standard and Legacy creation/import; constructed main/sideboards; copy/size and fresh Scryfall legality warnings. Preserve ownership and old Commander decks. No new recommendation model: v0.6.17 real-deck generalization remains in progress. See [validation and limitations](docs/MULTI-FORMAT-DECKS-v0.6.18.md).

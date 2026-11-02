@@ -1,3 +1,5 @@
+import { formatWarnings } from "./formats";
+import type { DeckFormat } from "../models/deck";
 import type { CardMetadata, CollectionItem, CollectionState } from "../models/collection";
 import type { Deck, DeckCardAssignment, DeckCommander, DecklistEntry, DeckImportIssue } from "../models/deck";
 import type { Color } from "../models/card";
@@ -133,6 +135,7 @@ export interface PreviewEntry {
   eligible: boolean;
 }
 export interface DeckImportPreview {
+  format?: DeckFormat;
   name: string;
   filename?: string;
   entries: PreviewEntry[];
@@ -160,7 +163,7 @@ export function buildDeckImportPreview(
   parsed: ParsedDeckText,
   resolved: ResolvedDeckLine[],
   state: CollectionState,
-  options: { filename?: string; name?: string } = {},
+  options: { filename?: string; name?: string; format?: DeckFormat } = {},
 ): DeckImportPreview {
   const issues: DeckImportIssue[] = [...parsed.issues];
   const groups = new Map<string, PreviewEntry>();
@@ -260,7 +263,7 @@ export function buildDeckImportPreview(
   const explicit = entries.filter((e) => e.explicitCommander);
   const warnings: string[] = [];
   let defaultCommanders: string[] = [];
-  if (explicit.length) {
+  if ((!options.format || options.format==="commander") && explicit.length) {
     const valid = explicit.filter((e) => e.eligible && e.quantity === 1);
     if (valid.length !== explicit.length)
       warnings.push("The export's Commander section includes a card that canonical metadata does not allow as a commander. Select the commander to continue.");
@@ -271,6 +274,7 @@ export function buildDeckImportPreview(
   if (!parsed.lines.length && !issues.length) warnings.push("No card lines were found.");
   return {
     name: (options.name || parsed.name || options.filename?.replace(/\.[^.]+$/, "") || "Imported deck").trim(),
+    format: options.format,
     filename: options.filename,
     entries,
     issues: issues.sort((a, b) => a.line - b.line),
@@ -343,7 +347,7 @@ export function blockingIssues(preview: DeckImportPreview, state: CollectionStat
   if (!choices.name.trim()) issues.push("Enter a deck name.");
   if (duplicateName(state, choices.name) && !choices.allowDuplicateName)
     issues.push("A deck with this name already exists. Choose Import as new deck or Cancel. Existing decks are never overwritten.");
-  if (!choices.commanders.length) issues.push("Select the commander before importing.");
+  if ((!preview.format || preview.format==="commander") && !choices.commanders.length) issues.push("Select the commander before importing.");
   if (choices.commanders.length > 2)
     issues.push("More than two commanders cannot be represented. Select one commander, or two for Partner/Background.");
   for (const key of choices.commanders) {
@@ -388,7 +392,7 @@ export function finalizeDeckImport(
     const isCommander = choices.commanders.includes(p.key);
     const entry: DecklistEntry = {
       id: `${id}:${index + 1}`,
-      board: isCommander ? "commander" : "main",
+      board: isCommander ? "commander" : p.section==="sideboard" ? "sideboard" : "main",
       quantity: p.quantity,
       name: p.card.name,
       cardIdentity: cardIdentity(p.card),
@@ -417,6 +421,7 @@ export function finalizeDeckImport(
     deck: {
       id,
       name: choices.name.trim(),
+      ...(preview.format ? {format:preview.format} : {}),
       commanders,
       assignments,
       entries,
@@ -431,3 +436,8 @@ export function finalizeDeckImport(
 
 export const issuesText = (issues: DeckImportIssue[]) =>
   issues.map((i) => `${i.text}\t# line ${i.line}: ${i.reason}`).join("\n");
+
+export function importFormatWarnings(preview:DeckImportPreview,state:CollectionState,choices:DeckImportChoices){
+ if(!preview.format || preview.format==="commander")return [];
+ return formatWarnings({...state,metadata:{...state.metadata,...preview.metadata}},{id:"preview",name:choices.name,format:preview.format,commanders:[],assignments:[],createdAt:"",modifiedAt:"",entries:preview.entries.map(p=>({id:p.key,name:p.name,cardIdentity:cardIdentity(p.card),scryfallId:p.card.scryfallId,quantity:p.quantity,board:p.section==="sideboard"?"sideboard":"main"}))});
+}

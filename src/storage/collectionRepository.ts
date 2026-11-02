@@ -40,6 +40,9 @@ export function validateState(value: unknown): CollectionState {
         throw new Error("Saved tag corrections are inconsistent. They have not been overwritten.");
     }
   }
+  for(const card of Object.values(state.metadata)){
+    if(card.legalities!==undefined && (!card.legalities || typeof card.legalities!=='object' || Array.isArray(card.legalities) || Object.values(card.legalities).some(v=>typeof v!=='string')))throw new Error('Saved card legality is inconsistent. It has not been overwritten.');
+  }
   const ids = new Set<string>();
   for (const item of state.items) {
     const card = state.metadata[item.scryfallId];
@@ -67,15 +70,17 @@ export function validateState(value: unknown): CollectionState {
     const deckIds = new Set<string>();
     const assigned = new Map<string,number>();
     for (const deck of state.decks) {
-      if (!deck.id || deckIds.has(deck.id) || !deck.name?.trim() || !Array.isArray(deck.commanders) || !deck.commanders.length || !Array.isArray(deck.assignments) || !Number.isFinite(Date.parse(deck.createdAt)) || !Number.isFinite(Date.parse(deck.modifiedAt))) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
+      if (!deck.id || deckIds.has(deck.id) || !deck.name?.trim() || !Array.isArray(deck.commanders) || ((deck.format===undefined || deck.format==='commander') && !deck.commanders.length) || (deck.format!==undefined && !['commander','standard','legacy'].includes(deck.format)) || (deck.format!==undefined && deck.format!=='commander' && deck.commanders.length>0) || !Array.isArray(deck.assignments) || !Number.isFinite(Date.parse(deck.createdAt)) || !Number.isFinite(Date.parse(deck.modifiedAt))) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
       deckIds.add(deck.id);
       const assignmentIds = new Set<string>();
       const entries = deck.entries;
+      if(deck.format && deck.format!=='commander' && !Array.isArray(entries))throw new Error('This deck format requires a saved decklist.');
       const entryIds = new Set<string>();
       if (entries !== undefined) {
+        if(Array.isArray(entries) && entries.some(e=>(deck.format===undefined || deck.format==='commander')?e.board==='sideboard':e.board==='commander'))throw new Error('Deck boards do not match its format.');
         if (!Array.isArray(entries)) throw new Error('Saved decklist is inconsistent.');
         for (const e of entries) {
-          if (!e?.id || entryIds.has(e.id) || !['commander','main'].includes(e.board) || !Number.isSafeInteger(e.quantity) || e.quantity<1 || !e.name || !e.cardIdentity || !state.metadata[e.scryfallId]) throw new Error('Saved decklist entry is inconsistent.');
+          if (!e?.id || entryIds.has(e.id) || !['commander','main','sideboard'].includes(e.board) || !Number.isSafeInteger(e.quantity) || e.quantity<1 || !e.name || !e.cardIdentity || !state.metadata[e.scryfallId]) throw new Error('Saved decklist entry is inconsistent.');
           entryIds.add(e.id);
         }
       }

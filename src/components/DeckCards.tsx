@@ -1,3 +1,4 @@
+import { formatOf } from "../decks/formats";
 import { useState } from "react";
 import { Plus, SlidersHorizontal, X } from "lucide-react";
 import type { CollectionState } from "../models/collection";
@@ -106,8 +107,8 @@ export function DeckCards({
         </label>
         <label>
           Sort
-          <select value={sort} onChange={(e) => onSort(e.target.value as DeckSort)}>
-            {(Object.keys(deckSortLabels) as DeckSort[]).map((key) => (
+          <select value={formatOf(deck)!=="commander" && sort.startsWith("synergy")?"type":sort} onChange={(e) => onSort(e.target.value as DeckSort)}>
+            {(Object.keys(deckSortLabels) as DeckSort[]).filter(key=>formatOf(deck)==="commander" || !key.startsWith("synergy")).map((key) => (
               <option key={key} value={key}>
                 {deckSortLabels[key]}
               </option>
@@ -141,6 +142,7 @@ export function DeckCards({
           </>
         )}
       </p>
+      {formatOf(deck)!=="commander" && <label>Board<select aria-label="Board" value={filters.board || ""} onChange={e=>onFilters(f=>({...f,board:e.target.value as ""|"main"|"sideboard"}))}><option value="">All boards</option><option value="main">Main deck</option><option value="sideboard">Sideboard</option></select></label>}
       <div className="deck-owned-grid">
         {visible.map((row) => {
           const label = caption(row);
@@ -148,6 +150,7 @@ export function DeckCards({
             <article key={row.key} className={`deck-owned-card${row.assigned ? "" : " deck-card-missing"}`}>
               <button className="deck-art-button" aria-label={`Open ${row.card.name} details`} onClick={() => onOpen(row.key)}>
                 <CardImage card={row.card} />
+                {row.entry?.board==="sideboard" && <span className="meta-text">Sideboard</span>}
               </button>
               {label && <p className="deck-sort-metric">{label}</p>}
               <h3>
@@ -184,7 +187,7 @@ export function DeckCards({
                 <p className={m.outsideIdentity ? "deck-error" : "meta-text"}>
                   {m.reason} · Owned {m.owned} · Available {m.available}
                 </p>
-                {m.entry.board === "main" && (
+                {m.entry.board !== "commander" && (
                   <button
                     className="text-button"
                     disabled={busy}
@@ -270,9 +273,11 @@ function AddCard({
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<Filters>({ ...emptyFilters });
   const [filterOpen, setFilterOpen] = useState(false);
+  const [board,setBoard]=useState<"main"|"sideboard">("main");
   const [chosen, setChosen] = useState<SampleCollectionCard | null>(null);
   const legal = collectionCards(state).filter((c) => legalInDeck(c, deck) && deckPlayable(c));
   const current = chosen && collectionCards(state).find((c) => c.id === chosen.id);
+  const currentAssignment=current && deck.assignments.find(a=>a.itemId===current.id && (!deck.entries || deck.entries.some(e=>e.id===a.entryId && e.board===board)));
   const usage = (card: SampleCollectionCard) => deckUsage(state, card.id).map((u) => `${u.deck.name} ×${u.quantity}`).join(" · ") || "Not assigned to a deck";
   return (
     <Dialog titleId="add-card-title" className="deck-dialog add-card-dialog" onClose={() => !busy && onClose()} closeDisabled={busy}>
@@ -281,6 +286,7 @@ function AddCard({
         <h2 id="add-card-title">{current ? current.name : "Add Card"}</h2>
       </div>
       <div className="deck-dialog-content">
+        {formatOf(deck)!=="commander" && <label>Add to<select aria-label="Add to" value={board} onChange={e=>setBoard(e.target.value as "main"|"sideboard")}><option value="main">Main deck</option><option value="sideboard">Sideboard</option></select></label>}
         {current ? (
           <>
             <p className="meta-text">
@@ -296,16 +302,16 @@ function AddCard({
               className="primary-button"
               disabled={busy || current.ownership!.quantityUnassigned < 1}
               onClick={async () => {
-                if (await change({ type: "add", deckId: deck.id, itemId: current.id }, `${current.name} added to ${deck.name}.`)) onClose();
+                if (await change({ type: "add", deckId: deck.id, itemId: current.id, board }, `${current.name} added to ${deck.name}.`)) onClose();
               }}
             >
               Add one copy
             </button>
-            {deck.assignments.some((a) => a.itemId === current.id) && (
+            {currentAssignment && (
               <button
                 className="management-button"
                 disabled={busy}
-                onClick={() => void change({ type: "remove", deckId: deck.id, itemId: current.id }, "Copy returned to Available. Collection ownership is unchanged.")}
+                onClick={() => void change({ type: "remove", deckId: deck.id, itemId: current.id, entryId:currentAssignment?.entryId }, "Copy returned to Available. Collection ownership is unchanged.")}
               >
                 Remove one copy
               </button>
@@ -317,7 +323,7 @@ function AddCard({
           </>
         ) : (
           <>
-            <p className="meta-text">Cards legal within {identityName(deck)} · owned printings only</p>
+            <p className="meta-text">{formatOf(deck)==="commander"?`Cards legal within ${identityName(deck)} · owned printings only`:"Owned printings · check format legality in Overview"}</p>
             <div className="deck-search">
               <label>
                 Search owned cards

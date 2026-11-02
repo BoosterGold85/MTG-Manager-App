@@ -1,3 +1,4 @@
+import { formatOf,formatLabel } from "./formats";
 import type { Deck } from "../models/deck";
 import { deckIdentity } from "./decks";
 
@@ -12,6 +13,7 @@ export const isDeckTab = (value: string | null): value is DeckTab => deckTabs.so
 const colorNames: Record<string, string> = { W: "White", U: "Blue", B: "Black", R: "Red", G: "Green" };
 /** Mono-color decks read as "Mono Red"; others list their colors. */
 export const identityName = (deck: Deck) => {
+  if(formatOf(deck)!=="commander")return formatLabel(deck);
   const colors = deckIdentity(deck);
   if (!colors.length) return "Colorless";
   if (colors.length === 1) return `Mono ${colorNames[colors[0]] || colors[0]}`;

@@ -1,3 +1,5 @@
+import { importFormatWarnings } from "../decks/deckImport";
+import type { DeckFormat } from "../models/deck";
 import { collectionRepository } from "../storage/collectionRepository";
 import { emptyCollection } from "../models/collection";
 import type { CollectionRepository } from "../models/collection";
@@ -104,6 +106,7 @@ export function DeckImport({
   onClose: () => void;
   onImported: (state: CollectionState, deckId: string) => void;
 }) {
+  const [format,setFormat]=useState<DeckFormat>("commander");
   const [state,setOwnershipState]=useState(initialState);
   const [ownershipReady,setOwnershipReady]=useState(false);
   const [mode, setMode] = useState<"file" | "paste">("file");
@@ -136,7 +139,7 @@ export function DeckImport({
     }
     if(next.signal.aborted)return;
     try {
-      const result = await prepareDeckImport(source, current, next.signal, setProgress, { filename });
+      const result = await prepareDeckImport(source, current, next.signal, setProgress, { filename, format });
       if (next.signal.aborted) return;
       setOwnershipState(current);setOwnershipReady(true);
       setPreview(result);
@@ -263,7 +266,7 @@ export function DeckImport({
     <Dialog titleId="deck-import-title" className="import-dialog" onClose={onClose} closeDisabled={phase === "saving"}>
       <div className="drawer-handle" />
       <header className="dialog-heading">
-        <p className="eyebrow">COMMANDER LIBRARY</p>
+        <p className="eyebrow">{format==="commander"?"COMMANDER LIBRARY":"DECK LIBRARY"}</p>
         <h2 id="deck-import-title">Import Deck</h2>
         <p className="import-subtitle">Bring a ManaBox deck in. Review ownership before anything is saved.</p>
       </header>
@@ -281,6 +284,7 @@ export function DeckImport({
                 <p>Card lookup could not finish. Nothing was saved and no rows were marked as bad. Check your connection, then retry.</p>
               </section>
             )}
+            <label>Deck format<select aria-label="Deck format" value={format} onChange={e=>setFormat(e.target.value as DeckFormat)}><option value="commander">Commander</option><option value="standard">Standard</option><option value="legacy">Legacy</option></select></label>
             <div role="group" aria-label="Import source" className="deck-tabs">
               <button className={`chip ${mode === "file" ? "selected" : ""}`} aria-pressed={mode === "file"} onClick={() => setMode("file")}>
                 Upload ManaBox deck file
@@ -341,6 +345,7 @@ export function DeckImport({
         {(phase === "preview" || phase === "saving") && ownershipReady && preview && choices && summary && (
           <>
             <p className="eyebrow">REVIEW BEFORE SAVING</p>
+            {format!=="commander" && <section aria-label="Format warnings"><h3>Format warnings · {format==="standard"?"Standard":"Legacy"}</h3><p>Drafts can be saved with warnings. No commander is required.</p><ul>{importFormatWarnings(preview,state,choices).map(w=><li key={w}>{w}</li>)}</ul></section>}
             <label className="deck-import-name">
               Deck name
               <input value={choices.name} maxLength={120} onChange={(e) => update((c) => ({ ...c, name: e.target.value, allowDuplicateName: false }))} />
@@ -390,7 +395,7 @@ export function DeckImport({
                 <TriangleAlert size={16} /> {w}
               </p>
             ))}
-            <section aria-label="Commander selection" className="deck-import-commanders">
+            {format==="commander" && <section aria-label="Commander selection" className="deck-import-commanders">
               <h3>Commander</h3>
               <p>
                 {preview.defaultCommanders.length
@@ -424,6 +429,7 @@ export function DeckImport({
                 <p className="import-warning">Two commanders selected. Partner/Background pairing rules are not validated.</p>
               )}
             </section>
+            }
             {conflicts.size > 0 && (
               <section className="import-problems" aria-label="Color identity conflicts">
                 <h3>Outside commander color identity · {conflicts.size}</h3>

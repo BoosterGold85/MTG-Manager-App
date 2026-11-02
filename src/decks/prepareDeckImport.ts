@@ -1,3 +1,4 @@
+import type { DeckFormat } from "../models/deck";
 import type { CardMetadata, CollectionState } from "../models/collection";
 import { sampleCollectionSource } from "../data/sampleCollection";
 import { scryfallClient } from "../import/scryfall";
@@ -10,10 +11,10 @@ export async function prepareDeckImport(
   state: CollectionState,
   signal: AbortSignal,
   progress: (message: string) => void,
-  options: { filename?: string; name?: string } = {},
+  options: { filename?: string; name?: string; format?: DeckFormat } = {},
   lookup: DeckCardLookup = scryfallClient,
 ) {
-  const parsed = parseDeckText(text);
+  const parsed = parseDeckText(text,!!options.format && options.format!=="commander");
   // Bundled printings are a canonical metadata cache only, never treated as owned inventory.
   const known: Record<string, CardMetadata> = {};
   for (const card of await sampleCollectionSource.load()) {

@@ -1,6 +1,10 @@
-# MTG Manager · v0.6.17-preview.1
+# MTG Manager · v0.6.18
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Standard and Legacy decks
+
+Choose **Commander / Standard / Legacy** when creating or importing a deck. Standard/Legacy need no commander and support main decks plus sideboards. Overview warns about the 60-card minimum, 15-card sideboard maximum, combined four-copy limits and saved format legality. Use **Check format legality** for fresh Scryfall ban/rotation data; unknown metadata stays unverified. Drafts can be saved with warnings. Physical ownership and existing Commander decks are preserved. [Behavior, validation and limitations](docs/MULTI-FORMAT-DECKS-v0.6.18.md).
 
 ## Manual-testing preview
 

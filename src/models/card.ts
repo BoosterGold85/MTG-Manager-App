@@ -24,6 +24,8 @@ export interface SampleCollectionCard {
   artist?: string;
   oracleId?: string;
   keywords?: string[];
+  legalities?: Record<string,string>;
+  legalityCheckedAt?: string;
   producedMana?: string[];
   power?: string;
   toughness?: string;

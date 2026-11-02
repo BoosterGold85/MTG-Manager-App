@@ -1,17 +1,19 @@
+import { formatOf } from "../decks/formats";
 import type {
   CardMetadata,
   CollectionRepository,
   CollectionState,
 } from "../models/collection";
-import type { Deck, SavedDeckCandidate } from "../models/deck";
+import type { Deck, DeckFormat, SavedDeckCandidate } from "../models/deck";
 import { cardIdentity } from "../intelligence/tagger";
 import { normalizedName } from "../import/csv";
 import { deckPlayable, entryAssigned, isBasicLand, legalInDeck, newDeck, reconcileAllocations, sameCard } from "../decks/decks";
 export type DeckChange =
-  | { type: "create"; name: string; itemId: string }
+  | {type:"check-legality";deckId:string;metadata:Record<string,CardMetadata>}
+  | { type: "create"; name: string; itemId?: string; format?: DeckFormat }
   | { type: "rename"; deckId: string; name: string }
   | { type: "delete"; deckId: string }
-  | { type: "add" | "remove"; deckId: string; itemId: string }
+  | { type: "add" | "remove"; deckId: string; itemId: string; board?: "main" | "sideboard"; entryId?:string }
   | { type: "remove-missing"; deckId: string; entryId: string }
   | { type: "save-candidate"; deckId: string; candidate: Omit<SavedDeckCandidate, "id" | "createdAt"> }
   | { type: "remove-saved"; deckId: string; savedId: string }
@@ -40,7 +42,7 @@ function checkImport(base: CollectionState, deck: Deck, allowDuplicateName: bool
   if ((base.decks || []).some((d) => d.id === deck.id)) throw new Error("This deck was already imported.");
   if (!allowDuplicateName && (base.decks || []).some((d) => normalizedName(d.name) === normalizedName(deck.name)))
     throw new Error("A deck with this name already exists. Existing decks are never overwritten.");
-  if (!deck.commanders.length || deck.commanders.length > 2)
+  if (formatOf(deck)==="commander" && (!deck.commanders.length || deck.commanders.length > 2))
     throw new Error("Select one commander, or two for Partner/Background.");
   const wanted = new Map<string, number>();
   for (const c of deck.commanders) if (c.itemId) wanted.set(c.itemId, (wanted.get(c.itemId) || 0) + 1);
@@ -67,20 +69,21 @@ const matches = (base: CollectionState, id: string, scryfallId: string, entryIde
   return entryIdentity === id || identityOf(base, scryfallId) === id || (!!byName && cardIdentity(byName) === id);
 };
 /** Adds one owned copy (or, for a basic land, one decklist copy that reserves nothing) to a deck being edited. */
-function addOne(base: CollectionState, deck: Deck, itemId: string) {
+function addOne(base: CollectionState, deck: Deck, itemId: string, board:"main"|"sideboard"="main") {
+  if(board==="sideboard" && formatOf(deck)==="commander")throw new Error("Commander decks do not use a sideboard.");
   const item = base.items.find((i) => i.id === itemId);
   if (!item) throw new Error("This printing is no longer in your collection.");
   const card = base.metadata[item.scryfallId];
   if (!legalInDeck(card, deck)) throw new Error("This card is outside the commander color identity.");
   if (deck.entries && isBasicLand(card)) {
     // Basic lands are decklist resources: add to the list, keep the chosen printing, reserve nothing.
-    const same = deck.entries.find((e) => e.board === "main" && base.metadata[e.scryfallId] && sameCard(base.metadata[e.scryfallId], card));
+    const same = deck.entries.find((e) => e.board === board && base.metadata[e.scryfallId] && sameCard(base.metadata[e.scryfallId], card));
     if (same) {
       same.quantity++;
       same.basicLand = true;
     } else
       deck.entries.push({
-        id: `${deck.id}:${crypto.randomUUID()}`, board: "main", quantity: 1, name: card.name, cardIdentity: cardIdentity(card),
+        id: `${deck.id}:${crypto.randomUUID()}`, board, quantity: 1, name: card.name, cardIdentity: cardIdentity(card),
         scryfallId: card.scryfallId, requestedPrinting: { setCode: item.setCode.toLowerCase(), collectorNumber: item.collectorNumber.toLowerCase() }, basicLand: true,
       });
     return;
@@ -90,14 +93,14 @@ function addOne(base: CollectionState, deck: Deck, itemId: string) {
   let entryId: string | undefined;
   if (deck.entries) {
     // Fill a missing decklist entry for this card first; otherwise the decklist grows.
-    const same = deck.entries.filter((e) => e.board === "main" && base.metadata[e.scryfallId] && sameCard(base.metadata[e.scryfallId], card));
+    const same = deck.entries.filter((e) => e.board === board && base.metadata[e.scryfallId] && sameCard(base.metadata[e.scryfallId], card));
     const target = same.find((e) => entryAssigned(deck, e) < e.quantity) || same[0];
     if (target) {
       if (entryAssigned(deck, target) >= target.quantity) target.quantity++;
       entryId = target.id;
     } else {
       entryId = `${deck.id}:${crypto.randomUUID()}`;
-      deck.entries.push({ id: entryId, board: "main", quantity: 1, name: card.name, cardIdentity: cardIdentity(card), scryfallId: card.scryfallId });
+      deck.entries.push({ id: entryId, board, quantity: 1, name: card.name, cardIdentity: cardIdentity(card), scryfallId: card.scryfallId });
     }
   }
   const assignment = deck.assignments.find((a) => a.itemId === item.id && a.entryId === entryId);
@@ -144,7 +147,13 @@ export class LocalDeckRepository implements DeckRepository {
     let metadata = base.metadata;
     const now = new Date().toISOString();
     if (action.type === "create")
-      decks.push(newDeck(base, action.name, action.itemId));
+      {
+      if(action.format && !["commander","standard","legacy"].includes(action.format))throw new Error("Unsupported deck format.");
+      if(action.format && action.format!=="commander"){
+        if(!action.name.trim())throw new Error("Enter a deck name.");
+        decks.push({id:`deck:${crypto.randomUUID()}`,name:action.name.trim(),format:action.format,commanders:[],assignments:[],entries:[],createdAt:now,modifiedAt:now});
+      }else {if(!action.itemId)throw new Error("Choose a commander.");decks.push(newDeck(base, action.name, action.itemId));}
+    }
     else if (action.type === "import") {
       checkImport(base, action.deck, action.allowDuplicateName);
       decks.push(structuredClone(action.deck));
@@ -155,7 +164,14 @@ export class LocalDeckRepository implements DeckRepository {
       const deck = decks.find((d) => d.id === action.deckId);
       if (!deck)
         throw new Error("This deck no longer exists. Reload and retry.");
-      if (action.type === "delete")
+      if(action.type==="check-legality"){
+        metadata={...base.metadata};
+        const ids=new Set(deck.entries?.map(e=>e.scryfallId));
+        for(const [id,card]of Object.entries(action.metadata)){
+          if(!ids.has(id) || !metadata[id] || !card.legalities)throw new Error("Deck changed before legality could be saved. Retry the check.");
+          metadata[id]={...metadata[id],legalities:card.legalities,legalityCheckedAt:card.legalityCheckedAt};
+        }
+      }else if (action.type === "delete")
         decks = decks.filter((d) => d.id !== deck.id);
       else if (action.type === "rename") {
         if (!action.name.trim()) throw new Error("Enter a deck name.");
@@ -163,7 +179,7 @@ export class LocalDeckRepository implements DeckRepository {
         deck.modifiedAt = now;
       } else if (action.type === "remove-missing") {
         const entry = deck.entries?.find((e) => e.id === action.entryId);
-        if (!entry || entry.board !== "main" || entryAssigned(deck, entry) >= entry.quantity)
+        if (!entry || entry.board === "commander" || entryAssigned(deck, entry) >= entry.quantity)
           throw new Error("No missing decklist card to remove.");
         entry.quantity--;
         deck.entries = deck.entries!.filter((e) => e.quantity > 0);
@@ -195,13 +211,13 @@ export class LocalDeckRepository implements DeckRepository {
         deck.savedCandidates = deck.savedCandidates?.filter((c) => c.candidateIdentity !== incoming);
         deck.modifiedAt = now;
       } else if (action.type === "add") {
-        addOne(base, deck, action.itemId);
+        addOne(base, deck, action.itemId, action.board);
         deck.modifiedAt = now;
       } else {
         const item = base.items.find((i) => i.id === action.itemId);
         if (!item)
           throw new Error("This printing is no longer in your collection.");
-        const assignment = [...deck.assignments].reverse().find((a) => a.itemId === item.id);
+        const assignment = [...deck.assignments].reverse().find((a) => a.itemId === item.id && (!action.entryId || a.entryId===action.entryId));
         if (!assignment)
           throw new Error("No deck card assignment to remove.");
         assignment.quantity--;

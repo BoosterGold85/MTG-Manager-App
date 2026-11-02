@@ -1,3 +1,4 @@
+export type DeckFormat = "commander" | "standard" | "legacy";
 import type { Color } from "./card";
 export interface DeckCommander {
   // Absent when the decklist names a commander but no owned copy is assigned.
@@ -18,7 +19,7 @@ export interface DeckCardAssignment {
 // The conceptual decklist: what the deck contains, independent of ownership.
 export interface DecklistEntry {
   id: string;
-  board: "commander" | "main";
+  board: "commander" | "main" | "sideboard";
   quantity: number;
   name: string;
   cardIdentity: string;
@@ -54,6 +55,8 @@ export interface SavedDeckCandidate {
   createdAt: string;
 }
 export interface Deck {
+  // Older saved decks remain Commander without migration.
+  format?: DeckFormat;
   id: string;
   name: string;
   commanders: DeckCommander[];

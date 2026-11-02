@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.18 — 2026-11-01 — Multi-Format Deck Support
+
+- Add Standard/Legacy creation and preview-first text import without Commander requirements; old decks default to Commander. Preserve sideboards, missing entries, printings and safe physical-copy assignments.
+- Add board browsing/assignment and exact-entry removal; allow removal of shared basic-land entries without changing ownership.
+- Add minimum/sideboard/copy-limit and canonical legality warnings, plus explicit fresh batched Scryfall legality checks with atomic metadata-only saves. Unknown/stale data never becomes an assumed legal verdict.
+- Keep Commander recommendations separate. Scoring/generalization research remains unchanged and unfinished. App/package/version endpoint now agree on the release version.
+- See docs/MULTI-FORMAT-DECKS-v0.6.18.md for validation and limitations.
+
 ## 0.6.17-preview.1 — 2026-11-01 — Responsive analysis testing preview
 
 - Move recommended Build/Improve and relationship analysis into a read-only cancellable module worker. Keep complete results for local sorting/filtering; reject stale replies and disable stale actions, including after refresh errors.

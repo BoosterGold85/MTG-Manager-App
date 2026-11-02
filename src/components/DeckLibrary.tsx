@@ -1,3 +1,6 @@
+import { FormatOverview } from "./FormatOverview";
+import { formatOf, formatLabel } from "../decks/formats";
+import type { DeckFormat } from "../models/deck";
 import { deckDnaCache, cardSynergy } from '../dna/engine';
 import { useMemo, useState } from "react";
 import { Crown, Plus, FileUp } from "lucide-react";
@@ -58,6 +61,7 @@ export function DeckLibrary({
   onSaveTags?: (card: SampleCollectionCard, override: Override) => Promise<void>;
 }) {
   const [modal, setModal] = useState<"create" | null>(null);
+  const [format,setFormat]=useState<DeckFormat>("commander");
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [query, setQuery] = useState("");
@@ -100,9 +104,10 @@ export function DeckLibrary({
   };
   const conflicts = state ? allocationConflicts(state) : [];
   const rows = useMemo(() => (state && deck ? deckRows(state, deck) : []), [state, deck]);
-  const dna=useMemo(()=>state&&deck?deckDnaCache.get(state,deck):null,[state,deck]);
+  const dna=useMemo(()=>state&&deck&&formatOf(deck)==="commander"?deckDnaCache.get(state,deck):null,[state,deck]);
   // The exact sequence shown in the grid is the Previous/Next sequence.
-  const visible = useMemo(() => visibleDeckRows(rows, sort, deckFilters,dna||undefined), [rows, sort, deckFilters,dna]);
+  const activeDeckFilters=useMemo(()=>!deck?deckFilters:formatOf(deck)==="commander"?{...deckFilters,board:"" as const}:{...deckFilters,theme:undefined},[deck,deckFilters]);
+  const visible = useMemo(() => visibleDeckRows(rows, deck && formatOf(deck)!=="commander" && sort.startsWith("synergy")?"type":sort, activeDeckFilters,dna||undefined), [rows, sort, activeDeckFilters,dna,deck]);
   const commanderDetailCard = (c: DeckCommander): SampleCollectionCard => {
     if (c.itemId) return cardFor(c.itemId);
     const card = state!.metadata[c.scryfallId];
@@ -112,12 +117,12 @@ export function DeckLibrary({
   };
   // One shared write path for every section: one repository transaction, one status message.
   async function change(action: DeckChange, success = ""): Promise<boolean> {
-    if (!state || busy) return false;
+    if (busy || (!state && action.type!=="create")) return false;
     setBusy(true);
     setError("");
     setStatus("");
     try {
-      const next = await repository.change(state, action);
+      const next = await repository.change(state || emptyCollection(), action);
       onSaved(next);
       if (action.type === "create") {
         onOpen(next.decks!.at(-1)!.id);
@@ -222,7 +227,7 @@ export function DeckLibrary({
               <p>
                 Import an existing deck now — cards you don’t own are kept as
                 missing, never faked. Or build one with New Deck from an owned
-                commander and assign physical copies.
+                commander and assign physical copies. Standard and Legacy drafts need no commander.
               </p>
               {!cards.length && (
                 <p>
@@ -248,13 +253,13 @@ export function DeckLibrary({
                   }}
                 >
                   <div className="deck-cover">
-                    <CardImage card={commanderCard(d.commanders[0])} />
+                    {d.commanders[0] ? <CardImage card={commanderCard(d.commanders[0])} /> : d.entries?.find(e=>e.board==="main") ? <CardImage card={{...state!.metadata[d.entries.find(e=>e.board==="main")!.scryfallId],id:d.id,quantity:1}} /> : <span className="eyebrow">{formatLabel(d)}</span>}
                   </div>
                   <div className="deck-card-copy">
                     <h2>{d.name}</h2>
                     <p>{d.commanders.map((c) => c.name).join(" + ")}</p>
                     <p>
-                      {identityLabel(d)} · {ownershipLine(d)}
+                      {formatOf(d)==="commander"?identityLabel(d):formatLabel(d)} · {ownershipLine(d)}
                     </p>
                     <p>
                       {[...d.commanders, ...d.assignments].some((a) =>
@@ -292,7 +297,8 @@ export function DeckLibrary({
               setDeckFilters(emptyDeckFilters());
             }}
           />
-          {tab === "overview" && (
+          {tab === "overview" && formatOf(deck)!=="commander" && <FormatOverview key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
+          {tab === "overview" && formatOf(deck)==="commander" && (
             <DeckOverview
               state={state}
               deck={deck}
@@ -314,14 +320,15 @@ export function DeckLibrary({
               visible={visible}
               sort={sort}
               onSort={setSort}
-              filters={deckFilters}
+              filters={activeDeckFilters}
               onFilters={setDeckFilters}
               busy={busy}
               change={change}
               onOpen={(row) => setDetail({ row })}
             />
           )}
-          {tab === "upgrades" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} error={error} change={change} />}
+          {tab === "upgrades" && formatOf(deck)!=="commander" && <p>Commander recommendations are available for Commander decks. Use Cards to build this deck.</p>}
+          {tab === "upgrades" && formatOf(deck)==="commander" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} error={error} change={change} />}
           {tab === "settings" && <DeckSettings key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
         </>
       ) : null}
@@ -368,7 +375,7 @@ export function DeckLibrary({
           className="deck-dialog"
         >
           <div className="dialog-heading">
-            <p className="eyebrow">COMMANDER LIBRARY</p>
+            <p className="eyebrow">{format==="commander"?"COMMANDER LIBRARY":"DECK LIBRARY"}</p>
             <h2 id="deck-modal-title">
                 {step === 1 ? "Name your deck" : "Choose your commander"}
             </h2>
@@ -379,11 +386,13 @@ export function DeckLibrary({
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (name.trim()) {
+                    if(format!=="commander"){void change({type:"create",name,format});return;}
                     setStep(2);
                     setQuery("");
                   }
                 }}
               >
+                <label>Deck format<select aria-label="Deck format" value={format} onChange={e=>setFormat(e.target.value as DeckFormat)}><option value="commander">Commander</option><option value="standard">Standard</option><option value="legacy">Legacy</option></select></label>
                 <label>
                   Deck name
                   <input
@@ -394,7 +403,7 @@ export function DeckLibrary({
                   />
                 </label>
                 <button className="primary-button" disabled={busy}>
-                  Choose Commander
+                  {format==="commander"?"Choose Commander":"Create deck"}
                 </button>
               </form>
             )}
@@ -509,14 +518,14 @@ export function DeckLibrary({
                   <button
                     className="management-button"
                     disabled={busy}
-                    onClick={() => void change({ type: "remove", deckId: deck.id, itemId: row.itemId! }, "Copy returned to Available. Collection ownership is unchanged.")}
+                    onClick={() => void change({ type: "remove", deckId: deck.id, itemId: row.itemId!, entryId:row.entry?.id }, "Copy returned to Available. Collection ownership is unchanged.")}
                   >
                     Remove one {row.card.name}
                   </button>
                   <p className="meta-text">Removing returns the copy to Available; Collection and ManaBox are unchanged.</p>
                   {(error || status) && <p role="status">{error || status}</p>}
                 </section>
-              ) : undefined
+              ) : row.basicLand && row.entry ? <section className="deck-card-actions" aria-label="Deck card actions"><button className="management-button" disabled={busy} onClick={()=>void change({type:"remove-missing",deckId:deck.id,entryId:row.entry!.id},"Basic land removed from the decklist. Collection quantities are unchanged.")}>Remove one {row.card.name}</button></section> : undefined
             }
             deck={{ deckName: deck.name, quantity: row.quantity, assigned: row.assigned, basicLand: row.basicLand, ownedElsewhere: row.ownedElsewhere, availableElsewhere: row.availableElsewhere }}
             navigation={{

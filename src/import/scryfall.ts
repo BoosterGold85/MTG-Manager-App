@@ -4,6 +4,7 @@ import type { Color, Rarity } from "../models/card";
 import type { CardMetadata, ImportRow } from "../models/collection";
 import { identifierKey, normalizedName } from "./csv";
 interface ScryfallCard {
+  legalities?: Record<string,string>;
   object: "card";
   lang?: string;
   oracle_id?: string;
@@ -94,6 +95,7 @@ export function normalizeCard(raw: ScryfallCard): CardMetadata {
     oracleId: c.oracle_id,
     keywords: c.keywords,
     producedMana: c.produced_mana,
+    ...(c.legalities ? {legalities:c.legalities,legalityCheckedAt:new Date().toISOString()} : {}),
     power: c.power, toughness: c.toughness, loyalty: c.loyalty, layout: c.layout,
     cardFaces: c.card_faces?.map(f => ({name:f.name || c.name,oracleText:f.oracle_text,typeLine:f.type_line,keywords:f.keywords,power:f.power,toughness:f.toughness,loyalty:f.loyalty})),
     printedLanguage: c.lang || "en",
@@ -446,6 +448,19 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
     this.sessionMetadata = known;
     this.sessionNames = names;
     return { results, nameMatches: names };
+  }
+  // Explicit user check: fresh canonical legality, batched with the existing retry/pacing policy.
+  async refreshLegalities(ids:string[],signal:AbortSignal):Promise<Record<string,CardMetadata>>{
+    const result:Record<string,CardMetadata>={};
+    const unique=[...new Set(ids)];
+    for(let start=0;start<unique.length;start+=75){
+      const batch=unique.slice(start,start+75);
+      const response=await this.request("/cards/collection",signal,{identifiers:batch.map(id=>({id}))}) as {data?:ScryfallCard[];not_found?:unknown[]};
+      if(!Array.isArray(response.data) || response.not_found?.length)throw new Error("Some cards could not be checked. Saved legality was not changed.");
+      for(const raw of response.data){if(!batch.includes(raw.id) || !raw.legalities)throw new Error("Unexpected legality response. Nothing was changed.");result[raw.id]=normalizeCard(raw);}
+      if(batch.some(id=>!result[id]))throw new Error("Card lookup was incomplete. Nothing was changed.");
+    }
+    return result;
   }
   private deckResults: DeckLookupResult = new Map();
   // Deck lookups reuse the same pacing, retries and canonical cache; successes survive a retry.

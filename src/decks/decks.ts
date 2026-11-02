@@ -1,3 +1,4 @@
+import { formatOf } from "./formats";
 import type { SampleCollectionCard, Color } from "../models/card";
 import type { CardMetadata, CollectionState } from "../models/collection";
 import type { Deck, DecklistEntry } from "../models/deck";
@@ -31,7 +32,7 @@ export const deckPlayable = (card: Pick<SampleCollectionCard, "typeLine" | "layo
 export const legalInDeck = (
   card: Pick<SampleCollectionCard, "colorIdentity">,
   deck: Deck,
-) => card.colorIdentity.every((c) => deckIdentity(deck).includes(c));
+) => formatOf(deck)!=="commander" || card.colorIdentity.every((c) => deckIdentity(deck).includes(c));
 export function deckUsage(state: CollectionState, itemId: string) {
   return (state.decks || [])
     .map((deck) => ({
@@ -68,7 +69,7 @@ export function isBasicLand(card: Pick<CardMetadata, "typeLine" | "cardFaces"> |
   return /\bBasic\b/.test(supertypes) && /\bLand\b/.test(supertypes);
 }
 export const entryIsBasic = (entry: DecklistEntry, state?: CollectionState | null) =>
-  !!entry.basicLand || (entry.board === "main" && isBasicLand(state?.metadata[entry.scryfallId]));
+  !!entry.basicLand || (entry.board !== "commander" && isBasicLand(state?.metadata[entry.scryfallId]));
 export function deckOwnership(deck: Deck, state?: CollectionState | null) {
   const total = deckCount(deck);
   const assigned = assignedCount(deck);
