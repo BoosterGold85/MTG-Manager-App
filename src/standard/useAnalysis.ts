@@ -30,7 +30,7 @@ export function useStandardAnalysis<T>(state:CollectionState,deck:Deck,compariso
     worker=new Worker(new URL("./worker.ts",import.meta.url),{type:"module"});
     worker.onmessage=({data})=>{
      if(!active||data.id!==1||data.revision!==revision)return;
-     const cards:CardMetadata[]=comparison?[state.metadata[state.items.find(i=>i.id===comparison.itemId)?.scryfallId || ""]].filter(Boolean):(data.result?.candidates || []).map((c:{card:CardMetadata})=>c.card);
+     const cards:CardMetadata[]=comparison?[state.metadata[state.items.find(i=>i.id===comparison.itemId)?.scryfallId || ""]].filter(Boolean):state.items.map(i=>state.metadata[i.scryfallId]).filter(c=>c&&c.legalityCheckedAt&&Date.now()-Date.parse(c.legalityCheckedAt)<=7*86400000&&Date.now()>=Date.parse(c.legalityCheckedAt));
      const validUntil=data.error?Infinity:Math.min(Infinity,...cards.map(c=>Date.parse(c.legalityCheckedAt || "")+7*86400000+1).filter(Number.isFinite));
      if(!data.error && !comparison){let entries=cache.get(state);if(!entries)cache.set(state,entries=new Map());entries.set(revision,{result:data.result,expires:validUntil});if(entries.size>12)entries.delete(entries.keys().next().value!);}
      setSettled({revision,result:data.result,error:data.error,expires:validUntil});worker?.terminate();

@@ -1,6 +1,12 @@
-# MTG Manager · v0.6.20
+# MTG Manager · v0.6.21
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Legality recovery & quick card reading
+
+On Standard/Legacy Upgrades, legality checks show progress, keep completed statuses when a later batch fails, and offer **Retry remaining cards**. **Check unverified / stale only** also resumes from saved statuses after a reload. An individual missing or changed identifier appears under Lookups needing attention; it never removes ownership or blocks unrelated printings.
+
+Use **Show → Legal in this format / All owned cards / Ready to compare** to separate browsing from safe swap eligibility. Legal lands, cards needing mana review and cards already at the copy limit remain readable. All owned cards also exposes unverified/not-legal records with explicit browse-only labels. Tap a card image or Read to open the existing Card Detail, with Previous/Next following the current search/filter/ranking. Reading does not modify data or call Scryfall. [Fix and validation](docs/LEGALITY-RECOVERY-v0.6.21.md).
 
 ## Legacy upgrades · Interesting Brews
 

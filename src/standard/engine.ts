@@ -77,19 +77,20 @@ function candidatesFor(state:CollectionState,deck:Deck,format:ConstructedFormat)
  if(formatOf(deck)!==format)throw new Error(`${label} analysis cannot analyze another format.`);
  const rows=main(state,deck),ctx=context(rows),candidates:StandardCandidate[]=[];
  let unknown=0,illegal=0,riskExcluded=0,manaExcluded=0;
+ const exclusions:Record<string,string[]>={};
  for(const item of state.items){
   const card=state.metadata[item.scryfallId];if(!card || item.quantityOwned<1 || isLand(card) || !deckPlayable(card))continue;
   if(!freshLegal(card,format)){if(card.legalities?.[format] && card.legalities[format]!=="legal")illegal++;else unknown++;continue;}
   const inDeck=countCard(state,deck,card),room=copyLimit(card,format)-inDeck;
-  if(room<=0)continue;
+  if(room<=0){exclusions[item.id]=["Already at the copy limit across main deck and sideboard. Browse only."];continue;}
   const value=fit(card,rows,ctx);
-  if(value.severe){riskExcluded++;continue;}
-  if(value.missingMana){manaExcluded++;continue;}
+  if(value.severe){riskExcluded++;exclusions[item.id]=value.risks;continue;}
+  if(value.missingMana){manaExcluded++;exclusions[item.id]=value.risks;continue;}
   const brew=format==="legacy"?legacyBrew(card,rows,ctx.supply):undefined;
   candidates.push({itemId:item.id,card,available:item.quantityUnassigned,owned:item.quantityOwned,inDeck,room,usedIn:deckUsage(state,item.id).map(u=>`${u.deck.name} (${u.quantity})`),...value,...(brew?{brew:brew.score,legacyBrew:brew}:{})});
  }
  candidates.sort((a,b)=>Number(b.available>0)-Number(a.available>0)||b.score-a.score||b.brew-a.brew||a.card.name.localeCompare(b.card.name)||a.itemId.localeCompare(b.itemId));
- return {candidates,unknown,illegal,riskExcluded,manaExcluded,mainCount:rows.reduce((n,r)=>n+r.quantity,0)};
+ return {candidates,exclusions,unknown,illegal,riskExcluded,manaExcluded,mainCount:rows.reduce((n,r)=>n+r.quantity,0)};
 }
 export const standardCandidates=(state:CollectionState,deck:Deck)=>candidatesFor(state,deck,"standard");
 export const legacyCandidates=(state:CollectionState,deck:Deck)=>candidatesFor(state,deck,"legacy");

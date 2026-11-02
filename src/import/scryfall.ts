@@ -1,3 +1,4 @@
+import type {LegalityBatch} from "./legality";
 import { IndexedDbScryfallCache } from "../storage/scryfallCache";
 import type { MetadataCache } from "../storage/scryfallCache";
 import type { Color, Rarity } from "../models/card";
@@ -463,6 +464,31 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
     return result;
   }
   private deckResults: DeckLookupResult = new Map();
+  // Collection-wide checks tolerate individual unresolved printings, while strict
+  // refreshLegalities remains the live verification gate for a confirmed swap.
+  async checkLegalityBatch(ids:string[],signal:AbortSignal,format?:"standard"|"legacy"):Promise<LegalityBatch>{
+    const batch=[...new Set(ids)];
+    if(batch.length>75)throw new Error("Legality batches are limited to 75 printings.");
+    if(!batch.length)return {metadata:{},issues:{},unresolved:[]};
+    const response=await this.request("/cards/collection",signal,{identifiers:batch.map(id=>({id}))}) as {data?:ScryfallCard[];not_found?:{id?:string}[]};
+    if(!Array.isArray(response.data))throw new Error("Legality lookup was interrupted. Retry remaining cards.");
+    const metadata:Record<string,CardMetadata>={},issues:Record<string,string>={};
+    for(const raw of response.data){
+      if(!batch.includes(raw.id))continue;
+      try{
+        if(!raw.legalities || (format&&!raw.legalities[format]) || !Object.keys(raw.legalities).length || !Object.values(raw.legalities).every(v=>typeof v==="string"))throw new Error("Missing legality");
+        metadata[raw.id]=normalizeCard(raw);
+      }catch{issues[raw.id]="Scryfall returned incomplete metadata for this printing. Its saved data was retained; legality remains unconfirmed by this check.";}
+    }
+    for(const identifier of response.not_found || [])if(identifier.id&&batch.includes(identifier.id))issues[identifier.id]="Scryfall did not find this printing identifier. The saved card record was retained; no printing was guessed.";
+    // A fully answered batch may contain a migrated/unexpected identifier. Isolate
+    // only the missing requested IDs; never discard valid answers in the batch.
+    if(response.data.length+(response.not_found?.length || 0)>=batch.length){
+      for(const id of batch)if(!metadata[id]&&!issues[id])issues[id]="Scryfall returned a different identifier for this lookup. Saved printing data was retained; legality was not guessed.";
+    }
+    await this.checkpoint(Object.values(metadata),{});
+    return {metadata,issues,unresolved:batch.filter(id=>!metadata[id]&&!issues[id])};
+  }
   // Deck lookups reuse the same pacing, retries and canonical cache; successes survive a retry.
   async lookupDeckCards(
     identifiers: DeckIdentifier[],

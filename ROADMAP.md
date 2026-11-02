@@ -68,6 +68,11 @@ Separately authorized by the user: Commander, Standard and Legacy creation/impor
 Separately authorized Standard-first phase: owned nonland candidates, additional copies, main-deck quantity comparisons and explicit atomic swaps using a separate Standard model. Commander source and ranking remain unchanged. Real Standard-list recommendation quality is not yet calibrated. Legacy, sideboard recommendations and mana-base changes remain future work. The unfinished Commander generalization pass is not resumed or represented as complete. See [model and validation](docs/STANDARD-UPGRADES-v0.6.19.md).
 
 
-### 0.6.20 — Current: Legacy Upgrades & Interesting Brews
+### 0.6.20 — Released: Legacy Upgrades & Interesting Brews
 
 User-authorized Legacy owned-card exploration, with recipient-verified Brew evidence, local mechanism novelty, quantity-aware explicit comparisons and atomic confirmations. Preserve Commander source/ranking and existing Standard scores. Sideboard matchup recommendations, mana-base swaps and competitive/combo guarantees remain deferred. The earlier Commander generalization pass remains unfinished. See [model and validation](docs/LEGACY-UPGRADES-v0.6.20.md).
+
+
+### 0.6.21 — Current: Legality Recovery & Upgrade Quick Reading
+
+Focused reliability/usability fix: keep and resume successful legality lookups, isolate unresolved printings, browse beyond comparison gates, and open shared Card Detail from Standard/Legacy artwork with filtered navigation. No scoring changes, frozen expectation edits or new intelligence pass. Real blind quality evaluation and physical-device/deployment verification remain separate outstanding work. See [validation](docs/LEGALITY-RECOVERY-v0.6.21.md).

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.21 — 2026-11-02 — Legality Recovery & Upgrade Quick Reading
+
+- Fix whole-collection legality checks discarding successful earlier batches on an interruption. Keep verified metadata, show progress, retry only unresolved printings, and isolate confirmed missing/incomplete/changed identifiers without guessing legality.
+- Add explicit resume of unverified/stale statuses after reload, stop/retry controls, and controlled metadata-save failures. Preserve atomic revision checks, ownership, assignments and strict live selected-printing verification.
+- Separate browse scope from comparison eligibility: legal owned cards remain readable even when lands, mana-review, severe-effect or copy-limit gates prevent comparison. All owned also shows unverified/not-legal records with browse-only labels.
+- Make Standard/Legacy upgrade artwork and Read controls open the shared Card Detail with filtered Previous/Next and no collection writes or lookup requests.
+- Preserve Commander source, frozen corpora, Legacy expectations and all scoring formulas/thresholds. See docs/LEGALITY-RECOVERY-v0.6.21.md.
+
 ## 0.6.20 — 2026-11-02 — Legacy Upgrades & Interesting Brews
 
 - Enable Upgrades on Legacy decks using Legacy legality, combined-board copy limits and existing safe owned-copy comparisons/atomic confirmation.
