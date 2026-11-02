@@ -93,7 +93,7 @@ test("Reign: Improve ranks by best one-for-one swap with simple cards, and Revie
   const before = await read(page),
     calls: string[] = [];
   page.on("request", (r) => {
-    if (r.url().includes("api.scryfall.com")) calls.push(r.url());
+    if (r.url().includes("/api/scryfall/")) calls.push(r.url());
   });
   const upgrades = await openImprove(page);
   await expect(upgrades.getByRole("status")).toHaveText("3 candidates");

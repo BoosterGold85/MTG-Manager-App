@@ -13,7 +13,7 @@ function own(f:Fixture,card:CardMetadata,id=card.scryfallId){
 function raw(c:CardMetadata){return {object:"card",id:c.scryfallId,oracle_id:c.oracleId,name:c.name,set:c.setCode,collector_number:c.collectorNumber,type_line:c.typeLine,cmc:c.manaValue,color_identity:c.colorIdentity,mana_cost:c.manaCost,oracle_text:c.oracleText,rarity:c.rarity,image_uris:{normal:c.imageUrl},legalities:{legacy:"legal",standard:"legal"}};}
 for(const format of ["Standard","Legacy"]as const)test(`${format} upgrade images open shared detail with filtered navigation and no writes`,async({page})=>{
  const f=format==="Legacy"?legacyFixture():standardFixture();let calls=0;
- await page.route("https://api.scryfall.com/**",async route=>{calls++;await route.abort();});
+ await page.route("**/api/scryfall/**",async route=>{calls++;await route.abort();});
  await seed(page,f.state,f.deck.name,"Upgrades");const panel=page.getByRole("region",{name:`${format} Upgrades`,exact:true});
  await expect(panel.getByRole("status",{name:"Upgrade catalog"})).toContainText("2 eligible owned printings");
  await panel.getByRole("searchbox",{name:`Search ${format} upgrades`}).fill("Test");
@@ -28,7 +28,7 @@ test("interrupted legality keeps successful statuses and retries remaining print
  test.setTimeout(90000);const f=legacyFixture();
  for(let i=0;i<151;i++)own(f,{...f.candidate,scryfallId:`check-${i}`,oracleId:`check-oracle-${i}`,name:`Unchecked owned ${String(i).padStart(3,"0")}`,manaCost:"{1}",colorIdentity:[],typeLine:"Artifact",oracleText:"{T}: Add {C}.",legalityCheckedAt:undefined});
  let fail=true,retrying=false;const firstBatch:string[]=[],retryIds:string[]=[];
- await page.route("https://api.scryfall.com/cards/collection",async route=>{
+ await page.route("**/api/scryfall/cards/collection",async route=>{
   const ids=(route.request().postDataJSON().identifiers as {id:string}[]).map(i=>i.id);
   if(!firstBatch.length)firstBatch.push(...ids);if(retrying)retryIds.push(...ids);
   if(fail&&ids.some(id=>!firstBatch.includes(id))){await route.fulfill({status:503,json:{object:"error",code:"unavailable"}});return;}

@@ -1,1 +1,1 @@
-{"name":"MTG Manager","version":"0.6.21","rankingVersion":"0.6.16","standardRankingVersion":"0.1.0","feature":"Owned-card legality recovery and upgrade quick reading","legacyRankingVersion":"0.1.0"}
+{"name":"MTG Manager","version":"0.6.22","rankingVersion":"0.6.16","standardRankingVersion":"0.1.0","feature":"Same-origin card lookup reliability","legacyRankingVersion":"0.1.0","lookupTransport":"same-origin"}

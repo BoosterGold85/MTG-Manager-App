@@ -36,7 +36,7 @@ for(const format of ["standard","legacy"]as const)test(`${format} import preserv
  await expect(page.locator(".deck-owned-grid")).toContainText("Sideboard");
  // Explicit fresh lookup uses saved canonical IDs and changes metadata only.
  await section(page,"Overview");
- await page.route("https://api.scryfall.com/cards/collection",async route=>{
+ await page.route("**/api/scryfall/cards/collection",async route=>{
   const ids=(route.request().postDataJSON().identifiers as {id:string}[]).map(i=>i.id);
   await route.fulfill({json:{object:"list",data:ids.map(id=>{const c=metadata[id];return {object:"card",id,oracle_id:c.oracleId,name:c.name,set:c.setCode,collector_number:c.collectorNumber,cmc:c.manaValue,color_identity:c.colorIdentity,type_line:c.typeLine,rarity:c.rarity,oracle_text:c.oracleText,image_uris:{normal:c.imageUrl},legalities:{standard:c.name==="Sol Ring"?"not_legal":"legal",legacy:c.name==="Sol Ring"?"banned":"legal"}};})}});
  });

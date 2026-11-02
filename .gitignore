@@ -9,3 +9,7 @@ test-results/
 
 # Developer-only Python fixture capture tools
 __pycache__/
+
+# Cloudflare local runtime and dry-run output
+.wrangler/
+.dev.vars

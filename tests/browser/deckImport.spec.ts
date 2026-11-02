@@ -23,7 +23,7 @@ async function nav(page: Page, label: string) {
 }
 async function start(page: Page) {
   const scryfall: string[] = [];
-  await page.route("https://api.scryfall.com/**", async (route) => {
+  await page.route("**/api/scryfall/**", async (route) => {
     scryfall.push(route.request().url());
     const ids = (route.request().postDataJSON()?.identifiers || []) as { name?: string }[];
     await route.fulfill({ json: { data: ids.filter((i) => i.name === "Eternal Witness").map(() => apiCard(witness)), not_found: ids.filter((i) => i.name !== "Eternal Witness") } });

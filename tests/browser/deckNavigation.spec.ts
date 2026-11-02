@@ -30,7 +30,7 @@ async function nav(page: Page, label: string) {
   await page.getByRole("navigation").filter({ visible: true }).getByRole("button", { name: label, exact: true }).click();
 }
 async function setup(page: Page) {
-  await page.route("https://api.scryfall.com/**", async (route) => {
+  await page.route("**/api/scryfall/**", async (route) => {
     const ids = (route.request().postDataJSON()?.identifiers || []) as { name?: string }[];
     await route.fulfill({ json: { data: ids.filter((i) => i.name === "Grim Flayer").map(() => ({ ...apiCard(flayer), keywords: ["Trample"] })), not_found: ids.filter((i) => i.name !== "Grim Flayer") } });
   });

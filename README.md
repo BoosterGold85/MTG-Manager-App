@@ -1,6 +1,12 @@
-# MTG Manager · v0.6.21
+# MTG Manager · v0.6.22
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Same-site card lookups
+
+Collection/deck imports and explicit legality checks now use the app's own `/api/scryfall` service, which relays bounded canonical metadata requests to Scryfall. This removes the browser's direct cross-origin API dependency; it cannot eliminate upstream outages or a disconnected phone. Existing retries, saved successes, remaining-only recovery and strict confirmation checks are preserved. Ownership stays local. [Transport, validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).
+
+**Deployment requires the Worker and assets together**, using the checked-in `wrangler.jsonc`. A static-only upload of `dist` is insufficient for this release. `/api/scryfall/health` must return JSON identifying v0.6.22, rather than the HTML app. That endpoint checks routing/configuration, not live Scryfall availability.
 
 ## Legality recovery & quick card reading
 
@@ -301,9 +307,9 @@ New/updated/unchanged counts refer to grouped records; recognized/problem/duplic
 
 ## Persistence and privacy
 
-The simplest static-Cloudflare-compatible beta solution is **IndexedDB**, behind `CollectionRepository`. The versioned snapshot stores ownership records, normalized card metadata, proven name-match resolutions, unresolved rows and the latest import summary. Writes are atomic; stale previews from another tab are rejected using a revision check. Storage failures keep the previous collection intact and allow retry. Unsupported/corrupt snapshots produce an error instead of being overwritten. The app makes a best-effort browser persistence request after a successful save.
+The beta collection persistence solution is **IndexedDB**, behind `CollectionRepository`. The versioned snapshot stores ownership records, normalized card metadata, proven name-match resolutions, unresolved rows and the latest import summary. Writes are atomic; stale previews from another tab are rejected using a revision check. Storage failures keep the previous collection intact and allow retry. Unsupported/corrupt snapshots produce an error instead of being overwritten. The app makes a best-effort browser persistence request after a successful save.
 
-Data belongs to this **browser profile and site origin**. It is not synced between devices, Cloudflare preview URLs or domains. Clearing site data, private browsing, browser eviction or changing origins can remove local data. No server backup or account recovery is claimed. Keep the ManaBox export as the authoritative backup. No CSV contents or purchase/binder fields are sent to a server; Scryfall receives only matching identifiers/names and set information.
+Data belongs to this **browser profile and site origin**. It is not synced between devices, Cloudflare preview URLs or domains. Clearing site data, private browsing, browser eviction or changing origins can remove local data. No server backup or account recovery is claimed. Keep the ManaBox export as the authoritative backup. No CSV contents or purchase/binder fields are sent to a server. Only matching identifiers/names and set information pass through the same-site lookup Worker to Scryfall; the Worker does not store inventory or forward browser cookies or authorization headers.
 
 Parsing runs in a Web Worker. Large binders initially render 120 records, with a Show more cards action; searching, filtering and sorting always operate on the complete saved collection. This keeps first render bounded without changing the frozen card grid. Scryfall ID/set-number requests are deduplicated and batched up to 75 identifiers, paced sequentially at least 250 ms apart (slowing further after HTTP 429), the same contract as the importer reliability section. Successful canonical metadata and unique name resolutions persist on confirmation. Opening the binder, filtering, sorting, opening details and re-importing already cached identifiers require no card API calls. Remote artwork still needs network/cache availability; missing art retains the named fallback.
 
@@ -332,17 +338,19 @@ See [v0.3.0 validation](docs/VALIDATION-v0.3.0.md) for intelligence fixtures, li
 
 See [v0.3.2 validation](docs/VALIDATION-v0.3.2.md) for the exact named-card expectations, keyword/text-search behavior, regression coverage and historical results. See [v0.5.0 validation](docs/VALIDATION-v0.5.0.md) for DNA results, [v0.4.2 validation](docs/VALIDATION-v0.4.2.md) for browsing, [v0.4.1 validation](docs/VALIDATION-v0.4.1.md) for deck import and [v0.4.0 validation](docs/VALIDATION-v0.4.0.md) for the Commander Library baseline.
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare Workers
 
-The repository uses a static Vite build; no Cloudflare infrastructure, functions, database bindings or secrets are added:
+The site uses a Vite frontend plus a narrow Worker for canonical card metadata lookups. The existing Worker name is `mtg-manager-app`; deploy from the repository root with the checked-in `wrangler.jsonc`:
 
 - Build command: `npm run build`
-- Build output: `dist`
-- Root: repository root
+- Deploy command: `npx wrangler deploy` (an existing `npx wrangler deploy --assets=dist` also bundles the configured Worker)
+- Asset directory/binding: `dist` / `ASSETS`; `/api/*` runs the Worker first; other routes retain SPA asset behavior
 - Node.js: 24 (pinned), or compatible 22.12+
-- Environment variables / bindings: none
+- Database/secret bindings: none; existing ownership remains in the same browser/site IndexedDB
 
-Push the chosen production branch to the connected GitHub repository. A configured Cloudflare Pages Git integration can build automatically. Local production validation is not proof of a Cloudflare deployment; deployment status is reported separately. `npm run preview` serves a local production check.
+`npm run deploy` builds and deploys together when Cloudflare credentials are available. `npm run check:worker` validates bundling without publishing. `npm run preview:worker` serves the built assets and Worker locally; `npm run dev` and `npm run preview` provide the same metadata handler through Vite middleware.
+
+Push `main` to the connected GitHub repository to trigger a configured Cloudflare Workers Git build. The build must deploy the Worker, not only static files. A main push or local production check is not proof of a completed Cloudflare deployment. After deployment, verify both `/version.json` and `/api/scryfall/health` report **0.6.22**, then retry the remaining lookups on the original site origin. Keep the existing hostname: changing origins separates browser-local data. See the [release report](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md) for current verification limits.
 
 ## Binder behavior preserved
 
@@ -362,4 +370,4 @@ python3 scripts/fetch-sample-data.py
 
 Magic card images/text are © Wizards of the Coast. Metadata and image references are provided by [Scryfall](https://scryfall.com). This project is unofficial and not endorsed by Wizards or Scryfall. Font/icon licenses are in `public/licenses/`.
 
-See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is approved; v0.6.5 Clones & Copies is approved; v0.6.6 Upgrades I Own (two goals) and Mayhem is approved; v0.6.7 Deck Workspace UX & Actionability is approved; v0.6.8 evaluator fixes are approved; v0.6.9 Pings / Punisher support is approved; v0.6.10 full card-pool audit fixes are approved; v0.6.11 "the app isn't sure" warnings are approved; v0.6.12 deck-relative conditions and the engine-agnosticism audit fixes are approved; v0.6.13 Brew Score v1 is approved; v0.6.14 group draw, alternate wins and defense is current. Work stops before v0.7.0.
+See [CHANGELOG.md](CHANGELOG.md), [ROADMAP.md](ROADMAP.md), the original [v0.1.0 brief](docs/v0.1.0-executable.md), and [historical foundation validation](docs/VALIDATION.md). v0.4.2 is approved; v0.5.0 Deck DNA Core is approved; v0.5.1 storage reliability and [v0.5.2 audit fixes](docs/VALIDATION-v0.5.2.md) are preserved; v0.6.0 Synergy Explorer is preserved; v0.6.1 deck-aware scoring is approved; v0.6.2 Synergy Explorer UX Polish is preserved; v0.6.3 Recommendation Engine vNext is approved; v0.6.4 Basic Land Import Exception is approved; v0.6.5 Clones & Copies is approved; v0.6.6 Upgrades I Own (two goals) and Mayhem is approved; v0.6.7 Deck Workspace UX & Actionability is approved; v0.6.8 evaluator fixes are approved; v0.6.9 Pings / Punisher support is approved; v0.6.10 full card-pool audit fixes are approved; v0.6.11 "the app isn't sure" warnings are approved; v0.6.12 deck-relative conditions and the engine-agnosticism audit fixes are approved; v0.6.13 Brew Score v1 is approved; v0.6.14 group draw, alternate wins and defense is preserved; v0.6.22 same-origin lookup reliability is current. Work stops before v0.7.0.

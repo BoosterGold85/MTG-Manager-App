@@ -4,7 +4,7 @@ const cards=Array.from({length:76},(_,i)=>({...sol,scryfallId:`11111111-0000-400
 test('interrupted preview retries only remaining printings, commits safely, and caches lookups across reload',async({page})=>{
  test.setTimeout(60000);
  const succeeded=new Set<string>();let outage=true,failures=0,requests=0;
- await page.route('https://api.scryfall.com/**',async route=>{
+ await page.route('**/api/scryfall/**',async route=>{
   requests++;const ids=route.request().postDataJSON().identifiers as {id:string}[];
   if(ids[0].id===cards[75].scryfallId && outage) {failures++;await route.fulfill({status:503,json:{object:'error',details:'Temporary outage'}});return;}
   for(const {id} of ids) {expect(succeeded.has(id)).toBe(false);succeeded.add(id);}
@@ -33,7 +33,7 @@ test('4,421-row CSV upload survives a transient batch and one malformed printing
  const brokenId=large[2000].scryfallId;
  let transient=true,malformed=true,requests=0;
  const successes=new Map<string,number>();
- await page.route('https://api.scryfall.com/**',async route=>{
+ await page.route('**/api/scryfall/**',async route=>{
   requests++;
   const ids=route.request().postDataJSON().identifiers as {id:string}[];
   if(transient && ids.some(i=>i.id===large[1800].scryfallId)) {

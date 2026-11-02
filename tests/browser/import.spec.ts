@@ -50,7 +50,7 @@ test("valid upload previews without writing, persists ownership and re-imports q
 }, info) => {
   const apiCalls: string[] = [];
   page.on("request", (request) => {
-    if (request.url().startsWith("https://api.scryfall.com"))
+    if (request.url().includes("/api/scryfall/"))
       apiCalls.push(request.url());
   });
   await start(page);
@@ -154,7 +154,7 @@ test("imported variants retain normal filters, sort and Commander Colors subset 
 test("partial success keeps unknown rows and their original fields available after reload", async ({
   page,
 }) => {
-  await page.route("https://api.scryfall.com/**", (route) =>
+  await page.route("**/api/scryfall/**", (route) =>
     route.fulfill({ json: { data: [], not_found: [{id:"00000000-0000-4000-8000-000000000099"}] } }),
   );
   await start(page);
@@ -231,7 +231,7 @@ test("Scryfall enrichment happens during preview, caches metadata and does not r
   let calls = 0;
   await page.route("https://cards.scryfall.io/**", (route) => route.abort());
   await page.route(
-    "https://api.scryfall.com/cards/collection",
+    "**/api/scryfall/cards/collection",
     async (route) => {
       calls++;
       const body = route.request().postDataJSON() as {
@@ -272,7 +272,7 @@ test("large export is parsed off the main thread, previewed and saved without pe
   test.setTimeout(60_000);
   const apiCalls: string[] = [];
   page.on("request", (r) => {
-    if (r.url().startsWith("https://api.scryfall.com")) apiCalls.push(r.url());
+    if (r.url().includes("/api/scryfall/")) apiCalls.push(r.url());
   });
   await start(page);
   const dialog = await open(page);

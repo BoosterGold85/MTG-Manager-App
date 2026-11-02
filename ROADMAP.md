@@ -73,6 +73,11 @@ Separately authorized Standard-first phase: owned nonland candidates, additional
 User-authorized Legacy owned-card exploration, with recipient-verified Brew evidence, local mechanism novelty, quantity-aware explicit comparisons and atomic confirmations. Preserve Commander source/ranking and existing Standard scores. Sideboard matchup recommendations, mana-base swaps and competitive/combo guarantees remain deferred. The earlier Commander generalization pass remains unfinished. See [model and validation](docs/LEGACY-UPGRADES-v0.6.20.md).
 
 
-### 0.6.21 — Current: Legality Recovery & Upgrade Quick Reading
+### 0.6.21 — Released: Legality Recovery & Upgrade Quick Reading
 
 Focused reliability/usability fix: keep and resume successful legality lookups, isolate unresolved printings, browse beyond comparison gates, and open shared Card Detail from Standard/Legacy artwork with filtered navigation. No scoring changes, frozen expectation edits or new intelligence pass. Real blind quality evaluation and physical-device/deployment verification remain separate outstanding work. See [validation](docs/LEGALITY-RECOVERY-v0.6.21.md).
+
+
+### 0.6.22 — Current: Same-Origin Lookup Reliability
+
+Focused transport fix for repeated Safari lookup interruptions: a bounded same-site canonical metadata relay, Worker/assets deployment configuration, readable upstream failures and unchanged cache/retry/resume and ownership protections. No scoring or recommendation changes. Physical-device and deployed-edge verification remain separate from deterministic regression tests. See [validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).

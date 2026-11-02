@@ -1,3 +1,4 @@
+import {siteLookupFetch,LookupTransportError} from "./transport";
 import type {LegalityBatch} from "./legality";
 import { IndexedDbScryfallCache } from "../storage/scryfallCache";
 import type { MetadataCache } from "../storage/scryfallCache";
@@ -195,7 +196,7 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
   private sessionNames: Record<string, string> = {};
   private sessionErrors = new Map<string,string>();
   constructor(
-    private fetcher: typeof fetch = (input, init) => fetch(input, init),
+    private fetcher: typeof fetch = siteLookupFetch,
     interval = 250,
     private options:ScryfallOptions = {},
   ) {this.pace=interval;}
@@ -230,7 +231,7 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
         return await response.json();
       } catch(error) {
         signal.throwIfAborted();
-        failure=error instanceof ServiceFailure ? error : new ServiceFailure(controller.signal.aborted?'Scryfall lookup timed out.':`Could not reach Scryfall or read its response. ${message(error)}`);
+        failure=error instanceof ServiceFailure ? error : error instanceof LookupTransportError ? new ServiceFailure(error.message,0,false) : new ServiceFailure(controller.signal.aborted?'Scryfall lookup timed out.':`Could not reach Scryfall or read its response. ${message(error)}`);
       } finally {clearTimeout(timeout);signal.removeEventListener('abort',abort);}
       const backoff=(this.options.backoffMs ?? 1000)*2**attempt;
       this.cooldownUntil=Math.max(this.cooldownUntil,Date.now()+Math.max(failure.retryAfter,backoff));

@@ -89,7 +89,7 @@ test("Upgrades is a deck section: the goal chooser separates the two questions a
   const before = await snapshot(page);
   const calls: string[] = [];
   page.on("request", (r) => {
-    if (r.url().includes("api.scryfall.com")) calls.push(r.url());
+    if (r.url().includes("/api/scryfall/")) calls.push(r.url());
   });
   const upgrades = await openUpgrades(page);
   await expect(page.getByRole("dialog")).toHaveCount(0);

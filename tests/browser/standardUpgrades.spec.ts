@@ -4,7 +4,7 @@ import {standardFixture} from "../standardFixture";
 import {seed,readState} from "./workspaceHelpers";
 
 async function mockLegality(page:Page,f:ReturnType<typeof standardFixture>,status="legal"){
- await page.route("https://api.scryfall.com/cards/collection",async route=>{
+ await page.route("**/api/scryfall/cards/collection",async route=>{
   const ids=(route.request().postDataJSON().identifiers as {id:string}[]).map(i=>i.id);
   await route.fulfill({json:{object:"list",data:ids.map(id=>{const c=f.state.metadata[id];return {object:"card",id,oracle_id:c.oracleId,name:c.name,set:c.setCode,collector_number:c.collectorNumber,cmc:c.manaValue,color_identity:c.colorIdentity,type_line:c.typeLine,rarity:c.rarity,mana_cost:c.manaCost,oracle_text:c.oracleText,image_uris:{normal:c.imageUrl},legalities:{standard:status}};})}});
  });
@@ -52,7 +52,7 @@ test("allocated copies remain visible but can never be taken from another deck",
 });
 test("unverified candidates require an explicit fresh check without changing ownership",async({page})=>{
  const f=standardFixture();delete f.candidate.legalities;delete f.candidate.legalityCheckedAt;
- let calls=0;await page.route("https://api.scryfall.com/cards/collection",async route=>{
+ let calls=0;await page.route("**/api/scryfall/cards/collection",async route=>{
   calls++;const ids=(route.request().postDataJSON().identifiers as {id:string}[]).map(i=>i.id);
   await route.fulfill({json:{object:"list",data:ids.map(id=>{const c=f.state.metadata[id];return {object:"card",id,oracle_id:c.oracleId,name:c.name,set:c.setCode,collector_number:c.collectorNumber,cmc:c.manaValue,color_identity:c.colorIdentity,type_line:c.typeLine,rarity:c.rarity,mana_cost:c.manaCost,oracle_text:c.oracleText,image_uris:{normal:c.imageUrl},legalities:{standard:"legal"}};})}});
  });

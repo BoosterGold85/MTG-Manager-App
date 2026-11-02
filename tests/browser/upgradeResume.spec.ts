@@ -9,7 +9,7 @@ test("a reloaded partial check resumes only saved-unverified printings",async({p
   f.state.metadata[card.scryfallId]=card;f.state.items.push({...f.state.items[0],id:card.scryfallId,scryfallId:card.scryfallId,quantityOwned:1,quantityAssigned:0,quantityUnassigned:1});f.state.intelligence!.auto[cardIdentity(card)]=analyze(card);
   if(i>=10)expected.push(card.scryfallId);
  }
- await page.route("https://api.scryfall.com/cards/collection",async route=>{
+ await page.route("**/api/scryfall/cards/collection",async route=>{
   const ids=(route.request().postDataJSON().identifiers as {id:string}[]).map(i=>i.id);requested.push(...ids);
   await route.fulfill({json:{data:ids.map(id=>{const c=f.state.metadata[id];return {object:"card",id,oracle_id:c.oracleId,name:c.name,set:c.setCode,collector_number:c.collectorNumber,type_line:c.typeLine,cmc:c.manaValue,color_identity:c.colorIdentity,mana_cost:c.manaCost,oracle_text:c.oracleText,rarity:c.rarity,image_uris:{normal:c.imageUrl},legalities:{legacy:"legal",standard:"not_legal"}};})}});
  });

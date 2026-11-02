@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.22 — 2026-11-02 — Same-Origin Lookup Reliability
+
+- Route import, deck lookup and explicit legality requests through a narrow same-site Cloudflare Worker instead of browser-to-Scryfall cross-origin fetches. Keep canonical identifiers, batch limits, retries/backoff/Retry-After, cache checkpoints and safe remaining-only recovery.
+- Convert upstream network/timeout/unreadable responses into readable JSON failures; preserve confirmed not-found and actual legality responses. Fail closed with an actionable message if only static assets were deployed.
+- Add Worker-plus-assets configuration and a matching local handler, without server inventory storage or forwarding browser credentials. Preserve the existing site origin and all ownership/revision checks.
+- No Commander, Standard or Legacy scoring changes, frozen corpus edits or new intelligence work. See docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md for validation and deployment limits.
+
 ## 0.6.21 — 2026-11-02 — Legality Recovery & Upgrade Quick Reading
 
 - Fix whole-collection legality checks discarding successful earlier batches on an interruption. Keep verified metadata, show progress, retry only unresolved printings, and isolate confirmed missing/incomplete/changed identifiers without guessing legality.

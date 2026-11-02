@@ -117,7 +117,7 @@ test("the two goals answer different questions: real engines lead upgrades, off-
   const before = await snapshot(page),
     calls: string[] = [];
   page.on("request", (r) => {
-    if (r.url().includes("api.scryfall.com")) calls.push(r.url());
+    if (r.url().includes("/api/scryfall/")) calls.push(r.url());
   });
   let dialog = await openGoal(page, /Improve My Current Deck/);
   const improve = await names(dialog);

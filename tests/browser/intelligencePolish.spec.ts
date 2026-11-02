@@ -8,7 +8,7 @@ const mechanic={...apiCard(sol),id:'99999999-0000-4000-8000-000000000001',name:'
 const api=[...data,mechanic];
 const cards=api.map(value=>normalizeCard(value as Parameters<typeof normalizeCard>[0]));
 async function start(page:Page) {
- await page.route('https://api.scryfall.com/**',async route=>{
+ await page.route('**/api/scryfall/**',async route=>{
   const ids=route.request().postDataJSON().identifiers as {id:string}[];
   await route.fulfill({json:{data:ids.map(({id})=>api.find(c=>c.id===id)),not_found:[]}});
  });
