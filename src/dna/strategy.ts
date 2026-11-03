@@ -1,5 +1,6 @@
 import { capabilities, capabilityRelationship } from "../synergy/capabilities";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
+import { SUPPLIES_DICE } from "../synergy/semantics";
 import type { RecommendationData } from "../synergy/recommendation";
 import type { CardMetadata } from "../models/collection";
 import type { DnaInput, DnaInputCard } from "./engine";
@@ -9,7 +10,7 @@ import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 import { benefitsYou, extractCardFacts, opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.12";
+export const SYNERGY_VERSION = "0.6.23";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -304,6 +305,8 @@ function receivers(c: DnaInputCard): CommanderSynergyTag[] {
                                     ? "token-created"
                                     : /\b(?:scry|surveil)\b/i.test(trigger)
                                       ? "scry"
+                                      : /\broll\b/i.test(trigger) && /\b(?:die|dice|d\d+|\d+ or higher|natural \d+)\b/i.test(trigger)
+                                        ? "dice"
                                       : /\bproliferate\b/i.test(trigger)
                                         ? "counters"
                                         : "turn";
@@ -467,6 +470,7 @@ function computeCharacteristics(c: DnaInputCard): Characteristics {
   // Discard you choose, scry/surveil and blink feed "whenever you discard / scry / … leaves the battlefield".
   if (extractCardFacts(c.card).faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"))) emits.add("discard");
   if (/\b(?:scry|surveil) (?:\d+|x)\b/i.test(text)) emits.add("scry");
+  if (SUPPLIES_DICE.test(text) && !/^(?:Whenever you roll|If you would roll)\b[^\n]*$/im.test(text.split("\n").find((l) => SUPPLIES_DICE.test(l)) || "")) emits.add("dice");
   if (/\bexile (?:target|another target|up to (?:one|two) target)[^.]*you control, then return/i.test(text) || tags.has("blink")) emits.add("blink");
   {
     const loss = opponentLifeLoss(text);
@@ -570,6 +574,7 @@ function interaction(
   if (receiver.event === "discard") return source.emits.has("discard") ? 1 : 0;
   if (receiver.event === "token-created") return source.emits.has("token") ? 0.9 : 0;
   if (receiver.event === "scry") return source.emits.has("scry") ? 0.8 : 0;
+  if (receiver.event === "dice") return source.emits.has("dice") ? 1 : 0;
   if (receiver.event === "leaves")
     return source.emits.has("blink") || source.emits.has("sacrifice") ? 0.8 : source.emits.has("creature") ? 0.25 : 0;
   if (receiver.event === "life-loss") {

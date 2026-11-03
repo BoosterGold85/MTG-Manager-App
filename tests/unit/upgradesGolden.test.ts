@@ -12,6 +12,10 @@
 //           synthetic cases move ≤ 0.1; the blink case's Generic Fight now has a valid (Downgrade) cut.
 // v0.6.15: retained the old snapshot; the new derived-output snapshot reflects reviewed Oracle
 // semantics (counter supply, conditional lines, net draw and scoped ETB links), with weights unchanged.
+// v0.6.23: Saga chapters are separate timed abilities. The Elder Dragon War's later chapters count at 90% / 80% and
+// chapter II now reads as controlled discard, so its impact falls 0.78 → 0.68. Seven Reign candidates' best cut
+// moves from Hit the Mother Lode to Chain Reaction (values within ±0.01, labels unchanged); alternatives reorder.
+// Build mode and every other case are unchanged.
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";

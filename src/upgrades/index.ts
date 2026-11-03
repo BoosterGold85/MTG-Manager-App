@@ -16,6 +16,7 @@ import type { BuildEvaluation } from "./build";
 import { buildDeckModel, compareUpgrade, evaluateUpgrade, simulateSwap } from "./upgrade";
 import type { DeckModel, UpgradeEvaluation } from "./upgrade";
 import { canonicalInput } from "./inputs";
+import { cardCoverage } from "./coverage";
 import { brewContext, evaluateBrew } from "./brew";
 import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
@@ -127,7 +128,7 @@ export function buildFor(state: CollectionState, deck: Deck, candidate: OwnedCan
   const known = cached?.find((c) => c.canonical.scryfallId === candidate.scryfallId);
   return known ? known.build : evaluateForBuild(commanderBlueprint(state, deck), canonicalInput(state, candidate), deckCardFunction(candidate, currentDeckModel(state, deck).supply));
 }
-export type AnalysisNoteKind = "commander-trigger" | "commander-links" | "weak-plan" | "untracked-cards" | "missing-text";
+export type AnalysisNoteKind = "commander-trigger" | "commander-links" | "weak-plan" | "partial-cards" | "unsupported-cards" | "missing-data";
 export interface AnalysisNote {
   kind: AnalysisNoteKind;
   message: string;
@@ -138,7 +139,6 @@ export interface AnalysisConfidence {
   level: "High" | "Medium" | "Low";
   notes: AnalysisNote[];
 }
-const cardText = (card: { oracleText?: string; cardFaces?: { oracleText?: string }[] }) => card.oracleText || card.cardFaces?.map((f) => f.oracleText || "").join("\n") || "";
 /**
  * When the app should say it isn't sure: it can't classify the Commander's ability, few cards connect to the
  * Commander, the plan is thinly supported, several cards do things it doesn't track, or card text is missing.
@@ -177,25 +177,36 @@ export function analysisConfidence(state: CollectionState, deck: Deck): Analysis
           : "The app couldn't find a clear plan in this deck, so What This Deck Does is a rough guess.",
         items: [],
       });
-    const nonland = main.filter((c) => !c.fn.isLand);
-    const untracked = nonland
-      .filter((c) => !Object.keys(c.fn.roles).length && !(dna.cards[c.identity]?.connections.length) && cardText(inputs.get(c.identity)!.card).length > 40)
-      .map((c) => c.name)
-      .sort();
-    if (untracked.length >= Math.max(3, Math.ceil(0.08 * nonland.length)))
+    // Coverage is per ability (v0.6.23): understood abilities count even when another clause isn't modeled, and a
+    // valid empty rules text (a vanilla creature) is data, not a missing record.
+    const coverage = main.map((c) => ({ name: c.name, coverage: cardCoverage(inputs.get(c.identity)!.card) }));
+    const named = (state: string) => coverage.filter((c) => c.coverage.state === state).map((c) => c.name).sort();
+    const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
+    const partial = named("partial");
+    if (partial.length)
       notes.push({
-        kind: "untracked-cards",
-        message: `${untracked.length} cards do things the app doesn't track yet, so they don't count toward Deck Health, DNA or Upgrades.`,
-        items: untracked,
+        kind: "partial-cards",
+        message: `${partial.length} ${plural(partial.length, "card has effects", "cards have effects")} the app only partially understands. Recognized effects still count, but some interactions may be missing.`,
+        items: partial,
       });
-    const missing = main.filter((c) => !c.fn.isLand && !cardText(inputs.get(c.identity)!.card).trim()).map((c) => c.name).sort();
+    const unsupported = named("unsupported");
+    if (unsupported.length)
+      notes.push({
+        kind: "unsupported-cards",
+        message: `${unsupported.length} ${plural(unsupported.length, "card uses a mechanic", "cards use mechanics")} the app doesn't model yet.`,
+        items: unsupported,
+      });
+    const missing = named("missing");
     if (missing.length)
       notes.push({
-        kind: "missing-text",
-        message: `${missing.length} ${missing.length === 1 ? "card has" : "cards have"} no rules text saved, so the app can't analyze ${missing.length === 1 ? "it" : "them"}. Re-importing your collection usually fixes this.`,
+        kind: "missing-data",
+        message: `${missing.length} ${plural(missing.length, "card", "cards")} could not be matched to canonical card data. Re-importing your collection usually fixes this.`,
         items: missing,
       });
-    const level = notes.some((n) => n.kind === "commander-trigger" || (n.kind === "weak-plan" && !strategic.length)) ? "Low" : notes.length ? "Medium" : "High";
+    // A few partially understood cards are normal and stay visible; they lower confidence only when common.
+    const nonland = main.filter((c) => !c.fn.isLand).length;
+    const lowering = notes.filter((n) => n.kind !== "partial-cards" || n.items.length >= Math.max(3, Math.ceil(0.1 * nonland)));
+    const level = notes.some((n) => n.kind === "commander-trigger" || (n.kind === "weak-plan" && !strategic.length)) ? "Low" : lowering.length ? "Medium" : "High";
     return { level, notes };
   });
 }

@@ -36,6 +36,6 @@ describe("Kwain group-draw deck", () => {
     expect(lands.target).toBe(34);
     expect(lands.reasons.join(" ")).toMatch(/draws heavily/);
     const f = kwainFixture();
-    expect(analysisConfidence(f.state, f.deck).notes.map((n) => n.kind)).not.toContain("untracked-cards");
+    expect(analysisConfidence(f.state, f.deck).notes.map((n) => n.kind)).not.toContain("unsupported-cards");
   });
 });

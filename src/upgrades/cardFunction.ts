@@ -8,6 +8,7 @@ import type { AnswerFact, AnswerTarget, CardFacts } from "../synergy/facts";
 import { selfEntryEffect } from "./abilityScope";
 import { capabilities, capabilityRelationship, netCardDraw } from "../synergy/capabilities";
 import { isBasicLand } from "../decks/decks";
+import { cardAbilities, weightedLines } from "../synergy/semantics";
 import { conditionFactor, crewCondition, effectConditions, withoutLines } from "./conditions";
 import type { ConditionCredit, SupplyIndex } from "./conditions";
 
@@ -119,10 +120,69 @@ export function withoutUltimates(card: CardMetadata): { card: CardMetadata; drop
   };
   return dropped ? { card: next, dropped } : { card, dropped };
 }
+/** Replace or remove whole printed lines, matched on their reminder-stripped text. */
+function editLines(card: CardMetadata, edits: Map<string, string>): CardMetadata {
+  const edit = (text?: string) =>
+    text === undefined ? text : text.split("\n").map((l) => (edits.has(stripReminderText(l).trim()) ? edits.get(stripReminderText(l).trim())! : l)).filter((l) => l !== "").join("\n");
+  return { ...card, oracleText: edit(card.oracleText), cardFaces: card.cardFaces?.map((f) => ({ ...f, oracleText: edit(f.oracleText) })) };
+}
 export function cardFunction(original: CardMetadata): CardFunction {
   const key = JSON.stringify([original.name, original.manaValue, original.typeLine, original.oracleText, original.keywords, original.cardFaces, original.power, original.toughness, original.loyalty]);
   const cached = cache.get(key);
   if (cached) return cached;
+  const result = weightedCardFunction(original);
+  cache.set(key, result);
+  if (cache.size > 10000) cache.delete(cache.keys().next().value!);
+  return result;
+}
+/**
+ * Abilities that are only partly available (later Class levels and Saga chapters, opponent-state conditions) count
+ * at their access weight; dice-result branches are mutually exclusive, so they count at their expected value.
+ * Potential value is never treated as immediately available.
+ */
+function weightedCardFunction(original: CardMetadata): CardFunction {
+  const weighted = weightedLines(original);
+  if (!weighted.length) return computeCardFunction(original);
+  const markers = cardAbilities(original).filter((a) => a.kind === "procedural" && /: Level \d+$/.test(a.line)).map((a) => a.line);
+  const removeAll = new Map([...weighted.map((w) => [w.line, ""] as [string, string]), ...markers.map((m) => [m, ""] as [string, string])]);
+  const base = computeCardFunction(editLines(original, removeAll));
+  const roles: Partial<Record<Need, number>> = { ...base.roles };
+  let impact = base.impact;
+  const reasons = [...base.impactReasons];
+  const answers = [...base.answers];
+  const expected: Partial<Record<Need, number>> = {};
+  for (const ability of weighted) {
+    const edits = new Map(removeAll);
+    edits.set(ability.line, ability.effect.replace(/^~/, "This creature"));
+    const variant = computeCardFunction(editLines(original, edits));
+    const w = ability.weight;
+    for (const need of Object.keys(variant.roles) as Need[]) {
+      const gain = (variant.roles[need] || 0) - (base.roles[need] || 0);
+      if (gain <= 0) continue;
+      if (ability.kind === "branch") expected[need] = (expected[need] || 0) + w * gain;
+      else roles[need] = Math.max(roles[need] || 0, (base.roles[need] || 0) + w * gain);
+    }
+    impact = Math.max(impact, base.impact + w * (variant.impact - base.impact));
+    if (w >= 0.5) for (const a of variant.answers) if (!answers.some((b) => b.text === a.text)) answers.push(a);
+    for (const reason of variant.impactReasons) if (!reasons.includes(reason)) reasons.push(reason);
+  }
+  for (const [need, gain] of Object.entries(expected) as [Need, number][]) roles[need] = Math.max(roles[need] || 0, (base.roles[need] || 0) + gain);
+  const notes = weighted.some((a) => a.kind === "level")
+    ? ["Higher Class levels count only partly: they need the level investment first."]
+    : [];
+  if (weighted.some((a) => a.kind === "chapter")) notes.push("Later Saga chapters count only partly: they arrive turns later.");
+  if (weighted.some((a) => a.kind === "branch")) notes.push("Dice results count at their chance of being rolled, not all at once.");
+  if (weighted.some((a) => a.kind !== "branch" && a.kind !== "chapter" && /\bwho controls \w+ or more\b/i.test(a.effect))) notes.push("Its attack ability needs an opponent in a specific state, so it counts only partly.");
+  return {
+    ...computeCardFunction(original),
+    roles,
+    answers,
+    coverage: [...new Set(answers.flatMap((a) => a.targets))],
+    impact: Math.round(impact * 1000) / 1000,
+    impactReasons: [...reasons, ...notes],
+  };
+}
+function computeCardFunction(original: CardMetadata): CardFunction {
   const { card, dropped: ultimateIgnored } = withoutUltimates(original);
   const semantic = capabilities(card);
   const facts = extractCardFacts(card),
@@ -266,6 +326,89 @@ export function cardFunction(original: CardMetadata): CardFunction {
     add("interaction", /\bup to (?:two|three|four|five|x)\b/i.test(text) ? 0.8 : 0.6);
     reasons.push({ value: 0.45, reason: `Neutralizes opposing creatures${/villainous choice|chooses/i.test(text) ? " (their controller chooses how)" : ""}.` });
   }
+  // Ability-level semantics (v0.6.23): each understood ability contributes on its own, so an unsupported clause
+  // elsewhere on the card doesn't erase it. Inaccessible abilities (ultimates beyond starting loyalty) never count.
+  for (const ability of cardAbilities(card)) {
+    if (ability.weight <= 0) continue;
+    const caps = new Set(ability.capabilities);
+    const team = caps.has("TEAM");
+    const keywordsGranted = [...caps].filter((c) => c.startsWith("TEAM_KEYWORD:")).map((c) => c.slice(13));
+    if (caps.has("PT_DOUBLE") && team) {
+      add("finishers", 1);
+      reasons.push({ value: 0.6, reason: "Doubles your creatures' power and toughness: multiplies a wide or large board." });
+    } else if (caps.has("TEMP_BUFF") || caps.has("POWER_FROM_TOUGHNESS")) {
+      const doubling = caps.has("POWER_FROM_POWER") || caps.has("PT_DOUBLE");
+      // Only scaling pumps are finishing power: doubling, toughness-to-power or X pumps on a target, or a team pump.
+      // A fixed or self "+1/+0" (firebreathing, a one-shot +2/+2) is a combat trick, explained but not a finisher.
+      const self = /^(?:\{[^}]*\}[^:]*: )?(?:this creature|~|it) gets\b/i.test(ability.effect);
+      const scaling = doubling || caps.has("POWER_FROM_TOUGHNESS") || caps.has("POWER_FROM_COUNTERS") || /\+X\//.test(ability.effect);
+      if (scaling && (!self || caps.has("POWER_FROM_TOUGHNESS"))) add("finishers", doubling ? 0.5 : 0.4);
+      reasons.push({
+        value: !scaling || (self && !caps.has("POWER_FROM_TOUGHNESS")) ? 0 : caps.has("DELAYED_DESTRUCTION") ? 0.25 : doubling ? 0.4 : 0.3,
+        reason: `${doubling ? "Doubles a creature's power for the turn" : caps.has("POWER_FROM_TOUGHNESS") ? "Turns toughness into power for the turn" : caps.has("POWER_FROM_COUNTERS") ? "Pumps a creature by its chapter count" : "Temporary combat pump"}${caps.has("TRAMPLE_GRANT") ? " with trample" : ""}${caps.has("DELAYED_DESTRUCTION") ? ", but destroys that creature at end of turn if it attacked" : ""}.`,
+      });
+    }
+    if (caps.has("PT_SWITCH")) {
+      add("finishers", 0.5);
+      reasons.push({ value: 0.35, reason: "Switches power and toughness: pays off creatures with high toughness." });
+    }
+    for (const keyword of keywordsGranted) {
+      if (["hexproof", "indestructible", "shroud"].includes(keyword)) continue;
+      add("finishers", ["haste", "trample", "double strike"].includes(keyword) ? 0.6 : 0.4);
+      reasons.push({ value: 0.4, reason: `Gives your creatures ${keyword}.` });
+    }
+    if (caps.has("FIGHT")) {
+      add("interaction", 0.6);
+      reasons.push({ value: 0.45, reason: "Fight-based removal (needs a creature you control)." });
+    }
+    if (caps.has("TYPE_SELECTION") || caps.has("MULTI_TYPE_SELECTION") || caps.has("CREATURE_CHEAT") || caps.has("TOP_X_CHEAT")) {
+      add("cardAdvantage", caps.has("TOP_X_CHEAT") ? 0.8 : caps.has("MULTI_TYPE_SELECTION") ? 0.7 : 0.5);
+      reasons.push({
+        value: 0.45,
+        reason: caps.has("TOP_X_CHEAT")
+          ? "Puts permanent cards from the top of your library onto the battlefield (scales with X and permanent density)."
+          : caps.has("CREATURE_CHEAT")
+            ? "Puts a creature from your library into play attacking."
+            : "Selects cards of specific types from the top of your library.",
+      });
+    }
+    if (caps.has("CROSS_TURN_UNTAP")) {
+      add("ramp", 0.6);
+      reasons.push({ value: 0.45, reason: "Untaps your permanents on every opponent's turn." });
+    }
+    if (caps.has("CREATURE_TAP_COST") || (caps.has("SCALES_WITH_CREATURES") && /\bdeals? damage\b/i.test(ability.effect))) {
+      if (/\bdeals? damage\b/i.test(text)) add("finishers", 0.8);
+      reasons.push({ value: 0.45, reason: "Taps your creatures as a resource: damage scales with how many you have (not sacrifice)." });
+    }
+    if (caps.has("SACRIFICE_WIPE")) {
+      add("wipes", 1);
+      reasons.push({ value: 0.6, reason: caps.has("PRESERVATION_CONDITION") ? "Sacrifice wipe that lets each player keep a few small creatures." : "Each player sacrifices their creatures." });
+    }
+    if (caps.has("DELAYED_BLINK")) {
+      add("interaction", 0.3);
+      reasons.push({ value: 0.3, reason: "Exiles a permanent until the next end step: resets your own, or removes an opponent's temporarily." });
+    }
+    if (caps.has("TARGETED_SPELL_COPY")) {
+      add("cardAdvantage", 0.6);
+      reasons.push({ value: 0.45, reason: "Copies your instants and sorceries that target your own creature." });
+    }
+    if (caps.has("COPY_TRIGGERED_ABILITY")) reasons.push({ value: 0.45, reason: "Copies a triggered ability you control." });
+    if (caps.has("COUNTER_STORAGE") || caps.has("COUNTER_TRANSFER")) reasons.push({ value: 0.4, reason: "Keeps counters from your creatures that leave and moves them onto another creature (not a counter source)." });
+    if (caps.has("TOUGHNESS_CREW")) reasons.push({ value: 0.3, reason: "Crews Vehicles with its toughness." });
+    if (caps.has("LINKED_IMPRINT") && caps.has("TOKEN_COPY")) reasons.push({ value: 0.45, reason: "Makes token copies of the artifact it imprinted." });
+    // Explanation only: the death effect itself is valued by whatever it does.
+    if (caps.has("DEATH_TRIGGER")) reasons.push({ value: 0, reason: "Does something when it dies." });
+    if (caps.has("TEMP_KEYWORD") && !caps.has("TEMP_BUFF")) reasons.push({ value: 0, reason: "Grants a combat keyword for the turn." });
+    if (caps.has("SELF_SACRIFICE_EFFECT")) reasons.push({ value: 0, reason: "Can sacrifice itself for a one-shot effect." });
+    if (caps.has("ROLL_AMPLIFIER")) reasons.push({ value: 0.35, reason: "Improves your dice rolls." });
+    if (caps.has("ROLL_EVENT")) reasons.push({ value: 0.3, reason: "Rewards rolling dice." });
+    if (caps.has("TEMPORARY_COPY") && caps.has("TOKEN_COPY")) {
+      // Exiled at end of combat: extra attack damage, not a lasting body.
+      delete roles.tokens;
+      add("finishers", 0.4);
+      reasons.push({ value: 0.35, reason: "Makes temporary attacking token copies (they enter attacking, so they don't trigger attack abilities)." });
+    }
+  }
   // Finishing and engines
   const evasive = keywords.some((k) => ["flying", "trample", "menace", "shadow", "fear", "intimidate", "unblockable"].includes(k));
   const power = Number(card.power), toughness = Number(card.toughness);
@@ -382,8 +525,6 @@ export function cardFunction(original: CardMetadata): CardFunction {
     confidence: !text && !isLand ? "Low" : uncertainties.length > 1 ? "Low" : uncertainties.length || /choose (?:one|two)|at random|mutate|phase out/i.test(text) ? "Medium" : "High",
     uncertainties,
   };
-  cache.set(key, result);
-  if (cache.size > 10000) cache.delete(cache.keys().next().value!);
   return result;
 }
 

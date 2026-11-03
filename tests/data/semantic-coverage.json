@@ -1,0 +1,758 @@
+[
+ {
+  "name": "Walking Corpse",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Zombie",
+  "oracle_text": "",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "2",
+  "toughness": "2",
+  "id": "053b59b4-a22c-4228-aadc-ae9da6bb465e",
+  "oracle_id": "fea95888-e16a-4209-9cd4-623f7f4d2f67",
+  "set": "m21",
+  "collector_number": "128",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Wandering Tombshell",
+  "mana_cost": "{3}{B}",
+  "cmc": 4.0,
+  "type_line": "Creature — Zombie Turtle",
+  "oracle_text": "",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "1",
+  "toughness": "6",
+  "id": "e66e1d97-d676-471a-a140-deb39600a7a9",
+  "oracle_id": "768c78f3-f09c-4b77-974d-514925e8df5e",
+  "set": "dtk",
+  "collector_number": "127",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Berserk",
+  "mana_cost": "{G}",
+  "cmc": 1.0,
+  "type_line": "Instant",
+  "oracle_text": "Cast this spell only before the combat damage step.\nTarget creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "62bc9bff-89bd-4454-a876-53822cf48546",
+  "oracle_id": "8b67d192-9a05-4a47-82ae-5fc4b7834d88",
+  "set": "cn2",
+  "collector_number": "175",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Armored Armadillo",
+  "mana_cost": "{W}",
+  "cmc": 1.0,
+  "type_line": "Creature — Armadillo",
+  "oracle_text": "Ward {1} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {1}.)\n{3}{W}: This creature gets +X/+0 until end of turn, where X is its toughness.",
+  "keywords": [
+   "Ward"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "0",
+  "toughness": "4",
+  "id": "263232df-69b8-4205-93ad-c724fe57ec11",
+  "oracle_id": "dca25245-523a-4587-a059-a14ee2ef908d",
+  "set": "otj",
+  "collector_number": "3",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Inversion Behemoth",
+  "mana_cost": "{2}{C}{C}",
+  "cmc": 4.0,
+  "type_line": "Creature — Eldrazi",
+  "oracle_text": "At the beginning of combat on your turn, switch the power and toughness of each of any number of target creatures until end of turn.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "power": "2",
+  "toughness": "9",
+  "id": "77a5ca5d-a377-4ee4-8e72-5a6b60c67521",
+  "oracle_id": "fedcb737-723b-4a38-b86c-dad6ac7bec7b",
+  "set": "m3c",
+  "collector_number": "34",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Unnatural Growth",
+  "mana_cost": "{1}{G}{G}{G}{G}",
+  "cmc": 5.0,
+  "type_line": "Enchantment",
+  "oracle_text": "At the beginning of each combat, double the power and toughness of each creature you control until end of turn.",
+  "keywords": [
+   "Double"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "08fa38c0-353c-4f6a-b87e-3f6366af44d8",
+  "oracle_id": "7324abaa-48da-439d-9339-b0ea5eea612e",
+  "set": "inr",
+  "collector_number": "223",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "The Triumph of Anax",
+  "mana_cost": "{2}{R}",
+  "cmc": 3.0,
+  "type_line": "Enchantment — Saga",
+  "oracle_text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)\nI, II, III — Until end of turn, target creature gains trample and gets +X/+0, where X is the number of lore counters on this Saga.\nIV — Target creature you control fights up to one target creature you don't control. (Each deals damage equal to its power to the other.)",
+  "keywords": [
+   "Fight"
+  ],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "id": "49b5b348-1415-4062-a2a7-017694424c05",
+  "oracle_id": "eea6ba94-8755-45c0-94ea-cde68e4a1e7c",
+  "set": "thb",
+  "collector_number": "160",
+  "rarity": "uncommon",
+  "layout": "saga",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Domri Rade",
+  "mana_cost": "{1}{R}{G}",
+  "cmc": 3.0,
+  "type_line": "Legendary Planeswalker — Domri",
+  "oracle_text": "+1: Look at the top card of your library. If it's a creature card, you may reveal it and put it into your hand.\n−2: Target creature you control fights another target creature.\n−7: You get an emblem with \"Creatures you control have double strike, trample, hexproof, and haste.\"",
+  "keywords": [
+   "Fight"
+  ],
+  "colors": [
+   "G",
+   "R"
+  ],
+  "color_identity": [
+   "G",
+   "R"
+  ],
+  "loyalty": "3",
+  "id": "9a7a5bbc-9d5a-461b-a5d7-a3f2e9b383be",
+  "oracle_id": "0c4a2c42-0874-40b4-8d12-47eeadc3e976",
+  "set": "rvr",
+  "collector_number": "179",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Fires of Yavimaya",
+  "mana_cost": "{1}{R}{G}",
+  "cmc": 3.0,
+  "type_line": "Enchantment",
+  "oracle_text": "Creatures you control have haste.\nSacrifice this enchantment: Target creature gets +2/+2 until end of turn.",
+  "keywords": [],
+  "colors": [
+   "G",
+   "R"
+  ],
+  "color_identity": [
+   "G",
+   "R"
+  ],
+  "id": "7294e30f-0356-4bcc-a264-4cd46d8f13a6",
+  "oracle_id": "e23d6f3b-0e18-423b-943b-15db7837255b",
+  "set": "pca",
+  "collector_number": "92",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Grasping Longneck",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Enchantment Creature — Horror",
+  "oracle_text": "Reach\nWhen this creature dies, you gain 2 life.",
+  "keywords": [
+   "Reach"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "4",
+  "toughness": "2",
+  "id": "7fddcd48-3efe-4b56-9d69-9659b3dc6021",
+  "oracle_id": "bc509d30-ceca-47ef-a574-62c021812014",
+  "set": "dsk",
+  "collector_number": "180",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Leyline of Resonance",
+  "mana_cost": "{2}{R}{R}",
+  "cmc": 4.0,
+  "type_line": "Enchantment",
+  "oracle_text": "If this card is in your opening hand, you may begin the game with it on the battlefield.\nWhenever you cast an instant or sorcery spell that targets only a single creature you control, copy that spell. You may choose new targets for the copy.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "id": "92c5f0e3-345a-40a8-9cda-565a62156692",
+  "oracle_id": "f69574dd-097f-4908-9cab-344b0eb39c62",
+  "set": "dsk",
+  "collector_number": "143",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Strionic Resonator",
+  "mana_cost": "{2}",
+  "cmc": 2.0,
+  "type_line": "Artifact",
+  "oracle_text": "{2}, {T}: Copy target triggered ability you control. You may choose new targets for the copy. (A triggered ability uses the words \"when,\" \"whenever,\" or \"at.\")",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "b9edb215-f967-4968-905e-d1dc3b5d3424",
+  "oracle_id": "cf751552-156f-4f81-ac94-9814dce099f9",
+  "set": "moc",
+  "collector_number": "384",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "The Ozolith",
+  "mana_cost": "{1}",
+  "cmc": 1.0,
+  "type_line": "Legendary Artifact",
+  "oracle_text": "Whenever a creature you control leaves the battlefield, if it had counters on it, put those counters on The Ozolith.\nAt the beginning of combat on your turn, if The Ozolith has counters on it, you may move all counters from The Ozolith onto target creature.",
+  "keywords": [],
+  "colors": [],
+  "color_identity": [],
+  "id": "9341ed06-53db-4604-b60a-3ea9129afbc2",
+  "oracle_id": "1946ded1-5f53-409f-b0a6-5433bb0357d2",
+  "set": "iko",
+  "collector_number": "237",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Stickytongue Sentinel",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Frog Warrior",
+  "oracle_text": "Reach\nWhen this creature enters, return up to one other target permanent you control to its owner's hand.",
+  "keywords": [
+   "Reach"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "b5fa9651-b217-4f93-9c46-9bdb11feedcb",
+  "oracle_id": "899f0931-4e9b-4fa8-9f6d-d13a7de05334",
+  "set": "blb",
+  "collector_number": "193",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Another Round",
+  "mana_cost": "{X}{X}{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Exile any number of creatures you control, then return them to the battlefield under their owner's control. Then repeat this process X more times.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "4f8dc511-e307-4412-bb79-375a6077312d",
+  "oracle_id": "8095ca78-db19-4724-a6ff-eacc85fa2274",
+  "set": "otj",
+  "collector_number": "1",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Glimmerpoint Stag",
+  "mana_cost": "{2}{W}{W}",
+  "cmc": 4.0,
+  "type_line": "Creature — Elk",
+  "oracle_text": "Vigilance\nWhen this creature enters, exile another target permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
+  "keywords": [
+   "Vigilance"
+  ],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "63205c2a-e9d4-4354-b519-9e84be8f9eb7",
+  "oracle_id": "9620c8a2-63a8-4151-b4fd-a15db191a7b0",
+  "set": "ema",
+  "collector_number": "12",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Far Traveler",
+  "mana_cost": "{2}{W}",
+  "cmc": 3.0,
+  "type_line": "Legendary Enchantment — Background",
+  "oracle_text": "Commander creatures you own have \"At the beginning of your end step, exile up to one target tapped creature you control, then return it to the battlefield under its owner's control.\"",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "cabc3688-2362-4757-a5be-087e577c4691",
+  "oracle_id": "b9432430-df01-497d-b025-7576dce830e4",
+  "set": "clb",
+  "collector_number": "17",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Giant Ox",
+  "mana_cost": "{1}{W}",
+  "cmc": 2.0,
+  "type_line": "Creature — Ox",
+  "oracle_text": "This creature crews Vehicles using its toughness rather than its power.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "power": "0",
+  "toughness": "6",
+  "id": "fc71d8ca-c613-4534-bc9d-bc1e13202a2c",
+  "oracle_id": "b42bdf54-9055-405c-87e6-0912dbe2bd68",
+  "set": "khm",
+  "collector_number": "11",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Slaughter the Strong",
+  "mana_cost": "{1}{W}{W}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Each player chooses any number of creatures they control with total power 4 or less, then sacrifices all other creatures they control.",
+  "keywords": [],
+  "colors": [
+   "W"
+  ],
+  "color_identity": [
+   "W"
+  ],
+  "id": "9b4a42d9-4568-414d-8caf-9a7c33073059",
+  "oracle_id": "7a3569a0-a55f-40c9-9588-92db35e26567",
+  "set": "tdc",
+  "collector_number": "131",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Mr. House, President and CEO",
+  "mana_cost": "{R}{W}{B}",
+  "cmc": 3.0,
+  "type_line": "Legendary Artifact Creature — Human",
+  "oracle_text": "Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.\n{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.",
+  "keywords": [
+   "Treasure"
+  ],
+  "colors": [
+   "B",
+   "R",
+   "W"
+  ],
+  "color_identity": [
+   "B",
+   "R",
+   "W"
+  ],
+  "power": "0",
+  "toughness": "4",
+  "id": "23eb3cf7-c90d-4bfa-b125-4fbcb5614468",
+  "oracle_id": "d4e54b48-956f-4467-8485-a5fdb44779fd",
+  "set": "pip",
+  "collector_number": "7",
+  "rarity": "mythic",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Barbarian Class",
+  "mana_cost": "{R}",
+  "cmc": 1.0,
+  "type_line": "Enchantment — Class",
+  "oracle_text": "(Gain the next level as a sorcery to add its ability.)\nIf you would roll one or more dice, instead roll that many dice plus one and ignore the lowest roll.\n{1}{R}: Level 2\nWhenever you roll one or more dice, target creature you control gets +2/+0 and gains menace until end of turn.\n{2}{R}: Level 3\nCreatures you control have haste.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "id": "647c2269-bdc7-4455-9158-73abbff6e50e",
+  "oracle_id": "59faa1b9-17aa-4f2c-a8f8-17ab50392b36",
+  "set": "afr",
+  "collector_number": "131",
+  "rarity": "uncommon",
+  "layout": "class",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Delina, Wild Mage",
+  "mana_cost": "{3}{R}",
+  "cmc": 4.0,
+  "type_line": "Legendary Creature — Elf Shaman",
+  "oracle_text": "Whenever Delina attacks, choose target creature you control, then roll a d20.\n1—14 | Create a tapped and attacking token that's a copy of that creature, except it's not legendary and it has \"At end of combat, exile this token.\"\n15—20 | Create one of those tokens. You may roll again.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "3",
+  "toughness": "2",
+  "id": "e87459aa-af8f-4bd2-a310-151353083a2e",
+  "oracle_id": "8d57dadb-c689-4691-b331-aba15daf46ff",
+  "set": "afr",
+  "collector_number": "138",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Lightfoot Rogue",
+  "mana_cost": "{1}{B}",
+  "cmc": 2.0,
+  "type_line": "Creature — Halfling Rogue",
+  "oracle_text": "Sneak Attack — Whenever this creature attacks, roll a d20.\n1—9 | This creature gains deathtouch until end of turn.\n10—19 | It gets +1/+0 and gains deathtouch until end of turn.\n20 | It gets +3/+0 and gains first strike and deathtouch until end of turn.",
+  "keywords": [],
+  "colors": [
+   "B"
+  ],
+  "color_identity": [
+   "B"
+  ],
+  "power": "2",
+  "toughness": "1",
+  "id": "9f88de61-8dee-46b3-91b2-d4cdb4db36bf",
+  "oracle_id": "8a825e4c-4a87-4b8d-84f7-3e50b896d7cb",
+  "set": "afr",
+  "collector_number": "111",
+  "rarity": "uncommon",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Swarming Goblins",
+  "mana_cost": "{4}{R}",
+  "cmc": 5.0,
+  "type_line": "Creature — Goblin",
+  "oracle_text": "When this creature enters, roll a d20.\n1—9 | Create a 1/1 red Goblin creature token.\n10—19 | Create two of those tokens.\n20 | Create three of those tokens.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "power": "4",
+  "toughness": "3",
+  "id": "623c1d1b-69a4-4bc4-b388-17a7600fd960",
+  "oracle_id": "6a038dec-2d9c-4422-a0f3-94bf70e55217",
+  "set": "afr",
+  "collector_number": "162",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Prototype Portal",
+  "mana_cost": "{4}",
+  "cmc": 4.0,
+  "type_line": "Artifact",
+  "oracle_text": "Imprint — When this artifact enters, you may exile an artifact card from your hand.\n{X}, {T}: Create a token that's a copy of the exiled card. X is the mana value of that card.",
+  "keywords": [
+   "Imprint"
+  ],
+  "colors": [],
+  "color_identity": [],
+  "id": "e2ccdd3b-9c39-4785-99b9-64b5de1177be",
+  "oracle_id": "7f3b6c25-b855-4ea5-a8ad-d954a6cdffb7",
+  "set": "c18",
+  "collector_number": "216",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Burn at the Stake",
+  "mana_cost": "{2}{R}{R}{R}",
+  "cmc": 5.0,
+  "type_line": "Sorcery",
+  "oracle_text": "As an additional cost to cast this spell, tap any number of untapped creatures you control.\nBurn at the Stake deals damage to any target equal to three times the number of creatures tapped this way.",
+  "keywords": [],
+  "colors": [
+   "R"
+  ],
+  "color_identity": [
+   "R"
+  ],
+  "id": "d46e9902-81fb-4a3c-9f2f-d3faf031631d",
+  "oracle_id": "eb23bbb0-dd12-44f1-8645-d92f46cbe8ff",
+  "set": "avr",
+  "collector_number": "130",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Genesis Wave",
+  "mana_cost": "{X}{G}{G}{G}",
+  "cmc": 3.0,
+  "type_line": "Sorcery",
+  "oracle_text": "Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "d46f7ddb-f986-4f1f-b096-ae1a02d0bdc8",
+  "oracle_id": "e2487868-f386-438e-a73f-b494f6d35fac",
+  "set": "fdn",
+  "collector_number": "221",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "In the Presence of Ages",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Instant",
+  "oracle_text": "Reveal the top four cards of your library. You may put a creature card and/or a land card from among them into your hand. Put the rest into your graveyard.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "id": "97b1be22-3177-49af-bb06-42497d717c21",
+  "oracle_id": "142a960c-4d8e-4b3b-a0db-435c22df8f92",
+  "set": "lci",
+  "collector_number": "192",
+  "rarity": "common",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Owlbear Cub",
+  "mana_cost": "{2}{G}",
+  "cmc": 3.0,
+  "type_line": "Creature — Bird Bear",
+  "oracle_text": "Mama's Coming — Whenever this creature attacks a player who controls eight or more lands, look at the top eight cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking that player. Put the rest on the bottom of your library in a random order.",
+  "keywords": [
+   "Mama's Coming"
+  ],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "3",
+  "toughness": "3",
+  "id": "be177b66-dab3-47ef-bcdf-8d99eb57e19f",
+  "oracle_id": "0c92432d-ac76-47d2-af7a-fdffd4b546a2",
+  "set": "clb",
+  "collector_number": "246",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Seedborn Muse",
+  "mana_cost": "{3}{G}{G}",
+  "cmc": 5.0,
+  "type_line": "Creature — Spirit",
+  "oracle_text": "Untap all permanents you control during each other player's untap step.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "2",
+  "toughness": "4",
+  "id": "76f58441-5674-4f1e-af9b-94e14ab7e619",
+  "oracle_id": "463865bc-087e-477b-9e86-84e77f1ad931",
+  "set": "tdc",
+  "collector_number": "268",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ },
+ {
+  "name": "Verdant Sun's Avatar",
+  "mana_cost": "{5}{G}{G}",
+  "cmc": 7.0,
+  "type_line": "Creature — Dinosaur Avatar",
+  "oracle_text": "Whenever this creature or another creature you control enters, you gain life equal to that creature's toughness.",
+  "keywords": [],
+  "colors": [
+   "G"
+  ],
+  "color_identity": [
+   "G"
+  ],
+  "power": "5",
+  "toughness": "5",
+  "id": "e8fce06a-56f7-4d0c-b094-ff147fec8256",
+  "oracle_id": "6ee71432-a44d-495e-86ea-d495d891c331",
+  "set": "lcc",
+  "collector_number": "262",
+  "rarity": "rare",
+  "layout": "normal",
+  "legalities": {
+   "commander": "legal"
+  }
+ }
+]

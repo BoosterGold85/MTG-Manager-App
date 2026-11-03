@@ -1,0 +1,1025 @@
+[
+ {
+  "name": "Walking Corpse",
+  "legacyState": "missing-text (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "vanilla",
+   "abilities": [],
+   "recognized": 0,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Wandering Tombshell",
+  "legacyState": "missing-text (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "vanilla",
+   "abilities": [],
+   "recognized": 0,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Berserk",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.5
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Cast this spell only before the combat damage step.",
+     "capabilities": [],
+     "status": "procedural"
+    },
+    {
+     "line": "Target creature gains trample and gets +X/+0 until end of turn, where X is its power. At the beginning of the next end step, destroy that creature if it attacked this turn.",
+     "capabilities": [
+      "POWER_FROM_POWER",
+      "TEMP_BUFF",
+      "TRAMPLE_GRANT",
+      "DELAYED_DESTRUCTION",
+      "TEMP_KEYWORD"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Armored Armadillo",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.4
+  },
+  "tags": [
+   "hexproof-ward",
+   "protection"
+  ],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Ward {1}",
+     "capabilities": [
+      "KEYWORD:ward"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "{3}{W}: This creature gets +X/+0 until end of turn, where X is its toughness.",
+     "capabilities": [
+      "POWER_FROM_TOUGHNESS",
+      "TEMP_BUFF"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Inversion Behemoth",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.5
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creatures with toughness above their power"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "At the beginning of combat on your turn, switch the power and toughness of each of any number of target creatures until end of turn.",
+     "capabilities": [
+      "PT_SWITCH"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Unnatural Growth",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 1
+  },
+  "tags": [
+   "go-tall"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "creatures to pump"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "At the beginning of each combat, double the power and toughness of each creature you control until end of turn.",
+     "capabilities": [
+      "PT_DOUBLE",
+      "TEAM"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "The Triumph of Anax",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.4,
+   "interaction": 0.42
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creatures to fight with"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "I, II, III — Until end of turn, target creature gains trample and gets +X/+0, where X is the number of lore counters on this Saga.",
+     "capabilities": [
+      "POWER_FROM_COUNTERS",
+      "TEMP_BUFF",
+      "TRAMPLE_GRANT"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "IV — Target creature you control fights up to one target creature you don't control.",
+     "capabilities": [
+      "FIGHT"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Domri Rade",
+  "legacyState": "counted",
+  "roles": {
+   "cardAdvantage": 0.5,
+   "interaction": 0.6
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creature cards",
+   "creatures to fight with"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "+1: Look at the top card of your library. If it's a creature card, you may reveal it and put it into your hand.",
+     "capabilities": [
+      "TYPE_SELECTION"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "−2: Target creature you control fights another target creature.",
+     "capabilities": [
+      "FIGHT"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "−7: You get an emblem with \"Creatures you control have double strike, trample, hexproof, and haste.\"",
+     "capabilities": [
+      "TRAMPLE_GRANT",
+      "GRANTED:TEAM",
+      "GRANTED:TRAMPLE_GRANT",
+      "GRANTED:TEAM_KEYWORD:double strike",
+      "GRANTED:TEAM_KEYWORD:trample",
+      "GRANTED:TEAM_KEYWORD:hexproof",
+      "GRANTED:TEAM_KEYWORD:haste"
+     ],
+     "status": "inaccessible"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Fires of Yavimaya",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.6
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creatures to pump"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Creatures you control have haste.",
+     "capabilities": [
+      "TEAM",
+      "TEAM_KEYWORD:haste"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "Sacrifice this enchantment: Target creature gets +2/+2 until end of turn.",
+     "capabilities": [
+      "TEMP_BUFF",
+      "SELF_SACRIFICE_EFFECT"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Grasping Longneck",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "death-triggers",
+   "lifegain"
+  ],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Reach",
+     "capabilities": [
+      "KEYWORD:reach"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "When this creature dies, you gain 2 life.",
+     "capabilities": [
+      "DEATH_TRIGGER",
+      "LIFE_GAIN"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Leyline of Resonance",
+  "legacyState": "counted",
+  "roles": {
+   "cardAdvantage": 0.6
+  },
+  "tags": [
+   "copy-spells",
+   "instants-sorceries",
+   "spellslinger"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "instants and sorceries that target your own creature"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "If this card is in your opening hand, you may begin the game with it on the battlefield.",
+     "capabilities": [],
+     "status": "procedural"
+    },
+    {
+     "line": "Whenever you cast an instant or sorcery spell that targets only a single creature you control, copy that spell. You may choose new targets for the copy.",
+     "capabilities": [
+      "TARGETED_SPELL_COPY"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Strionic Resonator",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "your triggered abilities"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "{2}, {T}: Copy target triggered ability you control. You may choose new targets for the copy.",
+     "capabilities": [
+      "COPY_TRIGGERED_ABILITY"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "The Ozolith",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "counter-payoff"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "cards that put counters on your creatures"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Whenever a creature you control leaves the battlefield, if it had counters on it, put those counters on The Ozolith.",
+     "capabilities": [
+      "COUNTER_STORAGE"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "At the beginning of combat on your turn, if The Ozolith has counters on it, you may move all counters from The Ozolith onto target creature.",
+     "capabilities": [
+      "COUNTER_TRANSFER"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Stickytongue Sentinel",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [
+   "etb"
+  ],
+  "capabilities": [
+   "friendlyBounce"
+  ],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Reach",
+     "capabilities": [
+      "KEYWORD:reach"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "When this creature enters, return up to one other target permanent you control to its owner's hand.",
+     "capabilities": [
+      "FRIENDLY_BOUNCE"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Another Round",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "blink"
+  ],
+  "capabilities": [
+   "blink"
+  ],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Exile any number of creatures you control, then return them to the battlefield under their owner's control. Then repeat this process X more times.",
+     "capabilities": [
+      "MASS_BLINK",
+      "REPEATED_BLINK",
+      "SCALES_WITH_CREATURES"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Glimmerpoint Stag",
+  "legacyState": "counted",
+  "roles": {
+   "interaction": 0.3
+  },
+  "tags": [
+   "blink",
+   "etb"
+  ],
+  "capabilities": [
+   "blink"
+  ],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Vigilance",
+     "capabilities": [
+      "KEYWORD:vigilance"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "When this creature enters, exile another target permanent. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
+     "capabilities": [
+      "DELAYED_BLINK"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Far Traveler",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "blink"
+  ],
+  "capabilities": [
+   "blink"
+  ],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Commander creatures you own have \"At the beginning of your end step, exile up to one target tapped creature you control, then return it to the battlefield under its owner's control.\"",
+     "capabilities": [
+      "BLINK",
+      "GRANTED_ABILITY",
+      "GRANTED:BLINK"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Giant Ox",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "vehicles"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "Vehicles to crew"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "This creature crews Vehicles using its toughness rather than its power.",
+     "capabilities": [
+      "TOUGHNESS_CREW"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Slaughter the Strong",
+  "legacyState": "counted",
+  "roles": {
+   "wipes": 1
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Each player chooses any number of creatures they control with total power 4 or less, then sacrifices all other creatures they control.",
+     "capabilities": [
+      "SACRIFICE_WIPE",
+      "PRESERVATION_CONDITION"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Mr. House, President and CEO",
+  "legacyState": "counted",
+  "roles": {
+   "ramp": 0.8,
+   "tokens": 1.2
+  },
+  "tags": [
+   "artifacts",
+   "dice",
+   "tokens",
+   "treasure"
+  ],
+  "capabilities": [
+   "createsSacrificableArtifact"
+  ],
+  "conditions": [
+   "cards that roll dice"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.",
+     "capabilities": [
+      "ROLL_EVENT",
+      "ROLL_THRESHOLD"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.",
+     "capabilities": [
+      "ROLL_SUPPLIER",
+      "ROLL_AMPLIFIER"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Barbarian Class",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.216
+  },
+  "tags": [
+   "dice"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "cards that roll dice",
+   "cards that roll dice",
+   "creatures to pump"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "If you would roll one or more dice, instead roll that many dice plus one and ignore the lowest roll.",
+     "capabilities": [
+      "ROLL_AMPLIFIER"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "{1}{R}: Level 2",
+     "capabilities": [],
+     "status": "procedural"
+    },
+    {
+     "line": "Whenever you roll one or more dice, target creature you control gets +2/+0 and gains menace until end of turn.",
+     "capabilities": [
+      "TEMP_BUFF",
+      "TEMP_KEYWORD",
+      "ROLL_EVENT"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "{2}{R}: Level 3",
+     "capabilities": [],
+     "status": "procedural"
+    },
+    {
+     "line": "Creatures you control have haste.",
+     "capabilities": [
+      "TEAM",
+      "TEAM_KEYWORD:haste"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 3,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Delina, Wild Mage",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.27999999999999997
+  },
+  "tags": [
+   "attack-triggers",
+   "clones",
+   "dice"
+  ],
+  "capabilities": [
+   "permanentCopy",
+   "copyToken"
+  ],
+  "conditions": [],
+  "coverage": {
+   "state": "partial",
+   "abilities": [
+    {
+     "line": "Whenever Delina attacks, choose target creature you control, then roll a d20.",
+     "capabilities": [
+      "ROLL_SUPPLIER",
+      "ATTACK_TRIGGER"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "1—14 | Create a tapped and attacking token that's a copy of that creature, except it's not legendary and it has \"At end of combat, exile this token.\"",
+     "capabilities": [
+      "TOKEN_COPY",
+      "TEMPORARY_COPY",
+      "ENTERED_ATTACKING",
+      "GRANTED_ABILITY",
+      "GRANTED:TEMPORARY_COPY"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "15—20 | Create one of those tokens. You may roll again.",
+     "capabilities": [
+      "ROLL_AGAIN"
+     ],
+     "status": "unsupported"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 1
+  }
+ },
+ {
+  "name": "Lightfoot Rogue",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "attack-triggers",
+   "dice"
+  ],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Sneak Attack — Whenever this creature attacks, roll a d20.",
+     "capabilities": [
+      "ROLL_SUPPLIER",
+      "ATTACK_TRIGGER"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "1—9 | This creature gains deathtouch until end of turn.",
+     "capabilities": [
+      "TEMP_KEYWORD"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "10—19 | It gets +1/+0 and gains deathtouch until end of turn.",
+     "capabilities": [
+      "TEMP_BUFF",
+      "TEMP_KEYWORD"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "20 | It gets +3/+0 and gains first strike and deathtouch until end of turn.",
+     "capabilities": [
+      "TEMP_BUFF",
+      "TEMP_KEYWORD"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 4,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Swarming Goblins",
+  "legacyState": "counted",
+  "roles": {
+   "tokens": 0.8
+  },
+  "tags": [
+   "dice",
+   "etb",
+   "tokens"
+  ],
+  "capabilities": [],
+  "conditions": [],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "When this creature enters, roll a d20.",
+     "capabilities": [
+      "ROLL_SUPPLIER"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "1—9 | Create a 1/1 red Goblin creature token.",
+     "capabilities": [],
+     "status": "recognized"
+    },
+    {
+     "line": "10—19 | Create two of those tokens.",
+     "capabilities": [],
+     "status": "recognized"
+    },
+    {
+     "line": "20 | Create three of those tokens.",
+     "capabilities": [],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 4,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Prototype Portal",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "clones",
+   "etb"
+  ],
+  "capabilities": [
+   "copyToken"
+  ],
+  "conditions": [
+   "artifact cards to imprint"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Imprint — When this artifact enters, you may exile an artifact card from your hand.",
+     "capabilities": [
+      "LINKED_IMPRINT"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "{X}, {T}: Create a token that's a copy of the exiled card. X is the mana value of that card.",
+     "capabilities": [
+      "TOKEN_COPY",
+      "LINKED_IMPRINT"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Burn at the Stake",
+  "legacyState": "counted",
+  "roles": {
+   "finishers": 0.8
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creatures to tap"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "As an additional cost to cast this spell, tap any number of untapped creatures you control.",
+     "capabilities": [
+      "CREATURE_TAP_COST"
+     ],
+     "status": "recognized"
+    },
+    {
+     "line": "Burn at the Stake deals damage to any target equal to three times the number of creatures tapped this way.",
+     "capabilities": [
+      "SCALES_WITH_CREATURES"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 2,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Genesis Wave",
+  "legacyState": "counted",
+  "roles": {
+   "cardAdvantage": 0.8
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "permanent cards"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Reveal the top X cards of your library. You may put any number of permanent cards with mana value X or less from among them onto the battlefield. Then put all cards revealed this way that weren't put onto the battlefield into your graveyard.",
+     "capabilities": [
+      "TOP_X_CHEAT"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "In the Presence of Ages",
+  "legacyState": "counted",
+  "roles": {
+   "cardAdvantage": 0.7
+  },
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "creature or land cards"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Reveal the top four cards of your library. You may put a creature card and/or a land card from among them into your hand. Put the rest into your graveyard.",
+     "capabilities": [
+      "MULTI_TYPE_SELECTION",
+      "REST_TO_GRAVEYARD"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Owlbear Cub",
+  "legacyState": "counted",
+  "roles": {
+   "cardAdvantage": 0.25
+  },
+  "tags": [
+   "attack-triggers"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "creature cards"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Mama's Coming — Whenever this creature attacks a player who controls eight or more lands, look at the top eight cards of your library. You may put a creature card from among them onto the battlefield tapped and attacking that player. Put the rest on the bottom of your library in a random order.",
+     "capabilities": [
+      "ENTERED_ATTACKING",
+      "ATTACK_TRIGGER",
+      "OPPONENT_STATE_CONDITION",
+      "CREATURE_CHEAT"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Seedborn Muse",
+  "legacyState": "counted",
+  "roles": {
+   "ramp": 0.6
+  },
+  "tags": [
+   "untap"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "nonland permanents with tap abilities"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Untap all permanents you control during each other player's untap step.",
+     "capabilities": [
+      "CROSS_TURN_UNTAP"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ },
+ {
+  "name": "Verdant Sun's Avatar",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "etb",
+   "lifegain"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "creatures entering"
+  ],
+  "coverage": {
+   "state": "full",
+   "abilities": [
+    {
+     "line": "Whenever this creature or another creature you control enters, you gain life equal to that creature's toughness.",
+     "capabilities": [
+      "LIFE_GAIN",
+      "SCALES_WITH_TOUGHNESS"
+     ],
+     "status": "recognized"
+    }
+   ],
+   "recognized": 1,
+   "unsupported": 0
+  }
+ }
+]

@@ -12,6 +12,7 @@ import type {
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
 import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
+import { SUPPLIES_DICE } from "./semantics";
 import { conditionFactor, effectConditions, sharedSupplyIndex, withoutLines } from "../upgrades/conditions";
 import { capabilities, netCardDraw, linkedGraveyardReturn, recursionOverlaps } from "./capabilities";
 import { withoutUltimates } from "../upgrades/cardFunction";
@@ -493,6 +494,7 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
       }
       if (facts.faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"))) events.add("discard");
       if (/\b(?:scry|surveil) (?:\d+|x)\b/i.test(sourceText)) events.add("scry");
+      if (sourceText.split("\n").some((l) => SUPPLIES_DICE.test(l) && !/^(?:Whenever you roll|If you would roll)\b/i.test(l))) events.add("dice");
       if (/\bexile (?:target|another target|up to (?:one|two) target)[^.]*you control, then return/i.test(sourceText)) events.add("blink");
       if (/Equipment/.test(source.card.typeLine)) events.add("equipment");
       if (/\bVehicle\b/.test(source.card.typeLine) || /create[^.\n]{0,80}\bVehicle\b[^.\n]{0,40}token/i.test(sourceText)) events.add("vehicle");
@@ -578,6 +580,8 @@ function verifies(
   if (receiver.event === "discard") return f.faces.some((face) => face.discards.some((d) => d.who === "you" || d.who === "each_player"));
   if (receiver.event === "token-created") return f.faces.some((face) => face.createsTokens.some((t) => benefitsYou(t.controller)));
   if (receiver.event === "scry") return /\b(?:scry|surveil) (?:\d+|x)\b/i.test(text);
+  // A dice payoff needs a card that actually rolls; an amplifier (extra dice, ignore lowest) alone rolls nothing.
+  if (receiver.event === "dice") return text.split("\n").some((l) => SUPPLIES_DICE.test(l) && !/^(?:Whenever you roll|If you would roll)\b/i.test(l));
   if (receiver.event === "leaves") return ownFace(f, "Creature") || /\bsacrifice\b|\bexile (?:target|another target)[^.]*you control, then return/i.test(text);
   if (receiver.event === "life-loss") {
     const loss = opponentLifeLoss(text);

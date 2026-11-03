@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.6.23 — 2026-11-03 — Ability-Level Semantic Coverage
+
+From real production decks. All rules are generic; observed cards are test fixtures only.
+
+- **Per-ability understanding** (`src/synergy/semantics.ts`). A card is split into keyword lines, static, triggered and activated abilities, loyalty abilities, Saga chapters, Class levels, dice-result branches and quoted granted abilities. Each ability gets typed capabilities and an access level:
+  - immediate;
+  - gated: later Class levels count 60%, then 36%; later Saga chapters count 90% down to 50%; opponent-state conditions count 50%;
+  - inaccessible: an ultimate beyond starting loyalty.
+
+  Understood abilities count even when another clause is unsupported. Dice branches count at their probability, never flattened into unconditional abilities.
+- **Honest Overview warning** (`src/upgrades/coverage.ts`). "These cards don't count" is replaced by:
+  - partially understood (recognized effects still count);
+  - unsupported (mechanic not modeled);
+  - missing data (no canonical record).
+
+  A valid empty Oracle text (vanilla creature) is data, never a warning. Rules procedure (enters tapped, mode headers, choices on entry, casting restrictions) and mana abilities are not "unsupported". An effect whose trigger condition can't be verified is. Partial notes list cards, but lower confidence only when partial cards are at least 10% of nonland cards.
+- **New generalized semantics,** each gated by real deck supply (v0.6.12 rule):
+  - P/T transformations: doubling, toughness-to-power, switching and team doubling. Only scaling pumps are finishers; firebreathing and fixed tricks are explained but not credited. Berserk-style delayed destruction stays as a Synergy penalty (`delayed_self_destruction`).
+  - Team keyword grants ("Creatures you control have …"), separate from self-sacrifice pumps.
+  - Fight-based removal.
+  - Death triggers: payoffs, not automatically aristocrats.
+  - Targeted spell copying: needs single-target friendly instants and sorceries.
+  - Triggered-ability copying: needs your own triggered abilities, never activated, static or replacement effects.
+  - Counter storage and transfer: needs counter-placing cards, and is never a counter source.
+  - Friendly bounce of any permanent; mass, repeated, delayed (end-step) and granted blink, all reaching the existing ETB-reuse logic.
+  - Toughness crewing: needs Vehicles.
+  - Selective sacrifice wipes with a preservation condition.
+  - Creature-tap costs that scale damage: not sacrifice.
+  - Top-X permanent cheats (permanent density) and multi-type selection: neither is draw.
+  - Conditional attack cheats.
+  - Cross-turn untap: needs nonland tap permanents.
+  - Stat-scaled life gain.
+  - Temporary attacking token copies: attack damage, not lasting tokens.
+  - Linked imprint copy engines: need imprintable artifacts.
+- **Dice.** A Commander's "Whenever you roll a 4 or higher" trigger is understood (event `dice`), and Synergy verifies that deck cards actually roll. Suppliers, amplifiers and payoffs are distinct; amplifiers alone roll nothing. "Roll again" is typed but not yet modeled as extra supply.
+- **Tags:**
+  - Dice Rolling tag and Deck DNA family.
+  - Ultimates beyond starting loyalty no longer tag a card (Domri's emblem).
+  - "Gain life equal to" is life gain; "crews" with toughness is Vehicles; counter storage is a counters payoff.
+  - Card Intelligence ruleset 0.3.8, so saved auto-tags refresh once. DNA and Synergy versions 0.6.23.
+- **Regression safety:**
+  - All v0.6.15 and v0.6.16 regression tests pass. The 72 frozen recall expectations keep identical facts, capabilities and tags; only the ruleset stamp changes.
+  - Constructed recall: obvious 18/24 @20 (unchanged); hidden 16/24 @10 (was 15) and 20/24 @20 (unchanged); trap rejection 24/24 (unchanged).
+  - Golden: The Elder Dragon War's Saga timing moves seven Reign best cuts within ±0.01. Blind and real holdouts were not run or inspected.
+  - The Commander protection hashes are re-pinned for this intentional semantic release and now include the three new engine files.
+
 ## 0.6.22 — 2026-11-02 — Same-Origin Lookup Reliability
 
 - Route import, deck lookup and explicit legality requests through a narrow same-site Cloudflare Worker instead of browser-to-Scryfall cross-origin fetches. Keep canonical identifiers, batch limits, retries/backoff/Retry-After, cache checkpoints and safe remaining-only recovery.

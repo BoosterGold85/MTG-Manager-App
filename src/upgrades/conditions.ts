@@ -5,6 +5,7 @@ import type { DeckStrategyProfile } from "../dna/strategy";
 // supply it are named in the explanation.
 import type { CardMetadata } from "../models/collection";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
+import { cardAbilities, hasCapability } from "../synergy/semantics";
 import { cardKeywords } from "../utils/cardKeywords";
 import { counterRecipient, placesCountersOn, countersTargetSelf, suppliesCounterEvent } from "./counterSupply";
 import { capabilities } from "../synergy/capabilities";
@@ -133,12 +134,54 @@ const tokenMakes = (c: CardMetadata, q: (t: { creatureTypes: string[]; tokenType
 
 /** Conditions gating this card's abilities. Self triggers ("When this creature enters"), phase triggers and triggers
  * every table supplies (opponents' actions, "a creature dies") are not conditions on the deck. */
+const instantOrSorcery = (c: CardMetadata) => /\b(?:Instant|Sorcery)\b/.test(types(c));
+const creatureOrMaker = (c: CardMetadata) => (isCreature(c) && !/\bToken\b/.test(c.typeLine)) || ownTokens(c).some((t) => t.isCreature);
+/** Conditions read from typed ability capabilities (v0.6.23): what a capability needs the deck to contain. */
+function capabilityConditions(card: CardMetadata): EffectCondition[] {
+  const out: EffectCondition[] = [];
+  const abilities = cardAbilities(card).filter((a) => a.weight > 0);
+  const add = (line: string, key: string, needs: string, reliableAt: number, supplies: (c: CardMetadata) => boolean, selfSupplies = false) =>
+    out.push({ key, line, needs, reliableAt, supplies, selfSupplies, understood: true });
+  const tapCost = abilities.some((a) => a.capabilities.includes("CREATURE_TAP_COST"));
+  for (const a of abilities) {
+    const caps = new Set(a.capabilities);
+    if (caps.has("ROLL_EVENT") || (caps.has("ROLL_AMPLIFIER") && /^If you would roll\b/i.test(a.effect)))
+      add(a.line, "dice", "cards that roll dice", 4, (c) => hasCapability(c, "ROLL_SUPPLIER"), true);
+    if (caps.has("TARGETED_SPELL_COPY"))
+      add(a.line, "cast:friendly-single-target", "instants and sorceries that target your own creature", 6, (c) =>
+        instantOrSorcery(c) && /\btarget creature you control\b|\btarget creature (?:gets|gains)\b/i.test(textOf(c)) && !/\b(?:two|three|any number of|each of up to \w+) target\b|\btarget creature (?:an opponent controls|you don't control)\b/i.test(textOf(c)));
+    if (caps.has("COPY_TRIGGERED_ABILITY"))
+      add(a.line, "triggers:own", "your triggered abilities", 8, (c) => !instantOrSorcery(c) && /(?:^|\n)(?:[^\n—]{1,40} — )?(?:When|Whenever|At the beginning)\b/i.test(textOf(c)) && c.name !== card.name);
+    if (caps.has("COUNTER_STORAGE"))
+      add(a.line, "counters:creatures-you-control", "cards that put counters on your creatures", 5, (c) =>
+        c.name !== card.name && (/\bput[^.\n]*\+1\/\+1 counters? on\b|\benters with [^.\n]*\bcounters?\b|\bproliferate\b/i.test(textOf(c)) || cardKeywords(c).some((k) => /^(?:adapt|evolve|outlast|bolster|support|training|backup|mentor|modular|riot)$/i.test(k))));
+    if (caps.has("TOUGHNESS_CREW")) add(a.line, "vehicles", "Vehicles to crew", 3, (c) => /\bVehicle\b/.test(c.typeLine));
+    if (caps.has("LINKED_IMPRINT") && caps.has("TOKEN_COPY")) {
+      const kind = abilities.map((x) => x.effect.match(/\byou may exile an? (\w+) card from your hand\b/i)?.[1]).find(Boolean) || "artifact";
+      add(a.line, `imprint:${kind.toLowerCase()}`, `${kind.toLowerCase()} cards to imprint`, 8, (c) => new RegExp(`\\b${kind}\\b`, "i").test(types(c)) && !isLand(c) && c.name !== card.name);
+    }
+    if (tapCost && caps.has("SCALES_WITH_CREATURES")) add(a.line, "creatures:tap", "creatures to tap", 15, creatureOrMaker);
+    if (caps.has("CROSS_TURN_UNTAP")) add(a.line, "untap:tap-abilities", "nonland permanents with tap abilities", 8, (c) => !isLand(c) && !instantOrSorcery(c) && /\{T\}(?:,|:)/.test(textOf(c)) && c.name !== card.name);
+    if (caps.has("PT_SWITCH"))
+      add(a.line, "creatures:toughness-over-power", "creatures with toughness above their power", 6, (c) => isCreature(c) && Number(c.toughness) >= Number(c.power) + 2);
+    if ((caps.has("PT_DOUBLE") && caps.has("TEAM")) || [...caps].some((x) => x.startsWith("TEAM_KEYWORD:")))
+      add(a.line, "creatures:team", "creatures to pump", 15, creatureOrMaker);
+    if (caps.has("FIGHT")) add(a.line, "creatures:fight", "creatures to fight with", 12, creatureOrMaker);
+    if (caps.has("TYPE_SELECTION") || caps.has("CREATURE_CHEAT")) add(a.line, "density:creature", "creature cards", 30, (c) => isCreature(c) && !/\bToken\b/.test(c.typeLine));
+    if (caps.has("MULTI_TYPE_SELECTION")) add(a.line, "density:creature-or-land", "creature or land cards", 55, (c) => isCreature(c) || isLand(c));
+    if (caps.has("TOP_X_CHEAT")) add(a.line, "density:permanent", "permanent cards", 65, (c) => !instantOrSorcery(c));
+  }
+  return out;
+}
 function computeConditions(card: CardMetadata): EffectCondition[] {
   const text = textOf(card);
+  const typed = capabilityConditions(card);
+  const governed = new Set(typed.map((c) => c.line));
   const short = /\bLegendary\b/.test(types(card)) ? card.name.split(/[ ,]/)[0] : "";
   const names = [card.name, ...card.name.split(" // "), card.name.split(",")[0], short].filter((n) => n.length > 3).sort((a, b) => b.length - a.length);
   const out: EffectCondition[] = [];
   for (const raw of text.split("\n")) {
+    if (governed.has(raw.trim())) continue;
     let line = stripAbilityWord(raw.trim());
     for (const n of names) line = line.split(n).join("~");
     const cond = (key: string, needs: string, reliableAt: number, supplies: (c: CardMetadata) => boolean, selfSupplies = false, understood = true) =>
@@ -289,7 +332,7 @@ function computeConditions(card: CardMetadata): EffectCondition[] {
       cond(`other:${trigger.toLowerCase()}`, trigger.replace(/^you /i, "you "), 6, () => false, false, false);
     }
   }
-  return out;
+  return [...out, ...typed];
 }
 /** Every deck card, the Commander included, that supplies a condition. The Commander counts twice: it is always available. */
 export class SupplyIndex {

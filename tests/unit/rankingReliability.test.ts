@@ -18,7 +18,9 @@ it("retains every approved canonical fact and capability for the 72 frozen expec
   const c=card(row.candidate);
   expect(extractCardFacts(c)).toEqual(row.facts);
   expect(capabilities(c)).toEqual(row.capabilities);
-  expect(analyze(c).assignments).toEqual(row.intelligence);
+  // Tags must stay identical; only the ruleset stamp moves when any rule changes (0.3.8 in v0.6.23).
+  const unstamped=(list:{rulesetVersion?:string}[])=>list.map(item=>({...item,rulesetVersion:undefined}));
+  expect(unstamped(analyze(c).assignments)).toEqual(unstamped(row.intelligence));
  }
 });
 it("reuses identical typal analysis without changing any frozen card result",()=>{

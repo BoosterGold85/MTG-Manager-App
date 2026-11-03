@@ -79,7 +79,8 @@ describe("components", () => {
   });
   it("speculative, unverifiable conditions are penalized", () => {
     const f = vorelCountersFixture();
-    const dice = brewOfCard(f, variant("Dice Witness", "Creature — Elf", "Whenever you roll one or more dice, return target permanent card from your graveyard to your hand."));
+    // Dice rolls became a modeled condition in v0.6.23; "commit a crime" is still unverifiable.
+    const dice = brewOfCard(f, variant("Crime Witness", "Creature — Elf", "Whenever you commit a crime, return target permanent card from your graveyard to your hand."));
     expect(dice.penalties.some((p) => p.name === "Speculation")).toBe(true);
     expect(dice.score).toBeLessThan(brewOf(f, "Evolution Witness").score);
   });

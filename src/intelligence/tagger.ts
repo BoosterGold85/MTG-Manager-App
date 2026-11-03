@@ -1,3 +1,4 @@
+import { withoutInaccessibleUltimates } from '../utils/loyalty';
 import type { CardMetadata } from '../models/collection';
 import type { Assignment, AutoAnalysis, IntelligenceState, Override, Rule } from './types';
 import { RULESET_VERSION } from './types';
@@ -30,7 +31,9 @@ export function needsAnalysis(card:CardMetadata,existing:AutoAnalysis|undefined)
 export function analyze(card:CardMetadata): AutoAnalysis {
  const creatureTypes=creatureTypeSignals(card);
  const identity=cardIdentity(card); const assignments=new Map<string,Assignment>();
- const faces=card.cardFaces?.length ? card.cardFaces : [{name:card.name,oracleText:card.oracleText,typeLine:card.typeLine,keywords:card.keywords}];
+ // An ultimate beyond starting loyalty isn't available, so its emblem can't tag the card (v0.6.23).
+ const usable=withoutInaccessibleUltimates(card).card;
+ const faces=usable.cardFaces?.length ? usable.cardFaces : [{name:card.name,oracleText:usable.oracleText,typeLine:card.typeLine,keywords:card.keywords}];
  for (const [index,face] of faces.entries()) {
   const c={card,text:(face.oracleText||'').replace(/[’‘]/g,"'"),type:face.typeLine||card.typeLine,
    keywords:face.keywords || (card.cardFaces?.length ? [] : card.keywords || []),field:card.cardFaces?.length?`cardFaces[${index}].oracleText`:'oracleText',face:card.cardFaces?.length?face.name:undefined};

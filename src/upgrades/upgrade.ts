@@ -422,6 +422,11 @@ export function evaluateUpgrade(model: DeckModel, card: CardMetadata, identity: 
     if ((d.mana || 0) >= 1) reasons.push("Improves mana.");
     if ((d.protection || 0) >= 1) reasons.push("Adds protection.");
     if ((d.curve || 0) >= 1) reasons.push("Smooths the curve.");
+    // A positive swap whose gains are each under a point still says where they come from (v0.6.23).
+    if (!reasons.length && best.delta > 0) {
+      const small = (Object.entries(d) as [Component, number][]).filter(([, v]) => v > 0).sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])).slice(0, 2);
+      if (small.length) reasons.push(`Small gains: ${small.map(([c, v]) => `${componentLabels[c].toLowerCase()} +${v.toFixed(1)}`).join(", ")}.`);
+    }
     for (const [c, v] of Object.entries(d) as [Component, number][]) if (v < -0.5) concerns.push(`${componentLabels[c]} ${v.toFixed(1)}.`);
     if (fn.lowImpactBody) concerns.push("Adds little beyond its creature type and body.");
     for (const c of fn.conditions || []) {

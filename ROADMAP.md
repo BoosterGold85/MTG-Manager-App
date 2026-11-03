@@ -78,6 +78,10 @@ User-authorized Legacy owned-card exploration, with recipient-verified Brew evid
 Focused reliability/usability fix: keep and resume successful legality lookups, isolate unresolved printings, browse beyond comparison gates, and open shared Card Detail from Standard/Legacy artwork with filtered navigation. No scoring changes, frozen expectation edits or new intelligence pass. Real blind quality evaluation and physical-device/deployment verification remain separate outstanding work. See [validation](docs/LEGALITY-RECOVERY-v0.6.21.md).
 
 
-### 0.6.22 — Current: Same-Origin Lookup Reliability
+### 0.6.22 — Released: Same-Origin Lookup Reliability
 
 Focused transport fix for repeated Safari lookup interruptions: a bounded same-site canonical metadata relay, Worker/assets deployment configuration, readable upstream failures and unchanged cache/retry/resume and ownership protections. No scoring or recommendation changes. Physical-device and deployed-edge verification remain separate from deterministic regression tests. See [validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).
+
+### 0.6.23 — Current: Ability-Level Semantic Coverage
+
+Targeted semantic release from real production decks, done after v0.6.22 instead of reopening the unfinished v0.6.17 pass. Cards are read ability by ability: understood parts count, unsupported clauses lower confidence, and vanilla cards are valid. Adds generalized dice, P/T-transformation, copy, counter-storage, blink, Saga/Class and cheat semantics, all supply-gated. Score weights, global thresholds and frozen expectations are unchanged. Blind holdout evaluation remains a separately authorized step. See [validation](docs/VALIDATION-v0.6.23.md).

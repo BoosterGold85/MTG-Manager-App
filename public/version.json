@@ -1,1 +1,1 @@
-{"name":"MTG Manager","version":"0.6.22","rankingVersion":"0.6.16","standardRankingVersion":"0.1.0","feature":"Same-origin card lookup reliability","legacyRankingVersion":"0.1.0","lookupTransport":"same-origin"}
+{"name":"MTG Manager","version":"0.6.23","rankingVersion":"0.6.16","standardRankingVersion":"0.1.0","feature":"Ability-level semantic coverage","legacyRankingVersion":"0.1.0","lookupTransport":"same-origin"}

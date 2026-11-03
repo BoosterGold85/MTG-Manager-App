@@ -1,12 +1,36 @@
-# MTG Manager · v0.6.22
+# MTG Manager · v0.6.23
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## What the app understands about each card
+
+Commander analysis now reads cards ability by ability. When a card has an effect the app doesn't model yet, the abilities it does understand still count toward Deck DNA, Deck Health and Upgrades; only the unmodeled part is flagged. The Overview says which kind of uncertainty it is:
+
+- **Partially understood:** some effects aren't modeled. Recognized effects still count; some interactions may be missing.
+- **Unsupported:** the card uses a mechanic the app doesn't model yet.
+- **Missing data:** the card couldn't be matched to canonical card data, so re-importing usually helps.
+
+A vanilla creature (no rules text) is valid data and is never flagged. New in this pass:
+
+- dice rolls (suppliers, amplifiers, payoffs, result branches);
+- power/toughness transformations (doubling, switching, toughness-to-power), with Berserk-style downsides kept;
+- team keyword grants;
+- triggered-ability and targeted-spell copying;
+- counter storage;
+- friendly bounce, plus mass, repeated, delayed and granted blink;
+- Saga chapters and Class levels counted at their real availability;
+- imprint copy engines;
+- tapping creatures as a cost;
+- top-X permanent cheats and multi-type selection;
+- untapping on other players' turns.
+
+Each one earns credit only when your deck actually supplies what it needs. [Validation](docs/VALIDATION-v0.6.23.md).
 
 ## Same-site card lookups
 
 Collection/deck imports and explicit legality checks now use the app's own `/api/scryfall` service, which relays bounded canonical metadata requests to Scryfall. This removes the browser's direct cross-origin API dependency; it cannot eliminate upstream outages or a disconnected phone. Existing retries, saved successes, remaining-only recovery and strict confirmation checks are preserved. Ownership stays local. [Transport, validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).
 
-**Deployment requires the Worker and assets together**, using the checked-in `wrangler.jsonc`. A static-only upload of `dist` is insufficient for this release. `/api/scryfall/health` must return JSON identifying v0.6.22, rather than the HTML app. That endpoint checks routing/configuration, not live Scryfall availability.
+**Deployment requires the Worker and assets together**, using the checked-in `wrangler.jsonc`. A static-only upload of `dist` is insufficient for this release. `/api/scryfall/health` must return JSON identifying the deployed version (v0.6.23), rather than the HTML app. That endpoint checks routing/configuration, not live Scryfall availability.
 
 ## Legality recovery & quick card reading
 

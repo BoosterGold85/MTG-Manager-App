@@ -159,6 +159,7 @@ export const families: ThemeFamily[] = [
     "initiative",
     "blink",
     "untap",
+    "dice",
     "tap-matters",
     "planeswalkers",
     "vehicles",
@@ -177,6 +178,7 @@ export const families: ThemeFamily[] = [
         initiative: "Initiative",
         blink: "Blink",
         untap: "Untap",
+        dice: "Dice Rolling",
         "tap-matters": "Tap Matters",
         planeswalkers: "Planeswalkers",
         vehicles: "Vehicles",
@@ -193,4 +195,4 @@ export const families: ThemeFamily[] = [
 export const tagFamily = new Map(
   families.flatMap((f) => f.tags.map((tag) => [tag, f.id] as const)),
 );
-export const DNA_VERSION = "0.6.16";
+export const DNA_VERSION = "0.6.23";

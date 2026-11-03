@@ -4,6 +4,7 @@ import type { CardMetadata } from "../models/collection";
 import type { CardFacts } from "./facts";
 import type { DeckStrategyProfile } from "../dna/strategy";
 import { stripReminderText } from "../utils/rulesText";
+import { hasCapability } from "./semantics";
 function computeConstraints(card:CardMetadata,facts:CardFacts,profile:DeckStrategyProfile){
   const text=stripReminderText(card.oracleText || "").replace(/[’‘]/g,"'");
   const name=card.name.replace(/[’‘]/g,"'").replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
@@ -15,8 +16,11 @@ function computeConstraints(card:CardMetadata,facts:CardFacts,profile:DeckStrate
   const discardPayoffs=profile.cards.filter(c=>c.card.assignments.some(a=>["discard-payoff","mayhem","madness"].includes(a.tagId))).length;
   const penalties:{name:string;points:number;reason:string}[]=[];
   if(unavailableTutor)penalties.push({name:"unavailable_optional_portion",points:12,reason:`The optional graveyard tutor requires ${required} other actual cards with this name; this list cannot supply them. Its independent primary effect remains usable.`});
+  // A pump that destroys its own recipient later (Berserk-style) keeps its benefit but carries the loss of that creature.
+  const delayedDestruction=hasCapability(card,"DELAYED_DESTRUCTION");
+  if(delayedDestruction)penalties.push({name:"delayed_self_destruction",points:6,reason:"Its pumped creature is destroyed at the next end step if it attacked: the burst costs you that creature."});
   if(forcedHandLoss)penalties.push({name:"mandatory_hand_loss",points:discardPayoffs>=3?8:15,reason:"Mandatory end-step hand loss prevents retaining resources; extra draws are not free card advantage. This is not controlled discard."});
-  return {unavailableTutor,forcedHandLoss,penalties};
+  return {unavailableTutor,forcedHandLoss,delayedDestruction,penalties};
 }
 
 const cache=new WeakMap<DeckStrategyProfile,WeakMap<CardMetadata,ReturnType<typeof computeConstraints>>>();

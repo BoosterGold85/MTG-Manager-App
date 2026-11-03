@@ -43,6 +43,7 @@ export const taxonomy: TagDefinition[] = [
   { id: 'impulse-draw', label: 'Impulse Draw', category: 'role', description: 'Exiles cards from the library and permits playing them.' },
   { id: 'topdeck', label: 'Topdeck Manipulation', category: 'role', description: 'Scries, surveils or arranges the library top.' },
   { id: 'blink', label: 'Blink / Flicker', category: 'role', description: 'Exiles and returns a permanent.' },
+  { id: 'dice', label: 'Dice Rolling', category: 'mechanic', description: 'Rolls dice, rewards rolling or improves rolls.' },
   { id: 'untap', label: 'Untap', category: 'role', description: 'Untaps a permanent beyond the normal turn action.' },
   { id: 'extra-combat', label: 'Extra Combat', category: 'role', description: 'Creates an additional combat phase.' },
   { id: 'extra-turns', label: 'Extra Turns', category: 'role', description: 'Grants additional turns.' },

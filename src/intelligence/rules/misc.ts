@@ -9,4 +9,5 @@ export const misc: Rule = c => [
  ...match(c,'monarch',/\bmonarch\b/i,'Explicitly introduces or refers to the monarch.'),
  ...match(c,'initiative',/\binitiative\b/i,'Explicitly takes or refers to the initiative.'),
  ...match(c,'energy',/\{e\}|energy counters?/i,'Creates, spends or rewards energy.'),
+ ...match(c,'dice',/\broll (?:a|an|one|two|three|\w+ )?(?:d\d+|(?:four|six|eight|ten|twelve|twenty)-sided di(?:e|ce)|di(?:e|ce))\b|\bwhenever you roll\b|\bif you would roll\b/i,'Rolls dice, rewards rolling, or improves rolls.'),
  ...match(c,'poison',/\binfect\b|\btoxic \d+|poison counters?/i,'Uses poison, infect or toxic.')];

@@ -1,0 +1,313 @@
+[
+ {
+  "name": "Walking Corpse",
+  "legacyState": "missing-text (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Wandering Tombshell",
+  "legacyState": "missing-text (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Berserk",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Armored Armadillo",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "hexproof-ward",
+   "protection"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Inversion Behemoth",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Unnatural Growth",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "go-tall"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "The Triumph of Anax",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Domri Rade",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "hexproof-ward",
+   "protection"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Fires of Yavimaya",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Grasping Longneck",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "death-triggers",
+   "lifegain"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Leyline of Resonance",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "copy-spells",
+   "instants-sorceries",
+   "spellslinger"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "instant or sorcery creature spells [unverified]"
+  ]
+ },
+ {
+  "name": "Strionic Resonator",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "The Ozolith",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Stickytongue Sentinel",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [
+   "etb"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Another Round",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "blink"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Glimmerpoint Stag",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "blink",
+   "etb"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Far Traveler",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "blink"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Giant Ox",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Slaughter the Strong",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Mr. House, President and CEO",
+  "legacyState": "counted",
+  "roles": {
+   "ramp": 0.8,
+   "tokens": 1.2
+  },
+  "tags": [
+   "artifacts",
+   "tokens",
+   "treasure"
+  ],
+  "capabilities": [
+   "createsSacrificableArtifact"
+  ],
+  "conditions": [
+   "you roll a 4 or higher [unverified]"
+  ]
+ },
+ {
+  "name": "Barbarian Class",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": [
+   "you roll one or more dice [unverified]"
+  ]
+ },
+ {
+  "name": "Delina, Wild Mage",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "attack-triggers",
+   "clones"
+  ],
+  "capabilities": [
+   "permanentCopy",
+   "copyToken"
+  ],
+  "conditions": []
+ },
+ {
+  "name": "Lightfoot Rogue",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "attack-triggers"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Swarming Goblins",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "etb",
+   "tokens"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Prototype Portal",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "clones",
+   "etb"
+  ],
+  "capabilities": [
+   "copyToken"
+  ],
+  "conditions": []
+ },
+ {
+  "name": "Burn at the Stake",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Genesis Wave",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "In the Presence of Ages",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Owlbear Cub",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "attack-triggers"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Seedborn Muse",
+  "legacyState": "counted",
+  "roles": {},
+  "tags": [
+   "untap"
+  ],
+  "capabilities": [],
+  "conditions": []
+ },
+ {
+  "name": "Verdant Sun's Avatar",
+  "legacyState": "untracked (warning)",
+  "roles": {},
+  "tags": [
+   "etb"
+  ],
+  "capabilities": [],
+  "conditions": [
+   "creatures entering"
+  ]
+ }
+]

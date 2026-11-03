@@ -4,6 +4,7 @@ import { hasSelfEntryAbility } from "../upgrades/abilityScope";
 import { counterRecipient, suppliesCounterEvent } from "../upgrades/counterSupply";
 import type { CardMetadata } from "../models/collection";
 import { stripReminderText } from "../utils/rulesText";
+import { hasCapability } from "./semantics";
 
 export interface Capabilities {
   text: string;
@@ -56,8 +57,10 @@ export function capabilities(card: CardMetadata): Capabilities {
     attach: matches(/\battach (?:target|any number of|all|an?|each)[^\n]*(?:Equipment|Auras?)[^\n]*\b(?:you control|target creature you control)/i),
     animateVehicle: matches(/\b(?:target|another target|each|other) Vehicles?[^\n]*becomes? (?:an? )?artifact creatures?/i),
     crewReduction: matches(/Vehicles? you control have crew \d+/i),
-    friendlyBounce: matches(/\breturn (?:another |target |an? |one )?creature you control to its owner's hand/i),
-    blink: matches(/\bexile (?:up to (?:one|two) )?(?:(?:another|other) )?target (?:artifact or creature|creature|permanent)[^\n]*you control[^\n]*return (?:it|that card|them)[^\n]*(?:battlefield|control)/i),
+    // "Return up to one other target permanent you control": reuse your own permanent, never opponent removal.
+    friendlyBounce: matches(/\breturn (?:another |target |an? |one )?creature you control to its owner's hand/i) || hasCapability(card, "FRIENDLY_BOUNCE"),
+    // Mass, repeated, delayed (end-step) and granted blink of your own permanents reuse entry abilities too.
+    blink: hasCapability(card, "MASS_BLINK") || hasCapability(card, "DELAYED_BLINK") || hasCapability(card, "BLINK") || matches(/\bexile (?:up to (?:one|two) )?(?:(?:another|other) )?target (?:artifact or creature|creature|permanent)[^\n]*you control[^\n]*return (?:it|that card|them)[^\n]*(?:battlefield|control)/i),
     blinkArtifacts: matches(/\bexile[^\n]*(?:artifact or creature|permanent)[^\n]*you control[^\n]*return/i),
     artifactDeathPayoff: matches(/\bWhen(?:ever)?\b[^,]*artifacts? you control (?:dies?|(?:is|are) put into a graveyard from the battlefield)/i),
     sacrificesArtifact: matches(/^[^:\n]*\b[Ss]acrifice (?:an?|another|any number of) artifacts?[^:\n]*:/) || /\bArtifact\b/.test(card.typeLine.split("—")[0]) && matches(/^[^:\n]*\b[Ss]acrifice (?:this artifact|this permanent)[^:\n]*:/),
