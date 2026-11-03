@@ -1,3 +1,4 @@
+import {LazyWhy,SwapInteractions} from "./SwapInteractions";
 import { useRecommendationAnalysis } from "../hooks/useRecommendationAnalysis";
 import { useMemo, useState } from "react";
 import type { CollectionState } from "../models/collection";
@@ -96,7 +97,7 @@ function ImproveWhy({ u, build }: { u: UpgradeEvaluation; build: BuildEvaluation
     <>
       {u.reasons.length > 0 && (
         <>
-          <h4>Why this helps</h4>
+          <h4>Why this swap improves your deck</h4>
           <ul>
             {u.reasons.map((r) => (
               <li key={r}>{r}</li>
@@ -568,11 +569,11 @@ export function DeckUpgrades({
                         <BrewWhy brew={b} />
                       </details>
                     )}
-                    <details className="upgrade-why">
-                      <summary>{b ? (u ? "Why this upgrade?" : "Why it fits?") : "Why?"}</summary>
+                    <LazyWhy summary={b ? (u ? "Why this upgrade?" : "Why it fits?") : "Why?"}>{()=> <>
+                      {u?.best && <SwapInteractions state={state} deck={deck} card={c.canonical} cut={u.best.cut} />}
                       {u ? <ImproveWhy u={u} build={c.build} /> : <BuildWhy build={c.build} />}
                       <Printings c={c} />
-                    </details>
+                    </>}</LazyWhy>
                     <button className="text-button" onClick={() => setDetail(c.identity)}>
                       Card Details
                     </button>

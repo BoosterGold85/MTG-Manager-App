@@ -1,3 +1,4 @@
+import {SwapInteractions} from "./SwapInteractions";
 import { useMemo, useState } from "react";
 import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
@@ -138,6 +139,7 @@ export function SwapReview({
             </label>
           )}
         </section>
+        {valid && <SwapInteractions state={state} deck={deck} card={candidate.canonical} cut={valid.cut} />}
         {choosing && (
           <section aria-label="Choose a different cut" className="swap-cuts">
             <h3>Choose Different Cut</h3>

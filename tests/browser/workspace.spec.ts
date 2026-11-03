@@ -105,7 +105,7 @@ test("phone tasks: understand, see shortages, find and explain an upgrade, save 
   const top = upgrades.locator(".synergy-candidates>li").first();
   // D: why, without a developer trace.
   await top.getByText("Why?", { exact: true }).click();
-  await expect(top.locator(".upgrade-why")).toContainText("Why this helps");
+  await expect(top.locator(".upgrade-why")).toContainText("Why this swap improves your deck");
   await expect(top.getByText("Developer trace")).toHaveCount(0);
   // E: save in one tap.
   await top.getByRole("button", { name: "Save Upgrade", exact: true }).click();

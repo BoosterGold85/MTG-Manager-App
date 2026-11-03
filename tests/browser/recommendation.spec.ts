@@ -319,3 +319,17 @@ test("failed refresh keeps prior recommendations read-only until worker retry su
  await expect(wayfinder.getByRole("button",{name:"Saved",exact:true})).toBeEnabled();
  expect(await read(page)).toEqual(before);
 });
+
+test('swap explanations separate verified named interactions from marginal swap gains',async({page})=>{
+ await setup(page);const before=await read(page),panel=await openImprove(page);
+ const row=panel.locator('.synergy-candidates>li').filter({hasText:'Changeling Wayfinder'});
+ await row.getByText('Why?',{exact:true}).click();
+ const interactions=row.getByRole('region',{name:'Verified interactions'});
+ await expect(interactions).toContainText('Lathliss, Dragon Queen');
+ await expect(interactions).toContainText(/Changeling makes.*a Dragon/);
+ await expect(interactions).not.toContainText('Chain Reaction');
+ await expect(row.getByRole('heading',{name:'Why this swap improves your deck',exact:true})).toBeVisible();
+ await expect(row).toContainText('Small gains:');
+ await expect(row).toContainText('already saturated');
+ expect(await read(page)).toEqual(before);
+});

@@ -1,0 +1,478 @@
+[
+  {
+    "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+    "upgrade": {
+      "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+      "name": "Changeling Wayfinder",
+      "upgradeValue": 0.18,
+      "label": "Minor Upgrade",
+      "best": {
+        "cut": "086b2564-9114-4ba2-94fd-b490f98f38a7",
+        "cutName": "Chain Reaction",
+        "after": {
+          "commanderPlan": 93.17105506877155,
+          "mana": 88.3731434006752,
+          "curve": 89.7704918032787,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.1315569876897,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.68430502883439,
+          "finishing": 95.46479545590813,
+          "quality": 73.39834412801603,
+          "redundancy": 80.64000000000001,
+          "dependency": 100
+        },
+        "utility": 82.54858167609957,
+        "delta": 0.18428579194637962,
+        "deltas": {
+          "commanderPlan": 0.6,
+          "curve": 0.3,
+          "interaction": -0.3,
+          "engines": 0.6,
+          "quality": -0.5,
+          "redundancy": 4
+        }
+      },
+      "alternatives": [
+        {
+          "cut": "a49900b3-cc34-428f-806d-71861dc8059d",
+          "cutName": "Hit the Mother Lode",
+          "after": {
+            "commanderPlan": 93.17105506877155,
+            "mana": 87.97791610412986,
+            "curve": 92.39344262295081,
+            "cardAdvantage": 92.90939842028135,
+            "interaction": 83.46825573390383,
+            "protection": 13.064176460119414,
+            "resilience": 59.85776115040085,
+            "engines": 85.68430502883439,
+            "finishing": 95.46479545590813,
+            "quality": 73.42101128663057,
+            "redundancy": 78.79999999999998,
+            "dependency": 100
+          },
+          "utility": 82.54467355577583,
+          "delta": 0.18037767162263663,
+          "deltas": {
+            "commanderPlan": 0.6,
+            "mana": -0.4,
+            "curve": 3,
+            "cardAdvantage": -1,
+            "engines": 0.6,
+            "quality": -0.5,
+            "redundancy": 2.2
+          }
+        },
+        {
+          "cut": "f61680da-606e-4d16-b0a0-361aa5210901",
+          "cutName": "Chandra's Ignition",
+          "after": {
+            "commanderPlan": 93.17105506877155,
+            "mana": 88.3731434006752,
+            "curve": 90.09836065573771,
+            "cardAdvantage": 93.95778790380875,
+            "interaction": 83.1315569876897,
+            "protection": 13.064176460119414,
+            "resilience": 59.85776115040085,
+            "engines": 85.68430502883439,
+            "finishing": 94.8124050656441,
+            "quality": 73.17588400297848,
+            "redundancy": 83.04,
+            "dependency": 100
+          },
+          "utility": 82.53974186212032,
+          "delta": 0.17544597796712935,
+          "deltas": {
+            "commanderPlan": 0.6,
+            "curve": 0.7,
+            "interaction": -0.3,
+            "engines": 0.6,
+            "finishing": -0.7,
+            "quality": -0.7,
+            "redundancy": 6.4
+          }
+        }
+      ],
+      "reasons": [
+        "Small gains: redundancy +4.0, commander plan +0.6."
+      ],
+      "concerns": [
+        "Adds little beyond its creature type and body.",
+        "The Commander plan is already saturated; another on-plan card adds little."
+      ],
+      "cutReasons": [
+        "Chain Reaction has no verified relationship with the Commander or deck engines.",
+        "Board wipes is above target (5.0 / 2)."
+      ],
+      "confidence": "High",
+      "trace": {
+        "candidate": "Changeling Wayfinder",
+        "commanderRelationships": [
+          "Changeling makes Changeling Wayfinder a Dragon, so entering triggers Lathliss, Dragon Queen.",
+          "Changeling Wayfinder \u2192 Lathliss, Dragon Queen: Whenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying",
+          "Explicit Dragon support: Lathliss, Dragon Queen \u2192 Changeling Wayfinder: {1}{R}: Dragons you control get +1/+0 until end of turn"
+        ],
+        "deckRelationships": [
+          "Utvara Hellkite (1.00)",
+          "Scourge of Valkas (1.00)",
+          "Firespitter Whelp (1.00)",
+          "Warstorm Surge (0.90)",
+          "Cursed Mirror (0.80)",
+          "Breaching Dragonstorm (1.00)",
+          "Sarkhan, Dragon Ascendant (1.00)",
+          "Parapet Thrasher (0.80)",
+          "Dragon's Hoard (1.00)",
+          "Dragon Tempest (1.00)",
+          "Hazoret's Monument (1.00)",
+          "Spit Flame (1.00)"
+        ],
+        "scopedEngines": [
+          "extra combat \u00d7 attack triggers / threats: 5.93",
+          "discard enablers \u00d7 discard payoffs: 0.00"
+        ],
+        "roleChanges": [
+          "Board wipes -1.0"
+        ],
+        "curve": "MV 3 replacing MV 4",
+        "bestCut": "Chain Reaction",
+        "before": {
+          "commanderPlan": 92.60229227013576,
+          "mana": 88.3731434006752,
+          "curve": 89.44262295081968,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.46825573390383,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.04094980087547,
+          "finishing": 95.46479545590813,
+          "quality": 73.88573644542097,
+          "redundancy": 76.64000000000001,
+          "dependency": 100
+        },
+        "after": {
+          "commanderPlan": 93.17105506877155,
+          "mana": 88.3731434006752,
+          "curve": 89.7704918032787,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.1315569876897,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.68430502883439,
+          "finishing": 95.46479545590813,
+          "quality": 73.39834412801603,
+          "redundancy": 80.64000000000001,
+          "dependency": 100
+        },
+        "invalidCuts": [
+          {
+            "name": "Chaos Warp",
+            "reason": "Would remove the deck's only enchantment answer."
+          },
+          {
+            "name": "Forgotten Cave",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Spinerock Knoll",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "War Room",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Mountain",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Haven of the Spirit Dragon",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Swiftfoot Boots",
+            "reason": "Would drop protection below a working minimum (0.0), and the candidate does not replace it."
+          },
+          {
+            "name": "Temple of the False God",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Bonders' Enclave",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          }
+        ],
+        "final": "Minor Upgrade (+0.18)",
+        "confidence": "High",
+        "uncertainties": []
+      }
+    },
+    "build": {
+      "identity": "93409d98-93c8-4742-a635-2a4408e66c32",
+      "name": "Changeling Wayfinder",
+      "commanderFit": 75,
+      "fitLabel": "Strong",
+      "fitReasons": [
+        "Changeling makes Changeling Wayfinder a Dragon, so entering triggers Lathliss, Dragon Queen.",
+        "Changeling \u2014 counts as Dragon creature for Lathliss, Dragon Queen."
+      ],
+      "buildPriority": 20,
+      "priorityLabel": "Low Priority",
+      "priorityReasons": [],
+      "priorityConcerns": [
+        "Low standalone impact: little beyond its creature type and body.",
+        "Most of its value depends on the Commander being on the battlefield."
+      ],
+      "dependency": "Heavy Commander dependency",
+      "confidence": "High",
+      "trace": {
+        "components": [
+          {
+            "name": "commander",
+            "value": 74.5,
+            "reason": "Changeling makes Changeling Wayfinder a Dragon, so entering triggers Lathliss, Dragon Queen."
+          },
+          {
+            "name": "type",
+            "value": 62,
+            "reason": "Changeling \u2014 counts as Dragon creature for Lathliss, Dragon Queen."
+          }
+        ],
+        "impact": 0,
+        "roleFactor": 1,
+        "dependencyFactor": 0.75,
+        "roles": [],
+        "commanderScore": 25,
+        "uncertainties": []
+      }
+    }
+  },
+  {
+    "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
+    "upgrade": {
+      "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
+      "name": "Fire Nation Attacks",
+      "upgradeValue": 0.02,
+      "label": "Sidegrade",
+      "best": {
+        "cut": "086b2564-9114-4ba2-94fd-b490f98f38a7",
+        "cutName": "Chain Reaction",
+        "after": {
+          "commanderPlan": 92.60229227013576,
+          "mana": 88.3731434006752,
+          "curve": 89.11475409836066,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.1315569876897,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.14017656515747,
+          "finishing": 95.46479545590813,
+          "quality": 73.70358860353664,
+          "redundancy": 80.64000000000001,
+          "dependency": 100
+        },
+        "utility": 82.38353982310872,
+        "delta": 0.01924393895552612,
+        "deltas": {
+          "curve": -0.3,
+          "interaction": -0.3,
+          "engines": 0.1,
+          "quality": -0.2,
+          "redundancy": 4
+        }
+      },
+      "alternatives": [
+        {
+          "cut": "a49900b3-cc34-428f-806d-71861dc8059d",
+          "cutName": "Hit the Mother Lode",
+          "after": {
+            "commanderPlan": 92.60229227013576,
+            "mana": 87.97791610412986,
+            "curve": 91.73770491803278,
+            "cardAdvantage": 92.90939842028135,
+            "interaction": 83.46825573390383,
+            "protection": 13.064176460119414,
+            "resilience": 59.85776115040085,
+            "engines": 85.14017656515747,
+            "finishing": 95.46479545590813,
+            "quality": 73.72599566462283,
+            "redundancy": 78.79999999999998,
+            "dependency": 100
+          },
+          "utility": 82.37961089498272,
+          "delta": 0.015315010829525022,
+          "deltas": {
+            "mana": -0.4,
+            "curve": 2.3,
+            "cardAdvantage": -1,
+            "engines": 0.1,
+            "quality": -0.2,
+            "redundancy": 2.2
+          }
+        },
+        {
+          "cut": "f61680da-606e-4d16-b0a0-361aa5210901",
+          "cutName": "Chandra's Ignition",
+          "after": {
+            "commanderPlan": 92.60229227013576,
+            "mana": 88.3731434006752,
+            "curve": 89.44262295081968,
+            "cardAdvantage": 93.95778790380875,
+            "interaction": 83.1315569876897,
+            "protection": 13.064176460119414,
+            "resilience": 59.85776115040085,
+            "engines": 85.14017656515747,
+            "finishing": 94.8124050656441,
+            "quality": 73.48368112877463,
+            "redundancy": 83.04,
+            "dependency": 100
+          },
+          "utility": 82.37490422115151,
+          "delta": 0.010608336998316759,
+          "deltas": {
+            "interaction": -0.3,
+            "engines": 0.1,
+            "finishing": -0.7,
+            "quality": -0.4,
+            "redundancy": 6.4
+          }
+        }
+      ],
+      "reasons": [
+        "Small gains: redundancy +4.0, synergy engines +0.1."
+      ],
+      "concerns": [],
+      "cutReasons": [
+        "Chain Reaction has no verified relationship with the Commander or deck engines.",
+        "Board wipes is above target (5.0 / 2)."
+      ],
+      "confidence": "High",
+      "trace": {
+        "candidate": "Fire Nation Attacks",
+        "commanderRelationships": [],
+        "deckRelationships": [
+          "Warstorm Surge (0.90)",
+          "Parapet Thrasher (0.80)"
+        ],
+        "scopedEngines": [
+          "extra combat \u00d7 attack triggers / threats: 5.93",
+          "discard enablers \u00d7 discard payoffs: 0.00"
+        ],
+        "roleChanges": [
+          "Board wipes -1.0",
+          "Token generation +0.8"
+        ],
+        "curve": "MV 5 replacing MV 4",
+        "bestCut": "Chain Reaction",
+        "before": {
+          "commanderPlan": 92.60229227013576,
+          "mana": 88.3731434006752,
+          "curve": 89.44262295081968,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.46825573390383,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.04094980087547,
+          "finishing": 95.46479545590813,
+          "quality": 73.88573644542097,
+          "redundancy": 76.64000000000001,
+          "dependency": 100
+        },
+        "after": {
+          "commanderPlan": 92.60229227013576,
+          "mana": 88.3731434006752,
+          "curve": 89.11475409836066,
+          "cardAdvantage": 93.95778790380875,
+          "interaction": 83.1315569876897,
+          "protection": 13.064176460119414,
+          "resilience": 59.85776115040085,
+          "engines": 85.14017656515747,
+          "finishing": 95.46479545590813,
+          "quality": 73.70358860353664,
+          "redundancy": 80.64000000000001,
+          "dependency": 100
+        },
+        "invalidCuts": [
+          {
+            "name": "Chaos Warp",
+            "reason": "Would remove the deck's only enchantment answer."
+          },
+          {
+            "name": "Forgotten Cave",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Spinerock Knoll",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "War Room",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Mountain",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Haven of the Spirit Dragon",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Swiftfoot Boots",
+            "reason": "Would drop protection below a working minimum (0.0), and the candidate does not replace it."
+          },
+          {
+            "name": "Temple of the False God",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          },
+          {
+            "name": "Bonders' Enclave",
+            "reason": "Lands are never cut for a spell; land count is preserved."
+          }
+        ],
+        "final": "Sidegrade (+0.02)",
+        "confidence": "High",
+        "uncertainties": []
+      }
+    },
+    "build": {
+      "identity": "399fba23-fc13-440b-ab67-192eede6ecab",
+      "name": "Fire Nation Attacks",
+      "commanderFit": 52,
+      "fitLabel": "Situational",
+      "fitReasons": [
+        "Shares the Commander's tokens plan."
+      ],
+      "buildPriority": 48,
+      "priorityLabel": "Consider",
+      "priorityReasons": [
+        "Creates 2 creature tokens."
+      ],
+      "priorityConcerns": [],
+      "dependency": "Standalone",
+      "confidence": "High",
+      "trace": {
+        "components": [
+          {
+            "name": "mechanics",
+            "value": 52,
+            "reason": "Shares the Commander's tokens plan."
+          },
+          {
+            "name": "structure",
+            "value": 22.5,
+            "reason": "General token generation support."
+          }
+        ],
+        "impact": 0.352,
+        "roleFactor": 0.85,
+        "dependencyFactor": 1,
+        "roles": [
+          "tokens"
+        ],
+        "commanderScore": 0,
+        "uncertainties": []
+      }
+    }
+  }
+]

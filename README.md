@@ -1,5 +1,7 @@
 # MTG Manager · v0.6.23
 
+For development or a new chat, start with [AGENTS.md](AGENTS.md) and [PROJECT_MEMORY.md](PROJECT_MEMORY.md).
+
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
 
 ## What the app understands about each card
