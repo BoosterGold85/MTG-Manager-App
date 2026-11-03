@@ -3,6 +3,8 @@
   "name": "mtg-manager-app",
   "main": "worker/index.ts",
   "compatibility_date": "2025-04-01",
+  // Cloudflare's Git build runs only `npx wrangler deploy`; build the SPA assets first so ./dist exists.
+  "build": {"command": "npm run build"},
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

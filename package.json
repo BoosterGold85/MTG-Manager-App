@@ -11,7 +11,7 @@
     "test:unit": "vitest run tests/unit",
     "lint": "eslint .",
     "icons:generate": "node scripts/generate-icons.mjs",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "wrangler deploy",
     "preview:worker": "wrangler dev --local --port 8787",
     "check:worker": "wrangler deploy --dry-run --outdir .wrangler/dry-run"
   },
