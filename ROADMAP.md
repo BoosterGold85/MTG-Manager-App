@@ -86,6 +86,10 @@ Focused transport fix for repeated Safari lookup interruptions: a bounded same-s
 
 Targeted semantic release from real production decks, done after v0.6.22 instead of reopening the unfinished v0.6.17 pass. Cards are read ability by ability: understood parts count, unsupported clauses lower confidence, and vanilla cards are valid. Adds generalized dice, P/T-transformation, copy, counter-storage, blink, Saga/Class and cheat semantics, all supply-gated. Score weights, global thresholds and frozen expectations are unchanged. Blind holdout evaluation remains a separately authorized step. See [validation](docs/VALIDATION-v0.6.23.md).
 
-### 0.6.24 — Current: Resource and Deck Semantic Coverage
+### 0.6.24 — Released: Resource and Deck Semantic Coverage
 
 General Food/life-gain event semantics, resource replacement and sacrifice scope, conditional combat links and land-subtype ramp. Includes the land and Uugguu coverage follow-ups. No score-weight tuning or automatic deck changes. See [validation](docs/VALIDATION-v0.6.24.md).
+
+### 0.6.25 — Current: Deck Intelligence
+
+Independent entry coverage, saved intent, conservative strategy and synergy evidence, composition gaps and owned-upgrade tradeoffs. Includes Cloudflare Preview support. Scores and assignments are unchanged. Exact Carnage deck fixture and the existing timing gate remain open; see [implementation and validation](docs/DECK-INTELLIGENCE.md).

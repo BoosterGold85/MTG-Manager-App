@@ -1,6 +1,10 @@
-# MTG Manager · v0.6.24
+# MTG Manager · v0.6.25
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Deck Intelligence
+
+Overview now separates printing, Oracle, mechanical coverage, legality and ownership; explains supported goals and conditional synergy chains; and shows weaknesses and owned-upgrade tradeoffs. Manual deck intent is preserved. Vision of Love can enable Mayhem through discard; Diresight surveil cannot. Cloudflare Preview configuration is included. [Evidence, validation and remaining limits](docs/DECK-INTELLIGENCE.md).
 
 ## Food, life gain and deck-specific interactions
 
@@ -34,7 +38,7 @@ Each one earns credit only when your deck actually supplies what it needs. [Vali
 
 Collection/deck imports and explicit legality checks now use the app's own `/api/scryfall` service, which relays bounded canonical metadata requests to Scryfall. This removes the browser's direct cross-origin API dependency; it cannot eliminate upstream outages or a disconnected phone. Existing retries, saved successes, remaining-only recovery and strict confirmation checks are preserved. Ownership stays local. [Transport, validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).
 
-**Deployment requires the Worker and assets together**, using the checked-in `wrangler.jsonc`. A static-only upload of `dist` is insufficient for this release. `/api/scryfall/health` must return JSON identifying the deployed version (v0.6.24), rather than the HTML app. That endpoint checks routing/configuration, not live Scryfall availability.
+**Deployment requires the Worker and assets together**, using the checked-in `wrangler.jsonc`. A static-only upload of `dist` is insufficient for this release. `/api/scryfall/health` must return JSON identifying the deployed version (v0.6.25), rather than the HTML app. That endpoint checks routing/configuration, not live Scryfall availability.
 
 ## Legality recovery & quick card reading
 

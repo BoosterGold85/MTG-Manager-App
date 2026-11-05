@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.25 — 2026-11-05 — Deck Intelligence and Preview Deployment
+
+- Add entry-level coverage, conservative deck strategy, evidence-backed synergy chains and weaknesses to Overview.
+- Preserve manual deck intent and explain owned-upgrade partners and before/after role changes without retuning scores.
+- Keep printing/finish variants, Oracle data, legality and owned/allocated counts separate; add targeted metadata retries.
+- Clarify Legacy format language and prevent rules-reference cards from claiming binder ownership.
+- Include the required Cloudflare `previews` configuration while preserving production Worker/assets builds.
+- Record known limits: the exact 60-card Carnage fixture remains pending; the existing candidate-ranking timing assertion remains intermittent.
+
 ## 0.6.24 — 2026-11-05 — Resource and Deck Semantic Coverage
 
 - Separate life-gain effects from life-gain observers; model Food activation as a paid resource conversion.

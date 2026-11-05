@@ -1,9 +1,10 @@
-# Deck Intelligence — review branch
+# Deck Intelligence — v0.6.25
 
 Implemented on `feature/deck-intelligence`, initially based on `26751d0` (v0.6.24), then rebased
 on `d619135` to preserve the new collection-filter changes. The review branch also incorporates
-`7a7457f`, which removes the redundant collection type dropdown. This is a review change, not a
-main-branch release or production deployment.
+`7a7457f`, which removes the redundant collection type dropdown. PR #1 was subsequently merged
+into main on explicit user instruction and is included in v0.6.25, alongside the Cloudflare Preview
+configuration fix. The validation history and remaining limits below are retained.
 
 ## Baseline and fixture status
 
