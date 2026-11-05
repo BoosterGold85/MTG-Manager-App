@@ -6,6 +6,7 @@ import type { SampleCollectionCard } from "../models/card";
 import {
   activeFilterCount,
   cardTypes,
+  collectionSubtypes,
   colorOptions,
   commanderIdentityOptions,
   emptyFilters,
@@ -30,6 +31,8 @@ export function FilterDrawer({
   onApply: (f: Filters) => void;
   onClose: () => void;
 }) {
+  const [subtypeQuery, setSubtypeQuery] = useState("");
+  const subtypes = collectionSubtypes(cards);
   const [keywordQuery,setKeywordQuery] = useState("");
   const keywords = collectionKeywords(cards);
   const [tagQuery,setTagQuery] = useState("");
@@ -53,6 +56,41 @@ export function FilterDrawer({
         </h2>
       </header>
       <div className="filter-content">
+        <fieldset>
+          <legend>
+            Card type <span>Match any selected</span>
+          </legend>
+          <div className="filter-options">
+            {cardTypes.map((t) => (
+              <button
+                key={t}
+                className={`choice ${draft.types.includes(t) ? "selected" : ""}`}
+                aria-pressed={draft.types.includes(t)}
+                onClick={() => update("types", toggle(draft.types, t))}
+              >
+                {t}
+                {draft.types.includes(t) && <Check size={14} />}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Subtype / Creature type <span>Match any selected</span></legend>
+          <label>Search subtypes
+            <input type="search" placeholder="Bear, Elf, Dragon, Vehicle…" value={subtypeQuery} onChange={e => setSubtypeQuery(e.target.value)} />
+          </label>
+          <p className="filter-help">Find cards by their printed subtype, even when it is not in the card name. {draft.subtypes?.length || 0} selected.</p>
+          <div className="synergy-options">
+            {subtypes.filter(type => type.toLowerCase().includes(subtypeQuery.trim().toLowerCase()) || draft.subtypes?.includes(type)).map(type => (
+              <button key={type} className={`choice ${draft.subtypes?.includes(type) ? "selected" : ""}`} aria-pressed={draft.subtypes?.includes(type) || false} onClick={() => update("subtypes", toggle(draft.subtypes || [], type))}>
+                {type}{draft.subtypes?.includes(type) && <Check size={14} />}
+              </button>
+            ))}
+          </div>
+          {!subtypes.some(type => type.toLowerCase().includes(subtypeQuery.trim().toLowerCase())) && <p className="filter-help">No matching subtypes.</p>}
+          <button className="text-button" onClick={() => update("subtypes", [])}>Clear subtypes</button>
+        </fieldset>
         <fieldset className="synergy-filter"><legend>Tags / Synergy</legend>
           <label>Search tags<input type="search" value={tagQuery} onChange={e=>setTagQuery(e.target.value)} /></label>
           <div role="group" aria-label="Tag matching" className="tag-match-options">{(["ANY","ALL"] as const).map(mode=><button key={mode} className={`choice ${(draft.tagMatch || 'ANY')===mode?'selected':''}`} aria-pressed={(draft.tagMatch || 'ANY')===mode} onClick={()=>update('tagMatch',mode)}>Match {mode}</button>)}</div>
@@ -118,24 +156,6 @@ export function FilterDrawer({
                 </span>
                 {c.label}
                 {draft.colors.includes(c.value) && <Check size={14} />}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>
-            Card type <span>Match any selected</span>
-          </legend>
-          <div className="filter-options">
-            {cardTypes.map((t) => (
-              <button
-                key={t}
-                className={`choice ${draft.types.includes(t) ? "selected" : ""}`}
-                aria-pressed={draft.types.includes(t)}
-                onClick={() => update("types", toggle(draft.types, t))}
-              >
-                {t}
-                {draft.types.includes(t) && <Check size={14} />}
               </button>
             ))}
           </div>

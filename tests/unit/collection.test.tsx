@@ -244,3 +244,26 @@ describe("Commander Colors subset filtering", () => {
     ]);
   });
 });
+
+it("filters exact type words, Vehicles and types on either card face", () => {
+  const fixture = [
+    { ...cards[0], id: "vehicle", typeLine: "Artifact — Vehicle" },
+    { ...cards[0], id: "land", typeLine: "Land — Urza’s" },
+    { ...cards[0], id: "landfall", typeLine: "Creature — Landfall" },
+    { ...cards[0], id: "double", typeLine: "Creature — Wizard", cardFaces: [{ name: "Back", typeLine: "Sorcery" }] },
+  ];
+  expect(filterCards(fixture, "", { ...emptyFilters, types: ["Vehicle"] }).map(c => c.id)).toEqual(["vehicle"]);
+  expect(filterCards(fixture, "", { ...emptyFilters, types: ["Land"] }).map(c => c.id)).toEqual(["land"]);
+  expect(filterCards(fixture, "", { ...emptyFilters, types: ["Sorcery", "Vehicle"] }).map(c => c.id)).toEqual(["vehicle", "double"]);
+});
+
+it("finds Bears by subtype rather than name or rules text, including back faces", () => {
+  const fixture = [
+    { ...cards[0], id: "bear", name: "Runeclaw", typeLine: "Creature — Bear" },
+    { ...cards[0], id: "name", name: "Bear Friend", typeLine: "Creature — Human", oracleText: "Create a Bear token." },
+    { ...cards[0], id: "back", typeLine: "Artifact", cardFaces: [{ name: "Back", typeLine: "Creature — Bear" }] },
+  ];
+  expect(filterCards(fixture, "", { ...emptyFilters, subtypes: ["Bear"] }).map(c => c.id)).toEqual(["bear", "back"]);
+  expect(activeFilterCount({ ...emptyFilters, subtypes: ["Bear"] })).toBe(1);
+  expect(filterCards(fixture, "", emptyFilters)).toHaveLength(3);
+});

@@ -1,3 +1,4 @@
+import creatureTypes from "../intelligence/data/creatureTypes.json";
 import { cardKeywords, oracleText } from "./cardKeywords";
 import type { Color, SampleCollectionCard } from "../models/card";
 export const colorOptions = [
@@ -37,11 +38,26 @@ export const cardTypes = [
   "Sorcery",
   "Land",
   "Planeswalker",
+  "Battle",
+  "Kindred",
+  "Vehicle",
 ];
+export function cardSubtypes(card: SampleCollectionCard): string[] {
+  return [...new Set([card.typeLine, ...(card.cardFaces || []).map(face => face.typeLine || "")]
+    .flatMap(line => line.split("//").flatMap(face => {
+      const subtypes = face.split(/\s+[—–-]\s+/)[1];
+      return subtypes ? subtypes.trim().split(/\s+/) : [];
+    })))];
+}
+export function collectionSubtypes(cards: SampleCollectionCard[]): string[] {
+  return [...new Set([...creatureTypes.types, ...cards.flatMap(cardSubtypes)])]
+    .sort((a, b) => a.localeCompare(b));
+}
 export interface Filters {
   colors: string[];
   commanderColors: Color[] | null;
   types: string[];
+  subtypes?: string[];
   minMana: string;
   maxMana: string;
   rarity: string;
@@ -71,6 +87,7 @@ export function activeFilterCount(f: Filters) {
     (f.keywords?.length || 0) +
     f.colors.length +
     f.types.length +
+    (f.subtypes?.length || 0) +
     [f.minMana, f.maxMana, f.rarity, f.set, f.finish, f.tag].filter(Boolean)
       .length
   );
@@ -100,7 +117,14 @@ export function filterCards(
         )) &&
       (commanderIdentity === null ||
         c.colorIdentity.every((color) => commanderIdentity.includes(color))) &&
-      (!f.types.length || f.types.some((t) => c.typeLine.includes(t))) &&
+      (!f.types.length || f.types.some((t) =>
+        [c.typeLine, ...(c.cardFaces || []).map((face) => face.typeLine || "")]
+          .some((line) => line.split(/[^A-Za-z]+/).some((word) =>
+            word.toLowerCase() === t.toLowerCase() ||
+            (t === "Kindred" && word.toLowerCase() === "tribal"),
+          )),
+      )) &&
+      (!f.subtypes?.length || cardSubtypes(c).some(type => f.subtypes!.some(selected => selected.toLowerCase() === type.toLowerCase()))) &&
       (f.minMana === "" || c.manaValue >= Number(f.minMana)) &&
       (f.maxMana === "" || c.manaValue <= Number(f.maxMana)) &&
       (!f.rarity || c.rarity === f.rarity) &&

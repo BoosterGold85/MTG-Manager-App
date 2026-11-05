@@ -429,6 +429,18 @@ export default function App() {
                   <ChevronDown size={14} />
                 </div>
               </div>
+              <label className="collection-type-filter">
+                Card type
+                <select
+                  aria-label="Card type"
+                  value={filters.types.length > 1 ? "multiple" : filters.types[0] || ""}
+                  onChange={(e) => setFilters((f) => ({ ...f, types: e.target.value ? [e.target.value] : [] }))}
+                >
+                  <option value="">All card types</option>
+                  {filters.types.length > 1 && <option value="multiple" disabled>Multiple types selected</option>}
+                  {cardTypes.map((type) => <option key={type} value={type}>{type}</option>)}
+                </select>
+              </label>
               <div className="chips" aria-label="Quick filters">
                 <button
                   className={`chip all-chip ${!filterCount ? "selected" : ""}`}
