@@ -136,6 +136,8 @@ Existing frozen blind/golden files and the protected-source hash manifest are no
   targeted metadata retry, intent persistence and confirmation-free comparison previews.
   Nine existing desktop checks preserve Commander confidence, Uugguu/Hurska coverage, Legacy
   swaps, unavailable copies, fresh-legality confirmation, banned-card rejection and responsiveness.
+  After incorporating `7a7457f`, lint/build passed again and five integration browser checks passed:
+  all three Deck Intelligence flows plus both upstream type/subtype-filter regressions.
 - `git diff --check`: passed.
 
 Full-suite command: `npm run test:unit -- --maxWorkers=1 --testTimeout=30000`. The explicit
