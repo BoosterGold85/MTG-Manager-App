@@ -352,23 +352,16 @@ test("Commander Colors applies subsets independently, including colorless, cance
   await expect(page.locator(".card-tile")).toHaveCount(32);
 });
 
-test("collection card type dropdown filters immediately and stays in sync with the drawer", async ({ page }) => {
+test("card types are available inside Filters", async ({ page }) => {
   await ready(page);
-  const type = page.getByRole("combobox", { name: "Card type", exact: true });
-  await expect(type).toBeVisible();
-  for (const value of ["Instant", "Sorcery", "Vehicle"]) {
-    await expect(type.locator(`option[value="${value}"]`)).toHaveCount(1);
-  }
-  await type.selectOption("Instant");
-  await expect(page.locator(".card-tile")).toHaveCount(4);
+  await expect(page.getByRole("combobox", { name: "Card type", exact: true })).toHaveCount(0);
   await openFilters(page);
-  await expect(page.getByRole("button", { name: "Instant", exact: true })).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Vehicle", exact: true }).click();
+  for (const name of ["Instant", "Sorcery", "Vehicle"]) {
+    await expect(page.getByRole("button", { name, exact: true })).toBeVisible();
+  }
+  await page.getByRole("button", { name: "Instant", exact: true }).click();
   await page.getByRole("button", { name: /Apply · Show/ }).click();
-  await expect(type).toHaveValue("multiple");
-  await type.selectOption("");
-  await expect(page.locator(".card-tile")).toHaveCount(32);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect(page.locator(".card-tile")).toHaveCount(4);
 });
 
 test("finds Bear through searchable subtypes in Filters", async ({ page }) => {

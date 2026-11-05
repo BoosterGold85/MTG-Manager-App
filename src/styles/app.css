@@ -2583,17 +2583,3 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 
 /* Legacy exploration keeps the existing restrained gold selected state. */
 .deck-upgrades .legacy-brew-filter[aria-pressed="true"] { background:var(--selected-surface); border-color:var(--selected-border); color:var(--selected-text); }
-
-.collection-type-filter {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 14px;
-  font-size: 14px;
-  font-weight: 600;
-}
-.collection-type-filter select {
-  min-height: 44px;
-  max-width: 100%;
-}
