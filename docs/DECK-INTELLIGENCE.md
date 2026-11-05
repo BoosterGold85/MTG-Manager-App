@@ -1,7 +1,8 @@
 # Deck Intelligence — review branch
 
 Implemented on `feature/deck-intelligence`, initially based on `26751d0` (v0.6.24), then rebased
-on `d619135` to preserve the new collection-filter changes. This is a review change, not a
+on `d619135` to preserve the new collection-filter changes. The review branch also incorporates
+`7a7457f`, which removes the redundant collection type dropdown. This is a review change, not a
 main-branch release or production deployment.
 
 ## Baseline and fixture status
