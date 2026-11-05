@@ -23,6 +23,7 @@ export interface SampleCollectionCard {
   tags?: string[];
   artist?: string;
   oracleId?: string;
+  supportedFinishes?: ("nonfoil" | "foil" | "etched")[];
   keywords?: string[];
   legalities?: Record<string,string>;
   legalityCheckedAt?: string;

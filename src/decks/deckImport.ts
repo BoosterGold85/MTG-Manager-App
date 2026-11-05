@@ -124,7 +124,8 @@ export interface PreviewEntry {
   explicitCommander: boolean;
   lines: number[];
   texts: string[];
-  requested?: { setCode: string; collectorNumber?: string };
+  requested?: { setCode: string; collectorNumber?: string; finish?: "nonfoil" | "foil" | "etched" };
+  requestedFinish?: DeckTextLine["finish"];
   notes: string[];
   status: OwnershipStatus;
   owned: number;
@@ -154,10 +155,11 @@ export interface DeckImportChoices {
   allowDuplicateName: boolean;
 }
 
-const isExact = (item: CollectionItem, requested?: { setCode: string; collectorNumber?: string }) =>
+const isExact = (item: CollectionItem, requested?: { setCode: string; collectorNumber?: string; finish?: string }) =>
   !!requested &&
   item.setCode.toLowerCase() === requested.setCode &&
-  (!requested.collectorNumber || item.collectorNumber.toLowerCase() === requested.collectorNumber);
+  (!requested.collectorNumber || item.collectorNumber.toLowerCase() === requested.collectorNumber) &&
+  (!requested.finish || item.finish === requested.finish);
 
 export function buildDeckImportPreview(
   parsed: ParsedDeckText,
@@ -175,9 +177,9 @@ export function buildDeckImportPreview(
     }
     const card = r.printing || r.card;
     const requested = r.line.setCode
-      ? { setCode: r.line.setCode, ...(r.line.collectorNumber ? { collectorNumber: r.line.collectorNumber } : {}) }
+      ? { setCode: r.line.setCode, ...(r.line.collectorNumber ? { collectorNumber: r.line.collectorNumber } : {}), ...(r.line.finish ? { finish: r.line.finish } : {}) }
       : undefined;
-    const key = JSON.stringify([r.line.section, cardIdentity(r.card), requested?.setCode || "", requested?.collectorNumber || ""]);
+    const key = JSON.stringify([r.line.section, cardIdentity(r.card), requested?.setCode || "", requested?.collectorNumber || "", r.line.finish || ""]);
     const existing = groups.get(key);
     if (!state.metadata[card.scryfallId]) metadata[card.scryfallId] = card;
     if (existing) {
@@ -190,6 +192,7 @@ export function buildDeckImportPreview(
     groups.set(key, {
       key: `e${groups.size + 1}`,
       name: r.card.name,
+      ...(!requested && r.line.finish ? { requestedFinish: r.line.finish } : {}),
       card,
       quantity: r.line.quantity,
       section: r.line.section,
@@ -398,6 +401,7 @@ export function finalizeDeckImport(
       cardIdentity: cardIdentity(p.card),
       scryfallId: p.card.scryfallId,
       ...(p.requested ? { requestedPrinting: { ...p.requested } } : {}),
+      ...(p.requestedFinish ? { requestedFinish: p.requestedFinish } : {}),
       sourceLines: [...p.lines],
       ...(p.status === "basic" ? { basicLand: true } : {}),
     };

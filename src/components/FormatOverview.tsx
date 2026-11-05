@@ -18,7 +18,7 @@ export function FormatOverview({state,deck,busy,change}:{state:CollectionState;d
  }
  return <section className="overview-block" aria-label="Format legality"><h2>{formatLabel(deck)} deck</h2>
  <p>At least 60 main-deck cards · up to 15 sideboard cards · generally four copies per card across both boards.</p>
- <p className="meta-text">Standard rotation and bans can change. Saved metadata is a snapshot, not a live legality guarantee. The check covers card legality and deck counts, not tournament registration or Companion conditions.</p>
+ <p className="meta-text">{deck.format==="legacy"?"Legacy does not rotate; bans and card eligibility can change.":"Standard rotation and bans can change."} Saved metadata is a snapshot, not a live legality guarantee. The check covers card legality and deck counts, not tournament registration, competitive readiness or Companion conditions.</p>
  {timestamps.length>0 && <p className="meta-text">Oldest saved legality check: {new Date(timestamps[0]).toLocaleDateString()}</p>}
  <button className="management-button" disabled={busy || checking || !deck.entries?.length} onClick={()=>void check()}>{checking?"Checking legality…":"Check format legality"}</button>
  {error && <p role="alert">{error}</p>}

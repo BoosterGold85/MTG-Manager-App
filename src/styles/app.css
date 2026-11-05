@@ -2583,3 +2583,13 @@ button:disabled, input:disabled, select:disabled { opacity:var(--disabled-opacit
 
 /* Legacy exploration keeps the existing restrained gold selected state. */
 .deck-upgrades .legacy-brew-filter[aria-pressed="true"] { background:var(--selected-surface); border-color:var(--selected-border); color:var(--selected-text); }
+/* Deck intelligence evidence stays readable without horizontal scrolling on phones. */
+.deck-intelligence { min-width: 0; }
+.intelligence-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .75rem; }
+.intelligence-summary > div { border: 1px solid var(--border, #555); border-radius: .75rem; padding: .75rem; }
+.deck-intelligence summary, .deck-intelligence p, .deck-intelligence li { overflow-wrap: anywhere; }
+.deck-intelligence details { margin-block: .75rem; }
+.deck-intelligence summary { cursor: pointer; }
+.deck-intelligence textarea { display: block; width: 100%; max-width: 100%; min-height: 6rem; }
+.intelligence-card-list { padding-inline-start: 1.2rem; }
+.intelligence-evidence { padding-block: .5rem; border-bottom: 1px solid var(--border, #555); }

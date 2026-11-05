@@ -25,7 +25,9 @@ export interface DecklistEntry {
   cardIdentity: string;
   // Canonical reference printing for metadata/art: the requested printing when known.
   scryfallId: string;
-  requestedPrinting?: { setCode: string; collectorNumber?: string };
+  requestedPrinting?: { setCode: string; collectorNumber?: string; finish?: "nonfoil" | "foil" | "etched" };
+  // An explicit finish can be requested even by a name-only decklist line.
+  requestedFinish?: "nonfoil" | "foil" | "etched";
   sourceLines?: number[];
   // Basic supertype: the entry is tracked in the deck but never exclusively allocated.
   basicLand?: boolean;
@@ -55,6 +57,7 @@ export interface SavedDeckCandidate {
   createdAt: string;
 }
 export interface Deck {
+  intelligenceIntent?: { plan: string; target: "casual" | "competitive" };
   // Older saved decks remain Commander without migration.
   format?: DeckFormat;
   id: string;
