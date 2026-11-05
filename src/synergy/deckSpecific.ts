@@ -8,7 +8,7 @@ import { deckCardFunction } from "../upgrades/cardFunction";
 import { hasSelfEntryAbility } from "../upgrades/abilityScope";
 import { effectConditions, sharedSupplyIndex } from "../upgrades/conditions";
 import type { CardFunction, Need } from "../upgrades/cardFunction";
-export const RANKING_VERSION = "0.6.16";
+export const RANKING_VERSION = "0.6.16-resources.1";
 export const RANKING_POLICY = Object.freeze({ specific: true, utilityCap: true, strategicRedundancy: true });
 export interface DeckSpecificValue {
   points: number;

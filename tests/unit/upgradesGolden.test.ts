@@ -16,6 +16,9 @@
 // chapter II now reads as controlled discard, so its impact falls 0.78 → 0.68. Seven Reign candidates' best cut
 // moves from Hit the Mother Lode to Chain Reaction (values within ±0.01, labels unchanged); alternatives reorder.
 // Build mode and every other case are unchanged.
+// Land-deck coverage: extra-land engines now require actual land supply (30 for full credit).
+// The sparse synthetic Landfall case's Additional Land Engine changes priority 83 -> 70 and
+// upgrade value 0.97 -> 0.36. The previous fixture remains preserved; other outputs are unchanged.
 import { expect, it } from "vitest";
 import { reignOfDragonsFixture, canonicalFactsCards } from "../recommendationFixtures";
 import { synergyFixture } from "../synergyFixtures";
@@ -65,5 +68,5 @@ export function goldenOutputs() {
   return result;
 }
 it("Upgrades I Own engine output matches the reviewed golden fixture", async () => {
-  await expect(JSON.stringify(goldenOutputs(), null, 1)).toMatchFileSnapshot("../golden/upgrades-v0.6.16.json");
+  await expect(JSON.stringify(goldenOutputs(), null, 1)).toMatchFileSnapshot("../golden/upgrades-land-coverage.json");
 });

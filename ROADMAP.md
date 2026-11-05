@@ -82,6 +82,10 @@ Focused reliability/usability fix: keep and resume successful legality lookups, 
 
 Focused transport fix for repeated Safari lookup interruptions: a bounded same-site canonical metadata relay, Worker/assets deployment configuration, readable upstream failures and unchanged cache/retry/resume and ownership protections. No scoring or recommendation changes. Physical-device and deployed-edge verification remain separate from deterministic regression tests. See [validation and deployment](docs/SAME-ORIGIN-LOOKUPS-v0.6.22.md).
 
-### 0.6.23 — Current: Ability-Level Semantic Coverage
+### 0.6.23 — Ability-Level Semantic Coverage
 
 Targeted semantic release from real production decks, done after v0.6.22 instead of reopening the unfinished v0.6.17 pass. Cards are read ability by ability: understood parts count, unsupported clauses lower confidence, and vanilla cards are valid. Adds generalized dice, P/T-transformation, copy, counter-storage, blink, Saga/Class and cheat semantics, all supply-gated. Score weights, global thresholds and frozen expectations are unchanged. Blind holdout evaluation remains a separately authorized step. See [validation](docs/VALIDATION-v0.6.23.md).
+
+### 0.6.24 — Current: Resource and Deck Semantic Coverage
+
+General Food/life-gain event semantics, resource replacement and sacrifice scope, conditional combat links and land-subtype ramp. Includes the land and Uugguu coverage follow-ups. No score-weight tuning or automatic deck changes. See [validation](docs/VALIDATION-v0.6.24.md).

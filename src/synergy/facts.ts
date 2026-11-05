@@ -7,7 +7,7 @@ import {
   canonicalCreatureType,
 } from "../intelligence/subtypes";
 
-export const CARD_FACTS_VERSION = "1.3.0";
+export const CARD_FACTS_VERSION = "1.5.0";
 export type TutorRole =
   | "unrestricted_tutor"
   | "typed_tutor"
@@ -144,6 +144,9 @@ export interface TokenFact extends FactEvidence {
   creatureTypes: string[];
   isCreature: boolean;
   isArtifact?: boolean;
+  isLand?: boolean;
+  hasChangeling?: boolean;
+  copySourceType?: string;
   isCopy: boolean;
   grantedAbilities: string[];
 }
@@ -395,7 +398,7 @@ export function answerOf(face: string, line: string, types: string[], keywords: 
     // "Put target attacking creature on the bottom of its owner's library" (Condemn, Hallowed Burial-style tucks).
     ["tuck", /\bput (target [^.]*?|all [^.]*?|each [^.]*?) on (?:the )?(?:top|bottom) of (?:its|their) owners?(?:'s|s'|')? librar(?:y|ies)/i],
     ["shuffle", /\b(?:owner of target ([^.]*?)|target ([^.]*?)'s owner) shuffles?\b/i],
-    ["destroy", /\bdestroy (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
+    ["destroy", /\bdestroy (?:target|all|each|up to \w+ target|any number of target|X target) ([^.]*)/i],
     ["exile", /\bexile (?:target|all|each|up to \w+ target|any number of target) ([^.]*)/i],
     ["bounce", /\breturn (?:target|all|each|up to \w+ target|\w+ target) ([^.]*?) to (?:its|their) owner(?:'s|s'|s)? hands?/i],
     ["sacrifice", /\b(?:target|each) (?:opponent|player) sacrifices? (?:a|an|one|two|\w+) ([^.]*)/i],
@@ -595,18 +598,26 @@ function faceFacts(face: {
         const creatureTypes = typesIn(
           description.split(/\b(?:with|that's|that is)\b/i)[0],
         );
-        const isCopy = /\bcopy\b/i.test(description);
+        const isCopy = /\bcop(?:y|ies)\b/i.test(description);
+        const copiedDeathType = isCopy && /copies of that creature/.test(description) ? line.match(/Whenever (?:another )?(?:nontoken )?([A-Z][a-z-]+) creature you control dies,/)?.[1] : undefined;
+        const tokenChangeling = /\bwith changeling\b/i.test(description);
+        const originalLine = original.split("\n").find(raw => stripReminderText(raw).trim() === line) || "";
+        const landReminder = /\btoken\. \((?:It's|It is) a land with /i.test(originalLine) && !/\bcreature\b/i.test(description) && !isCopy;
         const isCreature =
           /\bcreature\b/i.test(description) || creatureTypes.length > 0;
         const amount = count(description.trim().split(/\s+/)[0]);
         const granted = description.match(/\bwith\s+(.+)/i)?.[1];
         result.createsTokens.push({
           ...fact,
+          ...(/\bits controller\s+creates?\b/i.test(line) ? { controller: /target [^.]*\ban opponent controls\b/i.test(line) ? "opponent" as Scope : "unknown" as Scope } : {}),
           count: amount,
           tokenTypes,
           creatureTypes,
           isCreature,
           isArtifact: /\bartifact\b/i.test(description) || tokenTypes.length > 0,
+          ...(landReminder ? { isLand: true } : {}),
+          ...(tokenChangeling ? { hasChangeling: true } : {}),
+          ...(copiedDeathType ? { copySourceType: copiedDeathType } : {}),
           isCopy,
           grantedAbilities: granted ? [granted] : [],
         });
@@ -614,7 +625,7 @@ function faceFacts(face: {
           result.uncertainties.push(
             `Variable or unparsed token quantity: ${description}`,
           );
-        if (!tokenTypes.length && !creatureTypes.length && !isCopy)
+        if (!tokenTypes.length && !creatureTypes.length && !isCopy && !landReminder)
           result.uncertainties.push(`Unresolved token type: ${description}`);
         if (isCopy) roles.add("copy_token");
         if (isCreature) roles.add("generic_creature_token");
@@ -695,6 +706,9 @@ function faceFacts(face: {
         tail = match[2];
       const targetTypes = cardTypesIn(target),
         creatureTypes = typesIn(target);
+      if (/\b(?:Plains|Island|Swamp|Mountain|Forest)\b/.test(target) && !targetTypes.includes("Land")) targetTypes.push("Land");
+      const searchController: Scope = /^search(?:es)?\s+your library/i.test(match[0]) ? "you" :
+        /\bits controller\s+(?:may\s+)?search/i.test(line) ? /target [^.]*\ban opponent controls\b/i.test(line) ? "opponent" : /target [^.]*\byou control\b/i.test(line) ? "you" : "unknown" : subjectScope(line, match.index!);
       const basicOnly =
         /\bbasic\b/i.test(target) && targetTypes.includes("Land");
       const unrestricted = /^(?:a|one|any) card$/i.test(target.trim());
@@ -763,10 +777,10 @@ function faceFacts(face: {
           searchRoles.push("typed_tutor");
         if (destination === "graveyard") searchRoles.push("graveyard_tutor");
         if (destination === "top") searchRoles.push("topdeck_tutor");
-        searchRoles.forEach((role) => roles.add(role));
+        if (benefitsYou(searchController)) searchRoles.forEach((role) => roles.add(role));
         result.searchesLibrary.push({
           ...fact,
-          ...(/^search(?:es)?\s+your library/i.test(match[0]) ? { controller: "you" as Scope } : {}),
+          controller: searchController,
           targetTypes,
           creatureTypes,
           basicOnly,
@@ -775,9 +789,9 @@ function faceFacts(face: {
           restrictions,
           roles: searchRoles,
         });
-        if (targetTypes.includes("Land") && destination === "battlefield")
+        if (benefitsYou(searchController) && targetTypes.includes("Land") && destination === "battlefield")
           roles.add("land_ramp");
-        if (targetTypes.includes("Land") && destination === "hand")
+        if (benefitsYou(searchController) && targetTypes.includes("Land") && destination === "hand")
           roles.add("land_smoothing");
       }
     }

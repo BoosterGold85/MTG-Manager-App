@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.24 — 2026-11-05 — Resource and Deck Semantic Coverage
+
+- Separate life-gain effects from life-gain observers; model Food activation as a paid resource conversion.
+- Bind Food sacrifice conditions to Food, including turn-scoped type grants and generic activation discounts.
+- Recognize life replacements, Clue/Food/Treasure bundle replacements and additional-Food replacements without inventing initiating events or automatic loops.
+- Require a power increase and player combat damage for above-base-power draw conditions.
+- Recognize X-target artifact/enchantment removal, targeted variable life gain and land-subtype tutors; preserve target-controller compensation scope.
+- Include the earlier land-deck and Uugguu death-copy/typal fixes and canonical regression fixtures.
+- Refresh saved automatic analysis with ruleset 0.3.9 while retaining manual overrides. Ranking cache identity changes; score weights and thresholds do not.
+- Preserve the current main branch's Cloudflare Worker/SPA build configuration.
+
+
 ## 0.6.23 — 2026-11-03 — Ability-Level Semantic Coverage
 
 From real production decks. All rules are generic; observed cards are test fixtures only.

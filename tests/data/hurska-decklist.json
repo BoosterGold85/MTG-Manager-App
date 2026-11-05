@@ -1,0 +1,322 @@
+[
+  {
+    "quantity": 1,
+    "name": "Hurska Sweet-Tooth"
+  },
+  {
+    "quantity": 1,
+    "name": "Alhammarret's Archive"
+  },
+  {
+    "quantity": 1,
+    "name": "Arcane Signet"
+  },
+  {
+    "quantity": 1,
+    "name": "Field-Tested Frying Pan"
+  },
+  {
+    "quantity": 1,
+    "name": "Heaped Harvest"
+  },
+  {
+    "quantity": 1,
+    "name": "Nuka-Cola Vending Machine"
+  },
+  {
+    "quantity": 1,
+    "name": "Sol Ring"
+  },
+  {
+    "quantity": 1,
+    "name": "Swiftfoot Boots"
+  },
+  {
+    "quantity": 1,
+    "name": "The Wind Crystal"
+  },
+  {
+    "quantity": 1,
+    "name": "Well of Lost Dreams"
+  },
+  {
+    "quantity": 1,
+    "name": "Blossoming Sands"
+  },
+  {
+    "quantity": 1,
+    "name": "Bountiful Promenade"
+  },
+  {
+    "quantity": 1,
+    "name": "Brushland"
+  },
+  {
+    "quantity": 1,
+    "name": "Canopy Vista"
+  },
+  {
+    "quantity": 1,
+    "name": "Command Tower"
+  },
+  {
+    "quantity": 12,
+    "name": "Forest"
+  },
+  {
+    "quantity": 1,
+    "name": "Fortified Village"
+  },
+  {
+    "quantity": 1,
+    "name": "Gingerbread Cabin"
+  },
+  {
+    "quantity": 1,
+    "name": "Hushwood Verge"
+  },
+  {
+    "quantity": 1,
+    "name": "Overgrown Farmland"
+  },
+  {
+    "quantity": 10,
+    "name": "Plains"
+  },
+  {
+    "quantity": 1,
+    "name": "Rogue's Passage"
+  },
+  {
+    "quantity": 1,
+    "name": "Sungrass Prairie"
+  },
+  {
+    "quantity": 1,
+    "name": "Sunpetal Grove"
+  },
+  {
+    "quantity": 1,
+    "name": "Temple Garden"
+  },
+  {
+    "quantity": 1,
+    "name": "The Shire"
+  },
+  {
+    "quantity": 1,
+    "name": "Academy Manufactor"
+  },
+  {
+    "quantity": 1,
+    "name": "Accomplished Alchemist"
+  },
+  {
+    "quantity": 1,
+    "name": "Apothecary White"
+  },
+  {
+    "quantity": 1,
+    "name": "Astrid Peth"
+  },
+  {
+    "quantity": 1,
+    "name": "Avacyn's Pilgrim"
+  },
+  {
+    "quantity": 1,
+    "name": "Banquet Guests"
+  },
+  {
+    "quantity": 1,
+    "name": "Birds of Paradise"
+  },
+  {
+    "quantity": 1,
+    "name": "Blossoming Bogbeast"
+  },
+  {
+    "quantity": 1,
+    "name": "Elanor Gardner"
+  },
+  {
+    "quantity": 1,
+    "name": "Essence Warden"
+  },
+  {
+    "quantity": 1,
+    "name": "Exemplar of Light"
+  },
+  {
+    "quantity": 1,
+    "name": "Farmer Cotton"
+  },
+  {
+    "quantity": 1,
+    "name": "Gilded Goose"
+  },
+  {
+    "quantity": 1,
+    "name": "Haliya, Guided by Light"
+  },
+  {
+    "quantity": 1,
+    "name": "Jaheira, Friend of the Forest"
+  },
+  {
+    "quantity": 1,
+    "name": "Kutzil, Malamet Exemplar"
+  },
+  {
+    "quantity": 1,
+    "name": "Lathiel, the Bounteous Dawn"
+  },
+  {
+    "quantity": 1,
+    "name": "Llanowar Elves"
+  },
+  {
+    "quantity": 1,
+    "name": "Nykthos Paragon"
+  },
+  {
+    "quantity": 1,
+    "name": "Peregrin Took"
+  },
+  {
+    "quantity": 1,
+    "name": "Rhox Faithmender"
+  },
+  {
+    "quantity": 1,
+    "name": "Rosie Cotton of South Lane"
+  },
+  {
+    "quantity": 1,
+    "name": "Sam, Loyal Attendant"
+  },
+  {
+    "quantity": 1,
+    "name": "Samwise Gamgee"
+  },
+  {
+    "quantity": 1,
+    "name": "Sierra, Nuka's Biggest Fan"
+  },
+  {
+    "quantity": 1,
+    "name": "Soul Warden"
+  },
+  {
+    "quantity": 1,
+    "name": "The Gaffer"
+  },
+  {
+    "quantity": 1,
+    "name": "Tireless Provisioner"
+  },
+  {
+    "quantity": 1,
+    "name": "Treebeard, Gracious Host"
+  },
+  {
+    "quantity": 1,
+    "name": "Cleric Class"
+  },
+  {
+    "quantity": 1,
+    "name": "Gourmand's Talent"
+  },
+  {
+    "quantity": 1,
+    "name": "Heroic Feast"
+  },
+  {
+    "quantity": 1,
+    "name": "Leyline of Hope"
+  },
+  {
+    "quantity": 1,
+    "name": "Night of the Sweets' Revenge"
+  },
+  {
+    "quantity": 1,
+    "name": "Ninja Pizza"
+  },
+  {
+    "quantity": 1,
+    "name": "Of Herbs and Stewed Rabbit"
+  },
+  {
+    "quantity": 1,
+    "name": "Trail of Crumbs"
+  },
+  {
+    "quantity": 1,
+    "name": "Beast Within"
+  },
+  {
+    "quantity": 1,
+    "name": "Feed the Clan"
+  },
+  {
+    "quantity": 1,
+    "name": "Fortifying Draught"
+  },
+  {
+    "quantity": 1,
+    "name": "Generous Gift"
+  },
+  {
+    "quantity": 1,
+    "name": "Heliod's Intervention"
+  },
+  {
+    "quantity": 1,
+    "name": "Heroic Intervention"
+  },
+  {
+    "quantity": 1,
+    "name": "Path to Exile"
+  },
+  {
+    "quantity": 1,
+    "name": "Restoration Magic"
+  },
+  {
+    "quantity": 1,
+    "name": "Swords to Plowshares"
+  },
+  {
+    "quantity": 1,
+    "name": "Vigorbloom Charm"
+  },
+  {
+    "quantity": 1,
+    "name": "Cultivate"
+  },
+  {
+    "quantity": 1,
+    "name": "Farseek"
+  },
+  {
+    "quantity": 1,
+    "name": "Fumigate"
+  },
+  {
+    "quantity": 1,
+    "name": "Many Partings"
+  },
+  {
+    "quantity": 1,
+    "name": "Nature's Lore"
+  },
+  {
+    "quantity": 1,
+    "name": "Rampant Growth"
+  },
+  {
+    "quantity": 1,
+    "name": "Revive the Shire"
+  }
+]

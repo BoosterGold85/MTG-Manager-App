@@ -10,8 +10,9 @@ import { cardKeywords } from "../utils/cardKeywords";
 import { counterRecipient, placesCountersOn, countersTargetSelf, suppliesCounterEvent } from "./counterSupply";
 import { capabilities } from "../synergy/capabilities";
 import { benefitsYou, extractCardFacts } from "../synergy/facts";
+import { resourceSemantics, suppliesLifeGain, suppliesResourceSacrifice } from "../synergy/resources";
 
-export const CONDITIONS_VERSION = "1.1.0";
+export const CONDITIONS_VERSION = "1.4.0";
 export interface DeckSupplier {
   card: CardMetadata;
   quantity: number;
@@ -35,6 +36,7 @@ export interface EffectCondition {
   selfProvides?: (card: CardMetadata) => boolean;
   chooseCreatureType?: boolean;
   minimumSupply?: number;
+  commanderOnly?: boolean;
 }
 export interface ConditionCredit {
   /** The condition's predicate key ("cast:colorless", "counters:+1/+1"). */
@@ -110,6 +112,7 @@ function qualifier(phrase: string): Qualifier {
   take(/\blands?\b/, "land", (c) => isLand(c));
   take(/\bwith (?:mana value|converted mana cost) (\d+) or greater\b/, "with mana value $1+", (c, m) => (c.manaValue || 0) >= Number(m[1]));
   take(/\bwith power (\d+) or greater\b/, "with power $1+", (c, m) => power(c) >= Number(m[1]));
+  take(/\bwith toughness greater than its power\b/, "with toughness greater than power", (c) => Number.isFinite(power(c)) && Number(c.toughness) > power(c));
   take(/\bwith power ((?:\d+, )+(?:or )?\d+)\b/, "with power $1", (c, m) => m[1].match(/\d+/g)!.map(Number).includes(power(c)));
   take(/\bwith (flying|trample|haste|deathtouch|lifelink|vigilance|menace|defender)\b/, "with $1", (c, m) => cardKeywords(c).some((k) => k.toLowerCase() === m[1]));
   take(/\btokens?\b/, "token", (c) => /\bToken\b/.test(c.typeLine));
@@ -128,8 +131,8 @@ function qualifier(phrase: string): Qualifier {
 }
 
 /** A token as a card, so the same qualifier can test it ("Dragon", "artifact", "creature"). */
-const tokenCard = (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean; isArtifact?: boolean }) =>
-  ({ name: "token", typeLine: `Token ${t.isArtifact || t.tokenTypes.length ? "Artifact " : ""}${t.isCreature ? "Creature " : ""}— ${[...t.creatureTypes, ...t.tokenTypes].join(" ")}`, manaCost: "", manaValue: 0 }) as unknown as CardMetadata;
+const tokenCard = (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean; isArtifact?: boolean; hasChangeling?: boolean }) =>
+  ({ name: "token", typeLine: `Token ${t.isArtifact || t.tokenTypes.length ? "Artifact " : ""}${t.isCreature ? "Creature " : ""}— ${[...t.creatureTypes, ...t.tokenTypes].join(" ")}`, manaCost: "", manaValue: 0, keywords: t.hasChangeling ? ["Changeling"] : [] }) as unknown as CardMetadata;
 const tokenMakes = (c: CardMetadata, q: (t: { creatureTypes: string[]; tokenTypes: string[]; isCreature: boolean; isArtifact?: boolean }) => boolean) => ownTokens(c).some(q);
 
 /** Conditions gating this card's abilities. Self triggers ("When this creature enters"), phase triggers and triggers
@@ -145,6 +148,35 @@ function capabilityConditions(card: CardMetadata): EffectCondition[] {
   const tapCost = abilities.some((a) => a.capabilities.includes("CREATURE_TAP_COST"));
   for (const a of abilities) {
     const caps = new Set(a.capabilities);
+    const partner = [...caps].find(c => c.startsWith("NAMED_PARTNER:"))?.slice(14);
+    if (partner) {
+      add(a.line, `named-partner:${partner}`, `the named partner ${partner} in the deck`, 1, c => c.name === partner);
+      out[out.length - 1].minimumSupply = 1;
+    }
+    if (caps.has("ABOVE_BASE_COMBAT"))
+      add(a.line, "combat:power-above-base", "effects that raise a creature's power above its base (then combat damage to a player)", 6, c => resourceSemantics(c).raisesPower);
+    if (caps.has("RESOURCE_BUNDLE") || caps.has("EXTRA_FOOD"))
+      add(a.line, caps.has("RESOURCE_BUNDLE") ? "create:resource-input" : "create:token-input", "actual token-creation events for the replacement", 4, c => c.name !== card.name && (caps.has("RESOURCE_BUNDLE") ? resourceSemantics(c).creates.length > 0 : resourceSemantics(c).createsTokens));
+    if (caps.has("COMMANDER_SELF_COPY")) {
+      add(a.line, "control:commander", "a commander to control", 1, () => true);
+      out[out.length - 1].minimumSupply = 1;
+      out[out.length - 1].commanderOnly = true;
+    }
+    if (caps.has("TOKEN_MANA_GRANT"))
+      add(a.line, "tokens:creatures", "creature-token sources", 5, (c) => ownTokens(c).some(t => t.isCreature));
+    if (caps.has("AURA_LAND_CREATURE")) add(a.line, "lands:aura-target", "lands to animate", 20, isLand);
+    if (caps.has("EXTRA_LAND_PLAY") || caps.has("TOP_LIBRARY_LANDS"))
+      add(a.line, "lands:access", "lands to play", 30, isLand);
+    if (caps.has("LANDS_ENTER_UNTAPPED"))
+      add(a.line, "lands:enter-tapped", "lands or effects that put your lands onto the battlefield tapped", 6, (c) => /\bLand\b/.test(types(c)) && /\benters(?: the battlefield)? tapped\b/i.test(textOf(c)) || /\bput [^.]*land[^.]*onto the battlefield tapped\b/i.test(textOf(c)));
+    if (caps.has("LAND_CREATURE_KEYWORD"))
+      add(a.line, "lands:animated", "lands that become creatures or land animation effects", 4, (c) => hasCapability(c, "ANIMATE_LAND"), true);
+    if (caps.has("HAND_CREATURE_CHEAT"))
+      add(a.line, "creatures:hand", "creatures to put onto the battlefield from hand", 16, isCreature);
+    if (caps.has("GRAVEYARD_RETRACE")) {
+      add(a.line, "retrace:permanents", "nonland permanents to recast (also requires lands to discard)", 20, (c) => /\b(?:Creature|Artifact|Enchantment|Planeswalker|Battle)\b/.test(types(c)) && !isLand(c) && c.name !== card.name);
+      add(a.line, "retrace:lands", "lands to discard to retrace", 30, isLand);
+    }
     if (caps.has("ROLL_EVENT") || (caps.has("ROLL_AMPLIFIER") && /^If you would roll\b/i.test(a.effect)))
       add(a.line, "dice", "cards that roll dice", 4, (c) => hasCapability(c, "ROLL_SUPPLIER"), true);
     if (caps.has("TARGETED_SPELL_COPY"))
@@ -178,7 +210,7 @@ function computeConditions(card: CardMetadata): EffectCondition[] {
   const typed = capabilityConditions(card);
   const governed = new Set(typed.map((c) => c.line));
   const short = /\bLegendary\b/.test(types(card)) ? card.name.split(/[ ,]/)[0] : "";
-  const names = [card.name, ...card.name.split(" // "), card.name.split(",")[0], short].filter((n) => n.length > 3).sort((a, b) => b.length - a.length);
+  const names = [card.name, ...card.name.split(" // "), card.name.split(",")[0], short].filter((n) => n.length >= 3).sort((a, b) => b.length - a.length);
   const out: EffectCondition[] = [];
   for (const raw of text.split("\n")) {
     if (governed.has(raw.trim())) continue;
@@ -273,7 +305,7 @@ function computeConditions(card: CardMetadata): EffectCondition[] {
       .replace(/\bcast or copy\b/i, "cast")
       .replace(/ of the chosen type\b/i, "")
       .replace(/\bis put into your graveyard from the battlefield\b/i, "you control dies");
-    const self = /^(?:you cast this spell|this\b|~|equipped\b|enchanted\b|fortified\b|your commanders?\b)/i.test(trigger);
+    const self = /^(?:you cast this spell|you cycle (?:this card|~)$|this\b|~|equipped\b|enchanted\b|fortified\b|your commanders?\b)/i.test(trigger);
     // Supplied by every table or every deck: opponents' actions, any creature dying, your attacks and draws.
     const table = /^(?:an?|each) (?:opponent|player)\b|^a player\b|\bopponents? controls?\b|\bunder an opponent's control\b|\bdeals? damage to you\b|^you(?:'re| are) dealt damage\b|^you (?:attack|draw a card|draw one or more cards|cast your first spell|lose life|tap a land|tap an untapped land)\b|^day becomes night|^night becomes day/i.test(trigger);
     if (self || table) continue;
@@ -303,9 +335,13 @@ function computeConditions(card: CardMetadata): EffectCondition[] {
       cond(`counters:+1/+1:${types(recipient).trim()}:${selfTarget ? "self" : "board"}`, "cards that put +1/+1 counters", 5, (source)=>suppliesCounterEvent(source,recipient,selfTarget), true);
       out[out.length-1].selfProvides=(source)=>placesCountersOn(source,recipient,true);
     } else if (/^you sacrifice /i.test(trigger)) {
-      cond("sacrifice", "sacrifice outlets and effects", 5, (c) => /\bsacrifice (?:a|an|another|one or more|any number of|x|two)\b[^.\n]*(?:creature|artifact|permanent|token|food|clue|treasure)|:\s*[^.\n]*\bsacrifice\b/i.test(textOf(c)) || /\bTreasure\b|\bFood\b|\bClue\b/.test(textOf(c)), true);
+      const resource = trigger.match(/\b(Food|Clue|Treasure)s?\b/i)?.[1];
+      if (resource) {
+        const type = (resource[0].toUpperCase() + resource.slice(1).toLowerCase()) as "Food" | "Clue" | "Treasure";
+        cond(`sacrifice:${type.toLowerCase()}`, `${type} sacrifice options (with their costs)`, 5, c => suppliesResourceSacrifice(c, type), true);
+      } else cond("sacrifice", "sacrifice outlets and effects", 5, (c) => /\bsacrifice (?:a|an|another|one or more|any number of|x|two)\b[^.\n]*(?:creature|artifact|permanent|token|food|clue|treasure)|:\s*[^.\n]*\bsacrifice\b/i.test(textOf(c)) || /\bTreasure\b|\bFood\b|\bClue\b/.test(textOf(c)), true);
     } else if (/^you gain life\b|^you gain \w+ or more life/i.test(trigger)) {
-      cond("lifegain", "life-gain sources", 5, (c) => /\byou gain (?:\d+|x|that much|that many|one|two|three|four|life)\b|\bgain \d+ life\b/i.test(textOf(c)) || cardKeywords(c).some((k) => /^lifelink$/i.test(k)), true);
+      cond("lifegain", "actual life-gain effects, lifelink or Food activations (costs and damage still apply)", 5, suppliesLifeGain, true);
     } else if (/^you discard /i.test(trigger)) {
       cond("discard", "ways to discard cards", 5, (c) => extractCardFacts(c).faces.some((f) => f.discards.some((d) => d.who === "you" || d.who === "each_player")), true);
     } else if (/^you create (?:one or more |a |an )?.*tokens?|^(?:a|one or more) tokens? (?:you control )?enters?/i.test(trigger)) {
@@ -352,7 +388,7 @@ export class SupplyIndex {
         })[0];
       }
       for (const c of this.cards) {
-        if (!condition.understood || !condition.supplies(c.card) || condition.chooseCreatureType && (!chosenType || !hasType(c.card, chosenType))) continue;
+        if (!condition.understood || condition.commanderOnly && !c.commander || !condition.supplies(c.card) || condition.chooseCreatureType && (!chosenType || !hasType(c.card, chosenType))) continue;
         supply += c.commander ? 2 : c.quantity;
         if (!suppliers.includes(c.card.name)) suppliers.push(c.card.name);
       }

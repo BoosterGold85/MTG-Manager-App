@@ -5,6 +5,8 @@ import { milesCards } from "../milesFixture";
 import { oracleCard } from "../upgradeCandidates";
 import { writeState } from "./workspaceHelpers";
 import { observed } from "../semanticFixture";
+import { uugguuFixture } from "../uugguuFixture";
+import { hurskaFixture } from "../hurskaFixture";
 
 // A Commander whose trigger the engine can't classify, cards using an unmodeled mechanic, a partially understood card,
 // a card whose record is missing its rules text, and a valid vanilla creature (which must not be flagged).
@@ -45,4 +47,38 @@ test("Overview says what the app isn't sure about, before Deck Health", async ({
   expect(order.indexOf("Analysis confidence")).toBe(order.indexOf("Deck Health") - 1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+});
+
+test("the supplied Uugguu deck has no missing-data or unsupported-ability warning", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".card-tile")).toHaveCount(32);
+  await writeState(page, uugguuFixture().state);
+  await page.reload();
+  await page.getByRole("navigation").filter({ visible: true }).getByRole("button", { name: "Decks", exact: true }).click();
+  await page.locator(".deck-card").click();
+  const overview = page.locator(".deck-overview");
+  await expect(overview).toBeVisible();
+  await expect(page.getByRole("region", { name: "Deck Health", exact: true })).toBeVisible();
+  await expect(overview).not.toContainText("partially understands");
+  await expect(overview).not.toContainText("uses a mechanic the app doesn't model yet");
+  await expect(overview).not.toContainText("use mechanics the app doesn't model yet");
+  await expect(overview).not.toContainText("could not be matched to canonical card data");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("the supplied Hurska deck recognizes its Food and life-gain abilities", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".card-tile")).toHaveCount(32);
+  await writeState(page, hurskaFixture().state);
+  await page.reload();
+  await page.getByRole("navigation").filter({ visible: true }).getByRole("button", { name: "Decks", exact: true }).click();
+  await page.locator(".deck-card").click();
+  const overview = page.locator(".deck-overview");
+  await expect(overview).toBeVisible();
+  await expect(page.getByRole("region", { name: "Deck Health", exact: true })).toBeVisible();
+  await expect(overview).not.toContainText("partially understands");
+  await expect(overview).not.toContainText("mechanics the app doesn't model yet");
+  await expect(overview).not.toContainText("uses a mechanic the app doesn't model yet");
+  await expect(overview).not.toContainText("could not be matched to canonical card data");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

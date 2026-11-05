@@ -6,6 +6,8 @@
 import type { CardMetadata } from "../models/collection";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import { cardKeywords } from "../utils/cardKeywords";
+import { creatureTypeGrant, deathCopy, deathReturn, deathSplit, typalTriggerMultiplier } from "./typal";
+import { resourceSemantics } from "./resources";
 
 export type AbilityKind = "keyword" | "static" | "triggered" | "activated" | "loyalty" | "chapter" | "level" | "branch" | "spell" | "procedural";
 export type Access = "immediate" | "gated" | "inaccessible";
@@ -38,6 +40,9 @@ const STRUCTURE: [string, RegExp][] = [
   ["DEVOTION", /\bdevotion to\b/i],
   ["FORCED_ATTACK", /\battacks? (?:this turn|each combat) if able\b/i],
   ["TOPDECK_LOOK", /\blook at the top card of your library any time\b/i],
+  ["TOPDECK_REVEALED", /^Play with the top card of your library revealed\.?$/i],
+  ["CONDITIONAL_TAPPED", /^If you control [^.]+, (?:this land|~) enters(?: the battlefield)? tapped\.?$/i],
+  ["CITY_COMBAT_RESTRICTION", /^(?:This creature|~) can't attack or block unless you have the city's blessing\.?$/i],
   ["CONDITIONAL_KEYWORD", /^During your turn, (?:~|this creature) has \w+/i],
   ["TARGET_TAX", /\bthat targets? (?:this creature|it|~)\b[^.]*\bcosts? \{\d+\} more\b/i],
   ["LIFEGAIN_HATE", /\b(?:players|your opponents|opponents|each opponent) can't gain life\b/i],
@@ -45,6 +50,10 @@ const STRUCTURE: [string, RegExp][] = [
   ["UNCOUNTERABLE", /\bcan't be countered\b/i],
   ["SELF_COUNTER_TRIGGER", /\bput an? [\w+/-]+ counter on (?:this|~)\b/i],
   ["ANIMATE_SELF", /^Tap (?:\w+|any number of) untapped [^:]*: (?:This Vehicle|~) becomes an artifact creature\b/i],
+  ["CHOSEN_CREATURE_TYPE", /^(?:This creature|~) is the chosen type in addition to its other types\.?$/i],
+  ["COMPANION_RESTRICTION", /^Companion — /],
+  ["ENTRY_TYPE_CHOICE", /^As (?:this (?:creature|land|artifact|enchantment)|~) enters(?: the battlefield)?, choose a (?:creature|card) type\.?$/i],
+  ["SHOCK_LAND_ENTRY", /^As (?:this land|~) enters(?: the battlefield)?, you may pay 2 life\. If you don't, it enters tapped\.?$/i],
 ];
 export const STRUCTURE_CAPABILITIES = new Set(STRUCTURE.map(([id]) => id));
 
@@ -55,6 +64,29 @@ export function effectCapabilities(effect: string): string[] {
   const t = effect;
   for (const [id, pattern] of STRUCTURE) if (pattern.test(t)) caps.add(id);
   const add = (id: string, test: boolean | RegExpMatchArray | null) => test && caps.add(id);
+  // Land engines: access/fixing are distinct from additional land drops or actual mana production.
+  add("EXTRA_LAND_PLAY", /\byou may play (?:an?|one|two|three) additional lands? (?:on |during )?each of your turns\b/i.test(t));
+  add("TOP_LIBRARY_LANDS", /\byou may play lands from the top of your library\b/i.test(t));
+  add("LAND_TYPE_FIXING", /^Lands you control are every basic land type in addition to their other types\.?$/i.test(t));
+  add("LANDS_ENTER_UNTAPPED", /^Lands you control enter(?: the battlefield)? untapped\.?$/i.test(t));
+  add("REGENERATE", /(?:^|: )Regenerate target creature(?: you control)?\.?$/i.test(t));
+  add("ANIMATE_LAND", /\b(?:target land you control|this land|~) becomes? an? (?:\d+\/\d+|X\/X) [^.]*creature\b/i.test(t));
+  add("LAND_CREATURE_KEYWORD", /^Land creatures you control have (?:vigilance|trample|haste)\.?$/i.test(t));
+  add("HAND_CREATURE_CHEAT", /^Put (?:up to )?(?:one|two|three|a) creature cards? from your hand onto the battlefield\.?$/i.test(t));
+  add("LAND_OR_DRAW", /\blook at the top card of your library\. If it's a land card, you may put it onto the battlefield tapped\. Otherwise, put it into your hand\.?$/i.test(t));
+  add("MILL_LAND_SELECTION", /\bmill (?:\d+|three|two|four) cards\. You may put a land card from among them into your hand\.?$/i.test(t));
+  add("GRAVEYARD_RETRACE", /^During your turn, nonland permanent cards in your graveyard have retrace\.?$/i.test(t));
+  add("KEYWORD_COUNTER", /\bput a (?:trample|flying|vigilance|haste|lifelink|deathtouch|menace|reach) counter on target creature you control\b/i.test(t));
+  add("ADAPT", /(?:^|: )Adapt \d+\.?$/i.test(t));
+  add("LINKED_EXILE_GRAVEYARD", /\bput target creature card with mana value X exiled with (?:this creature|~) into its owner's graveyard\b/i.test(t));
+  add("COMMANDER_SELF_COPY", /\bif you control a commander, create a token that's a copy of (?:this creature|~)\b/i.test(t));
+  add("TEAM_BASE_BODY", /^Creatures you control have base power and toughness \d+\/\d+/i.test(t));
+  add("TOKEN_MANA_GRANT", /^Creature tokens you control have "\{T\}: Add one mana of any color\."/i.test(t));
+  add("RENEW_COPY", /^\{[^\n]*Exile this card from your graveyard:[^\n]*Each other creature you control becomes a copy of that creature until end of turn\./i.test(t));
+  add("AURA_LAND_CREATURE", /^Enchanted land is a \d+\/\d+ [^.]*creature\. It's still a land\.?$/i.test(t));
+  add("TARGET_PLAYER_LIFE", /\btarget player gains (?:\d+|X|twice X) life\b/i.test(t));
+  const partner = t.match(/^Partner with ([^.]+)$/);
+  if (partner) caps.add(`NAMED_PARTNER:${partner[1].trim()}`);
   // Dynamic power / toughness transformations.
   add("POWER_FROM_POWER", /\bgets? \+X\/\+0[^.]*\bwhere X is its power\b/i.test(t));
   add("POWER_FROM_TOUGHNESS", /\bgets? \+X\/\+0[^.]*\bwhere X is its toughness\b/i.test(t));
@@ -124,6 +156,8 @@ const cache = new WeakMap<CardMetadata, Ability[]>();
 export function cardAbilities(card: CardMetadata): Ability[] {
   const known = cache.get(card);
   if (known) return known;
+  const grant = creatureTypeGrant(card), death = deathCopy(card), returns = deathReturn(card), split = deathSplit(card), multiplier = typalTriggerMultiplier(card);
+  const resource = resourceSemantics(card);
   const faces = card.cardFaces?.length ? card.cardFaces.map((f) => ({ text: f.oracleText, type: f.typeLine || card.typeLine, loyalty: f.loyalty ?? card.loyalty, name: f.name })) : [{ text: card.oracleText, type: card.typeLine, loyalty: card.loyalty, name: card.name }];
   const keywords = cardKeywords(card).map((k) => k.toLowerCase());
   const out: Ability[] = [];
@@ -141,6 +175,19 @@ export function cardAbilities(card: CardMetadata): Ability[] {
       const push = (a: Omit<Ability, "capabilities" | "line"> & { capabilities?: string[] }) => {
         const quoted = a.effect.match(/"([^"]+)"/);
         const caps = new Set([...(a.capabilities || effectCapabilities(a.effect)), ...(quoted ? effectCapabilities(quoted[1]).map((c) => `GRANTED:${c}`) : [])]);
+        if (grant && /^Creatures you control (?:are|have base power)/.test(a.effect)) caps.add("CREATURE_TYPE_GRANT");
+        if (death && /^Whenever[^\n]* dies, create/.test(a.effect)) caps.add("TYPAL_DEATH_COPY");
+        if (returns && /gains "When this creature dies/.test(a.effect)) caps.add("DEATH_RETURN_PROTECTION");
+        if (split && /Destroy target creature\./.test(a.effect)) caps.add("DEATH_SPLIT");
+        if ((resource.lifeMultiplier > 1 || resource.lifeAddition) && /^If you would gain life,/.test(a.effect)) caps.add("LIFE_REPLACEMENT");
+        if (resource.bundleReplacement && /^If you would create a Clue, Food, or Treasure token/.test(a.effect)) caps.add("RESOURCE_BUNDLE");
+        if (resource.extraFood && /^If one or more tokens would be created/.test(a.effect)) caps.add("EXTRA_FOOD");
+        if (resource.foodDiscount && /^Activated abilities of Foods/.test(a.effect)) caps.add("FOOD_DISCOUNT");
+        if (resource.foodGrant && /^During your turn, artifacts/.test(a.effect)) caps.add("FOOD_TYPE_GRANT");
+        if (resource.aboveBaseCombat && /power greater than its base power/.test(a.effect)) caps.add("ABOVE_BASE_COMBAT");
+        if (multiplier && /^If a triggered ability/.test(a.effect)) caps.add("TYPAL_TRIGGER_MULTIPLIER");
+        // Named token characteristics come from their printed reminder, not a table of token names.
+        if (/\bcreate a (?:tapped )?[^.]+ token\./i.test(a.effect) && /\btoken\. \((?:It's|It is) a land with /i.test(face.text || "")) caps.add("LAND_TOKEN");
         out.push({ line: raw, ...a, capabilities: [...caps] });
       };
       // Class levels: "{1}{R}: Level 2" gates the abilities printed after it.
@@ -156,6 +203,11 @@ export function cardAbilities(card: CardMetadata): Ability[] {
         continue;
       }
       // Saga chapters.
+      if (/^Companion — Each nonland card in your starting deck shares a card type\.?$/.test(effect)) {
+        // A main-deck card does not impose its optional companion restriction on deck construction.
+        push({ effect, kind: "procedural", access: "immediate", weight: 1, capabilities: [] });
+        continue;
+      }
       const chapter = effect.match(/^((?:[IV]+)(?:, [IV]+)*) — (.*)$/);
       if (chapter) {
         const first = Math.min(...chapter[1].split(", ").map((r) => ROMAN[r] || 1));
@@ -186,7 +238,7 @@ export function cardAbilities(card: CardMetadata): Ability[] {
         continue;
       }
       // Ability words ("Jump —", "Sneak Attack —") carry no rules of their own.
-      const stripped = stripAbilityWord(effect.replace(/^Imprint — /, "").replace(/^[•●]\s*/, "")).replace(/^[A-Z][A-Za-z' -]{1,30} — (?=[A-Z])/, "");
+      const stripped = stripAbilityWord(effect.replace(/^Imprint — /, "").replace(/^[•●]\s*/, "")).replace(/^[A-Z][A-Za-z' -]{1,30} — (?=[A-Z{])/, "");
       // Keyword lines, including keywords with costs or qualifiers ("Cycling {3}{B}{B}", "Affinity for artifacts").
       const keywordOnly = !/[.:]$|\. /.test(stripped) && stripped.split(/,\s*/).every((part) => keywords.some((k) => part.toLowerCase().startsWith(k)) && /^[A-Za-z' -]+(?:\s?\d+—)?(?:\s?\{[^}]+\})*(?:\s\d+)?(?: (?:for|from|with) [a-z ]+)?$/.test(part));
       if (keywordOnly) {
@@ -194,12 +246,13 @@ export function cardAbilities(card: CardMetadata): Ability[] {
         continue;
       }
       const gated = level > 1;
-      const conditional = /\battacks a player who controls (?:\w+) or more\b/i.test(stripped);
+      const landThreshold = /^As long as you control (?:ten|\d+) or more lands,/i.test(stripped);
+      const conditional = /\battacks a player who controls (?:\w+) or more\b/i.test(stripped) || landThreshold;
       push({
         effect: stripped,
         kind: gated ? "level" : spell && lineKind(stripped) === "static" ? "spell" : lineKind(stripped),
         access: gated || conditional ? "gated" : "immediate",
-        weight: gated ? Math.pow(0.6, level - 1) : conditional ? 0.5 : 1,
+        weight: gated ? Math.pow(0.6, level - 1) : landThreshold ? 0.3 : conditional ? 0.5 : 1,
       });
     }
   }

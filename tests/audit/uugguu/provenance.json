@@ -1,0 +1,472 @@
+{
+  "captured": "2026-11-04",
+  "endpoint": "https://api.scryfall.com/cards/collection",
+  "canonicalRecords": 92,
+  "notFound": [],
+  "files": {
+    "tests/data/uugguu-deck.json": "c261359aa8c9d28cbf665a71a1250cae558a081e4ad5e31094cdd2da06aa36a3",
+    "tests/data/uugguu-deck.txt": "401c623aa6b0793de43cc308270c0f5767263427b556819c2734cb062216fdcb"
+  },
+  "oracleIds": [
+    {
+      "name": "Uugguu, the Omniplasm",
+      "oracleId": "df9bb1fc-135d-4efb-b143-81950fc95a27",
+      "scryfallId": "caa3e9e4-e1d9-4896-9a66-493e7446aca0"
+    },
+    {
+      "name": "Arcane Signet",
+      "oracleId": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+      "scryfallId": "795df2ee-fbfc-4961-852c-e3ec50cc52da"
+    },
+    {
+      "name": "Ashnod's Altar",
+      "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+      "scryfallId": "3c0f7157-a375-499c-92c7-d47d2e95dbad"
+    },
+    {
+      "name": "Birthing Pod",
+      "oracleId": "f8b9dd54-0837-47f4-ad14-7a0322d46d5f",
+      "scryfallId": "b768efa2-e56b-4a7e-ace8-d673f10e0714"
+    },
+    {
+      "name": "Cauldron of Essence",
+      "oracleId": "a2f8cde8-bf7b-4234-89f0-a95f9dc937e3",
+      "scryfallId": "b7091740-e70c-4cf2-8d3d-b8e1ac1fbbdd"
+    },
+    {
+      "name": "Maskwood Nexus",
+      "oracleId": "9b2cdbed-c733-409b-b0e4-2c8960c25111",
+      "scryfallId": "1246c42d-57c0-4cba-959a-15ad89d8a50b"
+    },
+    {
+      "name": "Phyrexian Altar",
+      "oracleId": "8d02b297-97c4-4379-9862-0a462400f66f",
+      "scryfallId": "95d9f93c-50a8-41a9-be98-d1900bf1c12f"
+    },
+    {
+      "name": "Sol Ring",
+      "oracleId": "6ad8011d-3471-4369-9d68-b264cc027487",
+      "scryfallId": "fc817e07-c1f3-469f-9cf7-0945dea7400f"
+    },
+    {
+      "name": "Breeding Pool",
+      "oracleId": "20283c4a-f1f0-42f0-bc08-6da87474426b",
+      "scryfallId": "63e4dc07-c742-41bd-8301-861637908fd1"
+    },
+    {
+      "name": "Command Tower",
+      "oracleId": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+      "scryfallId": "a73297d2-580c-4174-a427-265f6916d09f"
+    },
+    {
+      "name": "Dreamroot Cascade",
+      "oracleId": "dd8538e6-cd5f-4a88-aff5-eb5e76ce8ddb",
+      "scryfallId": "ef662b92-5a7f-48c9-bcc1-14b55e091aef"
+    },
+    {
+      "name": "Drowned Catacomb",
+      "oracleId": "819fc966-434e-470f-91e9-a38df974ad17",
+      "scryfallId": "7f6615d6-4307-43fe-a9a1-d2ef956246d0"
+    },
+    {
+      "name": "Exotic Orchard",
+      "oracleId": "27b047e3-0d41-45e2-98e9-9391d7923a1e",
+      "scryfallId": "0a4a51a3-fb8b-4611-8f94-fbcab547423c"
+    },
+    {
+      "name": "Forest",
+      "oracleId": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+      "scryfallId": "2e781bfd-f8cb-4d20-b977-4359f3a21311"
+    },
+    {
+      "name": "Hinterland Harbor",
+      "oracleId": "fb5a3403-7f0b-406c-8c4f-d693be010ca6",
+      "scryfallId": "be99af65-ca51-48f4-a004-baf21e267cc8"
+    },
+    {
+      "name": "Island",
+      "oracleId": "b2c6aa39-2d2a-459c-a555-fb48ba993373",
+      "scryfallId": "1335d293-3dd2-4f13-bd2c-22181f4528ee"
+    },
+    {
+      "name": "Llanowar Wastes",
+      "oracleId": "32116127-cf96-4a1b-8896-a1ebc087b597",
+      "scryfallId": "266316d3-3bbc-4283-aab8-69629855909f"
+    },
+    {
+      "name": "Misty Rainforest",
+      "oracleId": "09dd85aa-47bc-4713-a9b9-8b52ff2285ed",
+      "scryfallId": "88231c0d-0cc8-44ec-bf95-81d1710ac141"
+    },
+    {
+      "name": "Morphic Pool",
+      "oracleId": "bd004c9d-771e-4e63-a97d-a2259c096af8",
+      "scryfallId": "5667b84e-38d1-4583-80ec-2c4584a81ee8"
+    },
+    {
+      "name": "Mutavault",
+      "oracleId": "6b3cc59a-7ea5-4eb5-9bf9-5a9c07f80e2b",
+      "scryfallId": "064a2fe8-0867-420f-b35c-71c3231a73ed"
+    },
+    {
+      "name": "Opulent Palace",
+      "oracleId": "f9e7e855-1e3b-42d3-91b0-64ba8b5b8982",
+      "scryfallId": "f0001153-dbcb-44e5-99be-2c186c9b10b0"
+    },
+    {
+      "name": "Overgrown Tomb",
+      "oracleId": "975ec9a3-6f20-4177-8211-82526e092538",
+      "scryfallId": "ad7e18e2-c033-4b6c-86e8-d0e5cc824cfd"
+    },
+    {
+      "name": "Path of Ancestry",
+      "oracleId": "b473e293-59e3-4e04-acf2-622604aeb25f",
+      "scryfallId": "4ac05a29-0722-4d8b-80e9-a46c38491c14"
+    },
+    {
+      "name": "Phyrexian Tower",
+      "oracleId": "1861e642-21d5-4232-89f3-b5557f2946c1",
+      "scryfallId": "0b47f6d2-9f65-47a4-bfc4-15619befe53d"
+    },
+    {
+      "name": "Polluted Delta",
+      "oracleId": "ef86989d-ce80-4e55-aece-7d11710eeffa",
+      "scryfallId": "6e288374-2b71-4ace-b1d2-a19fee6cb4af"
+    },
+    {
+      "name": "Rejuvenating Springs",
+      "oracleId": "d1620449-930a-4895-a143-fd2a0a3c8b17",
+      "scryfallId": "c4565a7b-a0ed-4a7f-ad48-7745c56d141b"
+    },
+    {
+      "name": "Swamp",
+      "oracleId": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+      "scryfallId": "b233b117-9369-45c1-80c5-cc857386b6be"
+    },
+    {
+      "name": "Three Tree City",
+      "oracleId": "da3b17a2-e1e1-44e9-b9b1-ae54a92037db",
+      "scryfallId": "56f88a48-cced-4a9d-8c19-e4f105f0d8a2"
+    },
+    {
+      "name": "Undergrowth Stadium",
+      "oracleId": "7c69f718-acc8-4851-8e5d-0cbaaa86192c",
+      "scryfallId": "f25aa8aa-e2f7-4634-8a96-2082e76c6503"
+    },
+    {
+      "name": "Verdant Catacombs",
+      "oracleId": "67d60b24-d429-4ded-90d9-06e49f28c396",
+      "scryfallId": "94c229ea-90da-4aa0-bfda-b162fb3b5b8b"
+    },
+    {
+      "name": "Watery Grave",
+      "oracleId": "fc9ec820-4245-4a96-b009-5308a818ca58",
+      "scryfallId": "5525d6a6-e532-4047-9da4-bfae7927fecc"
+    },
+    {
+      "name": "Woodland Cemetery",
+      "oracleId": "c9fe1383-1331-4a58-a45a-3320250221a9",
+      "scryfallId": "4d6f6c96-f813-4864-b4e1-b2a0aa8be1e8"
+    },
+    {
+      "name": "Yavimaya Coast",
+      "oracleId": "40b36bc6-c185-4bda-99e7-0118953c2c97",
+      "scryfallId": "f4c1500b-1f4c-4d33-810c-25e3bb0a4666"
+    },
+    {
+      "name": "Zagoth Triome",
+      "oracleId": "fdd46004-eaba-4024-8687-39b23dc6a58c",
+      "scryfallId": "cc520518-2063-4b57-a0d4-10cf62a7175e"
+    },
+    {
+      "name": "Acidic Slime",
+      "oracleId": "21f45043-5419-4019-8b6c-e5294bd5f549",
+      "scryfallId": "932d48fb-42b5-4aaa-a91c-d35cdb5e41a3"
+    },
+    {
+      "name": "Adrix and Nev, Twincasters",
+      "oracleId": "12a6cad9-eb42-43bd-9e68-aaf862cd83db",
+      "scryfallId": "b9c11061-bb34-4904-b9f1-ea106b517bbe"
+    },
+    {
+      "name": "Aeve, Progenitor Ooze",
+      "oracleId": "44600a74-9584-488b-a342-2fccd8fa7599",
+      "scryfallId": "dfe9b1b8-dffe-427d-be1e-2c6b8395bd54"
+    },
+    {
+      "name": "Biogenic Ooze",
+      "oracleId": "d2d84ba5-0d20-4ce3-8f1f-93cd9ef94f5f",
+      "scryfallId": "0e850205-d010-49af-b68b-262360751b70"
+    },
+    {
+      "name": "Biowaste Blob",
+      "oracleId": "7fa8647a-7668-4db9-a77d-87e004b160e1",
+      "scryfallId": "8bbf476f-ccc8-42ac-8d01-64bb85552acd"
+    },
+    {
+      "name": "Birds of Paradise",
+      "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+      "scryfallId": "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+    },
+    {
+      "name": "Chomping Changeling",
+      "oracleId": "d740dbd9-8e90-4121-8d53-c6ddf5178d58",
+      "scryfallId": "e187dcc6-19ad-4cf6-94b4-daf07f5144e5"
+    },
+    {
+      "name": "Clever Impersonator",
+      "oracleId": "d4ec0df9-a4a3-48cf-a0aa-b1aea5c49142",
+      "scryfallId": "c0516453-3e6a-4b7f-8df6-72a6e207169a"
+    },
+    {
+      "name": "Clone",
+      "oracleId": "42226b87-0746-4ebf-9fd0-108d508462af",
+      "scryfallId": "5e648262-3b9b-4c58-8e29-48356e3cb064"
+    },
+    {
+      "name": "Copycrook",
+      "oracleId": "ce184565-71fb-4e23-b45b-8786727d21f7",
+      "scryfallId": "52ea5e71-d0a3-4065-918b-9b2af98589ba"
+    },
+    {
+      "name": "Flesh Duplicate",
+      "oracleId": "1869eb1e-7786-4fea-8a92-2bd839de47df",
+      "scryfallId": "512e9bd2-77b9-4c1c-8d30-e6249dbd930e"
+    },
+    {
+      "name": "Gelatinous Cube",
+      "oracleId": "3c2e2e69-cd44-458f-a5b0-8591baa24e65",
+      "scryfallId": "1c472e70-300c-4881-86e7-c5ca690ab9b6"
+    },
+    {
+      "name": "Gigantoplasm",
+      "oracleId": "52fdfe4b-10a7-421d-80ea-f6c39013062b",
+      "scryfallId": "27163b43-61e2-495c-b544-55c349eba99c"
+    },
+    {
+      "name": "Glasspool Mimic // Glasspool Shore",
+      "oracleId": "c178953c-3888-4edd-9d0c-265bd82b1d24",
+      "scryfallId": "5adcb500-8c77-4925-8e2c-1243502827d1"
+    },
+    {
+      "name": "Green Slime",
+      "oracleId": "0ec5a688-a884-410c-adee-ab784789d6e8",
+      "scryfallId": "b1beaaae-9406-4beb-8e74-d278822434c7"
+    },
+    {
+      "name": "Hecteyes",
+      "oracleId": "7a11b4ed-430d-4ef8-b0c1-6a022f12448c",
+      "scryfallId": "8680d052-c07b-4d9b-bda9-b5f69f44f424"
+    },
+    {
+      "name": "Mirror Image",
+      "oracleId": "7275fb8c-571a-4c4c-889a-829419332e51",
+      "scryfallId": "5b3ffc69-f21b-410e-8993-8c1b4669fc19"
+    },
+    {
+      "name": "Mirrorhall Mimic // Ghastly Mimicry",
+      "oracleId": "5768fe50-a134-492c-a725-5ed02610c39f",
+      "scryfallId": "823ad188-bd56-476d-9853-bed90bfad582"
+    },
+    {
+      "name": "Mitotic Slime",
+      "oracleId": "1162c7ff-c0cb-469a-ad3c-322b0981ae1d",
+      "scryfallId": "8aacf055-e36f-4428-8a3c-f73fa4b4307c"
+    },
+    {
+      "name": "Mutable Explorer",
+      "oracleId": "34b93a66-de1e-4133-a479-e0d90ba94a3a",
+      "scryfallId": "8f35d95a-caea-4d5e-b98e-55da1ba7c92d"
+    },
+    {
+      "name": "Naga Fleshcrafter",
+      "oracleId": "a4f8012e-9880-45b0-9eba-d74c207d3242",
+      "scryfallId": "5df17423-9fdd-4432-8660-1d267c685595"
+    },
+    {
+      "name": "Omni-Changeling",
+      "oracleId": "66d4370e-19b9-4680-9b1e-a192537bc002",
+      "scryfallId": "f29ce8f9-42a3-43fa-8197-666cc26e2c76"
+    },
+    {
+      "name": "Phantasmal Image",
+      "oracleId": "bde94af8-faea-41ff-8eed-ba642eac9968",
+      "scryfallId": "c1c080cf-a5e8-4d9d-af49-f78588971e87"
+    },
+    {
+      "name": "Phyrexian Metamorph",
+      "oracleId": "340bbe8b-e987-4c3e-ab4e-9dee63e57d4f",
+      "scryfallId": "a564c2e8-f49f-4ed7-850f-7c8bc92e4926"
+    },
+    {
+      "name": "Prime Speaker Vannifar",
+      "oracleId": "b543bfa2-0174-4dd8-9ee6-09b92fb44934",
+      "scryfallId": "84abfc59-10a7-4cb5-9cdd-81797116c810"
+    },
+    {
+      "name": "Roaming Throne",
+      "oracleId": "3640c29b-1534-4952-b297-619ade948431",
+      "scryfallId": "32fd8b7c-baf3-4d3d-be6f-044a917b11a0"
+    },
+    {
+      "name": "Stunt Double",
+      "oracleId": "a7ff1b64-8eab-4309-892c-17a619cd302e",
+      "scryfallId": "7afaaea9-300a-46c8-b9ec-a2579f8a4b7f"
+    },
+    {
+      "name": "Uchuulon",
+      "oracleId": "1f266fa4-6667-49db-9d24-dfbabf1449ca",
+      "scryfallId": "ecef5fca-72ec-4aee-af6e-ee5d6f6bc567"
+    },
+    {
+      "name": "Umori, the Collector",
+      "oracleId": "913383a1-9c0d-40a1-8c5a-b0a8a95c09a6",
+      "scryfallId": "75ac31e0-ac70-4ee6-b2b1-cc445ffa1da9"
+    },
+    {
+      "name": "Vizier of Many Faces",
+      "oracleId": "55bceb83-bbba-477f-98ce-6e0a80b91080",
+      "scryfallId": "f4f5deae-3fa7-4c06-abe1-753d94158a0a"
+    },
+    {
+      "name": "Arcane Adaptation",
+      "oracleId": "2188c03f-11b6-4651-914a-b4fdd59127e3",
+      "scryfallId": "bf3edaaf-cf63-4e17-94ae-9d9991d9fb5f"
+    },
+    {
+      "name": "Corrupted Zendikon",
+      "oracleId": "3902048e-b7bf-4676-be92-e590bc76c729",
+      "scryfallId": "0ce7d93d-3998-4486-b277-e4f91f6e3feb"
+    },
+    {
+      "name": "Doubling Season",
+      "oracleId": "01546b7d-a233-4176-8843-d732074dc5b6",
+      "scryfallId": "f2c4f80e-84a0-463b-82c3-5c6503809351"
+    },
+    {
+      "name": "Kindred Discovery",
+      "oracleId": "005ee549-1bf5-478f-bc3f-3e791bd7eecf",
+      "scryfallId": "19bdedb2-768b-4adf-8193-917a10c8f729"
+    },
+    {
+      "name": "March of the World Ooze",
+      "oracleId": "a04696c4-4138-47e2-8da4-81d61748519f",
+      "scryfallId": "b1964ec5-0dd1-4b54-917c-cbeab05aba79"
+    },
+    {
+      "name": "Parallel Lives",
+      "oracleId": "84dc94b2-95fb-4d53-aaa2-191cb645639f",
+      "scryfallId": "01033dae-fec1-41f2-b7f2-cc6a43331790"
+    },
+    {
+      "name": "Springleaf Parade",
+      "oracleId": "b1305916-53cc-4021-897e-bbefc65dce78",
+      "scryfallId": "44265489-645a-43b0-bc1f-726905b06876"
+    },
+    {
+      "name": "Assassin's Trophy",
+      "oracleId": "ac10d218-f9a6-4058-9cda-a15ca1b0b7b5",
+      "scryfallId": "aaf258fc-3ba4-4b83-bdbf-10a07e0b6c03"
+    },
+    {
+      "name": "Counterspell",
+      "oracleId": "cc187110-1148-4090-bbb8-e205694a39f5",
+      "scryfallId": "4f616706-ec97-4923-bb1e-11a69fbaa1f8"
+    },
+    {
+      "name": "Deadly Dispute",
+      "oracleId": "457af74a-02b3-4659-846d-63e482667f34",
+      "scryfallId": "d86fa72c-25c1-43ef-9cb0-fe76f7568ed3"
+    },
+    {
+      "name": "Feign Death",
+      "oracleId": "f718e507-296b-4f22-842b-5fb91322069b",
+      "scryfallId": "32af7061-fca6-4a06-be3c-01881e6b96f7"
+    },
+    {
+      "name": "Harmonized Crescendo",
+      "oracleId": "b93cd38a-1d0c-40e6-aaf1-621a2c88bf46",
+      "scryfallId": "2715e0c0-9913-4bea-9a42-ad1164f6130a"
+    },
+    {
+      "name": "Heroic Intervention",
+      "oracleId": "24882fa2-3fe9-4c1b-aa3d-0e6488b9db27",
+      "scryfallId": "2ed6abbe-3ec0-48a9-94ad-e62660a63de0"
+    },
+    {
+      "name": "Malakir Rebirth // Malakir Mire",
+      "oracleId": "a731e87b-8d99-4b64-8ee3-8e540d652366",
+      "scryfallId": "609d3ecf-f88d-4268-a8d3-4bf2bcf5df60"
+    },
+    {
+      "name": "Not Dead After All",
+      "oracleId": "380c367f-73ea-485f-a37b-5af0ba160893",
+      "scryfallId": "d01a2b68-efe6-4027-846d-db7b19d9eef6"
+    },
+    {
+      "name": "Saw in Half",
+      "oracleId": "eea18c55-8695-4ba1-9b38-3e7638692f5f",
+      "scryfallId": "05e6a7bc-a35a-4e68-99a0-be264553b5de"
+    },
+    {
+      "name": "Undying Malice",
+      "oracleId": "8b061702-1bc3-45aa-a758-446b25034801",
+      "scryfallId": "97b3cf11-e352-4ee1-8c03-13898f576ef9"
+    },
+    {
+      "name": "Village Rites",
+      "oracleId": "365548fb-5acc-4a8a-b20b-26d28b7d029f",
+      "scryfallId": "42ed35e9-51cd-468a-86a9-9412553cf50d"
+    },
+    {
+      "name": "Bala Ged Recovery // Bala Ged Sanctuary",
+      "oracleId": "d2075f58-b0e9-4e85-b7e6-0523a27a1d5b",
+      "scryfallId": "c5cb3052-358d-44a7-8cfd-cd31b236494a"
+    },
+    {
+      "name": "Bloodline Bidding",
+      "oracleId": "bdb9e933-f679-4930-b669-0d123db09d16",
+      "scryfallId": "877d9b75-ad2f-45a6-94d8-68e80d7db789"
+    },
+    {
+      "name": "Distant Melody",
+      "oracleId": "ac6c5852-71c7-4f19-8c87-ccb345052862",
+      "scryfallId": "f1d7e8c9-0936-47eb-8996-309e7a7edcad"
+    },
+    {
+      "name": "Farseek",
+      "oracleId": "495e52e6-4c2b-4574-9474-eadbdcc8b4ac",
+      "scryfallId": "dde15e36-ad2d-4438-9b51-78a04bc80779"
+    },
+    {
+      "name": "Nature's Lore",
+      "oracleId": "78826359-fe63-44ad-adc4-a17ffcd710e4",
+      "scryfallId": "6a55cafa-cb5c-482c-b3c9-1b1f4f0c698d"
+    },
+    {
+      "name": "Raise the Palisade",
+      "oracleId": "f55a3781-fe33-4301-9bb5-6a54b9c13c4f",
+      "scryfallId": "7966eb7a-0ef7-470f-9769-0d5f45f0395b"
+    },
+    {
+      "name": "Rampant Growth",
+      "oracleId": "8539f295-5d58-4436-a73a-b9277c4c7795",
+      "scryfallId": "099c081d-06ae-4ca5-ab3b-f70d01509258"
+    },
+    {
+      "name": "Reanimate",
+      "oracleId": "a044474a-cd72-4e9d-bd8d-a08f2de9cdc0",
+      "scryfallId": "368b6903-5fc4-43e7-bd44-46b8107c8bb4"
+    },
+    {
+      "name": "Three Visits",
+      "oracleId": "1b882a0e-0ede-4d1a-bd1a-9b7cffbcde8e",
+      "scryfallId": "99bf792f-963e-4509-8d3c-7db129c6a77f"
+    },
+    {
+      "name": "Victimize",
+      "oracleId": "240e85d3-e495-4877-8609-4b4056c402f7",
+      "scryfallId": "ee008d81-df28-49a8-917d-44f66527e469"
+    }
+  ]
+}

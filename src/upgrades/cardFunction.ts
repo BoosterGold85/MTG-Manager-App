@@ -9,10 +9,11 @@ import { selfEntryEffect } from "./abilityScope";
 import { capabilities, capabilityRelationship, netCardDraw } from "../synergy/capabilities";
 import { isBasicLand } from "../decks/decks";
 import { cardAbilities, weightedLines } from "../synergy/semantics";
+import { resourceSemantics } from "../synergy/resources";
 import { conditionFactor, crewCondition, effectConditions, withoutLines } from "./conditions";
 import type { ConditionCredit, SupplyIndex } from "./conditions";
 
-export const CARD_FUNCTION_VERSION = "1.1.0";
+export const CARD_FUNCTION_VERSION = "1.4.0";
 export type Need =
   | "lands"
   | "ramp"
@@ -173,6 +174,7 @@ function weightedCardFunction(original: CardMetadata): CardFunction {
   if (weighted.some((a) => a.kind === "chapter")) notes.push("Later Saga chapters count only partly: they arrive turns later.");
   if (weighted.some((a) => a.kind === "branch")) notes.push("Dice results count at their chance of being rolled, not all at once.");
   if (weighted.some((a) => a.kind !== "branch" && a.kind !== "chapter" && /\bwho controls \w+ or more\b/i.test(a.effect))) notes.push("Its attack ability needs an opponent in a specific state, so it counts only partly.");
+  if (weighted.some((a) => /^As long as you control (?:ten|\d+) or more lands,/i.test(a.effect))) notes.push("Its land-count bonus counts only partly: lands in the deck do not establish that the threshold is met on the battlefield.");
   return {
     ...computeCardFunction(original),
     roles,
@@ -332,6 +334,80 @@ function computeCardFunction(original: CardMetadata): CardFunction {
     if (ability.weight <= 0) continue;
     const caps = new Set(ability.capabilities);
     const team = caps.has("TEAM");
+    if (caps.has("LIFE_REPLACEMENT")) reasons.push({ value: 0.3, reason: "Changes the amount of an actual life-gain event; does not initiate life gain or duplicate its triggers." });
+    if (caps.has("RESOURCE_BUNDLE")) reasons.push({ value: 0.35, reason: "Replaces qualifying Clue, Food or Treasure creation with one of each; requires an incoming token-creation event." });
+    if (caps.has("EXTRA_FOOD")) reasons.push({ value: 0.3, reason: "Adds Food to your token-creation events; does not independently create an event or gain life." });
+    if (caps.has("FOOD_DISCOUNT")) reasons.push({ value: 0.25, reason: "Reduces generic activation costs of abilities of your Foods. Tapping, colored mana and sacrifices still apply; making Food does not make the source itself a Food." });
+    if (caps.has("FOOD_TYPE_GRANT")) reasons.push({ value: 0.3, reason: "During your turn your artifacts also become Foods with a paid tap-and-sacrifice life-gain ability; the grant is not active on other players' turns." });
+    if (caps.has("ABOVE_BASE_COMBAT")) reasons.push({ value: 0.3, reason: "Draw requires a creature's current power to exceed its base power and combat damage to reach a player; an unmodified body is not enough." });
+    if ([...caps].some(c => c.startsWith("NAMED_PARTNER:"))) {
+      add("tutors", 0.4);
+      reasons.push({ value: 0.15, reason: "The entry tutor can find only its named partner if that card is actually in this deck; this does not allow arbitrary partner commanders." });
+    }
+    if (caps.has("CREATURE_TYPE_GRANT")) reasons.push({ value: 0.3, reason: "Changes your creatures' types to enable matching typal triggers; tokens remain tokens and copied objects follow copy rules." });
+    if (caps.has("TYPAL_DEATH_COPY")) reasons.push({ value: 0.5, reason: "Turns eligible nontoken creature deaths into copy tokens with the printed body and legend exception; those tokens cannot retrigger its nontoken condition." });
+    if (caps.has("TYPAL_TRIGGER_MULTIPLIER")) reasons.push({ value: 0.4, reason: "Adds a trigger from another creature of your chosen type; does not multiply spells, activated abilities or its own triggers." });
+    if (caps.has("DEATH_RETURN_PROTECTION")) {
+      add("protection", 0.6);
+      reasons.push({ value: 0.35, reason: "Grants a return-on-death ability for this turn; needs the creature to die, does not stop exile, and cannot return a token." });
+    }
+    if (caps.has("DEATH_SPLIT")) reasons.push({ value: 0.2, reason: "Destroys a creature and gives its controller smaller copy tokens only if it dies; targeting your own can reuse its entry effects, while targeting an opponent gives them the copies." });
+    if (caps.has("TEAM_BASE_BODY")) {
+      add("finishers", 0.5);
+      reasons.push({ value: 0.3, reason: "Sets your creatures' base power and toughness; this can shrink larger creatures and is not an additive bonus." });
+    }
+    if (caps.has("LAND_TOKEN")) {
+      add("ramp", 0.7);
+      reasons.push({ value: 0.4, reason: "Creates a land token for mana; it is not a creature until its animation ability is paid for." });
+    }
+    if (caps.has("AURA_LAND_CREATURE")) {
+      add("finishers", 0.4);
+      reasons.push({ value: 0.2, reason: "Animates the enchanted land as a creature; it remains a land, so losing it also costs a mana source." });
+    }
+    if (caps.has("TOKEN_MANA_GRANT")) {
+      add("ramp", 0.7);
+      reasons.push({ value: 0.4, reason: "Your creature tokens can tap for mana; summoning sickness still applies without haste." });
+    }
+    if (caps.has("RENEW_COPY")) reasons.push({ value: 0.2, reason: "Exiles itself from the graveyard at sorcery speed to turn your other creatures into copies for the turn; no creature enters from this effect." });
+    if (caps.has("LINKED_EXILE_GRAVEYARD")) reasons.push({ value: 0.15, reason: "Moves its linked exiled creature card to the owner's graveyard; does not destroy another permanent on the battlefield." });
+    if (caps.has("EXTRA_LAND_PLAY")) {
+      add("ramp", 0.8);
+      reasons.push({ value: 0.45, reason: "Allows extra land drops; needs lands in hand to accelerate mana." });
+    }
+    if (caps.has("TOP_LIBRARY_LANDS")) {
+      add("cardAdvantage", 0.6);
+      reasons.push({ value: 0.4, reason: "Plays lands from the top of your library without spending a card from hand; does not add land drops." });
+    }
+    if (caps.has("LAND_TYPE_FIXING")) reasons.push({ value: 0.25, reason: "Gives your lands every basic land type for color fixing; does not produce extra mana." });
+    if (caps.has("LANDS_ENTER_UNTAPPED")) reasons.push({ value: 0.3, reason: "Lets your lands enter untapped, making tapped-land mana available sooner." });
+    if (caps.has("REGENERATE")) {
+      add("protection", 0.5);
+      reasons.push({ value: 0.3, reason: "Regenerates a creature against destruction; does not stop exile, sacrifice or toughness reduction." });
+    }
+    if (caps.has("ANIMATE_LAND")) {
+      add("finishers", 0.4);
+      reasons.push({ value: 0.25, reason: "Animates a land as a temporary creature; it remains a land and needs mana or its trigger." });
+    }
+    if (caps.has("LAND_CREATURE_KEYWORD")) reasons.push({ value: 0.2, reason: "Gives animated lands a combat keyword; ordinary lands do not benefit." });
+    if (caps.has("HAND_CREATURE_CHEAT")) {
+      add("ramp", 0.5);
+      reasons.push({ value: 0.35, reason: "Puts creatures from your hand onto the battlefield without paying their mana costs; does not cast or draw them." });
+    }
+    if (caps.has("LAND_OR_DRAW")) {
+      add("ramp", 0.5);
+      add("cardAdvantage", 0.6);
+      reasons.push({ value: 0.4, reason: "On a qualifying entry, the top card becomes a tapped land or goes to hand; these are alternative outcomes." });
+    }
+    if (caps.has("MILL_LAND_SELECTION")) {
+      add("cardAdvantage", 0.4);
+      reasons.push({ value: 0.3, reason: "Mills cards and can recover a land from those cards to hand; does not put it onto the battlefield." });
+    }
+    if (caps.has("GRAVEYARD_RETRACE")) {
+      add("recursion", 0.6);
+      reasons.push({ value: 0.4, reason: "During your turn, recasts nonland permanents from your graveyard by discarding a land and paying their costs." });
+    }
+    if (caps.has("KEYWORD_COUNTER")) reasons.push({ value: 0.2, reason: "Gives your creature a lasting combat keyword counter; does not supply +1/+1 counters." });
+    if (caps.has("ADAPT")) reasons.push({ value: 0.15, reason: "Spends mana to put +1/+1 counters on itself only if it has none." });
     const keywordsGranted = [...caps].filter((c) => c.startsWith("TEAM_KEYWORD:")).map((c) => c.slice(13));
     if (caps.has("PT_DOUBLE") && team) {
       add("finishers", 1);
@@ -409,6 +485,11 @@ function computeCardFunction(original: CardMetadata): CardFunction {
       reasons.push({ value: 0.35, reason: "Makes temporary attacking token copies (they enter attacking, so they don't trigger attack abilities)." });
     }
   }
+  const lifePayoffs = resourceSemantics(card).text.split("\n").filter(l => /^Whenever you gain life/.test(l));
+  for (const line of lifePayoffs) {
+    const payment = line.match(/you may pay ((?:\{[^}]+\})+)/i)?.[1];
+    if (payment) reasons.push({ value: 0, reason: `Its life-gain payoff requires an optional ${payment} payment after the life-gain event${payment === "{X}" ? "; X cannot exceed the printed event's gained-life amount" : ""}; the trigger does not pay that cost for you.` });
+  }
   // Finishing and engines
   const evasive = keywords.some((k) => ["flying", "trample", "menace", "shadow", "fear", "intimidate", "unblockable"].includes(k));
   const power = Number(card.power), toughness = Number(card.toughness);
@@ -457,8 +538,10 @@ function computeCardFunction(original: CardMetadata): CardFunction {
     add("finishers", 0.8);
     reasons.push({ value: 0.5, reason: "Repeatedly damages or drains each opponent." });
   }
+  const combatRestriction = /can't attack or block unless you have the city's blessing/i.test(text) ? 0.4 : 1;
+  if (combatRestriction < 1) reasons.push({ value: 0, reason: "Cannot attack or block before the city's blessing; its body counts only partly." });
   const bodyScore = threatBody
-    ? crewFactor * Math.min(0.5, ((power + (Number.isFinite(toughness) ? toughness : 0)) / Math.max(2, 2 * mv)) * 0.35 + (evasive ? 0.12 : 0) + (keywords.includes("haste") ? 0.05 : 0))
+    ? combatRestriction * crewFactor * Math.min(0.5, ((power + (Number.isFinite(toughness) ? toughness : 0)) / Math.max(2, 2 * mv)) * 0.35 + (evasive ? 0.12 : 0) + (keywords.includes("haste") ? 0.05 : 0))
     : 0;
   if (threatBody && power >= 5 && evasive) {
     add("finishers", 0.8);
@@ -483,7 +566,7 @@ function computeCardFunction(original: CardMetadata): CardFunction {
   const lowImpactBody = isCreature && or(functional.map((r) => r.value)) < 0.25;
   const pieces: EnginePieces = {
     noncombatDamageSources: faces.flatMap((f) => f.damage).filter((d) => d.role === "source" && benefitsYou(d.controller)).reduce((n, d) => n + (d.triggered ? 1 : 0.4), 0),
-    combatThreat: threatBody ? crewFactor * Math.min(1.5, (Math.max(0, power) / 4) * (evasive ? 1 : 0.5)) : 0,
+    combatThreat: threatBody ? combatRestriction * crewFactor * Math.min(1.5, (Math.max(0, power) / 4) * (evasive ? 1 : 0.5)) : 0,
     attackTriggers: faces.flatMap((f) => f.attackTriggers).length,
     // Doubling/tripling outweighs a flat "+N" bonus.
     damageMultipliers: faces.flatMap((f) => f.damage).filter((d) => d.role === "multiplier").reduce((n, d) => Math.max(n, /triple|three times/i.test(d.text) ? 1.4 : /double|twice/i.test(d.text) ? 1.2 : 0.8), 0),

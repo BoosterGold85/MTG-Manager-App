@@ -1,0 +1,80 @@
+{
+  "source": "User supplied 100-card deck; live Scryfall collection endpoint, 2026-11-04",
+  "cards": 100,
+  "unique": 92,
+  "missingCanonical": [],
+  "before": [
+    {
+      "name": "Maskwood Nexus",
+      "state": "partial",
+      "unsupported": [
+        "Creatures you control are every creature type. The same is true for creature spells you control and creature cards you own that aren't on the battlefield."
+      ]
+    },
+    {
+      "name": "Breeding Pool",
+      "state": "unsupported",
+      "unsupported": [
+        "As this land enters, you may pay 2 life. If you don't, it enters tapped."
+      ]
+    },
+    {
+      "name": "Overgrown Tomb",
+      "state": "unsupported",
+      "unsupported": [
+        "As this land enters, you may pay 2 life. If you don't, it enters tapped."
+      ]
+    },
+    {
+      "name": "Three Tree City",
+      "state": "partial",
+      "unsupported": [
+        "As Three Tree City enters, choose a creature type."
+      ]
+    },
+    {
+      "name": "Watery Grave",
+      "state": "unsupported",
+      "unsupported": [
+        "As this land enters, you may pay 2 life. If you don't, it enters tapped."
+      ]
+    },
+    {
+      "name": "Biowaste Blob",
+      "state": "partial",
+      "unsupported": [
+        "At the beginning of your upkeep, if you control a commander, create a token that's a copy of this creature."
+      ]
+    },
+    {
+      "name": "Gelatinous Cube",
+      "state": "partial",
+      "unsupported": [
+        "Dissolve \u2014 {X}{B}: Put target creature card with mana value X exiled with this creature into its owner's graveyard."
+      ]
+    },
+    {
+      "name": "Roaming Throne",
+      "state": "partial",
+      "unsupported": [
+        "This creature is the chosen type in addition to its other types.",
+        "If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time."
+      ]
+    },
+    {
+      "name": "Umori, the Collector",
+      "state": "partial",
+      "unsupported": [
+        "Companion \u2014 Each nonland card in your starting deck shares a card type.",
+        "As Umori enters, choose a card type."
+      ]
+    },
+    {
+      "name": "Arcane Adaptation",
+      "state": "unsupported",
+      "unsupported": [
+        "Creatures you control are the chosen type in addition to their other types. The same is true for creature spells you control and creature cards you own that aren't on the battlefield."
+      ]
+    }
+  ]
+}

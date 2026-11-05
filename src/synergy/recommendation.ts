@@ -1,5 +1,8 @@
 import { rankingConstraints } from "./rankingConstraints";
 import { deckSpecificValue, RANKING_POLICY, RANKING_VERSION } from "./deckSpecific";
+import { creatureSacrificeEffect, isCreatureType } from "./typal";
+import { creatureTypePatterns } from "../intelligence/subtypes";
+import { resourceSemantics, suppliesLifeGain, suppliesResourceSacrifice } from "./resources";
 import type { DeckSpecificValue } from "./deckSpecific";
 import { stripReminderText } from "../utils/rulesText";
 import type { DnaInputCard } from "../dna/engine";
@@ -461,6 +464,8 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
       const facts = factsOf(source),
         sourceText = textOf(source),
         events = new Set<string>();
+      const resource = resourceSemantics(source.card);
+      if (resource.directLife || resource.lifelink) events.add("lifegain");
       const sourceTypes = facts.faces.flatMap((face) => face.creatureTypes);
       for (const face of facts.faces) {
         for (const type of face.cardTypes) events.add(type.toLowerCase());
@@ -472,6 +477,7 @@ function sourceEvents(source: DnaInputCard): SourceEvents {
           if (token.isCreature) events.add("creature");
           if (token.isArtifact || token.tokenTypes.length) events.add("artifact");
           for (const type of token.creatureTypes) events.add(`typal:${type}`);
+          if (token.hasChangeling) for (const { type } of creatureTypePatterns) events.add(`typal:${type}`);
         }
         if (
           face.searchesLibrary.some(
@@ -569,7 +575,7 @@ function verifies(
         face.createsTokens.some(
           (token) =>
             reachesOpponents(token.controller) &&
-            (!receiver.creatureTypes.length ||
+            (!receiver.creatureTypes.length || token.hasChangeling ||
               token.creatureTypes.some((type) =>
                 receiver.creatureTypes.includes(type),
               )),
@@ -594,15 +600,17 @@ function verifies(
       face.cardDrawEffects.some((effect) => benefitsYou(effect.controller)),
     );
   if (receiver.event === "lifegain")
-    return /\bgain(?:s)? (?:\d+|x|that much|that many|one|two|three) life/i.test(
-      text,
-    );
+    return suppliesLifeGain(source.card);
+  if (receiver.event === "combat-damage" && /power greater than its base power/i.test(receiver.evidence.snippet))
+    return resourceSemantics(source.card).raisesPower;
   if (receiver.event === "counters")
     return /\b(?:put|double|proliferate)[^.\n]*(?:counter|\bproliferate\b)|\bproliferate\b/i.test(
       text,
     );
   if (receiver.event === "damage") return /\bdeals?[^.\n]*damage/i.test(text);
   if (receiver.event === "sacrifice") {
+    const resource = receiver.evidence.snippet.match(/\bsacrifice (?:a |an |one or more )?(Food|Clue|Treasure)s?\b/i)?.[1];
+    if (resource) return suppliesResourceSacrifice(source.card, (resource[0].toUpperCase() + resource.slice(1).toLowerCase()) as "Food" | "Clue" | "Treasure");
     const effects = text
       .split(/[.\n]/)
       .map((line) => line.replace(/^(?:When(?:ever)?|If)\b[^,]*,\s*/i, ""))
@@ -621,12 +629,12 @@ function verifies(
       return false;
     return true;
   }
-  if (receiver.event === "dies")
-    return (
-      ownFace(f, "Creature") ||
-      /\bsacrifice\b/i.test(text) ||
-      f.faces.some((face) => face.createsTokens.some((t) => t.isCreature))
-    );
+  if (receiver.event === "dies") {
+    if (/\bToken\b/.test(source.card.typeLine.split("—")[0]) && receiver.nontoken) return false;
+    const matchingBody = ownFace(f, "Creature") && (!receiver.creatureTypes.length || receiver.creatureTypes.some(t => isCreatureType(source.card, t)));
+    const matchingTokens = !receiver.nontoken && f.faces.some(face => face.createsTokens.some(t => benefitsYou(t.controller) && t.isCreature && (!receiver.creatureTypes.length || t.hasChangeling || t.creatureTypes.some(type => receiver.creatureTypes.includes(type)))));
+    return matchingBody || creatureSacrificeEffect(source.card) || matchingTokens;
+  }
   if (receiver.event === "cast") {
     if (receiver.creatureTypes.length)
       return (
@@ -652,9 +660,9 @@ function verifies(
           face.createsTokens.some(
             (t) =>
               benefitsYou(t.controller) &&
-              t.creatureTypes.some((type) =>
+              (t.hasChangeling || t.creatureTypes.some((type) =>
                 receiver.creatureTypes.includes(type),
-              ),
+              )),
           ),
         );
       return body || tokens;
@@ -1071,7 +1079,7 @@ export function scoreRecommendation(
     typed.supportedTypes.length &&
     !typed.genericTokenEngine &&
     ownTokens.some((t) => t.isCreature) &&
-    !ownTokens.some((t) =>
+    !ownTokens.some((t) => t.isCopy || t.hasChangeling ||
       t.creatureTypes.some((type) => typed.supportedTypes.includes(type)),
     )
   )

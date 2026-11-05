@@ -1,4 +1,6 @@
 import { capabilities, capabilityRelationship } from "../synergy/capabilities";
+import { creatureBody, deathCopy, entryClone, grantsCreatureType, isCreatureType } from "../synergy/typal";
+import { resourceSemantics } from "../synergy/resources";
 import { stripAbilityWord, stripReminderText } from "../utils/rulesText";
 import { SUPPLIES_DICE } from "../synergy/semantics";
 import type { RecommendationData } from "../synergy/recommendation";
@@ -10,7 +12,7 @@ import { creatureTypePatterns } from "../intelligence/subtypes";
 import { cardKeywords, oracleText } from "../utils/cardKeywords";
 import { benefitsYou, extractCardFacts, opponentLifeLoss } from "../synergy/facts";
 
-export const SYNERGY_VERSION = "0.6.23";
+export const SYNERGY_VERSION = "0.6.24";
 export type Role =
   | "ramp"
   | "cardAdvantage"
@@ -589,6 +591,8 @@ function interaction(
     !new RegExp(`deals? ${receiver.damageAmount} damage`, "i").test(source.text)
   )
     return 0;
+  if (receiver.event === "combat-damage" && /power greater than its base power/i.test(receiver.evidence.snippet))
+    return resourceSemantics(source.card.card).raisesPower ? 0.8 : 0;
   if (receiver.event === "combat-damage")
     return source.emits.has("creature") &&
       (!receiver.creatureTypes.length ||
@@ -671,6 +675,7 @@ function interaction(
       /sacrifice (?:another |a |an? |any number of )?creature/i.test(
         source.text,
       );
+    if (receiver.event === "dies" && receiver.nontoken && receiver.creatureTypes.length && !receiver.creatureTypes.some(t => source.types.includes(t)) && !anyCreatureOutlet) return 0;
     if (
       receiver.creatureTypes.length &&
       !receiver.creatureTypes.some(
@@ -1154,7 +1159,7 @@ export function mechanicalRelationships(
         if (value > 0) {
           strength = Math.max(strength, value);
           evidence.push(
-            `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}`,
+            `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}${/power greater than its base power/i.test(receiver.evidence.snippet) ? "; can supply a power increase, but combat damage to a player is still required" : ""}`,
           );
         }
       }
@@ -1164,6 +1169,19 @@ export function mechanicalRelationships(
       const crew = /becomes crewed/i.test(ability.text) ? ability.text.match(/^Crew (\d+)/m) : null;
       const ready = (!ability.transformCastThreshold || castSpellCount >= ability.transformCastThreshold) && (!crew || !/becomes crewed/i.test(ability.text) || crewPower >= Number(crew[1]));
       const links = ready ? capabilityRelationship(giver.card.card, recipient.card.card) : [];
+      const death = deathCopy(recipient.card.card);
+      if (death && creatureBody(giver.card.card) && !/\bToken\b/.test(giver.card.card.typeLine.split("—")[0])) {
+        if (entryClone(giver.card.card)) {
+          const target = profile.cards.find(c => c.card.identity !== giver.card.identity && isCreatureType(c.card.card, death.type) && !/\bLegendary\b/.test((c.card.card.cardFaces?.[0]?.typeLine || c.card.card.typeLine).split("—")[0]) && !/\bToken\b/.test(c.card.card.typeLine.split("—")[0]));
+          if (target) links.push(`Can enter as a nontoken copy of ${target.card.card.name}, becoming ${death.type} for ${recipient.card.card.name}'s death condition; copied tokens do not satisfy it, and copying does not cast a spell.`);
+          if (death.nontoken && death.another && death.nonlegendary && isCreatureType(recipient.card.card, death.type) && /\bLegendary\b/.test((recipient.card.card.cardFaces?.[0]?.typeLine || recipient.card.card.typeLine).split("—")[0]) && !ability.ignoresLegend)
+            links.push(`Can copy an active ${recipient.card.card.name}; keeping the original under the legend rule puts the new nontoken copy into the graveyard, triggering the original to create nonlegendary copy tokens. This is a death, not a sacrifice or an infinite loop.`);
+        }
+        if (!isCreatureType(giver.card.card, death.type)) {
+          const conversion = profile.cards.find(c => c.card.identity !== giver.card.identity && grantsCreatureType(c.card.card, death.type));
+          if (conversion) links.push(`${conversion.card.card.name} can make ${giver.card.card.name} ${death.type} while it is on the battlefield, enabling ${recipient.card.card.name}'s nontoken death trigger; this relationship requires the type-changing permanent to remain active.`);
+        }
+      }
       if (ability.permanentCopy) {
         for (const receiver of recipient.receivers.filter(r => r.event === "enters" && !r.selfOnly && (!r.nontoken || !ability.copyToken))) {
           const target = profile.cards.find(c => /\bCreature\b/.test(c.card.card.typeLine.split("—")[0]) && (!/\bLegendary\b/.test(c.card.card.typeLine) || ability.ignoresLegend) && validate(receiver, c.card));

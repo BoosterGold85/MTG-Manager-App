@@ -1,0 +1,136 @@
+[
+  {
+    "name": "Incubation Druid",
+    "type_line": "Creature \u2014 Elf Druid",
+    "oracle_text": "{T}: Add one mana of any type that a land you control could produce. If this creature has a +1/+1 counter on it, add three mana of that type instead.\n{3}{G}{G}: Adapt 3. (If this creature has no +1/+1 counters on it, put three +1/+1 counters on it.)",
+    "keywords": [
+      "Adapt"
+    ],
+    "power": "0",
+    "toughness": "2",
+    "cmc": 2.0,
+    "mana_cost": "{1}{G}"
+  },
+  {
+    "name": "Oracle of Mul Daya",
+    "type_line": "Creature \u2014 Elf Shaman",
+    "oracle_text": "You may play an additional land on each of your turns.\nPlay with the top card of your library revealed.\nYou may play lands from the top of your library.",
+    "keywords": [],
+    "power": "2",
+    "toughness": "2",
+    "cmc": 4.0,
+    "mana_cost": "{3}{G}"
+  },
+  {
+    "name": "Dryad of the Ilysian Grove",
+    "type_line": "Enchantment Creature \u2014 Nymph Dryad",
+    "oracle_text": "You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.",
+    "keywords": [],
+    "power": "2",
+    "toughness": "4",
+    "cmc": 3.0,
+    "mana_cost": "{2}{G}"
+  },
+  {
+    "name": "Courser of Kruphix",
+    "type_line": "Enchantment Creature \u2014 Centaur",
+    "oracle_text": "Play with the top card of your library revealed.\nYou may play lands from the top of your library.\nLandfall \u2014 Whenever a land you control enters, you gain 1 life.",
+    "keywords": [
+      "Landfall"
+    ],
+    "power": "2",
+    "toughness": "4",
+    "cmc": 3.0,
+    "mana_cost": "{1}{G}{G}"
+  },
+  {
+    "name": "Wayward Swordtooth",
+    "type_line": "Creature \u2014 Dinosaur",
+    "oracle_text": "Ascend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\nYou may play an additional land on each of your turns.\nThis creature can't attack or block unless you have the city's blessing.",
+    "keywords": [
+      "Ascend"
+    ],
+    "power": "5",
+    "toughness": "5",
+    "cmc": 3.0,
+    "mana_cost": "{2}{G}"
+  },
+  {
+    "name": "Six",
+    "type_line": "Legendary Creature \u2014 Treefolk",
+    "oracle_text": "Reach\nWhenever Six attacks, mill three cards. You may put a land card from among them into your hand.\nDuring your turn, nonland permanent cards in your graveyard have retrace. (You may cast permanent cards from your graveyard by discarding a land card in addition to paying their other costs.)",
+    "keywords": [
+      "Reach",
+      "Mill"
+    ],
+    "power": "2",
+    "toughness": "4",
+    "cmc": 3.0,
+    "mana_cost": "{2}{G}"
+  },
+  {
+    "name": "Asceticism",
+    "type_line": "Enchantment",
+    "oracle_text": "Creatures you control have hexproof.\n{1}{G}: Regenerate target creature.",
+    "keywords": [],
+    "power": null,
+    "toughness": null
+  },
+  {
+    "name": "Embodiment of Insight",
+    "type_line": "Creature \u2014 Elemental",
+    "oracle_text": "Vigilance\nLand creatures you control have vigilance.\nLandfall \u2014 Whenever a land you control enters, you may have target land you control become a 3/3 Elemental creature with haste until end of turn. It's still a land.",
+    "keywords": [
+      "Vigilance"
+    ],
+    "power": "4",
+    "toughness": "4"
+  },
+  {
+    "name": "Fecund Greenshell",
+    "type_line": "Creature \u2014 Elemental Turtle",
+    "oracle_text": "Reach\nAs long as you control ten or more lands, creatures you control get +2/+2.\nWhenever this creature or another creature you control with toughness greater than its power enters, look at the top card of your library. If it's a land card, you may put it onto the battlefield tapped. Otherwise, put it into your hand.",
+    "keywords": [
+      "Reach"
+    ],
+    "power": "4",
+    "toughness": "6"
+  },
+  {
+    "name": "Lair of the Hydra",
+    "type_line": "Land",
+    "oracle_text": "If you control two or more other lands, this land enters tapped.\n{T}: Add {G}.\n{X}{G}: Until end of turn, this land becomes an X/X green Hydra creature. It's still a land. X can't be 0.",
+    "keywords": [],
+    "power": null,
+    "toughness": null
+  },
+  {
+    "name": "Spelunking",
+    "type_line": "Enchantment",
+    "oracle_text": "When this enchantment enters, draw a card, then you may put a land card from your hand onto the battlefield.\nLands you control enter untapped.",
+    "keywords": [],
+    "power": null,
+    "toughness": null
+  },
+  {
+    "name": "Titanoth Rex",
+    "type_line": "Creature \u2014 Dinosaur Beast",
+    "oracle_text": "Trample\nCycling {1}{G}\nWhen you cycle this card, put a trample counter on target creature you control.",
+    "keywords": [
+      "Trample",
+      "Cycling"
+    ],
+    "power": "11",
+    "toughness": "11"
+  },
+  {
+    "name": "Tooth and Nail",
+    "type_line": "Sorcery",
+    "oracle_text": "Choose one \u2014\n\u2022 Search your library for up to two creature cards, reveal them, put them into your hand, then shuffle.\n\u2022 Put up to two creature cards from your hand onto the battlefield.\nEntwine {2} (Choose both if you pay the entwine cost.)",
+    "keywords": [
+      "Entwine"
+    ],
+    "power": null,
+    "toughness": null
+  }
+]

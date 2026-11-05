@@ -5,6 +5,8 @@ import { counterRecipient, suppliesCounterEvent } from "../upgrades/counterSuppl
 import type { CardMetadata } from "../models/collection";
 import { stripReminderText } from "../utils/rulesText";
 import { hasCapability } from "./semantics";
+import { deathCopyRelationship, typeGrantRelationship } from "./typal";
+import { resourceRelationship } from "./resources";
 
 export interface Capabilities {
   text: string;
@@ -38,6 +40,7 @@ export function capabilities(card: CardMetadata): Capabilities {
   const lines = text.split("\n");
   const matches = (pattern: RegExp) => lines.some(line => !/\b(?:target|each|an?) opponent (?:returns?|puts?|may return)|\ban opponent controls\b/i.test(line) && pattern.test(line));
   const recursion = matches(/\breturn\b[^\n]*\b(?:from (?:your|a) graveyard|(?:to your hand|to the battlefield)[^\n]*(?:from|in) your graveyard)/i) ||
+    matches(/^Put target creature card from (?:your|a) graveyard onto the battlefield under your control\b/i) ||
     (/enchant creature card in a graveyard/i.test(text) && /return enchanted creature card to the battlefield under your control/i.test(text)) ||
     (/each player exiles all creature cards from their graveyard/i.test(text) && /puts all cards they exiled this way onto the battlefield/i.test(text));
   const transform = card.cardFaces?.length && /Whenever you cast an instant or sorcery spell[^\n]*counter[^\n]*transform/i.test(card.cardFaces[0].oracleText || "") && /When that mana is spent to cast an instant or sorcery spell, copy that spell/i.test(card.cardFaces[1].oracleText || "") ? text.match(/there are (\w+) or more [^\n]*?counters/) : undefined;
@@ -89,11 +92,12 @@ function recipientView(card:CardMetadata){
 }
 export function capabilityRelationship(source: CardMetadata, recipient: CardMetadata): string[] {
   const a = capabilities(source);
-  if (!(a.blink || a.friendlyBounce || a.permanentCopy || a.attach || a.animateVehicle || a.crewReduction || a.artifactTapDraw || a.artifactDeathPayoff || a.counterReplacement || a.graveyardLandPlay || a.transformCastThreshold)) return [];
+  const typal = [...deathCopyRelationship(source, recipient), ...typeGrantRelationship(source, recipient), ...(/\bFoods?\b|\blife\b|\blifelink\b/i.test(a.text) ? resourceRelationship(source, recipient) : [])];
+  if (!(a.blink || a.friendlyBounce || a.permanentCopy || a.attach || a.animateVehicle || a.crewReduction || a.artifactTapDraw || a.artifactDeathPayoff || a.counterReplacement || a.graveyardLandPlay || a.transformCastThreshold)) return typal;
   const b = capabilities(recipient);
   const view=recipientView(recipient);
   const {type,creature,artifact,effect,etb}=view;
-  const out: string[] = [];
+  const out: string[] = [...typal];
   if (a.blink && (creature || a.blinkArtifacts && artifact) && etb)
     out.push(`Exile and return reuses ${recipient.name}'s own entry effect: ${a.text}`);
   if (a.friendlyBounce && creature && etb)

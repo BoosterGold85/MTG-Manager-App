@@ -5,7 +5,7 @@ import { dnaFixture, plainCommander, card as fixtureCard } from "../dnaFixtures"
 import { candidateScorer, DeckDnaCache, deckDnaCache, deckDnaInput } from "../../src/dna/engine";
 import { analyze } from "../../src/intelligence/tagger";
 import { typalHits, creatureTypeSignals } from "../../src/intelligence/creatureTypes";
-import { extractCardFacts } from "../../src/synergy/facts";
+import { CARD_FACTS_VERSION, extractCardFacts } from "../../src/synergy/facts";
 import { capabilities } from "../../src/synergy/capabilities";
 import { rankingConstraints } from "../../src/synergy/rankingConstraints";
 import { cardFunction } from "../../src/upgrades/cardFunction";
@@ -16,7 +16,10 @@ it("retains every approved canonical fact and capability for the 72 frozen expec
  const baseline=JSON.parse(readFileSync(new URL("../../docs/recall/completed-results.json",import.meta.url),"utf8"));
  for(const deck of baseline.results)for(const row of deck.expected){
   const c=card(row.candidate);
-  expect(extractCardFacts(c)).toEqual(row.facts);
+  const facts = extractCardFacts(c);
+  expect(facts.version).toBe(CARD_FACTS_VERSION);
+  // Preserve the frozen semantic assertions while permitting the intentional cache-version bump.
+  expect({ ...facts, version: row.facts.version }).toEqual(row.facts);
   expect(capabilities(c)).toEqual(row.capabilities);
   // Tags must stay identical; only the ruleset stamp moves when any rule changes (0.3.8 in v0.6.23).
   const unstamped=(list:{rulesetVersion?:string}[])=>list.map(item=>({...item,rulesetVersion:undefined}));
@@ -59,7 +62,7 @@ it("ranking caches distinguish semantic/scoring versions, saved contents and Com
  // Commander metadata participates in the content revision through its canonical input.
  f.state.metadata[f.deck.commanders[0].scryfallId]={...f.state.metadata[f.deck.commanders[0].scryfallId],colorIdentity:["R"]};
  cache.get(f.state,f.deck);expect(compute).toHaveBeenCalledTimes(5);
- expect(RANKING_VERSION).toBe("0.6.16");
+ expect(RANKING_VERSION).toBe("0.6.16-resources.1");
 });
 it("causal Commander and package evidence remains bounded and duplicate links do not sum indefinitely",()=>{
  const f=dnaFixture(card("Lathliss, Dragon Queen"),[card("Scourge of Valkas"),card("Sol Ring")]);
