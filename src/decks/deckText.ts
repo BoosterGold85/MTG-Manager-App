@@ -9,6 +9,7 @@ export interface DeckTextLine {
   name: string;
   setCode?: string;
   collectorNumber?: string;
+  finish?: "nonfoil" | "foil" | "etched";
   section: DeckSection;
   // True when the section heading or an inline marker explicitly names this as a commander.
   explicitCommander: boolean;
@@ -120,9 +121,13 @@ export function parseDeckText(text: string, includeSideboard = false): ParsedDec
     }
     let rest = quantity[2];
     let marker = false;
+    let finish: DeckTextLine["finish"];
     // Inline markers from common exporters: *CMDR*, *F*, [Commander{top}], ^Tag^, #!Commander.
     rest = rest.replace(/\s+\*([A-Za-z]+)\*/g, (_, m: string) => {
       if (/^cmdr$/i.test(m)) marker = true;
+      if (/^f$/i.test(m)) finish = "foil";
+      if (/^e$/i.test(m)) finish = "etched";
+      if (/^(?:nf|nonfoil)$/i.test(m)) finish = "nonfoil";
       return "";
     });
     rest = rest.replace(/\s+\[([^\]]*)\]/g, (_, m: string) => {
@@ -145,6 +150,7 @@ export function parseDeckText(text: string, includeSideboard = false): ParsedDec
       line,
       text,
       quantity: count,
+      ...(finish ? { finish } : {}),
       name,
       ...(printing
         ? {

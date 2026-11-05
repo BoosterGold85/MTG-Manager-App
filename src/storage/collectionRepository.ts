@@ -73,6 +73,7 @@ export function validateState(value: unknown): CollectionState {
       if (!deck.id || deckIds.has(deck.id) || !deck.name?.trim() || !Array.isArray(deck.commanders) || ((deck.format===undefined || deck.format==='commander') && !deck.commanders.length) || (deck.format!==undefined && !['commander','standard','legacy'].includes(deck.format)) || (deck.format!==undefined && deck.format!=='commander' && deck.commanders.length>0) || !Array.isArray(deck.assignments) || !Number.isFinite(Date.parse(deck.createdAt)) || !Number.isFinite(Date.parse(deck.modifiedAt))) throw new Error('Saved decks are inconsistent. They have not been overwritten.');
       deckIds.add(deck.id);
       const assignmentIds = new Set<string>();
+      if (deck.intelligenceIntent !== undefined && (typeof deck.intelligenceIntent?.plan !== "string" || deck.intelligenceIntent.plan.length > 500 || !["casual", "competitive"].includes(deck.intelligenceIntent.target))) throw new Error('Saved deck intent is inconsistent. It has not been overwritten.');
       const entries = deck.entries;
       if(deck.format && deck.format!=='commander' && !Array.isArray(entries))throw new Error('This deck format requires a saved decklist.');
       const entryIds = new Set<string>();

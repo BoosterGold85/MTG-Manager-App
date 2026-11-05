@@ -11,6 +11,8 @@ import { cardIdentity } from "../intelligence/tagger";
 import { normalizedName } from "../import/csv";
 import { deckPlayable, entryAssigned, isBasicLand, legalInDeck, newDeck, reconcileAllocations, sameCard } from "../decks/decks";
 export type DeckChange =
+  | {type:"deck-intent";deckId:string;plan:string;target:"casual"|"competitive"}
+  | {type:"deck-metadata";deckId:string;metadata:Record<string,CardMetadata>;resolved:Record<string,string>}
   | {type:"standard-swap";deckId:string;incomingItemId:string;outgoingEntryId:string;quantity:number;verifiedCard?:CardMetadata}
   | {type:"legacy-swap";deckId:string;incomingItemId:string;outgoingEntryId:string;quantity:number;verifiedCard?:CardMetadata}
   | {type:"standard-legality";deckId:string;metadata:Record<string,CardMetadata>}
@@ -170,7 +172,23 @@ export class LocalDeckRepository implements DeckRepository {
       const deck = decks.find((d) => d.id === action.deckId);
       if (!deck)
         throw new Error("This deck no longer exists. Reload and retry.");
-      if(action.type==="standard-swap" || action.type==="legacy-swap"){
+      if(action.type==="deck-intent"){
+        if(typeof action.plan!=="string" || action.plan.length>500 || !["casual","competitive"].includes(action.target))throw new Error("Invalid deck intent.");
+        deck.intelligenceIntent={plan:action.plan.trim(),target:action.target};deck.modifiedAt=now;
+      }else if(action.type==="deck-metadata"){
+        metadata={...base.metadata};
+        for(const [entryId,id] of Object.entries(action.resolved)){
+          const entry=deck.entries?.find(e=>e.id===entryId),card=action.metadata[id];
+          if(!entry || !card || card.scryfallId!==id || ![card.name,card.name.split(" // ")[0],...(card.aliases || []),...(card.cardFaces || []).map(f=>f.name)].some(n=>normalizedName(n)===normalizedName(entry.name)))throw new Error("Deck changed before metadata could be saved. Retry the selected entries.");
+          const old=metadata[id];
+          const available=Object.fromEntries(Object.entries(card).filter(([,value])=>value!==undefined));
+          metadata[id]={...card,...old,...available,...(old?.oracleText!==undefined && (card.oracleText===undefined || card.cardFaces?.some(f=>f.oracleText===undefined)) ? {oracleText:old.oracleText,cardFaces:old.cardFaces}: {})};
+          const requested=entry.requestedPrinting;
+          const exact=id===entry.scryfallId || !!requested?.collectorNumber && card.setCode.toLowerCase()===requested.setCode.toLowerCase() && card.collectorNumber?.toLowerCase()===requested.collectorNumber.toLowerCase();
+          // Reference data only; desired printing, finish and physical assignments stay intact.
+          if(exact)entry.scryfallId=id;
+        }
+      }else if(action.type==="standard-swap" || action.type==="legacy-swap"){
         const format=action.type==="legacy-swap"?"legacy":"standard",label=format==="legacy"?"Legacy":"Standard";
         if(formatOf(deck)!==format)throw new Error(`This action is only for ${label} decks.`);
         const item=base.items.find(i=>i.id===action.incomingItemId);

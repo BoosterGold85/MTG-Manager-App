@@ -6,6 +6,7 @@ import type { Color, Rarity } from "../models/card";
 import type { CardMetadata, ImportRow } from "../models/collection";
 import { identifierKey, normalizedName } from "./csv";
 interface ScryfallCard {
+  finishes?: ("nonfoil" | "foil" | "etched")[];
   legalities?: Record<string,string>;
   object: "card";
   lang?: string;
@@ -95,6 +96,7 @@ export function normalizeCard(raw: ScryfallCard): CardMetadata {
   return {
     scryfallId: c.id,
     oracleId: c.oracle_id,
+    supportedFinishes: c.finishes,
     keywords: c.keywords,
     producedMana: c.produced_mana,
     ...(c.legalities ? {legalities:c.legalities,legalityCheckedAt:new Date().toISOString()} : {}),
@@ -118,7 +120,7 @@ export function normalizeCard(raw: ScryfallCard): CardMetadata {
         .join(" // "),
     oracleText:
       c.oracle_text ??
-      c.card_faces
+      (c.card_faces?.every(f => typeof f.oracle_text === "string") ? c.card_faces : undefined)
         ?.map((f) => `${f.name}\n${f.oracle_text || ""}`)
         .join("\n\n"),
     imageUrl: image?.large || image?.normal || "",
@@ -465,6 +467,42 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
     return result;
   }
   private deckResults: DeckLookupResult = new Map();
+  /** Explicit targeted retry bypasses negative/session results and retains independent successes. */
+  async refreshDeckMetadata(identifiers: (DeckIdentifier & { scryfallId?: string })[], signal: AbortSignal): Promise<{ metadata: Record<string, CardMetadata>; resolved: Record<string, string>; issues: Record<string, string> }> {
+    const metadata: Record<string, CardMetadata> = {}, resolved: Record<string, string> = {}, issues: Record<string, string> = {};
+    const lookup = async (batch: typeof identifiers, namesOnly = false) => {
+      const response = await this.request("/cards/collection", signal, { identifiers: batch.map(i => namesOnly ? { name: i.name } : i.set && i.collector_number ? { set: i.set, collector_number: i.collector_number } : i.scryfallId ? { id: i.scryfallId } : { name: i.name }) }) as ListResponse;
+      if (!Array.isArray(response.data)) throw new Error("Incomplete metadata response. Retry these entries.");
+      const cards = normalizeAll(response.data).cards;
+      for (const i of batch) {
+        const matches = cards.filter(c => {
+          const sameName = [c.name, c.name.split(" // ")[0], ...(c.aliases || [])].some(n => normalizedName(n) === normalizedName(i.name || ""));
+          return sameName && (namesOnly ? true : i.set && i.collector_number ? samePrint(c, i.set, i.collector_number) : i.scryfallId ? c.scryfallId === i.scryfallId : true);
+        });
+        if (matches.length === 1) {
+          const card = matches[0]; metadata[card.scryfallId] = card; resolved[i.key] = card.scryfallId;
+          if (card.oracleText === undefined || card.cardFaces?.some(f => f.oracleText === undefined)) issues[i.key] = "Printing matched, but Oracle text is incomplete. Earlier available data was retained; this lookup did not verify complete rules data.";
+        }
+        else issues[i.key] = "Printing lookup was unresolved or incomplete. Saved metadata is retained; no successful match was assumed.";
+      }
+      await this.checkpoint(cards, {});
+    };
+    for (let start = 0; start < identifiers.length; start += 75) {
+      const batch = identifiers.slice(start, start + 75);
+      try {
+        await lookup(batch);
+        const missing = batch.filter(i => !resolved[i.key] && i.name);
+        if (missing.length) {
+          await lookup(missing, true);
+          for (const i of missing) if (resolved[i.key]) issues[i.key] = "Canonical data refreshed; the requested printing remains unresolved. Review printing and finish separately.";
+        }
+      } catch (error) {
+        signal.throwIfAborted();
+        for (const i of batch) if (!resolved[i.key]) issues[i.key] = error instanceof Error ? error.message : "Metadata refresh failed. Retry this entry.";
+      }
+    }
+    return { metadata, resolved, issues };
+  }
   // Collection-wide checks tolerate individual unresolved printings, while strict
   // refreshLegalities remains the live verification gate for a confirmed swap.
   async checkLegalityBatch(ids:string[],signal:AbortSignal,format?:"standard"|"legacy"):Promise<LegalityBatch>{

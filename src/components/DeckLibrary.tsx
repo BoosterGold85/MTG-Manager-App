@@ -1,5 +1,6 @@
 import { ConstructedUpgrades } from "./ConstructedUpgrades";
 import { FormatOverview } from "./FormatOverview";
+import { DeckIntelligence } from "./DeckIntelligence";
 import { formatOf, formatLabel } from "../decks/formats";
 import type { DeckFormat } from "../models/deck";
 import { deckDnaCache, cardSynergy } from '../dna/engine';
@@ -312,6 +313,7 @@ export function DeckLibrary({
               }}
             />
           )}
+          {tab === "overview" && <DeckIntelligence key={`intelligence:${deck.id}`} state={state} deck={deck} busy={busy} change={change} />}
           {tab === "cards" && (
             <DeckCards
               state={state}

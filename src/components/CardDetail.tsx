@@ -41,8 +41,10 @@ export function CardDetail({
   navigation,
   synergy,
   extra,
+  referenceOnly = false,
 }: {
   card: SampleCollectionCard;
+  referenceOnly?: boolean;
   collection?: CollectionState|null;
   onOpenDeck?: (id:string)=>void;
   onClose: () => void;
@@ -133,7 +135,9 @@ export function CardDetail({
               <dt>Rarity</dt>
               <dd className={`rarity ${card.rarity}`}>{card.rarity}</dd>
             </div>
-            {unassigned ? (
+            {referenceOnly ? (
+              <div><dt>Card rules reference</dt><dd>Owned and allocated copies are shown separately in the coverage report.</dd></div>
+            ) : unassigned ? (
               <div>
                 <dt>Ownership</dt>
                 <dd>{deck.basicLand ? `Basic land — allocation not tracked${deck.ownedElsewhere ? ` · ${deck.ownedElsewhere} owned` : ''}` : deck.ownedElsewhere ? `Owned elsewhere · ${deck.ownedElsewhere} ${deck.ownedElsewhere === 1 ? 'copy' : 'copies'} (${deck.availableElsewhere} available)` : 'Not currently owned'}</dd>

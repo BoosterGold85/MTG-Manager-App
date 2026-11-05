@@ -21,8 +21,9 @@ export function formatWarnings(state:CollectionState,deck:Deck):string[]{
  if(main<60)warnings.push(`Main deck has ${main} cards; ${formatLabel(deck)} requires at least 60.`);
  if(side>15)warnings.push(`Sideboard has ${side} cards; the maximum is 15.`);
  const counts=new Map<string,{card:CardMetadata;quantity:number}>();
+ let missing=0;
  for(const entry of deck.entries || []){
-  const card=state.metadata[entry.scryfallId];if(!card)continue;
+  const card=state.metadata[entry.scryfallId];if(!card){missing++;continue;}
   // Split/DFC printings share the canonical name/Oracle identity, across both boards and all printings.
   const key=normalizedName(card.name),old=counts.get(key);
   counts.set(key,{card,quantity:(old?.quantity || 0)+entry.quantity});
@@ -36,7 +37,8 @@ export function formatWarnings(state:CollectionState,deck:Deck):string[]{
   if(!legality)unknown++;
   else if(legality!=="legal")warnings.push(`${card.name}: ${legality.replaceAll("_"," ")} in ${formatLabel(deck)} according to saved Scryfall data.`);
  }
- if(stale)warnings.push(`${stale} distinct cards have legality data older than seven days or an unknown check date. Run Check format legality for current rotation/ban data.`);
+ if(stale)warnings.push(`${stale} distinct cards have legality data older than seven days or an unknown check date. Run Check format legality for current ${format==="legacy"?"ban/eligibility":"rotation/ban"} data.`);
+ if(missing)warnings.push(`Legality is unverified for ${missing} decklist entries with unresolved metadata. Missing data is not a legal-card result.`);
  if(unknown)warnings.push(`Legality is unverified for ${unknown} distinct cards: saved metadata has no ${formatLabel(deck)} legality. Import fresh canonical data before relying on this check.`);
  return warnings;
 }

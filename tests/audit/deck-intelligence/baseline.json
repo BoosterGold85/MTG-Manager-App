@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "26751d0e04b3700b2c1421a4166296e91fc7b3e0",
+  "appVersion": "0.6.24",
+  "capturedAt": "2026-11-05",
+  "before": {
+    "constructedOverview": ["format legality", "deck size and copy-limit warnings"],
+    "constructedAnalysisCoverageReport": false,
+    "constructedStrategyExplanation": false,
+    "constructedSynergyChains": false,
+    "manualDeckIntent": false,
+    "constructedUpgradeScores": ["existing Plan Fit", "existing Standard/Legacy Brew Score"],
+    "baselineUnitTests": { "passed": 931, "failed": 0 }
+  },
+  "unchangedContracts": ["tests/commander-protected.sha256.json", "existing frozen blind/holdout expectations", "existing score weights", "assignments require explicit confirmation"],
+  "requestedRegressionFixture": {
+    "name": "Carnage Mayhem Legacy",
+    "expectedMainDeckQuantity": 60,
+    "status": "awaiting exact user export",
+    "reason": "No exact list or saved browser state is present in the repository or attached page snapshot. Quantities and printing variants must not be invented."
+  },
+  "availableMechanismFixture": {
+    "path": "tests/data/deck-intelligence-oracle.json",
+    "source": "Scryfall exact-name API; captured 2026-11-05",
+    "cards": ["Vision of Love", "Diresight", "Carnage, Crimson Chaos"],
+    "scope": "Oracle mechanism regression only, not the missing 60-card user deck"
+  }
+}

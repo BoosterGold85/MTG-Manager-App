@@ -14,6 +14,7 @@ import type {LegalityRun} from "../import/legality";
 import {CardDetail} from "./CardDetail";
 import {CardImage} from "./CardImage";
 import {Dialog} from "./Dialog";
+import {CandidateIntelligence} from "./DeckIntelligence";
 type Props={state:CollectionState;deck:Deck;busy:boolean;change:(action:DeckChange,success:string)=>Promise<boolean>};
 export function ConstructedUpgrades({state,deck,busy,change}:Props){
  const format=formatOf(deck)==="legacy"?"legacy":"standard",label=formatLabel(deck);
@@ -79,6 +80,7 @@ export function ConstructedUpgrades({state,deck,busy,change}:Props){
  {row.notes.map((note,i)=><p className="meta-text" key={i}>{note}</p>)}
  {c?.legacyBrew&&<details><summary>Why this brew?</summary><ul>{c.legacyBrew.reasons.map((r,i)=><li key={i}>{r}</li>)}</ul></details>}
  {c&&<details><summary>Why it fits / tradeoffs</summary><ul>{[...c.reasons,...c.risks].map((r,i)=><li key={i}>{r}</li>)}</ul></details>}
+ {c&&<CandidateIntelligence state={state} deck={deck} card={card} />}
  <button className="text-button" onClick={()=>setDetailId(item.id)}>Read {card.name}</button>
  {c&&<button className="management-button" disabled={busy||checking||(analysis.result?.mainCount || 0)<60} onClick={()=>setSelected(item.id)}>Compare {card.name}</button>}</div></li>;})}</ul>
  {candidates.length>limit&&<button className="management-button" onClick={()=>setLimit(n=>n+30)}>Show more</button>}</>
@@ -110,6 +112,7 @@ function ConstructedComparison({state,deck,busy,change,candidate,onClose}:Props&
  <p>{quantity} {result.outgoing} out → {quantity} {result.incoming} in. Main-deck count stays the same. Sideboard stays unchanged.</p>
  {result.releases.length>0?<p>Copies released from this deck: {result.releases.map(r=>`${r.printing} ×${r.quantity}`).join("; ")}.</p>:<p>The removed entries have no assigned physical copies to release.</p>}
  {result.lost.length>0&&<p>Coverage lost: {result.lost.join(", ")}. Review this tradeoff.</p>}
+ <CandidateIntelligence state={state} deck={deck} card={candidate.card} cutId={cutId} quantity={quantity} />
  {!result.canAssign&&<p>Not enough available copies for this change. Copies assigned elsewhere will not be moved.</p>}
  <p className="meta-text">{result.caution}</p></>}
  <details><summary>Read both cards</summary><h3>{candidate.card.name}</h3><p className="prose">{candidate.card.oracleText || candidate.card.cardFaces?.map(f=>f.oracleText).join("\n")}</p><h3>{state.metadata[deck.entries?.find(e=>e.id===cutId)?.scryfallId || ""]?.name}</h3><p className="prose">{state.metadata[deck.entries?.find(e=>e.id===cutId)?.scryfallId || ""]?.oracleText}</p></details>
