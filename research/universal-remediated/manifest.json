@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "0c36712",
+  "active": false,
+  "productionScoringIntegration": false,
+  "browserWorkerCompatible": false,
+  "hashes": {
+    "research/universal-remediated/model.ts": "a08d2a1f4abf430f943d0e917fb065d4f6d429bb5d387b119ef3d47bafd952df",
+    "research/universal-remediated/compiler.ts": "97816b37283035915121c1489929867d737f0568cf11b559c907ca2e625bb547",
+    "research/universal-remediated/engine.ts": "8ca20152561e147dfaa7d4477811ced2cd0f7d481f65d82ce7ba8bf6c4bc1427",
+    "research/universal-remediated/fixtures.ts": "d35dec4fbbf387dde8b9957cc96b0056f7f3dc9c12efe0dc54481aeea874ee42"
+  },
+  "sourceStudyCommit": "b09c563",
+  "limitations": "Dormant Node research module. Mechanical and independent-validation gates remain unmet."
+}
