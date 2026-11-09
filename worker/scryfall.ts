@@ -40,7 +40,7 @@ export async function handleScryfall(request:Request,fetcher:typeof fetch=fetch,
   const response=await fetcher(`https://api.scryfall.com${path}${url.search}`,{method:request.method,body,signal:controller.signal,redirect:"error",headers:{Accept:"application/json","User-Agent":`MTG-Manager/${version} (https://github.com/BoosterGold85/MTG-Manager-App)`,...(collection?{"Content-Type":"application/json"}:{}),"Cache-Control":"no-store"}});
   const text=await response.text();
   if(text.length>MAX_RESPONSE)return error(502,"Scryfall returned an unexpectedly large response. Retry remaining cards.");
-  try{JSON.parse(text);}catch{return error(502,"Scryfall returned an unreadable response. Retry remaining cards.");}
+  try{JSON.parse(text);}catch{return error(502,`Scryfall returned an unreadable response (upstream HTTP ${response.status}, content type ${response.headers.get("Content-Type")?.split(";")[0] || "unknown"}). Retry remaining cards.`);}
   const forwarded=new Headers(headers),retryAfter=response.headers.get("Retry-After");if(retryAfter)forwarded.set("Retry-After",retryAfter);
   return new Response(text,{status:response.status,headers:forwarded});
  }catch{

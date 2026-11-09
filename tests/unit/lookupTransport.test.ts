@@ -75,3 +75,8 @@ it("4,497-row import and legality checks finish over the same-site relay with a 
  const checked=await runLegalityCheck(cards.map(c=>c.scryfallId),signal,(b,s)=>client.checkLegalityBatch(b,s,"legacy"),()=>{});expect(checked.checked).toBe(4497);expect(checked.issues).toEqual({});expect(checked.unresolved).toEqual([]);
  expect(browserCalls).toHaveLength(121);expect(browserCalls.every(p=>p.startsWith("/api/scryfall/"))).toBe(true);expect(upstreamCalls).toBe(121);
 });
+it("preserves upstream failure details through the browser client instead of hiding every cause as 502",async()=>{
+ const fetcher=vi.fn<typeof fetch>(async()=>handleScryfall(req(),async()=>new Response('<html>Unavailable</html>',{status:503,headers:{'Content-Type':'text/html'}})));
+ const client=new ScryfallClient(fetcher,0,{attempts:1,sleep:async()=>{}});
+ await expect(client.refreshLegalities(['known'],new AbortController().signal)).rejects.toThrow('upstream HTTP 503, content type text/html');
+});
