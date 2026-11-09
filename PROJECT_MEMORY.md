@@ -11,7 +11,7 @@ Base production: v0.6.25, 65be471. The exact dormant module b2bbdeb has now been
 
 User explicitly authorizes v0.6.26 experimental integration, main publication and deployment once checks pass. Do not ask again for routine release authorization. Preserve the user's existing collection/decks on the same origin. Do not stop at architectural planning because whole-deck reasoning remains incomplete: limited targeted testing with honest coverage/abstention is approved.
 
-## Implemented, not yet released
+## Implemented and published to main
 
 - src/experimental/universal/: browser fork of frozen phase4-remediation.1 engine, synchronous SHA-256 identity parity, repaired additional-sacrifice-cost citations and permanent-entry CR citations, explicit depth-limit truncation.
 - Separate worker, 8-second termination timeout, cancellation, stale-result guards, bounded inputs (500 cards / 1 MiB) and search (3 selected cards, depth 3, 200 states, 12 branches/proofs, 48 automatic steps).
@@ -27,7 +27,7 @@ User explicitly authorizes v0.6.26 experimental integration, main publication an
 - Final hardened analyzer + lookup rerun: **35/35 passed**, all five sizes, 1.3m. Includes all corrected cases, real workers, same-origin old/new persisted-data tests, cancellation and timeout. All 580 distinct cases are covered across runs, not one final 580/580 execution.
 - Final lint, TypeScript (`tsc -b`), production build and Worker dry-run packaging passed. Production audit zero; seven inherited moderate development lint-toolchain findings, no high/critical and no dependency changes.
 - tests/prototype/productionBoundary.ts explicitly normalizes only the exact new DeckLibrary mount/import, package version strings and stale lookup-test version assertion before frozen-byte checks. No old scoring or corpus expectation was refreshed.
-- All implementation is ready for authorized main publication. Next: commit/push after remote refresh, verify publication/deployment where permitted, and give the user the access path/remaining limits. Do not expand into production synergy scoring.
+- Feature commit **a7bf02cc20050e685a1588281adc6d08c8876749** was fast-forward pushed to main; public GitHub commit and exact-commit version metadata identify .26. Main now contains the feature. Live-origin deployment verification remains blocked below; do not describe it as verified. Do not expand into production synergy scoring.
 
 ## Deployment access limitation
 
@@ -41,7 +41,7 @@ Runtime policy currently blocks this host (fresh curl CONNECT 403); no Cloudflar
 - Other old recall/claude branches remain untouched.
 - /workspace/MTG-Manager-App contains unrelated dirty basic-land/deck/storage edits; never reset or overwrite that checkout.
 - The /workspace/mtg-accuracy-fix worktree has prior uncommitted semantic fixtures/docs; left intact.
-- node_modules here is a temporary symlink, not a tracked change. Do not stage it.
+- node_modules was a temporary dependency symlink during validation; it is not tracked and can be recreated or replaced with npm ci when needed.
 
 ## Known limits
 

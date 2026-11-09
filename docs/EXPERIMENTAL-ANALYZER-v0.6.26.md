@@ -124,3 +124,10 @@ and has no Cloudflare credentials. The saved network draft includes the hostname
 but has not been applied to this runtime. Git-linked deployment can be triggered
 by main publication; a successful push alone is not proof of a completed live
 release. Final publication/deployment observations will be recorded explicitly.
+
+Publication: feature commit `a7bf02cc20050e685a1588281adc6d08c8876749` was
+fast-forward pushed to main after validation. The remote ref, public GitHub commit
+and exact-commit `/public/version.json` confirm v0.6.26 publication. The current
+environment still cannot inspect the live app origin; Cloudflare build completion
+and physical-device behavior are not asserted as verified. The Git-linked main
+build must serve .26 at the existing hostname before hands-on access is confirmed.
