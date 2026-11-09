@@ -1,0 +1,70 @@
+{
+  "parentCommit": "fcb2be837f40b0cf4dd9b5d3012d89b5e3b3067e",
+  "protocolVersion": "0.6.26-experimental.3",
+  "independentlyAdjudicated": false,
+  "deploymentApproved": false,
+  "releaseMode": "brew-lab",
+  "source": [
+    {
+      "path": "src/components/BrewLab.tsx",
+      "sha256": "48b22fc35ca5ff7e289091fc23fb4bb4ecb4e39af7f866a8897097134f21d138"
+    },
+    {
+      "path": "src/components/DeckLibrary.tsx",
+      "sha256": "18b6bd97dfd5d1a23239e99acd777a7eba5e66fc9fc94064d7838943a4075f69"
+    },
+    {
+      "path": "src/components/ExperimentalSynergyAnalyzer.tsx",
+      "sha256": "75bc4ef886868f8370b34ee823bf4ad710521d78381158e3e447694156be170a"
+    },
+    {
+      "path": "src/experimental/universal/activation.ts",
+      "sha256": "f3d1b6ca9ea1df73302e98866207ddec5fb3138ae4d04492707f48e343d0f19b"
+    },
+    {
+      "path": "src/experimental/universal/analyze.ts",
+      "sha256": "d78d5003c25fd79be37e29741cb489f45d7963dc23c416255d1c5927bf2b4076"
+    },
+    {
+      "path": "src/experimental/universal/analyzer.worker.ts",
+      "sha256": "182f9e23e3d954024749484dda8c552cecf1afb6c0d9d53c7b469650e89a7b3d"
+    },
+    {
+      "path": "src/experimental/universal/candidates.ts",
+      "sha256": "812b4d60770bdcf4a97157cbab5a71404ad34f0568e07b354b44614b8a025def"
+    },
+    {
+      "path": "src/experimental/universal/client.ts",
+      "sha256": "3136ccf398ea90986db1784c6e221feec0d51db5fc26a11b9b1cd46f538d5794"
+    },
+    {
+      "path": "src/experimental/universal/compiler.ts",
+      "sha256": "2471b3341589894ef179341de752612d9394a853e55acbb1942d5bd87886e2eb"
+    },
+    {
+      "path": "src/experimental/universal/deckPreview.ts",
+      "sha256": "b30fc162d1d3c54366ba84e820c7f558b8dc262f878000958b3ce41ff540b5cd"
+    },
+    {
+      "path": "src/experimental/universal/engine.ts",
+      "sha256": "a48e7de172e1f4eefb17a82483026b31e83ffbf40a4589dc0ee62a930b27d5d6"
+    },
+    {
+      "path": "src/experimental/universal/model.ts",
+      "sha256": "cda592a19a8d31326a1c72dbd0b74a480d17f8ce0ad38ec0f0e208464bed11e1"
+    },
+    {
+      "path": "src/experimental/universal/protocol.ts",
+      "sha256": "20c98ff52c8521bd9f304fd5efda43d05baf7a5ed08839bef80893fc55aed988"
+    },
+    {
+      "path": "src/experimental/universal/sha256.ts",
+      "sha256": "2d59a0bac53ab1dac15a65901d73777291c7d3e6a2c87760ae86fbb47eb1442e"
+    },
+    {
+      "path": "src/experimental/universal/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    }
+  ],
+  "artifactSha256": "56abd0b780ec88b4da55803e5bfe9e92d77a2be2645ad220d3d43d2017da2143"
+}

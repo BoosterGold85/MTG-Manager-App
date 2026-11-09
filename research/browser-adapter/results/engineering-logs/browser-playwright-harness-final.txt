@@ -1,0 +1,68 @@
+[WebServer] (node:3216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:3236) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:3254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [mobile-390] › tests/browser/analyzerRealDecks.spec.ts:8:1 › thirty complete public decks use bounded real workers without writes (18.8s)
+  ✓   2 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Commander: same-origin update preserves saved records and analyzer is opt-in/read-only (13.3s)
+  ✓   3 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Legacy: same-origin update preserves saved records and analyzer is opt-in/read-only (7.5s)
+  ✓   4 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:47:1 › targeted worker analysis presents actual named participants and proof without saving scenario state (6.9s)
+  ✓   5 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage (14.5s)
+  -   6 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:75:1 › production worker itself refuses execution before activation gates pass
+(node:4003) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [desktop] › tests/browser/analyzerRealDecks.spec.ts:8:1 › thirty complete public decks use bounded real workers without writes (11.7s)
+  ✓   8 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Commander: same-origin update preserves saved records and analyzer is opt-in/read-only (8.0s)
+  ✓   9 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Legacy: same-origin update preserves saved records and analyzer is opt-in/read-only (5.1s)
+  ✓  10 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:47:1 › targeted worker analysis presents actual named participants and proof without saving scenario state (4.7s)
+  ✘  11 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage (17.2s)
+(node:4360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  12 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:75:1 › production worker itself refuses execution before activation gates pass
+
+
+  1) [desktop] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Experimental Synergy Analyzer', exact: true }).getByRole('alert')
+    Expected substring: "timed out"
+    Timeout: 12000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Experimental Synergy Analyzer', exact: true }).getByRole('alert') with timeout 12000ms
+      - waiting for getByRole('region', { name: 'Experimental Synergy Analyzer', exact: true }).getByRole('alert')
+
+
+      71 |  await panel.getByRole('button',{name:'Open experimental analyzer'}).click();await panel.getByRole('button',{name:'Scan supported mechanics'}).click();await panel.getByRole('button',{name:'Cancel analysis'}).click();
+      72 |  await expect(panel.getByRole('alert')).toContainText('cancelled');expect(await readState(page)).toEqual(before);
+    > 73 |  await panel.getByRole('button',{name:'Scan supported mechanics'}).click();await expect(panel.getByRole('alert')).toContainText('timed out',{timeout:12000});expect(await readState(page)).toEqual(before);
+         |                                                                                                                   ^
+      74 | });
+      75 | test('production worker itself refuses execution before activation gates pass',async({page})=>{
+      76 |  test.skip(!process.env.TEST_PRODUCTION,'Production gate check.');
+        at /workspace/mtg-synergy-browser/tests/browser/experimentalAnalyzer.spec.ts:73:115
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/experimentalAnalyzer-a-stu-20cc8-ut-without-altering-storage-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/experimentalAnalyzer-a-stu-20cc8-ut-without-altering-storage-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/experimentalAnalyzer-a-stu-20cc8-ut-without-altering-storage-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/experimentalAnalyzer-a-stu-20cc8-ut-without-altering-storage-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [desktop] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage
+  2 skipped
+  9 passed (2.0m)

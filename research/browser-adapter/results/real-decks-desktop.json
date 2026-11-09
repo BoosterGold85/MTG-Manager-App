@@ -1,0 +1,3310 @@
+{
+  "rows": [
+    {
+      "id": "public-0",
+      "name": "Anikthea, Hand of Erebos",
+      "format": "commander",
+      "milliseconds": 211.70000000018626,
+      "coverage": {
+        "distinct": 83,
+        "copies": 100,
+        "nonlandDistinct": 63,
+        "nonlandCopies": 63,
+        "parsedNoncombatDistinct": 3,
+        "parsedNoncombatCopies": 3,
+        "unsupportedDistinct": 77,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-1",
+      "name": "Krenko, Mob Boss",
+      "format": "commander",
+      "milliseconds": 146.40000000037253,
+      "coverage": {
+        "distinct": 63,
+        "copies": 100,
+        "nonlandDistinct": 60,
+        "nonlandCopies": 60,
+        "parsedNoncombatDistinct": 6,
+        "parsedNoncombatCopies": 6,
+        "unsupportedDistinct": 56,
+        "deferredDistinct": 3,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-2",
+      "name": "Teysa Karlov",
+      "format": "commander",
+      "milliseconds": 247.59999999962747,
+      "coverage": {
+        "distinct": 91,
+        "copies": 100,
+        "nonlandDistinct": 63,
+        "nonlandCopies": 63,
+        "parsedNoncombatDistinct": 9,
+        "parsedNoncombatCopies": 9,
+        "unsupportedDistinct": 78,
+        "deferredDistinct": 3,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 6,
+      "states": 52,
+      "paths": 12,
+      "truncated": true,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "name": "Carrion Feeder",
+              "zone": "battlefield"
+            },
+            {
+              "id": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "name": "Ornithopter of Paradise",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "die",
+              "subject": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Died: battlefield to graveyard, with last-known object identity.",
+              "snapshot": {
+                "instance": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+                "incarnation": 0,
+                "card": {
+                  "key": "4385b7749e1652b616f72fe9993291fca97cfbffaa8c10ff2e8c7e2628c2beba",
+                  "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                  "name": "Ornithopter of Paradise",
+                  "types": [
+                    "Artifact",
+                    "Creature",
+                    "Thopter"
+                  ],
+                  "colors": [],
+                  "manaValue": 2,
+                  "manaCost": "{2}",
+                  "power": 0,
+                  "toughness": 2,
+                  "keywords": [
+                    "Flying"
+                  ],
+                  "legendary": false,
+                  "abilities": [
+                    {
+                      "id": "4385b7749e1652b616f72fe9993291fca97cfbffaa8c10ff2e8c7e2628c2beba:1",
+                      "effects": [
+                        {
+                          "kind": "mana",
+                          "symbols": [],
+                          "choose": true
+                        }
+                      ],
+                      "kind": "activated",
+                      "cost": {
+                        "mana": "",
+                        "tap": true,
+                        "evidence": {
+                          "id": "3a940dfa-a026-4969-8981-ef90cdfbe9ef:line:1",
+                          "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                          "line": 1,
+                          "text": "{T}: Add one mana of any color.",
+                          "rule": "subset:phase4-browser.2:cost",
+                          "kind": "oracle"
+                        }
+                      },
+                      "evidence": {
+                        "id": "3a940dfa-a026-4969-8981-ef90cdfbe9ef:line:1",
+                        "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                        "line": 1,
+                        "text": "{T}: Add one mana of any color.",
+                        "rule": "subset:phase4-browser.2:activated"
+                      }
+                    }
+                  ],
+                  "unsupported": [],
+                  "deferred": []
+                },
+                "zone": "battlefield",
+                "controller": "you",
+                "owner": "you",
+                "counters": {},
+                "tapped": false,
+                "ready": true,
+                "token": false,
+                "restrictions": []
+              }
+            },
+            {
+              "id": "event:1",
+              "kind": "move",
+              "subject": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "incarnation": 1,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Sacrificed to its owner’s graveyard; not discarded."
+            },
+            {
+              "id": "event:2",
+              "kind": "activate",
+              "subject": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Activated the specified ability after checking and paying actual costs."
+            },
+            {
+              "id": "event:3",
+              "kind": "counter",
+              "subject": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:2"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "1 +1/+1 counter(s) on 0a19da90-880e-4eca-8cf7-6d7baf090d53@0; one placement event.",
+              "counterType": "+1/+1"
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "sacrifice",
+                "amount": 1,
+                "object": {
+                  "instance": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+                  "incarnation": 0
+                },
+                "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+                "evidence": {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:cost",
+                  "kind": "oracle"
+                },
+                "timing": "cost"
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": [
+              "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+            ]
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": -1,
+            "tokens": 0,
+            "counters": 1,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        },
+        {
+          "scenario": [
+            {
+              "id": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "name": "Carrion Feeder",
+              "zone": "battlefield"
+            },
+            {
+              "id": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "name": "Ornithopter of Paradise",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "die",
+              "subject": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Died: battlefield to graveyard, with last-known object identity.",
+              "snapshot": {
+                "instance": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+                "incarnation": 0,
+                "card": {
+                  "key": "4385b7749e1652b616f72fe9993291fca97cfbffaa8c10ff2e8c7e2628c2beba",
+                  "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                  "name": "Ornithopter of Paradise",
+                  "types": [
+                    "Artifact",
+                    "Creature",
+                    "Thopter"
+                  ],
+                  "colors": [],
+                  "manaValue": 2,
+                  "manaCost": "{2}",
+                  "power": 0,
+                  "toughness": 2,
+                  "keywords": [
+                    "Flying"
+                  ],
+                  "legendary": false,
+                  "abilities": [
+                    {
+                      "id": "4385b7749e1652b616f72fe9993291fca97cfbffaa8c10ff2e8c7e2628c2beba:1",
+                      "effects": [
+                        {
+                          "kind": "mana",
+                          "symbols": [],
+                          "choose": true
+                        }
+                      ],
+                      "kind": "activated",
+                      "cost": {
+                        "mana": "",
+                        "tap": true,
+                        "evidence": {
+                          "id": "3a940dfa-a026-4969-8981-ef90cdfbe9ef:line:1",
+                          "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                          "line": 1,
+                          "text": "{T}: Add one mana of any color.",
+                          "rule": "subset:phase4-browser.2:cost",
+                          "kind": "oracle"
+                        }
+                      },
+                      "evidence": {
+                        "id": "3a940dfa-a026-4969-8981-ef90cdfbe9ef:line:1",
+                        "oracleId": "3a940dfa-a026-4969-8981-ef90cdfbe9ef",
+                        "line": 1,
+                        "text": "{T}: Add one mana of any color.",
+                        "rule": "subset:phase4-browser.2:activated"
+                      }
+                    }
+                  ],
+                  "unsupported": [],
+                  "deferred": []
+                },
+                "zone": "battlefield",
+                "controller": "you",
+                "owner": "you",
+                "counters": {},
+                "tapped": false,
+                "ready": true,
+                "token": false,
+                "restrictions": []
+              }
+            },
+            {
+              "id": "event:1",
+              "kind": "move",
+              "subject": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+              "incarnation": 1,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Sacrificed to its owner’s graveyard; not discarded."
+            },
+            {
+              "id": "event:2",
+              "kind": "activate",
+              "subject": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Activated the specified ability after checking and paying actual costs."
+            },
+            {
+              "id": "event:3",
+              "kind": "counter",
+              "subject": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "incarnation": 0,
+              "count": 1,
+              "source": "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+              "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+              "parents": [
+                "event:2"
+              ],
+              "participants": [
+                "0a19da90-880e-4eca-8cf7-6d7baf090d53",
+                "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+              ],
+              "evidence": [
+                {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "1 +1/+1 counter(s) on 0a19da90-880e-4eca-8cf7-6d7baf090d53@0; one placement event.",
+              "counterType": "+1/+1"
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "sacrifice",
+                "amount": 1,
+                "object": {
+                  "instance": "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9",
+                  "incarnation": 0
+                },
+                "ability": "095bd165fa00ae2edd708906615dbbb4232f990fd22f125d9cd7edffd689abfe:1",
+                "evidence": {
+                  "id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425:line:1",
+                  "oracleId": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+                  "line": 1,
+                  "text": "Sacrifice a creature: Put a +1/+1 counter on this creature.",
+                  "rule": "subset:phase4-browser.2:cost",
+                  "kind": "oracle"
+                },
+                "timing": "cost"
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": [
+              "18bbdc6c-b6c9-4f89-8f0a-6266e53c1fb9"
+            ]
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": -1,
+            "tokens": 0,
+            "counters": 1,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-3",
+      "name": "Zada, Hedron Grinder",
+      "format": "commander",
+      "milliseconds": 162.80000000074506,
+      "coverage": {
+        "distinct": 75,
+        "copies": 100,
+        "nonlandDistinct": 65,
+        "nonlandCopies": 65,
+        "parsedNoncombatDistinct": 16,
+        "parsedNoncombatCopies": 16,
+        "unsupportedDistinct": 58,
+        "deferredDistinct": 1,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 12,
+      "states": 12,
+      "paths": 0,
+      "truncated": true,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-4",
+      "name": "Sram, Senior Edificer",
+      "format": "commander",
+      "milliseconds": 192.70000000018626,
+      "coverage": {
+        "distinct": 78,
+        "copies": 100,
+        "nonlandDistinct": 66,
+        "nonlandCopies": 66,
+        "parsedNoncombatDistinct": 1,
+        "parsedNoncombatCopies": 1,
+        "unsupportedDistinct": 76,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-5",
+      "name": "Chulane, Teller of Tales",
+      "format": "commander",
+      "milliseconds": 167.29999999981374,
+      "coverage": {
+        "distinct": 78,
+        "copies": 100,
+        "nonlandDistinct": 62,
+        "nonlandCopies": 62,
+        "parsedNoncombatDistinct": 5,
+        "parsedNoncombatCopies": 5,
+        "unsupportedDistinct": 70,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 2,
+      "states": 15,
+      "paths": 2,
+      "truncated": true,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "name": "Birds of Paradise",
+              "zone": "hand"
+            },
+            {
+              "id": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "name": "Beast Whisperer",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "incarnation": 1,
+              "count": 1,
+              "source": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "ability": "6bab5260ab62bd76930cc911c04b7bd15d7ca33e66bc48a4bdadb57d8d3df4a1:cast",
+              "parents": [],
+              "participants": [
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:cast",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "draw",
+              "subject": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "incarnation": 0,
+              "count": 1,
+              "source": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "ability": "6db37c5d3c3e6ffb16ef525f8c6e4f175770558c33182b505017355bd1ab6951:0",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+                "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59"
+              ],
+              "evidence": [
+                {
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:cast",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5da7eea8-bb9e-47ce-a554-8a1ee058bd7a:line:0",
+                  "oracleId": "5da7eea8-bb9e-47ce-a554-8a1ee058bd7a",
+                  "line": 0,
+                  "text": "Whenever you cast a creature spell, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            },
+            {
+              "id": "event:2",
+              "kind": "enter",
+              "subject": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "incarnation": 2,
+              "count": 1,
+              "source": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "ability": "6bab5260ab62bd76930cc911c04b7bd15d7ca33e66bc48a4bdadb57d8d3df4a1:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:cast",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:cast",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:rule:permanent-entry",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as 492c2f9a-51e7-4e0f-9899-23bf43ea988b@2."
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 1,
+                "object": {
+                  "instance": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+                  "incarnation": 0
+                },
+                "ability": "6bab5260ab62bd76930cc911c04b7bd15d7ca33e66bc48a4bdadb57d8d3df4a1:cast",
+                "evidence": {
+                  "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:cast",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "line": -1,
+                  "text": "{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 0,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 1,
+                  "C": 0
+                }
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 1,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": -1,
+              "C": 0
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        },
+        {
+          "scenario": [
+            {
+              "id": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "name": "Llanowar Visionary",
+              "zone": "hand"
+            },
+            {
+              "id": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "name": "Beast Whisperer",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "incarnation": 1,
+              "count": 1,
+              "source": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "ability": "ce12328d7771fcd36c62f41456584e9d94b7e3111f001927545f23fb380488bc:cast",
+              "parents": [],
+              "participants": [
+                "d6e23afa-7e08-4049-baf0-d4d0134ba2c8"
+              ],
+              "evidence": [
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "draw",
+              "subject": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "incarnation": 0,
+              "count": 1,
+              "source": "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59",
+              "ability": "6db37c5d3c3e6ffb16ef525f8c6e4f175770558c33182b505017355bd1ab6951:0",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+                "daf4bcd2-3ae4-4803-9ea1-3bcc3de5ca59"
+              ],
+              "evidence": [
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5da7eea8-bb9e-47ce-a554-8a1ee058bd7a:line:0",
+                  "oracleId": "5da7eea8-bb9e-47ce-a554-8a1ee058bd7a",
+                  "line": 0,
+                  "text": "Whenever you cast a creature spell, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            },
+            {
+              "id": "event:2",
+              "kind": "enter",
+              "subject": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "incarnation": 2,
+              "count": 1,
+              "source": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "ability": "ce12328d7771fcd36c62f41456584e9d94b7e3111f001927545f23fb380488bc:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "d6e23afa-7e08-4049-baf0-d4d0134ba2c8"
+              ],
+              "evidence": [
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:rule:permanent-entry",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as d6e23afa-7e08-4049-baf0-d4d0134ba2c8@2."
+            },
+            {
+              "id": "event:3",
+              "kind": "draw",
+              "subject": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "incarnation": 2,
+              "count": 1,
+              "source": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+              "ability": "ce12328d7771fcd36c62f41456584e9d94b7e3111f001927545f23fb380488bc:0",
+              "parents": [
+                "event:2"
+              ],
+              "participants": [
+                "d6e23afa-7e08-4049-baf0-d4d0134ba2c8"
+              ],
+              "evidence": [
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:rule:permanent-entry",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:line:0",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": 0,
+                  "text": "When this creature enters, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 3,
+                "object": {
+                  "instance": "d6e23afa-7e08-4049-baf0-d4d0134ba2c8",
+                  "incarnation": 0
+                },
+                "ability": "ce12328d7771fcd36c62f41456584e9d94b7e3111f001927545f23fb380488bc:cast",
+                "evidence": {
+                  "id": "f75ed312-3a23-4624-80c5-03980aa22d0b:cast",
+                  "oracleId": "f75ed312-3a23-4624-80c5-03980aa22d0b",
+                  "line": -1,
+                  "text": "{2}{G}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 0,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 1,
+                  "C": 2
+                }
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 1,
+              "C": 2
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": 1,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": -1,
+              "C": -2
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-6",
+      "name": "Meren of Clan Nel Toth",
+      "format": "commander",
+      "milliseconds": 208.20000000018626,
+      "coverage": {
+        "distinct": 87,
+        "copies": 100,
+        "nonlandDistinct": 63,
+        "nonlandCopies": 63,
+        "parsedNoncombatDistinct": 5,
+        "parsedNoncombatCopies": 5,
+        "unsupportedDistinct": 79,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 9,
+      "states": 90,
+      "paths": 9,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "name": "Ashnod's Altar",
+              "zone": "battlefield"
+            },
+            {
+              "id": "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+              "name": "Elvish Mystic",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "die",
+              "subject": "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+              "incarnation": 0,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [],
+              "participants": [
+                "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Died: battlefield to graveyard, with last-known object identity.",
+              "snapshot": {
+                "instance": "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                "incarnation": 0,
+                "card": {
+                  "key": "cab40cdf518ef666a5f0e698e66766493bb3d54fa5a63367d8e3a964dc2ce606",
+                  "oracleId": "3f3b2c10-21f8-4e13-be83-4ef3fa36e123",
+                  "name": "Elvish Mystic",
+                  "types": [
+                    "Creature",
+                    "Elf",
+                    "Druid"
+                  ],
+                  "colors": [
+                    "G"
+                  ],
+                  "manaValue": 1,
+                  "manaCost": "{G}",
+                  "power": 1,
+                  "toughness": 1,
+                  "keywords": [],
+                  "legendary": false,
+                  "abilities": [
+                    {
+                      "id": "cab40cdf518ef666a5f0e698e66766493bb3d54fa5a63367d8e3a964dc2ce606:0",
+                      "effects": [
+                        {
+                          "kind": "mana",
+                          "symbols": [
+                            "G"
+                          ]
+                        }
+                      ],
+                      "kind": "activated",
+                      "cost": {
+                        "mana": "",
+                        "tap": true,
+                        "evidence": {
+                          "id": "3f3b2c10-21f8-4e13-be83-4ef3fa36e123:line:0",
+                          "oracleId": "3f3b2c10-21f8-4e13-be83-4ef3fa36e123",
+                          "line": 0,
+                          "text": "{T}: Add {G}.",
+                          "rule": "subset:phase4-browser.2:cost",
+                          "kind": "oracle"
+                        }
+                      },
+                      "evidence": {
+                        "id": "3f3b2c10-21f8-4e13-be83-4ef3fa36e123:line:0",
+                        "oracleId": "3f3b2c10-21f8-4e13-be83-4ef3fa36e123",
+                        "line": 0,
+                        "text": "{T}: Add {G}.",
+                        "rule": "subset:phase4-browser.2:activated"
+                      }
+                    }
+                  ],
+                  "unsupported": [],
+                  "deferred": []
+                },
+                "zone": "battlefield",
+                "controller": "you",
+                "owner": "you",
+                "counters": {},
+                "tapped": false,
+                "ready": true,
+                "token": false,
+                "restrictions": []
+              }
+            },
+            {
+              "id": "event:1",
+              "kind": "move",
+              "subject": "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+              "incarnation": 1,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Sacrificed to its owner’s graveyard; not discarded."
+            },
+            {
+              "id": "event:2",
+              "kind": "activate",
+              "subject": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "incarnation": 0,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Activated the specified ability after checking and paying actual costs."
+            },
+            {
+              "id": "event:3",
+              "kind": "mana",
+              "subject": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "incarnation": 0,
+              "count": 2,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:2"
+              ],
+              "participants": [
+                "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "sacrifice",
+                "amount": 1,
+                "object": {
+                  "instance": "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4",
+                  "incarnation": 0
+                },
+                "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+                "evidence": {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:cost",
+                  "kind": "oracle"
+                },
+                "timing": "cost"
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": [
+              "08b9a296-3b76-4f8f-9d71-7c9af92bb3b4"
+            ]
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": -1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 2
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        },
+        {
+          "scenario": [
+            {
+              "id": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "name": "Ashnod's Altar",
+              "zone": "battlefield"
+            },
+            {
+              "id": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "name": "Birds of Paradise",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "die",
+              "subject": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "incarnation": 0,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [],
+              "participants": [
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Died: battlefield to graveyard, with last-known object identity.",
+              "snapshot": {
+                "instance": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+                "incarnation": 0,
+                "card": {
+                  "key": "6bab5260ab62bd76930cc911c04b7bd15d7ca33e66bc48a4bdadb57d8d3df4a1",
+                  "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                  "name": "Birds of Paradise",
+                  "types": [
+                    "Creature",
+                    "Bird"
+                  ],
+                  "colors": [
+                    "G"
+                  ],
+                  "manaValue": 1,
+                  "manaCost": "{G}",
+                  "power": 0,
+                  "toughness": 1,
+                  "keywords": [
+                    "Flying"
+                  ],
+                  "legendary": false,
+                  "abilities": [
+                    {
+                      "id": "6bab5260ab62bd76930cc911c04b7bd15d7ca33e66bc48a4bdadb57d8d3df4a1:1",
+                      "effects": [
+                        {
+                          "kind": "mana",
+                          "symbols": [],
+                          "choose": true
+                        }
+                      ],
+                      "kind": "activated",
+                      "cost": {
+                        "mana": "",
+                        "tap": true,
+                        "evidence": {
+                          "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:line:1",
+                          "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                          "line": 1,
+                          "text": "{T}: Add one mana of any color.",
+                          "rule": "subset:phase4-browser.2:cost",
+                          "kind": "oracle"
+                        }
+                      },
+                      "evidence": {
+                        "id": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a:line:1",
+                        "oracleId": "d3a0b660-358c-41bd-9cd2-41fbf3491b1a",
+                        "line": 1,
+                        "text": "{T}: Add one mana of any color.",
+                        "rule": "subset:phase4-browser.2:activated"
+                      }
+                    }
+                  ],
+                  "unsupported": [],
+                  "deferred": []
+                },
+                "zone": "battlefield",
+                "controller": "you",
+                "owner": "you",
+                "counters": {},
+                "tapped": false,
+                "ready": true,
+                "token": false,
+                "restrictions": []
+              }
+            },
+            {
+              "id": "event:1",
+              "kind": "move",
+              "subject": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+              "incarnation": 1,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Sacrificed to its owner’s graveyard; not discarded."
+            },
+            {
+              "id": "event:2",
+              "kind": "activate",
+              "subject": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "incarnation": 0,
+              "count": 1,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": "Activated the specified ability after checking and paying actual costs."
+            },
+            {
+              "id": "event:3",
+              "kind": "mana",
+              "subject": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "incarnation": 0,
+              "count": 2,
+              "source": "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+              "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+              "parents": [
+                "event:2"
+              ],
+              "participants": [
+                "3c0f7157-a375-499c-92c7-d47d2e95dbad",
+                "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+              ],
+              "evidence": [
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                },
+                {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:activated"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "sacrifice",
+                "amount": 1,
+                "object": {
+                  "instance": "492c2f9a-51e7-4e0f-9899-23bf43ea988b",
+                  "incarnation": 0
+                },
+                "ability": "35067604ac37a9db91b86b15df67335f6f5c0c47e923878acb268c48bcfab1d2:0",
+                "evidence": {
+                  "id": "4d18bcba-a346-445e-a182-6cc30b7e066d:line:0",
+                  "oracleId": "4d18bcba-a346-445e-a182-6cc30b7e066d",
+                  "line": 0,
+                  "text": "Sacrifice a creature: Add {C}{C}.",
+                  "rule": "subset:phase4-browser.2:cost",
+                  "kind": "oracle"
+                },
+                "timing": "cost"
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": [
+              "492c2f9a-51e7-4e0f-9899-23bf43ea988b"
+            ]
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": -1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 2
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-7",
+      "name": "Brago, King Eternal",
+      "format": "commander",
+      "milliseconds": 126.29999999981374,
+      "coverage": {
+        "distinct": 79,
+        "copies": 100,
+        "nonlandDistinct": 66,
+        "nonlandCopies": 66,
+        "parsedNoncombatDistinct": 4,
+        "parsedNoncombatCopies": 4,
+        "unsupportedDistinct": 73,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-8",
+      "name": "Chatterfang, Squirrel General",
+      "format": "commander",
+      "milliseconds": 133.20000000018626,
+      "coverage": {
+        "distinct": 78,
+        "copies": 100,
+        "nonlandDistinct": 62,
+        "nonlandCopies": 62,
+        "parsedNoncombatDistinct": 3,
+        "parsedNoncombatCopies": 3,
+        "unsupportedDistinct": 73,
+        "deferredDistinct": 1,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-9",
+      "name": "Gishath, Sun's Avatar",
+      "format": "commander",
+      "milliseconds": 145.19999999925494,
+      "coverage": {
+        "distinct": 87,
+        "copies": 100,
+        "nonlandDistinct": 63,
+        "nonlandCopies": 63,
+        "parsedNoncombatDistinct": 5,
+        "parsedNoncombatCopies": 5,
+        "unsupportedDistinct": 79,
+        "deferredDistinct": 2,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 3,
+      "states": 3,
+      "paths": 1,
+      "truncated": true,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+              "name": "Etali, Primal Storm",
+              "zone": "hand"
+            },
+            {
+              "id": "b58c4033-f764-42f6-966f-b7202a2babbf",
+              "name": "Garruk's Uprising",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+              "incarnation": 1,
+              "count": 1,
+              "source": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+              "ability": "df54614bf617ee6863a0e224b8c48c1de87cdcac54c87d6f5d7a7e03d2dad060:cast",
+              "parents": [],
+              "participants": [
+                "b6af9894-95b5-4c8e-902f-a9ba70f02e4a"
+              ],
+              "evidence": [
+                {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "enter",
+              "subject": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+              "incarnation": 2,
+              "count": 1,
+              "source": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+              "ability": "df54614bf617ee6863a0e224b8c48c1de87cdcac54c87d6f5d7a7e03d2dad060:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "b6af9894-95b5-4c8e-902f-a9ba70f02e4a"
+              ],
+              "evidence": [
+                {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:rule:permanent-entry",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as b6af9894-95b5-4c8e-902f-a9ba70f02e4a@2."
+            },
+            {
+              "id": "event:2",
+              "kind": "draw",
+              "subject": "b58c4033-f764-42f6-966f-b7202a2babbf",
+              "incarnation": 0,
+              "count": 1,
+              "source": "b58c4033-f764-42f6-966f-b7202a2babbf",
+              "ability": "5a7d5aee17748a00e669f655f45f39d623869419e0ee4f05181473076c4c2512:2",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "b58c4033-f764-42f6-966f-b7202a2babbf",
+                "b6af9894-95b5-4c8e-902f-a9ba70f02e4a"
+              ],
+              "evidence": [
+                {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:rule:permanent-entry",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "3127ae9b-a7a7-43ec-89d7-688f8445b33d:line:2",
+                  "oracleId": "3127ae9b-a7a7-43ec-89d7-688f8445b33d",
+                  "line": 2,
+                  "text": "Whenever a creature you control with power 4 or greater enters, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 6,
+                "object": {
+                  "instance": "b6af9894-95b5-4c8e-902f-a9ba70f02e4a",
+                  "incarnation": 0
+                },
+                "ability": "df54614bf617ee6863a0e224b8c48c1de87cdcac54c87d6f5d7a7e03d2dad060:cast",
+                "evidence": {
+                  "id": "078def07-ae5d-4591-8db6-d156834aab97:cast",
+                  "oracleId": "078def07-ae5d-4591-8db6-d156834aab97",
+                  "line": -1,
+                  "text": "{4}{R}{R}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 0,
+                  "U": 0,
+                  "B": 0,
+                  "R": 2,
+                  "G": 0,
+                  "C": 4
+                }
+              }
+            ],
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": 2,
+              "G": 0,
+              "C": 4
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 0,
+            "damage": 0,
+            "mana": {
+              "W": 0,
+              "U": 0,
+              "B": 0,
+              "R": -2,
+              "G": 0,
+              "C": -4
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-10",
+      "name": "Hungry Hungry Dragons",
+      "format": "legacy",
+      "milliseconds": 109.40000000037253,
+      "coverage": {
+        "distinct": 14,
+        "copies": 60,
+        "nonlandDistinct": 13,
+        "nonlandCopies": 40,
+        "parsedNoncombatDistinct": 0,
+        "parsedNoncombatCopies": 0,
+        "unsupportedDistinct": 13,
+        "deferredDistinct": 1,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-11",
+      "name": "Gleaming Sheoldred",
+      "format": "legacy",
+      "milliseconds": 111.09999999962747,
+      "coverage": {
+        "distinct": 20,
+        "copies": 60,
+        "nonlandDistinct": 14,
+        "nonlandCopies": 40,
+        "parsedNoncombatDistinct": 3,
+        "parsedNoncombatCopies": 11,
+        "unsupportedDistinct": 11,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-12",
+      "name": "BURNNNN",
+      "format": "legacy",
+      "milliseconds": 103.5,
+      "coverage": {
+        "distinct": 15,
+        "copies": 60,
+        "nonlandDistinct": 13,
+        "nonlandCopies": 41,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 8,
+        "unsupportedDistinct": 12,
+        "deferredDistinct": 1,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-13",
+      "name": "maestro's performance",
+      "format": "legacy",
+      "milliseconds": 121.80000000074506,
+      "coverage": {
+        "distinct": 28,
+        "copies": 60,
+        "nonlandDistinct": 24,
+        "nonlandCopies": 36,
+        "parsedNoncombatDistinct": 1,
+        "parsedNoncombatCopies": 2,
+        "unsupportedDistinct": 25,
+        "deferredDistinct": 2,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-14",
+      "name": "Darksteel - Mind Swarm",
+      "format": "legacy",
+      "milliseconds": 109.19999999925494,
+      "coverage": {
+        "distinct": 24,
+        "copies": 60,
+        "nonlandDistinct": 22,
+        "nonlandCopies": 39,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 5,
+        "unsupportedDistinct": 20,
+        "deferredDistinct": 2,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-15",
+      "name": "Darksteel - Transference",
+      "format": "legacy",
+      "milliseconds": 107.30000000074506,
+      "coverage": {
+        "distinct": 25,
+        "copies": 60,
+        "nonlandDistinct": 23,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 1,
+        "parsedNoncombatCopies": 1,
+        "unsupportedDistinct": 22,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-16",
+      "name": "No longer Forgotten",
+      "format": "legacy",
+      "milliseconds": 145.79999999981374,
+      "coverage": {
+        "distinct": 19,
+        "copies": 60,
+        "nonlandDistinct": 15,
+        "nonlandCopies": 38,
+        "parsedNoncombatDistinct": 3,
+        "parsedNoncombatCopies": 12,
+        "unsupportedDistinct": 13,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 2,
+      "states": 2,
+      "paths": 2,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "name": "Soul's Attendant",
+              "zone": "hand"
+            },
+            {
+              "id": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "name": "Soul Warden",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "incarnation": 1,
+              "count": 1,
+              "source": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "ability": "6dcf14ebb4b0c8ecf8342b7dde40c88f561ae857224a26683a29ac0d738c6f19:cast",
+              "parents": [],
+              "participants": [
+                "3223c0ac-cc22-4886-8919-11273b477cc7"
+              ],
+              "evidence": [
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "enter",
+              "subject": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "incarnation": 2,
+              "count": 1,
+              "source": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "ability": "6dcf14ebb4b0c8ecf8342b7dde40c88f561ae857224a26683a29ac0d738c6f19:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "3223c0ac-cc22-4886-8919-11273b477cc7"
+              ],
+              "evidence": [
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:rule:permanent-entry",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as 3223c0ac-cc22-4886-8919-11273b477cc7@2."
+            },
+            {
+              "id": "event:2",
+              "kind": "gain-life",
+              "subject": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "incarnation": 0,
+              "count": 1,
+              "source": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "ability": "4b383aa7bbfd1f14eee4d228e50ca3c4ea9104e441ab3d3181b9aea057bf57d7:0",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "3223c0ac-cc22-4886-8919-11273b477cc7",
+                "d96266b3-a7cb-40ce-a328-ac13719fe5f0"
+              ],
+              "evidence": [
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:rule:permanent-entry",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:line:0",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": 0,
+                  "text": "Whenever another creature enters, you gain 1 life.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 1,
+                "object": {
+                  "instance": "3223c0ac-cc22-4886-8919-11273b477cc7",
+                  "incarnation": 0
+                },
+                "ability": "6dcf14ebb4b0c8ecf8342b7dde40c88f561ae857224a26683a29ac0d738c6f19:cast",
+                "evidence": {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:cast",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 1,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 0,
+                  "C": 0
+                }
+              }
+            ],
+            "mana": {
+              "W": 1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": -1,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 1,
+            "damage": 0,
+            "mana": {
+              "W": -1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        },
+        {
+          "scenario": [
+            {
+              "id": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "name": "Soul Warden",
+              "zone": "hand"
+            },
+            {
+              "id": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "name": "Soul's Attendant",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "incarnation": 1,
+              "count": 1,
+              "source": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "ability": "4b383aa7bbfd1f14eee4d228e50ca3c4ea9104e441ab3d3181b9aea057bf57d7:cast",
+              "parents": [],
+              "participants": [
+                "d96266b3-a7cb-40ce-a328-ac13719fe5f0"
+              ],
+              "evidence": [
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "enter",
+              "subject": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "incarnation": 2,
+              "count": 1,
+              "source": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+              "ability": "4b383aa7bbfd1f14eee4d228e50ca3c4ea9104e441ab3d3181b9aea057bf57d7:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "d96266b3-a7cb-40ce-a328-ac13719fe5f0"
+              ],
+              "evidence": [
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:rule:permanent-entry",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as d96266b3-a7cb-40ce-a328-ac13719fe5f0@2."
+            },
+            {
+              "id": "event:2",
+              "kind": "gain-life",
+              "subject": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "incarnation": 0,
+              "count": 1,
+              "source": "3223c0ac-cc22-4886-8919-11273b477cc7",
+              "ability": "6dcf14ebb4b0c8ecf8342b7dde40c88f561ae857224a26683a29ac0d738c6f19:0",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "3223c0ac-cc22-4886-8919-11273b477cc7",
+                "d96266b3-a7cb-40ce-a328-ac13719fe5f0"
+              ],
+              "evidence": [
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:rule:permanent-entry",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "045a9d3d-c20d-427f-a77b-0bffc6f55526:line:0",
+                  "oracleId": "045a9d3d-c20d-427f-a77b-0bffc6f55526",
+                  "line": 0,
+                  "text": "Whenever another creature enters, you may gain 1 life.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 1,
+                "object": {
+                  "instance": "d96266b3-a7cb-40ce-a328-ac13719fe5f0",
+                  "incarnation": 0
+                },
+                "ability": "4b383aa7bbfd1f14eee4d228e50ca3c4ea9104e441ab3d3181b9aea057bf57d7:cast",
+                "evidence": {
+                  "id": "f3fad295-1af2-4ecc-8546-b121ad6be27b:cast",
+                  "oracleId": "f3fad295-1af2-4ecc-8546-b121ad6be27b",
+                  "line": -1,
+                  "text": "{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 1,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 0,
+                  "C": 0
+                }
+              }
+            ],
+            "mana": {
+              "W": 1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": -1,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 1,
+            "damage": 0,
+            "mana": {
+              "W": -1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 0
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-17",
+      "name": "Skellingtons",
+      "format": "legacy",
+      "milliseconds": 107.09999999962747,
+      "coverage": {
+        "distinct": 19,
+        "copies": 60,
+        "nonlandDistinct": 14,
+        "nonlandCopies": 38,
+        "parsedNoncombatDistinct": 0,
+        "parsedNoncombatCopies": 0,
+        "unsupportedDistinct": 17,
+        "deferredDistinct": 2,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-18",
+      "name": "Missippi River",
+      "format": "legacy",
+      "milliseconds": 127.40000000037253,
+      "coverage": {
+        "distinct": 23,
+        "copies": 60,
+        "nonlandDistinct": 12,
+        "nonlandCopies": 31,
+        "parsedNoncombatDistinct": 0,
+        "parsedNoncombatCopies": 0,
+        "unsupportedDistinct": 21,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-19",
+      "name": "Welder-Cam simple stomp",
+      "format": "legacy",
+      "milliseconds": 138.59999999962747,
+      "coverage": {
+        "distinct": 20,
+        "copies": 60,
+        "nonlandDistinct": 14,
+        "nonlandCopies": 43,
+        "parsedNoncombatDistinct": 1,
+        "parsedNoncombatCopies": 4,
+        "unsupportedDistinct": 16,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 1,
+      "states": 14,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-20",
+      "name": "Konstrari",
+      "format": "legacy",
+      "milliseconds": 113.6000000005588,
+      "coverage": {
+        "distinct": 16,
+        "copies": 60,
+        "nonlandDistinct": 11,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 7,
+        "unsupportedDistinct": 12,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-21",
+      "name": "Rise of the Phoenix",
+      "format": "legacy",
+      "milliseconds": 110,
+      "coverage": {
+        "distinct": 11,
+        "copies": 60,
+        "nonlandDistinct": 10,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 8,
+        "unsupportedDistinct": 8,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-22",
+      "name": "ravnica block constructed",
+      "format": "legacy",
+      "milliseconds": 141.59999999962747,
+      "coverage": {
+        "distinct": 21,
+        "copies": 60,
+        "nonlandDistinct": 10,
+        "nonlandCopies": 36,
+        "parsedNoncombatDistinct": 0,
+        "parsedNoncombatCopies": 0,
+        "unsupportedDistinct": 21,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-23",
+      "name": "freed freezen",
+      "format": "legacy",
+      "milliseconds": 111,
+      "coverage": {
+        "distinct": 13,
+        "copies": 60,
+        "nonlandDistinct": 11,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 8,
+        "unsupportedDistinct": 10,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-24",
+      "name": "Master of the Way Smite to death.",
+      "format": "legacy",
+      "milliseconds": 109.09999999962747,
+      "coverage": {
+        "distinct": 17,
+        "copies": 60,
+        "nonlandDistinct": 12,
+        "nonlandCopies": 35,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 8,
+        "unsupportedDistinct": 13,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-25",
+      "name": "Rhino",
+      "format": "legacy",
+      "milliseconds": 129.5,
+      "coverage": {
+        "distinct": 21,
+        "copies": 60,
+        "nonlandDistinct": 13,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 4,
+        "parsedNoncombatCopies": 14,
+        "unsupportedDistinct": 11,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 4,
+      "states": 4,
+      "paths": 4,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": [
+        {
+          "scenario": [
+            {
+              "id": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "name": "Wall of Omens",
+              "zone": "hand"
+            },
+            {
+              "id": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "name": "Prosperous Innkeeper",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 1,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+              "parents": [],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "enter",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 2,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as 3d134bb2-17ec-4e65-976e-f06fa983f3fb@2."
+            },
+            {
+              "id": "event:2",
+              "kind": "draw",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 2,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:line:1",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": 1,
+                  "text": "When this creature enters, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            },
+            {
+              "id": "event:3",
+              "kind": "gain-life",
+              "subject": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "incarnation": 0,
+              "count": 1,
+              "source": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "ability": "6b40be9798806618bb7b83c2ba3e92ccca72b07fd7eefd61480e0b5a3bb747ed:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "da785227-cf8a-4d44-9e7c-fc909ea868f2:line:1",
+                  "oracleId": "da785227-cf8a-4d44-9e7c-fc909ea868f2",
+                  "line": 1,
+                  "text": "Whenever another creature you control enters, you gain 1 life.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 2,
+                "object": {
+                  "instance": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+                  "incarnation": 0
+                },
+                "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+                "evidence": {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 1,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 0,
+                  "C": 1
+                }
+              }
+            ],
+            "mana": {
+              "W": 1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 1
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 1,
+            "damage": 0,
+            "mana": {
+              "W": -1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": -1
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        },
+        {
+          "scenario": [
+            {
+              "id": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "name": "Wall of Omens",
+              "zone": "hand"
+            },
+            {
+              "id": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "name": "Prosperous Innkeeper",
+              "zone": "battlefield"
+            },
+            {
+              "id": "df901113-e273-4fe0-a264-8e9e26e70905",
+              "name": "Wall of Blossoms",
+              "zone": "battlefield"
+            }
+          ],
+          "events": [
+            {
+              "id": "event:0",
+              "kind": "cast",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 1,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+              "parents": [],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                }
+              ],
+              "note": "A real cast event; normal timing and costs checked."
+            },
+            {
+              "id": "event:1",
+              "kind": "enter",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 2,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+              "parents": [
+                "event:0"
+              ],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                }
+              ],
+              "note": "Entered battlefield as 3d134bb2-17ec-4e65-976e-f06fa983f3fb@2."
+            },
+            {
+              "id": "event:2",
+              "kind": "draw",
+              "subject": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "incarnation": 2,
+              "count": 1,
+              "source": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+              "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:line:1",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": 1,
+                  "text": "When this creature enters, draw a card.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": "Unidentified drawn cards cannot be invented as future enablers."
+            },
+            {
+              "id": "event:3",
+              "kind": "gain-life",
+              "subject": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "incarnation": 0,
+              "count": 1,
+              "source": "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+              "ability": "6b40be9798806618bb7b83c2ba3e92ccca72b07fd7eefd61480e0b5a3bb747ed:1",
+              "parents": [
+                "event:1"
+              ],
+              "participants": [
+                "096d3c0c-98e2-4cfc-a6e1-fddb0359c63f",
+                "3d134bb2-17ec-4e65-976e-f06fa983f3fb"
+              ],
+              "evidence": [
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                {
+                  "kind": "rules",
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:rule:permanent-entry",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "The resolving permanent spell enters the battlefield as a new object.",
+                  "rule": "CR608.3;CR400.7"
+                },
+                {
+                  "id": "da785227-cf8a-4d44-9e7c-fc909ea868f2:line:1",
+                  "oracleId": "da785227-cf8a-4d44-9e7c-fc909ea868f2",
+                  "line": 1,
+                  "text": "Whenever another creature you control enters, you gain 1 life.",
+                  "rule": "subset:phase4-browser.2:triggered"
+                }
+              ],
+              "note": ""
+            }
+          ],
+          "spent": {
+            "life": 0,
+            "payments": [
+              {
+                "kind": "mana",
+                "amount": 2,
+                "object": {
+                  "instance": "3d134bb2-17ec-4e65-976e-f06fa983f3fb",
+                  "incarnation": 0
+                },
+                "ability": "83e324f0d0e8ca7d3aa78de5eab618573050ec66b8f0b41de0ff9dea738df0a9:cast",
+                "evidence": {
+                  "id": "5f601f48-d24b-4883-9fde-b3f620e7c9ea:cast",
+                  "oracleId": "5f601f48-d24b-4883-9fde-b3f620e7c9ea",
+                  "line": -1,
+                  "text": "{1}{W}",
+                  "kind": "printed-cost",
+                  "rule": "CR202.1;CR601.2f;CR601.2h:printed-mana-cost"
+                },
+                "timing": "cost",
+                "mana": {
+                  "W": 1,
+                  "U": 0,
+                  "B": 0,
+                  "R": 0,
+                  "G": 0,
+                  "C": 1
+                }
+              }
+            ],
+            "mana": {
+              "W": 1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": 1
+            },
+            "counters": [],
+            "tapped": [],
+            "discarded": [],
+            "sacrificed": []
+          },
+          "holdings": {
+            "hand": 0,
+            "creatures": 1,
+            "tokens": 0,
+            "counters": 0,
+            "life": 1,
+            "damage": 0,
+            "mana": {
+              "W": -1,
+              "U": 0,
+              "B": 0,
+              "R": 0,
+              "G": 0,
+              "C": -1
+            },
+            "objective": {
+              "opponentLifeReachedZero": false,
+              "ownGameLost": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-26",
+      "name": "Izzet Lessons",
+      "format": "legacy",
+      "milliseconds": 117.3999999994412,
+      "coverage": {
+        "distinct": 17,
+        "copies": 60,
+        "nonlandDistinct": 11,
+        "nonlandCopies": 37,
+        "parsedNoncombatDistinct": 0,
+        "parsedNoncombatCopies": 0,
+        "unsupportedDistinct": 15,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-27",
+      "name": "Boros Offering",
+      "format": "legacy",
+      "milliseconds": 125.90000000037253,
+      "coverage": {
+        "distinct": 19,
+        "copies": 60,
+        "nonlandDistinct": 13,
+        "nonlandCopies": 41,
+        "parsedNoncombatDistinct": 2,
+        "parsedNoncombatCopies": 8,
+        "unsupportedDistinct": 15,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-28",
+      "name": "Reh Bluh",
+      "format": "legacy",
+      "milliseconds": 102.5,
+      "coverage": {
+        "distinct": 19,
+        "copies": 60,
+        "nonlandDistinct": 13,
+        "nonlandCopies": 38,
+        "parsedNoncombatDistinct": 1,
+        "parsedNoncombatCopies": 4,
+        "unsupportedDistinct": 16,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    },
+    {
+      "id": "public-29",
+      "name": "izzet deck",
+      "format": "legacy",
+      "milliseconds": 127,
+      "coverage": {
+        "distinct": 36,
+        "copies": 60,
+        "nonlandDistinct": 32,
+        "nonlandCopies": 42,
+        "parsedNoncombatDistinct": 3,
+        "parsedNoncombatCopies": 4,
+        "unsupportedDistinct": 31,
+        "deferredDistinct": 0,
+        "nonlandDefinition": "Saved type lines containing Land are excluded; special layouts remain listed as unsupported.",
+        "wholeDeckConclusion": false
+      },
+      "contexts": 0,
+      "states": 0,
+      "paths": 0,
+      "truncated": false,
+      "failedRequiredChecks": 0,
+      "examples": []
+    }
+  ],
+  "memory": {
+    "rendererLifetimeHighWaterMiB": 280.99609375,
+    "note": "Renderer-process lifetime RSS high-water mark; includes app and workers, not isolated worker peak heap."
+  },
+  "scope": "Hypothetical pairs/triples only, explicit test mana 6 per color and library 40. Unknown unselected influences remain excluded. No whole-deck or independently adjudicated accuracy claim."
+}

@@ -5,13 +5,15 @@ import {sha256} from '../../src/experimental/universal/sha256';
 import {compile,fingerprint} from '../../src/experimental/universal/compiler';
 import {analyze,ANALYZER_VERSION} from '../../src/experimental/universal/analyze';
 import {scenario,execute,actions,discover} from '../../src/experimental/universal/engine';
-import {emptyMana} from '../../src/experimental/universal/model';
+import {emptyMana, VERSION} from '../../src/experimental/universal/model';
 import {oracleCard} from '../upgradeCandidates';
-import {card} from '../../research/universal-remediated/fixtures';
+import {card} from '../fixtures/browserUniversal';
 import {readFileSync} from 'node:fs';
 it('browser SHA-256 matches Node for UTF-8, boundary lengths and canonical cards',()=>{
  for(const text of ['', 'abc','Magic — 龍',...Array.from({length:130},(_,i)=>'a'.repeat(i)),JSON.stringify(card('Llanowar Elves'))])expect(sha256(text)).toBe(createHash('sha256').update(text).digest('hex'));
- expect(compile(card('Llanowar Elves')).key).toBe(frozenCompile(card('Llanowar Elves')).key);
+ // A new interpreter revision intentionally invalidates only ephemeral compiled identities.
+ expect(compile(card('Llanowar Elves')).key).not.toBe(frozenCompile(card('Llanowar Elves')).key);
+ const c=card('Llanowar Elves'); expect(compile(c).key).toBe(fingerprint([VERSION,c.oracleId,c.name,c.oracleText,c.typeLine,c.power,c.toughness,c.manaCost,c.manaValue,c.colors,c.cardFaces]));
  expect(fingerprint({x:1})).toBe(createHash('sha256').update(JSON.stringify({x:1})).digest('hex'));
 });
 it('reports actual partial coverage without treating unsupported cards as fully understood or changing inputs',()=>{

@@ -1,4 +1,4 @@
-import type { Ability, Action, CardPlacement, Check, Color, CompiledCard, Discovery, Effect, Event, Limits, Mana, ObjectState, Proof, Selector, State, Status, TargetRef, Zone } from './model';
+import type { Ability, Action, CardPlacement, Check, Color, CompiledCard, Discovery, Effect, Event, Limits, Mana, ObjectState, Proof, ResourcePayment, Selector, State, Status, TargetRef, Zone } from './model';
 import { DEFAULT_LIMITS, emptyMana, VERSION } from './model';
 import { compile, fingerprint } from './compiler';
 
@@ -14,25 +14,26 @@ export function scenario(placements: CardPlacement[], options: Partial<Pick<Stat
     mana: emptyMana(), manaLots: [], turn: 1, mainPhase: true, stackEmpty: true, priority: true, library: 40, unknownHand: 0,
     life: 40, opponentLife: 40, entryCounters: [], events: [],
     payoff: { draw: 0, recoveredToHand: 0, creatures: 0, tokens: 0, counters: 0, life: 0, opponentDamage: 0, manaGenerated: emptyMana(), loss: false },
-    spent: { mana: emptyMana(), counters: [], tapped: [], discarded: [], sacrificed: [] },
+    spent: { life: 0, payments: [], mana: emptyMana(), counters: [], tapped: [], discarded: [], sacrificed: [] },
     assumptions: ['Explicit hypothetical state; one modeled opponent; no intervening responses.', 'Only supplied objects and supported noncombat rules affect the sequence.', 'Supported optional draws and life gain choose acceptance; trigger order is one legal controller order and spell copies retain original targets. Search is not exhaustive over all choices.', 'Initial mana, library size, life totals, priority and timing are scenario inputs, not estimates of deck access.'],
     ...options,
   };
+  if (result.library !== null) { const known = result.objects.filter(o => o.zone === 'library' && o.owner === 'you').map(o => o.instance); result.libraryOrder = [...known, ...Array(Math.max(0, result.library - known.length)).fill(null)]; }
   result.mana = result.mana && { ...result.mana };
   result.manaLots = result.mana ? COLORS.map(color => ({ color, remaining: result.mana![color] })) : [];
   return result;
 }
 function clone(s: State): State {
-  return { ...s, objects: s.objects.map(o => ({ ...o, counters: { ...o.counters }, restrictions: [...o.restrictions] })), mana: s.mana && { ...s.mana },
+  return { ...s, libraryOrder: s.libraryOrder && [...s.libraryOrder], objects: s.objects.map(o => ({ ...o, counters: { ...o.counters }, restrictions: [...o.restrictions] })), mana: s.mana && { ...s.mana },
     manaLots: s.manaLots.map(x => ({ ...x })), entryCounters: s.entryCounters.map(x => ({ ...x })), events: [...s.events], payoff: { ...s.payoff, manaGenerated: { ...s.payoff.manaGenerated } },
-    spent: { mana: { ...s.spent.mana }, counters: [...s.spent.counters], tapped: [...s.spent.tapped], discarded: [...s.spent.discarded], sacrificed: [...s.spent.sacrificed] } };
+    spent: { life: s.spent.life || 0, payments: [...(s.spent.payments || [])], mana: { ...s.spent.mana }, counters: [...s.spent.counters], tapped: [...s.spent.tapped], discarded: [...s.spent.discarded], sacrificed: [...s.spent.sacrificed] } };
 }
 interface Pending { bindings?: Record<string, TargetRef[]>; sourceSnapshot: ObjectState; source: string; incarnation: number; ability: Ability; event: Event }
-interface World { resolvingSource?: ObjectState; bindings: Record<string, TargetRef[]>; state: State; pending: Pending[]; copies: { original: string; parent: Event; nonlegendary: boolean }[]; checks: Check[]; steps: number; complete: boolean }
+interface World { resolvingSource?: ObjectState; putBack?: Action['putBack']; bindings: Record<string, TargetRef[]>; state: State; pending: Pending[]; copies: { original: string; parent: Event; nonlegendary: boolean }[]; checks: Check[]; steps: number; complete: boolean }
 function fork(w: World): World { return { ...w, state: clone(w.state), pending: [...w.pending], copies: [...w.copies], bindings: { ...w.bindings }, checks: [...w.checks] }; }
 class Rejection extends Error { constructor(readonly status: Status, message: string) { super(message); } }
-function requireCheck(checks: Check[], requirement: string, value: boolean | null) {
-  checks.push({ requirement, role: 'required', result: value === null ? 'unknown' : value });
+function requireCheck(checks: Check[], requirement: string, value: boolean | null, evidence?: Ability['evidence']) {
+  checks.push({ requirement, evidence, role: 'required', result: value === null ? 'unknown' : value });
   if (value !== true) throw new Rejection(value === null ? 'Conditional' : 'Invalid', requirement);
 }
 function unknownInfluence(o: ObjectState, source: ObjectState): boolean {
@@ -48,7 +49,7 @@ function statics(s: State, kind: Ability['static']) { return active(s).flatMap(o
 function matches(o: ObjectState, sel: Selector, source: ObjectState): boolean {
   const belongsTo = ['graveyard', 'hand', 'library'].includes(o.zone) ? o.owner : o.controller;
   return !o.ceased && (!sel.nontoken || !o.token) && o.zone === sel.zone && (sel.controller === 'any' || belongsTo === source.controller) &&
-    (!sel.nonland || !o.card.types.includes('Land')) && (sel.type === 'Any' || sel.type === 'ArtifactOrCreature' && (o.card.types.includes('Artifact') || o.card.types.includes('Creature')) || sel.type === 'Permanent' && permanent(o.card) || o.card.types.includes(sel.type)) &&
+    (!sel.nonland || !o.card.types.includes('Land')) && (sel.type === 'Any' || sel.type === 'ArtifactOrEnchantment' && (o.card.types.includes('Artifact') || o.card.types.includes('Enchantment')) || sel.type === 'ArtifactOrCreature' && (o.card.types.includes('Artifact') || o.card.types.includes('Creature')) || sel.type === 'Permanent' && permanent(o.card) || o.card.types.includes(sel.type)) &&
     (!sel.self || o.instance === source.instance && o.incarnation === source.incarnation) &&
     (!sel.another || o.instance !== source.instance || o.incarnation !== source.incarnation) &&
     (sel.maxManaValue === undefined || o.card.manaValue <= sel.maxManaValue);
@@ -93,7 +94,7 @@ function emit(w: World, kind: Event['kind'], subject: ObjectState, count: number
     if (t.matchingPower) {
       const p = power(observer);
       if (p === null) throw new Rejection('Unknown', 'Cannot evaluate dynamic power for the cast trigger.');
-      w.checks.push({ requirement: `At cast: mana value ${subject.card.manaValue} equals source power ${p}`, result: subject.card.manaValue === p, evidence: a.evidence });
+      w.checks.push({ requirement: `At cast: mana value ${subject.card.manaValue} equals source power ${p}`, role: 'branch', result: subject.card.manaValue === p, evidence: a.evidence });
       if (subject.card.manaValue !== p) continue;
       const previous = [...w.state.events].reverse().find(e => ['counter', 'remove-counter'].includes(e.kind) && e.subject === observer.instance && e.incarnation === observer.incarnation);
       if (previous) {
@@ -118,8 +119,21 @@ function conditionHolds(s: State, a: Ability, source: ObjectState, subject?: Obj
   if (!subject) throw new Rejection('Unknown', 'Intervening name condition requires an identified event object.');
   return !s.objects.some(o => o.instance !== subject.instance && o.card.name === subject.card.name && o.card.types.includes('Creature') && (o.zone === 'battlefield' && o.controller === source.controller || o.zone === 'graveyard' && o.owner === source.controller));
 }
-function sacrifice(w: World, o: ObjectState, source: ObjectState, a: Ability, parent?: Event) {
+function recordPayment(s: State, kind: ResourcePayment['kind'], object: ObjectState, a: Ability, amount: number, timing: ResourcePayment['timing'] = 'cost', mana?: Mana, evidence = a.cost?.evidence || a.evidence) {
+  (s.spent.payments ||= []).push({ kind, amount, object: { instance: object.instance, incarnation: object.incarnation }, ability: a.id, evidence, timing, ...(mana ? { mana: { ...mana } } : {}) });
+}
+function paymentLedgerAgrees(before: State, after: State): boolean {
+  const rows = (after.spent.payments || []).slice(before.spent.payments?.length || 0);
+  return COLORS.every(c => rows.filter(r => r.kind === 'mana').reduce((n, r) => n + (r.mana?.[c] || 0), 0) === after.spent.mana[c] - before.spent.mana[c]) &&
+    rows.filter(r => r.kind === 'life').reduce((n, r) => n + r.amount, 0) === (after.spent.life || 0) - (before.spent.life || 0) &&
+    (['tap', 'counter', 'sacrifice', 'discard'] as const).every(kind => {
+      const amount = (s: State) => kind === 'tap' ? s.spent.tapped.length : kind === 'counter' ? s.spent.counters.reduce((n, c) => n + c.count, 0) : kind === 'sacrifice' ? s.spent.sacrificed.length : s.spent.discarded.length;
+      return rows.filter(r => r.kind === kind).reduce((n, r) => n + r.amount, 0) === amount(after) - amount(before);
+    });
+}
+function sacrifice(w: World, o: ObjectState, source: ObjectState, a: Ability, parent?: Event, timing: ResourcePayment['timing'] = 'cost') {
   requireCheck(w.checks, 'Sacrifice payment is a current permanent you control', o.zone === 'battlefield' && o.controller === source.controller && !o.ceased);
+  recordPayment(w.state, 'sacrifice', o, a, 1, timing);
   const event = o.card.types.includes('Creature') ? emit(w, 'die', o, 1, source, a, parent, 'Died: battlefield to graveyard, with last-known object identity.') : undefined;
   move(o, 'graveyard'); w.state.spent.sacrificed.push(o.instance);
   return emit(w, 'move', o, 1, source, a, event || parent, 'Sacrificed to its owner’s graveyard; not discarded.');
@@ -140,7 +154,7 @@ function enter(w: World, o: ObjectState, source: ObjectState, a?: Ability, paren
   if (o.card.abilities.some(a => a.effects.some(e => e.kind === 'entry-copy'))) throw new Rejection('Unknown', 'This zone transition requires an unbound optional entry-copy choice.');
   if (o.card.unsupported.length) throw new Rejection('Unknown', `Entering object has unresolved mechanics: ${o.card.name}`);
   if (['graveyard', 'library'].includes(o.zone) && o.card.types.includes('Creature') && statics(w.state, 'graveyard-entry-prohibition').length) {
-    w.checks.push({ requirement: 'An active prohibition prevents this creature-card zone transition; the surrounding spell is still legal', result: false, evidence: statics(w.state, 'graveyard-entry-prohibition')[0].ability.evidence });
+    w.checks.push({ requirement: 'An active prohibition prevents this creature-card zone transition; the surrounding spell is still legal', role: 'branch', result: false, evidence: statics(w.state, 'graveyard-entry-prohibition')[0].ability.evidence });
     return;
   }
   move(o, 'battlefield');
@@ -151,7 +165,7 @@ function enter(w: World, o: ObjectState, source: ObjectState, a?: Ability, paren
   // Supported activated entry-counter grant, before the entry event.
   for (const r of w.state.entryCounters.filter(r => r.turn === w.state.turn)) {
     const grantor = w.state.objects.find(x => x.instance === r.source);
-    if (o.card.types.includes('Creature') && grantor) {
+    if (o.card.types.includes('Creature') && grantor && grantor.controller === o.controller) {
       const grantAbility = grantor.card.abilities.find(x => x.effects.some(e => e.kind === 'entry-counter-permission'));
       if (grantAbility) placeCounters(w, o, r.count, grantor, grantAbility, parent);
     }
@@ -159,7 +173,8 @@ function enter(w: World, o: ObjectState, source: ObjectState, a?: Ability, paren
   if (o.card.types.includes('Creature') && (o.card.toughness === null || o.card.toughness + (o.counters['+1/+1'] || 0) - (o.counters['-1/-1'] || 0) <= 0))
     throw new Rejection('Unknown', 'Unsupported or nonpositive toughness needs additional state-based-action handling.');
   const entry=emit(w, 'enter', o, 1, source, a, parent, `Entered battlefield as ${objectId(o)}.`);
-  entry.evidence.push({id:`${o.card.oracleId}:rule:permanent-entry`,oracleId:o.card.oracleId,line:-1,text:'A resolving permanent spell enters the battlefield; an instructed zone transition follows its cited effect. A zone change creates a new object.',rule:'CR608.3;CR400.7'});
+  const spellEntry = !o.token && source.instance === o.instance && parent?.kind === 'cast';
+  entry.evidence.push({kind:'rules',id:`${o.card.oracleId}:rule:permanent-entry`,oracleId:o.card.oracleId,line:-1,text:spellEntry?'The resolving permanent spell enters the battlefield as a new object.':o.token?'The cited effect creates or copies this token onto the battlefield.':'The cited effect moves this card onto the battlefield as a new object.',rule:spellEntry?'CR608.3;CR400.7':o.token?'CR111;CR707.10':'CR400.7'});
   return entry;
 }
 function enterSpell(w: World, spell: ObjectState, a: Ability, parent: Event, limits: Limits): World[] {
@@ -189,7 +204,7 @@ function choices<T>(values: T[], maximum: number, limit = 33): T[][] {
 }
 export function targetKey(a: Ability, effect: Effect): string { return `${a.id}:target:${a.effects.indexOf(effect)}`; }
 function targetSpec(effect: Effect): { selector: Selector; minimum: number; maximum: number } | undefined {
-  if (['return', 'blink', 'copy-permanent', 'untap', 'sacrifice'].includes(effect.kind)) {
+  if (['remove', 'return', 'blink', 'copy-permanent', 'untap', 'sacrifice'].includes(effect.kind)) {
     const e = effect as Extract<Effect, { target: Selector }>;
     if (!e.target) return undefined;
     return { selector: e.target, minimum: 1, maximum: 1 };
@@ -229,6 +244,12 @@ function bindAbility(worlds: World[], a: Ability, source: ObjectState, limits: L
   }
   return worlds;
 }
+function libraryOrder(s: State): (string | null)[] {
+  if (s.library === null) throw new Rejection('Conditional', 'Provide the library size and any known top-card identities.');
+  if (!s.libraryOrder) { const known = s.objects.filter(o => o.zone === 'library' && o.owner === 'you').map(o => o.instance); s.libraryOrder = [...known, ...Array(Math.max(0, s.library - known.length)).fill(null)]; }
+  if (s.libraryOrder.length !== s.library || new Set(s.libraryOrder.filter(id => id !== null)).size !== s.libraryOrder.filter(id => id !== null).length || s.libraryOrder.some(id => id !== null && !s.objects.some(o => o.instance === id && o.zone === 'library' && o.owner === 'you')) || s.objects.some(o => o.zone === 'library' && o.owner === 'you' && !s.libraryOrder!.includes(o.instance))) throw new Rejection('Unknown', 'Library count, order and identified objects disagree.');
+  return s.libraryOrder;
+}
 function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: Event | undefined, limits: Limits): World[] {
   const current = w.state.objects.find(o => o.instance === sourceId)!;
   const snapshot = w.resolvingSource?.instance === sourceId ? w.resolvingSource : undefined;
@@ -236,6 +257,44 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
   const eventObject = parent && w.state.objects.find(o => o.instance === parent.subject && o.incarnation === parent.incarnation);
   if (++w.steps > limits.automaticSteps) throw new Rejection('Unknown', 'Automatic resolution budget exhausted; no completed proof.');
   switch (effect.kind) {
+    case 'draw-put-back': {
+      const worlds = apply(w, { kind: 'draw', count: effect.draw }, sourceId, a, parent, limits);
+      for (const next of worlds) {
+        const hand = next.state.objects.filter(o => o.zone === 'hand' && o.owner === source.controller);
+        const required = Math.min(effect.putBack, hand.length + next.state.unknownHand);
+        const choice = next.putBack || [...Array(Math.min(required, next.state.unknownHand)).fill(null), ...hand.slice(0, Math.max(0, required - next.state.unknownHand)).map(o => ({ instance: o.instance, incarnation: o.incarnation }))];
+        requireCheck(next.checks, 'Put-back choice uses distinct current hand objects or available unidentified cards', choice.length === required && choice.filter(c => c === null).length <= next.state.unknownHand && new Set(choice.filter(c => c !== null).map(c => c!.instance)).size === choice.filter(c => c !== null).length && choice.every(c => c === null || hand.some(o => o.instance === c.instance && o.incarnation === c.incarnation)), a.evidence);
+        const order = libraryOrder(next.state);
+        const draw = [...next.state.events].reverse().find(e => e.kind === 'draw' && e.source === sourceId);
+        const placed = required ? emit(next, 'put-back', source, required, source, a, draw || parent, 'Put cards from hand onto the library in the chosen order, not a discard; unidentified cards remain unidentified.') : undefined;
+        const top: (string | null)[] = [];
+        for (const ref of choice) {
+          if (ref === null) { next.state.unknownHand--; top.push(null); }
+          else { const o = next.state.objects.find(o => o.instance === ref.instance)!; move(o, 'library'); top.push(o.instance); emit(next, 'move', o, 1, source, a, placed, 'Placed on top of the library; no discard history or graveyard permission created.'); }
+        }
+        next.state.library = next.state.library! + required; next.state.libraryOrder = [...top, ...order];
+        if (!next.putBack && (hand.length || next.state.unknownHand)) next.complete = false;
+      }
+      return worlds;
+    }
+    case 'remove': {
+      const target = boundTargets(w, a, effect, source)[0]; if (!target) return [w];
+      if (effect.destination === 'graveyard' && (target.counters.shield || target.card.keywords.includes('Indestructible'))) throw new Rejection('Unknown', 'Destruction needs unresolved shield/indestructible handling; no removal certified.');
+      const prior = { ...target, counters: { ...target.counters }, restrictions: [...target.restrictions] };
+      const amount = effect.controllerLifeFromPower ? power(prior) : 0;
+      if (effect.controllerLifeFromPower && (amount === null || !Number.isSafeInteger(amount))) throw new Rejection('Unknown', 'Life conversion requires established integer last-known power.');
+      const died = effect.destination === 'graveyard' && target.card.types.includes('Creature') ? emit(w, 'die', target, 1, source, a, parent, 'Destroyed creature dies; this is not a sacrifice payment.') : undefined;
+      move(target, effect.destination);
+      const removed = emit(w, 'move', target, 1, source, a, died || parent, `Removed to ${effect.destination}; preserve the previous controller and last-known power.`);
+      if (effect.controllerLifeFromPower) {
+        const gain = Math.max(0, amount!);
+        w.checks.push({ requirement: `Life conversion uses prior controller ${prior.controller} and last-known power ${amount}; nonpositive amounts gain no life`, role: 'branch', result: true, evidence: a.evidence });
+        if (prior.controller === 'you') { w.state.life += gain; w.state.payoff.life += gain; } else w.state.opponentLife += gain;
+        if (gain) emit(w, 'gain-life', prior, gain, source, a, removed, 'The removed permanent’s previous controller gains this life; zero life creates no event.');
+      }
+      return [w];
+    }
+
     case 'entry-copy': throw new Rejection('Unknown', 'Entry-copy replacements must be applied during the zone transition.');
     case 'counted-mana': {
       const objects = w.state.objects.filter(o => matches(o, effect.selector, source));
@@ -286,7 +345,9 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
     case 'draw': {
       if (w.state.library === null) throw new Rejection('Conditional', 'A sufficient library must be available to obtain the claimed cards.');
       const drawn = Math.min(w.state.library, effect.count);
-      const identified = w.state.objects.filter(o => o.zone === 'library' && o.owner === source.controller).slice(0, drawn);
+      const order = libraryOrder(w.state), top = order.slice(0, drawn);
+      const identified = top.filter((id): id is string => id !== null).map(id => w.state.objects.find(o => o.instance === id)!);
+      w.state.libraryOrder = order.slice(drawn);
       w.state.library -= drawn; w.state.unknownHand += drawn - identified.length; w.state.payoff.draw += drawn;
       w.state.payoff.loss ||= drawn < effect.count;
       const draw = emit(w, 'draw', source, drawn, source, a, parent, 'Unidentified drawn cards cannot be invented as future enablers.');
@@ -296,6 +357,7 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
       return [w];
     }
     case 'gain-life':
+      if (!effect.count) return [w];
       w.state.life += effect.count; w.state.payoff.life += effect.count;
       emit(w, 'gain-life', source, effect.count, source, a, parent); return [w];
     case 'lose-life': w.state.life -= effect.count; w.state.payoff.life -= effect.count; w.state.payoff.loss ||= w.state.life <= 0; return [w];
@@ -324,7 +386,7 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
       });
     }
     case 'adapt':
-      w.checks.push({ requirement: 'At Adapt resolution: source has no +1/+1 counters', result: !(source.counters['+1/+1'] || 0), evidence: a.evidence });
+      w.checks.push({ requirement: 'At Adapt resolution: source has no +1/+1 counters', role: 'branch', result: !(source.counters['+1/+1'] || 0), evidence: a.evidence });
       if (!(source.counters['+1/+1'] || 0)) placeCounters(w, source, effect.count, source, a, parent);
       return [w];
     case 'return': {
@@ -346,7 +408,7 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
       for (let i = 0; i < effect.count; i++) {
         const token: ObjectState = { instance: `token-${w.state.objects.length}`, incarnation: 0, zone: 'stack', controller: source.controller, owner: source.controller,
           counters: {}, tapped: false, ready: false, token: true, restrictions: [],
-          card: { ...source.card, key: fingerprint(effect), oracleId: 'generated-token', name: `${effect.types.join(' ')} token`, types: ['Creature', ...effect.types], colors: effect.colors, manaValue: 0, manaCost: '', power: effect.power, toughness: effect.toughness, keywords: effect.keywords || [], legendary: false, abilities: [], unsupported: [], deferred: [] } };
+          card: { ...source.card, key: fingerprint(effect), oracleId: 'generated-token', name: `${effect.types.join(' ')} token`, types: ['Creature', ...effect.types], colors: effect.colors, manaValue: 0, manaCost: '', power: effect.power, toughness: effect.toughness, keywords: effect.keywords || [], castCost: undefined, legendary: false, abilities: [], unsupported: [], deferred: [] } };
         w.state.objects.push(token); w.state.payoff.tokens++;
         enter(w, token, source, a, parent);
       }
@@ -355,7 +417,7 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
     case 'entry-branch': {
       if (!eventObject || eventObject.zone !== 'battlefield') throw new Rejection('Unknown', 'This branch needs last-known-information handling not implemented by this subset.');
       const property = flying(w.state, eventObject);
-      w.checks.push({ requirement: 'At trigger resolution: entering Vehicle has flying; crewing is irrelevant', result: property.value, evidence: a.evidence });
+      w.checks.push({ requirement: 'At trigger resolution: entering Vehicle has flying; crewing is irrelevant', role: 'branch', result: property.value, evidence: a.evidence });
       if (property.value) {
         // Carry static-grant participants through the resulting payoff's provenance.
         const enriched = { ...parent!, participants: [...new Set([...parent!.participants, ...property.sources])], evidence: [...parent!.evidence, ...statics(w.state, 'vehicle-flying').filter(x => property.sources.includes(x.object.instance)).map(x => x.ability.evidence)] };
@@ -376,13 +438,15 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
     case 'entry-counter-permission': w.state.entryCounters.push({ source: sourceId, count: effect.count, turn: w.state.turn }); return [w];
     case 'discard-choice-draw': throw new Rejection('Unknown', 'Discard choice must be bound by the action before resolution.');
     case 'surveil': {
-      const top = w.state.objects.filter(o => o.zone === 'library').slice(0, effect.count);
+      const order = libraryOrder(w.state);
+      const top = order.slice(0, effect.count).filter((id): id is string => id !== null).map(id => w.state.objects.find(o => o.instance === id)!);
       if (top.length < effect.count) throw new Rejection('Conditional', 'Specify the surveilled library cards; their identities are not inferred.');
       return choices(top, top.length, limits.branches + 1).slice(0, limits.branches).map(group => {
         const next = fork(w);
         for (const card of group) {
           const o = next.state.objects.find(o => o.instance === card.instance)!; move(o, 'graveyard');
           if (next.state.library !== null) next.state.library--;
+          next.state.libraryOrder = next.state.libraryOrder?.filter(id => id !== card.instance);
           emit(next, 'move', o, 1, source, a, parent, 'Library to graveyard by surveil; not a discard.');
         }
         return next;
@@ -530,6 +594,7 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
     requireCheck(checks, 'You have priority', input.priority);
     if (input.stackEmpty === false) throw new Rejection('Unknown', 'Nonempty-stack priority actions are outside this action-boundary subset.');
     requireCheck(checks, 'The current action boundary has an empty stack', input.stackEmpty);
+    if (source.card.unsupported.length) throw new Rejection('Unknown', `Unresolved acting-source mechanics on ${source.card.name}: ${source.card.unsupported.join(' | ')}`);
     if (active(input).some(o => o.controller === 'opponent' && o.card.abilities.some(a => a.kind !== 'static')))
       throw new Rejection('Unknown', 'Opponent-controlled ability effects/ordering are outside this one-player action subset.');
     if (active(input).some(o => o.card.types.includes('Creature') && (o.card.toughness === null || o.card.toughness + (o.counters['+1/+1'] || 0) - (o.counters['-1/-1'] || 0) <= 0)))
@@ -550,7 +615,7 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
       } else requireCheck(checks, 'A normally cast card is in hand', source.zone === 'hand' && source.owner === 'you');
       if (!source.card.types.includes('Instant') && !source.card.keywords.includes('Flash')) requireCheck(checks, 'Normal casting timing: your main phase', input.mainPhase);
       requireCheck(checks, 'Lands are not cast as spells', !source.card.types.includes('Land'));
-      a = { id: `${source.card.key}:cast`, kind: 'spell', effects: source.card.abilities.filter(a => a.kind === 'spell').flatMap(a => a.effects), evidence: { id: `${source.card.oracleId}:cast`, oracleId: source.card.oracleId, line: -1, text: source.card.manaCost, rule: 'subset:normal-or-permitted-cast' } };
+      a = { id: `${source.card.key}:cast`, kind: 'spell', effects: source.card.abilities.filter(a => a.kind === 'spell').flatMap(a => a.effects), evidence: { id: `${source.card.oracleId}:cast`, oracleId: source.card.oracleId, line: -1, text: source.card.manaCost, kind: 'printed-cost', rule: 'CR202.1;CR601.2f;CR601.2h:printed-mana-cost' } };
       if (!action.mayhem && !action.flashback) requireCheck(checks, 'An ordinary cast has a payable printed mana cost', !!source.card.manaCost);
       a.cost = source.card.castCost;
       if (a.cost?.sacrifice) { const target = input.objects.find(o => o.instance === action.sacrifice); requireCheck(checks, 'Additional casting sacrifice cost has an eligible controlled permanent', !!target && matches(target, a.cost.sacrifice, source)); }
@@ -601,15 +666,16 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
         }
       }
       for (const c of COLORS) s.spent.mana[c] += payment.spent[c];
-      const w: World = { state: s, bindings: { ...bound.bindings }, pending: [], copies: [], checks: [...checks, ...bound.checks.filter(c => !checks.includes(c))], steps: 0, complete: bound.complete && payments.length <= limits.branches };
+      if (Object.values(payment.spent).some(Boolean)) recordPayment(s, 'mana', o, a, Object.values(payment.spent).reduce((n, c) => n + c, 0), 'cost', payment.spent, action.kind === 'cast' && !action.flashback && !action.mayhem ? a.evidence : action.kind === 'cast' ? source.card.abilities.find(a => a.permission === (action.flashback ? 'flashback' : 'discarded-this-turn'))?.evidence || a.evidence : a.cost?.evidence || a.evidence);
+      const w: World = { state: s, putBack: action.putBack, bindings: { ...bound.bindings }, pending: [], copies: [], checks: [...checks, ...bound.checks.filter(c => !checks.includes(c))], steps: 0, complete: bound.complete && payments.length <= limits.branches };
       if (action.kind === 'activate') {
         let paid: Event | undefined;
         const activationSource = { ...o, counters: { ...o.counters } };
-        if (a.cost?.life) { s.life -= a.cost.life; s.payoff.life -= a.cost.life; s.payoff.loss ||= s.life <= 0; }
-        if (a.cost?.tap) { o.tapped = true; s.spent.tapped.push(o.instance); }
+        if (a.cost?.life) { recordPayment(s, 'life', o, a, a.cost.life); s.spent.life = (s.spent.life || 0) + a.cost.life; s.life -= a.cost.life; s.payoff.life -= a.cost.life; s.payoff.loss ||= s.life <= 0; }
+        if (a.cost?.tap) { recordPayment(s, 'tap', o, a, 1); o.tapped = true; s.spent.tapped.push(o.instance); }
         if (a.cost?.sacrifice) paid = sacrifice(w, s.objects.find(o => o.instance === action.sacrifice)!, o, a);
         if (a.cost?.removeCounter) {
-          const donor = s.objects.find(o => o.instance === action.counterSource)!; donor.counters['+1/+1']--;
+          const donor = s.objects.find(o => o.instance === action.counterSource)!; recordPayment(s, 'counter', donor, a, 1); donor.counters['+1/+1']--;
           s.spent.counters.push({ instance: donor.instance, count: 1 });
           paid = emit(w, 'remove-counter', donor, 1, o, a, paid, 'Removed a +1/+1 counter as a paid cost; recompute power.');
         }
@@ -638,13 +704,13 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
             if (list.some(e => e.kind === 'discard-choice-draw')) {
               const target = world.state.objects.find(x => x.instance === (action.discard || action.sacrifice));
               if (action.discard) {
-                requireCheck(world.checks, 'Chosen discard is another card in your hand', !!target && target.zone === 'hand' && target.controller === 'you');
+                requireCheck(world.checks, 'Chosen discard is another card in your hand', !!target && target.zone === 'hand' && target.owner === 'you' && target.controller === 'you');
+                recordPayment(world.state, 'discard', target!, a, 1, 'resolution-choice');
                 move(target!, 'graveyard'); target!.discardedTurn = s.turn; world.state.spent.discarded.push(target!.instance);
                 resolutionParent = emit(world, 'discard', target!, 1, spell, a, cast, 'This specific card was discarded from hand this turn.');
               } else if (action.sacrifice) {
                 requireCheck(world.checks, 'Chosen sacrifice is an artifact you control', !!target && target.zone === 'battlefield' && target.card.types.includes('Artifact') && target.controller === 'you');
-                move(target!, 'graveyard'); world.state.spent.sacrificed.push(target!.instance);
-                resolutionParent = emit(world, 'move', target!, 1, spell, a, cast, 'Sacrificed, not discarded.');
+                resolutionParent = sacrifice(world, target!, spell, a, cast, 'resolution-choice');
               }
               list = target ? [{ kind: 'draw', count: 2 }] : [];
             }
@@ -657,8 +723,9 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
     }
     return done.map(w => {
       const events = w.state.events.slice(start);
+      requireCheck(w.checks, 'Every consumed resource agrees with the evidence ledger', paymentLedgerAgrees(input, w.state));
       if (w.checks.some(c => c.role === 'required' && c.result !== true)) throw new Rejection('Unknown', 'An unresolved mandatory predicate prevents certification.');
-      return { status: 'Verified', executable: 'now', action, checks: w.checks, prerequisites: [], participants: [...new Set(events.flatMap(e => e.participants))].sort(), evidence: [...new Map([a.evidence, ...events.flatMap(e => e.evidence)].map(e => [e.id, e])).values()], assumptions: input.assumptions, events, dependencies, terminal: w.state, complete: true, boundTargets: w.bindings, searchTruncated: !w.complete };
+      return { status: 'Verified', executable: 'now', action, checks: w.checks, prerequisites: [], participants: [...new Set(events.flatMap(e => e.participants))].sort(), evidence: [...new Map([a.evidence, ...(w.state.spent.payments || []).slice(input.spent.payments?.length || 0).map(p => p.evidence), ...events.flatMap(e => e.evidence)].map(e => [e.id, e])).values()], assumptions: input.assumptions, events, dependencies, terminal: w.state, complete: true, boundTargets: w.bindings, searchTruncated: !w.complete };
     });
   } catch (error) {
     if (!(error instanceof Rejection)) throw error;
@@ -672,7 +739,7 @@ export function verifyClaim(proof: Proof, claim: { kind: Event['kind']; subject?
   return { status: count >= claim.minimum ? 'Verified' : 'Invalid', count, explanation: count >= claim.minimum ? 'Claim witnessed in this completed scoped sequence.' : 'The required event/payoff did not occur in this completed sequence; this is not a claim of global impossibility.' };
 }
 function stateKey(s: State): string {
-  return fingerprint({ objects: s.objects.map(o => [o.instance, o.incarnation, o.card.key, o.baseCard?.key, o.zone, o.owner, o.controller, o.token, o.ceased, o.restrictions, o.counters, o.tapped, o.ready, o.discardedTurn]), turn: s.turn, mainPhase: s.mainPhase, priority: s.priority, stackEmpty: s.stackEmpty, mana: s.mana, entry: s.entryCounters, payoff: s.payoff, life: s.life, opponent: s.opponentLife, library: s.library, hand: s.unknownHand });
+  return fingerprint({ objects: s.objects.map(o => [o.instance, o.incarnation, o.card.key, o.baseCard?.key, o.zone, o.owner, o.controller, o.token, o.ceased, o.restrictions, o.counters, o.tapped, o.ready, o.discardedTurn]), turn: s.turn, mainPhase: s.mainPhase, priority: s.priority, stackEmpty: s.stackEmpty, mana: s.mana, entry: s.entryCounters, payoff: s.payoff, life: s.life, opponent: s.opponentLife, library: s.library, libraryOrder: s.libraryOrder, hand: s.unknownHand });
 }
 export function discover(input: State, supplied: Partial<Limits> = {}): Discovery {
   const limits = { ...DEFAULT_LIMITS, ...supplied }, proofs: Proof[] = [], paths: Discovery['paths'] = [];

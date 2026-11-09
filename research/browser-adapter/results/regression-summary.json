@@ -1,0 +1,55 @@
+{
+  "version": "phase4-browser.2",
+  "sourceInputSha256": "a3a5db1a79ddee9f27b3fc7461169b70350fafc1c4276195e503271abd8bc820",
+  "milliseconds": 381.86210600000004,
+  "mechanical": {
+    "total": 318,
+    "positives": 104,
+    "negatives": 214,
+    "truePositives": 42,
+    "falsePositives": 0,
+    "falseNegatives": 62,
+    "precision": {
+      "value": 1,
+      "lower": 0.916201209134296,
+      "upper": 0.9999999999999999,
+      "successes": 42,
+      "trials": 42
+    },
+    "recall": {
+      "value": 0.40384615384615385,
+      "lower": 0.31460127455025944,
+      "upper": 0.499941293598289,
+      "successes": 42,
+      "trials": 104
+    },
+    "unsafeCertification": {
+      "value": 0,
+      "lower": 0,
+      "upper": 0.017634195260581874,
+      "successes": 0,
+      "trials": 214
+    },
+    "abstentions": 110,
+    "unknown": 110,
+    "conditional": 0,
+    "explicitInvalidRejections": 160,
+    "intervalCaveat": "Descriptive case-level Wilson intervals. Cases are clustered by template/family and are not random independent population samples; these intervals do not establish unseen-deck accuracy."
+  },
+  "discovery": {
+    "value": 0.3942307692307692,
+    "lower": 0.3056889709260554,
+    "upper": 0.4903078540373479,
+    "successes": 41,
+    "trials": 104
+  },
+  "proofAudit": {
+    "verifiedOutcomes": 194,
+    "uniqueVerifiedOutcomes": 61,
+    "issues": [],
+    "independentExplanationAccuracy": null
+  },
+  "independentlyAdjudicated": false,
+  "activationApproved": false,
+  "caveat": "Previously exposed operator-labeled regression pack. Direct engine limits differ from the more conservative browser transport budgets; actual worker behavior is measured separately."
+}

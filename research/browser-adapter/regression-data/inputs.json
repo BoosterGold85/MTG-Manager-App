@@ -1,0 +1,8412 @@
+[
+  {
+    "id": "P001",
+    "placements": [
+      {
+        "name": "Captain's Call",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P002",
+    "placements": [
+      {
+        "name": "Krenko's Command",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P003",
+    "placements": [
+      {
+        "name": "Hordeling Outburst",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 2,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P004",
+    "placements": [
+      {
+        "name": "Servo Exhibition",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P005",
+    "placements": [
+      {
+        "name": "Call the Cavalry",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P006",
+    "placements": [
+      {
+        "name": "Queen's Commission",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P007",
+    "placements": [
+      {
+        "name": "Gather the Townsfolk",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P008",
+    "placements": [
+      {
+        "name": "Triplicate Spirits",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P009",
+    "placements": [
+      {
+        "name": "Battle Screech",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P010",
+    "placements": [
+      {
+        "name": "Saproling Migration",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 1
+    }
+  },
+  {
+    "id": "P011",
+    "placements": [
+      {
+        "name": "Priest of Urabrask",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P012",
+    "placements": [
+      {
+        "name": "Priest of Gix",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P013",
+    "placements": [
+      {
+        "name": "Dark Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P014",
+    "placements": [
+      {
+        "name": "Seething Song",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P015",
+    "placements": [
+      {
+        "name": "Pyretic Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P016",
+    "placements": [
+      {
+        "name": "Desperate Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P017",
+    "placements": [
+      {
+        "name": "Cabal Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P018",
+    "placements": [
+      {
+        "name": "Battle Hymn",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P019",
+    "placements": [
+      {
+        "name": "Brightstone Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P020",
+    "placements": [
+      {
+        "name": "Songs of the Damned",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P021",
+    "placements": [
+      {
+        "name": "Zombify",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P022",
+    "placements": [
+      {
+        "name": "Breath of Life",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P023",
+    "placements": [
+      {
+        "name": "Resurrection",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P024",
+    "placements": [
+      {
+        "name": "Reanimate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P025",
+    "placements": [
+      {
+        "name": "Exhume",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P026",
+    "placements": [
+      {
+        "name": "Unearth",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P027",
+    "placements": [
+      {
+        "name": "Victimize",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P028",
+    "placements": [
+      {
+        "name": "Living Death",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 2,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P029",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P030",
+    "placements": [
+      {
+        "name": "Return Upon the Tide",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P031",
+    "placements": [
+      {
+        "name": "Cloudshift",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P032",
+    "placements": [
+      {
+        "name": "Ephemerate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P033",
+    "placements": [
+      {
+        "name": "Essence Flux",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P034",
+    "placements": [
+      {
+        "name": "Ghostly Flicker",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P035",
+    "placements": [
+      {
+        "name": "Momentary Blink",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P036",
+    "placements": [
+      {
+        "name": "Eerie Interlude",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P037",
+    "placements": [
+      {
+        "name": "Semester's End",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P038",
+    "placements": [
+      {
+        "name": "Teleportation Circle",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P039",
+    "placements": [
+      {
+        "name": "Conjurer's Closet",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P040",
+    "placements": [
+      {
+        "name": "Restoration Angel",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P041",
+    "placements": [
+      {
+        "name": "Ashnod's Altar",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P042",
+    "placements": [
+      {
+        "name": "Phyrexian Altar",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P043",
+    "placements": [
+      {
+        "name": "Viscera Seer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P044",
+    "placements": [
+      {
+        "name": "Carrion Feeder",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P045",
+    "placements": [
+      {
+        "name": "Woe Strider",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P046",
+    "placements": [
+      {
+        "name": "Yahenni, Undying Partisan",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P047",
+    "placements": [
+      {
+        "name": "Altar of Dementia",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P048",
+    "placements": [
+      {
+        "name": "Goblin Bombardment",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P049",
+    "placements": [
+      {
+        "name": "Spawning Pit",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P050",
+    "placements": [
+      {
+        "name": "Sadistic Hypnotist",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P051",
+    "placements": [
+      {
+        "name": "Village Rites",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P052",
+    "placements": [
+      {
+        "name": "Corrupted Conviction",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P053",
+    "placements": [
+      {
+        "name": "Costly Plunder",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P054",
+    "placements": [
+      {
+        "name": "Deadly Dispute",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P055",
+    "placements": [
+      {
+        "name": "Fanatical Offering",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P056",
+    "placements": [
+      {
+        "name": "Reckoner's Bargain",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P057",
+    "placements": [
+      {
+        "name": "Skullclamp",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Memnite",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P058",
+    "placements": [
+      {
+        "name": "Trading Post",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P059",
+    "placements": [
+      {
+        "name": "Sai, Master Thopterist",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "second-artifact"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P060",
+    "placements": [
+      {
+        "name": "Krark-Clan Ironworks",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P061",
+    "placements": [
+      {
+        "name": "Think Twice",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P062",
+    "placements": [
+      {
+        "name": "Deep Analysis",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P063",
+    "placements": [
+      {
+        "name": "Faithless Looting",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P064",
+    "placements": [
+      {
+        "name": "Ancient Grudge",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "opponent-artifact",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P065",
+    "placements": [
+      {
+        "name": "Chainer's Edict",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "opponent-creature",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P066",
+    "placements": [
+      {
+        "name": "Cabal Therapy",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Duress",
+        "zone": "hand",
+        "id": "opponent-hand",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P067",
+    "placements": [
+      {
+        "name": "Dread Return",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-2"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P068",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P069",
+    "placements": [
+      {
+        "name": "Lingering Souls",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P070",
+    "placements": [
+      {
+        "name": "Past in Flames",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Think Twice",
+        "zone": "graveyard",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P071",
+    "placements": [
+      {
+        "name": "Mentor of the Meek",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P072",
+    "placements": [
+      {
+        "name": "Garruk's Uprising",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    }
+  },
+  {
+    "id": "P073",
+    "placements": [
+      {
+        "name": "Garruk's Packleader",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P074",
+    "placements": [
+      {
+        "name": "Elemental Bond",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P075",
+    "placements": [
+      {
+        "name": "Guardian Project",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P076",
+    "placements": [
+      {
+        "name": "Beast Whisperer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P077",
+    "placements": [
+      {
+        "name": "Tocasia's Welcome",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P078",
+    "placements": [
+      {
+        "name": "Tribute to the World Tree",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P079",
+    "placements": [
+      {
+        "name": "The Great Henge",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P080",
+    "placements": [
+      {
+        "name": "Kiora, Behemoth Beckoner",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    }
+  },
+  {
+    "id": "P081",
+    "placements": [
+      {
+        "name": "Clone",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P082",
+    "placements": [
+      {
+        "name": "Phantasmal Image",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P083",
+    "placements": [
+      {
+        "name": "Spark Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P084",
+    "placements": [
+      {
+        "name": "Clever Impersonator",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P085",
+    "placements": [
+      {
+        "name": "Phyrexian Metamorph",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P086",
+    "placements": [
+      {
+        "name": "Glasspool Mimic",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P087",
+    "placements": [
+      {
+        "name": "Stunt Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P088",
+    "placements": [
+      {
+        "name": "Body Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P089",
+    "placements": [
+      {
+        "name": "Quasiduplicate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P090",
+    "placements": [
+      {
+        "name": "Rite of Replication",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P091",
+    "placements": [
+      {
+        "name": "Devoted Druid",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Vizier of Remedies",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P092",
+    "placements": [
+      {
+        "name": "Midnight Guard",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P093",
+    "placements": [
+      {
+        "name": "Sunstrike Legionnaire",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P094",
+    "placements": [
+      {
+        "name": "Incubation Druid",
+        "id": "root",
+        "zone": "battlefield",
+        "counters": {
+          "+1/+1": 1
+        }
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P095",
+    "placements": [
+      {
+        "name": "Bloom Tender",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P096",
+    "placements": [
+      {
+        "name": "Axebane Guardian",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Overgrown Battlement",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P097",
+    "placements": [
+      {
+        "name": "Sanctum Weaver",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Abundant Growth",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-2"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P098",
+    "placements": [
+      {
+        "name": "Krosan Restorer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-2"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-2"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-4"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-5"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-6"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P099",
+    "placements": [
+      {
+        "name": "Earthcraft",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Squirrel Nest",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P100",
+    "placements": [
+      {
+        "name": "Grizzly Bears",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Intruder Alarm",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "target-Zombify-valid",
+    "placements": [
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "target-Breath-of-Life-valid",
+    "placements": [
+      {
+        "name": "Breath of Life",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "target-Resurrection-valid",
+    "placements": [
+      {
+        "name": "Resurrection",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "target-Disentomb-valid",
+    "placements": [
+      {
+        "name": "Disentomb",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P001-no-priority",
+    "placements": [
+      {
+        "name": "Captain's Call",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P001-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Captain's Call",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P002-no-priority",
+    "placements": [
+      {
+        "name": "Krenko's Command",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P002-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Krenko's Command",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P003-no-priority",
+    "placements": [
+      {
+        "name": "Hordeling Outburst",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 2,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P003-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Hordeling Outburst",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 2,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P004-no-priority",
+    "placements": [
+      {
+        "name": "Servo Exhibition",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P004-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Servo Exhibition",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P005-no-priority",
+    "placements": [
+      {
+        "name": "Call the Cavalry",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P005-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Call the Cavalry",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P006-no-priority",
+    "placements": [
+      {
+        "name": "Queen's Commission",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P006-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Queen's Commission",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P007-no-priority",
+    "placements": [
+      {
+        "name": "Gather the Townsfolk",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P007-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Gather the Townsfolk",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P008-no-priority",
+    "placements": [
+      {
+        "name": "Triplicate Spirits",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    },
+    "priority": false
+  },
+  {
+    "id": "P008-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Triplicate Spirits",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P009-no-priority",
+    "placements": [
+      {
+        "name": "Battle Screech",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P009-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Battle Screech",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P010-no-priority",
+    "placements": [
+      {
+        "name": "Saproling Migration",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P010-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Saproling Migration",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Essence Warden",
+        "zone": "battlefield",
+        "id": "Essence Warden"
+      },
+      {
+        "name": "Celestial Unicorn",
+        "zone": "battlefield",
+        "id": "Celestial Unicorn"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 1
+    }
+  },
+  {
+    "id": "P011-no-priority",
+    "placements": [
+      {
+        "name": "Priest of Urabrask",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P011-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Priest of Urabrask",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P012-no-priority",
+    "placements": [
+      {
+        "name": "Priest of Gix",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P012-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Priest of Gix",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P013-no-priority",
+    "placements": [
+      {
+        "name": "Dark Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P013-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Dark Ritual",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P014-no-priority",
+    "placements": [
+      {
+        "name": "Seething Song",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P014-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Seething Song",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P015-no-priority",
+    "placements": [
+      {
+        "name": "Pyretic Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P015-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Pyretic Ritual",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P016-no-priority",
+    "placements": [
+      {
+        "name": "Desperate Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P016-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Desperate Ritual",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P017-no-priority",
+    "placements": [
+      {
+        "name": "Cabal Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P017-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Cabal Ritual",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P018-no-priority",
+    "placements": [
+      {
+        "name": "Battle Hymn",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P018-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Battle Hymn",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P019-no-priority",
+    "placements": [
+      {
+        "name": "Brightstone Ritual",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P019-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Brightstone Ritual",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-0"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-1"
+      },
+      {
+        "name": "Raging Goblin",
+        "zone": "battlefield",
+        "id": "goblin-2"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P020-no-priority",
+    "placements": [
+      {
+        "name": "Songs of the Damned",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P020-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Songs of the Damned",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "followup"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P021-no-priority",
+    "placements": [
+      {
+        "name": "Zombify",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P021-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Zombify",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P022-no-priority",
+    "placements": [
+      {
+        "name": "Breath of Life",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P022-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Breath of Life",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P023-no-priority",
+    "placements": [
+      {
+        "name": "Resurrection",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P023-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Resurrection",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P024-no-priority",
+    "placements": [
+      {
+        "name": "Reanimate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P024-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Reanimate",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P025-no-priority",
+    "placements": [
+      {
+        "name": "Exhume",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P025-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Exhume",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P026-no-priority",
+    "placements": [
+      {
+        "name": "Unearth",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P026-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Unearth",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P027-no-priority",
+    "placements": [
+      {
+        "name": "Victimize",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P027-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Victimize",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P028-no-priority",
+    "placements": [
+      {
+        "name": "Living Death",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 2,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P028-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Living Death",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 2,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P029-no-priority",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    },
+    "priority": false
+  },
+  {
+    "id": "P029-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P030-no-priority",
+    "placements": [
+      {
+        "name": "Return Upon the Tide",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    },
+    "priority": false
+  },
+  {
+    "id": "P030-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Return Upon the Tide",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P031-no-priority",
+    "placements": [
+      {
+        "name": "Cloudshift",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P031-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Cloudshift",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P032-no-priority",
+    "placements": [
+      {
+        "name": "Ephemerate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P032-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Ephemerate",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P033-no-priority",
+    "placements": [
+      {
+        "name": "Essence Flux",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P033-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Essence Flux",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P034-no-priority",
+    "placements": [
+      {
+        "name": "Ghostly Flicker",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P034-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Ghostly Flicker",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "second-target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P035-no-priority",
+    "placements": [
+      {
+        "name": "Momentary Blink",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P035-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Momentary Blink",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P036-no-priority",
+    "placements": [
+      {
+        "name": "Eerie Interlude",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P036-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Eerie Interlude",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P037-no-priority",
+    "placements": [
+      {
+        "name": "Semester's End",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P037-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Semester's End",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P038-no-priority",
+    "placements": [
+      {
+        "name": "Teleportation Circle",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": true
+  },
+  {
+    "id": "P038-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Teleportation Circle",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P039-no-priority",
+    "placements": [
+      {
+        "name": "Conjurer's Closet",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": true
+  },
+  {
+    "id": "P039-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Conjurer's Closet",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "end-step",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P040-no-priority",
+    "placements": [
+      {
+        "name": "Restoration Angel",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P040-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Restoration Angel",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P041-no-priority",
+    "placements": [
+      {
+        "name": "Ashnod's Altar",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P041-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Ashnod's Altar",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P042-no-priority",
+    "placements": [
+      {
+        "name": "Phyrexian Altar",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P042-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Phyrexian Altar",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P043-no-priority",
+    "placements": [
+      {
+        "name": "Viscera Seer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P043-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Viscera Seer",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P044-no-priority",
+    "placements": [
+      {
+        "name": "Carrion Feeder",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P044-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Carrion Feeder",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P045-no-priority",
+    "placements": [
+      {
+        "name": "Woe Strider",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P045-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Woe Strider",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P046-no-priority",
+    "placements": [
+      {
+        "name": "Yahenni, Undying Partisan",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P046-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Yahenni, Undying Partisan",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P047-no-priority",
+    "placements": [
+      {
+        "name": "Altar of Dementia",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P047-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Altar of Dementia",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P048-no-priority",
+    "placements": [
+      {
+        "name": "Goblin Bombardment",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P048-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Goblin Bombardment",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P049-no-priority",
+    "placements": [
+      {
+        "name": "Spawning Pit",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P049-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Spawning Pit",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P050-no-priority",
+    "placements": [
+      {
+        "name": "Sadistic Hypnotist",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P050-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Sadistic Hypnotist",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Doomed Dissenter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P051-no-priority",
+    "placements": [
+      {
+        "name": "Village Rites",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P051-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Village Rites",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P052-no-priority",
+    "placements": [
+      {
+        "name": "Corrupted Conviction",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    },
+    "priority": false
+  },
+  {
+    "id": "P052-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Corrupted Conviction",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "P053-no-priority",
+    "placements": [
+      {
+        "name": "Costly Plunder",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P053-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Costly Plunder",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P054-no-priority",
+    "placements": [
+      {
+        "name": "Deadly Dispute",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P054-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Deadly Dispute",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P055-no-priority",
+    "placements": [
+      {
+        "name": "Fanatical Offering",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P055-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Fanatical Offering",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P056-no-priority",
+    "placements": [
+      {
+        "name": "Reckoner's Bargain",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P056-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Reckoner's Bargain",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P057-no-priority",
+    "placements": [
+      {
+        "name": "Skullclamp",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Memnite",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P057-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Skullclamp",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Memnite",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P058-no-priority",
+    "placements": [
+      {
+        "name": "Trading Post",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P058-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Trading Post",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P059-no-priority",
+    "placements": [
+      {
+        "name": "Sai, Master Thopterist",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "second-artifact"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P059-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Sai, Master Thopterist",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "second-artifact"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P060-no-priority",
+    "placements": [
+      {
+        "name": "Krark-Clan Ironworks",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P060-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Krark-Clan Ironworks",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P061-no-priority",
+    "placements": [
+      {
+        "name": "Think Twice",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P061-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Think Twice",
+        "id": "root",
+        "zone": "exile"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P062-no-priority",
+    "placements": [
+      {
+        "name": "Deep Analysis",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P062-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Deep Analysis",
+        "id": "root",
+        "zone": "exile"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P063-no-priority",
+    "placements": [
+      {
+        "name": "Faithless Looting",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P063-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Faithless Looting",
+        "id": "root",
+        "zone": "exile"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P064-no-priority",
+    "placements": [
+      {
+        "name": "Ancient Grudge",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "opponent-artifact",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P064-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Ancient Grudge",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Ornithopter",
+        "zone": "battlefield",
+        "id": "opponent-artifact",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P065-no-priority",
+    "placements": [
+      {
+        "name": "Chainer's Edict",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "opponent-creature",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P065-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Chainer's Edict",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "opponent-creature",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P066-no-priority",
+    "placements": [
+      {
+        "name": "Cabal Therapy",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Duress",
+        "zone": "hand",
+        "id": "opponent-hand",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P066-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Cabal Therapy",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sacrifice-body"
+      },
+      {
+        "name": "Duress",
+        "zone": "hand",
+        "id": "opponent-hand",
+        "controller": "opponent"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P067-no-priority",
+    "placements": [
+      {
+        "name": "Dread Return",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-2"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P067-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Dread Return",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "battlefield",
+        "id": "sac-2"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P068-no-priority",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P068-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Unburial Rites",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P069-no-priority",
+    "placements": [
+      {
+        "name": "Lingering Souls",
+        "id": "root",
+        "zone": "graveyard"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P069-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Lingering Souls",
+        "id": "root",
+        "zone": "exile"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P070-no-priority",
+    "placements": [
+      {
+        "name": "Past in Flames",
+        "id": "root",
+        "zone": "graveyard"
+      },
+      {
+        "name": "Think Twice",
+        "zone": "graveyard",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P070-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Past in Flames",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Think Twice",
+        "zone": "graveyard",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "graveyard-cast",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P071-no-priority",
+    "placements": [
+      {
+        "name": "Mentor of the Meek",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P071-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Mentor of the Meek",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P072-no-priority",
+    "placements": [
+      {
+        "name": "Garruk's Uprising",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P072-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Garruk's Uprising",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    }
+  },
+  {
+    "id": "P073-no-priority",
+    "placements": [
+      {
+        "name": "Garruk's Packleader",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P073-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Garruk's Packleader",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P074-no-priority",
+    "placements": [
+      {
+        "name": "Elemental Bond",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P074-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Elemental Bond",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P075-no-priority",
+    "placements": [
+      {
+        "name": "Guardian Project",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P075-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Guardian Project",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P076-no-priority",
+    "placements": [
+      {
+        "name": "Beast Whisperer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P076-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Beast Whisperer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P077-no-priority",
+    "placements": [
+      {
+        "name": "Tocasia's Welcome",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P077-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Tocasia's Welcome",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P078-no-priority",
+    "placements": [
+      {
+        "name": "Tribute to the World Tree",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P078-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Tribute to the World Tree",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Nessian Courser",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 3
+    }
+  },
+  {
+    "id": "P079-no-priority",
+    "placements": [
+      {
+        "name": "The Great Henge",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P079-wrong-source-zone",
+    "placements": [
+      {
+        "name": "The Great Henge",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  },
+  {
+    "id": "P080-no-priority",
+    "placements": [
+      {
+        "name": "Kiora, Behemoth Beckoner",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "hand",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P080-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Kiora, Behemoth Beckoner",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Rumbling Baloth",
+        "zone": "exile",
+        "id": "followup"
+      }
+    ],
+    "actionMode": "cast-followup",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 3
+    }
+  },
+  {
+    "id": "P081-no-priority",
+    "placements": [
+      {
+        "name": "Clone",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P081-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Clone",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P082-no-priority",
+    "placements": [
+      {
+        "name": "Phantasmal Image",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P082-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Phantasmal Image",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P083-no-priority",
+    "placements": [
+      {
+        "name": "Spark Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P083-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Spark Double",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P084-no-priority",
+    "placements": [
+      {
+        "name": "Clever Impersonator",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P084-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Clever Impersonator",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P085-no-priority",
+    "placements": [
+      {
+        "name": "Phyrexian Metamorph",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P085-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Phyrexian Metamorph",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P086-no-priority",
+    "placements": [
+      {
+        "name": "Glasspool Mimic",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P086-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Glasspool Mimic",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P087-no-priority",
+    "placements": [
+      {
+        "name": "Stunt Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    },
+    "priority": false
+  },
+  {
+    "id": "P087-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Stunt Double",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "P088-no-priority",
+    "placements": [
+      {
+        "name": "Body Double",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    },
+    "priority": false
+  },
+  {
+    "id": "P088-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Body Double",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 4
+    }
+  },
+  {
+    "id": "P089-no-priority",
+    "placements": [
+      {
+        "name": "Quasiduplicate",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    },
+    "priority": false
+  },
+  {
+    "id": "P089-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Quasiduplicate",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "P090-no-priority",
+    "placements": [
+      {
+        "name": "Rite of Replication",
+        "id": "root",
+        "zone": "hand"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    },
+    "priority": false
+  },
+  {
+    "id": "P090-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Rite of Replication",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "battlefield",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "P091-no-priority",
+    "placements": [
+      {
+        "name": "Devoted Druid",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Vizier of Remedies",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P091-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Devoted Druid",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Vizier of Remedies",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P092-no-priority",
+    "placements": [
+      {
+        "name": "Midnight Guard",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P092-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Midnight Guard",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P093-no-priority",
+    "placements": [
+      {
+        "name": "Sunstrike Legionnaire",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P093-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Sunstrike Legionnaire",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P094-no-priority",
+    "placements": [
+      {
+        "name": "Incubation Druid",
+        "id": "root",
+        "zone": "battlefield",
+        "counters": {
+          "+1/+1": 1
+        }
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P094-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Incubation Druid",
+        "id": "root",
+        "zone": "exile",
+        "counters": {
+          "+1/+1": 1
+        }
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P095-no-priority",
+    "placements": [
+      {
+        "name": "Bloom Tender",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P095-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Bloom Tender",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P096-no-priority",
+    "placements": [
+      {
+        "name": "Axebane Guardian",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Overgrown Battlement",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P096-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Axebane Guardian",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Overgrown Battlement",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P097-no-priority",
+    "placements": [
+      {
+        "name": "Sanctum Weaver",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Abundant Growth",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-2"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P097-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Sanctum Weaver",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Abundant Growth",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-2"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P098-no-priority",
+    "placements": [
+      {
+        "name": "Krosan Restorer",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-2"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-2"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-4"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-5"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-6"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P098-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Krosan Restorer",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Freed from the Real",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Island",
+        "zone": "battlefield",
+        "id": "partner-1"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-2"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-0"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-1"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-2"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-3"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-4"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-5"
+      },
+      {
+        "name": "Grizzly Bears",
+        "zone": "graveyard",
+        "id": "grave-6"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P099-no-priority",
+    "placements": [
+      {
+        "name": "Earthcraft",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Squirrel Nest",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P099-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Earthcraft",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Squirrel Nest",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Forest",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "P100-no-priority",
+    "placements": [
+      {
+        "name": "Grizzly Bears",
+        "id": "root",
+        "zone": "battlefield"
+      },
+      {
+        "name": "Intruder Alarm",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    },
+    "priority": false
+  },
+  {
+    "id": "P100-wrong-source-zone",
+    "placements": [
+      {
+        "name": "Grizzly Bears",
+        "id": "root",
+        "zone": "exile"
+      },
+      {
+        "name": "Intruder Alarm",
+        "zone": "battlefield",
+        "id": "partner-0"
+      },
+      {
+        "name": "Presence of Gond",
+        "zone": "battlefield",
+        "id": "partner-1"
+      }
+    ],
+    "actionMode": "activate",
+    "mana": {
+      "W": 20,
+      "U": 20,
+      "B": 20,
+      "R": 20,
+      "G": 20,
+      "C": 20
+    }
+  },
+  {
+    "id": "target-Zombify-invalid",
+    "placements": [
+      {
+        "name": "Zombify",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Fellwar Stone",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "target-Breath-of-Life-invalid",
+    "placements": [
+      {
+        "name": "Breath of Life",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Fellwar Stone",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "target-Resurrection-invalid",
+    "placements": [
+      {
+        "name": "Resurrection",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Fellwar Stone",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 2,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "target-Disentomb-invalid",
+    "placements": [
+      {
+        "name": "Disentomb",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Fellwar Stone",
+        "zone": "graveyard",
+        "id": "target"
+      }
+    ],
+    "actionMode": "cast",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 1,
+      "R": 0,
+      "G": 0,
+      "C": 0
+    }
+  },
+  {
+    "id": "double-spend-Captain's-Call",
+    "placements": [
+      {
+        "name": "Captain's Call",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Captain's Call",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 3
+    }
+  },
+  {
+    "id": "double-spend-Krenko's-Command",
+    "placements": [
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Krenko's Command",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 1,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "double-spend-Hordeling-Outburst",
+    "placements": [
+      {
+        "name": "Hordeling Outburst",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Hordeling Outburst",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 2,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "double-spend-Servo-Exhibition",
+    "placements": [
+      {
+        "name": "Servo Exhibition",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Servo Exhibition",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "double-spend-Harmonize",
+    "placements": [
+      {
+        "name": "Harmonize",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Harmonize",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 2,
+      "C": 2
+    }
+  },
+  {
+    "id": "double-spend-Concentrate",
+    "placements": [
+      {
+        "name": "Concentrate",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Concentrate",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 2,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "double-spend-Counsel-of-the-Soratami",
+    "placements": [
+      {
+        "name": "Counsel of the Soratami",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Counsel of the Soratami",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 1,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 2
+    }
+  },
+  {
+    "id": "double-spend-Elvish-Visionary",
+    "placements": [
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Elvish Visionary",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 1
+    }
+  },
+  {
+    "id": "double-spend-Spirited-Companion",
+    "placements": [
+      {
+        "name": "Spirited Companion",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Spirited Companion",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 1,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 0,
+      "C": 1
+    }
+  },
+  {
+    "id": "double-spend-Llanowar-Visionary",
+    "placements": [
+      {
+        "name": "Llanowar Visionary",
+        "zone": "hand",
+        "id": "root"
+      },
+      {
+        "name": "Llanowar Visionary",
+        "zone": "hand",
+        "id": "second"
+      }
+    ],
+    "actionMode": "double-spend",
+    "mana": {
+      "W": 0,
+      "U": 0,
+      "B": 0,
+      "R": 0,
+      "G": 1,
+      "C": 2
+    }
+  }
+]

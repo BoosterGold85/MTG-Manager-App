@@ -1,0 +1,33 @@
+
+> mtg-manager@0.6.26 build:brew-lab
+> tsc -b && vite build --mode brew-lab
+
+vite v6.4.5 building for brew-lab...
+transforming...
+✓ 1705 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                     1.20 kB │ gzip:   0.56 kB
+dist/assets/dm-sans-latin-ext-wght-normal-BOFOeGcA.woff2           18.23 kB
+dist/assets/libre-caslon-display-latin-400-normal-BbfEE5V2.woff    20.05 kB
+dist/assets/csv.worker-4WJdXdsb.js                                 23.42 kB
+dist/assets/libre-caslon-display-latin-400-normal-n_DgBRfq.woff2   24.24 kB
+dist/assets/dm-sans-latin-wght-normal-Xz1IZZA0.woff2               36.93 kB
+dist/assets/intelligence.worker-CB2LGfHn.js                        40.70 kB
+dist/assets/analyzer.worker-YGBY6-rc.js                            99.71 kB
+dist/assets/worker-DlPDjtGp.js                                    155.44 kB
+dist/assets/recommendation.worker-DJJ5e9MX.js                     293.98 kB
+dist/assets/index-BFyGO6lp.css                                     76.48 kB │ gzip:  13.83 kB
+dist/assets/sampleCards-IKeiQ6sR.js                                20.53 kB │ gzip:   4.74 kB
+dist/assets/index-GRRr_dEA.js                                     816.30 kB │ gzip: 257.05 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.74s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
