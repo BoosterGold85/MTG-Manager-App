@@ -37,7 +37,8 @@ export async function handleScryfall(request:Request,fetcher:typeof fetch=fetch,
  if(request.signal.aborted)return error(499,"The lookup was canceled.");
  request.signal.addEventListener("abort",abort,{once:true});const timer=setTimeout(abort,timeoutMs);
  try{
-  const response=await fetcher(`https://api.scryfall.com${path}${url.search}`,{method:request.method,body,signal:controller.signal,redirect:"error",headers:{Accept:"application/json","User-Agent":`MTG-Manager/${version} (https://github.com/BoosterGold85/MTG-Manager-App)`,...(collection?{"Content-Type":"application/json"}:{}),"Cache-Control":"no-store"}});
+  const response=await fetcher(`https://api.scryfall.com${path}${url.search}`,{method:request.method,body,signal:controller.signal,redirect:"manual",headers:{Accept:"application/json","User-Agent":`MTG-Manager/${version} (https://github.com/BoosterGold85/MTG-Manager-App)`,...(collection?{"Content-Type":"application/json"}:{}),"Cache-Control":"no-store"}});
+  if(response.status>=300&&response.status<400)return error(502,`Scryfall returned an unexpected redirect (HTTP ${response.status}); it was not followed.`);
   const text=await response.text();
   if(text.length>MAX_RESPONSE)return error(502,"Scryfall returned an unexpectedly large response. Retry remaining cards.");
   try{JSON.parse(text);}catch{return error(502,`Scryfall returned an unreadable response (upstream HTTP ${response.status}, content type ${response.headers.get("Content-Type")?.split(";")[0] || "unknown"}). Retry remaining cards.`);}
