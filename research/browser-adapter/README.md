@@ -1,5 +1,8 @@
 # Browser adapter engineering report
 
+Latest product milestone: [Brew Lab developer release](../../docs/BREW-LAB-RELEASE.md).
+The report below describes the preceding frozen research/adapter revision.
+
 Base: main `a3c20b374dd457de1903a9a3b1ab9a61d1ff3523` (v0.6.26).
 This extends the already merged browser fork; the original research engine,
 evaluation labels, production scoring and storage modules are unchanged.

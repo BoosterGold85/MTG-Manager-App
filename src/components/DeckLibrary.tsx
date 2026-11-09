@@ -1,3 +1,4 @@
+import {BrewLab} from "./BrewLab";
 import {ExperimentalSynergyAnalyzer} from "./ExperimentalSynergyAnalyzer";
 import { ConstructedUpgrades } from "./ConstructedUpgrades";
 import { FormatOverview } from "./FormatOverview";
@@ -332,6 +333,7 @@ export function DeckLibrary({
               onOpen={(row) => setDetail({ row })}
             />
           )}
+          {tab === "upgrades" && <BrewLab key={deck.id} state={state} deck={deck} />}
           {tab === "upgrades" && formatOf(deck)!=="commander" && <ConstructedUpgrades key={deck.id} state={state} deck={deck} busy={busy} change={change} />}
           {tab === "upgrades" && formatOf(deck)==="commander" && <DeckUpgrades key={deck.id} state={state} deck={deck} busy={busy} error={error} change={change} />}
           {tab === "settings" && <DeckSettings key={deck.id} state={state} deck={deck} busy={busy} change={change} />}

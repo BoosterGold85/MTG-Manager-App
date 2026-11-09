@@ -55,8 +55,8 @@ test('targeted worker analysis presents actual named participants and proof with
  await panel.getByRole('checkbox',{name:'Entry Witness',exact:true}).check();await panel.getByRole('combobox',{name:'Starting zone for Entry Witness'}).selectOption('battlefield');
  await panel.getByRole('checkbox',{name:'Plain Visitor',exact:true}).check();await panel.getByRole('spinbutton',{name:'G mana',exact:true}).fill('1');await panel.getByRole('spinbutton',{name:'C mana',exact:true}).fill('1');
  await panel.getByRole('button',{name:'Analyze selected scenario'}).click();
- await expect(panel.getByText(/Verified within this hypothetical supported subset — path/).first()).toBeVisible();
- await panel.getByText(/Verified within this hypothetical supported subset — path/).first().click();
+ await expect(panel.getByText(/Provisional mechanical evidence within this hypothetical supported subset — path/).first()).toBeVisible();
+ await panel.getByText(/Provisional mechanical evidence within this hypothetical supported subset — path/).first().click();
  await expect(panel.getByRole('heading',{name:'Mechanical proof and source evidence'}).first()).toBeVisible();
  await expect(panel).toContainText('CR608.3');await expect(panel).toContainText('Entry Witness (battlefield)');
  await panel.getByText('Counterfactual participant removal',{exact:true}).click();await panel.getByRole('button',{name:'Preview removal of Entry Witness',exact:true}).click();

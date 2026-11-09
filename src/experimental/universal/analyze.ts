@@ -18,6 +18,7 @@ function validate(request: AnalyzerRequest): void {
   }
   if (!request.mana || Object.keys(request.mana).length !== 6 || !Object.keys(emptyMana()).every(c => Number.isSafeInteger(request.mana[c as keyof typeof request.mana]) && request.mana[c as keyof typeof request.mana] >= 0 && request.mana[c as keyof typeof request.mana] <= 20) || !Number.isSafeInteger(request.library) || request.library < 0 || request.library > 500) throw new Error('Invalid hypothetical resources.');
   for (const s of request.selected) if (!s || !ids.has(s.id) || !['hand', 'battlefield', 'graveyard'].includes(s.zone)) throw new Error('Invalid selected card or zone.');
+  if (request.focusId !== undefined && !ids.has(request.focusId)) throw new Error('Unknown focus card.');
   if (request.mode === 'catalog' && request.selected.length) throw new Error('A catalog-only scan cannot claim a game-state search.');
   if (request.mode !== undefined && !['catalog','scenario','deck-candidates'].includes(request.mode)) throw new Error('Invalid analysis mode.');
   if (request.removeId !== undefined && !(request.mode === 'deck-candidates' ? ids.has(request.removeId) : request.selected.some(s => s.id === request.removeId))) throw new Error('Counterfactual removal must name a selected participant.');
@@ -30,7 +31,7 @@ function search(request: AnalyzerRequest, metadata: Map<string, CardMetadata>, s
   return {
     selected: placements.map(p => ({ id: p.id, name: p.card.name, zone: p.zone })), assumptions: initial.assumptions,
     explored: found?.explored || 0, truncated: found?.truncated || false, reasons: found?.reasons || [], rejections: found?.rejections || [],
-    proofs: (found?.paths || []).map(path => ({ scenario: placements.map(p => ({ id:p.id, name:p.card.name, zone:p.zone })), actions: path.actions, status: path.proof.status, complete: path.proof.complete, evidence: path.proof.evidence, events: path.proof.events, checks: path.proof.checks, participants: path.proof.participants, prerequisites: path.proof.prerequisites, assumptions: path.proof.assumptions, payoff: path.proof.terminal?.payoff, spent: path.proof.terminal?.spent, holdings: path.proof.terminal ? holdingsDelta(initial, path.proof.terminal) : null, searchTruncated: path.proof.searchTruncated })),
+    proofs: (found?.paths || []).filter(path=>!request.focusId||path.proof.participants.includes(request.focusId)).map(path => ({ scenario: placements.map(p => ({ id:p.id, name:p.card.name, zone:p.zone })), actions: path.actions, status: path.proof.status, complete: path.proof.complete, evidence: path.proof.evidence, events: path.proof.events, checks: path.proof.checks, participants: path.proof.participants, prerequisites: path.proof.prerequisites, assumptions: path.proof.assumptions, payoff: path.proof.terminal?.payoff, spent: path.proof.terminal?.spent, holdings: path.proof.terminal ? holdingsDelta(initial, path.proof.terminal) : null, searchTruncated: path.proof.searchTruncated })),
   };
 }
 export function analyze(request: AnalyzerRequest) {
@@ -42,7 +43,7 @@ export function analyze(request: AnalyzerRequest) {
     if(mode!=='deck-candidates')return {...search(request,metadata,request.selected.filter(s=>s.id!==removed)),contextsAttempted:request.selected.length?1:0,candidateComparisons:0};
     const index=candidates(cards,removed,request.mana), result={...search(request,metadata,[]),contextsAttempted:0,candidateComparisons:index.comparisons};
     result.truncated=index.truncated;
-    for(const c of index.cases) {
+    for(const c of index.cases.filter(c=>!request.focusId||c.selected.some(s=>s.id===request.focusId))) {
       if(result.explored>=ANALYZER_BOUNDS.states||result.proofs.length>=ANALYZER_BOUNDS.proofs){result.truncated=true;break;}
       const scoped=search(request,metadata,c.selected,ANALYZER_BOUNDS.states-result.explored);
       result.contextsAttempted++;result.explored+=scoped.explored;result.truncated ||= scoped.truncated;

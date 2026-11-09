@@ -1,0 +1,11 @@
+
+ RUN  v5.0.5 /workspace/mtg-synergy-browser
+
+
+ Test Files  62 passed (62)
+      Tests  1189 passed (1189)
+   Start at  16:11:16
+   Duration  94.24s (tests 82%, import 16%, transform 2%, worker 1%)
+
+    Isolate  62 workers spawned · ~243ms startup each (spawn + environment, per file)
+             at least ~14.82s faster with isolate: false — reuses workers across files instead of one per file
