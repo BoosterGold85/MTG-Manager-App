@@ -1,15 +1,17 @@
-// Isolated experimental contracts. Nothing in src/ imports this package.
+// Ephemeral experimental game-state contracts; never persisted or used by scoring.
 import type { CardMetadata } from '../../models/collection';
-export const VERSION = 'phase4-remediation.1';
+export const VERSION = 'phase4-browser.2';
 export type Zone = 'hand' | 'battlefield' | 'graveyard' | 'library' | 'stack' | 'exile';
 export type Color = 'W' | 'U' | 'B' | 'R' | 'G' | 'C';
 export type Mana = Record<Color, number>;
 export type Status = 'Verified' | 'Conditional' | 'Invalid' | 'Unknown';
-export interface Evidence { id: string; oracleId: string; line: number; text: string; rule: string }
-export interface Selector { type: 'Creature' | 'Artifact' | 'ArtifactOrCreature' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean }
+export interface Evidence { kind?: 'oracle' | 'rules' | 'printed-cost'; id: string; oracleId: string; line: number; text: string; rule: string }
+export interface Selector { type: 'Creature' | 'Artifact' | 'ArtifactOrCreature' | 'ArtifactOrEnchantment' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean }
 export interface TargetRef { instance: string; incarnation: number }
 export interface Condition { kind: 'source-counters' | 'control-creature-count' | 'control-power-at-least' | 'unique-name'; minimum: number }
 export type Effect =
+  | { kind: 'draw-put-back'; draw: number; putBack: number }
+  | { kind: 'remove'; target: Selector; destination: 'exile' | 'graveyard'; controllerLifeFromPower?: boolean }
   | { kind: 'entry-copy'; selector: Selector }
   | { kind: 'artifact-tokens'; count: number; subtype: 'Treasure' | 'Clue' | 'Food' }
   | { kind: 'counted-mana'; color: Color; selector: Selector }
@@ -84,11 +86,12 @@ export interface ObjectState {
   ceased?: boolean;
   restrictions: string[];
 }
-export interface ResourceSpend { mana: Mana; counters: { instance: string; count: number }[]; tapped: string[]; discarded: string[]; sacrificed: string[] }
+export interface ResourcePayment { kind: 'mana' | 'tap' | 'counter' | 'sacrifice' | 'discard' | 'life'; amount: number; object: TargetRef; ability: string; evidence: Evidence; timing: 'cost' | 'resolution-choice'; mana?: Mana }
+export interface ResourceSpend { life?: number; payments?: ResourcePayment[]; mana: Mana; counters: { instance: string; count: number }[]; tapped: string[]; discarded: string[]; sacrificed: string[] }
 export interface Payoff { draw: number; recoveredToHand: number; creatures: number; tokens: number; counters: number; life: number; opponentDamage: number; manaGenerated: Mana; loss: boolean }
 export interface Event {
   id: string;
-  kind: 'activate' | 'condition' | 'die' | 'enter' | 'counter' | 'remove-counter' | 'cast' | 'gain-life' | 'discard' | 'move' | 'copy' | 'draw' | 'damage' | 'mana';
+  kind: 'put-back' | 'activate' | 'condition' | 'die' | 'enter' | 'counter' | 'remove-counter' | 'cast' | 'gain-life' | 'discard' | 'move' | 'copy' | 'draw' | 'damage' | 'mana';
   subject: string;
   incarnation: number;
   count: number;
@@ -110,6 +113,7 @@ export interface State {
   stackEmpty: boolean | null;
   priority: boolean | null;
   library: number | null;
+  libraryOrder?: (string | null)[];
   unknownHand: number;
   life: number;
   opponentLife: number;
@@ -119,7 +123,7 @@ export interface State {
   spent: ResourceSpend;
   assumptions: string[];
 }
-export interface Action { kind: 'cast' | 'activate'; instance: string; ability?: string; mayhem?: boolean; counterSource?: string; discard?: string; sacrifice?: string; flashback?: boolean; targets?: Record<string, TargetRef[]> }
+export interface Action { kind: 'cast' | 'activate'; instance: string; ability?: string; mayhem?: boolean; counterSource?: string; discard?: string; sacrifice?: string; flashback?: boolean; putBack?: (TargetRef | null)[]; targets?: Record<string, TargetRef[]> }
 export interface Check { requirement: string; result: true | false | 'unknown'; role?: 'required' | 'branch'; evidence?: Evidence }
 export interface Proof {
   status: Status;

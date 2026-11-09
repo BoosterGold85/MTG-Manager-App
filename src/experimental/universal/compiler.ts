@@ -42,11 +42,18 @@ export function compile(card: CardMetadata): CompiledCard {
   const facts = extractCardFacts({ ...card });
   const lines = text.split('\n').map((line, index) => ({ line: line.trim(), index })).filter(row => row.line);
   const add = (line: string, index: number, fields: Omit<Ability, 'id' | 'evidence' | 'effects'> & { effects?: Effect[] }) => {
-    result.abilities.push({ id: `${result.key}:${index}`, effects: [], ...fields,
+    const costEvidence = { id: `${result.oracleId}:line:${index}`, oracleId: result.oracleId, line: index, text: oracle.split('\n')[index] || line, rule: `subset:${VERSION}:cost`, kind: 'oracle' as const };
+    result.abilities.push({ id: `${result.key}:${index}`, effects: [], ...fields, ...(fields.cost ? { cost: { ...fields.cost, evidence: fields.cost.evidence || costEvidence } } : {}),
       evidence: { id: `${result.oracleId}:line:${index}`, oracleId: result.oracleId, line: index, text: oracle.split('\n')[index] || line, rule: `subset:${VERSION}:${fields.kind}` } });
   };
   const parseEffect = (effect: string): Effect[] | null => {
     let m: RegExpMatchArray | null;
+    if ((m = effect.match(/^Draw (a|one|two|three|\d+) cards?, then put (a|one|two|three|\d+) cards? from your hand on top of your library in any order\.$/i))) return [{ kind: 'draw-put-back', draw: n(m[1]), putBack: n(m[2]) }];
+    if ((m = effect.match(/^Exile target creature\. Its controller gains life equal to its power\.$/i))) return [{ kind: 'remove', target: { type: 'Creature', zone: 'battlefield', controller: 'any' }, destination: 'exile', controllerLifeFromPower: true }];
+    if ((m = effect.match(/^(Destroy|Exile) target (creature|artifact|enchantment|artifact or enchantment|nonland permanent|permanent)\.$/i))) {
+      const types = { creature: 'Creature', artifact: 'Artifact', enchantment: 'Enchantment', 'artifact or enchantment': 'ArtifactOrEnchantment', 'nonland permanent': 'Permanent', permanent: 'Permanent' } as const;
+      return [{ kind: 'remove', target: { type: types[m[2].toLowerCase() as keyof typeof types], zone: 'battlefield', controller: 'any', nonland: m[2].toLowerCase() === 'nonland permanent' }, destination: m[1].toLowerCase() === 'exile' ? 'exile' : 'graveyard' }];
+    }
     if ((m = effect.match(/^Create (a|one|two|three|\d+) (Treasure|Clue|Food) tokens?\.$/i))) return [{ kind: 'artifact-tokens', count: n(m[1]), subtype: (m[2][0].toUpperCase() + m[2].slice(1).toLowerCase()) as 'Treasure' | 'Clue' | 'Food' }];
     if ((m = effect.match(/^Draw (a|one|two|three|\d+) cards? and create (a|one|two|three|\d+) (Treasure|Clue|Food) tokens?\.$/i))) {
       const tail = parseEffect(`Create ${m[2]} ${m[3]} token${n(m[2]) === 1 ? '' : 's'}.`);

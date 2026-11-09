@@ -1,0 +1,1575 @@
+[
+  {
+    "id": "P007",
+    "family": "token-life-counter",
+    "truth": true,
+    "claim": "counters",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Gather the Townsfolk: Fateful hour — If you have 5 or less life, create five of those tokens instead."
+    ],
+    "unsupported": [
+      {
+        "name": "Gather the Townsfolk",
+        "lines": [
+          "Fateful hour — If you have 5 or less life, create five of those tokens instead."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P008",
+    "family": "token-life-counter",
+    "truth": true,
+    "claim": "counters",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Triplicate Spirits: Convoke"
+    ],
+    "unsupported": [
+      {
+        "name": "Triplicate Spirits",
+        "lines": [
+          "Convoke"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P009",
+    "family": "token-life-counter",
+    "truth": true,
+    "claim": "counters",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Battle Screech: Flashback—Tap three untapped white creatures you control."
+    ],
+    "unsupported": [
+      {
+        "name": "Battle Screech",
+        "lines": [
+          "Flashback—Tap three untapped white creatures you control."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P010",
+    "family": "token-life-counter",
+    "truth": true,
+    "claim": "counters",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Saproling Migration: Kicker {4} | Create two 1/1 green Saproling creature tokens. If SELF was kicked, create four of those tokens instead."
+    ],
+    "unsupported": [
+      {
+        "name": "Saproling Migration",
+        "lines": [
+          "Kicker {4}",
+          "Create two 1/1 green Saproling creature tokens. If SELF was kicked, create four of those tokens instead."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P016",
+    "family": "mana-to-cast",
+    "truth": true,
+    "claim": "mana-generated",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Desperate Ritual: Splice onto Arcane {1}{R}"
+    ],
+    "unsupported": [
+      {
+        "name": "Desperate Ritual",
+        "lines": [
+          "Splice onto Arcane {1}{R}"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P017",
+    "family": "mana-to-cast",
+    "truth": true,
+    "claim": "mana-generated",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Cabal Ritual: Threshold — Add {B}{B}{B}{B}{B} instead if there are seven or more cards in your graveyard."
+    ],
+    "unsupported": [
+      {
+        "name": "Cabal Ritual",
+        "lines": [
+          "Threshold — Add {B}{B}{B}{B}{B} instead if there are seven or more cards in your graveyard."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P019",
+    "family": "mana-to-cast",
+    "truth": true,
+    "claim": "mana-generated",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Brightstone Ritual: Add {R} for each Goblin on the battlefield."
+    ],
+    "unsupported": [
+      {
+        "name": "Brightstone Ritual",
+        "lines": [
+          "Add {R} for each Goblin on the battlefield."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P024",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Grave Researcher // Reanimate: Multi-face or special layout is outside the experimental subset. | Grave Researcher | At the beginning of your upkeep, surveil 1. Then if there are three or more creature cards in your graveyard, SELF becomes prepared. | Reanimate | Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to that card's mana value."
+    ],
+    "unsupported": [
+      {
+        "name": "Grave Researcher // Reanimate",
+        "lines": [
+          "Multi-face or special layout is outside the experimental subset.",
+          "Grave Researcher",
+          "At the beginning of your upkeep, surveil 1. Then if there are three or more creature cards in your graveyard, SELF becomes prepared.",
+          "Reanimate",
+          "Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to that card's mana value."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P025",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Exhume: Each player puts a creature card from their graveyard onto the battlefield."
+    ],
+    "unsupported": [
+      {
+        "name": "Exhume",
+        "lines": [
+          "Each player puts a creature card from their graveyard onto the battlefield."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P026",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Unearth: Cycling {2}"
+    ],
+    "unsupported": [
+      {
+        "name": "Unearth",
+        "lines": [
+          "Cycling {2}"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P027",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Victimize: Choose two target creature cards in your graveyard. Sacrifice a creature. If you do, return the chosen cards to the battlefield tapped."
+    ],
+    "unsupported": [
+      {
+        "name": "Victimize",
+        "lines": [
+          "Choose two target creature cards in your graveyard. Sacrifice a creature. If you do, return the chosen cards to the battlefield tapped."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P028",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Living Death: Each player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards they exiled this way onto the battlefield."
+    ],
+    "unsupported": [
+      {
+        "name": "Living Death",
+        "lines": [
+          "Each player exiles all creature cards from their graveyard, then sacrifices all creatures they control, then puts all cards they exiled this way onto the battlefield."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P030",
+    "family": "recursion-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Return Upon the Tide: Return target creature card from your graveyard to the battlefield. If it's an Elf, create two 1/1 green Elf Warrior creature tokens. | Foretell {3}{B}"
+    ],
+    "unsupported": [
+      {
+        "name": "Return Upon the Tide",
+        "lines": [
+          "Return target creature card from your graveyard to the battlefield. If it's an Elf, create two 1/1 green Elf Warrior creature tokens.",
+          "Foretell {3}{B}"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P032",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Ephemerate: Rebound"
+    ],
+    "unsupported": [
+      {
+        "name": "Ephemerate",
+        "lines": [
+          "Rebound"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P033",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Essence Flux: Exile target creature you control, then return that card to the battlefield under its owner's control. If it's a Spirit, put a +1/+1 counter on it."
+    ],
+    "unsupported": [
+      {
+        "name": "Essence Flux",
+        "lines": [
+          "Exile target creature you control, then return that card to the battlefield under its owner's control. If it's a Spirit, put a +1/+1 counter on it."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P034",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Ghostly Flicker: Exile two target artifacts, creatures, and/or lands you control, then return those cards to the battlefield under your control."
+    ],
+    "unsupported": [
+      {
+        "name": "Ghostly Flicker",
+        "lines": [
+          "Exile two target artifacts, creatures, and/or lands you control, then return those cards to the battlefield under your control."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P036",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Eerie Interlude: Exile any number of target creatures you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step."
+    ],
+    "unsupported": [
+      {
+        "name": "Eerie Interlude",
+        "lines": [
+          "Exile any number of target creatures you control. Return those cards to the battlefield under their owner's control at the beginning of the next end step."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P037",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Semester's End: Exile any number of target creatures and/or planeswalkers you control. At the beginning of the next end step, return each of them to the battlefield under its owner's control. Each of them enters with an additional +1/+1 counter on it if it's a creature and an additional loyalty counter on it if it's a planeswalker."
+    ],
+    "unsupported": [
+      {
+        "name": "Semester's End",
+        "lines": [
+          "Exile any number of target creatures and/or planeswalkers you control. At the beginning of the next end step, return each of them to the battlefield under its owner's control. Each of them enters with an additional +1/+1 counter on it if it's a creature and an additional loyalty counter on it if it's a planeswalker."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P038",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "The frozen API cannot express end-step procedures; no substitute permission or clock is fabricated."
+    ],
+    "unsupported": [
+      {
+        "name": "Teleportation Circle",
+        "lines": [
+          "At the beginning of your end step, exile up to one target artifact or creature you control, then return that card to the battlefield under its owner's control."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P039",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "The frozen API cannot express end-step procedures; no substitute permission or clock is fabricated."
+    ],
+    "unsupported": [
+      {
+        "name": "Conjurer's Closet",
+        "lines": [
+          "At the beginning of your end step, you may exile target creature you control, then return that card to the battlefield under your control."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P040",
+    "family": "blink-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Restoration Angel: When SELF enters, you may exile target non-Angel creature you control, then return that card to the battlefield under your control."
+    ],
+    "unsupported": [
+      {
+        "name": "Restoration Angel",
+        "lines": [
+          "When SELF enters, you may exile target non-Angel creature you control, then return that card to the battlefield under your control."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P043",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Viscera Seer: Sacrifice a creature: Scry 1."
+    ],
+    "unsupported": [
+      {
+        "name": "Viscera Seer",
+        "lines": [
+          "Sacrifice a creature: Scry 1."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P045",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Woe Strider: Sacrifice another creature: Scry 1. | Escape—{3}{B}{B}, Exile four other cards from your graveyard. | SELF escapes with two +1/+1 counters on it."
+    ],
+    "unsupported": [
+      {
+        "name": "Woe Strider",
+        "lines": [
+          "Sacrifice another creature: Scry 1.",
+          "Escape—{3}{B}{B}, Exile four other cards from your graveyard.",
+          "SELF escapes with two +1/+1 counters on it."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P046",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Yahenni, Undying Partisan: Whenever a creature an opponent controls dies, put a +1/+1 counter on SELF. | Sacrifice another creature: SELF gains indestructible until end of turn."
+    ],
+    "unsupported": [
+      {
+        "name": "Yahenni, Undying Partisan",
+        "lines": [
+          "Whenever a creature an opponent controls dies, put a +1/+1 counter on SELF.",
+          "Sacrifice another creature: SELF gains indestructible until end of turn."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P047",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Altar of Dementia: Sacrifice a creature: Target player mills cards equal to the sacrificed creature's power."
+    ],
+    "unsupported": [
+      {
+        "name": "Altar of Dementia",
+        "lines": [
+          "Sacrifice a creature: Target player mills cards equal to the sacrificed creature's power."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P049",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Spawning Pit: Sacrifice a creature: Put a charge counter on SELF. | {1}, Remove two charge counters from SELF: Create a 2/2 colorless Spawn artifact creature token."
+    ],
+    "unsupported": [
+      {
+        "name": "Spawning Pit",
+        "lines": [
+          "Sacrifice a creature: Put a charge counter on SELF.",
+          "{1}, Remove two charge counters from SELF: Create a 2/2 colorless Spawn artifact creature token."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P050",
+    "family": "sacrifice-death-body",
+    "truth": true,
+    "claim": "tokens",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Sadistic Hypnotist: Sacrifice a creature: Target player discards two cards. Activate only as a sorcery."
+    ],
+    "unsupported": [
+      {
+        "name": "Sadistic Hypnotist",
+        "lines": [
+          "Sacrifice a creature: Target player discards two cards. Activate only as a sorcery."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P051",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": true,
+    "rejected": true,
+    "reasons": [
+      "Additional casting sacrifice cost has an eligible controlled permanent"
+    ],
+    "unsupported": []
+  },
+  {
+    "id": "P052",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": true,
+    "rejected": true,
+    "reasons": [
+      "Additional casting sacrifice cost has an eligible controlled permanent"
+    ],
+    "unsupported": []
+  },
+  {
+    "id": "P053",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": true,
+    "rejected": true,
+    "reasons": [
+      "Additional casting sacrifice cost has an eligible controlled permanent"
+    ],
+    "unsupported": []
+  },
+  {
+    "id": "P054",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": true,
+    "rejected": true,
+    "reasons": [
+      "Additional casting sacrifice cost has an eligible controlled permanent"
+    ],
+    "unsupported": []
+  },
+  {
+    "id": "P055",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Fanatical Offering: Draw two cards and create a Map token."
+    ],
+    "unsupported": [
+      {
+        "name": "Fanatical Offering",
+        "lines": [
+          "Draw two cards and create a Map token."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P056",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Reckoner's Bargain: You gain life equal to the sacrificed permanent's mana value. Draw two cards."
+    ],
+    "unsupported": [
+      {
+        "name": "Reckoner's Bargain",
+        "lines": [
+          "You gain life equal to the sacrificed permanent's mana value. Draw two cards."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P057",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Skullclamp: Equipped creature gets +1/-1. | Whenever equipped creature dies, draw two cards. | Equip {1}"
+    ],
+    "unsupported": [
+      {
+        "name": "Skullclamp",
+        "lines": [
+          "Equipped creature gets +1/-1.",
+          "Whenever equipped creature dies, draw two cards.",
+          "Equip {1}"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P058",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Trading Post: {1}, {T}, Discard a card: You gain 4 life. | {1}, {T}, Pay 1 life: Create a 0/1 white Goat creature token. | {1}, {T}, Sacrifice a creature: Return target artifact card from your graveyard to your hand. | {1}, {T}, Sacrifice an artifact: Draw a card."
+    ],
+    "unsupported": [
+      {
+        "name": "Trading Post",
+        "lines": [
+          "{1}, {T}, Discard a card: You gain 4 life.",
+          "{1}, {T}, Pay 1 life: Create a 0/1 white Goat creature token.",
+          "{1}, {T}, Sacrifice a creature: Return target artifact card from your graveyard to your hand.",
+          "{1}, {T}, Sacrifice an artifact: Draw a card."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P059",
+    "family": "resource-conversion",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Sai, Master Thopterist: {1}{U}, Sacrifice two artifacts: Draw a card."
+    ],
+    "unsupported": [
+      {
+        "name": "Sai, Master Thopterist",
+        "lines": [
+          "{1}{U}, Sacrifice two artifacts: Draw a card."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P062",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Deep Analysis: Target player draws two cards. | Flashback—{1}{U}, Pay 3 life."
+    ],
+    "unsupported": [
+      {
+        "name": "Deep Analysis",
+        "lines": [
+          "Target player draws two cards.",
+          "Flashback—{1}{U}, Pay 3 life."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P063",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Faithless Looting: Draw two cards, then discard two cards."
+    ],
+    "unsupported": [
+      {
+        "name": "Faithless Looting",
+        "lines": [
+          "Draw two cards, then discard two cards."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P065",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "opponent-creature-removed",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Chainer's Edict: Target player sacrifices a creature of their choice."
+    ],
+    "unsupported": [
+      {
+        "name": "Chainer's Edict",
+        "lines": [
+          "Target player sacrifices a creature of their choice."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P066",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "opponent-discard",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Cabal Therapy: Choose a nonland card name. Target player reveals their hand and discards all cards with that name. | Flashback—Sacrifice a creature."
+    ],
+    "unsupported": [
+      {
+        "name": "Cabal Therapy",
+        "lines": [
+          "Choose a nonland card name. Target player reveals their hand and discards all cards with that name.",
+          "Flashback—Sacrifice a creature."
+        ]
+      },
+      {
+        "name": "Duress",
+        "lines": [
+          "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P067",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Dread Return: Flashback—Sacrifice three creatures."
+    ],
+    "unsupported": [
+      {
+        "name": "Dread Return",
+        "lines": [
+          "Flashback—Sacrifice three creatures."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P070",
+    "family": "graveyard-permission",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Past in Flames: Each instant and sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost."
+    ],
+    "unsupported": [
+      {
+        "name": "Past in Flames",
+        "lines": [
+          "Each instant and sorcery card in your graveyard gains flashback until end of turn. The flashback cost is equal to its mana cost."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P071",
+    "family": "conditional-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unsupported potentially relevant ability on Mentor of the Meek: Whenever another creature you control with power 2 or less enters, you may pay {1}. If you do, draw a card."
+    ],
+    "unsupported": [
+      {
+        "name": "Mentor of the Meek",
+        "lines": [
+          "Whenever another creature you control with power 2 or less enters, you may pay {1}. If you do, draw a card."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P077",
+    "family": "conditional-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unsupported potentially relevant ability on Tocasia's Welcome: Whenever one or more creatures you control with mana value 3 or less enter, draw a card. This ability triggers only once each turn."
+    ],
+    "unsupported": [
+      {
+        "name": "Tocasia's Welcome",
+        "lines": [
+          "Whenever one or more creatures you control with mana value 3 or less enter, draw a card. This ability triggers only once each turn."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P079",
+    "family": "conditional-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unsupported potentially relevant ability on The Great Henge: SELF costs {X} less to cast, where X is the greatest power among creatures you control. | Whenever a nontoken creature you control enters, put a +1/+1 counter on it and draw a card."
+    ],
+    "unsupported": [
+      {
+        "name": "The Great Henge",
+        "lines": [
+          "SELF costs {X} less to cast, where X is the greatest power among creatures you control.",
+          "Whenever a nontoken creature you control enters, put a +1/+1 counter on it and draw a card."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P080",
+    "family": "conditional-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unsupported potentially relevant ability on Kiora, Behemoth Beckoner: −1: Untap target permanent."
+    ],
+    "unsupported": [
+      {
+        "name": "Kiora, Behemoth Beckoner",
+        "lines": [
+          "−1: Untap target permanent."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P082",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Phantasmal Image: You may have SELF enter as a copy of any creature on the battlefield, except it's an Illusion in addition to its other types and it has \"When SELF becomes the target of a spell or ability, sacrifice it.\""
+    ],
+    "unsupported": [
+      {
+        "name": "Phantasmal Image",
+        "lines": [
+          "You may have SELF enter as a copy of any creature on the battlefield, except it's an Illusion in addition to its other types and it has \"When SELF becomes the target of a spell or ability, sacrifice it.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P083",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Spark Double: You may have SELF enter as a copy of a creature or planeswalker you control, except it enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker, and it isn't legendary."
+    ],
+    "unsupported": [
+      {
+        "name": "Spark Double",
+        "lines": [
+          "You may have SELF enter as a copy of a creature or planeswalker you control, except it enters with an additional +1/+1 counter on it if it's a creature, it enters with an additional loyalty counter on it if it's a planeswalker, and it isn't legendary."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P085",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Phyrexian Metamorph: You may have SELF enter as a copy of any artifact or creature on the battlefield, except it's an artifact in addition to its other types."
+    ],
+    "unsupported": [
+      {
+        "name": "Phyrexian Metamorph",
+        "lines": [
+          "You may have SELF enter as a copy of any artifact or creature on the battlefield, except it's an artifact in addition to its other types."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P086",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Glasspool Mimic // Glasspool Shore: Multi-face or special layout is outside the experimental subset. | Glasspool Mimic | You may have SELF enter as a copy of a creature you control, except it's a Shapeshifter Rogue in addition to its other types. | Glasspool Shore | This land enters tapped."
+    ],
+    "unsupported": [
+      {
+        "name": "Glasspool Mimic // Glasspool Shore",
+        "lines": [
+          "Multi-face or special layout is outside the experimental subset.",
+          "Glasspool Mimic",
+          "You may have SELF enter as a copy of a creature you control, except it's a Shapeshifter Rogue in addition to its other types.",
+          "Glasspool Shore",
+          "This land enters tapped."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P089",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Quasiduplicate: Jump-start"
+    ],
+    "unsupported": [
+      {
+        "name": "Quasiduplicate",
+        "lines": [
+          "Jump-start"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P090",
+    "family": "copy-entry-draw",
+    "truth": true,
+    "claim": "draw",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Rite of Replication: Kicker {5} | Create a token that's a copy of target creature. If SELF was kicked, create five of those tokens instead."
+    ],
+    "unsupported": [
+      {
+        "name": "Rite of Replication",
+        "lines": [
+          "Kicker {5}",
+          "Create a token that's a copy of target creature. If SELF was kicked, create five of those tokens instead."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P091",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Devoted Druid: Put a -1/-1 counter on SELF: Untap SELF."
+    ],
+    "unsupported": [
+      {
+        "name": "Devoted Druid",
+        "lines": [
+          "Put a -1/-1 counter on SELF: Untap SELF."
+        ]
+      },
+      {
+        "name": "Vizier of Remedies",
+        "lines": [
+          "If one or more -1/-1 counters would be put on a creature you control, that many -1/-1 counters minus one are put on it instead."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P092",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": true,
+    "reasons": [
+      "The specified activated ability exists"
+    ],
+    "unsupported": [
+      {
+        "name": "Presence of Gond",
+        "lines": [
+          "Enchant creature",
+          "Enchanted creature has \"{T}: Create a 1/1 green Elf Warrior creature token.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P093",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Sunstrike Legionnaire: SELF doesn't untap during your untap step. | {T}: Tap target creature with mana value 3 or less."
+    ],
+    "unsupported": [
+      {
+        "name": "Sunstrike Legionnaire",
+        "lines": [
+          "SELF doesn't untap during your untap step.",
+          "{T}: Tap target creature with mana value 3 or less."
+        ]
+      },
+      {
+        "name": "Presence of Gond",
+        "lines": [
+          "Enchant creature",
+          "Enchanted creature has \"{T}: Create a 1/1 green Elf Warrior creature token.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P094",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Incubation Druid: {T}: Add one mana of any type that a land you control could produce. If SELF has a +1/+1 counter on it, add three mana of that type instead."
+    ],
+    "unsupported": [
+      {
+        "name": "Incubation Druid",
+        "lines": [
+          "{T}: Add one mana of any type that a land you control could produce. If SELF has a +1/+1 counter on it, add three mana of that type instead."
+        ]
+      },
+      {
+        "name": "Freed from the Real",
+        "lines": [
+          "Enchant creature",
+          "{U}: Tap enchanted creature.",
+          "{U}: Untap enchanted creature."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P095",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Bloom Tender: Vivid — {T}: For each color among permanents you control, add one mana of that color."
+    ],
+    "unsupported": [
+      {
+        "name": "Bloom Tender",
+        "lines": [
+          "Vivid — {T}: For each color among permanents you control, add one mana of that color."
+        ]
+      },
+      {
+        "name": "Freed from the Real",
+        "lines": [
+          "Enchant creature",
+          "{U}: Tap enchanted creature.",
+          "{U}: Untap enchanted creature."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P096",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Axebane Guardian: {T}: Add X mana in any combination of colors, where X is the number of creatures you control with defender."
+    ],
+    "unsupported": [
+      {
+        "name": "Axebane Guardian",
+        "lines": [
+          "{T}: Add X mana in any combination of colors, where X is the number of creatures you control with defender."
+        ]
+      },
+      {
+        "name": "Freed from the Real",
+        "lines": [
+          "Enchant creature",
+          "{U}: Tap enchanted creature.",
+          "{U}: Untap enchanted creature."
+        ]
+      },
+      {
+        "name": "Overgrown Battlement",
+        "lines": [
+          "{T}: Add {G} for each creature you control with defender."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P097",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Sanctum Weaver: {T}: Add X mana of any one color, where X is the number of enchantments you control."
+    ],
+    "unsupported": [
+      {
+        "name": "Sanctum Weaver",
+        "lines": [
+          "{T}: Add X mana of any one color, where X is the number of enchantments you control."
+        ]
+      },
+      {
+        "name": "Freed from the Real",
+        "lines": [
+          "Enchant creature",
+          "{U}: Tap enchanted creature.",
+          "{U}: Untap enchanted creature."
+        ]
+      },
+      {
+        "name": "Abundant Growth",
+        "lines": [
+          "Enchant land",
+          "When this Aura enters, draw a card.",
+          "Enchanted land has \"{T}: Add one mana of any color.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P098",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Krosan Restorer: {T}: Untap target land. | Threshold — {T}: Untap up to three target lands. Activate only if there are seven or more cards in your graveyard."
+    ],
+    "unsupported": [
+      {
+        "name": "Krosan Restorer",
+        "lines": [
+          "{T}: Untap target land.",
+          "Threshold — {T}: Untap up to three target lands. Activate only if there are seven or more cards in your graveyard."
+        ]
+      },
+      {
+        "name": "Freed from the Real",
+        "lines": [
+          "Enchant creature",
+          "{U}: Tap enchanted creature.",
+          "{U}: Untap enchanted creature."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P099",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "Unknown",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": false,
+    "reasons": [
+      "Unresolved acting-source mechanics on Earthcraft: Tap an untapped creature you control: Untap target basic land."
+    ],
+    "unsupported": [
+      {
+        "name": "Earthcraft",
+        "lines": [
+          "Tap an untapped creature you control: Untap target basic land."
+        ]
+      },
+      {
+        "name": "Squirrel Nest",
+        "lines": [
+          "Enchant land",
+          "Enchanted land has \"{T}: Create a 1/1 green Squirrel creature token.\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P100",
+    "family": "state-restoration-loop",
+    "truth": true,
+    "claim": "repeatability",
+    "status": "NotEstablished",
+    "positive": false,
+    "correctPositive": false,
+    "falsePositive": false,
+    "missedPositive": true,
+    "independentDiscovery": false,
+    "rejected": true,
+    "reasons": [
+      "The specified activated ability exists"
+    ],
+    "unsupported": [
+      {
+        "name": "Intruder Alarm",
+        "lines": [
+          "Creatures don't untap during their controllers' untap steps."
+        ]
+      },
+      {
+        "name": "Presence of Gond",
+        "lines": [
+          "Enchant creature",
+          "Enchanted creature has \"{T}: Create a 1/1 green Elf Warrior creature token.\""
+        ]
+      }
+    ]
+  }
+]

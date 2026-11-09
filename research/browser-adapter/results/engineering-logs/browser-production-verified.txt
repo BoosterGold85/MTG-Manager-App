@@ -1,0 +1,26 @@
+[WebServer] (node:7123) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:7136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:7163) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   1 [mobile-390] › tests/browser/analyzerRealDecks.spec.ts:8:1 › thirty complete public decks use bounded real workers without writes
+  ✓   2 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Commander: same-origin update preserves saved records and analyzer is opt-in/read-only (4.5s)
+  ✓   3 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Legacy: same-origin update preserves saved records and analyzer is opt-in/read-only (2.7s)
+  -   4 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:47:1 › targeted worker analysis presents actual named participants and proof without saving scenario state
+  -   5 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage
+  ✓   6 [mobile-390] › tests/browser/experimentalAnalyzer.spec.ts:75:1 › production worker itself refuses execution before activation gates pass (2.2s)
+(node:7481) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -   7 [desktop] › tests/browser/analyzerRealDecks.spec.ts:8:1 › thirty complete public decks use bounded real workers without writes
+  ✓   8 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Commander: same-origin update preserves saved records and analyzer is opt-in/read-only (5.1s)
+  ✓   9 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:11:53 › Legacy: same-origin update preserves saved records and analyzer is opt-in/read-only (3.3s)
+  -  10 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:47:1 › targeted worker analysis presents actual named participants and proof without saving scenario state
+  -  11 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:66:1 › a stuck worker can be cancelled or timed out without altering storage
+  ✓  12 [desktop] › tests/browser/experimentalAnalyzer.spec.ts:75:1 › production worker itself refuses execution before activation gates pass (2.3s)
+
+  6 skipped
+  6 passed (25.9s)

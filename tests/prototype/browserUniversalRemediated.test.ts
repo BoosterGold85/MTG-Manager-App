@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { compile } from '../../src/experimental/universal/compiler';
 import { actions, discover, EvaluationCache, execute, flying, holdingsDelta, power, replay, scenario, verifyClaim } from '../../src/experimental/universal/engine';
-import { card, cards, carnage, follow, jackal, mana, novel, rishkar, tails } from '../../research/universal-remediated/fixtures';
+import { card, cards, carnage, follow, jackal, mana, novel, rishkar, tails } from '../fixtures/browserUniversal';
 import type { Action, State } from '../../src/experimental/universal/model';
 const cast = (instance: string): Action => ({ kind: 'cast', instance });
 const first = (state: State, action: Action) => execute(state, action).find(p => p.status === 'Verified')!;
