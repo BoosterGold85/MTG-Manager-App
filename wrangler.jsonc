@@ -3,8 +3,8 @@
   "name": "mtg-manager-app",
   "main": "worker/index.ts",
   "compatibility_date": "2025-04-01",
-  // Build SPA assets before either production deploys or Git Preview deployments.
-  "build": {"command": "npm run build"},
+  // Branch-only Brew Lab preview build. Do not merge this override into main.
+  "build": {"command": "npm run build:brew-lab"},
   // Required by Cloudflare's non-production `npx wrangler preview` command.
   "previews": {},
   "assets": {
