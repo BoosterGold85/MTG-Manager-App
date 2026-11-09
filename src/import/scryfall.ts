@@ -228,7 +228,9 @@ export class ScryfallClient implements MetadataResolver, DeckCardLookup {
         if(!response.ok) {
           const retryAfter=retryAfterMilliseconds(response.headers.get('Retry-After'));
           if(response.status===429) this.pace=Math.min(2000,Math.max(500,this.pace*2));
-          throw new ServiceFailure(`Scryfall lookup failed (HTTP ${response.status}).`,retryAfter,response.status===429 || response.status>=500 || response.status===408);
+          let details='';
+          try {const payload=await response.json();if(typeof payload?.details==='string')details=payload.details.replace(/\s+/g,' ').slice(0,600);}catch{/* Preserve the HTTP error when no readable detail exists. */}
+          throw new ServiceFailure(`Scryfall lookup failed (HTTP ${response.status}).${details?' '+details:''}`,retryAfter,response.status===429 || response.status>=500 || response.status===408);
         }
         return await response.json();
       } catch(error) {
