@@ -1,6 +1,16 @@
-# MTG Manager · v0.6.25
+# MTG Manager · v0.6.26
 
 A mobile-first, artwork-forward Magic binder with a preview-first **ManaBox CSV import**. The approved v0.1.1 binder, filters (including Commander Colors), sorting, card details and responsive layouts remain the foundation. Until the first confirmed import, the app shows the original clearly marked 32-card sample binder. Sample quantities are never mixed into your collection.
+
+## Experimental Synergy Analyzer · opt-in, read-only
+
+Open **Decks → an existing Commander or Legacy deck → Overview → Experimental Synergy Analyzer → Open experimental analyzer**. **Scan supported mechanics** uses the deck's already-saved canonical metadata. No download, collection reimport or copy reassignment is required.
+
+For a targeted test, expand **Choose a targeted hypothetical scenario**, select up to three cards, set their starting zones and explicitly supply mana/library assumptions, then choose **Analyze selected scenario**. Results distinguish supported clauses, unsupported/deferred mechanics, scoped mechanical paths, proof/checks/source evidence, gross payoff and terminal resource changes. Cancelling or an eight-second timeout terminates the separate worker. Results and scenario settings are not persisted.
+
+**Coverage is incomplete.** A card with a parsed ability is not completely understood, and a deck is not a battlefield. “Verified within this hypothetical supported subset” is a bounded engine result, not independent proof of real-game executability, complete deck understanding, competitive strength or win probability. No chains is a valid outcome; search limits and unknown/rejected actions are visible. Main deck and Commander are included; sideboard is excluded.
+
+This module does not feed Plan Fit, Brew Score, upgrade rankings, deck edits or ownership. The existing IndexedDB databases, versions, keys, deck IDs and assignments remain unchanged. Keep using the same production site origin; branch-preview sites have separate browser storage. [Release, safety tests and limitations](docs/EXPERIMENTAL-ANALYZER-v0.6.26.md).
 
 ## Deck Intelligence
 

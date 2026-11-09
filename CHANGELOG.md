@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.26 — 2026-11-08 — Experimental Synergy Analyzer
+
+- Merge the exact reviewed dormant research module first, without activating production behavior.
+- Add an opt-in, read-only analyzer to existing Commander/Legacy Overview, using saved canonical metadata and an isolated cancellable browser worker. No schema migration, database/key changes, reimport, or copy reassignment.
+- Support coverage scans and explicit up-to-three-card hypothetical scenarios, bounded mechanical proof paths, prerequisites, source evidence, payoffs/terminal holdings, unsupported mechanics and truncated searches. No numerical synergy recommendation scores.
+- Repair browser-fork sacrifice-cost citations and ordinary permanent-entry rules evidence; explicitly flag depth-limited alternative searches. Preserve the frozen research implementation and manifest.
+- Preserve existing recommendation/Deck Intelligence behavior, scoring, storage and deployment configuration. See docs/EXPERIMENTAL-ANALYZER-v0.6.26.md.
+
 ## 0.6.25 — 2026-11-05 — Deck Intelligence and Preview Deployment
 
 - Add entry-level coverage, conservative deck strategy, evidence-backed synergy chains and weaknesses to Overview.

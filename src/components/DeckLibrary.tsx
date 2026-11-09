@@ -1,3 +1,4 @@
+import {ExperimentalSynergyAnalyzer} from "./ExperimentalSynergyAnalyzer";
 import { ConstructedUpgrades } from "./ConstructedUpgrades";
 import { FormatOverview } from "./FormatOverview";
 import { DeckIntelligence } from "./DeckIntelligence";
@@ -313,6 +314,7 @@ export function DeckLibrary({
               }}
             />
           )}
+          {tab === "overview" && (formatOf(deck)==="commander" || formatOf(deck)==="legacy") && <ExperimentalSynergyAnalyzer key={`experimental:${deck.id}:${state.revision}`} state={state} deck={deck} />}
           {tab === "overview" && <DeckIntelligence key={`intelligence:${deck.id}`} state={state} deck={deck} busy={busy} change={change} />}
           {tab === "cards" && (
             <DeckCards

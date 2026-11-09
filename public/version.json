@@ -1,1 +1,1 @@
-{"name":"MTG Manager","version":"0.6.25","rankingVersion":"0.6.16-resources.1","standardRankingVersion":"0.1.0","feature":"Deck Intelligence coverage, strategy and synergy evidence; Cloudflare preview support","legacyRankingVersion":"0.1.0","lookupTransport":"same-origin"}
+{"name":"MTG Manager","version":"0.6.26","rankingVersion":"0.6.16-resources.1","standardRankingVersion":"0.1.0","feature":"Opt-in read-only Experimental Synergy Analyzer","legacyRankingVersion":"0.1.0","lookupTransport":"same-origin","experimentalAnalyzerVersion":"0.6.26-experimental.1"}

@@ -90,6 +90,11 @@ Targeted semantic release from real production decks, done after v0.6.22 instead
 
 General Food/life-gain event semantics, resource replacement and sacrifice scope, conditional combat links and land-subtype ramp. Includes the land and Uugguu coverage follow-ups. No score-weight tuning or automatic deck changes. See [validation](docs/VALIDATION-v0.6.24.md).
 
-### 0.6.25 — Current: Deck Intelligence
+### 0.6.25 — Released: Deck Intelligence
 
 Independent entry coverage, saved intent, conservative strategy and synergy evidence, composition gaps and owned-upgrade tradeoffs. Includes Cloudflare Preview support. Scores and assignments are unchanged. Exact Carnage deck fixture and the existing timing gate remain open; see [implementation and validation](docs/DECK-INTELLIGENCE.md).
+
+
+### 0.6.26 — Current: Opt-in Experimental Synergy Analyzer
+
+Read-only coverage scans and explicit targeted hypothetical mechanical analyses on saved Commander/Legacy decks. A separate bounded browser worker; no storage/schema changes and no production recommendation or numerical synergy integration. Coverage and independent correctness remain limited and clearly disclosed. See [release and safety report](docs/EXPERIMENTAL-ANALYZER-v0.6.26.md).

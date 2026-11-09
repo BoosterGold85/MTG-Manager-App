@@ -1,10 +1,11 @@
+import pkg from '../../package.json' with {type:'json'};
 import { test, expect } from '@playwright/test';
 import { exportCsv, sol, fixtureRow, apiCard } from '../importFixtures';
 
 test('same-site lookup route is available in the running app and rejects invalid requests as JSON', async ({ request }) => {
  const health=await request.get('/api/scryfall/health');
  expect(health.status()).toBe(200);
- expect(await health.json()).toMatchObject({service:'mtg-scryfall-proxy',version:'0.6.23',transport:'same-origin',maxBatch:75});
+ expect(await health.json()).toMatchObject({service:'mtg-scryfall-proxy',version:pkg.version,transport:'same-origin',maxBatch:75});
  const invalid=await request.post('/api/scryfall/cards/collection',{data:{identifiers:[]}});
  expect(invalid.status()).toBe(400);expect(await invalid.json()).toMatchObject({object:'error'});
  const unknown=await request.get('/api/scryfall/unknown');expect(unknown.status()).toBe(404);
