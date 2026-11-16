@@ -11,6 +11,7 @@ import {brewFor,synergyFor} from '../upgrades';
 import {withoutCard} from '../experimental/universal/deckPreview';
 import {AnalyzerSession} from './ExperimentalSynergyAnalyzer';
 import {analyzerAvailable} from '../experimental/universal/activation';
+import {BrewLabDiscovery} from './BrewLabDiscovery';
 
 export function BrewLab({state,deck,legacyCandidates}:{state:CollectionState;deck:Deck;legacyCandidates?:StandardCandidate[]}){
  const [open,setOpen]=useState(false);
@@ -43,12 +44,14 @@ function LabSession({state,deck,legacyCandidates}:{state:CollectionState;deck:De
  // Only ephemeral analysis input changes. No repository or collection-write API.
  const projected=useMemo(()=>cut?withoutCard(state,deck,cut):deck,[state,deck,cut]);
  return <div><p>Your saved deck is the baseline. Unknown means unresolved, never negative card value. Findings have not been independently reviewed and are not proven game or win-rate claims.</p>
+ <BrewLabDiscovery state={state} deck={deck} onInspect={next=>{setId(next);setCut('');}}/>
  <label>Card or upgrade candidate<select aria-label="Brew Lab card" value={id} onChange={e=>{setId(e.target.value);setCut('');}}><option value="">Choose a saved deck card or owned candidate</option>{cards.map(c=><option key={c.scryfallId} value={c.scryfallId}>{c.name}{input.cards.some(x=>x.card.scryfallId===c.scryfallId)?' · in deck':' · owned candidate'}</option>)}</select></label>
  {card&&<><h3>{card.name} · same-card comparison</h3><h4>Original Brew Engine · authoritative baseline</h4>
  {baseline?<><p>Original Plan Fit {baseline.fit} · Original Brew Score {baseline.brew}</p><ul>{baseline.reasons.map((r,i)=><li key={i}>{r}</li>)}</ul></>:<p>The original engine has no eligible scored comparison for this printing in this view. No score is invented. You can still inspect its rules below.</p>}
  <p>These are the original engine's existing fit and Brew values; they are not new mechanical-verification claims. Scores remain the original saved-deck baseline during removal previews.</p>
  <label>Hypothetical replacement / removal<select aria-label="Brew Lab remove card" value={cut} onChange={e=>setCut(e.target.value)}><option value="">Original deck context</option>{input.cards.filter(c=>c.card.scryfallId!==id).map(c=><option key={c.card.scryfallId} value={c.card.scryfallId}>Without {c.card.name} (all copies)</option>)}</select></label>
  <p>{cut?'Preview excludes all copies of the named card; the selected candidate is available for testing in its place. Reset to Original deck context to compare.':'Select partners and starting resources below, then run the same-card scenario or candidate search.'} No deck edits or legality certification occur.</p>
+ <BrewLabDiscovery key={`discover:${id}:${cut}`} state={state} deck={projected} focus={card}/>
  <h4>Universal Synergy Engine · provisional mechanical evidence</h4>
  <AnalyzerSession key={`${id}:${cut}`} state={state} deck={projected} focusCard={card}/></>}
  </div>;
