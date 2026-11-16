@@ -1,7 +1,7 @@
 import {sha256} from './sha256';
 import type { CardMetadata } from '../../models/collection';
 import { extractCardFacts } from '../../synergy/facts';
-import type { Ability, CompiledCard, Effect, Selector, Trigger } from './model';
+import type { Ability, Color, CompiledCard, Effect, Selector, Trigger } from './model';
 import { VERSION } from './model';
 
 const counts: Record<string, number> = { a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5 };
@@ -69,6 +69,7 @@ export function compile(card: CardMetadata): CompiledCard {
     if (/^Untap all creatures\.$/i.test(effect)) return [{ kind: 'untap', allCreatures: true }];
     if (/^Untap target creature you control\.$/i.test(effect)) return [{ kind: 'untap', target: youCreature() }];
     if (/^Copy (?:that spell|it)\. You may choose new targets for the copy\.$/i.test(effect)) return [{ kind: 'copy-spell', nonlegendary: false, thenCounterSelf: false }];
+    if ((m = effect.match(/^Add \{([WUBRGC])\} or \{([WUBRGC])\}\.$/))) return [{ kind: 'mana', symbols: [], options: [m[1], m[2]] as Color[] }];
     if (/^Add one mana of any color\.$/i.test(effect)) return [{ kind: 'mana', symbols: [], choose: true }];
     if ((m = effect.match(/^(?:you (?:may )?)?Draw (a|one|two|three|\d+) cards?\.$/i))) return [{ kind: 'draw', count: n(m[1]) }];
     if ((m = effect.match(/^you (?:may )?gain (\d+) life\.$/i))) return [{ kind: 'gain-life', count: n(m[1]) }];
@@ -83,6 +84,7 @@ export function compile(card: CardMetadata): CompiledCard {
     }
     if (/^draw a card if it has flying\. Otherwise, put a flying counter on it\.$/i.test(effect)) return [{ kind: 'entry-branch', keyword: 'Flying' }];
     if (/^copy that spell, except the copy isn't legendary\. Then put a \+1\/\+1 counter on SELF\.$/i.test(effect)) return [{ kind: 'copy-spell', nonlegendary: true, thenCounterSelf: true }];
+    if ((m = effect.match(/^SELF deals (\d+) damage to you\.$/i))) return [{ kind: 'lose-life', count: Number(m[1]) }];
     if ((m = effect.match(/^SELF deals (\d+) damage to each opponent\.$/i))) return [{ kind: 'damage', count: Number(m[1]) }];
     if ((m = effect.match(/^Create (a|one|two|three|\d+) (\d+)\/(\d+) (white|blue|black|red|green|colorless) ([A-Za-z ]+?) (?:artifact )?creature tokens?(?: with (flying|vigilance|lifelink))?\.$/i))) {
       const colors: Record<string, string[]> = { white: ['W'], blue: ['U'], black: ['B'], red: ['R'], green: ['G'], colorless: [] };
@@ -100,6 +102,7 @@ export function compile(card: CardMetadata): CompiledCard {
     }
     return null;
   };
+  let deferModes = false;
   for (const { line, index: i } of lines) {
     let m: RegExpMatchArray | null;
     if (/^(?:Flying|Flash|Trample|Vigilance|Haste|Lifelink|Reach|Defender|Deathtouch|Menace|First strike|Double strike)(?:, (?:Flying|Flash|Trample|Vigilance|Haste|Lifelink|Reach|Defender|Deathtouch|Menace|First strike|Double strike))*$/i.test(line)) { result.keywords.push(...line.split(', ').map(w => w[0].toUpperCase() + w.slice(1).toLowerCase())); continue; }
@@ -111,7 +114,12 @@ export function compile(card: CardMetadata): CompiledCard {
     }
     if (/^(?:SELF can't block\.|Creatures you control have trample\.)$/.test(line)) { result.deferred.push(line); continue; }
     if ((m = line.match(/^Flashback ((?:\{[^}]+\})+)$/))) { add(line, i, { kind: 'permission', permission: 'flashback', cost: { mana: m[1] } }); continue; }
-    if (/^Crew \d+$/.test(line) || /^Whenever SELF attacks(?: or blocks)?,/.test(line)) { result.deferred.push(line); continue; }
+    // Recognized but not simulated. Combat never occurs in these scenarios, so attack and combat-damage
+    // triggers cannot fire; cycling and ward are self-contained and only under-report when skipped.
+    if (/^Crew \d+$/.test(line) || /^Whenever [^,]+? (?:attacks?|blocks?)(?: or blocks)?,/.test(line) || /^Whenever [^,]+? deals? combat damage to (?:a player|an opponent|one or more players),/.test(line)
+      || /^(?:Cycling|Ward|Equip) (?:\{[^}]+\})+$/.test(line)) { result.deferred.push(line); deferModes = /choose one —$/.test(line); continue; }
+    if (deferModes && line.startsWith('• ')) { result.deferred.push(line); continue; }
+    deferModes = false;
     if (line === 'Vehicles you control have flying.') { add(line, i, { kind: 'static', static: 'vehicle-flying' }); continue; }
     if (line === 'Each creature you control with a counter on it has "{T}: Add {G}."') { add(line, i, { kind: 'static', static: 'counter-mana' }); continue; }
     if (/^If one or more \+1\/\+1 counters would be put on a creature you control, that many plus one \+1\/\+1 counters are put on it instead\.$/.test(line)) { add(line, i, { kind: 'static', static: 'counter-addition' }); continue; }
@@ -126,11 +134,11 @@ export function compile(card: CardMetadata): CompiledCard {
       const sacrifice: Selector | undefined = payment.startsWith('Sacrifice') ? { type: payment.endsWith('artifact') ? 'Artifact' : payment.endsWith('SELF') ? 'Any' : 'Creature', zone: 'battlefield', controller: 'you', self: payment.endsWith('SELF'), another: payment.includes('another') } : undefined;
       if (effects) { add(line, i, { kind: 'activated', effects, cost: { mana: (m[1] || '').replace(/, $/, '').replace('{T}', ''), tap: (m[1] || '').includes('{T}'), sacrifice, life: payment.startsWith('Pay') ? Number(payment.match(/\d+/)![0]) : undefined } }); continue; }
     }
-    if ((m = line.match(/^((?:\{[^}]+\})+(?:, Remove a \+1\/\+1 counter from a creature you control)?): (.+)$/))) {
+    if ((m = line.match(/^((?:\{[^}]+\})+(?:, \{T\})?(?:, Remove a \+1\/\+1 counter from a creature you control)?): (.+)$/))) {
       const effects = parseEffect(m[2]);
-      if (effects) { add(line, i, { kind: 'activated', cost: { mana: m[1].replace(/, Remove.*$/, '').replace('{T}', ''), tap: m[1].includes('{T}'), removeCounter: /, Remove/.test(m[1]) ? youCreature() : undefined }, effects }); continue; }
+      if (effects) { add(line, i, { kind: 'activated', cost: { mana: m[1].replace(/, Remove.*$/, '').replace(/(?:, )?\{T\}/, ''), tap: m[1].includes('{T}'), removeCounter: /, Remove/.test(m[1]) ? youCreature() : undefined }, effects }); continue; }
     }
-    if ((m = line.match(/^(?:When|Whenever) (.+?), (.+)$/))) {
+    if ((m = line.match(/^Whenever (you cast an? [A-Z][a-z]+(?:, [A-Z][a-z]+)*,? or [A-Z][a-z]+ spell), (.+)$/)) || (m = line.match(/^(?:When|Whenever) (.+?), (.+)$/))) {
       let effectText = m[2]; let condition: Ability['condition'];
       const conditional = effectText.match(/^if you control a creature with power (\d+) or greater, (.+)$/);
       if (conditional) { condition = { kind: 'control-power-at-least', minimum: Number(conditional[1]) }; effectText = conditional[2]; }
@@ -149,6 +157,11 @@ export function compile(card: CardMetadata): CompiledCard {
         const self = m[1] === 'SELF dies';
         trigger = { event: 'die', subject: { type: self ? 'Any' : 'Creature', zone: 'battlefield', controller: self || m[1].includes('you control') ? 'you' : 'any', self, another: m[1].startsWith('another '), nontoken: m[1].includes('nontoken') }, eventCount: 'each-event' };
       }
+      // General cast-trigger form: a list of card types/subtypes ("an Aura, Equipment, or Vehicle spell") or one negated type.
+      const castList = m[1].match(/^you cast an? ((?:[A-Z][a-z]+)(?:(?:, | or |, or )[A-Z][a-z]+)*) spell$/);
+      const castNon = m[1].match(/^you cast a non(creature|artifact|land) spell$/);
+      if (!trigger && castList && !/^(?:Creature|Artifact)$/.test(castList[1])) trigger = { event: 'cast', subject: { type: 'Any', zone: 'stack', controller: 'you' }, spellTypes: castList[1].split(/, or |, | or /), eventCount: 'each-event' };
+      if (!trigger && castNon) trigger = { event: 'cast', subject: { type: 'Any', zone: 'stack', controller: 'you' }, excludedSpellTypes: [castNon[1][0].toUpperCase() + castNon[1].slice(1)], eventCount: 'each-event' };
       if (!trigger && /^you cast (?:a creature|an artifact|an instant or sorcery) spell$/.test(m[1])) trigger = { event: 'cast', subject: { type: 'Any', zone: 'stack', controller: 'you' }, spellTypes: m[1].includes('instant') ? ['Instant', 'Sorcery'] : m[1].includes('artifact') ? ['Artifact'] : ['Creature'], eventCount: 'each-event' };
       if (!trigger && (m = line.match(/^(?:When|Whenever) ((?:another |a |a nontoken )?creature you control)(?: with power (\d+) or (greater|less))? enters, (.+)$/))) {
         trigger = { event: 'enter', subject: { ...subject, another: m[1].startsWith('another'), nontoken: m[1].includes('nontoken') }, minimumPower: m[3] === 'greater' ? Number(m[2]) : undefined, maximumPower: m[3] === 'less' ? Number(m[2]) : undefined, eventCount: 'each-event' };

@@ -1,6 +1,6 @@
 // Ephemeral experimental game-state contracts; never persisted or used by scoring.
 import type { CardMetadata } from '../../models/collection';
-export const VERSION = 'phase4-browser.2';
+export const VERSION = 'phase4-browser.3';
 export type Zone = 'hand' | 'battlefield' | 'graveyard' | 'library' | 'stack' | 'exile';
 export type Color = 'W' | 'U' | 'B' | 'R' | 'G' | 'C';
 export type Mana = Record<Color, number>;
@@ -24,7 +24,7 @@ export type Effect =
   | { kind: 'gain-life'; count: number }
   | { kind: 'lose-life'; count: number }
   | { kind: 'damage'; count: number }
-  | { kind: 'mana'; symbols: string[]; choose?: boolean }
+  | { kind: 'mana'; symbols: string[]; choose?: boolean; options?: Color[] }
   | { kind: 'counter'; count: number; recipient: 'self' | 'event' | 'target'; maximum: number; minimum?: number }
   | { kind: 'return'; target: Selector; destination: 'hand' | 'battlefield'; restrictions: string[] }
   | { kind: 'tokens'; count: number; power: number; toughness: number; colors: string[]; types: string[]; keywords?: string[] }
@@ -38,7 +38,7 @@ export interface Cost { evidence?: Evidence; mana: string; tap?: boolean; remove
 export interface Trigger {
   event: 'enter' | 'counter' | 'cast' | 'gain-life' | 'die';
   subject: Selector;
-  minimumPower?: number; maximumPower?: number; matchingPower?: boolean; spellTypes?: string[];
+  minimumPower?: number; maximumPower?: number; matchingPower?: boolean; spellTypes?: string[]; excludedSpellTypes?: string[];
   eventCount: 'each-event' | 'one-or-more';
 }
 export interface Ability {

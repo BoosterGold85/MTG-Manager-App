@@ -81,6 +81,7 @@ function emit(w: World, kind: Event['kind'], subject: ObjectState, count: number
   for (const observer of active(w.state)) for (const a of observer.card.abilities) {
     const t = a.trigger; if (!t || t.event !== kind) continue;
     if (t.spellTypes && !t.spellTypes.some(type => subject.card.types.includes(type))) continue;
+    if (t.excludedSpellTypes && t.excludedSpellTypes.some(type => subject.card.types.includes(type))) continue;
     if (t.minimumPower !== undefined || t.maximumPower !== undefined) {
       const p = power(subject); if (p === null) throw new Rejection('Unknown', 'Dynamic event-object power cannot be established.');
       if (t.minimumPower !== undefined && p < t.minimumPower || t.maximumPower !== undefined && p > t.maximumPower) continue;
@@ -366,6 +367,7 @@ function apply(w: World, effect: Effect, sourceId: string, a: Ability, parent: E
       w.state.opponentLife -= effect.count; w.state.payoff.opponentDamage += effect.count;
       emit(w, 'damage', source, effect.count, source, a, parent, 'Damage to the one modeled opponent.'); return [w];
     case 'mana': {
+      if (effect.options) return effect.options.flatMap(color => apply(fork(w), { kind: 'mana', symbols: [color] }, sourceId, a, parent, limits));
       if (effect.choose) return (['W', 'U', 'B', 'R', 'G'] as Color[]).flatMap(color => apply(fork(w), { kind: 'mana', symbols: [color] }, sourceId, a, parent, limits));
       if (!w.state.mana) throw new Rejection('Conditional', 'Mana pool is not specified.');
       for (const color of effect.symbols as Color[]) { w.state.mana[color]++; w.state.payoff.manaGenerated[color]++; }

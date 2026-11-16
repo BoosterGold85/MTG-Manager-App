@@ -7,6 +7,7 @@ import { DIMENSION_TEXT, ROLE_TEXT } from '../experimental/universal/discovery';
 import type { DiscoveryFinding, DiscoveryResult } from '../experimental/universal/discovery';
 import { DiscoveryClient } from '../experimental/universal/discoveryClient';
 import { discoveryInput } from '../experimental/universal/discoveryInput';
+import { deckDnaInput } from '../dna/engine';
 
 const MAX_CARDS_PER_PASS = 300;
 type Row = { card: CardMetadata; result?: DiscoveryResult; error?: string };
@@ -88,4 +89,53 @@ function Finding({ name, finding }: { name: string; finding: DiscoveryFinding })
 }
 function Limits({ result }: { result: DiscoveryResult }) {
   return <p className="meta-text">{result.scenariosRun} scenarios tested · {result.partnersNotTestable} of {result.partnersConsidered} deck cards have text the engine cannot read and were not testable partners{result.truncated ? ' · search truncated — incomplete' : ''}{result.interpretation.unsupported.length ? ` · ${result.interpretation.unsupported.length} Unknown clause(s) on this card` : ''}.{result.reasons.map(r => ` ${r}`).join('')}</p>;
+}
+
+const sameCard = (a: { id: string }, cut: CardMetadata, cards: CardMetadata[]) => a.id === cut.scryfallId || (!!cut.oracleId && cards.find(c => c.scryfallId === a.id)?.oracleId === cut.oracleId);
+const chainKey = (f: DiscoveryFinding) => `${f.role}|${f.gains.map(g => g.dimension).sort().join(',')}|${f.required.map(r => r.name).sort().join(',')}`;
+
+/** Removal preview: shows immediately what leaves the hypothetical deck, then on request compares the
+ * selected card's witnessed chains with and without it. Read-only; the saved deck is never edited. */
+export function RemovalPreview({ state, deck, projected, focus, cut }: { state: CollectionState; deck: Deck; projected: Deck; focus?: CardMetadata; cut: CardMetadata }) {
+  const before = useMemo(() => deckDnaInput(state, deck), [state, deck]), after = useMemo(() => deckDnaInput(state, projected), [state, projected]);
+  const total = (rows: { quantity: number }[]) => rows.reduce((n, r) => n + r.quantity, 0);
+  const copies = total(before.cards) - total(after.cards);
+  const [state2, setResult] = useState<{ with?: DiscoveryResult; without?: DiscoveryResult; error?: string; running?: boolean }>({});
+  const client = useRef<DiscoveryClient | null>(null), serial = useRef(0);
+  useEffect(() => () => { ++serial.current; client.current?.cancel(); }, []);
+  const runOne = async (d: Deck) => {
+    const input = discoveryInput(state, d), cards = input.deckCards.some(c => c.scryfallId === focus!.scryfallId) ? input.deckCards : [...input.deckCards, focus!];
+    return client.current!.run({ revision: fingerprint([ANALYZER_VERSION, d.id, input.revision, focus!.scryfallId, 'removal']), cards, focusId: focus!.scryfallId, anchorIds: input.anchorIds, partnerIds: input.partnerIds, library: 40 });
+  };
+  const run = async () => {
+    const token = ++serial.current; client.current?.cancel(); client.current ||= new DiscoveryClient(); setResult({ running: true });
+    try {
+      const withCut = await runOne(deck); if (token !== serial.current) return;
+      const without = await runOne(projected); if (token !== serial.current) return;
+      setResult({ with: withCut, without });
+    } catch (error) {
+      if (token !== serial.current || error instanceof DOMException && error.name === 'AbortError') return;
+      setResult({ error: error instanceof Error ? error.message : 'Comparison failed.' });
+    }
+  };
+  const cancel = () => { ++serial.current; client.current?.cancel(); setResult({ error: 'Comparison cancelled. Saved data is unchanged.' }); };
+  const w = state2.with, wo = state2.without;
+  const cardsBefore = w ? [...discoveryInput(state, deck).deckCards] : [];
+  const lost = w && wo ? w.findings.filter(f => !wo.findings.some(g => chainKey(g) === chainKey(f))) : [];
+  const fewerPartners = w && wo ? w.findings.flatMap(f => { const g = wo.findings.find(x => chainKey(x) === chainKey(f)); const gone = g ? f.partners.filter(p => sameCard(p, cut, cardsBefore)) : []; return gone.length ? [f] : []; }) : [];
+  return <section aria-label="Removal preview">
+    <h4>Removal preview · without {cut.name}</h4>
+    <p>Hypothetical deck: {total(before.cards)} → {total(after.cards)} cards ({copies} {copies === 1 ? 'copy' : 'copies'} of {cut.name} left out{before.cards.find(r => r.commander && r.card.oracleId === cut.oracleId) ? ', including a commander' : ''}). Your saved deck is unchanged.</p>
+    {focus ? <>
+      <button className="management-button" disabled={state2.running} onClick={() => void run()}>Compare {focus.name}'s chains with and without {cut.name}</button>
+      {state2.running && <><p role="status">Testing both versions in an isolated worker…</p><button className="management-button" onClick={cancel}>Cancel comparison</button></>}
+      {state2.error && <p role="alert">{state2.error}</p>}
+      {w && wo && <div aria-label="Removal comparison results">
+        <p><strong>With {cut.name}: {w.findings.length} witnessed {w.findings.length === 1 ? 'chain' : 'chains'} · without: {wo.findings.length}.</strong> Provisional mechanical evidence in hypothetical scenarios — not a score or a claim about real games.</p>
+        {lost.length ? <><p>Chains for {focus.name} that no longer appear without {cut.name}:</p><ul>{lost.map((f, i) => <li key={i}>+{f.gains.map(g => `${g.added} ${DIMENSION_TEXT[g.dimension]}`).join(', +')}{f.partners.length ? ` (witnessed with ${f.partners.map(p => p.name).join(' · ')})` : ''}</li>)}</ul></> : <p>No witnessed chain for {focus.name} disappears without {cut.name}.</p>}
+        {fewerPartners.length > 0 && <p>{fewerPartners.length} remaining {fewerPartners.length === 1 ? 'chain loses' : 'chains lose'} {cut.name} as one of the deck cards that completed {fewerPartners.length === 1 ? 'it' : 'them'}.</p>}
+        {w.partnersNotTestable > 0 && <p className="meta-text">{w.partnersNotTestable} of {w.partnersConsidered} deck cards could not be read as partners, so effects through them are Unknown, not absent.</p>}
+      </div>}
+    </> : <p>Choose a card above to compare its chains with and without {cut.name}.</p>}
+  </section>;
 }

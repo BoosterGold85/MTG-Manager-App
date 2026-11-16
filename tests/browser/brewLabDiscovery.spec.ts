@@ -41,6 +41,11 @@ test('automatic discovery reports what an owned candidate adds, abstains on unre
   await expect(results).toContainText('Lab Riddle — Do an unresolved action.');
   await expect(results).not.toContainText('Lab Outsider');
   // Hand-off to the same-card comparison keeps the original engine as the baseline.
+  // The card picker uses the same eligibility: off-identity cards are hidden and each Oracle card appears once.
+  const picker = lab.getByRole('combobox', { name: 'Brew Lab card' });
+  await expect(picker.locator('option', { hasText: 'Lab Outsider' })).toHaveCount(0);
+  await expect(picker.locator('option', { hasText: 'Lab Observer' })).toHaveCount(1);
+  await expect(lab).toContainText("hidden for being outside your commander's color identity");
   await chain.getByRole('button', { name: 'Compare Lab Observer with the original Brew Engine' }).click();
   await expect(lab).toContainText('Lab Observer · same-card comparison');
   await expect(lab).toContainText('Original Brew Score');
@@ -49,6 +54,13 @@ test('automatic discovery reports what an owned candidate adds, abstains on unre
   await expect(single.getByLabel('Automatic discovery results')).toContainText('Adds +1 life gained');
   // Removing the only readable partner removes the evidence that named it.
   await lab.getByRole('combobox', { name: 'Brew Lab remove card' }).selectOption(f.visitor.scryfallId);
+  const removal = lab.getByRole('region', { name: 'Removal preview' });
+  await expect(removal).toContainText('copy of Lab Visitor left out');
+  await removal.getByRole('button', { name: "Compare Lab Observer's chains with and without Lab Visitor" }).click();
+  const compared = removal.getByLabel('Removal comparison results');
+  await expect(compared).toContainText('With Lab Visitor: 1 witnessed chain', { timeout: 60000 });
+  await expect(compared).toContainText('loses Lab Visitor as one of the deck cards that completed it');
+  await expect(compared).toContainText('Unknown, not absent');
   const after = lab.getByRole('region', { name: 'Automatic chain discovery for this card' });
   await after.getByRole('button', { name: 'Find chains for Lab Observer automatically' }).click();
   await expect(after.getByLabel('Automatic discovery results')).toBeVisible();
