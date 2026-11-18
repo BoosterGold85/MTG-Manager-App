@@ -28,6 +28,7 @@ Hard rules (AGENTS.md): read-only. Nothing feeds Plan Fit, Brew Score, rankings,
 Goal: read "Whenever [another] [nontoken] <Type> you control enters, …" (Lathliss's own trigger, plus Dragon's Hoard, Spit Flame, Sarkhan…).
 - Done: `Selector.subtype` (model.ts), matching in `engine.ts` `matches()`, compiler branch in `compiler.ts`. Compiles correctly. **Engine verified**: Lathliss on battlefield + cast a Dragon makes exactly one 5/5 token; its own token doesn't retrigger.
 - **Open bug**: `discoverFocus` / `analyze(mode:'scenario')` returns 0 proofs for that same 2-card scenario (queen on battlefield, Dragon in hand, mana from `castingMana`), even though `execute()` verifies it directly. Next step: inspect `discover()` in `engine.ts` (paths/participants filtering, or the legendary / `ready` handling) to see why the cast path isn't kept.
+- **Second expected failure**: `experimentalAnalyzer.test.ts` › "production storage and recommendation files remain byte-identical". It fails because the branch-only `wrangler.jsonc` build override changed a protected file. This is correct protection; do **not** refresh the hash. It goes away if the override is dropped, and PR #4 doesn't include it.
 - Failing test, kept on purpose to show the gap: `tests/unit/coverageRules.test.ts` › "fires for a nontoken Dragon…". Everything else passes.
 
 ## Reign of Dragons test results (user, on the branch preview)
