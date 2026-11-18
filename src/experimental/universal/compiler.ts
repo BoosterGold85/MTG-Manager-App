@@ -40,7 +40,7 @@ export function compile(card: CardMetadata): CompiledCard {
   if(special)result.unsupported.push('Multi-face or special layout is outside the experimental subset.');
   // Reuse canonical facts for keyword-permission recognition, not their scores/confidence.
   const facts = extractCardFacts({ ...card });
-  const lines = text.split('\n').map((line, index) => ({ line: line.trim(), index })).filter(row => row.line);
+  const lines = text.split('\n').map((line, index) => ({ line: line.trim().replace(/^Landfall — /, ''), index })).filter(row => row.line);
   const add = (line: string, index: number, fields: Omit<Ability, 'id' | 'evidence' | 'effects'> & { effects?: Effect[] }) => {
     const costEvidence = { id: `${result.oracleId}:line:${index}`, oracleId: result.oracleId, line: index, text: oracle.split('\n')[index] || line, rule: `subset:${VERSION}:cost`, kind: 'oracle' as const };
     result.abilities.push({ id: `${result.key}:${index}`, effects: [], ...fields, ...(fields.cost ? { cost: { ...fields.cost, evidence: fields.cost.evidence || costEvidence } } : {}),
@@ -158,6 +158,7 @@ export function compile(card: CardMetadata): CompiledCard {
       else if (m[1] === 'another creature you control enters') trigger = { event: 'enter', subject: { ...subject, another: true }, eventCount: 'each-event' };
       else if (/^(?:one or more \+1\/\+1 counters are|a \+1\/\+1 counter is) put on SELF$/.test(m[1])) trigger = { event: 'counter', subject: { ...subject, self: true }, eventCount: 'one-or-more' };
       else if (m[1] === "you cast a creature spell with mana value equal to SELF's power") trigger = { event: 'cast', subject: { ...subject, zone: 'stack' }, matchingPower: true, eventCount: 'each-event' };
+      else if (m[1] === 'a land you control enters') trigger = { event: 'enter', subject: { type: 'Land', zone: 'battlefield', controller: 'you', another: false }, eventCount: 'each-event' };
       else if (m[1] === 'you gain life') trigger = { event: 'gain-life', subject: { ...subject, type: 'Any' }, eventCount: 'each-event' };
       if (!trigger && /^(?:SELF|(?:another |a |a nontoken )?creature(?: you control)?) dies$/.test(m[1])) {
         const self = m[1] === 'SELF dies';

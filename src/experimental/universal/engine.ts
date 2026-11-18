@@ -554,6 +554,7 @@ function manaPayments(pool: Mana, text: string, limit: number): { pool: Mana; sp
 export function actions(s: State): Action[] {
   const out: Action[] = [];
   for (const o of s.objects.filter(o => o.controller === 'you')) {
+    if (o.zone === 'hand' && o.card.types.includes('Land') && s.mainPhase && s.stackEmpty && !s.landDropUsed) out.push({ kind: 'play-land', instance: o.instance });
     if (o.zone === 'hand' && !o.card.types.includes('Land')) {
       const choice = o.card.abilities.some(a => a.effects.some(e => e.kind === 'discard-choice-draw'));
       if (choice) {
@@ -605,6 +606,23 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
     if (active(input).some(o => o.card.legendary && active(input).some(other => other.instance !== o.instance && other.controller === o.controller && other.card.legendary && other.card.oracleId === o.card.oracleId)))
       throw new Rejection('Unknown', 'Initial legend-rule choice is unresolved.');
     let a: Ability, cost: string;
+    const finish = (done: World[]): Proof[] => done.map(w => {
+      const events = w.state.events.slice(start);
+      requireCheck(w.checks, 'Every consumed resource agrees with the evidence ledger', paymentLedgerAgrees(input, w.state));
+      if (w.checks.some(c => c.role === 'required' && c.result !== true)) throw new Rejection('Unknown', 'An unresolved mandatory predicate prevents certification.');
+      return { status: 'Verified', executable: 'now', action, checks: w.checks, prerequisites: [], participants: [...new Set(events.flatMap(e => e.participants))].sort(), evidence: [...new Map([a.evidence, ...(w.state.spent.payments || []).slice(input.spent.payments?.length || 0).map(p => p.evidence), ...events.flatMap(e => e.evidence)].map(e => [e.id, e])).values()], assumptions: input.assumptions, events, dependencies, terminal: w.state, complete: true, boundTargets: w.bindings, searchTruncated: !w.complete };
+    });
+    if (action.kind === 'play-land') {
+      requireCheck(checks, 'Playing a land is a main-phase special action with an empty stack', !!input.mainPhase && input.stackEmpty === true);
+      requireCheck(checks, 'You have not yet played a land this turn', !input.landDropUsed);
+      requireCheck(checks, 'The selected card is a land in your hand', source.zone === 'hand' && source.card.types.includes('Land'));
+      a = { id: `${source.card.key}:land-drop`, kind: 'activated', effects: [], evidence: { id: `${source.card.oracleId}:rule:land-drop`, oracleId: source.card.oracleId, line: -1, text: 'You may play one land from your hand during your main phase when the stack is empty.', kind: 'rules', rule: 'CR305.1;CR305.2' } };
+      const s = clone(input); s.landDropUsed = true;
+      const w: World = { state: s, bindings: {}, pending: [], copies: [], checks: [...checks], steps: 0, complete: true };
+      const entering = w.state.objects.find(o => o.instance === source.instance)!;
+      enter(w, entering, entering);
+      return finish(settle([w], limits));
+    }
     if (action.kind === 'cast') {
       const permission = source.card.abilities.find(a => a.permission === (action.flashback ? 'flashback' : 'discarded-this-turn'));
       requireCheck(checks, 'Only one graveyard casting permission is selected', !(action.mayhem && action.flashback));
@@ -724,12 +742,7 @@ export function execute(input: State, action: Action, supplied: Partial<Limits> 
         }
       }
     }
-    return done.map(w => {
-      const events = w.state.events.slice(start);
-      requireCheck(w.checks, 'Every consumed resource agrees with the evidence ledger', paymentLedgerAgrees(input, w.state));
-      if (w.checks.some(c => c.role === 'required' && c.result !== true)) throw new Rejection('Unknown', 'An unresolved mandatory predicate prevents certification.');
-      return { status: 'Verified', executable: 'now', action, checks: w.checks, prerequisites: [], participants: [...new Set(events.flatMap(e => e.participants))].sort(), evidence: [...new Map([a.evidence, ...(w.state.spent.payments || []).slice(input.spent.payments?.length || 0).map(p => p.evidence), ...events.flatMap(e => e.evidence)].map(e => [e.id, e])).values()], assumptions: input.assumptions, events, dependencies, terminal: w.state, complete: true, boundTargets: w.bindings, searchTruncated: !w.complete };
-    });
+    return finish(done);
   } catch (error) {
     if (!(error instanceof Rejection)) throw error;
     return [base(error.status, error.message)];
@@ -742,7 +755,7 @@ export function verifyClaim(proof: Proof, claim: { kind: Event['kind']; subject?
   return { status: count >= claim.minimum ? 'Verified' : 'Invalid', count, explanation: count >= claim.minimum ? 'Claim witnessed in this completed scoped sequence.' : 'The required event/payoff did not occur in this completed sequence; this is not a claim of global impossibility.' };
 }
 function stateKey(s: State): string {
-  return fingerprint({ objects: s.objects.map(o => [o.instance, o.incarnation, o.card.key, o.baseCard?.key, o.zone, o.owner, o.controller, o.token, o.ceased, o.restrictions, o.counters, o.tapped, o.ready, o.discardedTurn]), turn: s.turn, mainPhase: s.mainPhase, priority: s.priority, stackEmpty: s.stackEmpty, mana: s.mana, entry: s.entryCounters, payoff: s.payoff, life: s.life, opponent: s.opponentLife, library: s.library, libraryOrder: s.libraryOrder, hand: s.unknownHand });
+  return fingerprint({ objects: s.objects.map(o => [o.instance, o.incarnation, o.card.key, o.baseCard?.key, o.zone, o.owner, o.controller, o.token, o.ceased, o.restrictions, o.counters, o.tapped, o.ready, o.discardedTurn]), turn: s.turn, mainPhase: s.mainPhase, priority: s.priority, stackEmpty: s.stackEmpty, mana: s.mana, entry: s.entryCounters, payoff: s.payoff, life: s.life, opponent: s.opponentLife, library: s.library, libraryOrder: s.libraryOrder, hand: s.unknownHand, landDrop: !!s.landDropUsed });
 }
 export function discover(input: State, supplied: Partial<Limits> = {}): Discovery {
   const limits = { ...DEFAULT_LIMITS, ...supplied }, proofs: Proof[] = [], paths: Discovery['paths'] = [];

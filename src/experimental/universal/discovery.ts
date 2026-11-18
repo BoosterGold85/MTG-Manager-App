@@ -7,6 +7,14 @@
 // Only chains that need the focus card AND change what the scenario produces
 // are reported. Nothing here names a card or a payoff in advance.
 import type { CardMetadata } from '../../models/collection';
+
+/** One assumed land drop, used only when a landfall trigger is in the scenario. It is colourless and
+ * named in every finding that needs it, so the assumption is visible. Never taken from the deck. */
+export const ASSUMED_LAND_ID = 'assumed:land-drop';
+export const ASSUMED_LAND: CardMetadata = {
+  name: 'Assumed land drop (one colourless land)', manaCost: '', manaValue: 0, typeLine: 'Land', oracleText: '{T}: Add {C}.', colorIdentity: [], keywords: [],
+  scryfallId: ASSUMED_LAND_ID, oracleId: ASSUMED_LAND_ID, setCode: 'none', collectorNumber: '0', rarity: 'common', imageUrl: '', thumbnailUrl: '',
+} as unknown as CardMetadata;
 import { analyze } from './analyze';
 import { compile } from './compiler';
 import { actions, execute, scenario } from './engine';
@@ -143,6 +151,9 @@ export function discoverFocus(request: DiscoveryRequest, now: () => number = () 
   const name = (id: string) => metadata.get(id)?.name || 'Unlisted object';
   const focus = compiled.get(request.focusId)!;
   const plans = plan(compiled, request.focusId, request.anchorIds, request.partnerIds);
+  // Landfall alone needs no partner: the focus card on the battlefield with the assumed land drop.
+  const landfallAlone = !!focus && focus.abilities.some(a => a.trigger?.event === 'enter' && a.trigger.subject.type === 'Land') && focus.types.some(t => ['Creature', 'Artifact', 'Enchantment', 'Planeswalker', 'Battle'].includes(t));
+  if (landfallAlone) plans.push({ role: 'standing', placements: [{ id: request.focusId, zone: 'battlefield' }] });
   const partners = [...new Set(request.partnerIds)].filter(id => id !== request.focusId && !isLand(compiled.get(id)!));
   const started = now(), reasons: string[] = [], groups = new Map<string, DiscoveryFinding & { partnerIds: Set<string> }>();
   let scenariosRun = 0, statesExplored = 0, truncated = false, skippedCosts = 0;
@@ -151,10 +162,15 @@ export function discoverFocus(request: DiscoveryRequest, now: () => number = () 
     id: request.id, revision: request.revision, version: ANALYZER_VERSION, mode: 'scenario', focusId,
     cards: placements.map(p => metadata.get(p.id)!), selected: placements, mana, library: request.library,
   });
+  const needsLand = [request.focusId, ...request.anchorIds, ...request.partnerIds].some(id => compiled.get(id)?.abilities.some(a => a.trigger?.event === 'enter' && a.trigger.subject.type === 'Land'));
+  if (needsLand) metadata.set(ASSUMED_LAND_ID, ASSUMED_LAND);
   const manaFor = (placements: Placement[]) => castingMana(placements.filter(p => p.zone === 'hand').map(p => metadata.get(p.id)!));
   /** Best focus-dependent chain in one scenario, measured against the same scenario without the
    * focus card (and without the mana assumed for casting it) plus the focus card entirely alone. */
-  const evaluate = (placements: Placement[]) => {
+  const evaluate = (plan: Placement[]) => {
+    // Landfall needs a land to enter. The assumed land is in the scenario and in its without-focus
+    // baseline, but not in the focus-alone baseline, so only what the land drop alone enables is credited to the focus card.
+    const placements = needsLand ? [...plan, { id: ASSUMED_LAND_ID, zone: 'hand' as Zone }] : plan;
     const mana = manaFor(placements);
     if (!mana) return 'unsupported' as const;
     let base: ReturnType<typeof analyze>;

@@ -29,13 +29,22 @@ Hard rules (AGENTS.md): read-only. Nothing feeds Plan Fit, Brew Score, rankings,
 - Root cause of the 0-proof bug: `discover()` kept only chain events of kinds cast/draw/counter/damage/move/copy/gain-life. A trigger's token arrives as an `enter` event, so it was dropped. Fix (engine.ts): an `enter` counts as a link only when another object's ability caused it (`source !== subject`). A spell's own entry is not a chain by itself.
 - `tests/unit/coverageRules.test.ts`: 9/9 pass, including "no loop" (the token does not retrigger) and the Goblin negative control.
 
+## Done: landfall and one land drop (this checkpoint)
+- Engine: `play-land` action (one per turn, main phase, empty stack, from hand, CR305.1/305.2). Landfall compiles as a land-entry trigger. Tests: `tests/unit/landfall.test.ts` (6/6, with negative controls).
+- Discovery: when a landfall card is in the scenario, one colourless "assumed land drop" is added to each scenario and its without-focus baseline, not to focus-alone. Landfall-alone is a plan with no partner.
+- Lumra list: 3 new real findings (see docs/brew-lab-lumra-deck-report.md).
+
+## Not done yet
+- Land search / fetch lands (18 cards on the Lumra list). Needs modelling a library search and putting a land onto the battlefield.
+- Extra land plays, Lumra's own ability, most other landfall effects.
+
 ## Protected-hash failures (need your decision; NOT refreshed)
 1. `wrangler.jsonc`: expected from the branch-only build override (bb16b56). Do not merge it into main.
 2. `src/import/scryfall.ts`: the client now reads upstream `details` from the Worker's error body (commit dd7e376; test `lookupTransport.test.ts` pins it). That changes a file whose hash is pinned to main, so `universalRemediated` and `browserUniversalRemediated` fail the byte-for-byte check. Choose one: (a) accept a deliberate hash refresh with this rationale, or (b) revert to main's client and drop that test's detail expectation. Either way it must be an explicit, documented decision.
 
 Last validation (2026-11-18, this commit):
 - `npm run lint`: clean. `npx tsc -b`: exit 0.
-- `npx vitest run tests/unit tests/prototype`: 1,210 passed, 3 failed (the protected-hash checks above, plus `experimentalAnalyzer` wrangler check).
+- `npx vitest run tests/unit tests/prototype`: 1,216 passed, 3 failed (landfall checkpoint) (the protected-hash checks above, plus `experimentalAnalyzer` wrangler check).
 - Brew Lab browser suite (`VITE_ANALYZER_TEST_HARNESS=1`, `PRE_ANALYZER_DIST` = default build): 10/10 on mobile-390 and desktop.
 - Default-gate analyzer browser suite: 10 passed / 20 skipped.
 

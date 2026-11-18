@@ -6,7 +6,7 @@ export type Color = 'W' | 'U' | 'B' | 'R' | 'G' | 'C';
 export type Mana = Record<Color, number>;
 export type Status = 'Verified' | 'Conditional' | 'Invalid' | 'Unknown';
 export interface Evidence { kind?: 'oracle' | 'rules' | 'printed-cost'; id: string; oracleId: string; line: number; text: string; rule: string }
-export interface Selector { type: 'Creature' | 'Artifact' | 'ArtifactOrCreature' | 'ArtifactOrEnchantment' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean; subtype?: string }
+export interface Selector { type: 'Creature' | 'Land' | 'Artifact' | 'ArtifactOrCreature' | 'ArtifactOrEnchantment' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean; subtype?: string }
 export interface TargetRef { instance: string; incarnation: number }
 export interface Condition { kind: 'source-counters' | 'control-creature-count' | 'control-power-at-least' | 'unique-name'; minimum: number }
 export type Effect =
@@ -115,6 +115,8 @@ export interface State {
   library: number | null;
   libraryOrder?: (string | null)[];
   unknownHand: number;
+  /** Once per turn: a land from hand has already been played in this main phase. */
+  landDropUsed?: boolean;
   life: number;
   opponentLife: number;
   entryCounters: { source: string; count: number; turn: number }[];
@@ -123,7 +125,7 @@ export interface State {
   spent: ResourceSpend;
   assumptions: string[];
 }
-export interface Action { kind: 'cast' | 'activate'; instance: string; ability?: string; mayhem?: boolean; counterSource?: string; discard?: string; sacrifice?: string; flashback?: boolean; putBack?: (TargetRef | null)[]; targets?: Record<string, TargetRef[]> }
+export interface Action { kind: 'cast' | 'activate' | 'play-land'; instance: string; ability?: string; mayhem?: boolean; counterSource?: string; discard?: string; sacrifice?: string; flashback?: boolean; putBack?: (TargetRef | null)[]; targets?: Record<string, TargetRef[]> }
 export interface Check { requirement: string; result: true | false | 'unknown'; role?: 'required' | 'branch'; evidence?: Evidence }
 export interface Proof {
   status: Status;

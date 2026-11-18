@@ -18,3 +18,14 @@ Scope: a 100-card Commander list (Lumra, Bellow of the Woods, green). Card data 
 ## Limits
 - Coverage is low: most landfall, land-search and extra-land cards (the deck's engine) are unreadable, so chains involving them are not found.
 - Results describe this list only; the real pass needs owned copies in the collection.
+
+## Update: landfall and one land drop (same list, same method)
+- Added: one land drop from hand per turn in the main phase with an empty stack (CR305.1/305.2), and "Landfall — Whenever a land you control enters…" as a land-entry trigger.
+- Discovery assumes one colourless land drop whenever a landfall card is in the scenario. It is named in every finding that needs it ("Assumed land drop (one colourless land)"). It is never taken from the deck. Decks without landfall are unchanged.
+- Readable nonland cards: 7 → 8 (Rampaging Baloths now readable).
+- New findings, each matching oracle text:
+  - Rampaging Baloths: a land drop creates a 4/4 Beast (required: assumed land drop).
+  - Courser of Kruphix: a land drop gains 1 life (required: assumed land drop).
+  - Rampaging Baloths with Elemental Bond: Baloths enters with power 4 (≥3), Bond draws.
+- Still unreadable: land search/fetch lands (18), extra land plays (8), and most other landfall cards whose effects are not yet modelled.
+- Validation: lint clean; tsc clean; unit/prototype 1,216 passed, 3 failed (the protected-hash checks, unchanged); Brew Lab browser 10/10 (mobile-390, desktop); default gate 10 passed / 20 skipped.
