@@ -24,18 +24,26 @@ Hard rules (AGENTS.md): read-only. Nothing feeds Plan Fit, Brew Score, rankings,
 5. **Lookup fix**: Cloudflare Workers doesn't support `fetch(..., {redirect:"error"})`, so every Scryfall lookup returned 502. Changed to `redirect:"manual"` (from `experimental/synergy-browser`).
 6. Report: `docs/brew-lab-discovery-report.md`. Coverage census script: `scripts/coverageCensus.test.ts`.
 
-## In progress: creature-type entry trigger (compiler `phase4-browser.4`)
-Goal: read "Whenever [another] [nontoken] <Type> you control enters, …" (Lathliss's own trigger, plus Dragon's Hoard, Spit Flame, Sarkhan…).
-- Done: `Selector.subtype` (model.ts), matching in `engine.ts` `matches()`, compiler branch in `compiler.ts`. Compiles correctly. **Engine verified**: Lathliss on battlefield + cast a Dragon makes exactly one 5/5 token; its own token doesn't retrigger.
-- **Open bug**: `discoverFocus` / `analyze(mode:'scenario')` returns 0 proofs for that same 2-card scenario (queen on battlefield, Dragon in hand, mana from `castingMana`), even though `execute()` verifies it directly. Next step: inspect `discover()` in `engine.ts` (paths/participants filtering, or the legendary / `ready` handling) to see why the cast path isn't kept.
-- **Second expected failure**: `experimentalAnalyzer.test.ts` › "production storage and recommendation files remain byte-identical". It fails because the branch-only `wrangler.jsonc` build override changed a protected file. This is correct protection; do **not** refresh the hash. It goes away if the override is dropped, and PR #4 doesn't include it.
-- Failing test, kept on purpose to show the gap: `tests/unit/coverageRules.test.ts` › "fires for a nontoken Dragon…". Everything else passes.
+## Done: creature-type entry trigger (compiler `phase4-browser.4`)
+- Reads "Whenever [another] [nontoken] <Type> you control enters, …" (Lathliss's trigger, Dragon's Hoard, Spit Flame, Sarkhan…). Negative controls stay unsupported (changeling, "SELF or another", non-type words).
+- Root cause of the 0-proof bug: `discover()` kept only chain events of kinds cast/draw/counter/damage/move/copy/gain-life. A trigger's token arrives as an `enter` event, so it was dropped. Fix (engine.ts): an `enter` counts as a link only when another object's ability caused it (`source !== subject`). A spell's own entry is not a chain by itself.
+- `tests/unit/coverageRules.test.ts`: 9/9 pass, including "no loop" (the token does not retrigger) and the Goblin negative control.
+
+## Protected-hash failures (need your decision; NOT refreshed)
+1. `wrangler.jsonc`: expected from the branch-only build override (bb16b56). Do not merge it into main.
+2. `src/import/scryfall.ts`: the client now reads upstream `details` from the Worker's error body (commit dd7e376; test `lookupTransport.test.ts` pins it). That changes a file whose hash is pinned to main, so `universalRemediated` and `browserUniversalRemediated` fail the byte-for-byte check. Choose one: (a) accept a deliberate hash refresh with this rationale, or (b) revert to main's client and drop that test's detail expectation. Either way it must be an explicit, documented decision.
+
+Last validation (2026-11-18, this commit):
+- `npm run lint`: clean. `npx tsc -b`: exit 0.
+- `npx vitest run tests/unit tests/prototype`: 1,210 passed, 3 failed (the protected-hash checks above, plus `experimentalAnalyzer` wrangler check).
+- Brew Lab browser suite (`VITE_ANALYZER_TEST_HARNESS=1`, `PRE_ANALYZER_DIST` = default build): 10/10 on mobile-390 and desktop.
+- Default-gate analyzer browser suite: 10 passed / 20 skipped.
 
 ## Reign of Dragons test results (user, on the branch preview)
 4 of 300 candidates had chains: Ashnod's Altar (+2 mana, real), plus 3 "noncreature spell cast" pingers (shallow). 276 unreadable; **54 of 61 deck cards unreadable**.
 
 ## Next coverage priorities (for this deck)
-1. Finish the type entry trigger above.
+1. (done) Type entry trigger.
 2. "X damage where X is the number of <Type>s you control" (Scourge of Valkas, Dragon Tempest).
 3. "<Type> spells you cast cost {N} less" (Dragonlord's Servant, Dragonspeaker Shaman, Nogi).
 4. Type anthems "+N/+N", modelled so power changes correctly (Crucible of Fire, Lathliss pump).
@@ -43,7 +51,7 @@ Goal: read "Whenever [another] [nontoken] <Type> you control enters, …" (Lathl
 Also: let a pass test the next 300 cards, or narrow the candidate list by type/name.
 
 ## How to validate
-- `npm run lint`, `npx tsc -b`, `npx vitest run tests/unit tests/prototype` (last full run: 1,208 passed, before the in-progress work)
+- `npm run lint`, `npx tsc -b`, `npx vitest run tests/unit tests/prototype` (last full run: 1,210 passed, 3 protected-hash failures, see above)
 - Default-gate browser suite (must run **without** the harness flag): `CHROMIUM_PATH=/opt/pw-browsers/chromium npx playwright test -c playwright.analyzer.config.ts --trace off` → 10 pass / 20 skip
 - Brew Lab browser suite: `VITE_ANALYZER_TEST_HARNESS=1 CHROMIUM_PATH=/opt/pw-browsers/chromium PRE_ANALYZER_DIST=<default build of HEAD> npx playwright test -c playwright.brew-lab.config.ts --project mobile-390 --project desktop --trace off` → 10/10
 - Cloud environment network allowlist now includes api.scryfall.com and the branch preview host.

@@ -31,7 +31,7 @@ User explicitly authorizes v0.6.26 experimental integration, main publication an
 
 ## Latest handoff
 
-See docs/HANDOFF.md (2026-11-18): branches, PR #4, in-progress Dragon type trigger, next priorities.
+See docs/HANDOFF.md (2026-11-18): branches, PR #4, finished Dragon type trigger, protected-hash decision, next priorities.
 
 ## Brew Lab discovery pass (2026-11-16)
 

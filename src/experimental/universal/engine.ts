@@ -767,7 +767,10 @@ export function discover(input: State, supplied: Partial<Limits> = {}): Discover
         const allEvents = proof.terminal.events.slice(input.events.length);
         const combined: Proof = { ...proof, checks: [...item.checks, ...proof.checks], events: allEvents, participants: [...new Set(allEvents.flatMap(e => e.participants))].sort(), evidence: [...new Map(allEvents.flatMap(e => e.evidence).map(e => [e.id, e])).values()] };
         // Discover actual causal chains, not keywords or a count of unrelated actions.
-        const chained = allEvents.filter(e => ['cast', 'draw', 'counter', 'damage', 'move', 'copy', 'gain-life'].includes(e.kind) && e.parents.length && e.participants.length >= 2);
+        // An entry is a link only when another object's ability caused it (e.g. a trigger's token);
+        // a spell's own entry, where the source is the entering card itself, is not a chain by itself.
+        const causedByOther = (e: Event) => e.kind === 'enter' && !!e.source && e.source !== e.subject;
+        const chained = allEvents.filter(e => (['cast', 'draw', 'counter', 'damage', 'move', 'copy', 'gain-life'].includes(e.kind) || causedByOther(e)) && e.parents.length && e.participants.length >= 2);
         for (const event of chained) {
           const signature = fingerprint([event.kind, event.subject, event.ability, event.participants, event.note]);
           if (!signatures.has(signature) && proofs.length < limits.proofs) {
