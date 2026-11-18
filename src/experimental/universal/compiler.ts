@@ -148,6 +148,12 @@ export function compile(card: CardMetadata): CompiledCard {
       const subject = youCreature();
       if (m[1] === 'SELF enters') { subject.self = true; subject.type = 'Any'; trigger = { event: 'enter', subject, eventCount: 'each-event' }; }
       else if (/^(?:another |a )?creature(?: you control)? enters$/.test(m[1])) { subject.another = m[1].startsWith('another '); subject.controller = /you control/.test(m[1]) ? 'you' : 'any'; trigger = { event: 'enter', subject, eventCount: 'each-event' }; }
+      // General creature-type entry trigger: "Whenever [another] [nontoken] <Type> you control enters".
+      // Type words are matched against printed types; changeling and other type-changing text stay unsupported.
+      else if (/^(?:another |an? )(?:nontoken )?[A-Z][a-z]+ you control enters$/.test(m[1]) && !/ (?:Creature|Vehicle|Artifact|Enchantment|Land|Permanent) you/.test(m[1])) {
+        const typed = m[1].match(/^(another |an? )(nontoken )?([A-Z][a-z]+) you control enters$/)!;
+        trigger = { event: 'enter', subject: { type: 'Any', zone: 'battlefield', controller: 'you', subtype: typed[3], another: typed[1] === 'another ', nontoken: !!typed[2] }, eventCount: 'each-event' };
+      }
       else if (m[1] === 'a Vehicle you control enters') trigger = { event: 'enter', subject: { ...subject, type: 'Vehicle' }, eventCount: 'each-event' };
       else if (m[1] === 'another creature you control enters') trigger = { event: 'enter', subject: { ...subject, another: true }, eventCount: 'each-event' };
       else if (/^(?:one or more \+1\/\+1 counters are|a \+1\/\+1 counter is) put on SELF$/.test(m[1])) trigger = { event: 'counter', subject: { ...subject, self: true }, eventCount: 'one-or-more' };

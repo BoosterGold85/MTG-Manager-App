@@ -29,6 +29,10 @@ User explicitly authorizes v0.6.26 experimental integration, main publication an
 - tests/prototype/productionBoundary.ts explicitly normalizes only the exact new DeckLibrary mount/import, package version strings and stale lookup-test version assertion before frozen-byte checks. No old scoring or corpus expectation was refreshed.
 - Feature commit **a7bf02cc20050e685a1588281adc6d08c8876749** was fast-forward pushed to main; public GitHub commit and exact-commit version metadata identify .26. Main now contains the feature. Live-origin deployment verification remains blocked below; do not describe it as verified. Do not expand into production synergy scoring.
 
+## Latest handoff
+
+See docs/HANDOFF.md (2026-11-18): branches, PR #4, in-progress Dragon type trigger, next priorities.
+
 ## Brew Lab discovery pass (2026-11-16)
 
 Commit 7b071f8 adds a read-only, opt-in automatic discovery pass to the Brew Lab (owned in-identity candidates vs commander/deck cards, marginal effects only, isolated worker). Validated on claude/vibrant-davinci-vjqzaw: lint clean, 1,200/1,200 unit/prototype, default build passes, analyzer browser suite 10 passed/20 gated-skips/0 failed (Lab disabled by default). Not merged or deployed. Open: low engine coverage (38/47 untestable), removal preview shows nothing, picker lists off-colour/duplicate printings. Follow-up: picker now uses discovery eligibility (identity + one printing per Oracle card); visible RemovalPreview comparison; compiler phase4-browser.3 coverage step 1 (generic-cost mana, two-color choice, combat-only triggers/cycling/ward/equip set aside, type-list cast triggers). Census 398→384 blocked of 438; Miles readable 9→17/61. 1,208/1,208 units, Brew Lab browser 10/10 (needs VITE_ANALYZER_TEST_HARNESS=1), analyzer suite 10 pass/20 gated. Next coverage: anthems (power-aware), cost reductions, tutors, enters-with-counters. Evidence: docs/brew-lab-discovery-report.md.

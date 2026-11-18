@@ -49,3 +49,27 @@ describe('two-color mana choice executes', () => {
     expect(proofs.every(p => p.terminal!.life === 39)).toBe(true);
   });
 });
+
+import { discoverFocus } from '../../src/experimental/universal/discovery';
+import { ANALYZER_VERSION } from '../../src/experimental/universal/protocol';
+describe('creature-type entry triggers', () => {
+  const queen = { ...oracleCard('Rule Queen', '{4}{R}', 5, 'Legendary Creature — Dragon', 'Flying\nWhenever another nontoken Dragon you control enters, create a 5/5 red Dragon creature token with flying.', ['R']), power: '4', toughness: '4' };
+  const whelp = { ...oracleCard('Rule Whelp', '{2}{R}', 3, 'Creature — Dragon', 'Flying', ['R']), power: '2', toughness: '2' };
+  const goblin = { ...oracleCard('Rule Goblin', '{R}', 1, 'Creature — Goblin', '', ['R']), power: '1', toughness: '1' };
+  it('compiles the type, "another" and "nontoken" qualifiers', () => {
+    const r = compile(queen);
+    expect(r.unsupported).toEqual([]);
+    expect(r.abilities[0].trigger).toMatchObject({ event: 'enter', subject: { subtype: 'Dragon', another: true, nontoken: true } });
+  });
+  it('fires for a nontoken Dragon, not for another type, and never for its own token (no loop)', () => {
+    const run = (other: typeof whelp) => discoverFocus({ id: 'q', revision: 'r', version: ANALYZER_VERSION, cards: [queen, other], focusId: queen.scryfallId, anchorIds: [], partnerIds: [other.scryfallId], library: 40 });
+    const dragon = run(whelp);
+    expect(dragon.findings.some(f => f.gains.some(g => g.dimension === 'tokens' && g.added === 1) && f.partners.some(p => p.name === 'Rule Whelp'))).toBe(true);
+    expect(run(goblin).findings.filter(f => f.partners.some(p => p.name === 'Rule Goblin'))).toEqual([]);
+  });
+  it('negative controls: changeling, "SELF or another" and non-type words stay unsupported', () => {
+    expect(read('Rule Shifter', 'Creature — Shapeshifter', 'Changeling').unsupported).toHaveLength(1);
+    expect(read('Rule Valkas', 'Creature — Dragon', 'Whenever SELF or another Dragon you control enters, draw a card.').unsupported).toHaveLength(1);
+    expect(read('Rule Flier', 'Enchantment', 'Whenever a creature you control with flying enters, draw a card.').unsupported).toHaveLength(1);
+  });
+});

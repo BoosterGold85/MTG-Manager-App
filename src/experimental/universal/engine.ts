@@ -52,6 +52,7 @@ function matches(o: ObjectState, sel: Selector, source: ObjectState): boolean {
     (!sel.nonland || !o.card.types.includes('Land')) && (sel.type === 'Any' || sel.type === 'ArtifactOrEnchantment' && (o.card.types.includes('Artifact') || o.card.types.includes('Enchantment')) || sel.type === 'ArtifactOrCreature' && (o.card.types.includes('Artifact') || o.card.types.includes('Creature')) || sel.type === 'Permanent' && permanent(o.card) || o.card.types.includes(sel.type)) &&
     (!sel.self || o.instance === source.instance && o.incarnation === source.incarnation) &&
     (!sel.another || o.instance !== source.instance || o.incarnation !== source.incarnation) &&
+    (!sel.subtype || o.card.types.includes(sel.subtype)) &&
     (sel.maxManaValue === undefined || o.card.manaValue <= sel.maxManaValue);
 }
 function move(o: ObjectState, zone: Zone) {

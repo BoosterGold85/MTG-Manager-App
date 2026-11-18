@@ -1,12 +1,12 @@
 // Ephemeral experimental game-state contracts; never persisted or used by scoring.
 import type { CardMetadata } from '../../models/collection';
-export const VERSION = 'phase4-browser.3';
+export const VERSION = 'phase4-browser.4';
 export type Zone = 'hand' | 'battlefield' | 'graveyard' | 'library' | 'stack' | 'exile';
 export type Color = 'W' | 'U' | 'B' | 'R' | 'G' | 'C';
 export type Mana = Record<Color, number>;
 export type Status = 'Verified' | 'Conditional' | 'Invalid' | 'Unknown';
 export interface Evidence { kind?: 'oracle' | 'rules' | 'printed-cost'; id: string; oracleId: string; line: number; text: string; rule: string }
-export interface Selector { type: 'Creature' | 'Artifact' | 'ArtifactOrCreature' | 'ArtifactOrEnchantment' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean }
+export interface Selector { type: 'Creature' | 'Artifact' | 'ArtifactOrCreature' | 'ArtifactOrEnchantment' | 'Vehicle' | 'Enchantment' | 'Instant' | 'Sorcery' | 'Permanent' | 'Any'; zone: Zone; controller: 'you' | 'any'; self?: boolean; another?: boolean; maxManaValue?: number; nontoken?: boolean; nonland?: boolean; subtype?: string }
 export interface TargetRef { instance: string; incarnation: number }
 export interface Condition { kind: 'source-counters' | 'control-creature-count' | 'control-power-at-least' | 'unique-name'; minimum: number }
 export type Effect =
