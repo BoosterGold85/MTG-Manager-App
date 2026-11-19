@@ -1,6 +1,21 @@
 # MTG Manager — compact handoff
 
-Updated 2026-11-08 (America/Chicago). Start with AGENTS.md. Latest user instructions are authoritative.
+Updated 2026-11-19 (UTC). Start with AGENTS.md. Latest user instructions are authoritative.
+
+## Checkpoint 2026-11-19: Recommended from your collection (not merged, not deployed)
+
+Branch: claude/sweet-tesla-vvlj2b (base: origin/main 2a665f0). Evidence: docs/UPGRADES-DISCOVERY-v1.1.0.md.
+
+- Upgrades now opens to owned-card recommendations for the deck. Each shows strength (Strongly supported / Plausible / Speculative), Works with, What happens, What it needs, Availability, Potential change and Confidence. Build Around My Commander and Improve My Current Deck remain under "Explore by goal".
+- Selection lives in src/upgrades/discovery.ts. It reuses the existing Brew links, conditions, bridges and Upgrade swaps. No new numeric score. Storage, schema, keys and deck IDs are unchanged.
+- Generic-rule guards: category effects shared by 3+ candidates are dropped (Commander links exempt); stated "if it has flying"-style conditions must hold for the card; crew is not an interaction; Anti-synergy cards are excluded; at most 2 identical rules.
+- Open decision (scoring, not changed): verifies() in src/synergy/recommendation.ts ignores "if it has flying" for Vehicles, so Brew/Synergy still credit non-flying Vehicles to Miles's payoff.
+- Blockers: four byte-identical boundary guards fail (commanderProtection, experimentalAnalyzer, two universal prototype tests) because protected files changed additively. Not refreshed; needs owner approval.
+- Human usefulness review (7 of top 10) has not been done; the report lists the fixture results for review.
+
+---
+
+## Previous checkpoint (v0.6.26)
 
 ## Current work
 

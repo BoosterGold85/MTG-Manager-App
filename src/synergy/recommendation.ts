@@ -61,7 +61,8 @@ export interface RecommendationData {
   roleNeedSeverity: number;
   efficiency: number;
   // Verified typed relationships with the saved deck's cards (Commander included), for swap simulation.
-  links: { identity: string; name: string; commander: boolean; strength: number }[];
+  // evidence: the rule text that proves each link (explanation only; never read by scoring).
+  links: { identity: string; name: string; commander: boolean; strength: number; evidence?: string[] }[];
 }
 interface TypedDeckProfile {
   facts: Map<string, CardFacts>;
@@ -1414,6 +1415,7 @@ export function scoreRecommendation(
         name: r.name,
         commander: r.commander,
         strength: r.strength,
+        evidence: [...r.evidence],
       })),
     },
   };

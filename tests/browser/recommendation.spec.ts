@@ -287,8 +287,10 @@ test("cold recommendation worker keeps input and controls responsive and cancels
  const elapsed=Date.now()-start;
  await upgrades.getByRole("button",{name:"Change goal"}).click({timeout:2000});
  await expect(upgrades.getByRole("button",{name:/Build Around My Commander/})).toBeVisible();
- await expect(upgrades.locator(".upgrade-card")).toHaveCount(0);
- expect(workers).toBe(1);
+ // Returning to Recommended leaves no goal candidates behind; only landing (discover) cards remain.
+ await expect(upgrades.locator(".upgrade-card:not(.discovery-card)")).toHaveCount(0);
+ // At most the landing's recommendation worker plus the goal worker: the landing worker is cancelled by a goal change.
+ expect(workers).toBeLessThanOrEqual(2);
  await testInfo.attach("cold-analysis-interaction.json",{body:JSON.stringify({candidates:3000,interactionMs:elapsed,workers,viewport:page.viewportSize(),physicalDevice:false}),contentType:"application/json"});
 });
 

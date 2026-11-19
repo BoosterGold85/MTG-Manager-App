@@ -93,8 +93,9 @@ test("Upgrades is a deck section: the goal chooser separates the two questions a
   });
   const upgrades = await openUpgrades(page);
   await expect(page.getByRole("dialog")).toHaveCount(0);
-  const goals = upgrades.getByRole("region", { name: "Choose a goal" });
-  await expect(goals.getByRole("heading", { name: "What are you trying to do?" })).toBeVisible();
+  // The Upgrades landing is recommendation-first; the two goals stay one section below it.
+  await expect(upgrades.getByRole("heading", { name: "Recommended from your collection" })).toBeVisible();
+  const goals = upgrades.getByRole("region", { name: "Explore by goal" });
   // A nine-card deck cannot simulate one-for-one swaps.
   await expect(goals.getByRole("button", { name: /Improve My Current Deck/ })).toBeDisabled();
   await expect(goals).toContainText("This deck has 9 of 99 cards");
@@ -124,7 +125,7 @@ test("Upgrades is a deck section: the goal chooser separates the two questions a
   await page.keyboard.press("Escape");
   await expect(upgrades.getByRole("status")).toHaveText("2 candidates");
   await upgrades.getByRole("button", { name: "Change goal", exact: true }).click();
-  await expect(upgrades.getByRole("heading", { name: "What are you trying to do?" })).toBeVisible();
+  await expect(upgrades.getByRole("heading", { name: "Recommended from your collection" })).toBeVisible();
   expect(await snapshot(page)).toEqual(before);
   expect(calls).toEqual([]);
   // The section survives reload and history.

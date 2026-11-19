@@ -35,6 +35,10 @@ export interface BrewResult {
   components: { name: string; points: number }[];
   penalties: { name: string; points: number }[];
   bridge?: { from: string; to: string; strength: number; existing: string[] };
+  /** Explanation only (v1.1): verified card links (strength ≥ 0.5) with the rule text that proves each one. Never scored. */
+  verified: { name: string; commander: boolean; strength: number; evidence: string[] }[];
+  /** Explanation only (v1.1): each understood condition this card needs, and whether this deck supplies it. Never scored. */
+  needs: { need: string; line: string; suppliers: string[]; supplied: boolean; crewOnly: boolean }[];
   /** One line for the candidate card: the bridge, or the strongest interaction. */
   headline: string;
   summary: string;
@@ -288,6 +292,13 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
   const headline = bridge ? `Connects ${bridge.from} → ${bridge.to}` : links.length ? `Works with ${list(links.map((l) => l.name), 2)}` : fed.length ? `Fed by ${list(fed[0].suppliers, 2)}` : "No unusual interaction in this deck";
   // The headline already names the bridge, so the summary starts with its evidence.
   const summary = (why.find((w) => w.title === "Bridge")?.text.replace(/^[^.]*→[^.]*\.\s*/, "") || why[0]?.text || "It doesn't create a notable interaction with this deck's cards.").trim();
+  const verified = (rec?.links || [])
+    .filter((l) => l.strength >= 0.5 && !copierNames.has(l.name))
+    .sort((a, b) => b.strength - a.strength || a.name.localeCompare(b.name, "en"))
+    .map((l) => ({ name: l.name, commander: l.commander, strength: l.strength, evidence: (l.evidence || []).slice(0, 3) }));
+  const needs = (fn.conditions || [])
+    .filter((c) => c.understood)
+    .map((c) => ({ need: c.needs, line: c.line, suppliers: c.suppliers, supplied: c.factor >= 0.5, crewOnly: c.key === "crew" }));
   return {
     score,
     band,
@@ -296,6 +307,8 @@ export function evaluateBrew(ctx: BrewContext, card: CardMetadata, synergy: Card
     components,
     penalties,
     bridge,
+    verified,
+    needs,
     headline,
     summary,
     why,
