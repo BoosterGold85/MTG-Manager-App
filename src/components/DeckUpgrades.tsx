@@ -23,10 +23,17 @@ import type { DeckChange } from "../storage/deckRepository";
 import { CardImage } from "./CardImage";
 import { CardDetail } from "./CardDetail";
 import { SwapDeltas, SwapReview } from "./SwapReview";
+import { DiscoveryList } from "./Discoveries";
+import { availabilityLine } from "../upgrades/availability";
 
-type Mode = "" | "improve" | "build";
+import type { Discovery } from "../upgrades/discovery";
+
+// "discover" is the Upgrades landing (Recommended from your collection); the two goals stay one tap away.
+type Mode = "discover" | "improve" | "build";
 type Candidate = BuildCandidate | UpgradeCandidate;
 const EMPTY_CANDIDATES: Candidate[]=[];
+const EMPTY_DISCOVERIES: Discovery[] = [];
+const DISCOVERY_PAGE = 10;
 const developerTrace = () => {
   try {
     return new URLSearchParams(location.search).has("trace");
@@ -35,8 +42,6 @@ const developerTrace = () => {
   }
 };
 const signed = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}`;
-const availabilityLine = (c: OwnedCandidateGroup) =>
-  c.available > 0 ? `Available ${c.available} · Owned ${c.owned}` : `Owned ${c.owned} · Available 0 · No available copy`;
 /** The physical copy an action would use: the first available printing (printings list available copies first). */
 const preferredCopy = (c: OwnedCandidateGroup) => c.printings.find((p) => (p.ownership?.quantityUnassigned || 0) > 0);
 function Printings({ c }: { c: OwnedCandidateGroup }) {
@@ -212,12 +217,13 @@ export function DeckUpgrades({
   const canImprove = count >= MIN_CURRENT_DECK_CARDS;
   const complete = deckCount(deck) >= 100;
   const [view, setView] = useState<"recommended" | "saved">("recommended");
-  const [mode, setMode] = useState<Mode>("");
+  const [mode, setMode] = useState<Mode>("discover");
   const [query, setQuery] = useState(""),
     [availability, setAvailability] = useState("all"),
     [sort, setSort] = useState("default"),
     [brewFilter, setBrewFilter] = useState("all"),
     [limit, setLimit] = useState(40),
+    [discoveryLimit, setDiscoveryLimit] = useState(DISCOVERY_PAGE),
     [reviewing, setReviewing] = useState<string | null>(null),
     [detail, setDetail] = useState<string | null>(null);
   const analysis=useRecommendationAnalysis(state,deck,mode);
@@ -227,6 +233,7 @@ export function DeckUpgrades({
   const blueprint=analysis.result?.blueprint || {commanders:deck.commanders.map(c=>c.name),plan:[]};
   const improve=(mode==="improve"?analysis.result?.candidates:undefined) as UpgradeCandidate[] | undefined;
   const pool:Candidate[]=analysis.result?.candidates || EMPTY_CANDIDATES;
+  const discoveries:Discovery[]=(mode==="discover"?analysis.result?.discoveries:undefined) || EMPTY_DISCOVERIES;
   const brewMode=sort.startsWith("brew") || brewFilter!=="all";
   const needBrew=brewMode || sort==="synergy";
   const brew=needBrew?analysis.result?.relationships:null;
@@ -375,39 +382,106 @@ export function DeckUpgrades({
           onDetail={setDetail}
           buildAction={buildAction}
         />
-      ) : !mode ? (
-        <section className="upgrade-modes" aria-label="Choose a goal">
-          <h3>What are you trying to do?</h3>
-          <button className="upgrade-mode" disabled={!canImprove} onClick={() => setMode("improve")} aria-describedby="improve-help">
-            <strong>Improve My Current Deck</strong>
-            <span id="improve-help">
-              Which cards I own actually improve this exact deck? Primary result: Upgrade Value from the best one-for-one swap.
-              {!canImprove && ` This deck has ${count} of 99 cards; at least ${MIN_CURRENT_DECK_CARDS} are needed.`}
-            </span>
-          </button>
-          <button className="upgrade-mode" onClick={() => setMode("build")} aria-describedby="build-help">
-            <strong>Build Around My Commander</strong>
-            <span id="build-help">
-              Which cards I own belong in a deck centered around {blueprint.commanders.join(" + ")}? Primary results: Build Priority, then Commander Fit.
-            </span>
-          </button>
-        </section>
+      ) : mode === "discover" ? (
+        <>
+          <div className="discover-intro">
+            <h3>Recommended from your collection</h3>
+            <p className="meta-text">
+              Owned cards that create a verified interaction with {blueprint.commanders.join(" + ")} or with cards already in this deck. Ordered by how
+              interesting and well supported the interaction is. Nothing changes until you confirm.
+            </p>
+            {confidence === "Low" && <p className="brew-confidence prose">{LOW_CONFIDENCE_BREW}</p>}
+          </div>
+          <p role="status">
+            {analyzing
+              ? analysis.result
+                ? "Updating recommendations… Previous results are read-only."
+                : "Analyzing owned cards…"
+              : `${discoveries.length} ${discoveries.length === 1 ? "recommendation" : "recommendations"}`}
+          </p>
+          {analysis.error && (
+            <p role="alert">
+              {analysis.error}{" "}
+              <button className="management-button" onClick={analysis.retry}>
+                Retry analysis
+              </button>
+            </p>
+          )}
+          {!analyzing && !analysis.error && !discoveries.length && (
+            <p className="prose">
+              No owned card creates a verified interaction with this deck yet. Try Build Around My Commander, or import more of your collection.
+            </p>
+          )}
+          {!analyzing && discoveries.length > 0 && (
+            <DiscoveryList
+              items={discoveries}
+              limit={discoveryLimit}
+              onShowMore={() => setDiscoveryLimit((n) => n + DISCOVERY_PAGE)}
+              handlers={{
+                busy,
+                complete,
+                deckCards: count,
+                deckName: deck.name,
+                isSaved: (d) => !!savedFor(d.identity, d.upgrade ? "improve" : "build"),
+                onDetail: setDetail,
+                onReview: setReviewing,
+                onAdd: addToDeck,
+                onSave: (d) => void saveToggle(d.group, d.upgrade ? "improve" : "build", d.upgrade),
+                renderEvidence: (d) => (
+                  <>
+                    {d.brew.verified.length > 0 && (
+                      <>
+                        <h4>Rules behind it</h4>
+                        <ul>
+                          {d.brew.verified
+                            .flatMap((v) => v.evidence)
+                            .slice(0, 6)
+                            .map((e, i) => (
+                              <li key={i}>{e}</li>
+                            ))}
+                        </ul>
+                      </>
+                    )}
+                    <BrewWhy brew={d.brew} />
+                  </>
+                ),
+              }}
+            />
+          )}
+          <section className="upgrade-modes" aria-label="Explore by goal">
+            <h3>Explore by goal</h3>
+            <button className="upgrade-mode" disabled={!canImprove} onClick={() => setMode("improve")} aria-describedby="improve-help">
+              <strong>Improve My Current Deck</strong>
+              <span id="improve-help">
+                Which cards I own actually improve this exact deck? Primary result: Upgrade Value from the best one-for-one swap.
+                {!canImprove && ` This deck has ${count} of 99 cards; at least ${MIN_CURRENT_DECK_CARDS} are needed.`}
+              </span>
+            </button>
+            <button className="upgrade-mode" onClick={() => setMode("build")} aria-describedby="build-help">
+              <strong>Build Around My Commander</strong>
+              <span id="build-help">
+                Which cards I own belong in a deck centered around {blueprint.commanders.join(" + ")}? Primary results: Build Priority, then Commander Fit.
+              </span>
+            </button>
+          </section>
+        </>
       ) : (
         <>
           <p className="upgrade-mode-line">
-            <strong>{mode === "improve" ? "Improve My Current Deck" : "Build Around My Commander"}</strong>{" "}
             <button
               className="text-button"
               onClick={() => {
-                setMode("");
+                setMode("discover");
                 setQuery("");
                 setSort("default");
                 setBrewFilter("all");
                 setLimit(40);
+                setDiscoveryLimit(DISCOVERY_PAGE);
               }}
             >
               Change goal
-            </button>
+            </button>{" "}
+            <strong>{mode === "improve" ? "Improve My Current Deck" : "Build Around My Commander"}</strong>
           </p>
           {mode === "build" ? (
             <section className="blueprint" aria-label="Commander Blueprint">

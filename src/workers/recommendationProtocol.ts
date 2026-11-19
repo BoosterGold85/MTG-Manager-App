@@ -2,13 +2,14 @@ import type { CollectionState } from "../models/collection";
 import type { Deck } from "../models/deck";
 import { RULESET_VERSION } from "../intelligence/types";
 import { RANKING_VERSION } from "../synergy/deckSpecific";
-import { analysisConfidence, brewCandidates, buildAroundCommander, improveCurrentDeck, commanderBlueprint } from "../upgrades";
+import { analysisConfidence, brewCandidates, buildAroundCommander, discoveries, improveCurrentDeck, commanderBlueprint } from "../upgrades";
 export interface AnalysisRequest {
   id: number;
   revision: string;
   semanticVersion: string;
   rankingVersion: string;
-  mode: "build" | "improve";
+  /** "discover" is the Upgrades landing: owned cards with verified interactions in this deck. */
+  mode: "discover" | "build" | "improve";
   includeRelationships: boolean;
   state: CollectionState;
   deck: Deck;
@@ -19,7 +20,8 @@ export function computeRecommendations(request: AnalysisRequest) {
   const {state,deck,mode}=request;
   return {
     blueprint: commanderBlueprint(state,deck),
-    candidates: mode==="build"?buildAroundCommander(state,deck):improveCurrentDeck(state,deck),
+    candidates: mode==="build"?buildAroundCommander(state,deck):mode==="improve"?improveCurrentDeck(state,deck):[],
+    discoveries: mode==="discover"?discoveries(state,deck):null,
     relationships: request.includeRelationships?brewCandidates(state,deck):null,
     confidence: request.includeRelationships?analysisConfidence(state,deck).level:"High" as const,
   };

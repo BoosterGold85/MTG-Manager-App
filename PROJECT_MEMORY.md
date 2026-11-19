@@ -1,6 +1,23 @@
 # MTG Manager — compact handoff
 
-Updated 2026-11-08 (America/Chicago). Start with AGENTS.md. Latest user instructions are authoritative.
+Updated 2026-11-19 (UTC). Start with AGENTS.md. Latest user instructions are authoritative.
+
+## Checkpoint 2026-11-19: Recommended from your collection (not merged, not deployed)
+
+Branch: claude/sweet-tesla-vvlj2b (base: origin/main 2a665f0). Evidence: docs/UPGRADES-DISCOVERY-v1.1.0.md.
+
+- Upgrades now opens to owned-card recommendations for the deck. Each shows strength (Strongly supported / Plausible / Speculative), Works with, What happens, What it needs, Availability, Potential change and Confidence. Build Around My Commander and Improve My Current Deck remain under "Explore by goal".
+- Selection lives in src/upgrades/discovery.ts. It reuses the existing Brew links, conditions, bridges and Upgrade swaps. No new numeric score. Storage, schema, keys and deck IDs are unchanged.
+- Generic-rule guards: category effects shared by 3+ candidates are dropped (Commander links exempt); stated "if it has flying"-style conditions must hold for the card; crew is not an interaction; Anti-synergy cards are excluded; at most 2 identical rules.
+- Corrected: Subterranean Schooner / Tangle Tumbler are valid Miles interactions (the Otherwise branch gives a flying counter). Earlier "false positive" claims were wrong.
+- Scoring changes (intended, reviewed): draw-step triggers no longer match card draw (4 Kwain scores change). Validator now enforces trigger types and stated keyword conditions; no other fixture score changed.
+- Audit (docs/UPGRADES-DISCOVERY-AUDIT.md): top-ten lists are NOT yet worth considering on most decks. Dominant gap: broad-type triggers (e.g., "whenever you cast a creature spell") accept any creature. Next validator pass needs its own review.
+- Blockers: four byte-identical guards fail (commanderProtection, experimentalAnalyzer, two universal prototype tests). Not refreshed. See docs/PROTECTION-REVIEW.md; a refresh proposal is in docs/audit/protection-refresh-proposal.json.
+- Human usefulness review (7 of top 10) has not been done; the report lists the fixture results for review.
+
+---
+
+## Previous checkpoint (v0.6.26)
 
 ## Current work
 

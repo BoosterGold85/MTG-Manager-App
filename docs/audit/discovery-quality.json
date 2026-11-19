@@ -1,0 +1,5679 @@
+[
+ {
+  "deck": "Miles 'Tails' Prower",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 148,
+  "ownedAvailable": 148,
+  "discoverable": {
+   "production": 31,
+   "noCategoryFilter": 17,
+   "noRuleCap": 31,
+   "unguarded": 117
+  },
+  "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Loran of the Third Path",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "Bident of Thassa"
+    ],
+    "happens": "Loran of the Third Path → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 29,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Faramir, Prince of Ithilien",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "Bident of Thassa"
+    ],
+    "happens": "Faramir, Prince of Ithilien → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{W}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 29,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Triskaidekaphile",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "Bident of Thassa"
+    ],
+    "happens": "Triskaidekaphile → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 28,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Maskwood Nexus",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mask of Memory",
+     "The Prydwen, Steel Flagship",
+     "Bident of Thassa"
+    ],
+    "happens": "Maskwood Nexus → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Swiftfoot Boots",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Swiftfoot Boots → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Temple Bell",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Temple Bell → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Well of Ideas",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Well of Ideas → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {5}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Minor Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Folio of Fancies",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Folio of Fancies → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 24,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Dragon's Hoard",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Dragon's Hoard → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 23,
+    "caveats": [
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Teferi's Ageless Insight",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Teferi's Ageless Insight → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Visions of Beyond",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Visions of Beyond → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Aura Blast",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Aura Blast → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Jace Beleren",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Jace Beleren → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Secret Rendezvous",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Secret Rendezvous → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{W}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Thought Reflection",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Thought Reflection → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {4}{U}{U}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Consider",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Consider → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Keep Watch",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Keep Watch → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mind Stone",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Mind Stone → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Bonders' Enclave",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Bonders' Enclave → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Distant Melody",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Distant Melody → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Minds Aglow",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Minds Aglow → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Prosperity",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Prosperity → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {X}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "War Room",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "War Room → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Windfall",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Windfall → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Borne Upon a Wind",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Borne Upon a Wind → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Vision Skeins",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Vision Skeins → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Decanter of Endless Water",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Decanter of Endless Water → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Phyrexian Altar",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Phyrexian Altar → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Astrid Peth",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "The Prydwen, Steel Flagship",
+     "Bident of Thassa",
+     "Mu Yanling, Wind Rider"
+    ],
+    "happens": "Astrid Peth → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs Clue sacrifice options (with their costs); this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 21,
+    "caveats": [
+     "Its \"Clue sacrifice options (with their costs)\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Lightning Greaves",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Lightning Greaves → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mind Unbound",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Mind Unbound → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {4}{U}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Harmonized Crescendo",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Harmonized Crescendo → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {4}{U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Laboratory Maniac",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Bident of Thassa",
+     "Mu Yanling, Wind Rider",
+     "Staggering Insight"
+    ],
+    "happens": "Laboratory Maniac → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 20,
+    "caveats": [
+     "This deck already has plenty of finishers (7.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Fellwar Stone",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Fellwar Stone → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Basilisk Collar",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Basilisk Collar → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 19,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Restoration Magic",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Restoration Magic → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Ashnod's Altar",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Ashnod's Altar → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Monologue Tax",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Monologue Tax → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Smothering Tithe",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Smothering Tithe → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Howling Mine",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Howling Mine → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sky Diamond",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Sky Diamond → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Thought Vessel",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Thought Vessel → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Séance Board",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Séance Board → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Dragonstorm Globe",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Dragonstorm Globe → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragon creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 16,
+    "caveats": [
+     "Its \"Dragon creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Nuka-Cola Vending Machine",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark",
+     "The Prydwen, Steel Flagship"
+    ],
+    "happens": "Nuka-Cola Vending Machine → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}",
+     "Needs Food sacrifice options (with their costs); this deck has only Nuka-Cola Vending Machine to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 15,
+    "caveats": [
+     "Its \"Food sacrifice options (with their costs)\" ability has only Nuka-Cola Vending Machine here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Supreme Verdict",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Supreme Verdict → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{W}{W}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 12,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Generous Gift",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Generous Gift → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 12,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Path to Exile",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Path to Exile → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 12,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "An Offer You Can't Refuse",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "An Offer You Can't Refuse → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Counterspell",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Counterspell → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Essence Scatter",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Essence Scatter → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Fumigate",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Fumigate → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}{W}{W}"
+    ],
+    "change": "Review swap: cut Safe Passage (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hidden Grotto",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Hidden Grotto → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Exotic Orchard",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Exotic Orchard → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Cut a Deal",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Cut a Deal → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Index",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Index → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Aetherize",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Aetherize → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hunted by The Family",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Hunted by The Family → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {5}{U}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Adarkar Wastes",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Adarkar Wastes → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Arcane Adaptation",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Arcane Adaptation → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Ghostly Prison",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Ghostly Prison → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mystic Sanctuary",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Mystic Sanctuary → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Propaganda",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Propaganda → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Ash Barrens",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Ash Barrens → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Azorius Chancery",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Azorius Chancery → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Deserted Beach",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Deserted Beach → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Dictate of Kruphix",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Dictate of Kruphix → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {1}{U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Glacial Fortress",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Glacial Fortress → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mutavault",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Mutavault → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Reliquary Tower",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Reliquary Tower → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Rogue's Passage",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Rogue's Passage → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sea Gate",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Sea Gate → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Skycloud Expanse",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Skycloud Expanse → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Temple of the False God",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Temple of the False God → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Uncharted Haven",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Uncharted Haven → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Witch's Clinic",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Witch's Clinic → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Forced Fruition",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Forced Fruition → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {4}{U}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Sidegrade)",
+    "brewScore": 7,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Evolving Wilds",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Evolving Wilds → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Misty Rainforest",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Misty Rainforest → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Polluted Delta",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Polluted Delta → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Terramorphic Expanse",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Terramorphic Expanse → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Verdant Catacombs",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Verdant Catacombs → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [],
+    "change": "Review swap: cut Island (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Omniscience",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Omniscience → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {7}{U}{U}{U}"
+    ],
+    "change": "Review swap: cut Safe Passage (Sidegrade)",
+    "brewScore": 5,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Approach of the Second Sun",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Approach of the Second Sun → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {6}{W}"
+    ],
+    "change": "Review swap: cut Safe Passage (Sidegrade)",
+    "brewScore": 4,
+    "caveats": [
+     "This deck already has plenty of finishers (7.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Apothecary White",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "The Prydwen, Steel Flagship",
+     "Bident of Thassa",
+     "Mu Yanling, Wind Rider"
+    ],
+    "happens": "Apothecary White → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {3}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Heliod's Intervention",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chrome Host Seedshark"
+    ],
+    "happens": "Heliod's Intervention → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {X}{W}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": []
+   }
+  ],
+  "suppressedByRuleCap": [],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Arcane Denial",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bident of Thassa",
+     "Commander's Sphere",
+     "Mask of Memory",
+     "Miles \"Tails\" Prower"
+    ],
+    "happens": "Bident of Thassa → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 49,
+    "caveats": []
+   },
+   {
+    "rank": 2,
+    "card": "Phantasmal Image",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Aeronaut Admiral",
+     "Chrome Host Seedshark",
+     "Cid, Freeflier Pilot",
+     "Cloudspire Captain"
+    ],
+    "happens": "Aeronaut Admiral → Phantasmal Image: You may have this creature enter as a copy of any creature on the battlefield, except it's an Illusion in addition to its other types and it has \"When this creature becomes the target of a spell or ability, sacrifice it",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 37,
+    "caveats": []
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Aeronaut Admiral",
+     "Cid, Freeflier Pilot",
+     "Cloudspire Captain",
+     "Empyrean Eagle"
+    ],
+    "happens": "Aeronaut Admiral → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card",
+    "needs": [
+     "Costs {3}",
+     "Needs red creature spells; this deck has nothing to supply it",
+     "Needs creature spells, supplied by Serra Disciple, Thunderclap Wyvern, Kitsune Ace and 17 more"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 35,
+    "caveats": [
+     "Its \"red creature spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 4,
+    "card": "Council's Deliberation",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Temple of Enlightenment"
+    ],
+    "happens": "Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard",
+    "needs": [
+     "Costs {1}{U}",
+     "Needs scry or surveil effects; this deck has only Temple of Enlightenment to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 20,
+    "caveats": [
+     "Its \"scry or surveil effects\" ability has only Temple of Enlightenment here to feed it."
+    ]
+   },
+   {
+    "rank": 5,
+    "card": "Haliya, Guided by Light",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "_____ _____ Rocketship",
+     "Aeronaut Admiral",
+     "Arcane Signet",
+     "Azorius Signet"
+    ],
+    "happens": "_____ _____ Rocketship → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{W}",
+     "Needs creature or artifacts entering, supplied by Talisman of Progress, Skybox Ferry, Commander's Sphere and 44 more"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 55,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Prince Imrahil the Fair",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Commander's Sphere",
+     "Miles \"Tails\" Prower",
+     "Mishra's Bauble",
+     "Shorikai, Genesis Engine"
+    ],
+    "happens": "Commander's Sphere → Prince Imrahil the Fair: Whenever you draw your second card each turn, create a 1/1 white Human Soldier creature token",
+    "needs": [
+     "Costs {W}{U}",
+     "Needs extra card draw, supplied by Staggering Insight, Commander's Sphere, Smuggler's Copter and 10 more"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 50,
+    "caveats": []
+   },
+   {
+    "rank": 7,
+    "card": "Wizard Class",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bident of Thassa",
+     "Commander's Sphere",
+     "Mask of Memory",
+     "Miles \"Tails\" Prower"
+    ],
+    "happens": "Bident of Thassa → Wizard Class: Whenever you draw a card, put a +1/+1 counter on target creature you control",
+    "needs": [
+     "Costs {U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 49,
+    "caveats": []
+   },
+   {
+    "rank": 8,
+    "card": "Archaeomancer",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Shorikai, Genesis Engine",
+     "Smuggler's Copter",
+     "Momentary Blink",
+     "Time Wipe"
+    ],
+    "happens": "Graveyard setup / return relationship: Archaeomancer ↔ Shorikai, Genesis Engine; When this creature enters, return target instant or sorcery card from your graveyard to your hand.; {1}, {T}: Draw two cards, then discard a card. Create a 1/1 colorless Pilot creature token with \"This token crews Vehicles as though its power were 2 greater.\"\nCrew 8 ",
+    "needs": [
+     "Costs {2}{U}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 49,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Ominous Seas",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bident of Thassa",
+     "Commander's Sphere",
+     "Mask of Memory",
+     "Miles \"Tails\" Prower"
+    ],
+    "happens": "Bident of Thassa → Ominous Seas: Whenever you draw a card, put a foreshadow counter on this enchantment",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 48,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Exemplar of Light",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Absorb",
+     "Miles \"Tails\" Prower",
+     "Sejiri Refuge",
+     "Sephara, Sky's Blade"
+    ],
+    "happens": "Absorb → Exemplar of Light: Whenever you gain life, put a +1/+1 counter on this creature",
+    "needs": [
+     "Costs {2}{W}{W}",
+     "Needs actual life-gain effects, lifelink or Food activations (costs and damage still apply), supplied by Absorb, Ugin, Eye of the Storms, Tranquil Cove and 2 more",
+     "Needs cards that put +1/+1 counters; this deck has only Tangle Tumbler, Exemplar of Light to supply it"
+    ],
+    "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
+    "brewScore": 46,
+    "caveats": [
+     "Its \"cards that put +1/+1 counters\" ability has only Tangle Tumbler, Exemplar of Light here to feed it."
+    ]
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Arcane Denial",
+    "strength": "Strongly supported",
+    "brewScore": 49
+   },
+   {
+    "rank": 2,
+    "card": "Phantasmal Image",
+    "strength": "Strongly supported",
+    "brewScore": 37
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "brewScore": 35
+   },
+   {
+    "rank": 4,
+    "card": "Council's Deliberation",
+    "strength": "Strongly supported",
+    "brewScore": 20
+   },
+   {
+    "rank": 5,
+    "card": "Haliya, Guided by Light",
+    "strength": "Plausible",
+    "brewScore": 55
+   },
+   {
+    "rank": 6,
+    "card": "Prince Imrahil the Fair",
+    "strength": "Plausible",
+    "brewScore": 50
+   },
+   {
+    "rank": 7,
+    "card": "Wizard Class",
+    "strength": "Plausible",
+    "brewScore": 49
+   },
+   {
+    "rank": 8,
+    "card": "Archaeomancer",
+    "strength": "Plausible",
+    "brewScore": 49
+   },
+   {
+    "rank": 9,
+    "card": "Ominous Seas",
+    "strength": "Plausible",
+    "brewScore": 48
+   },
+   {
+    "rank": 10,
+    "card": "Exemplar of Light",
+    "strength": "Plausible",
+    "brewScore": 46
+   }
+  ],
+  "alternativeOverlapAt10": 10
+ },
+ {
+  "deck": "Lathliss, Dragon Queen",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 61,
+  "ownedAvailable": 61,
+  "discoverable": {
+   "production": 13,
+   "noCategoryFilter": 14,
+   "noRuleCap": 13,
+   "unguarded": 14
+  },
+  "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Maskwood Nexus",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Parapet Thrasher",
+     "Warstorm Surge"
+    ],
+    "happens": "Maskwood Nexus → Parapet Thrasher: Whenever one or more Dragons you control deal combat damage to an opponent, choose one that hasn't been chosen this turn —",
+    "needs": [
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Chain Reaction (Sidegrade)",
+    "brewScore": 12,
+    "caveats": []
+   }
+  ],
+  "suppressedByRuleCap": [],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Fear of Burning Alive",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Anger",
+     "Atsushi, the Blazing Sky",
+     "Dragonhawk, Fate's Tempest",
+     "Dragonlord's Servant"
+    ],
+    "happens": "Anger → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}{R}",
+     "Needs noncombat damage sources, supplied by Drakuseth, Maw of Flames, Scourge of Valkas, Firespitter Whelp and 6 more"
+    ],
+    "change": "Review swap: cut Chandra's Ignition (Minor Upgrade)",
+    "brewScore": 59,
+    "caveats": [
+     "This deck already has plenty of interaction (13.0 / 8)."
+    ]
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Anger",
+     "Atsushi, the Blazing Sky",
+     "Dragonhawk, Fate's Tempest",
+     "Dragonlord's Servant"
+    ],
+    "happens": "Anger → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Hit the Mother Lode (Minor Upgrade)",
+    "brewScore": 36,
+    "caveats": [
+     "This deck already has plenty of card advantage (17.5 / 10)."
+    ]
+   },
+   {
+    "rank": 3,
+    "card": "Rampaging Ferocidon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Anger",
+     "Atsushi, the Blazing Sky",
+     "Dragonhawk, Fate's Tempest",
+     "Dragonlord's Servant"
+    ],
+    "happens": "Anger → Rampaging Ferocidon: Whenever another creature enters, this creature deals 1 damage to that creature's controller",
+    "needs": [
+     "Costs {2}{R}",
+     "Needs creatures entering, supplied by Minion of the Mighty, Utvara Hellkite, Drakuseth, Maw of Flames and 26 more"
+    ],
+    "change": "Review swap: cut Chain Reaction (Minor Upgrade)",
+    "brewScore": 48,
+    "caveats": []
+   },
+   {
+    "rank": 4,
+    "card": "Agate Instigator",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Anger",
+     "Atsushi, the Blazing Sky",
+     "Dragonhawk, Fate's Tempest",
+     "Dragonlord's Servant"
+    ],
+    "happens": "Anger → Agate Instigator: Whenever another creature you control enters, this creature deals 1 damage to each opponent",
+    "needs": [
+     "Costs {1}{R}",
+     "Needs creatures entering, supplied by Minion of the Mighty, Utvara Hellkite, Drakuseth, Maw of Flames and 26 more"
+    ],
+    "change": "Review swap: cut Chandra's Ignition (Minor Upgrade)",
+    "brewScore": 43,
+    "caveats": [
+     "This deck already has plenty of finishers (10.5 / 4)."
+    ]
+   },
+   {
+    "rank": 5,
+    "card": "Path of Ancestry",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Anger",
+     "Atsushi, the Blazing Sky",
+     "Dragonhawk, Fate's Tempest",
+     "Dragonlord's Servant"
+    ],
+    "happens": "Anger → Path of Ancestry: When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1",
+    "needs": [],
+    "change": "Review swap: cut Forgotten Cave (Minor Upgrade)",
+    "brewScore": 41,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Roaming Throne",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Lathliss, Dragon Queen"
+    ],
+    "happens": "Additional triggered abilities for Lathliss, Dragon Queen: Ward {2}\nAs this creature enters, choose a creature type.\nThis creature is the chosen type in addition to its other types.\nIf a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",
+    "needs": [
+     "Costs {4}",
+     "Needs one chosen creature type, supplied by Utvara Hellkite, Drakuseth, Maw of Flames, Scourge of the Throne and 17 more"
+    ],
+    "change": "Review swap: cut Chain Reaction (Sidegrade)",
+    "brewScore": 37,
+    "caveats": []
+   },
+   {
+    "rank": 7,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bitter Reunion",
+     "Bonders' Enclave",
+     "Commander's Sphere",
+     "Dragon's Hoard"
+    ],
+    "happens": "Bitter Reunion → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {0}"
+    ],
+    "change": "Review swap: cut Hit the Mother Lode (Minor Upgrade)",
+    "brewScore": 19,
+    "caveats": [
+     "This deck already has plenty of card advantage (17.5 / 10)."
+    ]
+   },
+   {
+    "rank": 8,
+    "card": "Smuggler's Copter",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haven of the Spirit Dragon",
+     "Spit Flame"
+    ],
+    "happens": "Graveyard setup / return relationship: Smuggler's Copter ↔ Haven of the Spirit Dragon; Flying\nWhenever this Vehicle attacks or blocks, you may draw a card. If you do, discard a card.\nCrew 1 ; {T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a Dragon creature spell.\n{2}, {T}, Sacrifice this land: Return target Dragon creature card or Ugin planeswalker card from your graveyard to your hand.",
+    "needs": [
+     "Costs {2}",
+     "Needs creatures to crew it (Minion of the Mighty, Utvara Hellkite, Drakuseth, Maw of Flames and 26 more)"
+    ],
+    "change": "Review swap: cut Chain Reaction (Sidegrade)",
+    "brewScore": 19,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Three Tree City",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Utvara Hellkite",
+     "Drakuseth, Maw of Flames",
+     "Scourge of the Throne",
+     "Rapacious Dragon"
+    ],
+    "happens": "Its \"one chosen creature type\" ability: {2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of the chosen type.",
+    "needs": [
+     "Needs one chosen creature type, supplied by Utvara Hellkite, Drakuseth, Maw of Flames, Scourge of the Throne and 17 more"
+    ],
+    "change": "Review swap: cut Forgotten Cave (Sidegrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Grab the Prize",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haven of the Spirit Dragon",
+     "Spit Flame"
+    ],
+    "happens": "Graveyard setup / return relationship: Grab the Prize ↔ Haven of the Spirit Dragon; As an additional cost to cast this spell, discard a card.\nDraw two cards. If the discarded card wasn't a land card, Grab the Prize deals 2 damage to each opponent.; {T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a Dragon creature spell.\n{2}, {T}, Sacrifice this land: Return target Dragon creature card or Ugin planeswalker card from your graveyard to your hand.",
+    "needs": [
+     "Costs {1}{R}"
+    ],
+    "change": "Review swap: cut Hit the Mother Lode (Minor Upgrade)",
+    "brewScore": 9,
+    "caveats": [
+     "This deck already has plenty of card advantage (17.5 / 10)."
+    ]
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Fear of Burning Alive",
+    "strength": "Strongly supported",
+    "brewScore": 59
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "brewScore": 36
+   },
+   {
+    "rank": 3,
+    "card": "Rampaging Ferocidon",
+    "strength": "Plausible",
+    "brewScore": 48
+   },
+   {
+    "rank": 4,
+    "card": "Agate Instigator",
+    "strength": "Plausible",
+    "brewScore": 43
+   },
+   {
+    "rank": 5,
+    "card": "Path of Ancestry",
+    "strength": "Plausible",
+    "brewScore": 41
+   },
+   {
+    "rank": 6,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "brewScore": 19
+   },
+   {
+    "rank": 7,
+    "card": "Three Tree City",
+    "strength": "Plausible",
+    "brewScore": 10
+   },
+   {
+    "rank": 8,
+    "card": "Ugin, Eye of the Storms",
+    "strength": "Plausible",
+    "brewScore": 8
+   },
+   {
+    "rank": 9,
+    "card": "Smuggler's Copter",
+    "strength": "Plausible",
+    "brewScore": 19
+   },
+   {
+    "rank": 10,
+    "card": "Grab the Prize",
+    "strength": "Plausible",
+    "brewScore": 9
+   }
+  ],
+  "alternativeOverlapAt10": 9
+ },
+ {
+  "deck": "Valgavoth, Harrower of Souls",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 112,
+  "ownedAvailable": 112,
+  "discoverable": {
+   "production": 22,
+   "noCategoryFilter": 24,
+   "noRuleCap": 26,
+   "unguarded": 70
+  },
+  "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Phyrexian Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mayhem Devil",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Kardur, Doomscourge"
+    ],
+    "happens": "Phyrexian Altar → Mayhem Devil: Whenever a player sacrifices a permanent, this creature deals 1 damage to any target",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 43,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Phyrexian Tower",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mayhem Devil",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Kardur, Doomscourge"
+    ],
+    "happens": "Phyrexian Tower → Mayhem Devil: Whenever a player sacrifices a permanent, this creature deals 1 damage to any target",
+    "needs": [],
+    "change": "Review swap: cut Ash Barrens (Minor Upgrade)",
+    "brewScore": 43,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Ashnod's Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mayhem Devil",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Kardur, Doomscourge"
+    ],
+    "happens": "Ashnod's Altar → Mayhem Devil: Whenever a player sacrifices a permanent, this creature deals 1 damage to any target",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Drakuseth, Maw of Flames",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Drakuseth, Maw of Flames → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 39,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Rolling Hamsphere",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Rolling Hamsphere → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {7}",
+     "Needs creatures to crew it (Fear of Burning Alive, Stormfist Crusader, Rakdos, Lord of Riots and 30 more)"
+    ],
+    "change": "Review swap: cut Decree of Pain (Moderate Upgrade)",
+    "brewScore": 39,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Rapacious Dragon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Rapacious Dragon → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 38,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Tyrant's Familiar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Tyrant's Familiar → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {5}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 36,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Leyline Tyrant",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Leyline Tyrant → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{R}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 35,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Skyline Despot",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Skyline Despot → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {5}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Atsushi, the Blazing Sky",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Atsushi, the Blazing Sky → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{R}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Scourge of Valkas",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Scourge of Valkas → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{R}{R}{R}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 32,
+    "caveats": [
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sarkhan, Dragon Ascendant",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Sarkhan, Dragon Ascendant → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{R}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 31,
+    "caveats": [
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "The Elder Dragon War",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Spiteful Visions",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "The Elder Dragon War → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 30,
+    "caveats": [
+     "This deck already has plenty of board wipes (5.0 / 2)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Gelatinous Cube",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Gelatinous Cube → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{B}{B}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 29,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Goldlust Triad",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Goldlust Triad → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 28,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Village Rites",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mayhem Devil",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Kardur, Doomscourge"
+    ],
+    "happens": "Village Rites → Mayhem Devil: Whenever a player sacrifices a permanent, this creature deals 1 damage to any target",
+    "needs": [
+     "Costs {B}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hecteyes",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Hecteyes → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{B}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Terror of Mount Velus",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Terror of Mount Velus → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {5}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 25,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Maskwood Nexus",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Maskwood Nexus → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 24,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Deadly Dispute",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mayhem Devil",
+     "Spiteful Visions",
+     "Bastion of Remembrance",
+     "Blood Artist"
+    ],
+    "happens": "Deadly Dispute → Mayhem Devil: Whenever a player sacrifices a permanent, this creature deals 1 damage to any target",
+    "needs": [
+     "Costs {1}{B}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Lathliss, Dragon Queen",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Lathliss, Dragon Queen → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}{R}",
+     "Needs nontoken Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4).",
+     "Its \"nontoken Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Utvara Hellkite",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon",
+     "Bastion of Remembrance"
+    ],
+    "happens": "Utvara Hellkite → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {6}{R}{R}",
+     "Needs Dragons that attack; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Decree of Pain (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4).",
+     "Its \"Dragons that attack\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Howling Golem",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Fate Unraveler",
+     "Kederekt Parasite",
+     "Spiteful Visions"
+    ],
+    "happens": "Howling Golem → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Temple Bell",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fate Unraveler",
+     "Kederekt Parasite",
+     "Spiteful Visions"
+    ],
+    "happens": "Temple Bell → Fate Unraveler: Whenever an opponent draws a card, this creature deals 1 damage to that player",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Smuggler's Copter",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Smuggler's Copter → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {2}",
+     "Needs creatures to crew it (Fear of Burning Alive, Stormfist Crusader, Rakdos, Lord of Riots and 30 more)"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Goddric, Cloaked Reveler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Goddric, Cloaked Reveler → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{R}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 15,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Minion of the Mighty",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Minion of the Mighty → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Anger",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Anger → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {3}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Taurean Mauler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Taurean Mauler → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {2}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Thundermane Dragon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Thundermane Dragon → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {3}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hellkite Charger",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Hellkite Charger → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Strong Upgrade)",
+    "brewScore": 13,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Scourge of the Throne",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Scourge of the Throne → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {4}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Strong Upgrade)",
+    "brewScore": 13,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Bitter Reunion",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Bitter Reunion → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {1}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 13,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Unexpected Windfall",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Unexpected Windfall → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {2}{R}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Bonders' Enclave",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Bonders' Enclave → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [],
+    "change": "Review swap: cut Ash Barrens (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Thrill of Possibility",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Thrill of Possibility → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {1}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "War Room",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "War Room → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [],
+    "change": "Review swap: cut Ash Barrens (Minor Upgrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Commander's Sphere",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Commander's Sphere → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Shivan Devastator",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Shivan Devastator → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {X}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Academy Manufactor",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Academy Manufactor → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {3}",
+     "Needs actual token-creation events for the replacement; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 10,
+    "caveats": [
+     "Its \"actual token-creation events for the replacement\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Dragonspeaker Shaman",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Dragonspeaker Shaman → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{R}{R}",
+     "Needs Dragon spells; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"Dragon spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Dragonlord's Servant",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Dragonlord's Servant → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{R}",
+     "Needs Dragon spells; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"Dragon spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Nogi, Draco-Zealot",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Fear of Burning Alive",
+     "Agate Instigator",
+     "Rampaging Ferocidon"
+    ],
+    "happens": "Nogi, Draco-Zealot → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
+    "needs": [
+     "Costs {1}{R}{R}",
+     "Needs Dragon spells; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"Dragon spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Dragon's Hoard",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Spiteful Visions"
+    ],
+    "happens": "Dragon's Hoard → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 6,
+    "caveats": [
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   }
+  ],
+  "suppressedByRuleCap": [
+   {
+    "rank": 0,
+    "card": "Scrawling Crawler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Blood Pact",
+     "Deadpool, Trading Card",
+     "Scheming Silvertongue // Sign in Blood",
+     "Stormfist Crusader"
+    ],
+    "happens": "Blood Pact → Scrawling Crawler: Whenever an opponent draws a card, that player loses 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Thunderbreak Regent",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Valgavoth, Harrower of Souls"
+    ],
+    "happens": "Thunderbreak Regent → Valgavoth, Harrower of Souls: Whenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth, Harrower of Souls and draw a card",
+    "needs": [
+     "Costs {2}{R}{R}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 39,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Firespitter Whelp",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Valgavoth, Harrower of Souls"
+    ],
+    "happens": "Firespitter Whelp → Valgavoth, Harrower of Souls: Whenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth, Harrower of Souls and draw a card",
+    "needs": [
+     "Costs {2}{R}",
+     "Needs noncreature or Dragon spells, supplied by Chaos Warp, Arcane Signet, Wheel of Misfortune and 28 more"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 39,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Psychosis Crawler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Grab the Prize",
+     "Mind Stone",
+     "Stormfist Crusader",
+     "Valgavoth, Harrower of Souls"
+    ],
+    "happens": "Grab the Prize → Psychosis Crawler: Whenever you draw a card, each opponent loses 1 life",
+    "needs": [
+     "Costs {5}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Moderate Upgrade)",
+    "brewScore": 34,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   }
+  ],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Warstorm Surge",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Agate Instigator",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Blood Seeker"
+    ],
+    "happens": "Agate Instigator → Warstorm Surge: Whenever a creature you control enters, it deals damage equal to its power to any target",
+    "needs": [
+     "Costs {5}{R}",
+     "Needs creatures entering, supplied by Fear of Burning Alive, Stormfist Crusader, Rakdos, Lord of Riots and 30 more"
+    ],
+    "change": "Review swap: cut Decree of Pain (Strong Upgrade)",
+    "brewScore": 53,
+    "caveats": []
+   },
+   {
+    "rank": 2,
+    "card": "Parapet Thrasher",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Blood Seeker",
+     "Braids, Arisen Nightmare",
+     "Brash Taunter",
+     "Deadpool, Trading Card"
+    ],
+    "happens": "Blood Seeker → Parapet Thrasher: Whenever one or more Dragons you control deal combat damage to an opponent, choose one that hasn't been chosen this turn —",
+    "needs": [
+     "Costs {2}{R}{R}",
+     "Needs Dragonss that attack; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Strong Upgrade)",
+    "brewScore": 49,
+    "caveats": [
+     "Its \"Dragonss that attack\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 3,
+    "card": "Dragonhawk, Fate's Tempest",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Valgavoth, Harrower of Souls"
+    ],
+    "happens": "Dragonhawk, Fate's Tempest → Valgavoth, Harrower of Souls: Whenever an opponent loses life for the first time during each of their turns, put a +1/+1 counter on Valgavoth, Harrower of Souls and draw a card",
+    "needs": [
+     "Costs {3}{R}{R}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Moderate Upgrade)",
+    "brewScore": 43,
+    "caveats": []
+   },
+   {
+    "rank": 4,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Grab the Prize",
+     "Mask of Griselbrand",
+     "Mind Stone",
+     "Morbid Opportunist"
+    ],
+    "happens": "Grab the Prize → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {0}"
+    ],
+    "change": "Review swap: cut Basilisk Collar (Moderate Upgrade)",
+    "brewScore": 40,
+    "caveats": []
+   },
+   {
+    "rank": 5,
+    "card": "Hazoret's Monument",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Agate Instigator",
+     "Blood Artist",
+     "Blood Seeker",
+     "Braids, Arisen Nightmare"
+    ],
+    "happens": "Agate Instigator → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card",
+    "needs": [
+     "Costs {3}",
+     "Needs red creature spells, supplied by Fear of Burning Alive, Stormfist Crusader, Rakdos, Lord of Riots and 17 more",
+     "Needs creature spells, supplied by Fear of Burning Alive, Stormfist Crusader, Rakdos, Lord of Riots and 28 more"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Strong Upgrade)",
+    "brewScore": 40,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Well of Lost Dreams",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Bloodfell Caves",
+     "Gray Merchant of Asphodel"
+    ],
+    "happens": "Bastion of Remembrance → Well of Lost Dreams: Whenever you gain life, you may pay {X}, where X is less than or equal to the amount of life you gained",
+    "needs": [
+     "Costs {4}",
+     "Needs actual life-gain effects, lifelink or Food activations (costs and damage still apply), supplied by Blood Artist, Gray Merchant of Asphodel, Scheming Silvertongue // Sign in Blood and 3 more"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
+    "brewScore": 36,
+    "caveats": []
+   },
+   {
+    "rank": 7,
+    "card": "Path of Ancestry",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Agate Instigator",
+     "Blood Artist",
+     "Blood Seeker",
+     "Braids, Arisen Nightmare"
+    ],
+    "happens": "Agate Instigator → Path of Ancestry: When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1",
+    "needs": [],
+    "change": "Review swap: cut Ash Barrens (Moderate Upgrade)",
+    "brewScore": 33,
+    "caveats": []
+   },
+   {
+    "rank": 8,
+    "card": "Mask of Memory",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Agate Instigator",
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Blood Seeker"
+    ],
+    "happens": "Agate Instigator → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Strong Upgrade)",
+    "brewScore": 31,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Corrupted Zendikon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bastion of Remembrance",
+     "Spiked Corridor // Torture Pit"
+    ],
+    "happens": "Bastion of Remembrance → Corrupted Zendikon: When enchanted land dies, return that card to its owner's hand",
+    "needs": [
+     "Costs {1}{B}",
+     "Needs lands to animate, supplied by Witch's Clinic, Command Tower, Shadowblood Ridge and 22 more"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Sidegrade)",
+    "brewScore": 28,
+    "caveats": [
+     "This deck already has plenty of finishers (9.0 / 4)."
+    ]
+   },
+   {
+    "rank": 10,
+    "card": "Dragonmaster Outcast",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Witch's Clinic",
+     "Command Tower",
+     "Shadowblood Ridge",
+     "Terramorphic Expanse"
+    ],
+    "happens": "Its \"lands to control\" ability: At the beginning of your upkeep, if you control six or more lands, create a 5/5 red Dragon creature token with flying.",
+    "needs": [
+     "Costs {R}",
+     "Needs lands to control, supplied by Witch's Clinic, Command Tower, Shadowblood Ridge and 22 more"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Minor Upgrade)",
+    "brewScore": 28,
+    "caveats": []
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Warstorm Surge",
+    "strength": "Plausible",
+    "brewScore": 53
+   },
+   {
+    "rank": 2,
+    "card": "Parapet Thrasher",
+    "strength": "Plausible",
+    "brewScore": 49
+   },
+   {
+    "rank": 3,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "brewScore": 40
+   },
+   {
+    "rank": 4,
+    "card": "Hazoret's Monument",
+    "strength": "Plausible",
+    "brewScore": 40
+   },
+   {
+    "rank": 5,
+    "card": "Well of Lost Dreams",
+    "strength": "Plausible",
+    "brewScore": 36
+   },
+   {
+    "rank": 6,
+    "card": "Path of Ancestry",
+    "strength": "Plausible",
+    "brewScore": 33
+   },
+   {
+    "rank": 7,
+    "card": "Mask of Memory",
+    "strength": "Plausible",
+    "brewScore": 31
+   },
+   {
+    "rank": 8,
+    "card": "Dragonmaster Outcast",
+    "strength": "Plausible",
+    "brewScore": 28
+   },
+   {
+    "rank": 9,
+    "card": "Uchuulon",
+    "strength": "Plausible",
+    "brewScore": 28
+   },
+   {
+    "rank": 10,
+    "card": "Cursed Mirror",
+    "strength": "Plausible",
+    "brewScore": 25
+   }
+  ],
+  "alternativeOverlapAt10": 8
+ },
+ {
+  "deck": "Kwain, Itinerant Meddler",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 138,
+  "ownedAvailable": 138,
+  "discoverable": {
+   "production": 52,
+   "noCategoryFilter": 25,
+   "noRuleCap": 52,
+   "unguarded": 87
+  },
+  "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Of Herbs and Stewed Rabbit",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Mask of Memory",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker"
+    ],
+    "happens": "Of Herbs and Stewed Rabbit → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 28,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Commander's Sphere",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Commander's Sphere → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Rolling Hamsphere",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Rolling Hamsphere → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {7}",
+     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
+    ],
+    "change": "Review swap: cut Omniscience (Strong Upgrade)",
+    "brewScore": 26,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Mask of Memory",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker"
+    ],
+    "happens": "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {1}{W}{U}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 25,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Parhelion II",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Parhelion II → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {6}{W}{W}",
+     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
+    ],
+    "change": "Review swap: cut Omniscience (Moderate Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mind Stone",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Mind Stone → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Miles \"Tails\" Prower",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Mask of Memory",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker"
+    ],
+    "happens": "Miles \"Tails\" Prower → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {1}{W}{U}",
+     "Needs vehicles entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 24,
+    "caveats": [
+     "Its \"vehicles entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sram, Senior Edificer",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Mask of Memory",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker"
+    ],
+    "happens": "Sram, Senior Edificer → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs aura spells; this deck has only Public Enemy to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 24,
+    "caveats": [
+     "Its \"aura spells\" ability has only Public Enemy here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sephara, Sky's Blade",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sephara, Sky's Blade → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {4}{W}{W}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Strong Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Bonders' Enclave",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Bonders' Enclave → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "War Room",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "War Room → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Winged Words",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Winged Words → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Distant Melody",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Distant Melody → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 20,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "The Gaffer",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Mask of Memory",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker"
+    ],
+    "happens": "The Gaffer → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 20,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Moorland Haunt",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Moorland Haunt → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
+    "brewScore": 19,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Dragon's Hoard",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Dragon's Hoard → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 19,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10).",
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Harmonized Crescendo",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Harmonized Crescendo → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {4}{U}{U}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 19,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Maskwood Nexus",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Maskwood Nexus → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Jubilant Skybonder",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Jubilant Skybonder → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W/U}{W/U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Warden of Evos Isle",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Warden of Evos Isle → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hotshot Mechanic",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Hotshot Mechanic → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Empyrean Eagle",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Empyrean Eagle → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sage Owl",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sage Owl → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearshift Ace",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Gearshift Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearseeker Serpent",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Gearseeker Serpent → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {5}{U}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Astrid Peth",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Astrid Peth → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs Clue sacrifice options (with their costs); this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 13,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "Its \"Clue sacrifice options (with their costs)\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Thunderclap Wyvern",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Thunderclap Wyvern → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{W}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 13,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Cloudspire Captain",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Cloudspire Captain → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}{W}",
+     "Needs Mounts or vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"Mounts or vehicle creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sanwell, Avenger Ace",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sanwell, Avenger Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 8,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Aeronaut Admiral",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Aeronaut Admiral → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {3}{W}",
+     "Needs vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 8,
+    "caveats": [
+     "Its \"vehicle creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Apothecary White",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad",
+     "Public Enemy"
+    ],
+    "happens": "Apothecary White → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {3}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Moderate Upgrade)",
+    "brewScore": 19,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Phyrexian Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Public Enemy"
+    ],
+    "happens": "Phyrexian Altar → Public Enemy: When enchanted creature dies, draw a card",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Cid, Freeflier Pilot",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Cid, Freeflier Pilot → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Moderate Upgrade)",
+    "brewScore": 15,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "Couldn't check what feeds \"Equipment and Vehicle spells you cast cost {1} less to cast.\" in this deck."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Ashnod's Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Public Enemy"
+    ],
+    "happens": "Ashnod's Altar → Public Enemy: When enchanted creature dies, draw a card",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Kitsune Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Kitsune Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs vehicles that attack; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"vehicles that attack\" ability has nothing here to feed it."
+    ]
+   }
+  ],
+  "suppressedByRuleCap": [],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Chrome Host Seedshark",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Adarkar Wastes",
+     "Aetherize",
+     "An Offer You Can't Refuse",
+     "Approach of the Second Sun"
+    ],
+    "happens": "Adarkar Wastes → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}",
+     "Needs noncreature spells, supplied by Supreme Verdict, Windfall, Arcane Signet and 43 more"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 36,
+    "caveats": []
+   },
+   {
+    "rank": 2,
+    "card": "Path of Ancestry",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Council's Deliberation",
+     "Alandra, Sky Dreamer",
+     "Archaeomancer",
+     "Body of Knowledge"
+    ],
+    "happens": "Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Minor Upgrade)",
+    "brewScore": 33,
+    "caveats": []
+   },
+   {
+    "rank": 3,
+    "card": "Phantasmal Image",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Alandra, Sky Dreamer",
+     "Archaeomancer",
+     "Body of Knowledge",
+     "Chasm Skulker"
+    ],
+    "happens": "Alandra, Sky Dreamer → Phantasmal Image: You may have this creature enter as a copy of any creature on the battlefield, except it's an Illusion in addition to its other types and it has \"When this creature becomes the target of a spell or ability, sacrifice it",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 30,
+    "caveats": []
+   },
+   {
+    "rank": 4,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Archaeomancer",
+     "Body of Knowledge",
+     "Faramir, Prince of Ithilien",
+     "Fear of Failed Tests"
+    ],
+    "happens": "Archaeomancer → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card",
+    "needs": [
+     "Costs {3}",
+     "Needs red creature spells; this deck has nothing to supply it",
+     "Needs creature spells, supplied by Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 29,
+    "caveats": [
+     "Its \"red creature spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 5,
+    "card": "Temple of Enlightenment",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Council's Deliberation"
+    ],
+    "happens": "Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Thopter Fabricator",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Aura Blast",
+     "Body of Knowledge",
+     "Borne Upon a Wind"
+    ],
+    "happens": "Arcane Denial → Thopter Fabricator: Whenever you draw your second card each turn, create a 1/1 colorless Thopter artifact creature token with flying",
+    "needs": [
+     "Costs {2}{U}",
+     "Needs extra card draw, supplied by Windfall, Mind Unbound, Teferi's Ageless Insight and 30 more",
+     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
+    ],
+    "change": "Review swap: cut Thought Reflection (Moderate Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 7,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Aura Blast",
+     "Body of Knowledge",
+     "Borne Upon a Wind",
+     "Consider"
+    ],
+    "happens": "Aura Blast → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {0}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Moderate Upgrade)",
+    "brewScore": 38,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 8,
+    "card": "Soul Warden",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Alandra, Sky Dreamer",
+     "Archaeomancer",
+     "Body of Knowledge",
+     "Chasm Skulker"
+    ],
+    "happens": "Alandra, Sky Dreamer → Soul Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {W}",
+     "Needs creatures entering, supplied by Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more"
+    ],
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
+    "brewScore": 38,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "The Wind Crystal",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Approach of the Second Sun"
+    ],
+    "happens": "The Wind Crystal replaces the amount of a real life-gain event for Approach of the Second Sun; it does not originate life gain or multiply the number of life-gain triggers.",
+    "needs": [
+     "Costs {2}{W}{W}",
+     "Needs white spells, supplied by Supreme Verdict, Smothering Tithe, Secret Rendezvous and 14 more"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 38,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Well of Lost Dreams",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Approach of the Second Sun"
+    ],
+    "happens": "Approach of the Second Sun → Well of Lost Dreams: Whenever you gain life, you may pay {X}, where X is less than or equal to the amount of life you gained",
+    "needs": [
+     "Costs {4}",
+     "Needs actual life-gain effects, lifelink or Food activations (costs and damage still apply); this deck has only Approach of the Second Sun to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 37,
+    "caveats": [
+     "Its \"actual life-gain effects, lifelink or Food activations (costs and damage still apply)\" ability has only Approach of the Second Sun here to feed it."
+    ]
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Chrome Host Seedshark",
+    "strength": "Strongly supported",
+    "brewScore": 36
+   },
+   {
+    "rank": 2,
+    "card": "Path of Ancestry",
+    "strength": "Strongly supported",
+    "brewScore": 33
+   },
+   {
+    "rank": 3,
+    "card": "Phantasmal Image",
+    "strength": "Strongly supported",
+    "brewScore": 30
+   },
+   {
+    "rank": 4,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "brewScore": 29
+   },
+   {
+    "rank": 5,
+    "card": "Temple of Enlightenment",
+    "strength": "Strongly supported",
+    "brewScore": 9
+   },
+   {
+    "rank": 6,
+    "card": "Thopter Fabricator",
+    "strength": "Plausible",
+    "brewScore": 47
+   },
+   {
+    "rank": 7,
+    "card": "Mishra's Bauble",
+    "strength": "Plausible",
+    "brewScore": 38
+   },
+   {
+    "rank": 8,
+    "card": "Soul Warden",
+    "strength": "Plausible",
+    "brewScore": 38
+   },
+   {
+    "rank": 9,
+    "card": "Copycrook",
+    "strength": "Plausible",
+    "brewScore": 36
+   },
+   {
+    "rank": 10,
+    "card": "Kindred Discovery",
+    "strength": "Plausible",
+    "brewScore": 36
+   }
+  ],
+  "alternativeOverlapAt10": 8
+ },
+ {
+  "deck": "Uugguu, the Omniplasm",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 146,
+  "ownedAvailable": 146,
+  "discoverable": {
+   "production": 67,
+   "noCategoryFilter": 67,
+   "noRuleCap": 68,
+   "unguarded": 68
+  },
+  "suppressedByCategoryFilter": [],
+  "suppressedByRuleCap": [
+   {
+    "rank": 0,
+    "card": "Revive the Shire",
+    "strength": "Speculative",
+    "available": "1 of 1",
+    "worksWith": [],
+    "happens": "Tokens → Sacrifice / Death Payoffs. 9 cards here supply it (Doubling Season, Mitotic Slime, Adrix and Nev, Twincasters and 6 more); Revive the Shire turns it into Sacrifice / Death Payoffs value.",
+    "needs": [
+     "Costs {1}{G}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 18,
+    "caveats": []
+   }
+  ],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Chrome Host Seedshark",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Adaptation",
+     "Arcane Signet",
+     "Ashnod's Altar",
+     "Assassin's Trophy"
+    ],
+    "happens": "Arcane Adaptation → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value",
+    "needs": [
+     "Costs {2}{U}",
+     "Needs noncreature spells, supplied by Kindred Discovery, Doubling Season, Arcane Signet and 32 more"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 71,
+    "caveats": []
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Acidic Slime",
+     "Adrix and Nev, Twincasters",
+     "Aeve, Progenitor Ooze",
+     "Biogenic Ooze"
+    ],
+    "happens": "Acidic Slime → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 54,
+    "caveats": []
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Acidic Slime",
+     "Adrix and Nev, Twincasters",
+     "Aeve, Progenitor Ooze",
+     "Biogenic Ooze"
+    ],
+    "happens": "Acidic Slime → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card",
+    "needs": [
+     "Costs {3}",
+     "Needs red creature spells; this deck has nothing to supply it",
+     "Needs creature spells, supplied by Green Slime, Mitotic Slime, Adrix and Nev, Twincasters and 28 more"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 42,
+    "caveats": [
+     "Its \"red creature spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 4,
+    "card": "Dragon's Hoard",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Chomping Changeling",
+     "Mutable Explorer"
+    ],
+    "happens": "Chomping Changeling → Dragon's Hoard: Whenever a Dragon you control enters, put a gold counter on this artifact",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragons entering, supplied by Mutable Explorer, Omni-Changeling, Maskwood Nexus and 2 more"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 5,
+    "card": "Arcane Denial",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Distant Melody",
+     "Harmonized Crescendo",
+     "Kindred Discovery"
+    ],
+    "happens": "Deadly Dispute → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Council's Deliberation",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Path of Ancestry"
+    ],
+    "happens": "Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard",
+    "needs": [
+     "Costs {1}{U}",
+     "Needs scry or surveil effects; this deck has only Path of Ancestry to supply it"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 7,
+    "caveats": [
+     "Its \"scry or surveil effects\" ability has only Path of Ancestry here to feed it."
+    ]
+   },
+   {
+    "rank": 7,
+    "card": "Bastion of Remembrance",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Ashnod's Altar",
+     "Birthing Pod",
+     "Phyrexian Altar",
+     "Phyrexian Tower"
+    ],
+    "happens": "Ashnod's Altar → Bastion of Remembrance: Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life",
+    "needs": [
+     "Costs {2}{B}",
+     "Needs creatures that can die, supplied by Green Slime, Mitotic Slime, Adrix and Nev, Twincasters and 31 more"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 77,
+    "caveats": []
+   },
+   {
+    "rank": 8,
+    "card": "Tireless Provisioner",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Assassin's Trophy",
+     "Bala Ged Recovery // Bala Ged Sanctuary",
+     "Breeding Pool",
+     "Command Tower"
+    ],
+    "happens": "Assassin's Trophy → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [
+     "Costs {2}{G}",
+     "Needs lands entering, supplied by Command Tower, Misty Rainforest, Phyrexian Tower and 24 more"
+    ],
+    "change": "Review swap: cut Ashnod's Altar (Moderate Upgrade)",
+    "brewScore": 77,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Twenty-Toed Toad",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Acidic Slime",
+     "Adrix and Nev, Twincasters",
+     "Aeve, Progenitor Ooze",
+     "Biogenic Ooze"
+    ],
+    "happens": "Acidic Slime → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Major Upgrade)",
+    "brewScore": 72,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Blood Artist",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Ashnod's Altar",
+     "Birthing Pod",
+     "Phyrexian Altar",
+     "Phyrexian Tower"
+    ],
+    "happens": "Ashnod's Altar → Blood Artist: Whenever this creature or another creature dies, target player loses 1 life and you gain 1 life",
+    "needs": [
+     "Costs {1}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 71,
+    "caveats": []
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Chrome Host Seedshark",
+    "strength": "Strongly supported",
+    "brewScore": 71
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "brewScore": 54
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "brewScore": 42
+   },
+   {
+    "rank": 4,
+    "card": "Arcane Denial",
+    "strength": "Strongly supported",
+    "brewScore": 27
+   },
+   {
+    "rank": 5,
+    "card": "Dragon's Hoard",
+    "strength": "Strongly supported",
+    "brewScore": 34
+   },
+   {
+    "rank": 6,
+    "card": "Council's Deliberation",
+    "strength": "Strongly supported",
+    "brewScore": 7
+   },
+   {
+    "rank": 7,
+    "card": "Bastion of Remembrance",
+    "strength": "Plausible",
+    "brewScore": 77
+   },
+   {
+    "rank": 8,
+    "card": "Tireless Provisioner",
+    "strength": "Plausible",
+    "brewScore": 77
+   },
+   {
+    "rank": 9,
+    "card": "Twenty-Toed Toad",
+    "strength": "Plausible",
+    "brewScore": 72
+   },
+   {
+    "rank": 10,
+    "card": "Blood Artist",
+    "strength": "Plausible",
+    "brewScore": 71
+   }
+  ],
+  "alternativeOverlapAt10": 10
+ },
+ {
+  "deck": "Hurska Sweet-Tooth",
+  "deckCards": 100,
+  "complete": true,
+  "owned": 93,
+  "ownedAvailable": 93,
+  "discoverable": {
+   "production": 27,
+   "noCategoryFilter": 21,
+   "noRuleCap": 28,
+   "unguarded": 84
+  },
+  "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Acidic Slime",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Acidic Slime → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {3}{G}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 35,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Howling Golem",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Howling Golem → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Chomping Changeling",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Chomping Changeling → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 33,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Green Slime",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Green Slime → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 33,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Basilisk Collar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Field-Tested Frying Pan",
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Basilisk Collar → Field-Tested Frying Pan: When this Equipment enters, create a Food token, then create a 1/1 white Halfling creature token and attach this Equipment to it",
+    "needs": [
+     "Costs {1}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 32,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Lightning Greaves",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Field-Tested Frying Pan",
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Lightning Greaves → Field-Tested Frying Pan: When this Equipment enters, create a Food token, then create a 1/1 white Halfling creature token and attach this Equipment to it",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 31,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Loran of the Third Path",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Loran of the Third Path → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 25,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Birthing Pod",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Birthing Pod → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}{G/P}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 24,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Skysovereign, Consul Flagship",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Skysovereign, Consul Flagship → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {5}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Witch's Clinic",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Witch's Clinic → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sanwell, Avenger Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Sanwell, Avenger Ace → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 22,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Flumph",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Flumph → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hotshot Mechanic",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Hotshot Mechanic → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {W}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearshift Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Gearshift Ace → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Scrawling Crawler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Scrawling Crawler → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 20,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Cid, Freeflier Pilot",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Cid, Freeflier Pilot → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 19,
+    "caveats": [
+     "Couldn't check what feeds \"Equipment and Vehicle spells you cast cost {1} less to cast.\" in this deck."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Windborn Muse",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Windborn Muse → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {3}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 19,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Cloudspire Captain",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Cloudspire Captain → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{W}",
+     "Needs Mounts or vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 18,
+    "caveats": [
+     "Its \"Mounts or vehicle creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Evolving Wilds",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Evolving Wilds → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Misty Rainforest",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Misty Rainforest → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Polluted Delta",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Polluted Delta → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Terramorphic Expanse",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Terramorphic Expanse → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Verdant Catacombs",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Verdant Catacombs → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Brute Suit",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Brute Suit → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 18,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Ashnod's Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Ashnod's Altar → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Phyrexian Altar",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Phyrexian Altar → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Kitsune Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Kitsune Ace → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs vehicles that attack; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": [
+     "Its \"vehicles that attack\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sram, Senior Edificer",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Sram, Senior Edificer → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs aura spells; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": [
+     "Its \"aura spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Aeronaut Admiral",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Aeronaut Admiral → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {3}{W}",
+     "Needs vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": [
+     "Its \"vehicle creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Irontread Crusher",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Irontread Crusher → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {4}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "_____ _____ Rocketship",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "_____ _____ Rocketship → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {4}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Aeve, Progenitor Ooze",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Essence Warden",
+     "Haliya, Guided by Light",
+     "Samwise Gamgee",
+     "Soul Warden"
+    ],
+    "happens": "Aeve, Progenitor Ooze → Essence Warden: Whenever another creature enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{G}{G}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Skybox Ferry",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Skybox Ferry → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {5}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Three Visits",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Three Visits → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [
+     "Costs {1}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 13,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Temple Bell",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Temple Bell → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 12,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Howling Mine",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Howling Mine → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 11,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Dragon's Hoard",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Exemplar of Light",
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Dragon's Hoard → Exemplar of Light: Whenever you put one or more +1/+1 counters on this creature, draw a card",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragons entering; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": [
+     "Its \"Dragons entering\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Bonders' Enclave",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Bonders' Enclave → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "War Room",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "War Room → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Minor Upgrade)",
+    "brewScore": 10,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Hidden Grotto",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Hidden Grotto → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Séance Board",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Exemplar of Light",
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Séance Board → Exemplar of Light: Whenever you put one or more +1/+1 counters on this creature, draw a card",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Ash Barrens",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Ash Barrens → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Exotic Orchard",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Exotic Orchard → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mutavault",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Mutavault → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Minor Upgrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Reliquary Tower",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Reliquary Tower → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Temple of the False God",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Temple of the False God → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Uncharted Haven",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Uncharted Haven → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Sidegrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Haven of the Spirit Dragon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Haven of the Spirit Dragon → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [],
+    "change": "Review swap: cut Forest (Minor Upgrade)",
+    "brewScore": 9,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mind Stone",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Mind Stone → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Fellwar Stone",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Fellwar Stone → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 6,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Thought Vessel",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Thought Vessel → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 6,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Commander's Sphere",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Commander's Sphere → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 6,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Decanter of Endless Water",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Decanter of Endless Water → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 5,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Worn Powerstone",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Worn Powerstone → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 5,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Bala Ged Recovery // Bala Ged Sanctuary",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Tireless Provisioner"
+    ],
+    "happens": "Bala Ged Recovery // Bala Ged Sanctuary → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token",
+    "needs": [
+     "Costs {2}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 4,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Dragonstorm Globe",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Dragonstorm Globe → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}",
+     "Needs Dragon creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 0,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7).",
+     "Its \"Dragon creatures\" ability has nothing here to feed it."
+    ]
+   }
+  ],
+  "suppressedByRuleCap": [
+   {
+    "rank": 0,
+    "card": "Approach of the Second Sun",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Hurska Sweet-Tooth",
+     "Alhammarret's Archive",
+     "Leyline of Hope",
+     "Rhox Faithmender"
+    ],
+    "happens": "Approach of the Second Sun → Hurska Sweet-Tooth: Whenever you gain life, you may pay {G/W}",
+    "needs": [
+     "Costs {6}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 52,
+    "caveats": []
+   }
+  ],
+  "top10": [
+   {
+    "rank": 1,
+    "card": "Ugin, Eye of the Storms",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Alhammarret's Archive",
+     "Leyline of Hope",
+     "Rhox Faithmender",
+     "The Wind Crystal"
+    ],
+    "happens": "Alhammarret's Archive → Ugin, Eye of the Storms: When you cast this spell, exile up to one target permanent that's one or more colors",
+    "needs": [
+     "Costs {7}",
+     "Needs colorless spells, supplied by Arcane Signet, Sol Ring, Nuka-Cola Vending Machine and 4 more"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 60,
+    "caveats": []
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Samwise Gamgee",
+     "Academy Manufactor",
+     "Accomplished Alchemist",
+     "Apothecary White"
+    ],
+    "happens": "Samwise Gamgee → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 48,
+    "caveats": []
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Academy Manufactor",
+     "Accomplished Alchemist",
+     "Apothecary White",
+     "Astrid Peth"
+    ],
+    "happens": "Academy Manufactor → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card",
+    "needs": [
+     "Costs {3}",
+     "Needs red creature spells; this deck has nothing to supply it",
+     "Needs creature spells, supplied by Avacyn's Pilgrim, Jaheira, Friend of the Forest, Farmer Cotton and 27 more"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 28,
+    "caveats": [
+     "Its \"red creature spells\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 4,
+    "card": "The Prydwen, Steel Flagship",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Academy Manufactor",
+     "Alhammarret's Archive",
+     "Apothecary White",
+     "Arcane Signet"
+    ],
+    "happens": "Academy Manufactor → The Prydwen, Steel Flagship: Whenever another nontoken artifact you control enters, create a 2/2 white Human Knight creature token with \"This token gets +2/+2 as long as an artifact entered the battlefield under your control this turn",
+    "needs": [
+     "Costs {4}{W}{W}",
+     "Needs nontoken artifacts entering, supplied by Arcane Signet, Field-Tested Frying Pan, The Wind Crystal and 7 more",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 72,
+    "caveats": []
+   },
+   {
+    "rank": 5,
+    "card": "Sephara, Sky's Blade",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Hurska Sweet-Tooth",
+     "Alhammarret's Archive",
+     "Lathiel, the Bounteous Dawn",
+     "Leyline of Hope"
+    ],
+    "happens": "Sephara, Sky's Blade → Hurska Sweet-Tooth: Whenever you gain life, you may pay {G/W}",
+    "needs": [
+     "Costs {4}{W}{W}{W}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 60,
+    "caveats": []
+   },
+   {
+    "rank": 6,
+    "card": "Springleaf Parade",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Peregrin Took"
+    ],
+    "happens": "Peregrin Took adds Food to Springleaf Parade's controlled token-creation event; the replacement does not initiate its own event.",
+    "needs": [
+     "Costs {X}{G}{G}",
+     "Needs creature-token sources, supplied by Field-Tested Frying Pan, Farmer Cotton, Rosie Cotton of South Lane and 3 more"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 55,
+    "caveats": []
+   },
+   {
+    "rank": 7,
+    "card": "Rolling Hamsphere",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Peregrin Took"
+    ],
+    "happens": "Peregrin Took adds Food to Rolling Hamsphere's controlled token-creation event; the replacement does not initiate its own event.",
+    "needs": [
+     "Costs {7}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 54,
+    "caveats": []
+   },
+   {
+    "rank": 8,
+    "card": "Mitotic Slime",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Apothecary White",
+     "Astrid Peth",
+     "Elanor Gardner",
+     "Farmer Cotton"
+    ],
+    "happens": "Apothecary White → Mitotic Slime: They have \"When this token dies, create two 1/1 green Ooze creature tokens",
+    "needs": [
+     "Costs {4}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 48,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Parhelion II",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Peregrin Took"
+    ],
+    "happens": "Peregrin Took adds Food to Parhelion II's controlled token-creation event; the replacement does not initiate its own event.",
+    "needs": [
+     "Costs {6}{W}{W}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Doubling Season",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Banquet Guests",
+     "Cleric Class",
+     "Gourmand's Talent",
+     "Nykthos Paragon"
+    ],
+    "happens": "Amplifies the actual counter placements from Banquet Guests; replacement effects alone do not originate counters: If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.\nIf an effect would put one or more counters on a permanent you control, it puts twice that many of those counters on that permanent instead.",
+    "needs": [
+     "Costs {4}{G}",
+     "Needs token makers, supplied by Field-Tested Frying Pan, Farmer Cotton, Rosie Cotton of South Lane and 19 more",
+     "Needs cards that put +1/+1 counters, supplied by Rosie Cotton of South Lane, Of Herbs and Stewed Rabbit, Nykthos Paragon and 5 more"
+    ],
+    "change": "Review swap: cut Cultivate (Strong Upgrade)",
+    "brewScore": 46,
+    "caveats": []
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Ugin, Eye of the Storms",
+    "strength": "Strongly supported",
+    "brewScore": 60
+   },
+   {
+    "rank": 2,
+    "card": "Mask of Memory",
+    "strength": "Strongly supported",
+    "brewScore": 48
+   },
+   {
+    "rank": 3,
+    "card": "Hazoret's Monument",
+    "strength": "Strongly supported",
+    "brewScore": 28
+   },
+   {
+    "rank": 4,
+    "card": "The Prydwen, Steel Flagship",
+    "strength": "Plausible",
+    "brewScore": 72
+   },
+   {
+    "rank": 5,
+    "card": "Sephara, Sky's Blade",
+    "strength": "Plausible",
+    "brewScore": 60
+   },
+   {
+    "rank": 6,
+    "card": "Mitotic Slime",
+    "strength": "Plausible",
+    "brewScore": 48
+   },
+   {
+    "rank": 7,
+    "card": "Doubling Season",
+    "strength": "Plausible",
+    "brewScore": 46
+   },
+   {
+    "rank": 8,
+    "card": "Biowaste Blob",
+    "strength": "Plausible",
+    "brewScore": 46
+   },
+   {
+    "rank": 9,
+    "card": "Parallel Lives",
+    "strength": "Plausible",
+    "brewScore": 32
+   },
+   {
+    "rank": 10,
+    "card": "Path of Ancestry",
+    "strength": "Plausible",
+    "brewScore": 31
+   }
+  ],
+  "alternativeOverlapAt10": 7
+ }
+]

@@ -1,3 +1,4 @@
+import { branchNote, grantedKeywords, parseStatedCondition, ruleLineFor } from "../synergy/stateConditions";
 import { capabilities, capabilityRelationship } from "../synergy/capabilities";
 import { creatureBody, deathCopy, entryClone, grantsCreatureType, isCreatureType } from "../synergy/typal";
 import { resourceSemantics } from "../synergy/resources";
@@ -1101,7 +1102,7 @@ const canonicalProfiles = new WeakMap<DeckStrategyProfile, WeakMap<NonNullable<P
 export function mechanicalRelationships(
   profile: DeckStrategyProfile,
   input: DnaInputCard,
-  validate: (receiver: CommanderSynergyTag, source: DnaInputCard) => boolean,
+  validate: (receiver: CommanderSynergyTag, source: DnaInputCard, receiverOracle?: string) => boolean,
   canonicalize?: (source: DnaInputCard) => {
     events: string[];
     creatureTypes: string[];
@@ -1125,6 +1126,8 @@ export function mechanicalRelationships(
     };
   };
   const candidate = canonical(characteristics(input));
+  // Static keyword grants on the deck's own cards, so a stated keyword test can be read for each source.
+  const grants = grantedKeywords(profile.cards.map((c) => c.card.card));
   const { crewPower, castSpellCount } = profileReadiness(profile);
   const relationships: {
     identity: string;
@@ -1151,7 +1154,7 @@ export function mechanicalRelationships(
     ] as const) {
       for (const receiver of receiverCard.receivers) {
         if(receiver.selfOnly || receiver.event === "turn")continue;
-        if (!validate(receiver, source.card)) continue;
+        if (!validate(receiver, source.card, receiverCard.card.card.oracleText)) continue;
         let value = interaction(receiver, source);
         // The Commander feeding a candidate's trigger only by being such a card (Kenrith is a 5-power creature
         // spell, Ziatora is a flying Dragon) is one trigger source among the deck's, not a Commander strategy.
@@ -1159,7 +1162,7 @@ export function mechanicalRelationships(
         if (value > 0) {
           strength = Math.max(strength, value);
           evidence.push(
-            `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}${/power greater than its base power/i.test(receiver.evidence.snippet) ? "; can supply a power increase, but combat damage to a player is still required" : ""}`,
+            `${source.card.card.name} → ${receiverCard.card.card.name}: ${receiver.evidence.snippet}${branchNote(parseStatedCondition(ruleLineFor(receiver.evidence.snippet, receiverCard.card.card.oracleText)), source.card.card, grants)}${/power greater than its base power/i.test(receiver.evidence.snippet) ? "; can supply a power increase, but combat damage to a player is still required" : ""}`,
           );
         }
       }

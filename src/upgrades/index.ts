@@ -21,6 +21,9 @@ import { brewContext, evaluateBrew } from "./brew";
 import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
+import { deckCount } from "../decks/decks";
+import { oracleOf, selectDiscoveries } from "./discovery";
+import type { Discovery } from "./discovery";
 
 export const UPGRADES_VERSION = "0.6.16";
 /** A deck needs most of its 99 before "Improve My Current Deck" can simulate meaningful swaps. */
@@ -220,6 +223,24 @@ export function brewCandidates(state: CollectionState, deck: Deck): Map<string, 
     const ctx = brewContextFor(state, deck);
     const score = candidateScorer(state, deck, ctx.dna);
     return new Map(candidateGroups(state, deck).map((g) => [g.identity, evaluateBrew(ctx, g.canonical, score(g.canonical))]));
+  });
+}
+/**
+ * Recommended from your collection: owned cards with a verified interaction in this deck, ordered for the Upgrades landing.
+ * Complete decks also get each card's best one-for-one swap; incomplete decks get add-only recommendations.
+ */
+export function discoveries(state: CollectionState, deck: Deck): Discovery[] {
+  return memo(state, `discover:${deckKey(deck)}`, () => {
+    const brew = brewCandidates(state, deck);
+    // Printed text of the deck's own cards, so "Strongly supported" needs a rule actually printed on one of the two cards.
+    const printed = new Map(deckDnaInput(state, deck).cards.map((c) => [c.card.name, oracleOf(c.card)]));
+    const selected = selectDiscoveries(
+      candidateGroups(state, deck).map((group) => ({ group, brew: brew.get(group.identity)! })),
+      { cardText: (name) => printed.get(name) },
+    );
+    // Swap evaluation runs only for the shortlist, and only where a one-for-one change can happen (complete decks).
+    if (deckCount(deck) < 100) return selected;
+    return selected.map((d) => ({ ...d, upgrade: upgradeFor(state, deck, d.group.canonical, d.identity) }));
   });
 }
 /** One candidate's Brew Score (Card Detail), reusing the batch when it exists. */
