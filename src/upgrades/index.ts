@@ -22,7 +22,7 @@ import type { BrewContext, BrewResult } from "./brew";
 import { deckCardFunction, needLabels } from "./cardFunction";
 import type { Need } from "./cardFunction";
 import { deckCount } from "../decks/decks";
-import { selectDiscoveries } from "./discovery";
+import { oracleOf, selectDiscoveries } from "./discovery";
 import type { Discovery } from "./discovery";
 
 export const UPGRADES_VERSION = "0.6.16";
@@ -232,7 +232,12 @@ export function brewCandidates(state: CollectionState, deck: Deck): Map<string, 
 export function discoveries(state: CollectionState, deck: Deck): Discovery[] {
   return memo(state, `discover:${deckKey(deck)}`, () => {
     const brew = brewCandidates(state, deck);
-    const selected = selectDiscoveries(candidateGroups(state, deck).map((group) => ({ group, brew: brew.get(group.identity)! })));
+    // Printed text of the deck's own cards, so "Strongly supported" needs a rule actually printed on one of the two cards.
+    const printed = new Map(deckDnaInput(state, deck).cards.map((c) => [c.card.name, oracleOf(c.card)]));
+    const selected = selectDiscoveries(
+      candidateGroups(state, deck).map((group) => ({ group, brew: brew.get(group.identity)! })),
+      { cardText: (name) => printed.get(name) },
+    );
     // Swap evaluation runs only for the shortlist, and only where a one-for-one change can happen (complete decks).
     if (deckCount(deck) < 100) return selected;
     return selected.map((d) => ({ ...d, upgrade: upgradeFor(state, deck, d.group.canonical, d.identity) }));

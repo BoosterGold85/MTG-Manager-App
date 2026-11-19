@@ -10,7 +10,6 @@
 //   - A card the engine flags as conflicting with this deck (Anti-synergy) is never recommended.
 //   - Ordering: available unassigned copies first, then strength, then the existing Brew order.
 import type { OwnedCandidateGroup } from "../synergy/explorer";
-import type { CardMetadata } from "../models/collection";
 import type { BrewResult } from "./brew";
 import { compareBrew } from "./brew";
 import type { UpgradeEvaluation } from "./upgrade";
@@ -48,9 +47,11 @@ const suppliedInteraction = (brew: BrewResult) => brew.needs.some((n) => n.suppl
 const conflicted = (brew: BrewResult) => brew.penalties.some((p) => p.name === "Anti-synergy");
 /** The rule text on the partner's side: "Source → Receiver: text" becomes "text". */
 const ruleText = (evidence: string) => evidence.replace(/^[^→]*→[^:]*:\s*/, "");
-const sharedKey = (v: Verified) => `${v.name}|${ruleText(v.evidence[0] || "")}`;
+/** The rule clause itself: without the per-card branch note ("For X: it has flying…") and power suffix, which differ per card. */
+const ruleBody = (evidence: string) => ruleText(evidence).split(PRINTED_BODY_END)[0];
+const sharedKey = (v: Verified) => `${v.name}|${norm(ruleBody(v.evidence[0] || ""))}`;
 /** Commander relationships are the strategy itself, so only deck-card category triggers can be shared-rule noise. */
-const categoryRule = (v: Verified, shared: Map<string, Set<string>>) => !v.commander && !!v.evidence[0] && (shared.get(sharedKey(v))?.size ?? 0) >= SHARED_RULE_LIMIT;
+const categoryRule = (v: Verified, shared: Map<string, Set<string>>, limit: number) => !v.commander && !!v.evidence[0] && (shared.get(sharedKey(v))?.size ?? 0) >= limit;
 
 /** How many distinct candidates lean on the same deck-card rule text: the input to the category-effect rule. */
 function sharedRules(items: DiscoveryInput[]): Map<string, Set<string>> {
@@ -64,30 +65,16 @@ function sharedRules(items: DiscoveryInput[]): Map<string, Set<string>> {
   return shared;
 }
 
-/** Conditions a rule states about the entering or attacking object ("draw a card if it has flying"). */
-const STATED_KEYWORD = /\bif it has (flying|trample|lifelink|haste|vigilance|menace|deathtouch|reach|first strike|double strike|hexproof|indestructible|flash)\b/i;
-// Any capitalized type or subtype a rule names for the entering or attacking object: "a Vehicle", "a Dragon", "another nontoken Dragon".
-const STATED_TYPE = /\b(?:a|an|another)(?: nontoken)? ([A-Z][a-z]+) you control (?:enters|attacks)\b/;
+// Broad events a clause can name without naming what the event happens to: a typed object ("a Vehicle you control enters") is specific.
+const BROAD_EVENT = /\b(you draw|draws? a card|draw step|gain(?:s)? life|lose(?:s)? life|enters(?: the battlefield)?|dies|leaves the battlefield|attacks)\b/i;
+const TYPED_OBJECT = /\b(?:a|an|another)(?: nontoken)? [A-Z][a-z]+ you control\b/;
 // Relations that describe a shared or cost-based setup, not a trigger one card prints about another: at most "Plausible".
-const WEAK_RULE = /↔|^Explicit |^Discard enabler|^Counter resources|^Graveyard setup/;
-/**
- * A rule's stated condition must hold for the card when the card is the source of the link ("Source → Receiver: text").
- * Without this, every Vehicle would "work with" a Vehicle-with-flying payoff, whether or not it flies.
- */
-export function statedConditionHolds(v: Verified, card: CardMetadata): boolean {
-  const evidence = v.evidence[0] || "";
-  if (!evidence.startsWith(`${card.name} → `)) return true;
-  const text = ruleText(evidence);
-  const type = text.match(STATED_TYPE)?.[1];
-  if (type && !new RegExp(`\\b${type}\\b`, "i").test(card.typeLine)) return false;
-  const keyword = text.match(STATED_KEYWORD)?.[1];
-  if (keyword && !(card.keywords || []).some((k) => k.toLowerCase() === keyword.toLowerCase())) return false;
-  return true;
-}
-
+// Provisional (see docs/UPGRADES-DISCOVERY-AUDIT.md): mana-spend riders and replacement effects change how one event is recorded;
+// they are not triggers one card gives another, so they are at most "Plausible".
+const WEAK_RULE = /↔|^Explicit |^Discard enabler|^Counter resources|^Graveyard setup|that mana is spent|\breplaces\b|replacement|does not initiate/i;
 /** The verified links that still count as this card's own interaction (category effects removed). */
-function distinctLinks(item: DiscoveryInput, shared: Map<string, Set<string>>): Verified[] {
-  return item.brew.verified.filter((v) => !categoryRule(v, shared) && statedConditionHolds(v, item.group.card));
+function distinctLinks(item: DiscoveryInput, shared: Map<string, Set<string>>, limit: number): Verified[] {
+  return item.brew.verified.filter((v) => !categoryRule(v, shared, limit));
 }
 
 /** Discoverable: a conflict-free card with a distinct verified link, a supplied condition, or a package bridge. */
@@ -95,21 +82,47 @@ function isDiscoverable(brew: BrewResult, links: Verified[]): boolean {
   return !conflicted(brew) && (links.length > 0 || suppliedInteraction(brew) || brew.bridge !== undefined);
 }
 
+/** Words used to compare a rule with printed card text: letters and digits only, lowercase. */
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+/** The branch note and power suffix appended to evidence are not printed text; cut them before comparing. */
+const PRINTED_BODY_END = / For [^:]+: it (?:has|lacks) |; can supply a power/;
+export interface CardText {
+  /** Oracle text (all faces) of a named card; undefined when the name is not known. */
+  (name: string): string | undefined;
+}
 /**
- * How well the interaction is supported. "Strongly supported" needs a High-confidence analysis plus a distinct,
- * rule-backed link at strength 0.8+. A supplied condition is "Plausible"; a package bridge alone is an inference
- * and stays "Speculative".
+ * Valid support for "Strongly supported": the evidence names both cards, is not a shared or cost-based relation, and quotes
+ * a clause (at least 20 characters after normalizing) that is printed on the candidate or on the partner. A paraphrase
+ * ("can reuse X's entry effect") is not printed text, so it cannot make a link strongly supported.
  */
-export function discoveryStrength(brew: BrewResult, links: Verified[]): DiscoveryStrength {
+export function printedSupport(v: Verified, candidate: { name: string; text: string }, cardText: CardText): boolean {
+  const ev = v.evidence[0] || "";
+  if (!ev || WEAK_RULE.test(ev) || !ev.includes(candidate.name) || !ev.includes(v.name)) return false;
+  const clause = ruleBody(ev);
+  // A clause that names only a broad event ("you gain life", "a creature you control leaves the battlefield") matches many cards
+  // alike. It is printed, but it does not show a specific interaction, so it cannot be "Strongly supported" on its own.
+  if (BROAD_EVENT.test(clause) && !TYPED_OBJECT.test(clause)) return false;
+  const body = norm(clause);
+  if (body.length < 20) return false;
+  return [candidate.text, cardText(v.name) || ""].some((t) => norm(t).includes(body));
+}
+
+/**
+ * How well the interaction is supported. "Strongly supported" needs a High-confidence analysis and a link at strength 0.8+
+ * with printed support (see printedSupport). Other links, and supplied conditions, are "Plausible". A package bridge alone is
+ * an inference, so it stays "Speculative".
+ */
+export function discoveryStrength(brew: BrewResult, links: Verified[], candidate: { name: string; text: string }, cardText: CardText): DiscoveryStrength {
   if (brew.confidence === "Low") return "Speculative";
-  const top = Math.max(0, ...links.map((v) => v.strength));
-  const printed = links.some((v) => v.strength >= 0.8 && !WEAK_RULE.test(v.evidence[0] || ""));
-  if (brew.confidence === "High" && printed && top >= 0.8) return "Strongly supported";
+  if (brew.confidence === "High" && links.some((v) => v.strength >= 0.8 && printedSupport(v, candidate, cardText))) return "Strongly supported";
   if (links.length > 0 || suppliedInteraction(brew)) return "Plausible";
   return "Speculative";
 }
+/** The candidate's own oracle text, all faces: the card a recommendation is about. */
+export const oracleOf = (card: { oracleText?: string; cardFaces?: { oracleText?: string }[] }) =>
+  [card.oracleText || "", ...(card.cardFaces || []).map((f) => f.oracleText || "")].join("\n");
 
-function discoveryFor(input: DiscoveryInput, links: Verified[]): Discovery {
+function discoveryFor(input: DiscoveryInput, links: Verified[], strength: DiscoveryStrength): Discovery {
   const { group, brew } = input;
   const supplied = brew.needs.filter((n) => n.supplied && !n.crewOnly);
   const worksWith = links.length ? links.map((v) => v.name) : supplied.flatMap((n) => n.suppliers);
@@ -127,7 +140,7 @@ function discoveryFor(input: DiscoveryInput, links: Verified[]): Discovery {
     identity: group.identity,
     group,
     brew,
-    strength: discoveryStrength(brew, links),
+    strength,
     worksWith: [...new Set(worksWith)].slice(0, 4),
     happens,
     needs,
@@ -138,18 +151,35 @@ function discoveryFor(input: DiscoveryInput, links: Verified[]): Discovery {
 
 /** Recommendations never repeat one rule more than this many times: the list shows variety, not eight copies of one trigger. */
 export const MAX_PER_RULE = 2;
-const ruleKey = (links: Verified[], brew: BrewResult, supplied: string[]) =>
-  links[0] ? sharedKey(links[0]) : brew.bridge ? `bridge|${brew.bridge.from}|${brew.bridge.to}` : `supplied|${supplied[0] || ""}`;
+// A card's rule is its Commander relationship when it has one (the strategy itself), otherwise its first distinct link.
+const ruleKey = (links: Verified[], brew: BrewResult, supplied: string[]) => {
+  const primary = links.find((v) => v.commander) ?? links[0];
+  return primary ? sharedKey(primary) : brew.bridge ? `bridge|${brew.bridge.from}|${brew.bridge.to}` : `supplied|${supplied[0] || ""}`;
+};
 const STRENGTH_ORDER: Record<DiscoveryStrength, number> = { "Strongly supported": 0, Plausible: 1, Speculative: 2 };
 
+export interface SelectionOptions {
+  /** Oracle text by card name. Without it, no link can reach "Strongly supported". */
+  cardText?: CardText;
+  /** Provisional guards (see the audit report). Evaluation can widen them; production uses the defaults. */
+  sharedRuleLimit?: number;
+  maxPerRule?: number;
+}
 /** Deterministic selection. Available unassigned copies first, then strength, then the existing Brew order. */
-export function selectDiscoveries(items: DiscoveryInput[]): Discovery[] {
+export function selectDiscoveries(items: DiscoveryInput[], options: SelectionOptions = {}): Discovery[] {
+  const cardText: CardText = options.cardText ?? (() => undefined);
+  const sharedRuleLimit = options.sharedRuleLimit ?? SHARED_RULE_LIMIT;
+  const maxPerRule = options.maxPerRule ?? MAX_PER_RULE;
   const shared = sharedRules(items);
   const found: { input: DiscoveryInput; links: Verified[]; strength: DiscoveryStrength }[] = [];
   for (const input of items) {
-    const links = distinctLinks(input, shared);
+    const candidate = { name: input.group.card.name, text: oracleOf(input.group.card) };
+    // The link that supports the label is quoted first, so the explanation matches the strength shown.
+    const links = distinctLinks(input, shared, sharedRuleLimit).sort(
+      (a, b) => Number(printedSupport(b, candidate, cardText)) - Number(printedSupport(a, candidate, cardText)) || b.strength - a.strength,
+    );
     if (!isDiscoverable(input.brew, links)) continue;
-    found.push({ input, links, strength: discoveryStrength(input.brew, links) });
+    found.push({ input, links, strength: discoveryStrength(input.brew, links, candidate, cardText) });
   }
   found.sort(
     (a, b) =>
@@ -160,13 +190,13 @@ export function selectDiscoveries(items: DiscoveryInput[]): Discovery[] {
   );
   const seen = new Map<string, number>();
   const out: Discovery[] = [];
-  for (const { input, links } of found) {
+  for (const { input, links, strength } of found) {
     const supplied = input.brew.needs.filter((n) => n.supplied && !n.crewOnly).map((n) => n.need);
     const key = ruleKey(links, input.brew, supplied);
     const count = seen.get(key) ?? 0;
-    if (count >= MAX_PER_RULE) continue;
+    if (count >= maxPerRule) continue;
     seen.set(key, count + 1);
-    out.push(discoveryFor(input, links));
+    out.push(discoveryFor(input, links, strength));
   }
   return out;
 }

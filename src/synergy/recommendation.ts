@@ -14,6 +14,8 @@ import type {
   StrategyScore,
 } from "../dna/strategy";
 import { mechanicalRelationships } from "../dna/strategy";
+import { grantedKeywords, parseStatedCondition, ruleLineFor, statedConditionSatisfied } from "./stateConditions";
+import type { Grants } from "./stateConditions";
 import { benefitsYou, extractCardFacts, hasCreatureType, opponentLifeLoss, reachesOpponents } from "./facts";
 import { SUPPLIES_DICE } from "./semantics";
 import { conditionFactor, effectConditions, sharedSupplyIndex, withoutLines } from "../upgrades/conditions";
@@ -399,7 +401,7 @@ function buildTypedProfile(profile: DeckStrategyProfile): TypedDeckProfile {
       const enablers = profile.cards.filter(
         (other) =>
           !other.card.commander &&
-          c.receivers.some((r) => verifies(r, other.card)),
+          c.receivers.some((r) => verifies(r, other.card, grantedKeywords(profile.cards.map((x) => x.card.card)), c.card.card.oracleText)),
       ).length;
       meaningfulTokenSources += c.card.commander
         ? c.receivers.some((r) => r.event === "turn")
@@ -556,7 +558,12 @@ function cachedSourceEvents(source: DnaInputCard): SourceEvents {
 function verifies(
   receiver: CommanderSynergyTag,
   source: DnaInputCard,
+  grants: Grants = [],
+  receiverOracle?: string,
 ): boolean {
+  // A stated condition about the source ("a Vehicle you control enters, draw a card if it has flying") must hold for it, or
+  // the rule must give an Otherwise branch. Opponent triggers are not about the source, so they skip this check.
+  if (receiver.controller !== "opponent" && !statedConditionSatisfied(parseStatedCondition(ruleLineFor(receiver.evidence.snippet, receiverOracle)), source.card, grants)) return false;
   const f = factsOf(source),
     text = textOf(source);
   if (receiver.controller === "opponent") {
@@ -596,6 +603,9 @@ function verifies(
   }
   if (receiver.event === "counterspell")
     return /\bcounter target[^.]*spell/i.test(text);
+  // "At the beginning of each player's draw step" is a turn-structure trigger, not a card-draw event: a card that draws does not
+  // make it fire. Only real draw events (a card drawn by you) relate to draw effects.
+  if (receiver.event === "draw" && /\bdraw step\b/i.test(receiver.evidence.snippet)) return false;
   if (receiver.event === "draw")
     return f.faces.some((face) =>
       face.cardDrawEffects.some((effect) => benefitsYou(effect.controller)),
@@ -753,10 +763,11 @@ export function scoreRecommendation(
   const constraints = rankingConstraints(input.card,f,profile);
   const rs = { ...(gated.input === input ? actualRoles(input, f) : computeRoles(gated.input, extractCardFacts(gated.input.card))) };
   if(constraints.unavailableTutor)delete rs.tutors;
+  const grants = grantedKeywords(profile.cards.map((c) => c.card.card));
   const relationships = mechanicalRelationships(
     profile,
     input,
-    verifies,
+    (receiver, source, receiverOracle) => verifies(receiver, source, grants, receiverOracle),
     cachedSourceEvents,
   );
   const addRelationship = (

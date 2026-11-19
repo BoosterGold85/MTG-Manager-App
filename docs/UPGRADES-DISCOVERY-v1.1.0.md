@@ -1,5 +1,9 @@
 # Upgrades: Recommended from your collection (DISCOVERY_VERSION 1.1.0)
 
+> **Superseded in part.** The Vehicle/flying claims below were wrong: Subterranean Schooner and Tangle Tumbler do interact with
+> Miles (the card's own rule gives a flying counter when a Vehicle lacks flying). The corrected evidence and the revised labels are in
+> `docs/UPGRADES-DISCOVERY-AUDIT.md`. Read that document first.
+
 Status: implemented on `claude/sweet-tesla-vvlj2b`, not merged, not deployed. Requires owner review of the blockers in
 section 6 before any merge.
 
@@ -56,7 +60,7 @@ These are the existing public/synthetic fixtures, with owned copies of the last 
 **Miles "Tails" Prower (8 recommendations):**
 
 - Skysovereign, Consul Flagship; Smuggler's Copter; The Lunar Whale; Skybox Ferry: flying Vehicles on the Commander's
-  "Vehicle enters, draw if it has flying" payoff. Subterranean Schooner and Tangle Tumbler (no flying) are not shown.
+  "Vehicle enters, draw if it has flying" payoff. Subterranean Schooner and Tangle Tumbler (no flying) are not shown here; this list is capped (see the audit), and both have a real interaction through the Otherwise branch.
 - Time Wipe and Turn to Mist: reuse Mu Yanling, Wind Rider's entry effect.
 - Prydwen, Steel Flagship: artifact-entry trigger from Signets.
 - Ugin, Eye of the Storms; Serra Disciple: Plausible, supplied colorless or historic spells.
@@ -74,13 +78,12 @@ Serra Disciple (a pump on historic spells), Orb of Dragonkind, and the Haven-lin
 to Aeronaut Admiral through an Aura-text relation I could not verify and needs review. Carnage/Mayhem has no fixture in the repository, and Jackal exists only as a trimmed
 fixture in `tests/dnaFixtures.ts`. Neither was run through this discovery change, so this report does not cover them.
 
-## 4. Known scoring issue (not fixed here, needs your decision)
+## 4. Vehicle / flying (corrected)
 
-`src/synergy/recommendation.ts`, `verifies()`, the `enters` / `attacks` / `combat-damage` branch: a nontoken Artifact (any
-Vehicle) satisfies the Commander's "Vehicle you control enters" trigger without checking the stated "if it has flying"
-condition. The discovery layer now refuses such links (`statedConditionHolds`), but the **Brew Score and Synergy still count
-them** for Subterranean Schooner and Tangle Tumbler. Fixing the validator changes Commander scoring for every Vehicle deck
-and would trip the protection manifest, so it is left for your decision.
+The earlier "known scoring issue" was a misdiagnosis. The validator accepted Miles's Vehicle trigger for non-flying Vehicles correctly,
+because the rule has an Otherwise branch (a flying counter). The real defects were: branch text that always described the draw, granted
+flying ignored, trigger object types unchecked, and a snippet cut before the Otherwise clause. These are fixed in the shared logic. See
+`docs/UPGRADES-DISCOVERY-AUDIT.md`, section 2.
 
 ## 5. Validation (exact commands and results)
 

@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { milesFixture } from "../milesFixture";
 import { reignOfDragonsFixture } from "../recommendationFixtures";
-import { discoveries } from "../../src/upgrades";
-import { MAX_PER_RULE, SHARED_RULE_LIMIT, selectDiscoveries, statedConditionHolds } from "../../src/upgrades/discovery";
+import { brewCandidates, candidateGroups, discoveries } from "../../src/upgrades";
+import { MAX_PER_RULE, SHARED_RULE_LIMIT, discoveryStrength, printedSupport, selectDiscoveries } from "../../src/upgrades/discovery";
 import type { BrewResult } from "../../src/upgrades/brew";
 import type { OwnedCandidateGroup } from "../../src/synergy/explorer";
 import type { CollectionState } from "../../src/models/collection";
@@ -86,18 +86,28 @@ describe("Recommended from your collection: selection rules (synthetic, pure)", 
     expect(out.map((d) => d.identity)).toEqual(["A", "B"]);
   });
 
-  it("requires a stated condition to hold for the card (a non-flying Vehicle does not fire a flying payoff)", () => {
-    const flyer = group("Copter", "Copter", 1, "Artifact — Vehicle", ["Flying"]);
-    const grounded = group("Schooner", "Schooner", 1, "Artifact — Vehicle", []);
-    const copterLink = link("Miles", 0.9, "Smuggler's Copter → Miles: Whenever a Vehicle you control enters, draw a card if it has flying", true);
-    const schoonerLink = link("Miles", 0.9, "Subterranean Schooner → Miles: Whenever a Vehicle you control enters, draw a card if it has flying", true);
-    expect(statedConditionHolds(copterLink, { name: "Smuggler's Copter", typeLine: "Artifact — Vehicle", keywords: ["Flying"] } as never)).toBe(true);
-    expect(statedConditionHolds(schoonerLink, { name: "Subterranean Schooner", typeLine: "Artifact — Vehicle", keywords: [] } as never)).toBe(false);
-    const out = selectDiscoveries([
-      { group: { ...flyer, card: { ...flyer.card, name: "Smuggler's Copter" } }, brew: brew({ verified: [copterLink] }) },
-      { group: { ...grounded, card: { ...grounded.card, name: "Subterranean Schooner" } }, brew: brew({ verified: [schoonerLink] }) },
-    ]).map((d) => d.identity);
-    expect(out).toEqual(["Copter"]);
+  it("'Strongly supported' needs a rule clause printed on one of the two cards; a paraphrase stays Plausible", () => {
+    const printedText = "Whenever a Glider you control enters, draw a card if it has flying.";
+    const cand = { name: "Test Glider", text: "Flying" };
+    const printed = link("Test Engine", 0.9, `Test Glider → Test Engine: ${printedText.replace(/^Whenever a Glider you control enters, /, "Whenever a Glider you control enters, ")}`, true);
+    const paraphrase = link("Test Engine", 0.9, "Test Glider → Test Engine: Glider flight can reuse the engine's draw effect");
+    const cardText = (name: string) => (name === "Test Engine" ? printedText : undefined);
+    expect(printedSupport(printed, cand, cardText)).toBe(true);
+    expect(printedSupport(paraphrase, cand, cardText)).toBe(false);
+    expect(discoveryStrength(brew({ verified: [printed] }), [printed], cand, cardText)).toBe("Strongly supported");
+    expect(discoveryStrength(brew({ verified: [paraphrase] }), [paraphrase], cand, cardText)).toBe("Plausible");
+  });
+  it("a link whose evidence does not name both cards is never Strongly supported", () => {
+    const cand = { name: "Test Glider", text: "Whenever a Glider you control enters, draw a card if it has flying." };
+    const oneSided = link("Test Engine", 1, "Some Other Card → Test Engine: Whenever a Glider you control enters, draw a card if it has flying.", true);
+    expect(printedSupport(oneSided, cand, () => undefined)).toBe(false);
+    expect(discoveryStrength(brew({ verified: [oneSided] }), [oneSided], cand, () => undefined)).toBe("Plausible");
+  });
+  it("a Low-confidence analysis is never Strongly supported, even with printed support", () => {
+    const printedText = "Whenever a Glider you control enters, draw a card if it has flying.";
+    const cand = { name: "Test Glider", text: printedText };
+    const l = link("Test Engine", 1, `Test Glider → Test Engine: ${printedText}`, true);
+    expect(discoveryStrength(brew({ confidence: "Low", verified: [l] }), [l], cand, () => undefined)).toBe("Speculative");
   });
 
   it("never counts crew as an interaction, and never recommends a card the engine flags as conflicting", () => {
@@ -127,12 +137,18 @@ describe("Recommended from your collection: selection rules (synthetic, pure)", 
 describe("Recommended from your collection: Miles 'Tails' Prower (Vehicles and flying)", () => {
   it("surfaces flying Vehicles for the Vehicle-with-flying payoff, and not grounded Vehicles", () => {
     const f = withOwned(milesFixture(), 25);
-    const names = discoveries(f.state, f.deck).map((d) => d.group.card.name);
-    expect(names).toContain("Smuggler's Copter");
-    expect(names).toContain("Skysovereign, Consul Flagship");
-    // Negative controls: both are Vehicles without flying; the payoff's stated condition does not hold for them.
-    expect(names).not.toContain("Subterranean Schooner");
-    expect(names).not.toContain("Tangle Tumbler");
+    const shown = discoveries(f.state, f.deck);
+    // Flying Vehicles are on the Commander's Vehicle-with-flying payoff. The two-per-rule cap is provisional, so this checks that a
+    // flying Vehicle is recommended, not which one; the cap's suppressions are measured separately in docs/audit.
+    expect(shown.some((d) => d.group.card.name === "Skysovereign, Consul Flagship" || d.group.card.name === "Smuggler's Copter" || d.group.card.name === "Prydwen, Steel Flagship" || d.group.card.name === "The Prydwen, Steel Flagship")).toBe(true);
+    const onPayoff = shown.filter((d) => d.happens.includes("Vehicle you control enters"));
+    expect(onPayoff.length).toBeLessThanOrEqual(MAX_PER_RULE);
+    // A non-flying Vehicle's Miles interaction is valid (the deck's own grant gives it flying). Whether it is listed is a
+    // separate question: the two-per-rule cap can drop it when several Vehicles share the same attack rule. That cap is provisional
+    // (see docs/UPGRADES-DISCOVERY-AUDIT). So this checks validity through the Brew links, not presence in the list.
+    const schooner = candidateGroups(f.state, f.deck).find((g) => g.card.name === "Subterranean Schooner")!;
+    const verified = brewCandidates(f.state, f.deck).get(schooner.identity)!.verified;
+    expect(verified.some((v) => v.name === 'Miles "Tails" Prower')).toBe(true);
   });
 
   it("every recommendation is owned, not already in the deck, not the Commander, and inside Commander color identity", () => {

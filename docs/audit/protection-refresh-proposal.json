@@ -1,0 +1,35 @@
+{
+ "status": "PROPOSAL ONLY - not applied; requires owner approval (see docs/PROTECTION-REVIEW.md)",
+ "manifest": "tests/commander-protected.sha256.json",
+ "baselineCommit": "2a665f0",
+ "changes": {
+  "src/components/DeckUpgrades.tsx": {
+   "from": "a10ee822f2e1a5a993619460ebd31071556464453fd01998d0f59ac000c48230",
+   "to": "76709575ad05b0bb43c5320fd013457cfba5e8d87ab3ef9fea7f9d1fa1d6d1e6"
+  },
+  "src/dna/strategy.ts": {
+   "from": "20c0acd76dd6f06b5d6cadaf2161e8ad05744bbf6013e432f1e663a2c0c23906",
+   "to": "847f59082430a1550c12c46144b219475e24e37e2aba6ab805dbd447d5aa1db1"
+  },
+  "src/hooks/useRecommendationAnalysis.ts": {
+   "from": "1385af98275ebceb6428c90646277facc93c8843936ac8e01a30ff127196eb92",
+   "to": "ed13c8ed166985f723a06809ca92449aeb7bab21dca90c1e27622f799d89d6f9"
+  },
+  "src/synergy/recommendation.ts": {
+   "from": "9edd406373c341586ed6833f622d3248a816d798d6f4c675118e3054b3e48ed1",
+   "to": "cd2c8a5cdc753f6cd9aa8d48c94b51fd5ee2629b684a5318dd6ec1c455752130"
+  },
+  "src/upgrades/brew.ts": {
+   "from": "db5ebb9b033e16f8cd4a039698ed08e4dd087a1a2db85b6e999be4041e0baafe",
+   "to": "c37708147daff281e544ac40ff195d9108dc1fba8f0552199a5528d27fd99500"
+  },
+  "src/upgrades/index.ts": {
+   "from": "a94ef66e7a237dddf94fa8564548506617a5ebb97301b78efe7c8e0590acb1df",
+   "to": "ecc62cbf49dd88caf53d3634f57607792fb288d4c07b4804a12f10491ae7b771"
+  },
+  "src/workers/recommendationProtocol.ts": {
+   "from": "a47b9e6cd25357636e478306f33ba87fdfdd229e1a6413f39baeb3d8447f23b4",
+   "to": "446c6312baa33787308399a60ee145a846e0e03bb2a295d02f57efb36524fb80"
+  }
+ }
+}

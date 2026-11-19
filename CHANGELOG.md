@@ -4,7 +4,7 @@
 
 - Upgrades opens to owned cards with verified interactions in the open deck (no goal to configure). Each card explains what it works with, what happens, what it needs, availability, potential change and confidence (Strongly supported / Plausible / Speculative, not a number). Build Around My Commander and Improve My Current Deck remain under Explore by goal.
 - New selection in src/upgrades/discovery.ts reuses existing Brew links, conditions, bridges and Upgrade swaps. Category effects, unmet stated conditions, crew-only prerequisites and conflicting cards are excluded; at most two cards share one rule. Adds explanation fields only; no score or storage change.
-- Known scoring issue left for review: Commander relationships still credit non-flying Vehicles to a flying-Vehicle payoff in Brew/Synergy. See docs/UPGRADES-DISCOVERY-v1.1.0.md.
+- Shared validator now enforces trigger object types and stated keyword conditions (with granted keywords and token-created subjects), and branch-aware evidence. Draw-step triggers are no longer treated as card-draw events, which changes four Kwain fixture scores. See docs/UPGRADES-DISCOVERY-AUDIT.md.
 
 ## 0.6.26 — 2026-11-08 — Experimental Synergy Analyzer
 
