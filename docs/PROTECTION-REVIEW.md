@@ -70,3 +70,12 @@ Until one is chosen, G2, G3 and G4 fail, and that is the honest state of the PR.
   (`discovery.test.ts`: the non-flying Vehicle expectation), and was corrected to test the validity it actually means.
 - The analyzer and research files, and `tests/data/holdout-cards.json` (frozen blind holdout), were not read for tuning. The
   audit harness uses the other decklists only.
+
+## G3/G4: resolved as a v0.6.27 production boundary (reviewed)
+
+- Manifest: `tests/data/production-boundary-v0.6.27.json`, 335 entries, raw current bytes. Replaces the frozen v0.6.26 research manifest for G3 and G4. That file (`research/universal/data/protected-sha256.json`) is unchanged.
+- Entry scope: the 336 entries of the research manifest, minus `tests/commander-protected.sha256.json`. That file is the commander guard's own manifest, not product code. Hashing it here would make every reviewed refresh cascade into this guard.
+- Exception list removed. `productionBoundaryBytes` is now a plain byte read. The v0.6.26 stripping (version strings, the DeckLibrary analyzer mounts, a test version constant) is no longer applied. Those bytes are on `main` and are recorded in the new manifest.
+- Files that differ from `main` (`2a665f0`), the full reviewed set: eight source files (`DeckUpgrades.tsx`, `dna/strategy.ts`, `useRecommendationAnalysis.ts`, `styles/app.css`, `synergy/recommendation.ts`, `upgrades/brew.ts`, `upgrades/index.ts`, `workers/recommendationProtocol.ts`) and two browser specs (`recommendation.spec.ts`, `synergy.spec.ts`). Nothing else differs.
+- Verified the guard still bites: a one-space change to `src/upgrades/brew.ts` made `universalRemediated` fail, and the file was restored exactly.
+- Result: prototype suite 188 of 188 pass.
