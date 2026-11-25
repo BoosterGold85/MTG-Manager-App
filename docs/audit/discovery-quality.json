@@ -6,10 +6,10 @@
   "owned": 148,
   "ownedAvailable": 148,
   "discoverable": {
-   "production": 26,
+   "production": 25,
    "noCategoryFilter": 20,
-   "noRuleCap": 26,
-   "unguarded": 61
+   "noRuleCap": 25,
+   "unguarded": 56
   },
   "suppressedByCategoryFilter": [
    {
@@ -34,9 +34,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Serra Disciple",
-     "Mask of Memory",
-     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
-     "Staggering Insight"
+     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout"
     ],
     "happens": "Copycrook → Serra Disciple: Whenever you cast a historic spell, this creature gets +1/+1 until end of turn",
     "needs": [
@@ -53,9 +51,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Serra Disciple",
-     "Mask of Memory",
-     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
-     "Staggering Insight"
+     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout"
     ],
     "happens": "Phantasmal Image → Serra Disciple: Whenever you cast a historic spell, this creature gets +1/+1 until end of turn",
     "needs": [
@@ -71,12 +67,10 @@
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Serra Disciple",
-     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
-     "Staggering Insight"
+     "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout"
     ],
-    "happens": "Sierra, Nuka's Biggest Fan → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Sierra, Nuka's Biggest Fan → Serra Disciple: Whenever you cast a historic spell, this creature gets +1/+1 until end of turn",
     "needs": [
      "Costs {3}{W}",
      "Needs Food sacrifice options (with their costs); this deck has only Sierra, Nuka's Biggest Fan to supply it"
@@ -89,16 +83,31 @@
    },
    {
     "rank": 0,
-    "card": "Loran of the Third Path",
-    "strength": "Strongly supported",
+    "card": "Public Enemy",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Mishra's Bauble",
-     "Thopter Fabricator",
-     "Staggering Insight"
+     "Thopter Fabricator"
     ],
-    "happens": "Loran of the Third Path → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Public Enemy → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Loran of the Third Path",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Mishra's Bauble",
+     "Thopter Fabricator"
+    ],
+    "happens": "Loran of the Third Path → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
     "needs": [
      "Costs {2}{W}"
     ],
@@ -109,15 +118,13 @@
    {
     "rank": 0,
     "card": "Faramir, Prince of Ithilien",
-    "strength": "Strongly supported",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Mishra's Bauble",
-     "Thopter Fabricator",
-     "Staggering Insight"
+     "Thopter Fabricator"
     ],
-    "happens": "Faramir, Prince of Ithilien → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Faramir, Prince of Ithilien → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
     "needs": [
      "Costs {2}{W}{U}"
     ],
@@ -128,110 +135,18 @@
    {
     "rank": 0,
     "card": "Triskaidekaphile",
-    "strength": "Strongly supported",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Mishra's Bauble",
-     "Thopter Fabricator",
-     "Staggering Insight"
+     "Thopter Fabricator"
     ],
-    "happens": "Triskaidekaphile → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Triskaidekaphile → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep",
     "needs": [
      "Costs {1}{U}"
     ],
     "change": "Review swap: cut Momentary Blink (Moderate Upgrade)",
     "brewScore": 28,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Maskwood Nexus",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Staggering Insight"
-    ],
-    "happens": "Maskwood Nexus → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {4}"
-    ],
-    "change": "Review swap: cut Momentary Blink (Sidegrade)",
-    "brewScore": 27,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Omni-Changeling",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Staggering Insight"
-    ],
-    "happens": "Omni-Changeling → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}{U}"
-    ],
-    "change": "Review swap: cut Momentary Blink (Sidegrade)",
-    "brewScore": 25,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Astrid Peth",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Staggering Insight"
-    ],
-    "happens": "Astrid Peth → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {1}{W}",
-     "Needs Clue sacrifice options (with their costs); this deck has nothing to supply it"
-    ],
-    "change": "Review swap: cut Momentary Blink (Sidegrade)",
-    "brewScore": 21,
-    "caveats": [
-     "Its \"Clue sacrifice options (with their costs)\" ability has nothing here to feed it."
-    ]
-   },
-   {
-    "rank": 0,
-    "card": "Laboratory Maniac",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Staggering Insight"
-    ],
-    "happens": "Laboratory Maniac → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}{U}"
-    ],
-    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
-    "brewScore": 20,
-    "caveats": [
-     "This deck already has plenty of finishers (7.0 / 4)."
-    ]
-   },
-   {
-    "rank": 0,
-    "card": "Apothecary White",
-    "strength": "Plausible",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Staggering Insight"
-    ],
-    "happens": "Apothecary White → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{W}"
-    ],
-    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
-    "brewScore": 27,
     "caveats": []
    },
    {
@@ -899,10 +814,10 @@
   "owned": 61,
   "ownedAvailable": 61,
   "discoverable": {
-   "production": 9,
-   "noCategoryFilter": 8,
-   "noRuleCap": 9,
-   "unguarded": 10
+   "production": 8,
+   "noCategoryFilter": 7,
+   "noRuleCap": 8,
+   "unguarded": 9
   },
   "suppressedByCategoryFilter": [
    {
@@ -948,27 +863,6 @@
    },
    {
     "rank": 2,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Anger",
-     "Atsushi, the Blazing Sky",
-     "Dragonhawk, Fate's Tempest",
-     "Dragonlord's Servant"
-    ],
-    "happens": "Anger → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}"
-    ],
-    "change": "Review swap: cut Hit the Mother Lode (Minor Upgrade)",
-    "brewScore": 36,
-    "caveats": [
-     "This deck already has plenty of card advantage (17.5 / 10)."
-    ]
-   },
-   {
-    "rank": 3,
     "card": "Rampaging Ferocidon",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -988,7 +882,7 @@
     "caveats": []
    },
    {
-    "rank": 4,
+    "rank": 3,
     "card": "Agate Instigator",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1010,7 +904,7 @@
     ]
    },
    {
-    "rank": 5,
+    "rank": 4,
     "card": "Roaming Throne",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1030,7 +924,7 @@
     "caveats": []
    },
    {
-    "rank": 6,
+    "rank": 5,
     "card": "Mishra's Bauble",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1051,7 +945,7 @@
     ]
    },
    {
-    "rank": 7,
+    "rank": 6,
     "card": "Smuggler's Copter",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1069,7 +963,7 @@
     "caveats": []
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Three Tree City",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1088,7 +982,7 @@
     "caveats": []
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Ugin, Eye of the Storms",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -1119,54 +1013,48 @@
    },
    {
     "rank": 2,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "brewScore": 36
-   },
-   {
-    "rank": 3,
     "card": "Rampaging Ferocidon",
     "strength": "Plausible",
     "brewScore": 48
    },
    {
-    "rank": 4,
+    "rank": 3,
     "card": "Agate Instigator",
     "strength": "Plausible",
     "brewScore": 43
    },
    {
-    "rank": 5,
+    "rank": 4,
     "card": "Roaming Throne",
     "strength": "Plausible",
     "brewScore": 37
    },
    {
-    "rank": 6,
+    "rank": 5,
     "card": "Mishra's Bauble",
     "strength": "Plausible",
     "brewScore": 19
    },
    {
-    "rank": 7,
+    "rank": 6,
     "card": "Three Tree City",
     "strength": "Plausible",
     "brewScore": 10
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Ugin, Eye of the Storms",
     "strength": "Plausible",
     "brewScore": 8
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Smuggler's Copter",
     "strength": "Plausible",
     "brewScore": 19
    }
   ],
-  "alternativeOverlapAt10": 9
+  "alternativeOverlapAt10": 8
  },
  {
   "deck": "Valgavoth, Harrower of Souls",
@@ -1175,9 +1063,9 @@
   "owned": 112,
   "ownedAvailable": 112,
   "discoverable": {
-   "production": 15,
-   "noCategoryFilter": 19,
-   "noRuleCap": 20,
+   "production": 14,
+   "noCategoryFilter": 18,
+   "noRuleCap": 19,
    "unguarded": 66
   },
   "suppressedByCategoryFilter": [
@@ -1187,8 +1075,7 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Phyrexian Altar → Kardur, Doomscourge: Whenever an attacking creature dies, each opponent loses 1 life and you gain 1 life",
     "needs": [
@@ -1204,8 +1091,7 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Phyrexian Tower → Kardur, Doomscourge: Whenever an attacking creature dies, each opponent loses 1 life and you gain 1 life",
     "needs": [],
@@ -1219,8 +1105,7 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Ashnod's Altar → Kardur, Doomscourge: Whenever an attacking creature dies, each opponent loses 1 life and you gain 1 life",
     "needs": [
@@ -1253,8 +1138,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Rolling Hamsphere → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1272,8 +1156,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Rapacious Dragon → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1322,8 +1205,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Skyline Despot → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1340,8 +1222,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Atsushi, the Blazing Sky → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1387,13 +1268,30 @@
    },
    {
     "rank": 0,
+    "card": "Mask of Memory",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "The Lord of Pain",
+     "Vial Smasher the Fierce",
+     "Spiteful Visions"
+    ],
+    "happens": "Mask of Memory → The Lord of Pain: Whenever a player casts their first spell each turn, choose another target player",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Sadistic Shell Game (Strong Upgrade)",
+    "brewScore": 31,
+    "caveats": []
+   },
+   {
+    "rank": 0,
     "card": "Sarkhan, Dragon Ascendant",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Sarkhan, Dragon Ascendant → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1414,8 +1312,7 @@
     "worksWith": [
      "Fear of Burning Alive",
      "Spiteful Visions",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "The Elder Dragon War → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1450,8 +1347,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Goldlust Triad → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1468,8 +1364,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Uchuulon → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1486,7 +1381,6 @@
     "available": "1 of 1",
     "worksWith": [
      "Kardur, Doomscourge",
-     "Mask of Griselbrand",
      "Spiteful Visions"
     ],
     "happens": "Village Rites → Kardur, Doomscourge: Whenever an attacking creature dies, each opponent loses 1 life and you gain 1 life",
@@ -1538,8 +1432,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Maskwood Nexus → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1556,8 +1449,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Spiteful Visions",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Deadly Dispute → Spiteful Visions: Whenever a player draws a card, this enchantment deals 1 damage to that player",
     "needs": [
@@ -1574,8 +1466,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Lathliss, Dragon Queen → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -1596,8 +1487,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Fear of Burning Alive",
-     "Kardur, Doomscourge",
-     "Mask of Griselbrand"
+     "Kardur, Doomscourge"
     ],
     "happens": "Utvara Hellkite → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types among cards in your graveyard, this creature deals that amount of damage to target creature that player controls",
     "needs": [
@@ -2204,25 +2094,6 @@
    },
    {
     "rank": 7,
-    "card": "Mask of Memory",
-    "strength": "Plausible",
-    "available": "1 of 1",
-    "worksWith": [
-     "Agate Instigator",
-     "Bastion of Remembrance",
-     "Blood Artist",
-     "Blood Seeker"
-    ],
-    "happens": "Agate Instigator → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}"
-    ],
-    "change": "Review swap: cut Sadistic Shell Game (Strong Upgrade)",
-    "brewScore": 31,
-    "caveats": []
-   },
-   {
-    "rank": 8,
     "card": "Corrupted Zendikon",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -2242,7 +2113,7 @@
     ]
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Dragonmaster Outcast",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -2262,7 +2133,7 @@
     "caveats": []
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Bloodline Bidding",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -2279,6 +2150,25 @@
     ],
     "change": "Review swap: cut Sadistic Shell Game (Moderate Upgrade)",
     "brewScore": 27,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Alhammarret's Archive",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Bastion of Remembrance",
+     "Blood Artist",
+     "Bloodfell Caves",
+     "Gray Merchant of Asphodel"
+    ],
+    "happens": "Alhammarret's Archive replaces the amount of a real life-gain event for Bastion of Remembrance; it does not originate life gain or multiply the number of life-gain triggers.",
+    "needs": [
+     "Costs {5}"
+    ],
+    "change": "Review swap: cut Decree of Pain (Moderate Upgrade)",
+    "brewScore": 22,
     "caveats": []
    }
   ],
@@ -2315,33 +2205,33 @@
    },
    {
     "rank": 6,
-    "card": "Mask of Memory",
-    "strength": "Plausible",
-    "brewScore": 31
-   },
-   {
-    "rank": 7,
     "card": "Dragonmaster Outcast",
     "strength": "Plausible",
     "brewScore": 28
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Bloodline Bidding",
     "strength": "Plausible",
     "brewScore": 27
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Alhammarret's Archive",
     "strength": "Plausible",
     "brewScore": 22
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Herald's Horn",
     "strength": "Plausible",
     "brewScore": 22
+   },
+   {
+    "rank": 10,
+    "card": "Ugin, Eye of the Storms",
+    "strength": "Plausible",
+    "brewScore": 20
    }
   ],
   "alternativeOverlapAt10": 8
@@ -2353,10 +2243,10 @@
   "owned": 138,
   "ownedAvailable": 138,
   "discoverable": {
-   "production": 34,
-   "noCategoryFilter": 21,
-   "noRuleCap": 34,
-   "unguarded": 86
+   "production": 31,
+   "noCategoryFilter": 19,
+   "noRuleCap": 31,
+   "unguarded": 83
   },
   "suppressedByCategoryFilter": [
    {
@@ -2366,7 +2256,6 @@
     "available": "1 of 1",
     "worksWith": [
      "The Council of Four",
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
     "happens": "Copycrook → The Council of Four: Whenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token",
@@ -2379,30 +2268,11 @@
    },
    {
     "rank": 0,
-    "card": "Naga Fleshcrafter",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Naga Fleshcrafter → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 31,
-    "caveats": []
-   },
-   {
-    "rank": 0,
     "card": "Phantasmal Image",
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
      "The Council of Four",
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
     "happens": "Phantasmal Image → The Council of Four: Whenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token",
@@ -2419,12 +2289,10 @@
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "The Council of Four",
-     "Twenty-Toed Toad",
-     "Public Enemy"
+     "Twenty-Toed Toad"
     ],
-    "happens": "Sierra, Nuka's Biggest Fan → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Sierra, Nuka's Biggest Fan → The Council of Four: Whenever a player casts their second spell during their turn, you create a 2/2 white Knight creature token",
     "needs": [
      "Costs {3}{W}",
      "Needs Food sacrifice options (with their costs); this deck has only Sierra, Nuka's Biggest Fan to supply it"
@@ -2438,38 +2306,24 @@
    },
    {
     "rank": 0,
-    "card": "Glasspool Mimic // Glasspool Shore",
+    "card": "Staggering Insight",
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
-    "happens": "Glasspool Mimic // Glasspool Shore → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Staggering Insight → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
-     "Costs {2}{U}"
+     "Costs {W}{U}"
     ],
-    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "change": "Review swap: cut Thought Reflection (Minor Upgrade)",
     "brewScore": 28,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Mirrorhall Mimic // Ghastly Mimicry",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Mirrorhall Mimic // Ghastly Mimicry → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 28,
-    "caveats": []
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
    },
    {
     "rank": 0,
@@ -2478,9 +2332,9 @@
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "Of Herbs and Stewed Rabbit → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -2511,25 +2365,6 @@
    },
    {
     "rank": 0,
-    "card": "Rolling Hamsphere",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Public Enemy"
-    ],
-    "happens": "Rolling Hamsphere → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {7}",
-     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
-    ],
-    "change": "Review swap: cut Omniscience (Strong Upgrade)",
-    "brewScore": 26,
-    "caveats": []
-   },
-   {
-    "rank": 0,
     "card": "Bident of Thassa",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -2551,32 +2386,14 @@
    },
    {
     "rank": 0,
-    "card": "Gigantoplasm",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Gigantoplasm → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Minor Upgrade)",
-    "brewScore": 26,
-    "caveats": []
-   },
-   {
-    "rank": 0,
     "card": "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout",
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "Goldbug, Humanity's Ally // Goldbug, Scrappy Scout → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -2588,25 +2405,6 @@
      "It's legendary, so this deck's copy effects can't make extra working copies.",
      "This deck already has plenty of card advantage (34.0 / 10)."
     ]
-   },
-   {
-    "rank": 0,
-    "card": "Parhelion II",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Public Enemy"
-    ],
-    "happens": "Parhelion II → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {6}{W}{W}",
-     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
-    ],
-    "change": "Review swap: cut Omniscience (Moderate Upgrade)",
-    "brewScore": 25,
-    "caveats": []
    },
    {
     "rank": 0,
@@ -2629,32 +2427,14 @@
    },
    {
     "rank": 0,
-    "card": "Phyrexian Metamorph",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Phyrexian Metamorph → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U/P}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 25,
-    "caveats": []
-   },
-   {
-    "rank": 0,
     "card": "Miles \"Tails\" Prower",
     "strength": "Strongly supported",
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "Miles \"Tails\" Prower → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -2674,9 +2454,9 @@
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "Sram, Senior Edificer → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -2688,131 +2468,6 @@
     "caveats": [
      "Its \"aura spells\" ability has only Public Enemy here to feed it."
     ]
-   },
-   {
-    "rank": 0,
-    "card": "Flesh Duplicate",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Flesh Duplicate → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {U}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 24,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Mirror Image",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Mirror Image → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 24,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Clever Impersonator",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Clever Impersonator → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}{U}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 23,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Clone",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Clone → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 23,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Stunt Double",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Stunt Double → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 23,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Vizier of Many Faces",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Vizier of Many Faces → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}{U}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 23,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Sephara, Sky's Blade",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Sephara, Sky's Blade → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {4}{W}{W}{W}"
-    ],
-    "change": "Review swap: cut Omniscience (Strong Upgrade)",
-    "brewScore": 21,
-    "caveats": []
    },
    {
     "rank": 0,
@@ -2875,24 +2530,6 @@
    },
    {
     "rank": 0,
-    "card": "Omni-Changeling",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Loran of the Third Path"
-    ],
-    "happens": "Omni-Changeling → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {3}{U}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 21,
-    "caveats": []
-   },
-   {
-    "rank": 0,
     "card": "Distant Melody",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -2919,9 +2556,9 @@
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "The Gaffer → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -2933,22 +2570,6 @@
      "It's legendary, so this deck's copy effects can't make extra working copies.",
      "This deck already has plenty of card advantage (34.0 / 10)."
     ]
-   },
-   {
-    "rank": 0,
-    "card": "Moorland Haunt",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Public Enemy"
-    ],
-    "happens": "Moorland Haunt → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [],
-    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
-    "brewScore": 19,
-    "caveats": []
    },
    {
     "rank": 0,
@@ -2996,239 +2617,272 @@
    },
    {
     "rank": 0,
-    "card": "Maskwood Nexus",
-    "strength": "Strongly supported",
+    "card": "Field-Tested Frying Pan",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Field-Tested Frying Pan → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Naga Fleshcrafter",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
      "Twenty-Toed Toad",
-     "Public Enemy"
+     "Loran of the Third Path"
     ],
-    "happens": "Maskwood Nexus → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Naga Fleshcrafter → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {4}"
+     "Costs {3}{U}"
     ],
     "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 17,
+    "brewScore": 31,
     "caveats": []
    },
    {
     "rank": 0,
-    "card": "Jubilant Skybonder",
-    "strength": "Strongly supported",
+    "card": "Glasspool Mimic // Glasspool Shore",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
     ],
-    "happens": "Jubilant Skybonder → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {1}{W/U}{W/U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 16,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Warden of Evos Isle",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Warden of Evos Isle → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Glasspool Mimic // Glasspool Shore → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
      "Costs {2}{U}"
     ],
     "change": "Review swap: cut Omniscience (Minor Upgrade)",
-    "brewScore": 16,
+    "brewScore": 28,
     "caveats": []
    },
    {
     "rank": 0,
-    "card": "Hotshot Mechanic",
-    "strength": "Strongly supported",
+    "card": "Mirrorhall Mimic // Ghastly Mimicry",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
-    "happens": "Hotshot Mechanic → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Mirrorhall Mimic // Ghastly Mimicry → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {W}"
+     "Costs {3}{U}"
     ],
     "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 14,
+    "brewScore": 28,
     "caveats": []
    },
    {
     "rank": 0,
-    "card": "Empyrean Eagle",
-    "strength": "Strongly supported",
+    "card": "Rolling Hamsphere",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
-    "happens": "Empyrean Eagle → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Rolling Hamsphere → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {1}{W}{U}"
+     "Costs {7}",
+     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
     ],
-    "change": "Review swap: cut Omniscience (Minor Upgrade)",
-    "brewScore": 14,
+    "change": "Review swap: cut Omniscience (Strong Upgrade)",
+    "brewScore": 26,
     "caveats": []
    },
    {
     "rank": 0,
-    "card": "Sage Owl",
-    "strength": "Strongly supported",
+    "card": "Gigantoplasm",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Sage Owl → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {1}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 14,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Gearshift Ace",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Gearshift Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {1}{W}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 14,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Gearseeker Serpent",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Gearseeker Serpent → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {5}{U}{U}"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 14,
-    "caveats": []
-   },
-   {
-    "rank": 0,
-    "card": "Astrid Peth",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad",
-     "Public Enemy"
+     "Loran of the Third Path"
     ],
-    "happens": "Astrid Peth → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Gigantoplasm → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {1}{W}",
-     "Needs Clue sacrifice options (with their costs); this deck has nothing to supply it"
-    ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 13,
-    "caveats": [
-     "It's legendary, so this deck's copy effects can't make extra working copies.",
-     "Its \"Clue sacrifice options (with their costs)\" ability has nothing here to feed it."
-    ]
-   },
-   {
-    "rank": 0,
-    "card": "Thunderclap Wyvern",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
-    ],
-    "happens": "Thunderclap Wyvern → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}{W}{U}"
+     "Costs {3}{U}"
     ],
     "change": "Review swap: cut Omniscience (Minor Upgrade)",
-    "brewScore": 13,
+    "brewScore": 26,
     "caveats": []
    },
    {
     "rank": 0,
-    "card": "Cloudspire Captain",
-    "strength": "Strongly supported",
+    "card": "Parhelion II",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
-    "happens": "Cloudspire Captain → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Parhelion II → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {2}{W}",
-     "Needs Mounts or vehicle creatures; this deck has nothing to supply it"
+     "Costs {6}{W}{W}",
+     "Needs creatures to crew it (Scrawling Crawler, Psychosis Crawler, Fear of Failed Tests and 19 more)"
     ],
-    "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 9,
-    "caveats": [
-     "Its \"Mounts or vehicle creatures\" ability has nothing here to feed it."
-    ]
+    "change": "Review swap: cut Omniscience (Moderate Upgrade)",
+    "brewScore": 25,
+    "caveats": []
    },
    {
     "rank": 0,
-    "card": "Sanwell, Avenger Ace",
-    "strength": "Strongly supported",
+    "card": "Phyrexian Metamorph",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
     ],
-    "happens": "Sanwell, Avenger Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Phyrexian Metamorph → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {1}{W}"
+     "Costs {3}{U/P}"
     ],
     "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 8,
-    "caveats": [
-     "It's legendary, so this deck's copy effects can't make extra working copies.",
-     "This deck already has plenty of card advantage (34.0 / 10)."
-    ]
+    "brewScore": 25,
+    "caveats": []
    },
    {
     "rank": 0,
-    "card": "Aeronaut Admiral",
-    "strength": "Strongly supported",
+    "card": "Flesh Duplicate",
+    "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad"
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
     ],
-    "happens": "Aeronaut Admiral → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Flesh Duplicate → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {3}{W}",
-     "Needs vehicle creatures; this deck has nothing to supply it"
+     "Costs {U}{U}"
     ],
     "change": "Review swap: cut Omniscience (Sidegrade)",
-    "brewScore": 8,
-    "caveats": [
-     "Its \"vehicle creatures\" ability has nothing here to feed it."
-    ]
+    "brewScore": 24,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mirror Image",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Mirror Image → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 24,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Clever Impersonator",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Clever Impersonator → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{U}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Clone",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Clone → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Stunt Double",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Stunt Double → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Vizier of Many Faces",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Vizier of Many Faces → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{U}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sephara, Sky's Blade",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sephara, Sky's Blade → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {4}{W}{W}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Strong Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Omni-Changeling",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Loran of the Third Path"
+    ],
+    "happens": "Omni-Changeling → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{U}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 21,
+    "caveats": []
    },
    {
     "rank": 0,
@@ -3237,9 +2891,9 @@
     "available": "1 of 1",
     "worksWith": [
      "Arcane Denial",
-     "Mask of Memory",
      "Alandra, Sky Dreamer",
-     "Chasm Skulker"
+     "Chasm Skulker",
+     "Ominous Seas"
     ],
     "happens": "Mu Yanling, Wind Rider → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
     "needs": [
@@ -3257,15 +2911,27 @@
    },
    {
     "rank": 0,
+    "card": "Moorland Haunt",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Moorland Haunt → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [],
+    "change": "Review swap: cut Adarkar Wastes (Sidegrade)",
+    "brewScore": 19,
+    "caveats": []
+   },
+   {
+    "rank": 0,
     "card": "Apothecary White",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
-     "Twenty-Toed Toad",
-     "Public Enemy"
+     "Twenty-Toed Toad"
     ],
-    "happens": "Apothecary White → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Apothecary White → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
      "Costs {3}{W}"
     ],
@@ -3277,15 +2943,47 @@
    },
    {
     "rank": 0,
-    "card": "Phyrexian Altar",
+    "card": "Maskwood Nexus",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Public Enemy"
+     "Twenty-Toed Toad"
     ],
-    "happens": "Phyrexian Altar → Public Enemy: When enchanted creature dies, draw a card",
+    "happens": "Maskwood Nexus → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {3}"
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 17,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Jubilant Skybonder",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Jubilant Skybonder → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{W/U}{W/U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 16,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Warden of Evos Isle",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Warden of Evos Isle → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{U}"
     ],
     "change": "Review swap: cut Omniscience (Minor Upgrade)",
     "brewScore": 16,
@@ -3297,10 +2995,9 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
-    "happens": "Cid, Freeflier Pilot → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Cid, Freeflier Pilot → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
      "Costs {1}{W}"
     ],
@@ -3313,18 +3010,118 @@
    },
    {
     "rank": 0,
-    "card": "Ashnod's Altar",
+    "card": "Hotshot Mechanic",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Public Enemy"
+     "Twenty-Toed Toad"
     ],
-    "happens": "Ashnod's Altar → Public Enemy: When enchanted creature dies, draw a card",
+    "happens": "Hotshot Mechanic → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
-     "Costs {3}"
+     "Costs {W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Empyrean Eagle",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Empyrean Eagle → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{W}{U}"
     ],
     "change": "Review swap: cut Omniscience (Minor Upgrade)",
     "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sage Owl",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sage Owl → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearshift Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Gearshift Ace → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearseeker Serpent",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Gearseeker Serpent → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {5}{U}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 14,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Astrid Peth",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Astrid Peth → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs Clue sacrifice options (with their costs); this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 13,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "Its \"Clue sacrifice options (with their costs)\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Thunderclap Wyvern",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Thunderclap Wyvern → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{W}{U}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
+    "brewScore": 13,
     "caveats": []
    },
    {
@@ -3333,10 +3130,9 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Mask of Memory",
      "Twenty-Toed Toad"
     ],
-    "happens": "Kitsune Ace → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
+    "happens": "Kitsune Ace → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
     "needs": [
      "Costs {1}{W}",
      "Needs vehicles that attack; this deck has nothing to supply it"
@@ -3345,6 +3141,63 @@
     "brewScore": 9,
     "caveats": [
      "Its \"vehicles that attack\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Cloudspire Captain",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Cloudspire Captain → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {2}{W}",
+     "Needs Mounts or vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 9,
+    "caveats": [
+     "Its \"Mounts or vehicle creatures\" ability has nothing here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Sanwell, Avenger Ace",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Sanwell, Avenger Ace → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {1}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 8,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Aeronaut Admiral",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad"
+    ],
+    "happens": "Aeronaut Admiral → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{W}",
+     "Needs vehicle creatures; this deck has nothing to supply it"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 8,
+    "caveats": [
+     "Its \"vehicle creatures\" ability has nothing here to feed it."
     ]
    }
   ],
@@ -3524,8 +3377,7 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Approach of the Second Sun",
-     "Mask of Memory"
+     "Approach of the Second Sun"
     ],
     "happens": "Approach of the Second Sun → Cleric Class: Whenever you gain life, put a +1/+1 counter on target creature you control",
     "needs": [
@@ -3610,10 +3462,10 @@
   "owned": 146,
   "ownedAvailable": 146,
   "discoverable": {
-   "production": 61,
-   "noCategoryFilter": 61,
-   "noRuleCap": 62,
-   "unguarded": 66
+   "production": 58,
+   "noCategoryFilter": 58,
+   "noRuleCap": 59,
+   "unguarded": 63
   },
   "suppressedByCategoryFilter": [
    {
@@ -3711,25 +3563,6 @@
   "top10": [
    {
     "rank": 1,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Acidic Slime",
-     "Adrix and Nev, Twincasters",
-     "Aeve, Progenitor Ooze",
-     "Biogenic Ooze"
-    ],
-    "happens": "Acidic Slime → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}"
-    ],
-    "change": "Review swap: cut Victimize (Strong Upgrade)",
-    "brewScore": 54,
-    "caveats": []
-   },
-   {
-    "rank": 2,
     "card": "Dragon's Hoard",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -3747,7 +3580,7 @@
     "caveats": []
    },
    {
-    "rank": 3,
+    "rank": 2,
     "card": "Arcane Denial",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -3766,7 +3599,7 @@
     "caveats": []
    },
    {
-    "rank": 4,
+    "rank": 3,
     "card": "Council's Deliberation",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -3785,7 +3618,7 @@
     ]
    },
    {
-    "rank": 5,
+    "rank": 4,
     "card": "Bastion of Remembrance",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3805,7 +3638,7 @@
     "caveats": []
    },
    {
-    "rank": 6,
+    "rank": 5,
     "card": "Tireless Provisioner",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3822,7 +3655,7 @@
     "caveats": []
    },
    {
-    "rank": 7,
+    "rank": 6,
     "card": "Twenty-Toed Toad",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3841,7 +3674,7 @@
     "caveats": []
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Chrome Host Seedshark",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3858,7 +3691,7 @@
     "caveats": []
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Chasm Skulker",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3877,7 +3710,7 @@
     "caveats": []
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Essence Warden",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3895,68 +3728,90 @@
     "change": "Review swap: cut Victimize (Moderate Upgrade)",
     "brewScore": 66,
     "caveats": []
-   }
-  ],
-  "alternativeTop10": [
-   {
-    "rank": 1,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "brewScore": 54
-   },
-   {
-    "rank": 2,
-    "card": "Arcane Denial",
-    "strength": "Strongly supported",
-    "brewScore": 27
-   },
-   {
-    "rank": 3,
-    "card": "Dragon's Hoard",
-    "strength": "Strongly supported",
-    "brewScore": 34
-   },
-   {
-    "rank": 4,
-    "card": "Council's Deliberation",
-    "strength": "Strongly supported",
-    "brewScore": 7
-   },
-   {
-    "rank": 5,
-    "card": "Bastion of Remembrance",
-    "strength": "Plausible",
-    "brewScore": 77
-   },
-   {
-    "rank": 6,
-    "card": "Twenty-Toed Toad",
-    "strength": "Plausible",
-    "brewScore": 72
-   },
-   {
-    "rank": 7,
-    "card": "Chasm Skulker",
-    "strength": "Plausible",
-    "brewScore": 70
-   },
-   {
-    "rank": 8,
-    "card": "Essence Warden",
-    "strength": "Plausible",
-    "brewScore": 66
-   },
-   {
-    "rank": 9,
-    "card": "Mask of Griselbrand",
-    "strength": "Plausible",
-    "brewScore": 63
    },
    {
     "rank": 10,
     "card": "Peregrin Took",
     "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Biogenic Ooze",
+     "Deadly Dispute",
+     "March of the World Ooze",
+     "Maskwood Nexus"
+    ],
+    "happens": "Peregrin Took adds Food to Biogenic Ooze's controlled token-creation event; the replacement does not initiate its own event.",
+    "needs": [
+     "Costs {2}{G}",
+     "Needs actual token-creation events for the replacement, supplied by Mitotic Slime, Uchuulon, Mutable Explorer and 9 more"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 61,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies."
+    ]
+   }
+  ],
+  "alternativeTop10": [
+   {
+    "rank": 1,
+    "card": "Arcane Denial",
+    "strength": "Strongly supported",
+    "brewScore": 27
+   },
+   {
+    "rank": 2,
+    "card": "Dragon's Hoard",
+    "strength": "Strongly supported",
+    "brewScore": 34
+   },
+   {
+    "rank": 3,
+    "card": "Council's Deliberation",
+    "strength": "Strongly supported",
+    "brewScore": 7
+   },
+   {
+    "rank": 4,
+    "card": "Bastion of Remembrance",
+    "strength": "Plausible",
+    "brewScore": 77
+   },
+   {
+    "rank": 5,
+    "card": "Twenty-Toed Toad",
+    "strength": "Plausible",
+    "brewScore": 72
+   },
+   {
+    "rank": 6,
+    "card": "Chasm Skulker",
+    "strength": "Plausible",
+    "brewScore": 70
+   },
+   {
+    "rank": 7,
+    "card": "Essence Warden",
+    "strength": "Plausible",
+    "brewScore": 66
+   },
+   {
+    "rank": 8,
+    "card": "Peregrin Took",
+    "strength": "Plausible",
     "brewScore": 61
+   },
+   {
+    "rank": 9,
+    "card": "Alandra, Sky Dreamer",
+    "strength": "Plausible",
+    "brewScore": 60
+   },
+   {
+    "rank": 10,
+    "card": "Psychosis Crawler",
+    "strength": "Plausible",
+    "brewScore": 56
    }
   ],
   "alternativeOverlapAt10": 8
@@ -3968,12 +3823,29 @@
   "owned": 93,
   "ownedAvailable": 93,
   "discoverable": {
-   "production": 25,
-   "noCategoryFilter": 13,
-   "noRuleCap": 26,
+   "production": 24,
+   "noCategoryFilter": 12,
+   "noRuleCap": 25,
    "unguarded": 65
   },
   "suppressedByCategoryFilter": [
+   {
+    "rank": 0,
+    "card": "Mask of Memory",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Field-Tested Frying Pan",
+     "Haliya, Guided by Light"
+    ],
+    "happens": "Mask of Memory → Field-Tested Frying Pan: When this Equipment enters, create a Food token, then create a 1/1 white Halfling creature token and attach this Equipment to it",
+    "needs": [
+     "Costs {2}"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 48,
+    "caveats": []
+   },
    {
     "rank": 0,
     "card": "Acidic Slime",
@@ -4692,25 +4564,6 @@
    },
    {
     "rank": 2,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "available": "1 of 1",
-    "worksWith": [
-     "Samwise Gamgee",
-     "Academy Manufactor",
-     "Accomplished Alchemist",
-     "Apothecary White"
-    ],
-    "happens": "Samwise Gamgee → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards",
-    "needs": [
-     "Costs {2}"
-    ],
-    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
-    "brewScore": 48,
-    "caveats": []
-   },
-   {
-    "rank": 3,
     "card": "The Prydwen, Steel Flagship",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4728,7 +4581,7 @@
     "caveats": []
    },
    {
-    "rank": 4,
+    "rank": 3,
     "card": "Sephara, Sky's Blade",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4747,7 +4600,7 @@
     "caveats": []
    },
    {
-    "rank": 5,
+    "rank": 4,
     "card": "Springleaf Parade",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4764,7 +4617,7 @@
     "caveats": []
    },
    {
-    "rank": 6,
+    "rank": 5,
     "card": "Rolling Hamsphere",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4781,7 +4634,7 @@
     "caveats": []
    },
    {
-    "rank": 7,
+    "rank": 6,
     "card": "Mitotic Slime",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4800,7 +4653,7 @@
     "caveats": []
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Parhelion II",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4817,7 +4670,7 @@
     "caveats": []
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Doubling Season",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4838,7 +4691,7 @@
     "caveats": []
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Biowaste Blob",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4856,6 +4709,22 @@
     "caveats": [
      "Its \"Oozes creatures\" ability has nothing here to feed it."
     ]
+   },
+   {
+    "rank": 10,
+    "card": "Biogenic Ooze",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Peregrin Took"
+    ],
+    "happens": "Peregrin Took adds Food to Biogenic Ooze's controlled token-creation event; the replacement does not initiate its own event.",
+    "needs": [
+     "Costs {3}{G}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 43,
+    "caveats": []
    }
   ],
   "alternativeTop10": [
@@ -4867,59 +4736,59 @@
    },
    {
     "rank": 2,
-    "card": "Mask of Memory",
-    "strength": "Strongly supported",
-    "brewScore": 48
-   },
-   {
-    "rank": 3,
     "card": "Sephara, Sky's Blade",
     "strength": "Plausible",
     "brewScore": 60
    },
    {
-    "rank": 4,
+    "rank": 3,
     "card": "Mitotic Slime",
     "strength": "Plausible",
     "brewScore": 48
    },
    {
-    "rank": 5,
+    "rank": 4,
     "card": "Doubling Season",
     "strength": "Plausible",
     "brewScore": 46
    },
    {
-    "rank": 6,
+    "rank": 5,
     "card": "Parallel Lives",
     "strength": "Plausible",
     "brewScore": 32
    },
    {
-    "rank": 7,
+    "rank": 6,
     "card": "Serra Disciple",
     "strength": "Plausible",
     "brewScore": 29
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Herald's Horn",
     "strength": "Plausible",
     "brewScore": 29
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Hazoret's Monument",
     "strength": "Plausible",
     "brewScore": 28
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Mishra's Bauble",
     "strength": "Plausible",
     "brewScore": 27
+   },
+   {
+    "rank": 10,
+    "card": "Roaming Throne",
+    "strength": "Plausible",
+    "brewScore": 25
    }
   ],
-  "alternativeOverlapAt10": 5
+  "alternativeOverlapAt10": 4
  }
 ]

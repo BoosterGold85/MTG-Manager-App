@@ -226,3 +226,11 @@ describe("broad card-type clauses are category effects, not distinct interaction
     expect(out).not.toContain("Command");
   });
 });
+
+describe("attachment clauses are category effects too", () => {
+  it("'whenever equipped creature deals combat damage' is satisfied by every Equipment, so it is not a distinct interaction", () => {
+    const eq = link("Test Equipment", 0.9, "Test Mask → Test Equipment: Whenever equipped creature deals combat damage to a player, draw a card.");
+    const out = selectDiscoveries([{ group: group("Eq", "Test Mask"), brew: brew({ verified: [eq] }) }]).map((d) => d.identity);
+    expect(out).toEqual([]);
+  });
+});

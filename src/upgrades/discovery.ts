@@ -75,7 +75,8 @@ const WEAK_RULE = /↔|^Explicit |^Discard enabler|^Counter resources|^Graveyard
 /** The verified links that still count as this card's own interaction (category effects removed). */
 // A clause that names only a broad card type ("a creature spell", "another creature enters", "any creature") is satisfied by most
 // cards of that type, so the link is a category effect, Commander or not. A subtype or a named card is specific.
-const BROAD_TYPE_CLAUSE = /\b(?:a|an|another|each|any|one or more)(?: nontoken| other)? (?:creature|noncreature|artifact|enchantment|land|nonland|permanent|planeswalker|instant|sorcery|spell|token)s?\b/i;
+// Attachment clauses ("equipped creature", "enchanted creature") are broad too: every Equipment or Aura in the deck satisfies them.
+const BROAD_TYPE_CLAUSE = /\b(?:a|an|another|each|any|one or more)(?: nontoken| other)? (?:creature|noncreature|artifact|enchantment|land|nonland|permanent|planeswalker|instant|sorcery|spell|token)s?\b|\b(?:equipped|enchanted) (?:creature|permanent)\b/i;
 // Only the trigger decides breadth: "Whenever a creature you control enters, create a token" is broad because of the trigger, not
 // because the effect makes a token. Untriggered text (a copy effect, a static ability) is read whole.
 const triggerOf = (clause: string) => (/^(whenever|when|at the beginning)\b/i.test(clause) ? clause.split(",")[0] : clause);
