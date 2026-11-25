@@ -88,3 +88,12 @@ Until one is chosen, G2, G3 and G4 fail, and that is the honest state of the PR.
 - `tests/unit/lookupTransport.test.ts`: asserts `manual` instead of `error`, and adds tests for upstream 503 details and rejected redirects.
 - Manifest: only these three entries in `tests/data/production-boundary-v0.6.27.json` were updated, to the reviewed bytes.
 - Runtime evidence: `node scripts/check-lookup-runtime.mjs` runs the real workerd runtime. It reproduces the original `Invalid redirect value` and confirms the fixed relay succeeds while redirects stay rejected.
+
+## Reviewed change: Deck DNA sacrifice rule (src/intelligence/rules/sacrifice.ts)
+
+- Cause: Food, Clue and Treasure sacrifice was counted as a sacrifice plan, and "Sacrifice this artifact" on mana rocks and treasures was counted as sacrifice fuel. On the Bill the Pony deck this made Sacrifice / Death Payoffs the primary plan at 22%.
+- Change: Food, Clue and Treasure payoffs are tagged as resource plans. Self-sacrifice counts as fodder only for creature cards. Death-and-return loops still count for any card.
+- Result on Bill the Pony: primary plan Tokens and Lifegain; key payoff Academy Manufactor.
+- Fixture scores: six Hurska cards change (Sierra 63→52, Elanor Gardner 61→54, Nuka-Cola Vending Machine 59→54, Heaped Harvest 60→57, Astrid Peth 62→60, Trail of Crumbs 63→60). No other fixture card changes.
+- Frozen expectations: five approved assignments removed from docs/recall/completed-results.json (four creatures and Orb of Dragonkind). Nothing else in that file changed.
+- Boundary: only the sacrifice.ts entry in tests/data/production-boundary-v0.6.27.json was updated.

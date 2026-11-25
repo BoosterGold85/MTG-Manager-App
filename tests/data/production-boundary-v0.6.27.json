@@ -65,7 +65,7 @@
  "src/intelligence/rules/misc.ts": "c5195e119da2f6d47bb2eb1e95efa3af204d5abf244048acd9ae9ef5385fdd57",
  "src/intelligence/rules/permanents.ts": "0125d847ed4dfe083da92b5c3878ad8f713fa406da2e188b9a29c99b266437c5",
  "src/intelligence/rules/pings.ts": "30365afe7fed9b034aac184a3282c081b7b5097aaa9fc3fd7b697c22d3c241ab",
- "src/intelligence/rules/sacrifice.ts": "d7aa7961b33e2e3fe26757f495b98fb449df1b55b2d89998088933b0017593b6",
+ "src/intelligence/rules/sacrifice.ts": "347f21e4b056f5e89215b66157f4ec0c7544f7c5164422dcca19bdc98364cd57",
  "src/intelligence/rules/spells.ts": "5ff21f251db1c7faca4e32b299894573fecc17475139b68d0ae097d8ab567a78",
  "src/intelligence/rules/tokens.ts": "13bc82f475372ff7c4f97c4c11be38115df899372f11166807d3ef9aaeeeb443",
  "src/intelligence/subtypes.ts": "e8e413f2d294a1f4d91471a382b385c234783a76d6cb179a527596cb2d7f4e0b",
