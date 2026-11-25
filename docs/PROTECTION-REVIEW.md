@@ -79,3 +79,12 @@ Until one is chosen, G2, G3 and G4 fail, and that is the honest state of the PR.
 - Files that differ from `main` (`2a665f0`), the full reviewed set: eight source files (`DeckUpgrades.tsx`, `dna/strategy.ts`, `useRecommendationAnalysis.ts`, `styles/app.css`, `synergy/recommendation.ts`, `upgrades/brew.ts`, `upgrades/index.ts`, `workers/recommendationProtocol.ts`) and two browser specs (`recommendation.spec.ts`, `synergy.spec.ts`). Nothing else differs.
 - Verified the guard still bites: a one-space change to `src/upgrades/brew.ts` made `universalRemediated` fail, and the file was restored exactly.
 - Result: prototype suite 188 of 188 pass.
+
+## Reviewed change: Scryfall relay redirect fix (merged from `claude/fix-scryfall-redirect`)
+
+- Cause: the Cloudflare runtime (workerd) rejects `redirect: "error"` with "Invalid redirect value". Every card lookup through the relay failed, which is why ManaBox imports stopped in the deployed app.
+- `worker/scryfall.ts`: `redirect` is `"manual"`. Upstream 3xx responses are rejected explicitly with a bounded message. Error text now names the upstream HTTP status and content type.
+- `src/import/scryfall.ts`: the browser client includes the relay's bounded `details` message in the thrown error. No logic change to retries or pacing.
+- `tests/unit/lookupTransport.test.ts`: asserts `manual` instead of `error`, and adds tests for upstream 503 details and rejected redirects.
+- Manifest: only these three entries in `tests/data/production-boundary-v0.6.27.json` were updated, to the reviewed bytes.
+- Runtime evidence: `node scripts/check-lookup-runtime.mjs` runs the real workerd runtime. It reproduces the original `Invalid redirect value` and confirms the fixed relay succeeds while redirects stay rejected.

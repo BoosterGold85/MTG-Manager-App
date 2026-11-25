@@ -44,7 +44,7 @@
  "src/import/parseFile.ts": "679d8ae6347a2db305d89edb62b4598684d6da2a81051d025f9e63cd22eee444",
  "src/import/plan.ts": "2a65283af1a396c85815755acc383cbfbbde5e1759dd927c33e50efeee182646",
  "src/import/prepare.ts": "2432e9df94a69124f5b215cb130c2331809bf90c70f8b63138db8d8b5b14c422",
- "src/import/scryfall.ts": "3c5a80d041e1f6b8f1c834df6630f92b4c8f021503db3dde7d1e02cc829e4a05",
+ "src/import/scryfall.ts": "ade0f548c0dc0a176c42cd6e52db55ff09154486fe1beeea2704d419fc17d19f",
  "src/import/transport.ts": "97333bac6b56348c8796f3840fb62cf2c5185cac4daaf26f4c33717d1efe64ff",
  "src/intelligence/canonicalAnalysis.ts": "8185e902109916b661d7861bb616e9afea568d32a840534b6cdb8fc1009985ba",
  "src/intelligence/client.ts": "fef80996e0a1a3a53cd45e99523773e3ae1f4d411bb5f6ca6632478f7b303a42",
@@ -305,7 +305,7 @@
  "tests/unit/landCoverage.test.ts": "e3852306626f7159404c13656b862fe5607b0b2107d2ed59ca1ca8205a452d0c",
  "tests/unit/legacyUpgrades.test.ts": "05e090d614ea1588a456730fdc388c5b3b1478f16b677c899d096b20a7d77c01",
  "tests/unit/legalityRecovery.test.ts": "62547f74385264811f97576954c82e388814d1134529239af7b5371657f448db",
- "tests/unit/lookupTransport.test.ts": "53fc815003c7b090d056850604a0015ebd64ebac9c4702ff0a7227c9d3eeca4e",
+ "tests/unit/lookupTransport.test.ts": "f60be0230c7e00e0eafb0a1e5b503cd61356def58143f144c2b6fd216d55c07a",
  "tests/unit/management.test.ts": "e5a2d99aa8f152eb63b23387738e74a6883f3ea9a20b53a75f7418dc0636f140",
  "tests/unit/mayhem.test.ts": "58620205e6d558a6c4c3b5b2c624117682dbe6a7f18c479458ad76b86846c46f",
  "tests/unit/miles.test.ts": "5bbc7c9ea07541bed8f4943008671f9f8adc04bffbae1762e07f5a98275748dd",
@@ -333,5 +333,5 @@
  "tests/valgavothFixture.ts": "f2a75ce2f8b06afe25bf812022ae065e3cc675d1fd17f2168c157f5eb97027c9",
  "worker/dev.ts": "528f3b1f225bfb7c8185374fb2157918151b3211b34612ac76b94e39f2a06249",
  "worker/index.ts": "a71f5cc5a080ad5444a54c553fb8f013fe4267c0a1b8be06991dadf4f2405fd4",
- "worker/scryfall.ts": "03a87c2d0c55ea53cee19ffb5eef8eccdfec718d9797a00a82d3462050a5ae26"
+ "worker/scryfall.ts": "58b6817282534a6e7f56620f635b6434f7fb2b960a8a3d4c18a4e6ee83e95674"
 }
