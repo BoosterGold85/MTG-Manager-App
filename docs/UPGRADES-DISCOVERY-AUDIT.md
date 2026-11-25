@@ -64,7 +64,7 @@ Suppressed by the **category filter** (a rule shared by three or more candidates
 Reading (preliminary, not a human judgment): the category filter removes many generic shared triggers, which is its job. It also removes some cards that may be real and specific to the deck: in Valgavoth, Drakuseth and Scourge of Valkas are Dragon-engine cards, and in Hurska, Skysovereign is a flying Vehicle. Whether the filter should give Commander-specific shared rules more room is for you to decide. The cap removes a few items too (Firespitter Whelp, Approach of the Second Sun, Revive the Shire).
 
 Remaining overclaims, which the labels do not catch:
-- **Triggers matched by a broad type rather than a specific card.** "Whenever you cast a creature spell" is accepted for any creature in the deck, so Aeronaut Admiral is credited to Hazoret's Monument and Phantasmal Image (section 6). Same for "another creature enters" (Soul Warden, Copycrook).
+- **Triggers matched by a broad type rather than a specific card.** Addressed in the discovery layer (section 11): a trigger that names only a broad type ("a creature spell", "another creature enters") is a category effect and no longer counts as a distinct interaction. Still open in the relationship engine itself, which accepts any creature for these triggers, and open for supplied conditions ("its 'one chosen creature type' ability").
 - **Replacement and fizzle-style relations** that are not triggers, such as "The Wind Crystal replaces…" and "Peregrin Took adds Food…" (Hurska).
 - **Opponent-draw riders** (Bident of Thassa → Arcane Denial).
 
@@ -85,113 +85,111 @@ Alternative ordering: strength tier, then number of distinct supporting links, t
 Labels are the engine's, with the printed rule that supports each. The last column is for your judgment.
 
 ### Miles 'Tails' Prower
-Deck: 100 cards (complete). Owned pool: 148 cards, all unassigned to this deck. Discoverable after guards: 31 (cap off: 31, both guards off: 117).
+Deck: 100 cards (complete). Owned pool: 148 cards, all unassigned to this deck. Discoverable after guards: 26.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
 | 1 | Arcane Denial | Strongly supported | 49 | Bident of Thassa → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep | |
-| 2 | Phantasmal Image | Strongly supported | 37 | Aeronaut Admiral → Phantasmal Image: You may have this creature enter as a copy of any creature on the battlefield, except it's an Illusion in additio… | |
-| 3 | Hazoret's Monument | Strongly supported | 35 | Aeronaut Admiral → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card | |
-| 4 | Council's Deliberation | Strongly supported | 20 | Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
-| 5 | Haliya, Guided by Light | Plausible | 55 | _____ _____ Rocketship → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life | |
-| 6 | Prince Imrahil the Fair | Plausible | 50 | Commander's Sphere → Prince Imrahil the Fair: Whenever you draw your second card each turn, create a 1/1 white Human Soldier creature token | |
-| 7 | Wizard Class | Plausible | 49 | Bident of Thassa → Wizard Class: Whenever you draw a card, put a +1/+1 counter on target creature you control | |
-| 8 | Archaeomancer | Plausible | 49 | Graveyard setup / return relationship: Archaeomancer ↔ Shorikai, Genesis Engine; When this creature enters, return target instant or sorcery card from… | |
-| 9 | Ominous Seas | Plausible | 48 | Bident of Thassa → Ominous Seas: Whenever you draw a card, put a foreshadow counter on this enchantment | |
-| 10 | Exemplar of Light | Plausible | 46 | Absorb → Exemplar of Light: Whenever you gain life, put a +1/+1 counter on this creature | |
+| 2 | Council's Deliberation | Strongly supported | 20 | Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
+| 3 | Haliya, Guided by Light | Plausible | 55 | _____ _____ Rocketship → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life | |
+| 4 | Prince Imrahil the Fair | Plausible | 50 | Commander's Sphere → Prince Imrahil the Fair: Whenever you draw your second card each turn, create a 1/1 white Human Soldier creature token | |
+| 5 | Wizard Class | Plausible | 49 | Bident of Thassa → Wizard Class: Whenever you draw a card, put a +1/+1 counter on target creature you control | |
+| 6 | Archaeomancer | Plausible | 49 | Graveyard setup / return relationship: Archaeomancer ↔ Shorikai, Genesis Engine; When this creature enters, return target instant or sorcery card from… | |
+| 7 | Ominous Seas | Plausible | 48 | Bident of Thassa → Ominous Seas: Whenever you draw a card, put a foreshadow counter on this enchantment | |
+| 8 | Exemplar of Light | Plausible | 46 | Absorb → Exemplar of Light: Whenever you gain life, put a +1/+1 counter on this creature | |
+| 9 | Roaming Throne | Plausible | 46 | Its "one chosen creature type" ability: If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional … | |
+| 10 | Kindred Discovery | Plausible | 45 | Its "one chosen creature type" ability: Whenever a creature you control of the chosen type enters or attacks, draw a card. | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Arcane Denial, Phantasmal Image, Hazoret's Monument, Council's Deliberation, Haliya, Guided by Light, Prince Imrahil the Fair, Wizard Class, Archaeomancer, Ominous Seas, Exemplar of Light. Overlap with production top 10: 10/10.
+Alternative top 10: Arcane Denial, Council's Deliberation, Haliya, Guided by Light, Prince Imrahil the Fair, Wizard Class, Archaeomancer, Ominous Seas, Exemplar of Light, Roaming Throne, Kindred Discovery. Overlap with production top 10: 10/10.
 
 ### Lathliss, Dragon Queen
-Deck: 100 cards (complete). Owned pool: 61 cards, all unassigned to this deck. Discoverable after guards: 13 (cap off: 13, both guards off: 14).
+Deck: 100 cards (complete). Owned pool: 61 cards, all unassigned to this deck. Discoverable after guards: 9.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
 | 1 | Fear of Burning Alive | Strongly supported | 59 | Anger → Fear of Burning Alive: Delirium — Whenever a source you control deals noncombat damage to an opponent, if there are four or more card types am… | |
 | 2 | Mask of Memory | Strongly supported | 36 | Anger → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
-| 3 | Rampaging Ferocidon | Plausible | 48 | Anger → Rampaging Ferocidon: Whenever another creature enters, this creature deals 1 damage to that creature's controller | |
-| 4 | Agate Instigator | Plausible | 43 | Anger → Agate Instigator: Whenever another creature you control enters, this creature deals 1 damage to each opponent | |
-| 5 | Path of Ancestry | Plausible | 41 | Anger → Path of Ancestry: When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1 | |
-| 6 | Roaming Throne | Plausible | 37 | Additional triggered abilities for Lathliss, Dragon Queen: Ward {2} As this creature enters, choose a creature type. This creature is the chosen type … | |
-| 7 | Mishra's Bauble | Plausible | 19 | Bitter Reunion → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep | |
-| 8 | Smuggler's Copter | Plausible | 19 | Graveyard setup / return relationship: Smuggler's Copter ↔ Haven of the Spirit Dragon; Flying Whenever this Vehicle attacks or blocks, you may draw a … | |
-| 9 | Three Tree City | Plausible | 10 | Its "one chosen creature type" ability: {2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of … | |
-| 10 | Grab the Prize | Plausible | 9 | Graveyard setup / return relationship: Grab the Prize ↔ Haven of the Spirit Dragon; As an additional cost to cast this spell, discard a card. Draw two… | |
+| 3 | Rampaging Ferocidon | Plausible | 48 | Its "creatures entering" ability: Whenever another creature enters, this creature deals 1 damage to that creature's controller. | |
+| 4 | Agate Instigator | Plausible | 43 | Its "creatures entering" ability: Whenever another creature you control enters, this creature deals 1 damage to each opponent. | |
+| 5 | Roaming Throne | Plausible | 37 | Its "one chosen creature type" ability: If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional … | |
+| 6 | Mishra's Bauble | Plausible | 19 | Bitter Reunion → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep | |
+| 7 | Smuggler's Copter | Plausible | 19 | Graveyard setup / return relationship: Smuggler's Copter ↔ Haven of the Spirit Dragon; Flying Whenever this Vehicle attacks or blocks, you may draw a … | |
+| 8 | Three Tree City | Plausible | 10 | Its "one chosen creature type" ability: {2}, {T}: Choose a color. Add an amount of mana of that color equal to the number of creatures you control of … | |
+| 9 | Ugin, Eye of the Storms | Plausible | 8 | Its "colorless spells" ability: Whenever you cast a colorless spell, exile up to one target permanent that's one or more colors. | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Fear of Burning Alive, Mask of Memory, Rampaging Ferocidon, Agate Instigator, Path of Ancestry, Mishra's Bauble, Three Tree City, Ugin, Eye of the Storms, Smuggler's Copter, Grab the Prize. Overlap with production top 10: 9/10.
+Alternative top 10: Fear of Burning Alive, Mask of Memory, Rampaging Ferocidon, Agate Instigator, Roaming Throne, Mishra's Bauble, Three Tree City, Ugin, Eye of the Storms, Smuggler's Copter. Overlap with production top 10: 9/10.
 
 ### Valgavoth, Harrower of Souls
-Deck: 100 cards (complete). Owned pool: 112 cards, all unassigned to this deck. Discoverable after guards: 22 (cap off: 26, both guards off: 70).
+Deck: 100 cards (complete). Owned pool: 112 cards, all unassigned to this deck. Discoverable after guards: 15.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
-| 1 | Warstorm Surge | Plausible | 53 | Agate Instigator → Warstorm Surge: Whenever a creature you control enters, it deals damage equal to its power to any target | |
+| 1 | Warstorm Surge | Plausible | 53 | Its "creatures entering" ability: Whenever a creature you control enters, it deals damage equal to its power to any target. | |
 | 2 | Parapet Thrasher | Plausible | 49 | Blood Seeker → Parapet Thrasher: Whenever one or more Dragons you control deal combat damage to an opponent, choose one that hasn't been chosen this t… | |
 | 3 | Dragonhawk, Fate's Tempest | Plausible | 43 | Dragonhawk, Fate's Tempest → Valgavoth, Harrower of Souls: Whenever an opponent loses life for the first time during each of their turns, put a +1/+1 … | |
 | 4 | Mishra's Bauble | Plausible | 40 | Grab the Prize → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep | |
-| 5 | Hazoret's Monument | Plausible | 40 | Agate Instigator → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card | |
+| 5 | Hazoret's Monument | Plausible | 40 | Its "red creature spells" ability: Red creature spells you cast cost {1} less to cast. | |
 | 6 | Well of Lost Dreams | Plausible | 36 | Bastion of Remembrance → Well of Lost Dreams: Whenever you gain life, you may pay {X}, where X is less than or equal to the amount of life you gained | |
-| 7 | Path of Ancestry | Plausible | 33 | Agate Instigator → Path of Ancestry: When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1 | |
-| 8 | Mask of Memory | Plausible | 31 | Agate Instigator → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
-| 9 | Corrupted Zendikon | Plausible | 28 | Bastion of Remembrance → Corrupted Zendikon: When enchanted land dies, return that card to its owner's hand | |
-| 10 | Dragonmaster Outcast | Plausible | 28 | Its "lands to control" ability: At the beginning of your upkeep, if you control six or more lands, create a 5/5 red Dragon creature token with flying. | |
+| 7 | Mask of Memory | Plausible | 31 | Agate Instigator → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
+| 8 | Corrupted Zendikon | Plausible | 28 | Bastion of Remembrance → Corrupted Zendikon: When enchanted land dies, return that card to its owner's hand | |
+| 9 | Dragonmaster Outcast | Plausible | 28 | Its "lands to control" ability: At the beginning of your upkeep, if you control six or more lands, create a 5/5 red Dragon creature token with flying. | |
+| 10 | Bloodline Bidding | Plausible | 27 | Its "one chosen creature type" ability: Choose a creature type. Return all creature cards of the chosen type from your graveyard to the battlefield. | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Warstorm Surge, Parapet Thrasher, Mishra's Bauble, Hazoret's Monument, Well of Lost Dreams, Path of Ancestry, Mask of Memory, Dragonmaster Outcast, Uchuulon, Cursed Mirror. Overlap with production top 10: 8/10.
+Alternative top 10: Warstorm Surge, Parapet Thrasher, Mishra's Bauble, Hazoret's Monument, Well of Lost Dreams, Mask of Memory, Dragonmaster Outcast, Bloodline Bidding, Alhammarret's Archive, Herald's Horn. Overlap with production top 10: 8/10.
 
 ### Kwain, Itinerant Meddler
-Deck: 100 cards (complete). Owned pool: 138 cards, all unassigned to this deck. Discoverable after guards: 52 (cap off: 52, both guards off: 87).
+Deck: 100 cards (complete). Owned pool: 138 cards, all unassigned to this deck. Discoverable after guards: 34.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
-| 1 | Chrome Host Seedshark | Strongly supported | 36 | Adarkar Wastes → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value | |
-| 2 | Path of Ancestry | Strongly supported | 33 | Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
-| 3 | Phantasmal Image | Strongly supported | 30 | Alandra, Sky Dreamer → Phantasmal Image: You may have this creature enter as a copy of any creature on the battlefield, except it's an Illusion in add… | |
-| 4 | Hazoret's Monument | Strongly supported | 29 | Archaeomancer → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card | |
-| 5 | Temple of Enlightenment | Strongly supported | 9 | Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
-| 6 | Thopter Fabricator | Plausible | 47 | Arcane Denial → Thopter Fabricator: Whenever you draw your second card each turn, create a 1/1 colorless Thopter artifact creature token with flying | |
-| 7 | Mishra's Bauble | Plausible | 38 | Aura Blast → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep | |
-| 8 | Soul Warden | Plausible | 38 | Alandra, Sky Dreamer → Soul Warden: Whenever another creature enters, you gain 1 life | |
-| 9 | The Wind Crystal | Plausible | 38 | The Wind Crystal replaces the amount of a real life-gain event for Approach of the Second Sun; it does not originate life gain or multiply the number … | |
-| 10 | Well of Lost Dreams | Plausible | 37 | Approach of the Second Sun → Well of Lost Dreams: Whenever you gain life, you may pay {X}, where X is less than or equal to the amount of life you gai… | |
+| 1 | Path of Ancestry | Strongly supported | 33 | Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
+| 2 | Temple of Enlightenment | Strongly supported | 9 | Temple of Enlightenment → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
+| 3 | Thopter Fabricator | Plausible | 47 | Arcane Denial → Thopter Fabricator: Whenever you draw your second card each turn, create a 1/1 colorless Thopter artifact creature token with flying | |
+| 4 | Mishra's Bauble | Plausible | 38 | Aura Blast → Mishra's Bauble: Draw a card at the beginning of the next turn's upkeep | |
+| 5 | Soul Warden | Plausible | 38 | Its "creatures entering" ability: Whenever another creature enters, you gain 1 life. | |
+| 6 | The Wind Crystal | Plausible | 38 | The Wind Crystal replaces the amount of a real life-gain event for Approach of the Second Sun; it does not originate life gain or multiply the number … | |
+| 7 | Well of Lost Dreams | Plausible | 37 | Approach of the Second Sun → Well of Lost Dreams: Whenever you gain life, you may pay {X}, where X is less than or equal to the amount of life you gai… | |
+| 8 | Kindred Discovery | Plausible | 36 | Its "one chosen creature type" ability: Whenever a creature you control of the chosen type enters or attacks, draw a card. | |
+| 9 | Chrome Host Seedshark | Plausible | 36 | Its "noncreature spells" ability: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value. | |
+| 10 | Cleric Class | Plausible | 34 | Approach of the Second Sun → Cleric Class: Whenever you gain life, put a +1/+1 counter on target creature you control | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Chrome Host Seedshark, Path of Ancestry, Phantasmal Image, Hazoret's Monument, Temple of Enlightenment, Thopter Fabricator, Mishra's Bauble, Soul Warden, Copycrook, Kindred Discovery. Overlap with production top 10: 8/10.
+Alternative top 10: Path of Ancestry, Temple of Enlightenment, Thopter Fabricator, Mishra's Bauble, Soul Warden, Kindred Discovery, Chrome Host Seedshark, Rosie Cotton of South Lane, Haliya, Guided by Light, The Prydwen, Steel Flagship. Overlap with production top 10: 7/10.
 
 ### Uugguu, the Omniplasm
-Deck: 100 cards (complete). Owned pool: 146 cards, all unassigned to this deck. Discoverable after guards: 67 (cap off: 68, both guards off: 68).
+Deck: 100 cards (complete). Owned pool: 146 cards, all unassigned to this deck. Discoverable after guards: 61.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
-| 1 | Chrome Host Seedshark | Strongly supported | 71 | Arcane Adaptation → Chrome Host Seedshark: Whenever you cast a noncreature spell, incubate X, where X is that spell's mana value | |
-| 2 | Mask of Memory | Strongly supported | 54 | Acidic Slime → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
-| 3 | Hazoret's Monument | Strongly supported | 42 | Acidic Slime → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card | |
-| 4 | Dragon's Hoard | Strongly supported | 34 | Chomping Changeling → Dragon's Hoard: Whenever a Dragon you control enters, put a gold counter on this artifact | |
-| 5 | Arcane Denial | Strongly supported | 27 | Deadly Dispute → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep | |
-| 6 | Council's Deliberation | Strongly supported | 7 | Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
-| 7 | Bastion of Remembrance | Plausible | 77 | Ashnod's Altar → Bastion of Remembrance: Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life | |
-| 8 | Tireless Provisioner | Plausible | 77 | Assassin's Trophy → Tireless Provisioner: Landfall — Whenever a land you control enters, create a Food token or a Treasure token | |
-| 9 | Twenty-Toed Toad | Plausible | 72 | Acidic Slime → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card | |
-| 10 | Blood Artist | Plausible | 71 | Ashnod's Altar → Blood Artist: Whenever this creature or another creature dies, target player loses 1 life and you gain 1 life | |
+| 1 | Mask of Memory | Strongly supported | 54 | Acidic Slime → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
+| 2 | Dragon's Hoard | Strongly supported | 34 | Chomping Changeling → Dragon's Hoard: Whenever a Dragon you control enters, put a gold counter on this artifact | |
+| 3 | Arcane Denial | Strongly supported | 27 | Deadly Dispute → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep | |
+| 4 | Council's Deliberation | Strongly supported | 7 | Path of Ancestry → Council's Deliberation: Whenever you scry, if you control an Island, you may exile this card from your graveyard | |
+| 5 | Bastion of Remembrance | Plausible | 77 | Its "creatures that can die" ability: Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life. | |
+| 6 | Tireless Provisioner | Plausible | 77 | Arcane Adaptation can make Tireless Provisioner Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this rel… | |
+| 7 | Twenty-Toed Toad | Plausible | 72 | Acidic Slime → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card | |
+| 8 | Chrome Host Seedshark | Plausible | 71 | Arcane Adaptation can make Chrome Host Seedshark Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this re… | |
+| 9 | Chasm Skulker | Plausible | 70 | Deadly Dispute → Chasm Skulker: Whenever you draw a card, put a +1/+1 counter on this creature | |
+| 10 | Essence Warden | Plausible | 66 | Its "creatures entering" ability: Whenever another creature enters, you gain 1 life. | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Chrome Host Seedshark, Mask of Memory, Hazoret's Monument, Arcane Denial, Dragon's Hoard, Council's Deliberation, Bastion of Remembrance, Tireless Provisioner, Twenty-Toed Toad, Blood Artist. Overlap with production top 10: 10/10.
+Alternative top 10: Mask of Memory, Arcane Denial, Dragon's Hoard, Council's Deliberation, Bastion of Remembrance, Twenty-Toed Toad, Chasm Skulker, Essence Warden, Mask of Griselbrand, Peregrin Took. Overlap with production top 10: 8/10.
 
 ### Hurska Sweet-Tooth
-Deck: 100 cards (complete). Owned pool: 93 cards, all unassigned to this deck. Discoverable after guards: 27 (cap off: 28, both guards off: 84).
+Deck: 100 cards (complete). Owned pool: 93 cards, all unassigned to this deck. Discoverable after guards: 25.
 
 | # | Card | Label | Brew | What the engine says happens (first supporting rule) | Worth considering? (owner) |
 |---|---|---|---|---|---|
 | 1 | Ugin, Eye of the Storms | Strongly supported | 60 | Alhammarret's Archive → Ugin, Eye of the Storms: When you cast this spell, exile up to one target permanent that's one or more colors | |
 | 2 | Mask of Memory | Strongly supported | 48 | Samwise Gamgee → Mask of Memory: Whenever equipped creature deals combat damage to a player, you may draw two cards | |
-| 3 | Hazoret's Monument | Strongly supported | 28 | Academy Manufactor → Hazoret's Monument: Whenever you cast a creature spell, you may discard a card | |
-| 4 | The Prydwen, Steel Flagship | Plausible | 72 | Academy Manufactor → The Prydwen, Steel Flagship: Whenever another nontoken artifact you control enters, create a 2/2 white Human Knight creature toke… | |
-| 5 | Sephara, Sky's Blade | Plausible | 60 | Sephara, Sky's Blade → Hurska Sweet-Tooth: Whenever you gain life, you may pay {G/W} | |
-| 6 | Springleaf Parade | Plausible | 55 | Peregrin Took adds Food to Springleaf Parade's controlled token-creation event; the replacement does not initiate its own event. | |
-| 7 | Rolling Hamsphere | Plausible | 54 | Peregrin Took adds Food to Rolling Hamsphere's controlled token-creation event; the replacement does not initiate its own event. | |
-| 8 | Mitotic Slime | Plausible | 48 | Apothecary White → Mitotic Slime: They have "When this token dies, create two 1/1 green Ooze creature tokens | |
-| 9 | Parhelion II | Plausible | 47 | Peregrin Took adds Food to Parhelion II's controlled token-creation event; the replacement does not initiate its own event. | |
-| 10 | Doubling Season | Plausible | 46 | Amplifies the actual counter placements from Banquet Guests; replacement effects alone do not originate counters: If an effect would create one or mor… | |
+| 3 | The Prydwen, Steel Flagship | Plausible | 72 | Peregrin Took adds Food to The Prydwen, Steel Flagship's controlled token-creation event; the replacement does not initiate its own event. | |
+| 4 | Sephara, Sky's Blade | Plausible | 60 | Sephara, Sky's Blade → Hurska Sweet-Tooth: Whenever you gain life, you may pay {G/W} | |
+| 5 | Springleaf Parade | Plausible | 55 | Peregrin Took adds Food to Springleaf Parade's controlled token-creation event; the replacement does not initiate its own event. | |
+| 6 | Rolling Hamsphere | Plausible | 54 | Peregrin Took adds Food to Rolling Hamsphere's controlled token-creation event; the replacement does not initiate its own event. | |
+| 7 | Mitotic Slime | Plausible | 48 | Apothecary White → Mitotic Slime: They have "When this token dies, create two 1/1 green Ooze creature tokens | |
+| 8 | Parhelion II | Plausible | 47 | Peregrin Took adds Food to Parhelion II's controlled token-creation event; the replacement does not initiate its own event. | |
+| 9 | Doubling Season | Plausible | 46 | Its "token makers" ability: If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead. | |
+| 10 | Biowaste Blob | Plausible | 46 | Peregrin Took adds Food to Biowaste Blob's controlled token-creation event; the replacement does not initiate its own event. | |
 
-Alternative top 10 (strength, then number of supporting links, then Brew): Ugin, Eye of the Storms, Mask of Memory, Hazoret's Monument, The Prydwen, Steel Flagship, Sephara, Sky's Blade, Mitotic Slime, Doubling Season, Biowaste Blob, Parallel Lives, Path of Ancestry. Overlap with production top 10: 7/10.
-
+Alternative top 10: Ugin, Eye of the Storms, Mask of Memory, Sephara, Sky's Blade, Mitotic Slime, Doubling Season, Parallel Lives, Serra Disciple, Herald's Horn, Hazoret's Monument, Mishra's Bauble. Overlap with production top 10: 5/10.
 
 ## 9. Next step
 
@@ -219,3 +217,11 @@ Storage preservation:
 - `git diff 2a665f0 -- src/storage src/models src/import src/decks src/intelligence src/app` is empty. No IndexedDB schema, key, or write path changed.
 - Same-origin old-build-to-new-build tests (`experimentalAnalyzer.spec.ts`, which read the baseline build through `PRE_ANALYZER_DIST`): **10 of 10 passed** (Commander and Legacy on all five projects).
 - The discovery landing spec passes on all five projects and checks that the collection snapshot is unchanged and makes zero Scryfall calls.
+
+## 11. Change since the previous audit (broad-type clauses)
+
+- A link whose trigger names only a broad card type is dropped as a category effect, Commander links included. The trigger decides breadth; an effect that makes a token does not.
+- Top-ten entries whose supporting rule names a broad type: 23 of 60 before, 14 of 59 after. "Strongly supported" entries: 12 of 59.
+- No score changed. The rule is in `src/upgrades/discovery.ts`, which is not a protected file, and the score checks are unchanged.
+- Remaining generic material, for your judgment: scry triggers (Council's Deliberation), equipment-damage triggers (Mask of Memory), supplied conditions, and replacement or setup relations that the weak list does not name.
+- Tests: `tests/unit/discovery.test.ts` (the new broad-type case, and the trigger-only check), 33 passing with the condition tests. Full unit: 1032 passed, 2 failed (guards G1 and G2, unchanged).

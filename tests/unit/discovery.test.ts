@@ -210,3 +210,19 @@ describe("Recommended from your collection: Lathliss, Dragon Queen (Dragons)", (
     expect(sameRule.length).toBeLessThanOrEqual(MAX_PER_RULE);
   });
 });
+
+describe("broad card-type clauses are category effects, not distinct interactions", () => {
+  it("a link whose clause names only a broad type is dropped, Commander or not; a subtype is kept", () => {
+    const broad = link("Test Lord", 0.9, "Test Engine → Test Lord: Whenever you cast a creature spell, draw a card.");
+    const typed = link("Test Lord", 0.9, "Test Engine → Test Lord: Whenever a Glider you control enters, draw a card.");
+    const commanderBroad = link("Test Commander", 0.9, "Test Engine → Test Commander: Whenever another creature enters, draw a card.", true);
+    const out = selectDiscoveries([
+      { group: group("Broad", "Test Engine"), brew: brew({ verified: [broad] }) },
+      { group: group("Typed", "Test Engine"), brew: brew({ verified: [typed] }) },
+      { group: group("Command", "Test Engine"), brew: brew({ verified: [commanderBroad] }) },
+    ]).map((d) => d.identity);
+    expect(out).not.toContain("Broad");
+    expect(out).toContain("Typed");
+    expect(out).not.toContain("Command");
+  });
+});

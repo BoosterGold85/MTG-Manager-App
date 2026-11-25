@@ -73,8 +73,16 @@ const TYPED_OBJECT = /\b(?:a|an|another)(?: nontoken)? [A-Z][a-z]+ you control\b
 // they are not triggers one card gives another, so they are at most "Plausible".
 const WEAK_RULE = /↔|^Explicit |^Discard enabler|^Counter resources|^Graveyard setup|that mana is spent|\breplaces\b|replacement|does not initiate/i;
 /** The verified links that still count as this card's own interaction (category effects removed). */
+// A clause that names only a broad card type ("a creature spell", "another creature enters", "any creature") is satisfied by most
+// cards of that type, so the link is a category effect, Commander or not. A subtype or a named card is specific.
+const BROAD_TYPE_CLAUSE = /\b(?:a|an|another|each|any|one or more)(?: nontoken| other)? (?:creature|noncreature|artifact|enchantment|land|nonland|permanent|planeswalker|instant|sorcery|spell|token)s?\b/i;
+// Only the trigger decides breadth: "Whenever a creature you control enters, create a token" is broad because of the trigger, not
+// because the effect makes a token. Untriggered text (a copy effect, a static ability) is read whole.
+const triggerOf = (clause: string) => (/^(whenever|when|at the beginning)\b/i.test(clause) ? clause.split(",")[0] : clause);
+const broadTypeClause = (v: Verified) => BROAD_TYPE_CLAUSE.test(triggerOf(ruleBody(v.evidence[0] || "")));
+
 function distinctLinks(item: DiscoveryInput, shared: Map<string, Set<string>>, limit: number): Verified[] {
-  return item.brew.verified.filter((v) => !categoryRule(v, shared, limit));
+  return item.brew.verified.filter((v) => !categoryRule(v, shared, limit) && !broadTypeClause(v));
 }
 
 /** Discoverable: a conflict-free card with a distinct verified link, a supplied condition, or a package bridge. */
