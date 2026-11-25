@@ -15,7 +15,7 @@ it("same-origin relay preserves canonical metadata and statuses without forwardi
  const response=await handleScryfall(req(),fetcher);
  expect(await response.json()).toEqual({data:[{id:"known",legalities:{legacy:"banned"}}]});expect(response.headers.get("Cache-Control")).toBe("no-store");
  const [url,init]=fetcher.mock.calls[0];expect(url).toBe("https://api.scryfall.com/cards/collection");expect(init?.body).toBe(JSON.stringify({identifiers:[{id:"known"}]}));
- const headers=new Headers(init?.headers);expect(headers.get("Cookie")).toBeNull();expect(headers.get("Authorization")).toBeNull();expect(headers.get("User-Agent")).toMatch(/^MTG-Manager\//);expect(init?.redirect).toBe("error");
+ const headers=new Headers(init?.headers);expect(headers.get("Cookie")).toBeNull();expect(headers.get("Authorization")).toBeNull();expect(headers.get("User-Agent")).toMatch(/^MTG-Manager\//);expect(init?.redirect).toBe("manual");
 });
 it("only bounded identifier batches and allowed lookup paths/methods reach Scryfall",async()=>{
  const fetcher=vi.fn<typeof fetch>(async()=>json({data:[]}));
@@ -74,4 +74,13 @@ it("4,497-row import and legality checks finish over the same-site relay with a 
  const resolved=await client.resolve(parsed.rows,{}, {},signal,()=>{});expect(resolved.results.size).toBe(4497);expect([...resolved.results.values()].every(r=>!!r.card)).toBe(true);
  const checked=await runLegalityCheck(cards.map(c=>c.scryfallId),signal,(b,s)=>client.checkLegalityBatch(b,s,"legacy"),()=>{});expect(checked.checked).toBe(4497);expect(checked.issues).toEqual({});expect(checked.unresolved).toEqual([]);
  expect(browserCalls).toHaveLength(121);expect(browserCalls.every(p=>p.startsWith("/api/scryfall/"))).toBe(true);expect(upstreamCalls).toBe(121);
+});
+it("preserves upstream failure details through the browser client instead of hiding every cause as 502",async()=>{
+ const fetcher=vi.fn<typeof fetch>(async()=>handleScryfall(req(),async()=>new Response('<html>Unavailable</html>',{status:503,headers:{'Content-Type':'text/html'}})));
+ const client=new ScryfallClient(fetcher,0,{attempts:1,sleep:async()=>{}});
+ await expect(client.refreshLegalities(['known'],new AbortController().signal)).rejects.toThrow('upstream HTTP 503, content type text/html');
+});
+
+it("rejects upstream redirects without following arbitrary destinations",async()=>{
+ const fetcher=vi.fn<typeof fetch>(async()=>new Response(null,{status:302,headers:{Location:'https://untrusted.example/'}}));const response=await handleScryfall(req(),fetcher);expect(response.status).toBe(502);expect((await response.json()).details).toContain('was not followed');expect(fetcher).toHaveBeenCalledTimes(1);expect(fetcher.mock.calls[0][1]?.redirect).toBe('manual');
 });
