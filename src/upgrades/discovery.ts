@@ -49,9 +49,19 @@ const conflicted = (brew: BrewResult) => brew.penalties.some((p) => p.name === "
 const ruleText = (evidence: string) => evidence.replace(/^[^→]*→[^:]*:\s*/, "");
 /** The rule clause itself: without the per-card branch note ("For X: it has flying…") and power suffix, which differ per card. */
 const ruleBody = (evidence: string) => ruleText(evidence).split(PRINTED_BODY_END)[0];
-const sharedKey = (v: Verified) => `${v.name}|${norm(ruleBody(v.evidence[0] || ""))}`;
+/**
+ * The rule as a key. The candidate's own name is removed: "Exile and return reuses Alharu's own entry effect" is the same rule
+ * as "…reuses Stonecloaker's…" once the name is gone, so blinkers that share an enabler collapse into one rule.
+ */
+const sharedKey = (v: Verified, candidateName: string) => {
+  const body = ruleBody(v.evidence[0] || "");
+  const own = candidateName.trim();
+  // Whole words only, and only names long enough to be a name: a one-letter name must not touch the rule text around it.
+  const generic = own.length >= 3 ? body.replace(new RegExp(`\\b${own.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g"), "THIS") : body;
+  return `${v.name}|${norm(generic)}`;
+};
 /** Commander relationships are the strategy itself, so only deck-card category triggers can be shared-rule noise. */
-const categoryRule = (v: Verified, shared: Map<string, Set<string>>, limit: number) => !v.commander && !!v.evidence[0] && (shared.get(sharedKey(v))?.size ?? 0) >= limit;
+const categoryRule = (v: Verified, shared: Map<string, Set<string>>, limit: number, candidateName: string) => !v.commander && !!v.evidence[0] && (shared.get(sharedKey(v, candidateName))?.size ?? 0) >= limit;
 
 /** How many distinct candidates lean on the same deck-card rule text: the input to the category-effect rule. */
 function sharedRules(items: DiscoveryInput[]): Map<string, Set<string>> {
@@ -59,7 +69,7 @@ function sharedRules(items: DiscoveryInput[]): Map<string, Set<string>> {
   for (const item of items)
     for (const v of item.brew.verified)
       if (!v.commander && v.evidence[0]) {
-        const key = sharedKey(v);
+        const key = sharedKey(v, item.group.card.name);
         shared.set(key, (shared.get(key) ?? new Set<string>()).add(item.group.identity));
       }
   return shared;
@@ -83,7 +93,7 @@ const triggerOf = (clause: string) => (/^(whenever|when|at the beginning)\b/i.te
 const broadTypeClause = (v: Verified) => BROAD_TYPE_CLAUSE.test(triggerOf(ruleBody(v.evidence[0] || "")));
 
 function distinctLinks(item: DiscoveryInput, shared: Map<string, Set<string>>, limit: number): Verified[] {
-  return item.brew.verified.filter((v) => !categoryRule(v, shared, limit) && !broadTypeClause(v));
+  return item.brew.verified.filter((v) => !categoryRule(v, shared, limit, item.group.card.name) && !broadTypeClause(v));
 }
 
 /** Discoverable: a conflict-free card with a distinct verified link, a supplied condition, or a package bridge. */
@@ -161,9 +171,9 @@ function discoveryFor(input: DiscoveryInput, links: Verified[], strength: Discov
 /** Recommendations never repeat one rule more than this many times: the list shows variety, not eight copies of one trigger. */
 export const MAX_PER_RULE = 2;
 // A card's rule is its Commander relationship when it has one (the strategy itself), otherwise its first distinct link.
-const ruleKey = (links: Verified[], brew: BrewResult, supplied: string[]) => {
+const ruleKey = (links: Verified[], brew: BrewResult, supplied: string[], candidateName: string) => {
   const primary = links.find((v) => v.commander) ?? links[0];
-  return primary ? sharedKey(primary) : brew.bridge ? `bridge|${brew.bridge.from}|${brew.bridge.to}` : `supplied|${supplied[0] || ""}`;
+  return primary ? sharedKey(primary, candidateName) : brew.bridge ? `bridge|${brew.bridge.from}|${brew.bridge.to}` : `supplied|${supplied[0] || ""}`;
 };
 const STRENGTH_ORDER: Record<DiscoveryStrength, number> = { "Strongly supported": 0, Plausible: 1, Speculative: 2 };
 
@@ -201,7 +211,7 @@ export function selectDiscoveries(items: DiscoveryInput[], options: SelectionOpt
   const out: Discovery[] = [];
   for (const { input, links, strength } of found) {
     const supplied = input.brew.needs.filter((n) => n.supplied && !n.crewOnly).map((n) => n.need);
-    const key = ruleKey(links, input.brew, supplied);
+    const key = ruleKey(links, input.brew, supplied, input.group.card.name);
     const count = seen.get(key) ?? 0;
     if (count >= maxPerRule) continue;
     seen.set(key, count + 1);

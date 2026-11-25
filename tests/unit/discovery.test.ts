@@ -234,3 +234,14 @@ describe("attachment clauses are category effects too", () => {
     expect(out).toEqual([]);
   });
 });
+
+describe("blinkers that reuse one enabler's rule share a rule, whatever their own names", () => {
+  it("three creatures reusing the same enabler collapse to the per-rule cap", () => {
+    const items = ["Alpha Blinker", "Beta Blinker", "Gamma Blinker"].map((n) => ({
+      group: group(n, n),
+      brew: brew({ verified: [link("Test Enabler", 0.9, `${n} → Test Enabler: Exile and return reuses ${n}'s own entry effect: Exile any number of creatures you control.`)] }),
+    }));
+    const out = selectDiscoveries(items, { cardText: () => undefined, sharedRuleLimit: 999 });
+    expect(out).toHaveLength(MAX_PER_RULE);
+  });
+});

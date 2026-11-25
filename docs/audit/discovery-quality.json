@@ -6,9 +6,9 @@
   "owned": 148,
   "ownedAvailable": 148,
   "discoverable": {
-   "production": 25,
+   "production": 23,
    "noCategoryFilter": 20,
-   "noRuleCap": 25,
+   "noRuleCap": 23,
    "unguarded": 56
   },
   "suppressedByCategoryFilter": [
@@ -79,6 +79,46 @@
     "brewScore": 34,
     "caveats": [
      "Its \"Food sacrifice options (with their costs)\" ability has only Sierra, Nuka's Biggest Fan here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Alhammarret's Archive",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Ugin, Eye of the Storms",
+     "Mishra's Bauble",
+     "Thopter Fabricator",
+     "Absorb"
+    ],
+    "happens": "Alhammarret's Archive → Ugin, Eye of the Storms: When you cast this spell, exile up to one target permanent that's one or more colors",
+    "needs": [
+     "Costs {5}"
+    ],
+    "change": "Review swap: cut Safe Passage (Minor Upgrade)",
+    "brewScore": 30,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Leyline of Hope",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Ugin, Eye of the Storms",
+     "Absorb",
+     "Sejiri Refuge",
+     "Sephara, Sky's Blade"
+    ],
+    "happens": "Leyline of Hope → Ugin, Eye of the Storms: When you cast this spell, exile up to one target permanent that's one or more colors",
+    "needs": [
+     "Costs {2}{W}{W}"
+    ],
+    "change": "Review swap: cut Momentary Blink (Minor Upgrade)",
+    "brewScore": 15,
+    "caveats": [
+     "This deck already has plenty of finishers (7.0 / 4)."
     ]
    },
    {
@@ -646,9 +686,7 @@
     "available": "1 of 1",
     "worksWith": [
      "Shorikai, Genesis Engine",
-     "Smuggler's Copter",
-     "Momentary Blink",
-     "Turn to Mist"
+     "Smuggler's Copter"
     ],
     "happens": "Graveyard setup / return relationship: Archaeomancer ↔ Shorikai, Genesis Engine; When this creature enters, return target instant or sorcery card from your graveyard to your hand.; {1}, {T}: Draw two cards, then discard a card. Create a 1/1 colorless Pilot creature token with \"This token crews Vehicles as though its power were 2 greater.\"\nCrew 8 ",
     "needs": [
@@ -776,36 +814,36 @@
    },
    {
     "rank": 6,
-    "card": "Archaeomancer",
-    "strength": "Plausible",
-    "brewScore": 49
-   },
-   {
-    "rank": 7,
     "card": "Ominous Seas",
     "strength": "Plausible",
     "brewScore": 48
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Exemplar of Light",
     "strength": "Plausible",
     "brewScore": 46
    },
    {
-    "rank": 9,
+    "rank": 8,
     "card": "Roaming Throne",
     "strength": "Plausible",
     "brewScore": 46
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Kindred Discovery",
     "strength": "Plausible",
     "brewScore": 45
+   },
+   {
+    "rank": 10,
+    "card": "Psychic Corrosion",
+    "strength": "Plausible",
+    "brewScore": 44
    }
   ],
-  "alternativeOverlapAt10": 10
+  "alternativeOverlapAt10": 9
  },
  {
   "deck": "Lathliss, Dragon Queen",
@@ -2243,9 +2281,9 @@
   "owned": 138,
   "ownedAvailable": 138,
   "discoverable": {
-   "production": 31,
+   "production": 28,
    "noCategoryFilter": 19,
-   "noRuleCap": 31,
+   "noRuleCap": 28,
    "unguarded": 83
   },
   "suppressedByCategoryFilter": [
@@ -2509,6 +2547,27 @@
    },
    {
     "rank": 0,
+    "card": "Alhammarret's Archive",
+    "strength": "Strongly supported",
+    "available": "1 of 1",
+    "worksWith": [
+     "Arcane Denial",
+     "Alandra, Sky Dreamer",
+     "Chasm Skulker",
+     "Ominous Seas"
+    ],
+    "happens": "Alhammarret's Archive → Arcane Denial: Its controller may draw up to two cards at the beginning of the next turn's upkeep",
+    "needs": [
+     "Costs {5}"
+    ],
+    "change": "Review swap: cut Thought Reflection (Sidegrade)",
+    "brewScore": 21,
+    "caveats": [
+     "This deck already has plenty of card advantage (34.0 / 10)."
+    ]
+   },
+   {
+    "rank": 0,
     "card": "Winged Words",
     "strength": "Strongly supported",
     "available": "1 of 1",
@@ -2646,6 +2705,23 @@
     ],
     "change": "Review swap: cut Omniscience (Sidegrade)",
     "brewScore": 31,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Rhox Faithmender",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Twenty-Toed Toad",
+     "Approach of the Second Sun"
+    ],
+    "happens": "Rhox Faithmender → Twenty-Toed Toad: Whenever you attack with two or more creatures, put a +1/+1 counter on this creature and draw a card",
+    "needs": [
+     "Costs {3}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Sidegrade)",
+    "brewScore": 29,
     "caveats": []
    },
    {
@@ -2864,6 +2940,22 @@
      "Costs {4}{W}{W}{W}"
     ],
     "change": "Review swap: cut Omniscience (Strong Upgrade)",
+    "brewScore": 21,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Leyline of Hope",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Approach of the Second Sun"
+    ],
+    "happens": "Leyline of Hope replaces the amount of a real life-gain event for Approach of the Second Sun; it does not originate life gain or multiply the number of life-gain triggers.",
+    "needs": [
+     "Costs {2}{W}{W}"
+    ],
+    "change": "Review swap: cut Omniscience (Minor Upgrade)",
     "brewScore": 21,
     "caveats": []
    },
@@ -3299,9 +3391,12 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Approach of the Second Sun"
+     "Supreme Verdict",
+     "Smothering Tithe",
+     "Secret Rendezvous",
+     "The Council of Four"
     ],
-    "happens": "The Wind Crystal replaces the amount of a real life-gain event for Approach of the Second Sun; it does not originate life gain or multiply the number of life-gain triggers.",
+    "happens": "Its \"white spells\" ability: White spells you cast cost {1} less to cast.",
     "needs": [
      "Costs {2}{W}{W}",
      "Needs white spells, supplied by Supreme Verdict, Smothering Tithe, Secret Rendezvous and 14 more"
@@ -3424,36 +3519,36 @@
    },
    {
     "rank": 6,
+    "card": "The Wind Crystal",
+    "strength": "Plausible",
+    "brewScore": 38
+   },
+   {
+    "rank": 7,
     "card": "Kindred Discovery",
     "strength": "Plausible",
     "brewScore": 36
    },
    {
-    "rank": 7,
+    "rank": 8,
     "card": "Chrome Host Seedshark",
     "strength": "Plausible",
     "brewScore": 36
    },
    {
-    "rank": 8,
+    "rank": 9,
     "card": "Rosie Cotton of South Lane",
     "strength": "Plausible",
     "brewScore": 32
    },
    {
-    "rank": 9,
-    "card": "Haliya, Guided by Light",
-    "strength": "Plausible",
-    "brewScore": 31
-   },
-   {
     "rank": 10,
-    "card": "The Prydwen, Steel Flagship",
+    "card": "Haliya, Guided by Light",
     "strength": "Plausible",
     "brewScore": 31
    }
   ],
-  "alternativeOverlapAt10": 7
+  "alternativeOverlapAt10": 8
  },
  {
   "deck": "Uugguu, the Omniplasm",
@@ -3462,8 +3557,8 @@
   "owned": 146,
   "ownedAvailable": 146,
   "discoverable": {
-   "production": 58,
-   "noCategoryFilter": 58,
+   "production": 28,
+   "noCategoryFilter": 28,
    "noRuleCap": 59,
    "unguarded": 63
   },
@@ -3545,6 +3640,520 @@
    }
   ],
   "suppressedByRuleCap": [
+   {
+    "rank": 0,
+    "card": "Chasm Skulker",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Distant Melody",
+     "Harmonized Crescendo",
+     "Village Rites"
+    ],
+    "happens": "Deadly Dispute → Chasm Skulker: Whenever you draw a card, put a +1/+1 counter on this creature",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 70,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gilded Goose",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Gilded Goose Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {G}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 61,
+    "caveats": [
+     "This deck already has plenty of ramp (18.0 / 9)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Alandra, Sky Dreamer",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Distant Melody",
+     "Harmonized Crescendo",
+     "Village Rites"
+    ],
+    "happens": "Deadly Dispute → Alandra, Sky Dreamer: Whenever you draw your second card each turn, create a 2/2 blue Drake creature token with flying",
+    "needs": [
+     "Costs {2}{U}{U}",
+     "Needs extra card draw, supplied by Kindred Discovery, Village Rites, Deadly Dispute and 2 more"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 60,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "Couldn't check what feeds \"Whenever you draw your fifth card each turn, Alandra and Drakes you control each\" in this deck."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Psychosis Crawler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Distant Melody",
+     "Harmonized Crescendo",
+     "Village Rites"
+    ],
+    "happens": "Deadly Dispute → Psychosis Crawler: Whenever you draw a card, each opponent loses 1 life",
+    "needs": [
+     "Costs {5}"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 56,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Elanor Gardner",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Elanor Gardner Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{G}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 49,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Howling Golem",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Howling Golem Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Scrawling Crawler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Scrawling Crawler Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Triskaidekaphile",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Triskaidekaphile Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Body of Knowledge",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Body of Knowledge Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{U}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 46,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Fear of Failed Tests",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Fear of Failed Tests Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {4}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 46,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Scheming Silvertongue // Sign in Blood",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Scheming Silvertongue // Sign in Blood Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {1}{B} // {B}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Strong Upgrade)",
+    "brewScore": 46,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Massacre Wurm",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Massacre Wurm Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{B}{B}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 46,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Archaeomancer",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Archaeomancer Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {2}{U}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Blood Seeker",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Blood Seeker Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {1}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Kederekt Parasite",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Kederekt Parasite Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Blossoming Bogbeast",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Blossoming Bogbeast Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {4}{G}"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Fate Unraveler",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Fate Unraveler Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Persistent Constrictor",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Persistent Constrictor Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {4}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Laboratory Maniac",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Laboratory Maniac Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Moderate Upgrade)",
+    "brewScore": 42,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Gearseeker Serpent",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Gearseeker Serpent Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {5}{U}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 40,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Sage Owl",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Sage Owl Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {1}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 36,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Accomplished Alchemist",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Accomplished Alchemist Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{G}"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 35,
+    "caveats": [
+     "This deck already has plenty of ramp (18.0 / 9)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Llanowar Elves",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Llanowar Elves Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {G}"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 35,
+    "caveats": [
+     "This deck already has plenty of ramp (18.0 / 9)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Gray Merchant of Asphodel",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Gray Merchant of Asphodel Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{B}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 34,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Jaheira, Friend of the Forest",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Jaheira, Friend of the Forest Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {2}{G}"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 28,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies.",
+     "This deck already has plenty of ramp (18.0 / 9)."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Braids, Arisen Nightmare",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Braids, Arisen Nightmare Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {1}{B}{B}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 27,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Kami of the Crescent Moon",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Kami of the Crescent Moon Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {U}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 27,
+    "caveats": [
+     "It's legendary, so this deck's copy effects can't make extra working copies."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Academy Manufactor",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Academy Manufactor replaces Deadly Dispute's qualifying resource-token creation with Clue, Food and Treasure; it requires the incoming event, not merely controlling the replacement.",
+    "needs": [
+     "Costs {3}",
+     "Needs actual token-creation events for the replacement; this deck has only Deadly Dispute to supply it"
+    ],
+    "change": "Review swap: cut Victimize (Sidegrade)",
+    "brewScore": 25,
+    "caveats": [
+     "Its \"actual token-creation events for the replacement\" ability has only Deadly Dispute here to feed it."
+    ]
+   },
+   {
+    "rank": 0,
+    "card": "Tidal Barracuda",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Tidal Barracuda Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {3}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 23,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Warden of Evos Isle",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Uugguu, the Omniplasm"
+    ],
+    "happens": "Arcane Adaptation can make Warden of Evos Isle Ooze while it is on the battlefield, enabling Uugguu, the Omniplasm's nontoken death trigger; this relationship requires the type-changing permanent to remain active.",
+    "needs": [
+     "Costs {2}{U}"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 19,
+    "caveats": [
+     "This deck already has plenty of ramp (18.0 / 9)."
+    ]
+   },
    {
     "rank": 0,
     "card": "Revive the Shire",
@@ -3692,25 +4301,6 @@
    },
    {
     "rank": 8,
-    "card": "Chasm Skulker",
-    "strength": "Plausible",
-    "available": "1 of 1",
-    "worksWith": [
-     "Deadly Dispute",
-     "Distant Melody",
-     "Harmonized Crescendo",
-     "Village Rites"
-    ],
-    "happens": "Deadly Dispute → Chasm Skulker: Whenever you draw a card, put a +1/+1 counter on this creature",
-    "needs": [
-     "Costs {2}{U}"
-    ],
-    "change": "Review swap: cut Victimize (Minor Upgrade)",
-    "brewScore": 70,
-    "caveats": []
-   },
-   {
-    "rank": 9,
     "card": "Essence Warden",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3730,7 +4320,7 @@
     "caveats": []
    },
    {
-    "rank": 10,
+    "rank": 9,
     "card": "Peregrin Took",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -3750,6 +4340,27 @@
     "caveats": [
      "It's legendary, so this deck's copy effects can't make extra working copies."
     ]
+   },
+   {
+    "rank": 10,
+    "card": "Thopter Fabricator",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Deadly Dispute",
+     "Distant Melody",
+     "Harmonized Crescendo",
+     "Village Rites"
+    ],
+    "happens": "Deadly Dispute → Thopter Fabricator: Whenever you draw your second card each turn, create a 1/1 colorless Thopter artifact creature token with flying",
+    "needs": [
+     "Costs {2}{U}",
+     "Needs extra card draw, supplied by Kindred Discovery, Village Rites, Deadly Dispute and 2 more",
+     "Needs creatures to crew it (Green Slime, Mitotic Slime, Adrix and Nev, Twincasters and 31 more)"
+    ],
+    "change": "Review swap: cut Victimize (Minor Upgrade)",
+    "brewScore": 56,
+    "caveats": []
    }
   ],
   "alternativeTop10": [
@@ -3785,33 +4396,33 @@
    },
    {
     "rank": 6,
-    "card": "Chasm Skulker",
-    "strength": "Plausible",
-    "brewScore": 70
-   },
-   {
-    "rank": 7,
     "card": "Essence Warden",
     "strength": "Plausible",
     "brewScore": 66
    },
    {
-    "rank": 8,
+    "rank": 7,
     "card": "Peregrin Took",
     "strength": "Plausible",
     "brewScore": 61
    },
    {
-    "rank": 9,
-    "card": "Alandra, Sky Dreamer",
+    "rank": 8,
+    "card": "Thopter Fabricator",
     "strength": "Plausible",
-    "brewScore": 60
+    "brewScore": 56
+   },
+   {
+    "rank": 9,
+    "card": "Mu Yanling, Wind Rider",
+    "strength": "Plausible",
+    "brewScore": 55
    },
    {
     "rank": 10,
-    "card": "Psychosis Crawler",
+    "card": "Hazoret's Monument",
     "strength": "Plausible",
-    "brewScore": 56
+    "brewScore": 42
    }
   ],
   "alternativeOverlapAt10": 8
@@ -3823,9 +4434,9 @@
   "owned": 93,
   "ownedAvailable": 93,
   "discoverable": {
-   "production": 24,
+   "production": 19,
    "noCategoryFilter": 12,
-   "noRuleCap": 25,
+   "noRuleCap": 20,
    "unguarded": 65
   },
   "suppressedByCategoryFilter": [
@@ -3844,6 +4455,76 @@
     ],
     "change": "Review swap: cut Cultivate (Moderate Upgrade)",
     "brewScore": 48,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Parhelion II",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light",
+     "Peregrin Took"
+    ],
+    "happens": "Parhelion II → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {6}{W}{W}",
+     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 47,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Biogenic Ooze",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Exemplar of Light",
+     "Haliya, Guided by Light",
+     "Peregrin Took"
+    ],
+    "happens": "Biogenic Ooze → Exemplar of Light: Whenever you put one or more +1/+1 counters on this creature, draw a card",
+    "needs": [
+     "Costs {3}{G}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 43,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Maskwood Nexus",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light",
+     "Peregrin Took"
+    ],
+    "happens": "Maskwood Nexus → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {4}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 41,
+    "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "March of the World Ooze",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light",
+     "Peregrin Took"
+    ],
+    "happens": "March of the World Ooze → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {3}{G}{G}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Minor Upgrade)",
+    "brewScore": 40,
     "caveats": []
    },
    {
@@ -3960,6 +4641,25 @@
     "change": "Review swap: cut Cultivate (Sidegrade)",
     "brewScore": 31,
     "caveats": []
+   },
+   {
+    "rank": 0,
+    "card": "Mutable Explorer",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Haliya, Guided by Light",
+     "Peregrin Took"
+    ],
+    "happens": "Mutable Explorer → Haliya, Guided by Light: Whenever Haliya, Guided by Light or another creature or artifact you control enters, you gain 1 life",
+    "needs": [
+     "Costs {2}{G}"
+    ],
+    "change": "Review swap: cut Cultivate (Sidegrade)",
+    "brewScore": 27,
+    "caveats": [
+     "This deck already has plenty of ramp (18.4 / 7)."
+    ]
    },
    {
     "rank": 0,
@@ -4568,9 +5268,12 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Peregrin Took"
+     "Arcane Signet",
+     "Field-Tested Frying Pan",
+     "The Wind Crystal",
+     "Sol Ring"
     ],
-    "happens": "Peregrin Took adds Food to The Prydwen, Steel Flagship's controlled token-creation event; the replacement does not initiate its own event.",
+    "happens": "Its \"nontoken artifacts entering\" ability: Whenever another nontoken artifact you control enters, create a 2/2 white Human Knight creature token with \"This token gets +2/+2 as long as an artifact entered the battlefield under your control this turn.\"",
     "needs": [
      "Costs {4}{W}{W}",
      "Needs nontoken artifacts entering, supplied by Arcane Signet, Field-Tested Frying Pan, The Wind Crystal and 7 more",
@@ -4605,9 +5308,12 @@
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Peregrin Took"
+     "Field-Tested Frying Pan",
+     "Farmer Cotton",
+     "Rosie Cotton of South Lane",
+     "Of Herbs and Stewed Rabbit"
     ],
-    "happens": "Peregrin Took adds Food to Springleaf Parade's controlled token-creation event; the replacement does not initiate its own event.",
+    "happens": "Its \"creature-token sources\" ability: Creature tokens you control have \"{T}: Add one mana of any color.\"",
     "needs": [
      "Costs {X}{G}{G}",
      "Needs creature-token sources, supplied by Field-Tested Frying Pan, Farmer Cotton, Rosie Cotton of South Lane and 3 more"
@@ -4618,23 +5324,6 @@
    },
    {
     "rank": 5,
-    "card": "Rolling Hamsphere",
-    "strength": "Plausible",
-    "available": "1 of 1",
-    "worksWith": [
-     "Peregrin Took"
-    ],
-    "happens": "Peregrin Took adds Food to Rolling Hamsphere's controlled token-creation event; the replacement does not initiate its own event.",
-    "needs": [
-     "Costs {7}",
-     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
-    ],
-    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
-    "brewScore": 54,
-    "caveats": []
-   },
-   {
-    "rank": 6,
     "card": "Mitotic Slime",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4653,24 +5342,7 @@
     "caveats": []
    },
    {
-    "rank": 7,
-    "card": "Parhelion II",
-    "strength": "Plausible",
-    "available": "1 of 1",
-    "worksWith": [
-     "Peregrin Took"
-    ],
-    "happens": "Peregrin Took adds Food to Parhelion II's controlled token-creation event; the replacement does not initiate its own event.",
-    "needs": [
-     "Costs {6}{W}{W}",
-     "Needs creatures to crew it (Avacyn's Pilgrim, Jaheira, Friend of the Forest, Field-Tested Frying Pan and 30 more)"
-    ],
-    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
-    "brewScore": 47,
-    "caveats": []
-   },
-   {
-    "rank": 8,
+    "rank": 6,
     "card": "Doubling Season",
     "strength": "Plausible",
     "available": "1 of 1",
@@ -4691,14 +5363,14 @@
     "caveats": []
    },
    {
-    "rank": 9,
+    "rank": 7,
     "card": "Biowaste Blob",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Peregrin Took"
+     "Hurska Sweet-Tooth"
     ],
-    "happens": "Peregrin Took adds Food to Biowaste Blob's controlled token-creation event; the replacement does not initiate its own event.",
+    "happens": "Its \"a commander to control\" ability: At the beginning of your upkeep, if you control a commander, create a token that's a copy of this creature.",
     "needs": [
      "Costs {2}{G}{G}",
      "Needs Oozes creatures; this deck has nothing to supply it",
@@ -4711,19 +5383,64 @@
     ]
    },
    {
-    "rank": 10,
-    "card": "Biogenic Ooze",
+    "rank": 8,
+    "card": "Parallel Lives",
     "strength": "Plausible",
     "available": "1 of 1",
     "worksWith": [
-     "Peregrin Took"
+     "Field-Tested Frying Pan",
+     "Farmer Cotton",
+     "Rosie Cotton of South Lane",
+     "Trail of Crumbs"
     ],
-    "happens": "Peregrin Took adds Food to Biogenic Ooze's controlled token-creation event; the replacement does not initiate its own event.",
+    "happens": "Its \"token makers\" ability: If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
     "needs": [
-     "Costs {3}{G}{G}"
+     "Costs {3}{G}",
+     "Needs token makers, supplied by Field-Tested Frying Pan, Farmer Cotton, Rosie Cotton of South Lane and 19 more"
+    ],
+    "change": "Review swap: cut Cultivate (Strong Upgrade)",
+    "brewScore": 32,
+    "caveats": []
+   },
+   {
+    "rank": 9,
+    "card": "Serra Disciple",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Jaheira, Friend of the Forest",
+     "Arcane Signet",
+     "Field-Tested Frying Pan",
+     "Farmer Cotton"
+    ],
+    "happens": "Its \"historic spells\" ability: Whenever you cast a historic spell, this creature gets +1/+1 until end of turn.",
+    "needs": [
+     "Costs {1}{W}",
+     "Needs historic spells, supplied by Jaheira, Friend of the Forest, Arcane Signet, Field-Tested Frying Pan and 24 more"
     ],
     "change": "Review swap: cut Cultivate (Sidegrade)",
-    "brewScore": 43,
+    "brewScore": 29,
+    "caveats": []
+   },
+   {
+    "rank": 10,
+    "card": "Herald's Horn",
+    "strength": "Plausible",
+    "available": "1 of 1",
+    "worksWith": [
+     "Farmer Cotton",
+     "Rosie Cotton of South Lane",
+     "Peregrin Took",
+     "Sam, Loyal Attendant"
+    ],
+    "happens": "Its \"one chosen creature type\" ability: Creature spells you cast of the chosen type cost {1} less to cast.",
+    "needs": [
+     "Costs {3}",
+     "Needs one chosen creature type, supplied by Farmer Cotton, Rosie Cotton of South Lane, Peregrin Took and 5 more",
+     "Needs one chosen creature type, supplied by Farmer Cotton, Rosie Cotton of South Lane, Peregrin Took and 5 more"
+    ],
+    "change": "Review swap: cut Cultivate (Moderate Upgrade)",
+    "brewScore": 29,
     "caveats": []
    }
   ],
@@ -4736,59 +5453,59 @@
    },
    {
     "rank": 2,
+    "card": "The Prydwen, Steel Flagship",
+    "strength": "Plausible",
+    "brewScore": 72
+   },
+   {
+    "rank": 3,
     "card": "Sephara, Sky's Blade",
     "strength": "Plausible",
     "brewScore": 60
    },
    {
-    "rank": 3,
+    "rank": 4,
+    "card": "Springleaf Parade",
+    "strength": "Plausible",
+    "brewScore": 55
+   },
+   {
+    "rank": 5,
     "card": "Mitotic Slime",
     "strength": "Plausible",
     "brewScore": 48
    },
    {
-    "rank": 4,
+    "rank": 6,
     "card": "Doubling Season",
     "strength": "Plausible",
     "brewScore": 46
    },
    {
-    "rank": 5,
+    "rank": 7,
     "card": "Parallel Lives",
     "strength": "Plausible",
     "brewScore": 32
    },
    {
-    "rank": 6,
+    "rank": 8,
     "card": "Serra Disciple",
     "strength": "Plausible",
     "brewScore": 29
    },
    {
-    "rank": 7,
+    "rank": 9,
     "card": "Herald's Horn",
     "strength": "Plausible",
     "brewScore": 29
    },
    {
-    "rank": 8,
+    "rank": 10,
     "card": "Hazoret's Monument",
     "strength": "Plausible",
     "brewScore": 28
-   },
-   {
-    "rank": 9,
-    "card": "Mishra's Bauble",
-    "strength": "Plausible",
-    "brewScore": 27
-   },
-   {
-    "rank": 10,
-    "card": "Roaming Throne",
-    "strength": "Plausible",
-    "brewScore": 25
    }
   ],
-  "alternativeOverlapAt10": 4
+  "alternativeOverlapAt10": 9
  }
 ]
