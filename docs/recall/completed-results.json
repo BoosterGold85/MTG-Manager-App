@@ -13813,20 +13813,6 @@
             },
             {
               "cardIdentity": "a784481f-eccb-4112-bb38-04a659319660",
-              "tagId": "sacrifice-fodder",
-              "source": "derived",
-              "confidence": 0.95,
-              "evidence": [
-                {
-                  "field": "oracleText",
-                  "snippet": "Sacrifice this token",
-                  "reason": "Explicit self-sacrifice or a death-return loop supplies sacrifice material."
-                }
-              ],
-              "rulesetVersion": "0.3.7"
-            },
-            {
-              "cardIdentity": "a784481f-eccb-4112-bb38-04a659319660",
               "tagId": "treasure",
               "source": "rule",
               "confidence": 1,
@@ -25373,20 +25359,6 @@
             },
             {
               "cardIdentity": "9bcaf141-1f1f-491f-aced-13dc093b9e2c",
-              "tagId": "sacrifice-fodder",
-              "source": "derived",
-              "confidence": 0.95,
-              "evidence": [
-                {
-                  "field": "oracleText",
-                  "snippet": "Sacrifice this token",
-                  "reason": "Explicit self-sacrifice or a death-return loop supplies sacrifice material."
-                }
-              ],
-              "rulesetVersion": "0.3.7"
-            },
-            {
-              "cardIdentity": "9bcaf141-1f1f-491f-aced-13dc093b9e2c",
               "tagId": "token-payoff",
               "source": "derived",
               "confidence": 0.95,
@@ -26291,20 +26263,6 @@
                   "field": "oracleText",
                   "snippet": "Add {C}",
                   "reason": "Produces additional mana; ordinary lands are excluded."
-                }
-              ],
-              "rulesetVersion": "0.3.7"
-            },
-            {
-              "cardIdentity": "688e5e19-8f28-45c4-ace4-a38144f494f1",
-              "tagId": "sacrifice-fodder",
-              "source": "derived",
-              "confidence": 0.95,
-              "evidence": [
-                {
-                  "field": "oracleText",
-                  "snippet": "Sacrifice this token",
-                  "reason": "Explicit self-sacrifice or a death-return loop supplies sacrifice material."
                 }
               ],
               "rulesetVersion": "0.3.7"
@@ -61890,20 +61848,6 @@
             },
             {
               "cardIdentity": "d9c36ed5-629c-4709-bff5-2f10fcde608a",
-              "tagId": "sacrifice-fodder",
-              "source": "derived",
-              "confidence": 0.95,
-              "evidence": [
-                {
-                  "field": "oracleText",
-                  "snippet": "Sacrifice this artifact",
-                  "reason": "Explicit self-sacrifice or a death-return loop supplies sacrifice material."
-                }
-              ],
-              "rulesetVersion": "0.3.7"
-            },
-            {
-              "cardIdentity": "d9c36ed5-629c-4709-bff5-2f10fcde608a",
               "tagId": "topdeck",
               "source": "rule",
               "confidence": 1,
@@ -75773,20 +75717,6 @@
                   "field": "oracleText",
                   "snippet": "Add one mana",
                   "reason": "Produces additional mana; ordinary lands are excluded."
-                }
-              ],
-              "rulesetVersion": "0.3.7"
-            },
-            {
-              "cardIdentity": "ab8d5f5c-1976-4f77-8ed2-8d28ee666741",
-              "tagId": "sacrifice-fodder",
-              "source": "derived",
-              "confidence": 0.95,
-              "evidence": [
-                {
-                  "field": "oracleText",
-                  "snippet": "Sacrifice this token",
-                  "reason": "Explicit self-sacrifice or a death-return loop supplies sacrifice material."
                 }
               ],
               "rulesetVersion": "0.3.7"
