@@ -11,6 +11,7 @@ import { Crown, Plus, FileUp } from "lucide-react";
 import { DeckHeader } from "./DeckHeader";
 import type { DeckTab } from "../decks/workspace";
 import { DeckOverview } from "./DeckOverview";
+import { UpgradeSelector } from "./UpgradeSelector";
 import { DeckCards } from "./DeckCards";
 import { DeckUpgrades } from "./DeckUpgrades";
 import { DeckSettings } from "./DeckSettings";
@@ -315,6 +316,7 @@ export function DeckLibrary({
               }}
             />
           )}
+          {tab === "overview" && formatOf(deck)==="commander" && <UpgradeSelector key={`upgrade-selector:${deck.id}`} state={state} deck={deck} />}
           {tab === "overview" && (formatOf(deck)==="commander" || formatOf(deck)==="legacy") && <ExperimentalSynergyAnalyzer key={`experimental:${deck.id}:${state.revision}`} state={state} deck={deck} />}
           {tab === "overview" && <DeckIntelligence key={`intelligence:${deck.id}`} state={state} deck={deck} busy={busy} change={change} />}
           {tab === "cards" && (

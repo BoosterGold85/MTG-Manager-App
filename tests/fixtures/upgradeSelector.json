@@ -1,0 +1,832 @@
+{
+ "source": "Scryfall /cards/collection (public API), fetched 2026-11-26; minimal fields only",
+ "decks": {
+  "mayhem": [
+   {
+    "scryfallId": "549089f4-1359-49c3-9560-6fe49d1598d0",
+    "oracleId": "1a7e0e55-41c3-4fd8-b718-55b59b5cab90",
+    "name": "Liliana's Specter",
+    "typeLine": "Creature — Specter",
+    "manaCost": "{1}{B}{B}",
+    "manaValue": 3,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Flying\nWhen this creature enters, each opponent discards a card.",
+    "keywords": [
+     "Flying"
+    ],
+    "power": "2",
+    "toughness": "1",
+    "layout": "normal",
+    "releasedAt": "2016-11-25",
+    "edhrecRank": 9964,
+    "setCode": "pca"
+   },
+   {
+    "scryfallId": "833a8604-92d5-443b-9bc0-bd91c973ef07",
+    "oracleId": "ad44cf74-b717-48fb-9fa2-77512024d76a",
+    "name": "Mind Rot",
+    "typeLine": "Sorcery",
+    "manaCost": "{2}{B}",
+    "manaValue": 3,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Target player discards two cards.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2020-07-03",
+    "edhrecRank": 12746,
+    "setCode": "m21"
+   },
+   {
+    "scryfallId": "34c3a894-ee75-4db9-a69f-711bb3cc150a",
+    "oracleId": "33d405ea-7a9a-4970-b70f-9c05d90dd6f0",
+    "name": "Duress",
+    "typeLine": "Sorcery",
+    "manaCost": "{B}",
+    "manaValue": 1,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Target opponent reveals their hand. You choose a noncreature, nonland card from it. That player discards that card.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2024-11-15",
+    "edhrecRank": 3297,
+    "setCode": "fdn"
+   },
+   {
+    "scryfallId": "b281a308-ab6b-47b6-bec7-632c9aaecede",
+    "oracleId": "edd8d1e8-be43-4c38-bb3a-83081fbaf0b5",
+    "name": "Thoughtseize",
+    "typeLine": "Sorcery",
+    "manaCost": "{B}",
+    "manaValue": 1,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2020-08-07",
+    "edhrecRank": 4444,
+    "setCode": "2xm"
+   },
+   {
+    "scryfallId": "3faa8c5e-9e1b-4cee-b322-a033bf33dcbc",
+    "oracleId": "992d9a72-d34d-47d7-96fb-37f0efb515ef",
+    "name": "Hymn to Tourach",
+    "typeLine": "Sorcery",
+    "manaCost": "{B}{B}",
+    "manaValue": 2,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Target player discards two cards at random.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2016-06-10",
+    "edhrecRank": 9675,
+    "setCode": "ema"
+   },
+   {
+    "scryfallId": "6987d609-ba0f-42bf-9b61-bdfb943c03b5",
+    "oracleId": "09ff28b1-b6c9-48e6-b12e-2f0e644f709f",
+    "name": "Gravecrawler",
+    "typeLine": "Creature — Zombie",
+    "manaCost": "{B}",
+    "manaValue": 1,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "This creature can't block.\nYou may cast this card from your graveyard as long as you control a Zombie.",
+    "keywords": [],
+    "power": "2",
+    "toughness": "1",
+    "layout": "normal",
+    "releasedAt": "2025-04-11",
+    "edhrecRank": 636,
+    "setCode": "tdc"
+   },
+   {
+    "scryfallId": "674f3a8a-4552-4289-b92a-06ce158f115c",
+    "oracleId": "4709f11c-aef8-45ac-b2bf-e640c568dfac",
+    "name": "Mayhem Devil",
+    "typeLine": "Creature — Devil",
+    "manaCost": "{1}{B}{R}",
+    "manaValue": 3,
+    "colors": [
+     "B",
+     "R"
+    ],
+    "colorIdentity": [
+     "B",
+     "R"
+    ],
+    "oracleText": "Whenever a player sacrifices a permanent, this creature deals 1 damage to any target.",
+    "keywords": [],
+    "power": "3",
+    "toughness": "3",
+    "layout": "normal",
+    "releasedAt": "2025-08-01",
+    "edhrecRank": 570,
+    "setCode": "eoc"
+   },
+   {
+    "scryfallId": "cee85485-598f-4dfc-aa0b-7b1de86c7788",
+    "oracleId": "e97f9c2b-b41e-4f36-9245-77c0ac125647",
+    "name": "Bloodghast",
+    "typeLine": "Creature — Vampire Spirit",
+    "manaCost": "{B}{B}",
+    "manaValue": 2,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "This creature can't block.\nThis creature has haste as long as an opponent has 10 or less life.\nLandfall — Whenever a land you control enters, you may return this card from your graveyard to the battlefield.",
+    "keywords": [
+     "Landfall"
+    ],
+    "power": "2",
+    "toughness": "1",
+    "layout": "normal",
+    "releasedAt": "2026-04-24",
+    "edhrecRank": 989,
+    "setCode": "soc"
+   },
+   {
+    "scryfallId": "a4dfbac0-1849-41c5-853a-1fee108d0b01",
+    "oracleId": "7b459306-149b-4f43-abc1-2dd70c748c0e",
+    "name": "Ravenous Chupacabra",
+    "typeLine": "Creature — Beast Horror",
+    "manaCost": "{2}{B}{B}",
+    "manaValue": 4,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "When this creature enters, destroy target creature an opponent controls.",
+    "keywords": [],
+    "power": "2",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2024-02-09",
+    "edhrecRank": 1171,
+    "setCode": "mkc"
+   },
+   {
+    "scryfallId": "363f8761-91a7-47e8-9e15-3b73d59bc020",
+    "oracleId": "2ad8ff62-d090-4835-9274-3b755ba0f8e6",
+    "name": "Priest of Forgotten Gods",
+    "typeLine": "Creature — Human Cleric",
+    "manaCost": "{1}{B}",
+    "manaValue": 2,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "{T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature of their choice. You add {B}{B} and draw a card. (Activate only as an instant.)",
+    "keywords": [],
+    "power": "1",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2026-04-24",
+    "edhrecRank": 1383,
+    "setCode": "soc"
+   },
+   {
+    "scryfallId": "2d92fcf1-2ccd-47d2-9a24-f44b766a0b68",
+    "oracleId": "ba95f24d-42da-48ce-bcf1-1b7c4b3c45b5",
+    "name": "Skirge Familiar",
+    "typeLine": "Creature — Phyrexian Imp",
+    "manaCost": "{4}{B}",
+    "manaValue": 5,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Flying\nDiscard a card: Add {B}.",
+    "keywords": [
+     "Flying"
+    ],
+    "power": "3",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2021-06-18",
+    "edhrecRank": 2891,
+    "setCode": "mh2"
+   },
+   {
+    "scryfallId": "2d73ea23-52ab-4b92-b263-dc8b9e5a1010",
+    "oracleId": "21f1c6d7-8289-44b2-b88f-c09e202be200",
+    "name": "Fertilid",
+    "typeLine": "Creature — Elemental",
+    "manaCost": "{2}{G}",
+    "manaValue": 3,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "This creature enters with two +1/+1 counters on it.\n{1}{G}, Remove a +1/+1 counter from this creature: Target player searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.",
+    "keywords": [],
+    "power": "0",
+    "toughness": "0",
+    "layout": "normal",
+    "releasedAt": "2023-04-21",
+    "edhrecRank": 3256,
+    "setCode": "moc"
+   },
+   {
+    "scryfallId": "cb28d217-795e-4320-a032-cd713f7ecc8a",
+    "oracleId": "5e958212-6a5b-4288-8d31-f1572619d7dc",
+    "name": "Liliana, Dreadhorde General",
+    "typeLine": "Legendary Planeswalker — Liliana",
+    "manaCost": "{4}{B}{B}",
+    "manaValue": 6,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Whenever a creature you control dies, draw a card.\n+1: Create a 2/2 black Zombie creature token.\n−4: Each player sacrifices two creatures of their choice.\n−9: Each opponent chooses a permanent they control of each permanent type and sacrifices the rest.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2024-11-15",
+    "edhrecRank": 770,
+    "setCode": "fdn"
+   },
+   {
+    "scryfallId": "18adbda4-8d36-47cd-afbc-c785aaa8ed80",
+    "oracleId": "e80772e2-8623-4094-81a2-70828b2b151c",
+    "name": "Blightsteel Colossus",
+    "typeLine": "Artifact Creature — Phyrexian Golem",
+    "manaCost": "{12}",
+    "manaValue": 12,
+    "colors": [],
+    "colorIdentity": [],
+    "oracleText": "Trample, infect, indestructible\nIf Blightsteel Colossus would be put into a graveyard from anywhere, reveal Blightsteel Colossus and shuffle it into its owner's library instead.",
+    "keywords": [
+     "Indestructible",
+     "Trample",
+     "Infect"
+    ],
+    "power": "11",
+    "toughness": "11",
+    "layout": "normal",
+    "releasedAt": "2020-08-07",
+    "edhrecRank": 942,
+    "setCode": "2xm"
+   },
+   {
+    "scryfallId": "a0dab027-a475-481b-b012-b6a76e21e494",
+    "oracleId": "45f1e957-09f0-4d46-8e32-238f26060a87",
+    "name": "Kolaghan's Command",
+    "typeLine": "Instant",
+    "manaCost": "{1}{B}{R}",
+    "manaValue": 3,
+    "colors": [
+     "B",
+     "R"
+    ],
+    "colorIdentity": [
+     "B",
+     "R"
+    ],
+    "oracleText": "Choose two —\n• Return target creature card from your graveyard to your hand.\n• Target player discards a card.\n• Destroy target artifact.\n• Kolaghan's Command deals 2 damage to any target.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2022-07-08",
+    "edhrecRank": 3803,
+    "setCode": "2x2"
+   },
+   {
+    "scryfallId": "00d001d0-fd29-4b7c-9d0e-9131b995f910",
+    "oracleId": "38f3b157-0df4-409b-89cc-086e1531cd5b",
+    "name": "Gray Merchant of Asphodel",
+    "typeLine": "Creature — Zombie",
+    "manaCost": "{3}{B}{B}",
+    "manaValue": 5,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "When this creature enters, each opponent loses X life, where X is your devotion to black. You gain life equal to the life lost this way. (Each {B} in the mana costs of permanents you control counts toward your devotion to black.)",
+    "keywords": [],
+    "power": "2",
+    "toughness": "4",
+    "layout": "normal",
+    "releasedAt": "2024-09-27",
+    "edhrecRank": 240,
+    "setCode": "dsc"
+   },
+   {
+    "scryfallId": "49fae417-c4f4-478c-86c4-83094306b8d4",
+    "oracleId": "03259490-a789-4f96-8c5b-b410425bdd02",
+    "name": "Haunted Dead",
+    "typeLine": "Creature — Zombie",
+    "manaCost": "{3}{B}",
+    "manaValue": 4,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "When this creature enters, create a 1/1 white Spirit creature token with flying.\n{1}{B}, Discard two cards: Return this card from your graveyard to the battlefield tapped.",
+    "keywords": [],
+    "power": "2",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2025-01-24",
+    "edhrecRank": 20240,
+    "setCode": "inr"
+   },
+   {
+    "scryfallId": "11e12a84-e7be-4afc-a230-c2e644743fa8",
+    "oracleId": "53f7c868-b03e-4fc2-8dcf-a75bbfa3272b",
+    "name": "Dark Ritual",
+    "typeLine": "Instant",
+    "manaCost": "{B}",
+    "manaValue": 1,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Add {B}{B}{B}.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2026-06-26",
+    "edhrecRank": 34,
+    "setCode": "msc"
+   },
+   {
+    "scryfallId": "b233b117-9369-45c1-80c5-cc857386b6be",
+    "oracleId": "56719f6a-1a6c-4c0a-8d21-18f7d7350b68",
+    "name": "Swamp",
+    "typeLine": "Basic Land — Swamp",
+    "manaCost": "",
+    "manaValue": 0,
+    "colors": [],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "({T}: Add {B}.)",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2027-04-09",
+    "edhrecRank": null,
+    "setCode": "mdd"
+   }
+  ],
+  "bounce": [
+   {
+    "scryfallId": "99cfd1a8-49fd-4cc0-96f2-f9f159ce5d55",
+    "oracleId": "a1f3da21-af6d-450e-bf0b-985d158418e6",
+    "name": "Hardened Scales",
+    "typeLine": "Enchantment",
+    "manaCost": "{G}",
+    "manaValue": 1,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "If one or more +1/+1 counters would be put on a creature you control, that many plus one +1/+1 counters are put on it instead.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2026-04-24",
+    "edhrecRank": 188,
+    "setCode": "soc"
+   },
+   {
+    "scryfallId": "c0f1a736-8b12-4f58-a031-bf1733f65c51",
+    "oracleId": "28fe909b-06e0-424c-9f75-c824a25f5865",
+    "name": "Branching Evolution",
+    "typeLine": "Enchantment",
+    "manaCost": "{2}{G}",
+    "manaValue": 3,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "If one or more +1/+1 counters would be put on a creature you control, twice that many +1/+1 counters are put on that creature instead.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2024-06-14",
+    "edhrecRank": 379,
+    "setCode": "mh3"
+   },
+   {
+    "scryfallId": "ddad9f16-52d5-49de-82b0-b1a5294a9c44",
+    "oracleId": "837182db-1bf3-4a2c-bd01-1af9d9873561",
+    "name": "Unsummon",
+    "typeLine": "Instant",
+    "manaCost": "{U}",
+    "manaValue": 1,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Return target creature to its owner's hand.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2026-10-02",
+    "edhrecRank": 2688,
+    "setCode": "fra"
+   },
+   {
+    "scryfallId": "25edefa9-9fff-4b71-83ae-696c196a795c",
+    "oracleId": "c2898bbd-82a4-4d26-b6ee-169b0ebe71b4",
+    "name": "Into the Roil",
+    "typeLine": "Instant",
+    "manaCost": "{1}{U}",
+    "manaValue": 2,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\nReturn target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",
+    "keywords": [
+     "Kicker"
+    ],
+    "layout": "normal",
+    "releasedAt": "2024-11-15",
+    "edhrecRank": 5401,
+    "setCode": "fdn"
+   },
+   {
+    "scryfallId": "4dc7777b-6e9e-4889-91da-fb5283340fa1",
+    "oracleId": "6f7ef1d1-c441-41ba-b7d6-6b7727ffcf04",
+    "name": "Repulse",
+    "typeLine": "Instant",
+    "manaCost": "{2}{U}",
+    "manaValue": 3,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Return target creature to its owner's hand.\nDraw a card.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2016-08-26",
+    "edhrecRank": 8711,
+    "setCode": "cn2"
+   },
+   {
+    "scryfallId": "59f26d0a-e9f3-442f-b5c6-8016cf736432",
+    "oracleId": "a1408bae-ed5f-4837-a1a7-438dc30a2786",
+    "name": "Vapor Snag",
+    "typeLine": "Instant",
+    "manaCost": "{U}",
+    "manaValue": 1,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Return target creature to its owner's hand. Its controller loses 1 life.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2015-05-22",
+    "edhrecRank": 10959,
+    "setCode": "mm2"
+   },
+   {
+    "scryfallId": "3069cbb1-b2ff-42aa-a79a-70d1ba5d8caf",
+    "oracleId": "51acd176-e84d-42c2-acb2-cceeb28a9fec",
+    "name": "Blink of an Eye",
+    "typeLine": "Instant",
+    "manaCost": "{1}{U}",
+    "manaValue": 2,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\nReturn target nonland permanent to its owner's hand. If this spell was kicked, draw a card.",
+    "keywords": [
+     "Kicker"
+    ],
+    "layout": "normal",
+    "releasedAt": "2024-11-15",
+    "edhrecRank": 8827,
+    "setCode": "j25"
+   },
+   {
+    "scryfallId": "dfb7c4b9-f2f4-4d4e-baf2-86551c8150fe",
+    "oracleId": "d75b9c82-1b49-4c3e-a1b5-aeef57d6644b",
+    "name": "Cyclonic Rift",
+    "typeLine": "Instant",
+    "manaCost": "{1}{U}",
+    "manaValue": 2,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Return target nonland permanent you don't control to its owner's hand.\nOverload {6}{U} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+    "keywords": [
+     "Overload"
+    ],
+    "layout": "normal",
+    "releasedAt": "2024-01-12",
+    "edhrecRank": 58,
+    "setCode": "rvr"
+   },
+   {
+    "scryfallId": "5272436e-74f0-44c4-a291-ea8ebc3f1525",
+    "oracleId": "4b515bb0-f275-4400-8032-3173b799ab40",
+    "name": "Walking Ballista",
+    "typeLine": "Artifact Creature — Construct",
+    "manaCost": "{X}{X}",
+    "manaValue": 0,
+    "colors": [],
+    "colorIdentity": [],
+    "oracleText": "This creature enters with X +1/+1 counters on it.\n{4}: Put a +1/+1 counter on this creature.\nRemove a +1/+1 counter from this creature: It deals 1 damage to any target.",
+    "keywords": [],
+    "power": "0",
+    "toughness": "0",
+    "layout": "normal",
+    "releasedAt": "2020-08-07",
+    "edhrecRank": 416,
+    "setCode": "2xm"
+   },
+   {
+    "scryfallId": "22be6c55-f95e-498e-b6d2-65b7ed57d2d3",
+    "oracleId": "93d0e129-e3b5-4aff-9e50-f34771ed00ff",
+    "name": "Fathom Mage",
+    "typeLine": "Creature — Human Wizard",
+    "manaCost": "{2}{G}{U}",
+    "manaValue": 4,
+    "colors": [
+     "G",
+     "U"
+    ],
+    "colorIdentity": [
+     "G",
+     "U"
+    ],
+    "oracleText": "Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\nWhenever a +1/+1 counter is put on this creature, you may draw a card.",
+    "keywords": [
+     "Evolve"
+    ],
+    "power": "1",
+    "toughness": "1",
+    "layout": "normal",
+    "releasedAt": "2022-04-29",
+    "edhrecRank": 1718,
+    "setCode": "ncc"
+   },
+   {
+    "scryfallId": "6bf721b0-2b5a-4085-b50c-89cbe7420673",
+    "oracleId": "40eacdae-fae5-46b9-a9e5-9211469f74fc",
+    "name": "Ezuri, Claw of Progress",
+    "typeLine": "Legendary Creature — Phyrexian Elf Warrior",
+    "manaCost": "{2}{G}{U}",
+    "manaValue": 4,
+    "colors": [
+     "G",
+     "U"
+    ],
+    "colorIdentity": [
+     "G",
+     "U"
+    ],
+    "oracleText": "Whenever a creature you control with power 2 or less enters, you get an experience counter.\nAt the beginning of combat on your turn, put X +1/+1 counters on another target creature you control, where X is the number of experience counters you have.",
+    "keywords": [],
+    "power": "3",
+    "toughness": "3",
+    "layout": "normal",
+    "releasedAt": "2022-07-08",
+    "edhrecRank": 5749,
+    "setCode": "2x2"
+   },
+   {
+    "scryfallId": "be573ae7-967a-4b98-9058-ec3ff82ff63f",
+    "oracleId": "e3aa16cf-079b-4737-9ffd-7bfdffef0cb2",
+    "name": "Gyre Sage",
+    "typeLine": "Creature — Elf Druid",
+    "manaCost": "{1}{G}",
+    "manaValue": 2,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "Evolve (Whenever a creature you control enters, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.)\n{T}: Add {G} for each +1/+1 counter on this creature.",
+    "keywords": [
+     "Evolve"
+    ],
+    "power": "1",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2023-04-21",
+    "edhrecRank": 859,
+    "setCode": "moc"
+   },
+   {
+    "scryfallId": "1d21ae20-2ef5-4dc0-aced-97497e6a8025",
+    "oracleId": "7bd36106-04fe-481f-b16e-e076dcbb183b",
+    "name": "Kalonian Hydra",
+    "typeLine": "Creature — Hydra",
+    "manaCost": "{3}{G}{G}",
+    "manaValue": 5,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "Trample\nThis creature enters with four +1/+1 counters on it.\nWhenever this creature attacks, double the number of +1/+1 counters on each creature you control.",
+    "keywords": [
+     "Trample",
+     "Double"
+    ],
+    "power": "0",
+    "toughness": "0",
+    "layout": "normal",
+    "releasedAt": "2023-04-21",
+    "edhrecRank": 1155,
+    "setCode": "moc"
+   },
+   {
+    "scryfallId": "1d5bab94-362e-45e6-8988-69e2b2c681b1",
+    "oracleId": "41fed659-237c-4d8e-ad31-d17fa0d3f764",
+    "name": "Ozolith, the Shattered Spire",
+    "typeLine": "Legendary Artifact",
+    "manaCost": "{1}{G}",
+    "manaValue": 2,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "If one or more +1/+1 counters would be put on an artifact or creature you control, that many plus one +1/+1 counters are put on it instead.\n{1}{G}, {T}: Put a +1/+1 counter on target artifact or creature you control. Activate only as a sorcery.\nCycling {2} ({2}, Discard this card: Draw a card.)",
+    "keywords": [
+     "Cycling"
+    ],
+    "layout": "normal",
+    "releasedAt": "2026-04-24",
+    "edhrecRank": 653,
+    "setCode": "soc"
+   },
+   {
+    "scryfallId": "2d73ea23-52ab-4b92-b263-dc8b9e5a1010",
+    "oracleId": "21f1c6d7-8289-44b2-b88f-c09e202be200",
+    "name": "Fertilid",
+    "typeLine": "Creature — Elemental",
+    "manaCost": "{2}{G}",
+    "manaValue": 3,
+    "colors": [
+     "G"
+    ],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "This creature enters with two +1/+1 counters on it.\n{1}{G}, Remove a +1/+1 counter from this creature: Target player searches their library for a basic land card, puts it onto the battlefield tapped, then shuffles.",
+    "keywords": [],
+    "power": "0",
+    "toughness": "0",
+    "layout": "normal",
+    "releasedAt": "2023-04-21",
+    "edhrecRank": 3256,
+    "setCode": "moc"
+   },
+   {
+    "scryfallId": "2d92fcf1-2ccd-47d2-9a24-f44b766a0b68",
+    "oracleId": "ba95f24d-42da-48ce-bcf1-1b7c4b3c45b5",
+    "name": "Skirge Familiar",
+    "typeLine": "Creature — Phyrexian Imp",
+    "manaCost": "{4}{B}",
+    "manaValue": 5,
+    "colors": [
+     "B"
+    ],
+    "colorIdentity": [
+     "B"
+    ],
+    "oracleText": "Flying\nDiscard a card: Add {B}.",
+    "keywords": [
+     "Flying"
+    ],
+    "power": "3",
+    "toughness": "2",
+    "layout": "normal",
+    "releasedAt": "2021-06-18",
+    "edhrecRank": 2891,
+    "setCode": "mh2"
+   },
+   {
+    "scryfallId": "c0119777-70da-4cba-8104-a7e78604d515",
+    "oracleId": "38e274e2-bd04-48de-a1df-44f0ee987ba8",
+    "name": "Mistmeadow Witch",
+    "typeLine": "Creature — Kithkin Wizard",
+    "manaCost": "{1}{W/U}",
+    "manaValue": 2,
+    "colors": [
+     "U",
+     "W"
+    ],
+    "colorIdentity": [
+     "U",
+     "W"
+    ],
+    "oracleText": "{2}{W}{U}: Exile target creature. Return that card to the battlefield under its owner's control at the beginning of the next end step.",
+    "keywords": [],
+    "power": "1",
+    "toughness": "1",
+    "layout": "normal",
+    "releasedAt": "2022-07-08",
+    "edhrecRank": 13329,
+    "setCode": "2x2"
+   },
+   {
+    "scryfallId": "dc143ba3-2a58-4980-9fa0-a05a9e9ed082",
+    "oracleId": "ad0070db-6454-41cb-861f-8f5b8fc2a3b8",
+    "name": "Ghostly Flicker",
+    "typeLine": "Instant",
+    "manaCost": "{2}{U}",
+    "manaValue": 3,
+    "colors": [
+     "U"
+    ],
+    "colorIdentity": [
+     "U"
+    ],
+    "oracleText": "Exile two target artifacts, creatures, and/or lands you control, then return those cards to the battlefield under your control.",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2023-08-04",
+    "edhrecRank": 593,
+    "setCode": "cmm"
+   },
+   {
+    "scryfallId": "2e781bfd-f8cb-4d20-b977-4359f3a21311",
+    "oracleId": "b34bb2dc-c1af-4d77-b0b3-a0fb342a5fc6",
+    "name": "Forest",
+    "typeLine": "Basic Land — Forest",
+    "manaCost": "",
+    "manaValue": 0,
+    "colors": [],
+    "colorIdentity": [
+     "G"
+    ],
+    "oracleText": "({T}: Add {G}.)",
+    "keywords": [],
+    "layout": "normal",
+    "releasedAt": "2027-04-09",
+    "edhrecRank": null,
+    "setCode": "mdd"
+   }
+  ]
+ }
+}
