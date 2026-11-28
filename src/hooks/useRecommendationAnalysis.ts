@@ -6,7 +6,7 @@ import type { AnalysisResult } from "../workers/recommendationProtocol";
 import { RULESET_VERSION } from "../intelligence/types";
 import { RANKING_VERSION } from "../synergy/deckSpecific";
 const cache=new WeakMap<CollectionState,Map<string,AnalysisResult>>();
-export function useRecommendationAnalysis(state:CollectionState,deck:Deck,mode:""|"build"|"improve"){
+export function useRecommendationAnalysis(state:CollectionState,deck:Deck,mode:"discover"|"build"|"improve"){
  const context=`${deck.id}:${mode}`;
  const revision=JSON.stringify([context,state.revision,deck,RULESET_VERSION,RANKING_VERSION]);
  const [settled,setSettled]=useState<{revision:string;context:string;attempt:number;result?:AnalysisResult;error?:string}>();

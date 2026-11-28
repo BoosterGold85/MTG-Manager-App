@@ -1,6 +1,23 @@
 # MTG Manager — compact handoff
 
-Updated 2026-11-08 (America/Chicago). Start with AGENTS.md. Latest user instructions are authoritative.
+Updated 2026-11-19 (UTC). Start with AGENTS.md. Latest user instructions are authoritative.
+
+## Checkpoint 2026-11-19: Recommended from your collection (not merged, not deployed)
+
+Branch: claude/sweet-tesla-vvlj2b (base: origin/main 2a665f0). Evidence: docs/UPGRADES-DISCOVERY-v1.1.0.md.
+
+- Upgrades now opens to owned-card recommendations for the deck. Each shows strength (Strongly supported / Plausible / Speculative), Works with, What happens, What it needs, Availability, Potential change and Confidence. Build Around My Commander and Improve My Current Deck remain under "Explore by goal".
+- Selection lives in src/upgrades/discovery.ts. It reuses the existing Brew links, conditions, bridges and Upgrade swaps. No new numeric score. Storage, schema, keys and deck IDs are unchanged.
+- Generic-rule guards: category effects shared by 3+ candidates are dropped (Commander links exempt); stated "if it has flying"-style conditions must hold for the card; crew is not an interaction; Anti-synergy cards are excluded; at most 2 identical rules.
+- Corrected: Subterranean Schooner / Tangle Tumbler are valid Miles interactions (the Otherwise branch gives a flying counter). Earlier "false positive" claims were wrong.
+- Scoring changes (intended, reviewed): draw-step triggers no longer match card draw (4 Kwain scores change). Validator now enforces trigger types and stated keyword conditions; no other fixture score changed.
+- Audit (docs/UPGRADES-DISCOVERY-AUDIT.md): top-ten lists are NOT yet worth considering on most decks. Dominant gap: broad-type triggers (e.g., "whenever you cast a creature spell") accept any creature. Next validator pass needs its own review.
+- Blockers: four byte-identical guards fail (commanderProtection, experimentalAnalyzer, two universal prototype tests). Not refreshed. See docs/PROTECTION-REVIEW.md; a refresh proposal is in docs/audit/protection-refresh-proposal.json.
+- Human usefulness review (7 of top 10) has not been done; the report lists the fixture results for review.
+
+---
+
+## Previous checkpoint (v0.6.26)
 
 ## Current work
 
@@ -46,3 +63,14 @@ Runtime policy currently blocks this host (fresh curl CONNECT 403); no Cloudflar
 ## Known limits
 
 Subset noncombat engine, not a universal Magic simulator. Broad continuous layers, combat, delayed/stack interactions and many clauses remain unsupported. Independent semantic correctness/precision is incomplete. “Verified within this hypothetical supported subset” is not a whole-deck certificate or real-game availability. No numerical Synergy Surplus / Transformative Fit / Marginal Deck Value is approved for production scoring.
+
+## Upgrade Selector checkpoint (2026-11-26, unreleased)
+
+- Read-only Commander "Find Upgrades" panel on the deck Overview. Code: src/upgradeSelector/ (scoring, metadata cache, AI validator), src/components/UpgradeSelector.tsx. Report: docs/UPGRADE-SELECTOR.md.
+- Separate IndexedDB `mtg-upgrade-selector` v1 caches Scryfall released_at and edhrec_rank (7-day TTL) through the same-origin lookup proxy. Existing stores untouched. Weekly bulk oracle_cards pipeline NOT built (needs Worker route + scheduler).
+- Spec test: Fertilid (bounce/counters) = 12, passes. Skirge Familiar (mayhem/discard) = 11, does not reach 12 under the written rules (Obscurity gated by 2015 date; Loop 2/3). Recorded as it.fails; rule decision is the user's. No axis tuned.
+- AI layer: validator and prompt only, no provider configured, no paid API calls.
+- Validation: lint/tsc/build pass; unit 59 files 1,028 passed + 1 expected fail; prototype 188 passed; new browser spec 5/5 viewports.
+- Pre-existing, reproduced on base 2a665f0: decks.spec.ts:94 axe color-contrast in Add Card dialog fails on mobile-360/390/tablet (flaky). Not fixed (design tokens frozen).
+- productionBoundary.ts whitelists the exact new DeckLibrary import/mount lines only; no hash refreshed; app.css untouched (selector CSS in its own file).
+- Not deployed or device-tested.

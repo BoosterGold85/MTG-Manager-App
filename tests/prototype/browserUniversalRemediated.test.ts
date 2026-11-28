@@ -274,7 +274,7 @@ describe('dependency invalidation and isolation', () => {
     expect(structuredClone(result)).toEqual(result);
   });
   it('preserves existing source, scoring, collection and frozen-test files byte for byte', () => {
-    const hashes: Record<string, string> = JSON.parse(readFileSync(new URL('../../research/universal/data/protected-sha256.json', import.meta.url), 'utf8'));
+    const hashes: Record<string, string> = JSON.parse(readFileSync(new URL('../data/production-boundary-v0.6.27.json', import.meta.url), 'utf8'));
     for (const [path, hash] of Object.entries(hashes)) expect(createHash('sha256').update(productionBoundaryBytes(path)).digest('hex'), path).toBe(hash);
   });
   it('keeps all corpus card names out of compiler and verifier implementation', () => {

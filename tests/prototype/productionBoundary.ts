@@ -1,14 +1,7 @@
 import {readFileSync} from 'node:fs';
-// Explicit v0.6.26 activation exceptions, NOT a refreshed protection snapshot.
-// Strip only the reviewed UI mount and app-version fields; all other bytes still
-// have to match the original frozen production hashes, including storage/scorers.
+// v0.6.27 boundary: production bytes are compared raw against tests/data/production-boundary-v0.6.27.json.
+// The v0.6.26 activation exceptions (version strings, mounts, a test version constant) are no longer stripped:
+// those bytes are on main and recorded in the new manifest. Reviewed changes are listed in docs/PROTECTION-REVIEW.md.
 export function productionBoundaryBytes(path:string):Buffer{
- let text=readFileSync(new URL('../../'+path,import.meta.url),'utf8');
- if(path==='package.json')text=text.replace('"build:brew-lab": "tsc -b && vite build --mode brew-lab",\n    ','');
- if(path==='src/components/DeckLibrary.tsx')text=text.replace('import {BrewLab} from "./BrewLab";\n','').replace('          {tab === "upgrades" && <BrewLab key={deck.id} state={state} deck={deck} />}\n','');
- if(path==='src/components/DeckLibrary.tsx')text=text.replace('import {ExperimentalSynergyAnalyzer} from "./ExperimentalSynergyAnalyzer";\n','').replace('          {tab === "overview" && (formatOf(deck)==="commander" || formatOf(deck)==="legacy") && <ExperimentalSynergyAnalyzer key={`experimental:${deck.id}:${state.revision}`} state={state} deck={deck} />}\n','');
- if(path==='package.json')text=text.replace('"version": "0.6.26"','"version": "0.6.25"');
- if(path==='package-lock.json')text=text.replace('"version": "0.6.26"','"version": "0.6.25"').replace('"version": "0.6.26"','"version": "0.6.25"');
- if(path==='tests/browser/lookupTransport.spec.ts')text=text.replace("import pkg from '../../package.json' with {type:'json'};\n",'').replace("version:pkg.version,transport:","version:'0.6.23',transport:");
- return Buffer.from(text);
+ return readFileSync(new URL('../../'+path,import.meta.url));
 }

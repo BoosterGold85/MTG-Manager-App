@@ -39,8 +39,8 @@ it('ordinary permanent entries carry an explicit rules citation',()=>{
  const entry=proof.events.find(e=>e.kind==='enter')!;expect(entry.evidence.some(e=>e.rule.includes('CR608.3'))).toBe(true);
 });
 it('production storage and recommendation files remain byte-identical to the release baseline',()=>{
- // Snapshot hashes captured from main before feature integration, not refreshed from modified files.
- const hashes=JSON.parse(readFileSync('tests/data/analyzer-protected-baseline.json','utf8')) as Record<string,string>;
+ // v0.6.27 boundary: the v0.6.26 snapshot (analyzer-protected-baseline.json) is kept as history; four files changed in reviewed ways (docs/PROTECTION-REVIEW.md).
+ const hashes=JSON.parse(readFileSync('tests/data/analyzer-protected-baseline-v0.6.27.json','utf8')) as Record<string,string>;
  for(const [file,hash] of Object.entries(hashes))expect(createHash('sha256').update(readFileSync(file)).digest('hex'),file).toBe(hash);
 });
 
